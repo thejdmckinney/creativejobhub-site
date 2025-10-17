@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CreativeJobHub — Connect with trusted pros fast</title>
+  <meta name="description" content="CreativeJobHub helps people find trusted pros fast. Post a job, get matched, and get it done.">
+  <meta property="og:title" content="CreativeJobHub — Connect with trusted pros fast">
+  <meta property="og:description" content="Post a job, get matched, and get it done.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://creativejobhub.com/">
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='15' fill='%230ea5e9'/%3E%3Ctext x='50' y='58' font-size='52' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3ECJ%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --muted: #9ca3af;
+      --brand: #0ea5e9;
+      --brand-2: #22c55e;
+      --text: #e5e7eb;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--text); background: radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,.12), transparent 60%), radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%), var(--bg); line-height:1.6}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid transparent; font-weight:600; transition:.2s}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:white}
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(11,18,32,.6); border-bottom:1px solid rgba(148,163,184,.15)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .logo{display:flex; align-items:center; gap:10px}
+    .logo-mark{width:28px; height:28px; border-radius:8px; background:var(--brand); display:grid; place-items:center; font-weight:800}
+    .logo strong{font-weight:800}
+    .hero{padding:72px 0 36px}
+    .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px}
+    .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px}
+    h1{font-size: clamp(28px, 5vw, 52px); line-height:1.1; margin:14px 0}
+    .lead{font-size: clamp(16px, 2.6vw, 20px); color:var(--muted); margin:18px 0 26px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:18px; padding:18px}
+    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px dashed #334155; display:grid; place-items:center; padding:24px; text-align:center}
+    .hero-card p{color:#94a3b8}
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+    .badges{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    .badge{border:1px solid #334155; padding:6px 10px; border-radius:999px; color:#cbd5e1; font-size:14px}
+
+    section{padding:48px 0}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:16px; padding:18px}
+    .kicker{font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    h2{font-size: clamp(22px, 3.6vw, 34px); margin:8px 0 10px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
+
+    .how{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .step{border-left:3px solid var(--brand); padding:12px 12px 12px 14px; background:#0f172a; border-radius:12px; border:1px solid rgba(148,163,184,.15)}
+
+    .cta{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center}
+    .cta .panel{background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.02)); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:20px}
+
+    form{display:flex; gap:10px; flex-wrap:wrap}
+    input, textarea{background:#0b1220; border:1px solid #334155; color:#e5e7eb; padding:12px 14px; border-radius:12px; width:100%}
+    input[type=email]{flex:1}
+
+    footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#">
+        <span class="logo-mark">CJ</span>
+        <strong>CreativeJobHub</strong>
+      </a>
+      <nav class="row">
+        <a class="btn btn-ghost" href="#features">Features</a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+        <a class="btn btn-ghost" href="#faq">FAQ</a>
+        <a class="btn" href="https://app.creativejobhub.com/login">Log in</a>
+        <a class="btn btn-primary" href="#get-started">Get started</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Built for busy people</span>
+          <h1>Find trusted pros. Get jobs done. <span class="mono">Fast.</span></h1>
+          <p class="lead">CreativeJobHub connects people with vetted contractors and creatives. Post a job, compare offers, and kick off work—often the same day.</p>
+          <div class="row">
+            <a class="btn btn-primary" href="#get-started">Post a job</a>
+            <a class="btn btn-ghost" href="#features">See how it works</a>
+          </div>
+          <div class="badges">
+            <span class="badge">No credit card required</span>
+            <span class="badge">Free to try</span>
+            <span class="badge">Cancel anytime</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div>
+              <h3 style="margin:0 0 6px">Live preview</h3>
+              <p>Replace this with a GIF or screenshot of your app.<br> 1200×800 works well.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <span class="kicker">Why CreativeJobHub</span>
+        <h2>Everything you need to go from idea to done</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Smart matching</h3>
+            <p>Post once, get matched to qualified pros automatically—by skills, location, and availability.</p>
+          </div>
+          <div class="card">
+            <h3>Simple messaging</h3>
+            <p>Chat, share files, and keep everything in one place. Cut the back‑and‑forth.</p>
+          </div>
+          <div class="card">
+            <h3>Secure payments</h3>
+            <p>Built‑in invoices and milestones. Pay only when the work is approved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <span class="kicker">How it works</span>
+        <h2>Three simple steps</h2>
+        <div class="how">
+          <div class="step">
+            <strong>1) Post your job</strong>
+            <p>Describe the work and your timeline. It takes about 60 seconds.</p>
+          </div>
+          <div class="step">
+            <strong>2) Compare offers</strong>
+            <p>Pros send estimates. Pick based on price, ratings, and portfolio.</p>
+          </div>
+          <div class="step">
+            <strong>3) Get it done</strong>
+            <p>Kick off the project, message in the app, and track progress.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <span class="kicker">What people say</span>
+        <h2>Loved by customers</h2>
+        <div class="grid-3">
+          <div class="card"><em>“Posted a logo job at lunch and had a designer working by dinner.”</em><br>— Alex R.</div>
+          <div class="card"><em>“Way easier than juggling texts and emails. One place for everything.”</em><br>— Priya S.</div>
+          <div class="card"><em>“The escrow gave me peace of mind. No awkward money talks.”</em><br>— Dan M.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="get-started" class="cta">
+      <div class="container cta">
+        <div class="panel">
+          <h2>Start free in minutes</h2>
+          <p>Create your account and post your first job today.</p>
+          <div class="row">
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/signup">Create account</a>
+            <a class="btn btn-ghost" href="https://app.creativejobhub.com/login">I already have an account</a>
+          </div>
+        </div>
+        <div class="panel">
+          <h3 style="margin-top:0">Prefer email updates?</h3>
+          <!-- Replace action URL with your Formspree or other form endpoint -->
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <input type="email" name="email" placeholder="Enter your email" required>
+            <button class="btn btn-primary" type="submit">Notify me</button>
+            <input type="hidden" name="source" value="landing-cta">
+          </form>
+          <p style="font-size:14px; color:#94a3b8; margin-top:10px">No spam. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <span class="kicker">FAQ</span>
+        <h2>Questions, answered</h2>
+        <div class="grid-3">
+          <div class="card"><strong>Is there a free plan?</strong><br>Yes. Get started free; upgrade when you’re ready.</div>
+          <div class="card"><strong>Can I bring my own contractor?</strong><br>Absolutely—invite anyone by email.</div>
+          <div class="card"><strong>How do payments work?</strong><br>Funds are held in escrow and only released when work is approved.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> CreativeJobHub</div>
+      <div class="row">
+        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="mailto:hello@creativejobhub.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear()
+  </script>
+</body>
+</html>
