@@ -65,7 +65,7 @@
     .how{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     .step{border-left:3px solid var(--brand); padding:12px 12px 12px 14px; background:#0f172a; border-radius:12px; border:1px solid rgba(148,163,184,.15)}
 
-    .cta{display:grid; grid-template-columns:1.2fr .8fr; gap:18px; align-items:center}
+    .cta{display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; justify-items:stretch}
     .cta .panel{background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.02)); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:20px}
 
     form{display:flex; gap:10px; flex-wrap:wrap}
@@ -81,7 +81,10 @@
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
       .logo-img{ height: 56px; }
-    }
+    } /* end responsive */
+    .logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
+    .logo-row svg{height:26px; width:auto; opacity:.9}
+    .logo-row span{font-size:14px; color:#94a3b8}
       .logo-img{ height: 46px; }
     }
   </style>
@@ -133,6 +136,19 @@
           <div class="hero-card-inner">
             <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; opacity:1; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo section -->
+    <section id="demo">
+      <div class="container">
+        <span class="kicker">Watch it in action</span>
+        <h2>90‑second tour</h2>
+        <div class="card" style="padding:0; overflow:hidden">
+          <div style="position:relative; padding-top:56.25%">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="CreativeJobHub Demo" style="position:absolute; inset:0; width:100%; height:100%; border:0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -200,12 +216,19 @@
       <div class="container">
         <span class="kicker">Integrations</span>
         <h2>Connect the tools you already use</h2>
-        <div class="row" style="gap:18px; flex-wrap:wrap">
-          <span class="badge">Stripe</span>
-          <span class="badge">Twilio</span>
-          <span class="badge">Resend</span>
-          <span class="badge">Google Drive</span>
-          <span class="badge">Mapbox</span>
+        <div class="card" style="padding:18px">
+          <div class="logo-row">
+            <!-- Stripe -->
+            <svg viewBox="0 0 48 20" xmlns="http://www.w3.org/2000/svg"><rect rx="4" ry="4" width="48" height="20" fill="rgba(148,163,184,.12)"/><text x="24" y="13" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="ui-sans-serif,system-ui">Stripe</text></svg>
+            <!-- Twilio -->
+            <svg viewBox="0 0 48 20" xmlns="http://www.w3.org/2000/svg"><rect rx="4" ry="4" width="48" height="20" fill="rgba(148,163,184,.12)"/><text x="24" y="13" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="ui-sans-serif,system-ui">Twilio</text></svg>
+            <!-- Resend -->
+            <svg viewBox="0 0 58 20" xmlns="http://www.w3.org/2000/svg"><rect rx="4" ry="4" width="58" height="20" fill="rgba(148,163,184,.12)"/><text x="29" y="13" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="ui-sans-serif,system-ui">Resend</text></svg>
+            <!-- Google Drive -->
+            <svg viewBox="0 0 88 20" xmlns="http://www.w3.org/2000/svg"><rect rx="4" ry="4" width="88" height="20" fill="rgba(148,163,184,.12)"/><text x="44" y="13" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="ui-sans-serif,system-ui">Google Drive</text></svg>
+            <!-- Mapbox -->
+            <svg viewBox="0 0 62 20" xmlns="http://www.w3.org/2000/svg"><rect rx="4" ry="4" width="62" height="20" fill="rgba(148,163,184,.12)"/><text x="31" y="13" text-anchor="middle" font-size="9" fill="#cbd5e1" font-family="ui-sans-serif,system-ui">Mapbox</text></svg>
+          </div>
         </div>
       </div>
     </section>
@@ -214,44 +237,39 @@
     <section id="alternatives">
       <div class="container">
         <span class="kicker">Alternatives</span>
-        <h2>CreativeJobHub vs Jobber, Housecall Pro, and Workiz</h2>
-        <div class="card" style="overflow:auto">
-          <table class="mono" style="width:100%; border-collapse:collapse; font-size:14px">
-            <thead>
-              <tr>
-                <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(148,163,184,.2)">What you get</th>
-                <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(148,163,184,.2)">CreativeJobHub</th>
-                <th style="text-align:left; padding:10px; border-bottom:1px solid rgba(148,163,184,.2)">Jobber / HCP / Workiz</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Scheduling + Timesheets</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)"><strong>Built‑in</strong> time & time admin</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Usually add‑ons or different modules</td>
-              </tr>
-              <tr>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">AI Insights & Forecasts</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)"><strong>Native</strong> insights and revenue forecasts</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Limited or requires exports</td>
-              </tr>
-              <tr>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Recurring maint. & inspections</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">First‑class objects & reminders</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Workarounds or separate apps</td>
-              </tr>
-              <tr>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Integrations</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Stripe, Twilio, Resend, GDrive, Mapbox</td>
-                <td style="padding:10px; border-bottom:1px solid rgba(148,163,184,.1)">Often locked to higher tiers</td>
-              </tr>
-              <tr>
-                <td style="padding:10px">Built for contractors</td>
-                <td style="padding:10px"><strong>Yes</strong> — designed by a working GC</td>
-                <td style="padding:10px">Generic, one‑size‑fits‑all</td>
-              </tr>
-            </tbody>
-          </table>
+        <h2>How CreativeJobHub stands apart</h2>
+        <div class="card" style="padding:0">
+          <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:0; border-radius:16px; overflow:hidden">
+            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">Feature</div>
+            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">CreativeJobHub</div>
+            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">Typical others*</div>
+
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Scheduling + Timesheets</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Built‑in timesheets & time admin</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Separate add‑on or module</div>
+
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">AI Insights & Forecasts</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Native trends + 90‑day forecast</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Exports + manual analysis</div>
+
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Recurring maintenance & inspections</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">First‑class objects & reminders</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Workarounds or separate apps</div>
+
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Integrations</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Stripe, Twilio, Resend, GDrive, Mapbox</div>
+            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Often locked to higher tiers</div>
+
+            <div style="padding:12px">Built for contractors</div>
+            <div style="padding:12px"><strong>Yes</strong> — designed by a working GC</div>
+            <div style="padding:12px">Generic, one‑size‑fits‑all</div>
+          </div>
+          <ul style="margin:14px 12px; color:#cbd5e1; line-height:1.7">
+            <li>Quicker setup for small teams—usable in a day.</li>
+            <li>Designed from real jobs: scheduling → job sheet → invoice → pay.</li>
+            <li>Modern mobile UI that techs actually like using.</li>
+          </ul>
+          <div style="padding:10px 12px; color:#94a3b8; font-size:12px">* “Typical others” refers to well‑known tools like Jobber, Housecall Pro, and Workiz.</div>
         </div>
       </div>
     </section>
