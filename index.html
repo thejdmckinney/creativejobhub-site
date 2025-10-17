@@ -8,7 +8,16 @@
   <meta property="og:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
   <meta property="og:description" content="Schedule, dispatch, track time, and invoice in one place.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://creativejobhub.com/">
+  <meta property="og:url" content="https://www.creativejobhub.com/">
+  <link rel="canonical" href="https://www.creativejobhub.com/">
+  <meta property="og:site_name" content="CreativeJobHub">
+  <meta property="og:url" content="https://www.creativejobhub.com/">
+  <meta property="og:image" content="https://www.creativejobhub.com/assets/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
+  <meta name="twitter:description" content="Schedule, dispatch, track time, and invoice in one place.">
+  <meta name="twitter:image" content="https://www.creativejobhub.com/assets/logo.png">
+  <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="icon" type="image/png" href="assets/logo.png">
   <style>
@@ -65,7 +74,7 @@
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
 
-    .logo-img { height: 102px; width: auto; display: block; }
+    .logo-img { height: 72px; width: auto; display: block; }
     .logo-mark{ display:none; }
 
     /* Responsive */
@@ -76,19 +85,28 @@
       .logo-img{ height: 46px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CreativeJobHub",
+    "url": "https://www.creativejobhub.com/",
+    "logo": "https://www.creativejobhub.com/assets/logo.png"
+  }
+  </script>
 </head>
 <body>
   <header>
     <div class="container nav">
       <a class="logo" href="#">
-        <img class="logo-img" src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="height:102px; width:auto; display:block;" />
+        <img class="logo-img" src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="height:72px; width:auto; display:block;" />
         <strong>CreativeJobHub</strong>
       </a>
       <nav class="row">
         <a class="btn btn-ghost" href="#features">Features</a>
         <a class="btn btn-ghost" href="#how">How it works</a>
         <a class="btn btn-ghost" href="#faq">FAQ</a>
-        <a class="btn" href="https://app.creativejobhub.com/login">Log in</a>
+        <a class="btn" href="https://app.creativejobhub.com/auth">Log in</a>
         <a class="btn btn-primary" href="#get-started">Get started</a>
       </nav>
     </div>
@@ -102,7 +120,7 @@
           <h1>Run your field service business in one app.</h1>
           <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back‑and‑forth.</p>
           <div class="row">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/login">Open the app</a>
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Open the app</a>
             <a class="btn btn-ghost" href="#features">See features</a>
           </div>
           <div class="badges">
@@ -141,26 +159,28 @@
       </div>
     </section>
 
-  <section id="how">
-  <div class="container">
-    <span class="kicker">How it works</span>
-    <h2>Three simple steps</h2>
-    <div class="how">
-      <div class="step">
-        <strong>1) Schedule & dispatch</strong>
-        <p>Add the job, assign a tech, and send confirmations to your customer.</p>
+    <section id="how">
+      <div class="container">
+        <span class="kicker">How it works</span>
+        <h2>Three simple steps</h2>
+        <div class="how">
+          <div class="step">
+            <strong>1) Schedule & dispatch</strong>
+            <p>Add the job, assign a tech, and send confirmations to your customer.</p>
+          </div>
+          <div class="step">
+            <strong>2) Do the work</strong>
+            <p>Techs see the job on mobile, track time/materials, take photos, and collect a signature.</p>
+          </div>
+          <div class="step">
+            <strong>3) Invoice & get paid</strong>
+            <p>Convert the job to an invoice in one click and accept online payment.</p>
+          </div>
+        </div>
+        </div>
+        </div>
       </div>
-      <div class="step">
-        <strong>2) Do the work</strong>
-        <p>Techs see the job on mobile, track time/materials, take photos, and collect a signature.</p>
-      </div>
-      <div class="step">
-        <strong>3) Invoice & get paid</strong>
-        <p>Convert the job to an invoice in one click and accept online payment.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section>
       <div class="container">
@@ -180,8 +200,8 @@
           <h2>Open your field service app</h2>
           <p>Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
           <div class="row">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/login">Log in</a>
-            <a class="btn btn-ghost" href="https://app.creativejobhub.com/signup">Create account</a>
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
+            <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
           </div>
         </div>
         <div class="panel">
