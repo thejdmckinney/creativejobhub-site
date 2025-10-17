@@ -30,7 +30,7 @@
     .btn-primary:hover{transform:translateY(-1px)}
     .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(11,18,32,.6); border-bottom:1px solid rgba(148,163,184,.15)}
-    .nav{display:flex; align-items:center; justify-content:space-between; height: 72px}
+    .nav{display:flex; align-items:center; justify-content:space-between; height: 80px}
     .logo{display:flex; align-items:center; gap:10px}
     .logo-mark{width:28px; height:28px; border-radius:8px; background:var(--brand); display:grid; place-items:center; font-weight:800}
     .logo strong{font-weight:800}
@@ -39,8 +39,8 @@
     .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px}
     h1{font-size: clamp(28px, 5vw, 52px); line-height:1.1; margin:14px 0}
     .lead{font-size: clamp(16px, 2.6vw, 20px); color:var(--muted); margin:18px 0 26px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:18px; padding:18px}
-    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px dashed #334155; display:grid; place-items:center; padding:24px; text-align:center}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:18px; box-shadow: 0 10px 30px rgba(0,0,0,.35);} 
+    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px solid rgba(148,163,184,.12); display:grid; place-items:center; padding:18px; text-align:center} 
     .hero-card p{color:#94a3b8}
     .row{display:flex; gap:12px; flex-wrap:wrap}
     .badges{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
@@ -65,12 +65,14 @@
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
 
-    .logo-img { height: 56px; width: auto; display: block; }
+    .logo-img { height: 72px; width: auto; display: block; }
     .logo-mark{ display:none; }
 
     /* Responsive */
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
+      .logo-img{ height: 56px; }
+    }
       .logo-img{ height: 46px; }
     }
   </style>
@@ -79,7 +81,7 @@
   <header>
     <div class="container nav">
       <a class="logo" href="#">
-        <img class="logo-img" src="assets/logo.png?v=2" alt="CreativeJobHub logo" style="height:64px; width:auto; display:block;" />
+        <img class="logo-img" src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="height:72px; width:auto; display:block;" />
         <strong>CreativeJobHub</strong>
       </a>
       <nav class="row">
@@ -111,7 +113,7 @@
         </div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <img src="assets/logo.png?v=2" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:12px; opacity:1; filter: drop-shadow(0 6px 24px rgba(0,0,0,.45));">
+            <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; opacity:1; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
           </div>
         </div>
