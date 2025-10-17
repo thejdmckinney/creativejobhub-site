@@ -65,11 +65,11 @@
     .how{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     .step{border-left:3px solid var(--brand); padding:12px 12px 12px 14px; background:#0f172a; border-radius:12px; border:1px solid rgba(148,163,184,.15)}
 
-    .cta{display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:stretch; justify-items:stretch}
-    .cta .panel{background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.02)); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:20px}
+    .cta{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; justify-items:stretch} 
+    .cta .panel{background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.02)); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:22px; margin:0; height:100%; display:flex; flex-direction:column; gap:12px; justify-content:space-between} 
 
-    form{display:flex; gap:10px; flex-wrap:wrap}
-    input, textarea{background:#0b1220; border:1px solid #334155; color:#e5e7eb; padding:12px 14px; border-radius:12px; width:100%}
+    form{display:flex; gap:10px; flex-wrap:wrap; margin:0} 
+    input, textarea{background:#0b1220; border:1px solid #334155; color:#e5e7eb; padding:12px 14px; border-radius:12px; width:100%; box-sizing:border-box} 
     input[type=email]{flex:1}
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
@@ -137,11 +137,7 @@
             <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; opacity:1; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo section -->
+        </div></div></section>$2<!-- Demo section -->
     <section id="demo">
       <div class="container">
         <span class="kicker">Watch it in action</span>
@@ -305,8 +301,8 @@
       </div>
     </section>
 
-    <section id="get-started" class="cta">
-      <div class="container cta">
+    <section id="get-started">
+      <div class="container"><div class="cta">
         <div class="panel">
           <h2>Open your field service app</h2>
           <p>Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
@@ -316,7 +312,7 @@
           </div>
         </div>
         <div class="panel">
-          <h3 style="margin-top:0">Prefer updates by email?</h3>
+          <h3 style="margin:0">Prefer updates by email?</h3>
           <form action="https://formspree.io/f/your-id" method="POST">
             <input type="email" name="email" placeholder="Enter your email" required>
             <button class="btn btn-primary" type="submit">Notify me</button>
