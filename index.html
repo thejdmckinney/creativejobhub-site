@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CreativeJobHub — Connect with trusted pros fast</title>
-  <meta name="description" content="CreativeJobHub helps people find trusted pros fast. Post a job, get matched, and get it done.">
-  <meta property="og:title" content="CreativeJobHub — Connect with trusted pros fast">
-  <meta property="og:description" content="Post a job, get matched, and get it done.">
+  <title>CreativeJobHub — Field service app for scheduling, dispatch, and invoices</title>
+  <meta name="description" content="CreativeJobHub is your field service app: schedule jobs, dispatch techs, track time, and send invoices—fast.">
+  <meta property="og:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
+  <meta property="og:description" content="Schedule, dispatch, track time, and invoice in one place.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://creativejobhub.com/">
   <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='15' fill='%230ea5e9'/%3E%3Ctext x='50' y='58' font-size='52' text-anchor='middle' fill='white' font-family='Arial, Helvetica, sans-serif'%3ECJ%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <style>
     :root {
       --bg: #0b1220;
@@ -65,6 +65,9 @@
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
 
+    .logo-img { height: 28px; width: auto; display: block; }
+    .logo-mark{ display:none; }
+
     /* Responsive */
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
@@ -75,7 +78,7 @@
   <header>
     <div class="container nav">
       <a class="logo" href="#">
-        <span class="logo-mark">CJ</span>
+        <img class="logo-img" src="assets/logo.png" alt="CreativeJobHub logo" />
         <strong>CreativeJobHub</strong>
       </a>
       <nav class="row">
@@ -92,25 +95,23 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Built for busy people</span>
-          <h1>Find trusted pros. Get jobs done. <span class="mono">Fast.</span></h1>
-          <p class="lead">CreativeJobHub connects people with vetted contractors and creatives. Post a job, compare offers, and kick off work—often the same day.</p>
+          <span class="eyebrow">Built for field service teams</span>
+          <h1>Run your field service business in one app.</h1>
+          <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back‑and‑forth.</p>
           <div class="row">
-            <a class="btn btn-primary" href="#get-started">Post a job</a>
-            <a class="btn btn-ghost" href="#features">See how it works</a>
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/login">Open the app</a>
+            <a class="btn btn-ghost" href="#features">See features</a>
           </div>
           <div class="badges">
-            <span class="badge">No credit card required</span>
-            <span class="badge">Free to try</span>
-            <span class="badge">Cancel anytime</span>
+            <span class="badge">iOS & Android friendly</span>
+            <span class="badge">Email & SMS notifications</span>
+            <span class="badge">QuickBooks-friendly exports</span>
           </div>
         </div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <div>
-              <h3 style="margin:0 0 6px">Live preview</h3>
-              <p>Replace this with a GIF or screenshot of your app.<br> 1200×800 works well.</p>
-            </div>
+            <img src="assets/logo.png" alt="CreativeJobHub logo" style="max-width:60%; height:auto; border-radius:12px; opacity:.95">
+          </div>
           </div>
         </div>
       </div>
@@ -119,19 +120,19 @@
     <section id="features">
       <div class="container">
         <span class="kicker">Why CreativeJobHub</span>
-        <h2>Everything you need to go from idea to done</h2>
+        <h2>Everything you need to go from request to paid</h2>
         <div class="grid-3">
           <div class="card">
-            <h3>Smart matching</h3>
-            <p>Post once, get matched to qualified pros automatically—by skills, location, and availability.</p>
+            <h3>Scheduling & dispatch</h3>
+            <p>Drag‑and‑drop calendar, route planning, job statuses, and ETA texts to customers.</p>
           </div>
           <div class="card">
-            <h3>Simple messaging</h3>
-            <p>Chat, share files, and keep everything in one place. Cut the back‑and‑forth.</p>
+            <h3>Mobile job sheets</h3>
+            <p>Capture photos, notes, parts, and signatures onsite. Works great on phones.</p>
           </div>
           <div class="card">
-            <h3>Secure payments</h3>
-            <p>Built‑in invoices and milestones. Pay only when the work is approved.</p>
+            <h3>Invoices & payments</h3>
+            <p>Create estimates, convert to invoices, and get paid online with automatic reminders.</p>
           </div>
         </div>
       </div>
@@ -143,9 +144,18 @@
         <h2>Three simple steps</h2>
         <div class="how">
           <div class="step">
-            <strong>1) Post your job</strong>
-            <p>Describe the work and your timeline. It takes about 60 seconds.</p>
+            <strong>1) Schedule & dispatch</strong>
+            <p>Add the job, assign a tech, and send confirmations to your customer.</p>
           </div>
+          <div class="step">
+            <strong>2) Do the work</strong>
+            <p>Techs see the job on mobile, track time/materials, take photos, and collect a signature.</p>
+          </div>
+          <div class="step">
+            <strong>3) Invoice & get paid</strong>
+            <p>Convert the job to an invoice in one click and accept online payment.</p>
+          </div>
+        </div>
           <div class="step">
             <strong>2) Compare offers</strong>
             <p>Pros send estimates. Pick based on price, ratings, and portfolio.</p>
@@ -161,9 +171,12 @@
     <section>
       <div class="container">
         <span class="kicker">What people say</span>
-        <h2>Loved by customers</h2>
+        <h2>Loved by service businesses</h2>
         <div class="grid-3">
-          <div class="card"><em>“Posted a logo job at lunch and had a designer working by dinner.”</em><br>— Alex R.</div>
+          <div class="card"><em>“Scheduling used to be a nightmare—now it’s drag and drop. We finish more jobs per day.”</em><br>— Laura M., HVAC</div>
+          <div class="card"><em>“My techs take photos and I can invoice before they’re back at the shop.”</em><br>— Nate P., Electrical</div>
+          <div class="card"><em>“Customers love the ETA texts and online pay. Fewer phone calls for me.”</em><br>— Sam R., Handyman</div>
+        </div>
           <div class="card"><em>“Way easier than juggling texts and emails. One place for everything.”</em><br>— Priya S.</div>
           <div class="card"><em>“The escrow gave me peace of mind. No awkward money talks.”</em><br>— Dan M.</div>
         </div>
@@ -173,16 +186,15 @@
     <section id="get-started" class="cta">
       <div class="container cta">
         <div class="panel">
-          <h2>Start free in minutes</h2>
-          <p>Create your account and post your first job today.</p>
+          <h2>Open your field service app</h2>
+          <p>Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
           <div class="row">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/signup">Create account</a>
-            <a class="btn btn-ghost" href="https://app.creativejobhub.com/login">I already have an account</a>
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/login">Log in</a>
+            <a class="btn btn-ghost" href="https://app.creativejobhub.com/signup">Create account</a>
           </div>
         </div>
         <div class="panel">
-          <h3 style="margin-top:0">Prefer email updates?</h3>
-          <!-- Replace action URL with your Formspree or other form endpoint -->
+          <h3 style="margin-top:0">Prefer updates by email?</h3>
           <form action="https://formspree.io/f/your-id" method="POST">
             <input type="email" name="email" placeholder="Enter your email" required>
             <button class="btn btn-primary" type="submit">Notify me</button>
