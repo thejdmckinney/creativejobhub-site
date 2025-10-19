@@ -1,53 +1,4 @@
-/* === Header (shared) ===================================== */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: saturate(180%) blur(8px);
-  background: rgba(11,18,32,.75);
-  border-bottom: 1px solid rgba(148,163,184,.15);
-}
-.site-header_inner{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-  gap: 16px;
-  padding: 0 12px;
-}
-.site-header .brand{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-}
-.site-header .brand img{
-  height: 28px;
-  width: auto;
-  display: block;
-  vertical-align: middle;
-}
-.site-header nav a{
-  display: inline-block;
-  padding: 10px 12px;
-  margin-left: 4px;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  color: #e2e8f0;
-}
-.site-header nav a:hover{
-  border-color: #334155;
-}
-
-/* Make room for the sticky header so nothing is cut off */
-body{ padding-top: 84px; }
-
-/* Mobile tweaks */
-@media (max-width: 860px){
-  .site-header_inner{ height: 64px; }
-  body{ padding-top: 72px; }
-}
-/* ===== Header layout (consistent across pages) ===== */
+/* ====== Header (shared) ================================== */
 .site-header{
   position: sticky;
   top: 0;
@@ -57,41 +8,42 @@ body{ padding-top: 84px; }
   border-bottom: 1px solid rgba(148,163,184,.15);
 }
 
-/* Keep a bit of breathing room so links aren't "cut off" visually */
 .site-header__inner{
   display: flex;
   align-items: center;
   gap: 16px;
-  height: 80px;                   /* taller line box = no top cut-off */
+  height: 80px;                 /* prevents “cut off” look */
 }
 
 /* Brand */
 .site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap; text-decoration:none}
-.site-brand__logo{height: 28px; width:auto; display:block}
+.site-brand__logo{height:28px; width:auto; display:block}
 .site-brand__name{font-weight:800}
 
-/* Center nav. Prevent wrapping under CTAs. Allow horizontal shrinking. */
+/* Center nav; never wrap under CTAs */
 .site-nav{
   display:flex;
-  gap: 18px;
-  margin-inline: 12px;
-  flex: 1 1 auto;                 /* take remaining space */
-  min-width: 0;                   /* allow flexbox to actually shrink */
-  justify-content: center;        /* center the tabs between brand and CTAs */
-  white-space: nowrap;            /* no wrapping under CTAs */
+  gap:18px;
+  margin-inline:12px;
+  flex:1 1 auto;
+  min-width:0;
+  justify-content:center;
+  white-space:nowrap;
 }
 
-/* Right-side CTAs never wrap */
-.site-ctas{display:flex; gap:10px; flex: 0 0 auto; white-space:nowrap}
+/* Right-side CTAs */
+.site-ctas{display:flex; gap:10px; flex:0 0 auto; white-space:nowrap}
 
-/* Make header links align nicely and not look squashed */
-.site-nav a, .site-ctas a{
-  display:inline-flex; align-items:center; height: 42px; /* vertical rhythm in header */
-}
+/* Consistent clickable height */
+.site-nav a, .site-ctas a{display:inline-flex; align-items:center; height:42px}
 
-/* Responsive: on smaller screens let nav scroll horizontally instead of wrapping */
+/* Make room for sticky header so top isn’t hidden */
+body { padding-top: 84px; }
+
+/* Small screens: let nav scroll instead of wrapping */
 @media (max-width: 900px){
   .site-nav{overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
   .site-nav::-webkit-scrollbar{display:none}
-  .site-ctas .btn.btn-ghost{display:none} /* hide "Log in" if space is super tight */
+  .site-ctas .btn.btn-ghost{display:none}
+  body { padding-top: 74px; }
 }
