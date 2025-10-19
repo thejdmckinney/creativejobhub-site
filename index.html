@@ -20,9 +20,8 @@
   <meta name="theme-color" content="#0ea5e9" />
 
   <!-- Shared site CSS (includes header styles) -->
-  <link rel="stylesheet" href="/assets/site.css">
-
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/png" href="assets/logo.png">
 
   <style>
     :root {
@@ -52,7 +51,7 @@
     .btn-primary:hover{transform:translateY(-1px)}
     .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
 
-    .hero{padding:96px 0 36px} /* a little more top space under sticky header */
+    .hero{padding:96px 0 36px} /* extra space under sticky header */
     .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px}
     .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px}
     h1{font-size: clamp(28px, 5vw, 52px); line-height:1.1; margin:14px 0}
@@ -86,7 +85,6 @@
     .logo-row svg{height:26px; width:auto; opacity:.9}
     .logo-row span{font-size:14px; color:#94a3b8}
 
-    /* Responsive */
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
     }
@@ -104,10 +102,10 @@
 </head>
 <body>
 
-  <!-- Shared header pulled from /assets/header.html -->
+  <!-- Shared header pulled from assets/header.html -->
   <div id="site-header"></div>
   <script>
-    fetch('/assets/header.html')
+    fetch('assets/header.html')
       .then(r => r.text())
       .then(html => { document.getElementById('site-header').outerHTML = html; });
   </script>
@@ -122,7 +120,7 @@
           <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back-and-forth.</p>
           <div class="row">
             <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
-            <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+            <a class="btn btn-ghost" href="pricing/">See pricing</a>
           </div>
           <div class="badges">
             <span class="badge">iOS & Android friendly</span>
@@ -132,7 +130,7 @@
         </div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <img src="/assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
+            <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
         </div>
       </div>
@@ -282,9 +280,9 @@
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div>© <span id="y"></span> CreativeJobHub</div>
       <div class="row">
-        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
-        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
-        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="terms.html">Terms</a>
         <a class="btn btn-ghost" href="mailto:hello@creativejobhub.com">Contact</a>
       </div>
     </div>
