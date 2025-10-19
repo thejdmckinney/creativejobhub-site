@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Pricing • Creative Job Hub</title>
+<meta name="description" content="Creative Job Hub pricing: Lite (Free), Essential, Pro, Growth.">
+<style>
+  :root{
+    /* Brand-ish palette — tweak to match your site */
+    --bg:#0b1320;
+    --card:#121a2b;
+    --muted:#94a3b8;
+    --text:#f8fafc;
+    --accent:#7c6cf3; /* purple */
+    --accent-strong:#6a58f0;
+    --ok:#22c55e;
+    --ring:#2b3652;
+    --shadow: 0 10px 25px rgba(0,0,0,.35);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
+  header{display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between;margin-bottom:14px}
+  header h1{font-size:28px;margin:0}
+  header p{margin:0;color:var(--muted)}
+  .toggle{
+    display:flex;gap:8px;background:var(--card);border:1px solid var(--ring);
+    padding:6px;border-radius:999px;box-shadow:var(--shadow)
+  }
+  .toggle button{
+    border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:999px;
+    cursor:pointer;font-weight:600
+  }
+  .toggle button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px
+  }
+  @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:680px){.grid{grid-template-columns:1fr}}
+  .plan{
+    background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:22px;
+    display:flex;flex-direction:column;gap:16px;position:relative;box-shadow:var(--shadow);min-height:100%;
+  }
+  .badge{
+    position:absolute;top:-12px;left:18px;background:#ffe580;color:#3b2f00;
+    padding:6px 10px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.3px
+  }
+  .head{display:flex;flex-direction:column;gap:6px}
+  .title{font-size:20px;font-weight:800}
+  .desc{color:var(--muted);font-size:14px}
+  .seats{color:#cbd5e1;font-size:13px}
+  .price{display:flex;align-items:flex-end;gap:8px}
+  .currency{font-size:20px;margin-bottom:2px}
+  .amount{font-size:42px;font-weight:900}
+  .per{color:var(--muted)}
+  .save{color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px}
+  .cta{
+    display:inline-flex;justify-content:center;align-items:center;
+    padding:12px 14px;border-radius:12px;font-weight:800;border:1px solid transparent;
+    transition:transform .05s ease;box-shadow:var(--shadow)
+  }
+  .cta.primary{background:var(--accent);color:#fff}
+  .cta.primary:hover{background:var(--accent-strong)}
+  .cta.ghost{background:transparent;border-color:var(--ring);color:#fff}
+  .cta:active{transform:translateY(1px)}
+  ul.feats{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+  ul.feats li{display:flex;gap:8px;align-items:flex-start}
+  .check{color:var(--ok);margin-top:2px}
+  .footnote{color:var(--muted);font-size:12px;margin-top:6px}
+  /* highlight Pro */
+  .plan--pro{outline:2px solid #ffe580}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Creative Job Hub Pricing</h1>
+        <p>Save with annual billing. Switch anytime.</p>
+      </div>
+      <div class="toggle" role="group" aria-label="Billing cycle">
+        <button type="button" id="btn-monthly" aria-pressed="false">Pay monthly</button>
+        <button type="button" id="btn-yearly" aria-pressed="true">Pay annually <span class="save">Save ~13%</span></button>
+      </div>
+    </header>
+
+    <section class="grid" id="plans">
+      <!-- Lite -->
+      <article class="plan" data-plan="lite">
+        <div class="head">
+          <div class="title">Lite</div>
+          <div class="desc">Free starter plan to help small teams get organized. Includes clients & contacts, scheduling, estimates, jobs, invoices, and card payments. Capped at 30 invoices, 30 jobs, and 30 estimates per month.</div>
+          <div class="seats">Seats: 1</div>
+        </div>
+
+        <div class="price" data-price>
+          <span class="currency"></span>
+          <span class="amount" data-amount>Free</span>
+          <span class="per" data-per>/month</span>
+        </div>
+
+        <a class="cta primary" href="/app/signup">Free forever</a>
+
+        <ul class="feats">
+          <li><span class="check">✔</span> Clients & contacts CRM (lite)</li>
+          <li><span class="check">✔</span> Calendar scheduling (lite)</li>
+          <li><span class="check">✔</span> Estimates (up to 30/mo)</li>
+          <li><span class="check">✔</span> Jobs & work orders (up to 30/mo)</li>
+          <li><span class="check">✔</span> Invoices (up to 30/mo)</li>
+          <li><span class="check">✔</span> Card payments (Stripe)</li>
+          <li><span class="check">✔</span> Price book (items)</li>
+          <li><span class="check">✔</span> Email support</li>
+        </ul>
+      </article>
+
+      <!-- Essential -->
+      <article class="plan" data-plan="essential">
+        <div class="head">
+          <div class="title">Essential</div>
+          <div class="desc">Everything you need for day-to-day operations: clients & contacts, estimates with approvals, price book, jobs & scheduling, invoices and card payments, mobile tech view, basic reports, email notifications, maps & routing.</div>
+          <div class="seats">Seats: 2</div>
+        </div>
+
+        <div class="price" data-price data-monthly="79.99" data-yearly="69.99">
+          <span class="currency">$</span>
+          <span class="amount" data-amount>69.99</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="footnote" data-foot>or $839.88 billed yearly</div>
+
+        <a class="cta ghost" href="/app/signup">Choose Essential</a>
+
+        <ul class="feats">
+          <li><span class="check">✔</span> Clients & Contacts CRM</li>
+          <li><span class="check">✔</span> Estimates with customer approvals</li>
+          <li><span class="check">✔</span> Price book (items, labor, materials)</li>
+          <li><span class="check">✔</span> Jobs & calendar scheduling</li>
+          <li><span class="check">✔</span> Invoices & card payments</li>
+          <li><span class="check">✔</span> Mobile tech view (work orders)</li>
+          <li><span class="check">✔</span> Basic reports: jobs & revenue</li>
+          <li><span class="check">✔</span> Email notifications & reminders</li>
+        </ul>
+      </article>
+
+      <!-- Pro -->
+      <article class="plan plan--pro" data-plan="pro">
+        <div class="badge">BEST VALUE</div>
+        <div class="head">
+          <div class="title">Pro (Most Popular)</div>
+          <div class="desc">Everything in Essential, plus workflows & checklists, SMS reminders and 2-way texting, QuickBooks Online sync, advanced scheduling, custom fields & tags, team permissions, priority support, expense tracking and margin per job, client portal, analytics with AI insights, leads, and automations.</div>
+          <div class="seats">Seats: 5</div>
+        </div>
+
+        <div class="price" data-price data-monthly="149.99" data-yearly="139.99">
+          <span class="currency">$</span>
+          <span class="amount" data-amount>139.99</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="footnote" data-foot>or $1,679.88 billed yearly</div>
+
+        <a class="cta primary" href="/app/signup">Start for free</a>
+
+        <ul class="feats">
+          <li><span class="check">✔</span> Everything in Essential</li>
+          <li><span class="check">✔</span> Job workflows & checklists</li>
+          <li><span class="check">✔</span> SMS reminders & 2-way texting</li>
+          <li><span class="check">✔</span> QuickBooks Online sync</li>
+          <li><span class="check">✔</span> Advanced scheduling & routing</li>
+          <li><span class="check">✔</span> Custom job fields & tags</li>
+          <li><span class="check">✔</span> Team permissions & activity log</li>
+          <li><span class="check">✔</span> Priority chat + email support</li>
+          <li><span class="check">✔</span> Expense tracking per job</li>
+          <li><span class="check">✔</span> Margin per job (cost vs. revenue)</li>
+          <li><span class="check">✔</span> Client portal</li>
+          <li><span class="check">✔</span> Analytics with AI insights</li>
+          <li><span class="check">✔</span> Leads management</li>
+          <li><span class="check">✔</span> Integrations & automations</li>
+        </ul>
+      </article>
+
+      <!-- Growth -->
+      <article class="plan" data-plan="growth">
+        <div class="head">
+          <div class="title">Growth</div>
+          <div class="desc">Everything in Pro, plus dispatch board with drag-and-drop, capacity planning, advanced profitability reporting, service territories & travel windows, SLAs with alerts, multi-location support, granular roles & permissions, custom branding, and an onboarding call.</div>
+          <div class="seats">Seats: 10</div>
+        </div>
+
+        <div class="price" data-price data-monthly="249.99" data-yearly="199.99">
+          <span class="currency">$</span>
+          <span class="amount" data-amount>199.99</span>
+          <span class="per">/month</span>
+        </div>
+        <div class="footnote" data-foot>or $2,399.88 billed yearly</div>
+
+        <a class="cta ghost" href="/app/signup">Choose Growth</a>
+
+        <ul class="feats">
+          <li><span class="check">✔</span> Everything in Pro</li>
+          <li><span class="check">✔</span> Dispatch board & capacity planning</li>
+          <li><span class="check">✔</span> Advanced reporting (profit by job/tech)</li>
+          <li><span class="check">✔</span> Service territories & travel windows</li>
+          <li><span class="check">✔</span> SLA’s with alerts</li>
+          <li><span class="check">✔</span> Multi-location support</li>
+          <li><span class="check">✔</span> Granular roles & permissions</li>
+          <li><span class="check">✔</span> Custom branding (docs & emails)</li>
+          <li><span class="check">✔</span> Onboarding call + priority support</li>
+          <li><span class="check">✔</span> Time management & hours tracking</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+
+<script>
+  // Pricing toggle logic
+  const btnMonthly = document.getElementById('btn-monthly');
+  const btnYearly  = document.getElementById('btn-yearly');
+  const plans = [...document.querySelectorAll('[data-price]')];
+
+  function setMode(mode){
+    const yearly = mode === 'yearly';
+    btnMonthly.setAttribute('aria-pressed', !yearly);
+    btnYearly.setAttribute('aria-pressed', yearly);
+
+    plans.forEach(p=>{
+      const monthly = p.dataset.monthly;
+      const yearlyPrice = p.dataset.yearly;
+      const amountEl = p.querySelector('[data-amount]');
+      const foot     = p.parentElement.querySelector('[data-foot]');
+
+      if(!monthly || !yearlyPrice){ // Lite (free) has no numeric pricing
+        amountEl.textContent = 'Free';
+        if(foot) foot.textContent = '';
+        return;
+      }
+
+      if(yearly){
+        amountEl.textContent = Number(yearlyPrice).toFixed(2);
+      }else{
+        amountEl.textContent = Number(monthly).toFixed(2);
+      }
+
+      // Update footnote for yearly
+      if(foot){
+        const yearlyTotals = {
+          essential: "$839.88 billed yearly",
+          pro: "$1,679.88 billed yearly",
+          growth: "$2,399.88 billed yearly"
+        };
+        const planKey = p.parentElement.dataset.plan;
+        foot.textContent = yearly ? `or ${yearlyTotals[planKey]}` : "Billed monthly, cancel anytime";
+      }
+    });
+  }
+
+  btnMonthly.addEventListener('click', ()=>setMode('monthly'));
+  btnYearly .addEventListener('click', ()=>setMode('yearly'));
+  // Default to yearly:
+  setMode('yearly');
+</script>
+</body>
+</html>
