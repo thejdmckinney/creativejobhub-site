@@ -1,12 +1,31 @@
+<!-- assets/header.html -->
 <header class="site-header">
-  <div class="site-header__inner">
-    <a class="brand" href="/">Creative Job Hub</a>
-    <nav class="nav">
+  <style>
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.68);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid rgba(148,163,184,.15)}
+    .site-header_inner{max-width:1100px;margin:0 auto;padding:0 20px;height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand img{height:28px;width:auto;margin-right:8px;vertical-align:middle}
+    nav a{display:inline-block;margin-left:10px;padding:10px 12px;color:#e5e7eb;border:1px solid transparent;border-radius:10px;text-decoration:none}
+    nav a:hover{border-color:#334155}
+    nav a.active{background:#0ea5e9;color:#fff;border-color:transparent}
+    nav a.cta{background:linear-gradient(135deg,#0ea5e9,#38bdf8);color:#fff;font-weight:700}
+    nav a.login{border-color:#334155}
+  </style>
+
+  <div class="site-header_inner">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png?v=3" alt="Creative Job Hub" />
+      Creative Job Hub
+    </a>
+
+    <nav aria-label="Primary">
       <a href="/">Home</a>
       <a href="/pricing/">Pricing</a>
-      <a href="/features/">Features</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/contact/">Contact</a>
+      <!-- These two go back to sections on the homepage -->
+      <a href="/#features">Features</a>
+      <a href="/#faq">FAQ</a>
+      <a class="login" href="https://app.creativejobhub.com/auth">Log in</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
     </nav>
   </div>
 </header>
