@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How it works — CreativeJobHub</title>
+  <meta name="description" content="See how CreativeJobHub takes you from request to paid in three simple steps." />
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .step{border-left:3px solid var(--brand);background:#0f172a;border:1px solid rgba(148,163,184,.15);border-radius:12px;padding:14px}
+    @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!-- shared header -->
+  <div id="site-header"></div>
+  <script>
+    fetch('/assets/header.html').then(r=>r.text()).then(h=>{document.getElementById('site-header').outerHTML=h});
+  </script>
+
+  <main class="wrap">
+    <h1>How it works</h1>
+    <p style="color:#94a3b8;margin-top:-6px">Three simple steps to go from request to paid.</p>
+
+    <section class="steps">
+      <article class="step">
+        <h3>1) Schedule & dispatch</h3>
+        <p>Add the job, assign a tech, and send confirmations to your customer.</p>
+      </article>
+      <article class="step">
+        <h3>2) Do the work</h3>
+        <p>Techs see the job on mobile, track time & materials, take photos, and collect a signature.</p>
+      </article>
+      <article class="step">
+        <h3>3) Invoice & get paid</h3>
+        <p>Convert the job to an invoice in one click and accept online payment.</p>
+      </article>
+    </section>
+
+    <section style="margin-top:28px">
+      <h2>What’s included</h2>
+      <ul style="line-height:1.9;color:#cbd5e1;margin-top:8px">
+        <li>Calendar scheduling & route planning</li>
+        <li>Mobile job sheets with photos & notes</li>
+        <li>Estimates & invoices with online pay</li>
+        <li>Customer notifications via email & SMS</li>
+        <li>Analytics with AI insights</li>
+        <li>QuickBooks-friendly exports</li>
+      </ul>
+    </section>
+
+    <div style="margin-top:28px">
+      <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
+      <a class="btn btn-ghost" href="/pricing.html">See pricing</a>
+    </div>
+  </main>
+</body>
+</html>
