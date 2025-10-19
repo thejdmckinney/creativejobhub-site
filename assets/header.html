@@ -1,11 +1,13 @@
 <header class="site-header">
-  <div class="site-header__inner">
-    <a class="brand" href="/">
-      <img src="/assets/logo.png" alt="Creative Job Hub" style="height:40px;width:auto;vertical-align:middle;margin-right:10px" />
-      CreativeJobHub
+  <div class="container site-header__inner">
+    <!-- Brand -->
+    <a class="site-brand" href="/">
+      <img src="/assets/logo.png" alt="CreativeJobHub" class="site-brand__logo" />
+      <span class="site-brand__name">CreativeJobHub</span>
     </a>
 
-    <nav class="nav">
+    <!-- Main nav (center) -->
+    <nav class="site-nav" aria-label="Primary">
       <a href="/pricing/">Pricing</a>
       <a href="/#features">Features</a>
       <a href="/#how">How it works</a>
@@ -13,8 +15,12 @@
       <a href="/compare/jobber-alternative.html">Jobber</a>
       <a href="/compare/housecall-pro-alternative.html">Housecall Pro</a>
       <a href="/compare/workiz-alternative.html">Workiz</a>
-      <a class="login" href="https://app.creativejobhub.com/auth">Log in</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
     </nav>
+
+    <!-- CTAs (right) -->
+    <div class="site-ctas">
+      <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth">Log in</a>
+      <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
+    </div>
   </div>
 </header>
