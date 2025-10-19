@@ -11,7 +11,6 @@
   <meta property="og:url" content="https://www.creativejobhub.com/">
   <link rel="canonical" href="https://www.creativejobhub.com/">
   <meta property="og:site_name" content="CreativeJobHub">
-  <meta property="og:url" content="https://www.creativejobhub.com/">
   <meta property="og:image" content="https://www.creativejobhub.com/assets/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
@@ -39,9 +38,8 @@
     .btn-primary:hover{transform:translateY(-1px)}
     .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(8px); background:rgba(11,18,32,.6); border-bottom:1px solid rgba(148,163,184,.15)}
-    .nav{display:flex; align-items:center; justify-content:space-between; height: 80px}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:80px}
     .logo{display:flex; align-items:center; gap:10px}
-    .logo-mark{width:28px; height:28px; border-radius:8px; background:var(--brand); display:grid; place-items:center; font-weight:800}
     .logo strong{font-weight:800}
     .hero{padding:72px 0 36px}
     .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px}
@@ -60,7 +58,6 @@
     .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:16px; padding:18px}
     .kicker{font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
     h2{font-size: clamp(22px, 3.6vw, 34px); margin:8px 0 10px}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
 
     .how{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     .step{border-left:3px solid var(--brand); padding:12px 12px 12px 14px; background:#0f172a; border-radius:12px; border:1px solid rgba(148,163,184,.15)}
@@ -75,19 +72,18 @@
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
 
     .logo-img { height: 72px; width: auto; display: block; }
-    .logo-mark{ display:none; }
 
     /* Responsive */
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
       .logo-img{ height: 56px; }
     } /* end responsive */
+
     .logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
     .logo-row svg{height:26px; width:auto; opacity:.9}
     .logo-row span{font-size:14px; color:#94a3b8}
-      .logo-img{ height: 46px; }
-    }
   </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,30 +97,36 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="logo" href="#">
-        <img class="logo-img" src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="height:72px; width:auto; display:block;" />
+      <a class="logo" href="/">
+        <img class="logo-img" src="assets/logo.png?v=3" alt="CreativeJobHub logo" />
         <strong>CreativeJobHub</strong>
       </a>
       <nav class="row">
+        <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
         <a class="btn btn-ghost" href="#features">Features</a>
         <a class="btn btn-ghost" href="#how">How it works</a>
         <a class="btn btn-ghost" href="#faq">FAQ</a>
+        <!-- quick compare links -->
+        <a class="btn btn-ghost" href="/compare/jobber-alternative.html">Jobber</a>
+        <a class="btn btn-ghost" href="/compare/housecall-pro-alternative.html">Housecall Pro</a>
+        <a class="btn btn-ghost" href="/compare/workiz-alternative.html">Workiz</a>
         <a class="btn" href="https://app.creativejobhub.com/auth">Log in</a>
-        <a class="btn btn-primary" href="#get-started">Get started</a>
+        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div>
           <span class="eyebrow">Built for field service teams</span>
           <h1>Run your field service business in one app.</h1>
-          <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back‑and‑forth.</p>
+          <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back-and-forth.</p>
           <div class="row">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Open the app</a>
-            <a class="btn btn-ghost" href="#features">See features</a>
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
+            <a class="btn btn-ghost" href="/pricing.html">See pricing</a>
           </div>
           <div class="badges">
             <span class="badge">iOS & Android friendly</span>
@@ -134,14 +136,17 @@
         </div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; opacity:1; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
+            <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
-          </div>
-        </div></div></section>$2<!-- Demo section -->
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
     <section id="demo">
       <div class="container">
         <span class="kicker">Watch it in action</span>
-        <h2>90‑second tour</h2>
+        <h2>90-second tour</h2>
         <div class="card" style="padding:0; overflow:hidden">
           <div style="position:relative; padding-top:56.25%">
             <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="CreativeJobHub Demo" style="position:absolute; inset:0; width:100%; height:100%; border:0" allowfullscreen></iframe>
@@ -150,6 +155,7 @@
       </div>
     </section>
 
+    <!-- FEATURES -->
     <section id="features">
       <div class="container">
         <span class="kicker">Why CreativeJobHub</span>
@@ -157,7 +163,7 @@
         <div class="grid-3">
           <div class="card">
             <h3>Scheduling & dispatch</h3>
-            <p>Drag‑and‑drop calendar, route planning, job statuses, and ETA texts to customers.</p>
+            <p>Drag-and-drop calendar, route planning, job statuses, and ETA texts to customers.</p>
           </div>
           <div class="card">
             <h3>Mobile job sheets</h3>
@@ -171,7 +177,7 @@
       </div>
     </section>
 
-    <!-- Comparison vs competitors -->
+    <!-- COMPARISON BLURBS -->
     <section id="compare">
       <div class="container">
         <span class="kicker">Why choose CreativeJobHub</span>
@@ -179,11 +185,11 @@
         <div class="grid-3">
           <div class="card">
             <h3>Faster scheduling & time</h3>
-            <p>Drag‑and‑drop calendar, route planning, <strong>timesheets & time admin</strong> built‑in—no add‑ons needed.</p>
+            <p>Drag-and-drop calendar, route planning, <strong>timesheets & time admin</strong> built-in—no add-ons needed.</p>
           </div>
           <div class="card">
             <h3>Smarter analytics</h3>
-            <p><strong>AI‑powered insights</strong>, revenue & expense trends, and 90‑day forecasts help you see what to do next.</p>
+            <p><strong>AI-powered insights</strong>, revenue & expense trends, and 90-day forecasts help you see what to do next.</p>
           </div>
           <div class="card">
             <h3>Modern integrations</h3>
@@ -207,14 +213,13 @@
       </div>
     </section>
 
-    <!-- Integrations logo row -->
+    <!-- INTEGRATIONS -->
     <section id="integrations">
       <div class="container">
         <span class="kicker">Integrations</span>
         <h2>Connect the tools you already use</h2>
         <div class="card" style="padding:18px">
           <div class="logo-row" style="gap:14px; flex-wrap:wrap">
-            <!-- Colored brand badges -->
             <svg viewBox="0 0 86 28" xmlns="http://www.w3.org/2000/svg"><rect rx="8" ry="8" width="86" height="28" fill="#635bff"/><text x="43" y="18" text-anchor="middle" font-size="12" fill="#fff" font-weight="700" font-family="ui-sans-serif,system-ui">Stripe</text></svg>
             <svg viewBox="0 0 86 28" xmlns="http://www.w3.org/2000/svg"><rect rx="8" ry="8" width="86" height="28" fill="#F22F46"/><text x="43" y="18" text-anchor="middle" font-size="12" fill="#fff" font-weight="700" font-family="ui-sans-serif,system-ui">Twilio</text></svg>
             <svg viewBox="0 0 98 28" xmlns="http://www.w3.org/2000/svg"><rect rx="8" ry="8" width="98" height="28" fill="#111827"/><text x="49" y="18" text-anchor="middle" font-size="12" fill="#fff" font-weight="700" font-family="ui-sans-serif,system-ui">Resend</text></svg>
@@ -225,70 +230,7 @@
       </div>
     </section>
 
-    <!-- Competitor comparison table -->
-    <section id="alternatives">
-      <div class="container">
-        <span class="kicker">Alternatives</span>
-        <h2>How CreativeJobHub stands apart</h2>
-        <div class="card" style="padding:0">
-          <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:0; border-radius:16px; overflow:hidden">
-            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">Feature</div>
-            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">CreativeJobHub</div>
-            <div style="padding:14px 12px; border-bottom:1px solid rgba(148,163,184,.2); background:rgba(255,255,255,.03); font-weight:700">Typical others*</div>
-
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Scheduling + Timesheets</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Built‑in timesheets & time admin</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Separate add‑on or module</div>
-
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">AI Insights & Forecasts</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Native trends + 90‑day forecast</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Exports + manual analysis</div>
-
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Recurring maintenance & inspections</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">First‑class objects & reminders</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Workarounds or separate apps</div>
-
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Integrations</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Stripe, Twilio, Resend, GDrive, Mapbox</div>
-            <div style="padding:12px; border-bottom:1px solid rgba(148,163,184,.12)">Often locked to higher tiers</div>
-
-            <div style="padding:12px">Built for contractors</div>
-            <div style="padding:12px"><strong>Yes</strong> — designed by a working GC</div>
-            <div style="padding:12px">Generic, one‑size‑fits‑all</div>
-          </div>
-          <ul style="margin:14px 12px; color:#cbd5e1; line-height:1.7">
-            <li>Quicker setup for small teams—usable in a day.</li>
-            <li>Designed from real jobs: scheduling → job sheet → invoice → pay.</li>
-            <li>Modern mobile UI that techs actually like using.</li>
-          </ul>
-          <div style="padding:10px 12px; color:#94a3b8; font-size:12px">* “Typical others” refers to well‑known tools like Jobber, Housecall Pro, and Workiz.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="how">
-      <div class="container">
-        <span class="kicker">How it works</span>
-        <h2>Three simple steps</h2>
-        <div class="how">
-          <div class="step">
-            <strong>1) Schedule & dispatch</strong>
-            <p>Add the job, assign a tech, and send confirmations to your customer.</p>
-          </div>
-          <div class="step">
-            <strong>2) Do the work</strong>
-            <p>Techs see the job on mobile, track time/materials, take photos, and collect a signature.</p>
-          </div>
-          <div class="step">
-            <strong>3) Invoice & get paid</strong>
-            <p>Convert the job to an invoice in one click and accept online payment.</p>
-          </div>
-        </div>
-        </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- SOCIAL PROOF -->
     <section>
       <div class="container">
         <span class="kicker">What people say</span>
@@ -301,132 +243,50 @@
       </div>
     </section>
 
+    <!-- CTA -->
     <section id="get-started">
-      <div class="container"><div class="cta">
-        <div class="panel">
-          <h2>Open your field service app</h2>
-          <p>Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
-          <div class="row">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
-            <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
+      <div class="container">
+        <div class="cta">
+          <div class="panel">
+            <h2>Open your field service app</h2>
+            <p>Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
+            <div class="row">
+              <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
+              <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
+            </div>
           </div>
-        </div>
-        <div class="panel">
-          <h3 style="margin:0">Prefer updates by email?</h3>
-          <form action="https://formspree.io/f/your-id" method="POST">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button class="btn btn-primary" type="submit">Notify me</button>
-            <input type="hidden" name="source" value="landing-cta">
-          </form>
-          <p style="font-size:14px; color:#94a3b8; margin-top:10px">No spam. Unsubscribe anytime.</p>
+          <div class="panel">
+            <h3 style="margin:0">Prefer updates by email?</h3>
+            <form action="https://formspree.io/f/your-id" method="POST">
+              <input type="email" name="email" placeholder="Enter your email" required>
+              <button class="btn btn-primary" type="submit">Notify me</button>
+              <input type="hidden" name="source" value="landing-cta">
+            </form>
+            <p style="font-size:14px; color:#94a3b8; margin-top:10px">No spam. Unsubscribe anytime.</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
       <div class="container">
         <span class="kicker">FAQ</span>
         <h2>Questions, answered</h2>
         <div class="grid-3">
           <div class="card"><strong>Is there a free plan?</strong><br>Yes—start free and add paid features when you need them.</div>
-          <div class="card"><strong>Does it work on phones?</strong><br>Yep. The app is mobile‑friendly; techs can use iOS or Android.</div>
+          <div class="card"><strong>Does it work on phones?</strong><br>Yep. The app is mobile-friendly; techs can use iOS or Android.</div>
           <div class="card"><strong>How do invoices/payments work?</strong><br>Create invoices from job data and accept online payment; export for accounting.</div>
         </div>
       </div>
     </section>
-  <!-- --- NEW FILES TO ADD --- -->
-<!-- Save as: compare/jobber-alternative.html -->
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Best Jobber Alternative for Small Field-Service Teams | CreativeJobHub</title>
-  <meta name="description" content="Looking for a Jobber alternative? CreativeJobHub gives you built‑in timesheets, AI insights, recurring maintenance, inspections, and modern integrations—designed by a working contractor." />
-  <link rel="canonical" href="https://www.creativejobhub.com/compare/jobber-alternative.html" />
-  <meta property="og:title" content="Best Jobber Alternative for Small Field-Service Teams" />
-  <meta property="og:description" content="Built‑in timesheets, AI insights & forecasts, and modern integrations. Simple and fast for small teams." />
-  <meta property="og:url" content="https://www.creativejobhub.com/compare/jobber-alternative.html" />
-  <meta property="og:image" content="https://www.creativejobhub.com/assets/logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <style>body{font-family:ui-sans-serif,system-ui;-webkit-font-smoothing:antialiased;margin:0;background:#0b1220;color:#e5e7eb;line-height:1.6}.wrap{max-width:900px;margin:0 auto;padding:28px}a{color:#60a5fa;text-decoration:none}.btn{display:inline-block;background:#0ea5e9;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700}.card{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:18px;margin:14px 0}</style>
-</head>
-<body>
-  <div class="wrap">
-    <p><a href="/">← Back to CreativeJobHub</a></p>
-    <h1>Jobber Alternative: CreativeJobHub</h1>
-    <p>CreativeJobHub is built for small field-service teams that want less clicking and more doing.</p>
-    <div class="card">
-      <h3>Why teams switch</h3>
-      <ul>
-        <li><strong>Built‑in timesheets & time admin</strong> (no add‑on)</li>
-        <li><strong>AI insights & 90‑day revenue forecasts</strong></li>
-        <li><strong>Recurring maintenance & inspections</strong> baked in</li>
-        <li>Modern integrations: Stripe, Twilio, Resend, Google Drive, Mapbox</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Side‑by‑side</h3>
-      <table style="width:100%;border-collapse:collapse;font-size:15px"><tr><th style="text-align:left;padding:8px;border-bottom:1px solid rgba(148,163,184,.2)">Feature</th><th style="text-align:left;padding:8px;border-bottom:1px solid rgba(148,163,184,.2)">CreativeJobHub</th><th style="text-align:left;padding:8px;border-bottom:1px solid rgba(148,163,184,.2)">Jobber</th></tr><tr><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Timesheets</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Built‑in</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Module / tier‑dependent</td></tr><tr><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">AI insights & forecasts</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Native</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Limited</td></tr><tr><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Recurring maint. & inspections</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">First‑class</td><td style="padding:8px;border-bottom:1px solid rgba(148,163,184,.1)">Workarounds</td></tr></table>
-    </div>
-    <p>
-      <a class="btn" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-      &nbsp; <a class="btn" style="background:#334155" href="https://app.creativejobhub.com/auth">Log in</a>
-    </p>
-  </div>
-</body>
-</html>
-
-<!-- Save as: compare/housecall-pro-alternative.html -->
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Housecall Pro Alternative for Field Service Teams | CreativeJobHub</title>
-  <meta name="description" content="Switch from Housecall Pro to CreativeJobHub for built‑in timesheets, AI insights, recurring maintenance & inspections, and modern integrations." />
-  <link rel="canonical" href="https://www.creativejobhub.com/compare/housecall-pro-alternative.html" />
-  <meta property="og:title" content="Housecall Pro Alternative" /><meta property="og:description" content="Built for small teams. Faster scheduling, native insights, and clear pricing." />
-  <meta property="og:url" content="https://www.creativejobhub.com/compare/housecall-pro-alternative.html" />
-  <meta property="og:image" content="https://www.creativejobhub.com/assets/logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <style>body{font-family:ui-sans-serif,system-ui;-webkit-font-smoothing:antialiased;margin:0;background:#0b1220;color:#e5e7eb;line-height:1.6}.wrap{max-width:900px;margin:0 auto;padding:28px}a{color:#60a5fa;text-decoration:none}.btn{display:inline-block;background:#0ea5e9;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700}.card{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:18px;margin:14px 0}</style>
-</head>
-<body><div class="wrap">
-  <p><a href="/">← Back to CreativeJobHub</a></p>
-  <h1>Housecall Pro Alternative</h1>
-  <p>Everything you need to go from request to paid—without extra modules.</p>
-  <div class="card"><h3>Why teams switch</h3><ul><li>Scheduling + built‑in timesheets and time admin</li><li>AI insights & revenue forecasts</li><li>Recurring maintenance and inspection checklists</li><li>Modern integrations: Stripe, Twilio, Resend, Google Drive, Mapbox</li></ul></div>
-  <p><a class="btn" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a> &nbsp; <a class="btn" style="background:#334155" href="https://app.creativejobhub.com/auth">Log in</a></p>
-</div></body></html>
-
-<!-- Save as: compare/workiz-alternative.html -->
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Workiz Alternative: Simpler Field Service Software | CreativeJobHub</title>
-  <meta name="description" content="CreativeJobHub is a Workiz alternative focused on speed for small teams—built‑in timesheets, AI insights, recurring maintenance, inspections, and modern integrations." />
-  <link rel="canonical" href="https://www.creativejobhub.com/compare/workiz-alternative.html" />
-  <meta property="og:title" content="Workiz Alternative" /><meta property="og:description" content="Faster scheduling, native insights, and clear pricing." />
-  <meta property="og:url" content="https://www.creativejobhub.com/compare/workiz-alternative.html" />
-  <meta property="og:image" content="https://www.creativejobhub.com/assets/logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <style>body{font-family:ui-sans-serif,system-ui;-webkit-font-smoothing:antialiased;margin:0;background:#0b1220;color:#e5e7eb;line-height:1.6}.wrap{max-width:900px;margin:0 auto;padding:28px}a{color:#60a5fa;text-decoration:none}.btn{display:inline-block;background:#0ea5e9;color:#fff;padding:12px 16px;border-radius:12px;font-weight:700}.card{background:rgba(255,255,255,.04);border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:18px;margin:14px 0}</style>
-</head>
-<body><div class="wrap">
-  <p><a href="/">← Back to CreativeJobHub</a></p>
-  <h1>Workiz Alternative</h1>
-  <p>Field service software that stays out of your way—so you can get more done.</p>
-  <div class="card"><h3>Why teams switch</h3><ul><li>Built‑in timesheets + time admin</li><li>AI insights & forecasts</li><li>Recurring maintenance & inspections</li><li>Stripe, Twilio, Resend, Google Drive, Mapbox integrations</li></ul></div>
-  <p><a class="btn" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a> &nbsp; <a class="btn" style="background:#334155" href="https://app.creativejobhub.com/auth">Log in</a></p>
-</div></body></html>
-
-</main>
+  </main>
 
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div>© <span id="y"></span> CreativeJobHub</div>
       <div class="row">
+        <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
         <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
         <a class="btn btn-ghost" href="/terms.html">Terms</a>
         <a class="btn btn-ghost" href="mailto:hello@creativejobhub.com">Contact</a>
@@ -434,8 +294,6 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear()
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
