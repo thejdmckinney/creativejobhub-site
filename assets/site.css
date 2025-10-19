@@ -47,3 +47,51 @@ body{ padding-top: 84px; }
   .site-header_inner{ height: 64px; }
   body{ padding-top: 72px; }
 }
+/* ===== Header layout (consistent across pages) ===== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(11,18,32,.72);
+  border-bottom: 1px solid rgba(148,163,184,.15);
+}
+
+/* Keep a bit of breathing room so links aren't "cut off" visually */
+.site-header__inner{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 80px;                   /* taller line box = no top cut-off */
+}
+
+/* Brand */
+.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap; text-decoration:none}
+.site-brand__logo{height: 28px; width:auto; display:block}
+.site-brand__name{font-weight:800}
+
+/* Center nav. Prevent wrapping under CTAs. Allow horizontal shrinking. */
+.site-nav{
+  display:flex;
+  gap: 18px;
+  margin-inline: 12px;
+  flex: 1 1 auto;                 /* take remaining space */
+  min-width: 0;                   /* allow flexbox to actually shrink */
+  justify-content: center;        /* center the tabs between brand and CTAs */
+  white-space: nowrap;            /* no wrapping under CTAs */
+}
+
+/* Right-side CTAs never wrap */
+.site-ctas{display:flex; gap:10px; flex: 0 0 auto; white-space:nowrap}
+
+/* Make header links align nicely and not look squashed */
+.site-nav a, .site-ctas a{
+  display:inline-flex; align-items:center; height: 42px; /* vertical rhythm in header */
+}
+
+/* Responsive: on smaller screens let nav scroll horizontally instead of wrapping */
+@media (max-width: 900px){
+  .site-nav{overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+  .site-nav::-webkit-scrollbar{display:none}
+  .site-ctas .btn.btn-ghost{display:none} /* hide "Log in" if space is super tight */
+}
