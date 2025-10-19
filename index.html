@@ -18,47 +18,71 @@
   <meta name="twitter:image" content="https://www.creativejobhub.com/assets/logo.png">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0ea5e9" />
-
-  <!-- Shared site CSS (includes header styles) -->
-  <link rel="stylesheet" href="assets/site.css">
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
 
   <style>
-    :root {
-      --bg: #0b1220;
-      --panel: #111827;
-      --muted: #9ca3af;
-      --brand: #0ea5e9;
-      --brand-2: #22c55e;
-      --text: #e5e7eb;
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
       color:var(--text);
       background:
         radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
         radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
         var(--bg);
-      line-height:1.6
+      line-height:1.6;
+      /* space for sticky header so content isn't hidden */
+      padding-top: 92px;
     }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-    .btn{display:inline-block; padding:12px 18px; border-radius:12px; border:1px solid transparent; font-weight:600; transition:.2s}
-    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:white}
+    /* Buttons */
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600;transition:.2s}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
     .btn-primary:hover{transform:translateY(-1px)}
-    .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
+    .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-    .hero{padding:96px 0 36px} /* extra space under sticky header */
+    /* ================= Header (no JS include) ================= */
+    .site-header{
+      position:fixed; inset:0 0 auto 0; z-index:100;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(11,18,32,.78);
+      border-bottom:1px solid rgba(148,163,184,.15);
+    }
+    .site-header__inner{
+      height:80px; display:flex; align-items:center; gap:16px;
+      max-width:1100px; margin:0 auto; padding:0 20px;
+    }
+    .site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap}
+    .site-brand img{height:32px; width:auto; display:block}
+    .site-brand strong{font-weight:800}
+
+    .site-nav{flex:1 1 auto; min-width:0; display:flex; gap:14px; justify-content:center; white-space:nowrap}
+    .site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
+    .site-nav a:hover{background:rgba(148,163,184,.08)}
+
+    .site-ctas{flex:0 0 auto; display:flex; gap:10px; white-space:nowrap}
+    .site-ctas a{display:inline-flex; align-items:center; height:42px}
+
+    /* Prevent wrapping under CTAs on narrow widths */
+    @media (max-width: 980px){
+      .site-nav{overflow-x:auto; scrollbar-width:none}
+      .site-nav::-webkit-scrollbar{display:none}
+    }
+
+    /* =================== Page sections =================== */
+    .hero{padding:64px 0 36px}
     .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px}
     .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px}
     h1{font-size: clamp(28px, 5vw, 52px); line-height:1.1; margin:14px 0}
     .lead{font-size: clamp(16px, 2.6vw, 20px); color:var(--muted); margin:18px 0 26px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:18px; box-shadow: 0 10px 30px rgba(0,0,0,.35);} 
-    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px solid rgba(148,163,184,.12); display:grid; place-items:center; padding:18px; text-align:center} 
-    .hero-card p{color:#94a3b8}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px solid rgba(148,163,184,.12); display:grid; place-items:center; padding:18px; text-align:center}
     .row{display:flex; gap:12px; flex-wrap:wrap}
     .badges{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
     .badge{border:1px solid #334155; padding:6px 10px; border-radius:999px; color:#cbd5e1; font-size:14px}
@@ -75,40 +99,50 @@
     .cta{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; justify-items:stretch} 
     .cta .panel{background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(34,197,94,.02)); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:22px; margin:0; height:100%; display:flex; flex-direction:column; gap:12px; justify-content:space-between} 
 
-    form{display:flex; gap:10px; flex-wrap:wrap; margin:0} 
-    input, textarea{background:#0b1220; border:1px solid #334155; color:#e5e7eb; padding:12px 14px; border-radius:12px; width:100%; box-sizing:border-box} 
+    form{display:flex; gap:10px; flex-wrap:wrap; margin:0}
+    input, textarea{background:#0b1220; border:1px solid #334155; color:#e5e7eb; padding:12px 14px; border-radius:12px; width:100%; box-sizing:border-box}
     input[type=email]{flex:1}
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid rgba(148,163,184,.15)}
-
     .logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
     .logo-row svg{height:26px; width:auto; opacity:.9}
-    .logo-row span{font-size:14px; color:#94a3b8}
 
+    /* Responsive */
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
     }
   </style>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "CreativeJobHub",
-    "url": "https://www.creativejobhub.com/",
-    "logo": "https://www.creativejobhub.com/assets/logo.png"
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"CreativeJobHub","url":"https://www.creativejobhub.com/","logo":"https://www.creativejobhub.com/assets/logo.png"}
   </script>
 </head>
 <body>
 
-  <!-- Shared header pulled from assets/header.html -->
-  <div id="site-header"></div>
-  <script>
-    fetch('assets/header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('site-header').outerHTML = html; });
-  </script>
+  <!-- HEADER (fixed, consistent, no JS include) -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-brand" href="/">
+        <img src="/assets/logo.png" alt="CreativeJobHub logo">
+        <strong>CreativeJobHub</strong>
+      </a>
+
+      <nav class="site-nav" aria-label="Main">
+        <a href="/pricing/">Pricing</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+        <a href="/compare/jobber-alternative.html">Jobber</a>
+        <a href="/compare/housecall-pro-alternative.html">Housecall Pro</a>
+        <a href="/compare/workiz-alternative.html">Workiz</a>
+      </nav>
+
+      <div class="site-ctas">
+        <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth">Log in</a>
+        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
+      </div>
+    </div>
+  </header>
 
   <main>
     <!-- HERO -->
@@ -120,7 +154,7 @@
           <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back-and-forth.</p>
           <div class="row">
             <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
-            <a class="btn btn-ghost" href="pricing/">See pricing</a>
+            <a class="btn btn-ghost" href="/pricing/">See pricing</a>
           </div>
           <div class="badges">
             <span class="badge">iOS & Android friendly</span>
@@ -130,7 +164,7 @@
         </div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <img src="assets/logo.png?v=3" alt="CreativeJobHub logo" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
+            <img src="/assets/logo.png?v=3" alt="CreativeJobHub app" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
           </div>
         </div>
       </div>
@@ -280,9 +314,9 @@
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div>© <span id="y"></span> CreativeJobHub</div>
       <div class="row">
-        <a class="btn btn-ghost" href="pricing/">Pricing</a>
-        <a class="btn btn-ghost" href="privacy.html">Privacy</a>
-        <a class="btn btn-ghost" href="terms.html">Terms</a>
+        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
         <a class="btn btn-ghost" href="mailto:hello@creativejobhub.com">Contact</a>
       </div>
     </div>
