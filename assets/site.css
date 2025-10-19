@@ -1,0 +1,49 @@
+/* === Header (shared) ===================================== */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(11,18,32,.75);
+  border-bottom: 1px solid rgba(148,163,184,.15);
+}
+.site-header_inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 16px;
+  padding: 0 12px;
+}
+.site-header .brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+.site-header .brand img{
+  height: 28px;
+  width: auto;
+  display: block;
+  vertical-align: middle;
+}
+.site-header nav a{
+  display: inline-block;
+  padding: 10px 12px;
+  margin-left: 4px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  color: #e2e8f0;
+}
+.site-header nav a:hover{
+  border-color: #334155;
+}
+
+/* Make room for the sticky header so nothing is cut off */
+body{ padding-top: 84px; }
+
+/* Mobile tweaks */
+@media (max-width: 860px){
+  .site-header_inner{ height: 64px; }
+  body{ padding-top: 72px; }
+}
