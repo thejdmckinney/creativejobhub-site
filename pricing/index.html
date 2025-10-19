@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
-  <link rel="stylesheet" href="/assets/site.css">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Pricing — CreativeJobHub</title>
   <meta name="description" content="CreativeJobHub pricing: Lite (Free), Essential, Pro, Growth. Save with annual billing." />
   <link rel="icon" type="image/png" href="/assets/logo.png">
+  <!-- Shared site CSS (includes header styles) -->
   <link rel="stylesheet" href="/assets/site.css">
+
+  <!-- Page-specific styles (pricing only) -->
   <style>
     :root{
       --bg:#0b1320;
@@ -24,18 +26,16 @@
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
 
-    /* Page-specific UI */
-<!-- Shared header -->
-<div id="site-header"></div>
-<script>
-  fetch('/assets/header.html')
-    .then(r => r.text())
-    .then(html => { document.getElementById('site-header').outerHTML = html; });
-</script>
+    /* use same width rhythm as the rest of the site */
+    .wrap{max-width:1100px;margin:auto;padding:24px 16px 80px}
+
+    .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 6px}
+    .page-header h1{margin:0 0 4px 0}
+    .page-header p{margin:0;color:var(--muted)}
+
     .toggle{display:flex;gap:8px;background:var(--card);border:1px solid var(--ring);padding:6px;border-radius:999px;box-shadow:var(--shadow)}
-    .toggle button{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600}
+    .toggle button{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600;white-space:nowrap}
     .toggle button[aria-pressed="true"]{background:var(--accent);color:#fff}
 
     .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
@@ -71,26 +71,13 @@
 </head>
 <body>
 
-  <!-- Shared Header -->
-  <header class="site-header">
-    <div class="site-header_inner container">
-      <a class="brand" href="/">
-        <img src="/assets/logo.png?v=3" alt="CreativeJobHub logo">
-        <span>CreativeJobHub</span>
-      </a>
-      <nav>
-        <a class="btn" href="/pricing.html">Pricing</a>
-        <a class="btn" href="/#features">Features</a>
-        <a class="btn" href="/#how">How it works</a>
-        <a class="btn" href="/#faq">FAQ</a>
-        <a class="btn" href="/compare/jobber-alternative.html">Jobber</a>
-        <a class="btn" href="/compare/housecall-pro-alternative.html">Housecall Pro</a>
-        <a class="btn" href="/compare/workiz-alternative.html">Workiz</a>
-        <a class="btn" href="https://app.creativejobhub.com/auth">Log in</a>
-        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
-      </nav>
-    </div>
-  </header>
+  <!-- Shared header (identical to index.html) -->
+  <div id="site-header"></div>
+  <script>
+    fetch('/assets/header.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('site-header').outerHTML = html; });
+  </script>
 
   <main>
     <div class="wrap">
@@ -101,7 +88,10 @@
         </div>
         <div class="toggle" role="group" aria-label="Billing cycle">
           <button type="button" id="btn-monthly" aria-pressed="false">Pay monthly</button>
-          <button type="button" id="btn-yearly" aria-pressed="true">Pay annually <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Save ~13%</span></button>
+          <button type="button" id="btn-yearly" aria-pressed="true">
+            Pay annually
+            <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Save ~13%</span>
+          </button>
         </div>
       </div>
 
@@ -113,15 +103,12 @@
             <div class="desc">Free starter plan to help small teams get organized. Includes clients & contacts, scheduling, estimates, jobs, invoices, and card payments. Capped at 30 invoices, 30 jobs, and 30 estimates per month.</div>
             <div class="seats">Seats: 1</div>
           </div>
-
           <div class="price" data-price>
             <span class="currency"></span>
             <span class="amount" data-amount>Free</span>
             <span class="per" data-per>/month</span>
           </div>
-
           <a class="cta primary" href="https://app.creativejobhub.com/auth?mode=signup">Free forever</a>
-
           <ul class="feats">
             <li><span class="check">✔</span> Clients & contacts CRM (lite)</li>
             <li><span class="check">✔</span> Calendar scheduling (lite)</li>
@@ -141,16 +128,13 @@
             <div class="desc">Everything you need for day-to-day operations: clients & contacts, estimates with approvals, price book, jobs & scheduling, invoices and card payments, mobile tech view, basic reports, email notifications, maps & routing.</div>
             <div class="seats">Seats: 2</div>
           </div>
-
           <div class="price" data-price data-monthly="79.99" data-yearly="69.99">
             <span class="currency">$</span>
             <span class="amount" data-amount>69.99</span>
             <span class="per">/month</span>
           </div>
           <div class="footnote" data-foot>or $839.88 billed yearly</div>
-
           <a class="cta ghost" href="https://app.creativejobhub.com/auth?mode=signup">Choose Essential</a>
-
           <ul class="feats">
             <li><span class="check">✔</span> Clients & Contacts CRM</li>
             <li><span class="check">✔</span> Estimates with customer approvals</li>
@@ -171,16 +155,13 @@
             <div class="desc">Everything in Essential, plus workflows & checklists, SMS reminders and 2-way texting, QuickBooks Online sync, advanced scheduling, custom fields & tags, team permissions, priority support, expense tracking and margin per job, client portal, analytics with AI insights, leads, and automations.</div>
             <div class="seats">Seats: 5</div>
           </div>
-
           <div class="price" data-price data-monthly="149.99" data-yearly="139.99">
             <span class="currency">$</span>
             <span class="amount" data-amount>139.99</span>
             <span class="per">/month</span>
           </div>
           <div class="footnote" data-foot>or $1,679.88 billed yearly</div>
-
           <a class="cta primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
-
           <ul class="feats">
             <li><span class="check">✔</span> Everything in Essential</li>
             <li><span class="check">✔</span> Job workflows & checklists</li>
@@ -206,16 +187,13 @@
             <div class="desc">Everything in Pro, plus dispatch board with drag-and-drop, capacity planning, advanced profitability reporting, service territories & travel windows, SLAs with alerts, multi-location support, granular roles & permissions, custom branding, and an onboarding call.</div>
             <div class="seats">Seats: 10</div>
           </div>
-
           <div class="price" data-price data-monthly="249.99" data-yearly="199.99">
             <span class="currency">$</span>
             <span class="amount" data-amount>199.99</span>
             <span class="per">/month</span>
           </div>
           <div class="footnote" data-foot>or $2,399.88 billed yearly</div>
-
           <a class="cta ghost" href="https://app.creativejobhub.com/auth?mode=signup">Choose Growth</a>
-
           <ul class="feats">
             <li><span class="check">✔</span> Everything in Pro</li>
             <li><span class="check">✔</span> Dispatch board & capacity planning</li>
@@ -272,8 +250,7 @@
 
     btnMonthly.addEventListener('click', ()=>setMode('monthly'));
     btnYearly .addEventListener('click', ()=>setMode('yearly'));
-    // Default to yearly:
-    setMode('yearly');
+    setMode('yearly'); // default
   </script>
 </body>
 </html>
