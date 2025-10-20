@@ -1,5 +1,44 @@
 /* ========== CreativeJobHub — SHARED SITE CSS ========== */
+/* --- HARD STOP: never let the header logo grow huge --- */
+.site-header img,
+.site-brand img {
+  height: 32px;
+  width: auto !important;   /* beats any global img { width:100% } */
+  display: block;
+}
 
+/* Header grid: brand | centered nav | CTAs pinned right */
+.site-header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;                 /* gives space so brand/nav/CTAs don’t collide */
+  height: 80px;
+}
+
+/* Make sure the nav can shrink/scroll instead of overlapping */
+.site-nav {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  min-width: 0;              /* allows flex shrink */
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-left: 36px;        /* breathing room from brand */
+  padding-right: 36px;       /* breathing room from CTAs */
+}
+.site-nav::-webkit-scrollbar { display: none; }
+
+/* CTAs stay on the right */
+.site-ctas {
+  display: flex;
+  gap: 10px;
+  justify-self: end;         /* pins to the right grid column */
+  white-space: nowrap;
+}
+
+/* Space under sticky header so content isn't hidden */
+body { padding-top: 92px; }
 /* ---------- Theme ---------- */
 :root{
   --bg:#0b1220;
