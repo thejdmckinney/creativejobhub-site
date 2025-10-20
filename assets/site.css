@@ -1,6 +1,6 @@
-/* ========== CreativeJobHub – SHARED SITE CSS (v6) ========== */
+/* ========== CreativeJobHub — SHARED SITE CSS ========== */
 
-/* Theme */
+/* ---------- Theme ---------- */
 :root{
   --bg:#0b1220;
   --panel:#111827;
@@ -10,9 +10,10 @@
   --brand-2:#22c55e;
 }
 
-/* Base */
+/* ---------- Base ---------- */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
 body{
   font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
   color:var(--text);
@@ -21,133 +22,104 @@ body{
     radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
     var(--bg);
   line-height:1.6;
-  /* Space for sticky header so top content isn't hidden */
-  padding-top: 96px;
+
+  /* space for sticky header so page content isn't hidden */
+  padding-top: 92px;
 }
 
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-/* Buttons */
-.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600;transition:.2s}
-.btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-weight:600;
+  transition:.2s;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--brand), #38bdf8);
+  color:#fff;
+}
 .btn-primary:hover{transform:translateY(-1px)}
 .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-/* Cards (used on pricing/compare/contact) */
+/* =======================================================
+   Header (shared) – 3-column grid: brand | nav | CTAs
+   ======================================================= */
+/* Use sticky header consistently across pages */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:saturate(180%) blur(8px);
+  background:rgba(11,18,32,.75);
+  border-bottom:1px solid rgba(148,163,184,.15);
+}
+
+/* The header inner uses a grid so the center nav stays centered and
+   the CTAs are pinned right, without overlapping at any width.
+   Use min-content for the side columns so they reserve the space they need. */
+.site-header__inner{
+  display:grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items:center;
+  gap:16px;
+  height:80px;
+  /* width/padding come from .container when used */
+}
+
+/* Left: brand */
+.site-brand{
+  display:flex; align-items:center; gap:12px;
+  white-space:nowrap; text-decoration:none;
+  justify-self:start;                 /* pin left in the grid */
+}
+.site-brand__logo{height:28px; width:auto; display:block}
+.site-brand__name{font-weight:800}
+
+/* Center: nav
+   Keep nav centered by letting the middle column be flexible.
+   Avoid large clamp() side paddings which could hide items. */
+.site-nav{
+  display:flex;
+  gap:18px;
+  justify-content:center;             /* keep items centered in the middle column */
+  min-width:0;                        /* allow flex items to shrink */
+  white-space:nowrap;
+  overflow-x:auto;                    /* if not enough room, let it scroll, not wrap */
+  scrollbar-width:none;
+  margin-inline:12px;                 /* tiny cushion from brand/CTAs */
+
+  /* modest inline padding so items don't touch edges when scrolling */
+  padding-left:12px;
+  padding-right:12px;
+}
+.site-nav::-webkit-scrollbar{display:none}
+
+.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
+.site-nav a:hover{background:rgba(148,163,184,.08)}
+
+/* Right: CTAs */
+.site-ctas{
+  display:flex; gap:10px; white-space:nowrap;
+  justify-self:end;                   /* pin right in the grid */
+}
+.site-ctas a{display:inline-flex; align-items:center; height:42px}
+
+/* Small screens: keep header tidy; you can hide the text label on the ghost CTA if needed */
+@media (max-width: 900px){
+  /* .site-ctas .btn.btn-ghost{display:none} */
+  /* allow the nav to scroll with smaller paddings */
+  .site-nav{gap:12px;padding-left:8px;padding-right:8px}
+}
+
+/* ---------- Shared card style (pricing/compare/contact) ---------- */
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
   border:1px solid rgba(148,163,184,.15);
   border-radius:16px;
   padding:18px;
 }
-
-/* =================== HEADER (Unified) =================== */
-/* Handle both class variants across your pages: .site-header__inner and .site-header_inner */
-
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter:saturate(180%) blur(8px);
-  background:rgba(11,18,32,.78);
-  border-bottom:1px solid rgba(148,163,184,.15);
-}
-
-/* 3-column grid: Brand | Nav | CTAs */
-.site-header__inner,
-.site-header_inner{
-  display:grid;
-  grid-template-columns: auto 1fr auto; /* brand | centered nav | ctas */
-  align-items:center;
-  gap:20px;
-  height:84px;
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 20px;
-}
-
-/* Left: brand */
-.site-brand,
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  white-space:nowrap;
-  text-decoration:none;
-  flex:0 0 auto; /* don’t grow */
-}
-.site-brand__logo,
-.site-header .brand img{
-  height:32px; width:auto; display:block
-}
-.site-brand__name,
-.site-header .brand span{
-  font-weight:800
-}
-
-/* Center: nav stays centered & won’t collide with brand/CTAs */
-.site-nav,
-.site-header nav{
-  display:flex;
-  gap:18px;
-  justify-content:center; /* center in middle column */
-  min-width:0;            /* allow shrink */
-  white-space:nowrap;
-  padding-left:36px;      /* breathing room from brand */
-  padding-right:36px;     /* breathing room from CTAs */
-  overflow-x:auto;        /* on narrow screens, scroll horizontally */
-  scrollbar-width:none;
-}
-.site-nav::-webkit-scrollbar,
-.site-header nav::-webkit-scrollbar{display:none}
-
-/* Right: CTAs pinned right, never wrap */
-.site-ctas{
-  display:flex;
-  gap:10px;
-  white-space:nowrap;
-  flex:0 0 auto;
-  justify-self:end; /* pin to right edge of grid */
-}
-
-/* Link hitboxes consistent (nav + CTAs) */
-.site-nav a,
-.site-ctas a,
-.site-header nav a{
-  display:inline-flex;
-  align-items:center;
-  height:44px;
-  padding:0 12px;
-  border-radius:10px;
-  border:1px solid transparent;
-  color:#e2e8f0;
-}
-.site-header nav a:hover{background:rgba(148,163,184,.08)}
-
-/* ============== Responsive header tweaks ============== */
-@media (max-width: 980px){
-  .site-header__inner,
-  .site-header_inner{gap:12px;height:78px}
-  .site-nav,
-  .site-header nav{gap:12px;padding-left:12px;padding-right:12px}
-}
-
-/* Optional: if super-tight space, hide “Log in” before primary CTA
-@media (max-width: 720px){
-  .site-ctas .btn.btn-ghost{display:none}
-}
-*/
-
-/* =================== Page helpers =================== */
-/* Hero/cards/etc. are usually page-local, but these are safe, shared helpers */
-.logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
-.logo-row svg{height:26px; width:auto; opacity:.9}
-
-/* Utilities */
-.muted{color:#94a3b8}
-
-/* ======= PRICING PAGE bits that rely on shared tone ======= */
-.toggle{display:flex;gap:8px;background:#121a2b;border:1px solid #2b3652;padding:6px;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.35)}
-.toggle button{border:0;background:transparent;color:#94a3b8;padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600}
-.toggle button[aria-pressed="true"]{background:#7c6cf3;color:#fff}
