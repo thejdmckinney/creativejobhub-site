@@ -7,15 +7,18 @@
   <meta name="description" content="Contact CreativeJobHub for questions, demos, and support.">
   <link rel="icon" type="image/png" href="/assets/logo.png" />
 
-  <!-- Global site styles (includes header styles & body padding for sticky header) -->
+  <!-- Global site styles (includes header + button styles) -->
   <link rel="stylesheet" href="/assets/site.css" />
 
-  <!-- Page-specific styles (small, safe overrides) -->
+  <!-- Page-specific styles -->
   <style>
     .contact-wrap{max-width:1100px;margin:0 auto;padding:28px 20px 72px}
     .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-    .contact-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(148,163,184,.15); border-radius:16px; padding:18px}
+    .contact-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.15);
+      border-radius:16px; padding:18px
+    }
     .contact-card h3{margin:0 0 6px}
     .contact-lead{color:#9ca3af; margin-top:6px}
 
@@ -37,11 +40,7 @@
 
   <!-- Shared header (identical to index) -->
   <div id="site-header"></div>
-  <script>
-    fetch('/assets/header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('site-header').outerHTML = html; });
-  </script>
+  <script src="/assets/header.js" defer></script>
 
   <main>
     <div class="contact-wrap">
@@ -70,12 +69,12 @@
             <!-- spam honeypot -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <!-- Optional subject & reply-to -->
+            <!-- Optional subject -->
             <input type="hidden" name="_subject" value="New contact from CreativeJobHub">
-            <input type="hidden" name="_replyto" value="%email%">
 
-            <!-- Optional success redirect (remove to use Formspree default) -->
-            <!-- <input type="hidden" name="_next" value="/thanks.html"> -->
+            <!-- To redirect after success, uncomment and set your path:
+            <input type="hidden" name="_next" value="/thanks.html">
+            -->
 
             <div class="contact-actions">
               <button class="btn btn-primary" type="submit">Send message</button>
@@ -102,7 +101,7 @@
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
       <div>© <span id="y"></span> CreativeJobHub</div>
       <div class="row">
-        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
         <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
         <a class="btn btn-ghost" href="/terms.html">Terms</a>
         <a class="btn" href="/contact.html">Contact</a>
@@ -110,6 +109,8 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
