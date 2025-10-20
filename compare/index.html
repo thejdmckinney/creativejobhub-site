@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compare – CreativeJobHub vs Jobber, Housecall Pro, Workiz</title>
+  <meta name="description" content="See CreativeJobHub compared with Jobber, Housecall Pro, and Workiz—features, pricing, and what small teams switch for." />
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="stylesheet" href="/assets/site.css?v=10">
+  <style>
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(148,163,184,.15);border-radius:16px;padding:18px}
+    .card h3{margin:0 0 8px}
+    .muted{color:#94a3b8}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <!-- shared header -->
+  <div id="site-header"></div>
+  <script>
+    fetch('/assets/header.html').then(r=>r.text()).then(h=>{document.getElementById('site-header').outerHTML=h});
+  </script>
+
+  <main class="wrap">
+    <h1>Compare CreativeJobHub</h1>
+    <p class="muted">Built for small field-service teams: faster scheduling, built-in timesheets, AI insights, and clear pricing.</p>
+
+    <section class="grid" style="margin-top:16px">
+      <article class="card" id="jobber">
+        <h3>Jobber</h3>
+        <p class="muted">Simple overview plus where CJH is different.</p>
+        <ul style="line-height:1.8">
+          <li>Timesheets & time admin built-in (no add-on)</li>
+          <li>AI insights & 90-day forecasts</li>
+          <li>Recurring maintenance & inspections baked in</li>
+        </ul>
+        <div class="row" style="margin-top:10px">
+          <a class="btn btn-primary" href="/compare/jobber-alternative.html">See details</a>
+        </div>
+      </article>
+
+      <article class="card" id="housecall-pro">
+        <h3>Housecall Pro</h3>
+        <p class="muted">Faster day-to-day with native reporting & automations.</p>
+        <ul style="line-height:1.8">
+          <li>Built-in time, workflows & checklists</li>
+          <li>Client portal + online payments</li>
+          <li>Modern integrations (Stripe, Twilio, Drive, Mapbox)</li>
+        </ul>
+        <div class="row" style="margin-top:10px">
+          <a class="btn btn-primary" href="/compare/housecall-pro-alternative.html">See details</a>
+        </div>
+      </article>
+
+      <article class="card" id="workiz">
+        <h3>Workiz</h3>
+        <p class="muted">Keep it lightweight—less clicking, more doing.</p>
+        <ul style="line-height:1.8">
+          <li>Dispatch + route planning</li>
+          <li>Photos, notes, signatures on mobile</li>
+          <li>Invoices in one click</li>
+        </ul>
+        <div class="row" style="margin-top:10px">
+          <a class="btn btn-primary" href="/compare/workiz-alternative.html">See details</a>
+        </div>
+      </article>
+    </section>
+
+    <div style="margin-top:28px">
+      <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+      <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> CreativeJobHub</div>
+      <div class="row">
+        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
