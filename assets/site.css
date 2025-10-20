@@ -34,37 +34,56 @@ a{color:inherit;text-decoration:none}
 .btn-primary:hover{transform:translateY(-1px)}
 .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-/* ================= Header (SHARED across pages) ================= */
-.site-header{
-  position:sticky; top:0; z-index:100;
-  backdrop-filter:saturate(180%) blur(8px);
-  background:rgba(11,18,32,.78);
-  border-bottom:1px solid rgba(148,163,184,.15);
+/* --- Header layout: 3-column grid --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(8px);
+  background: rgba(11,18,32,.75);
+  border-bottom: 1px solid rgba(148,163,184,.15);
 }
+
+/* was: display:flex; -> now grid */
 .site-header__inner{
-  height:80px; display:flex; align-items:center; gap:16px;
-  max-width:1100px; margin:0 auto; padding:0 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* brand | nav | ctas */
+  align-items: center;
+  gap: 16px;
+  height: 80px;
 }
 
-/* Left side: brand + CTAs */
-.site-header__left{display:flex; align-items:center; gap:16px}
-.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap}
-.site-brand__logo{height:32px; width:auto; display:block}
+/* Left: brand */
+.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap; text-decoration:none}
+.site-brand__logo{height:28px; width:auto; display:block}
 .site-brand__name{font-weight:800}
-.site-ctas{display:flex; gap:10px}
 
-/* Center nav */
+/* Center: nav — stays centered, won’t overlap */
 .site-nav{
-  flex:1 1 auto; min-width:0;
-  display:flex; gap:14px; justify-content:center; white-space:nowrap
+  display:flex;
+  gap:18px;
+  justify-content: center;   /* center in its grid column */
+  margin-inline: 12px;       /* tiny breathing room from brand/CTAs */
+  min-width: 0;              /* allow shrink without overflow */
+  overflow-x: auto;          /* on small widths, nav can scroll horizontally */
+  white-space: nowrap;
+  scrollbar-width: none;
 }
-.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
-.site-nav a:hover{background:rgba(148,163,184,.08)}
+.site-nav::-webkit-scrollbar{display:none}
 
-/* Prevent wrapping under CTAs on narrow widths */
-@media (max-width: 980px){
-  .site-nav{overflow-x:auto; scrollbar-width:none}
-  .site-nav::-webkit-scrollbar{display:none}
+/* Right: CTAs pinned right */
+.site-ctas{
+  display:flex; gap:10px; white-space:nowrap;
+}
+
+/* Make header links align nicely */
+.site-nav a, .site-ctas a{
+  display:inline-flex; align-items:center; height:42px;
+}
+
+/* Optional: if space gets really tight, hide the “Log in” label first */
+@media (max-width: 900px){
+  /* .site-ctas .btn.btn-ghost{display:none;} */
 }
 
 /* Common cards (used on pricing/compare/contact) */
