@@ -1,49 +1,71 @@
-/* ====== Header (shared) ================================== */
+/* ========== CreativeJobHub – SHARED SITE CSS (headers + base) ========== */
+
+/* Theme */
+:root{
+  --bg:#0b1220;
+  --panel:#111827;
+  --muted:#9ca3af;
+  --text:#e5e7eb;
+  --brand:#0ea5e9;
+  --brand-2:#22c55e;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(34,197,94,.12), transparent 60%),
+    radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
+    var(--bg);
+  line-height:1.6;
+  /* Make space for sticky header */
+  padding-top: 92px;
+}
+
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Buttons */
+.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600;transition:.2s}
+.btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
+
+/* ================= Header (SHARED across pages) ================= */
 .site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: saturate(180%) blur(8px);
-  background: rgba(11,18,32,.72);
-  border-bottom: 1px solid rgba(148,163,184,.15);
+  position:sticky; top:0; z-index:100;
+  backdrop-filter:saturate(180%) blur(8px);
+  background:rgba(11,18,32,.78);
+  border-bottom:1px solid rgba(148,163,184,.15);
 }
-
 .site-header__inner{
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 80px;                 /* prevents “cut off” look */
+  height:80px; display:flex; align-items:center; gap:16px;
+  max-width:1100px; margin:0 auto; padding:0 20px;
 }
 
-/* Brand */
-.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap; text-decoration:none}
-.site-brand__logo{height:28px; width:auto; display:block}
+/* Left side: brand + CTAs */
+.site-header__left{display:flex; align-items:center; gap:16px}
+.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap}
+.site-brand__logo{height:32px; width:auto; display:block}
 .site-brand__name{font-weight:800}
+.site-ctas{display:flex; gap:10px}
 
-/* Center nav; never wrap under CTAs */
+/* Center nav */
 .site-nav{
-  display:flex;
-  gap:18px;
-  margin-inline:12px;
-  flex:1 1 auto;
-  min-width:0;
-  justify-content:center;
-  white-space:nowrap;
+  flex:1 1 auto; min-width:0;
+  display:flex; gap:14px; justify-content:center; white-space:nowrap
 }
+.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
+.site-nav a:hover{background:rgba(148,163,184,.08)}
 
-/* Right-side CTAs */
-.site-ctas{display:flex; gap:10px; flex:0 0 auto; white-space:nowrap}
-
-/* Consistent clickable height */
-.site-nav a, .site-ctas a{display:inline-flex; align-items:center; height:42px}
-
-/* Make room for sticky header so top isn’t hidden */
-body { padding-top: 84px; }
-
-/* Small screens: let nav scroll instead of wrapping */
-@media (max-width: 900px){
-  .site-nav{overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+/* Prevent wrapping under CTAs on narrow widths */
+@media (max-width: 980px){
+  .site-nav{overflow-x:auto; scrollbar-width:none}
   .site-nav::-webkit-scrollbar{display:none}
-  .site-ctas .btn.btn-ghost{display:none}
-  body { padding-top: 74px; }
 }
+
+/* Common cards (used on pricing/compare/contact) */
+.card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:16px; padding:18px}
