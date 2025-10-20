@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>How it works — CreativeJobHub</title>
   <meta name="description" content="See how CreativeJobHub takes you from request to paid in three simple steps." />
-  <link rel="icon" type="image/png" href="/assets/logo.png">
-  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+
+  <!-- Shared site CSS (matches index/pricing header + buttons) -->
+  <link rel="stylesheet" href="/assets/site.css" />
+
   <style>
     .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
     .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
@@ -15,11 +18,9 @@
   </style>
 </head>
 <body>
-  <!-- shared header -->
+  <!-- Shared header (identical to index) -->
   <div id="site-header"></div>
-  <script>
-    fetch('/assets/header.html').then(r=>r.text()).then(h=>{document.getElementById('site-header').outerHTML=h});
-  </script>
+  <script src="/assets/header.js" defer></script>
 
   <main class="wrap">
     <h1>How it works</h1>
@@ -27,15 +28,15 @@
 
     <section class="steps">
       <article class="step">
-        <h3>1) Schedule & dispatch</h3>
+        <h3>1) Schedule &amp; dispatch</h3>
         <p>Add the job, assign a tech, and send confirmations to your customer.</p>
       </article>
       <article class="step">
         <h3>2) Do the work</h3>
-        <p>Techs see the job on mobile, track time & materials, take photos, and collect a signature.</p>
+        <p>Techs see the job on mobile, track time &amp; materials, take photos, and collect a signature.</p>
       </article>
       <article class="step">
-        <h3>3) Invoice & get paid</h3>
+        <h3>3) Invoice &amp; get paid</h3>
         <p>Convert the job to an invoice in one click and accept online payment.</p>
       </article>
     </section>
@@ -43,10 +44,10 @@
     <section style="margin-top:28px">
       <h2>What’s included</h2>
       <ul style="line-height:1.9;color:#cbd5e1;margin-top:8px">
-        <li>Calendar scheduling & route planning</li>
-        <li>Mobile job sheets with photos & notes</li>
-        <li>Estimates & invoices with online pay</li>
-        <li>Customer notifications via email & SMS</li>
+        <li>Calendar scheduling &amp; route planning</li>
+        <li>Mobile job sheets with photos &amp; notes</li>
+        <li>Estimates &amp; invoices with online pay</li>
+        <li>Customer notifications via email &amp; SMS</li>
         <li>Analytics with AI insights</li>
         <li>QuickBooks-friendly exports</li>
       </ul>
@@ -57,5 +58,22 @@
       <a class="btn btn-ghost" href="/pricing.html">See pricing</a>
     </div>
   </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> CreativeJobHub</div>
+      <div class="row">
+        <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
+        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
