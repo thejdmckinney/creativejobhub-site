@@ -1,88 +1,164 @@
-// /assets/header.js
+// assets/header.js — defensive header injector + overflow handling
 (function () {
+  // guard: ensure we're in a browser environment
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
   const mount = document.getElementById('site-header');
   if (!mount) return;
 
-  fetch('/assets/header.html', { cache: 'no-cache' })
-    .then(r => r.text())
-    .then(html => {
-      // Replace the placeholder so the header is a top-level element
-      mount.outerHTML = html;
+  // helper to safely fetch text; returns null on non-200 or non-text responses
+  function safeFetchText(url) {
+    return fetch(url, { cache: 'no-cache' })
+      .then(resp => {
+        if (!resp.ok) return null;
+        const ct = resp.headers.get('content-type') || '';
+        // accept text/* and application/javascript etc.
+        if (!ct.includes('text') && !ct.includes('javascript') && !ct.includes('json')) {
+          return null;
+        }
+        return resp.text().catch(() => null);
+      })
+      .catch(() => null);
+  }
 
-      // After we insert the header, mark the active nav link
-      const normalize = (p) => p
-        .replace(/index\.html$/i, '')     // /pricing/index.html -> /pricing/
-        .replace(/\/$/, '/');             // ensure trailing slash for sections
+  safeFetchText('/assets/header.html').then(html => {
+    if (!html) {
+      // fallback: do nothing (avoid replacing mount with invalid content)
+      return;
+    }
 
-      const current = normalize(location.pathname);
+    // Replace the placeholder so the header is a top-level element
+    mount.outerHTML = html;
 
-      document.querySelectorAll('.site-nav a').forEach(a => {
-        const href = normalize(new URL(a.getAttribute('href'), location.origin).pathname);
+    // --- after header inserted ---
+    const normalize = (p) => p
+      .replace(/index\.html$/i, '')     // /pricing/index.html -> /pricing/
+      .replace(/\/$/, '/');             // ensure trailing slash for sections
 
-        // consider /pricing and /pricing/ equivalent, same for anchors on home
+    const current = normalize(location.pathname);
+
+    // mark active link
+    document.querySelectorAll('.site-nav a').forEach(a => {
+      try {
+        const href = normalize(new URL(a.getAttribute('href') || '', location.origin).pathname);
         const same =
           href === current ||
           (href === '/pricing/' && current === '/pricing') ||
           (href === '/' && (current === '/' || current.startsWith('/#')));
-
         if (same) a.classList.add('active');
-      });
-
-      // === Safety padding: measure brand & CTA widths and set CSS variables so
-      // the center nav never sits under the side columns.
-      function setNavSafeSpacing() {
-        const brand = document.querySelector('.site-brand');
-        const ctas  = document.querySelector('.site-ctas');
-        const nav   = document.querySelector('.site-nav');
-        if (!brand || !ctas || !nav) return;
-
-        // Add a small cushion (in px) so nav items don't touch the edges
-        const cushion = 12;
-
-        const leftRect  = brand.getBoundingClientRect();
-        const rightRect = ctas.getBoundingClientRect();
-
-        // Measured widths relative to header
-        const leftWidth  = Math.ceil(leftRect.width) + cushion;
-        const rightWidth = Math.ceil(rightRect.width) + cushion;
-
-        // On very narrow viewports, ensure the safe padding doesn't exceed half the header
-        const maxAllowed = Math.floor((nav.parentElement.getBoundingClientRect().width || window.innerWidth) / 2) - 20;
-
-        const safeLeft  = Math.min(leftWidth,  Math.max(8, maxAllowed));
-        const safeRight = Math.min(rightWidth, Math.max(8, maxAllowed));
-
-        // Set CSS variables on :root so site CSS uses them
-        document.documentElement.style.setProperty('--nav-safe-left', `${safeLeft}px`);
-        document.documentElement.style.setProperty('--nav-safe-right', `${safeRight}px`);
+      } catch (e) {
+        // ignore invalid hrefs
       }
-
-      // debounce helper
-      let resizeTimer = null;
-      function debounceSet() {
-        if (resizeTimer) clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          setNavSafeSpacing();
-          resizeTimer = null;
-        }, 80);
-      }
-
-      // Initial spacing calc
-      setNavSafeSpacing();
-
-      // Recompute on resize and when fonts/images may have loaded
-      window.addEventListener('resize', debounceSet);
-      // In case images / fonts change layout after load
-      window.addEventListener('load', () => {
-        setTimeout(setNavSafeSpacing, 120);
-      });
-    })
-    .catch(() => {
-      // Fail-safe minimal header (unstyled) so the page still works
-      const fallback =
-        '<header class="site-header"><div class="site-header_inner container">' +
-        '<a class="site-brand" href="/"><img class="site-brand__logo" src="/assets/logo.png" alt=""><span class="site-brand__name">CreativeJobHub</span></a>' +
-        '</div></header>';
-      mount.outerHTML = fallback;
     });
+
+    // === Safety padding: measure brand & CTA widths and set CSS variables so
+    // the center nav never sits under the side columns.
+    function setNavSafeSpacing() {
+      const brand = document.querySelector('.site-brand');
+      const ctas  = document.querySelector('.site-ctas');
+      const nav   = document.querySelector('.site-nav');
+      if (!brand || !ctas || !nav) return;
+
+      const cushion = 12;
+      const leftRect  = brand.getBoundingClientRect();
+      const rightRect = ctas.getBoundingClientRect();
+
+      const leftWidth  = Math.ceil(leftRect.width) + cushion;
+      const rightWidth = Math.ceil(rightRect.width) + cushion;
+
+      const parentWidth = (nav.parentElement && nav.parentElement.getBoundingClientRect().width) || window.innerWidth;
+      const maxAllowed = Math.floor(parentWidth / 2) - 20;
+
+      const safeLeft  = Math.min(leftWidth,  Math.max(8, maxAllowed));
+      const safeRight = Math.min(rightWidth, Math.max(8, maxAllowed));
+
+      document.documentElement.style.setProperty('--nav-safe-left', `${safeLeft}px`);
+      document.documentElement.style.setProperty('--nav-safe-right', `${safeRight}px`);
+    }
+
+    // === Overflow collapse: move overflowing nav items into a "More" menu
+    function ensureOverflowMenu() {
+      const nav = document.querySelector('.site-nav');
+      if (!nav) return null;
+
+      let moreWrapper = nav.querySelector('.nav-more-wrapper');
+      if (!moreWrapper) {
+        moreWrapper = document.createElement('div');
+        moreWrapper.className = 'nav-more-wrapper';
+        moreWrapper.innerHTML =
+          '<details class="nav-more"><summary aria-haspopup="true">More</summary><div class="nav-more-list" role="menu"></div></details>';
+        nav.appendChild(moreWrapper);
+      }
+
+      const moreList = moreWrapper.querySelector('.nav-more-list');
+
+      function getNavLinks() {
+        return Array.from(nav.querySelectorAll(':scope > a'));
+      }
+
+      function restoreAll() {
+        const items = Array.from(moreList.children);
+        items.forEach(item => {
+          const link = item.querySelector('a');
+          if (link) nav.insertBefore(link, moreWrapper);
+          item.remove();
+        });
+      }
+
+      function redistribute() {
+        restoreAll();
+        let links = getNavLinks();
+        const isOverflowing = () => nav.scrollWidth > nav.clientWidth + 1;
+
+        if (!isOverflowing()) {
+          moreWrapper.style.display = 'none';
+          return;
+        }
+
+        moreWrapper.style.display = '';
+
+        // keep moving last items into More until it fits; leave at least one
+        while (isOverflowing() && links.length > 1) {
+          const last = links[links.length - 1];
+          const item = document.createElement('div');
+          item.className = 'nav-more-item';
+          item.appendChild(last);
+          moreList.insertBefore(item, moreList.firstChild);
+          links = getNavLinks();
+          if (links.length === 0) break;
+        }
+
+        if (moreList.children.length === 0) moreWrapper.style.display = 'none';
+        else moreWrapper.style.display = '';
+      }
+
+      return { redistribute, restoreAll };
+    }
+
+    // debounce helper
+    let resizeTimer = null;
+    function debounceSet() {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setNavSafeSpacing();
+        const ov = ensureOverflowMenu();
+        if (ov) ov.redistribute();
+        resizeTimer = null;
+      }, 80);
+    }
+
+    // initial
+    setNavSafeSpacing();
+    const ov = ensureOverflowMenu();
+    if (ov) ov.redistribute();
+
+    window.addEventListener('resize', debounceSet);
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        setNavSafeSpacing();
+        const ov2 = ensureOverflowMenu();
+        if (ov2) ov2.redistribute();
+      }, 120);
+    });
+  });
 })();
