@@ -27,6 +27,55 @@
 
         if (same) a.classList.add('active');
       });
+
+      // === Safety padding: measure brand & CTA widths and set CSS variables so
+      // the center nav never sits under the side columns.
+      function setNavSafeSpacing() {
+        const brand = document.querySelector('.site-brand');
+        const ctas  = document.querySelector('.site-ctas');
+        const nav   = document.querySelector('.site-nav');
+        if (!brand || !ctas || !nav) return;
+
+        // Add a small cushion (in px) so nav items don't touch the edges
+        const cushion = 12;
+
+        const leftRect  = brand.getBoundingClientRect();
+        const rightRect = ctas.getBoundingClientRect();
+
+        // Measured widths relative to header
+        const leftWidth  = Math.ceil(leftRect.width) + cushion;
+        const rightWidth = Math.ceil(rightRect.width) + cushion;
+
+        // On very narrow viewports, ensure the safe padding doesn't exceed half the header
+        const maxAllowed = Math.floor((nav.parentElement.getBoundingClientRect().width || window.innerWidth) / 2) - 20;
+
+        const safeLeft  = Math.min(leftWidth,  Math.max(8, maxAllowed));
+        const safeRight = Math.min(rightWidth, Math.max(8, maxAllowed));
+
+        // Set CSS variables on :root so site CSS uses them
+        document.documentElement.style.setProperty('--nav-safe-left', `${safeLeft}px`);
+        document.documentElement.style.setProperty('--nav-safe-right', `${safeRight}px`);
+      }
+
+      // debounce helper
+      let resizeTimer = null;
+      function debounceSet() {
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          setNavSafeSpacing();
+          resizeTimer = null;
+        }, 80);
+      }
+
+      // Initial spacing calc
+      setNavSafeSpacing();
+
+      // Recompute on resize and when fonts/images may have loaded
+      window.addEventListener('resize', debounceSet);
+      // In case images / fonts change layout after load
+      window.addEventListener('load', () => {
+        setTimeout(setNavSafeSpacing, 120);
+      });
     })
     .catch(() => {
       // Fail-safe minimal header (unstyled) so the page still works
