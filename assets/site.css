@@ -1,6 +1,6 @@
-/* ========== CreativeJobHub – SHARED SITE CSS (headers + base) ========== */
+/* ========== CreativeJobHub — SHARED SITE CSS ========== */
 
-/* Theme */
+/* ---------- Theme ---------- */
 :root{
   --bg:#0b1220;
   --panel:#111827;
@@ -10,9 +10,10 @@
   --brand-2:#22c55e;
 }
 
-/* Base */
+/* ---------- Base ---------- */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
+
 body{
   font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
   color:var(--text);
@@ -21,70 +22,98 @@ body{
     radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
     var(--bg);
   line-height:1.6;
-  /* Make space for sticky header */
+
+  /* space for sticky header so page content isn't hidden */
   padding-top: 92px;
 }
 
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-/* Buttons */
-.btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600;transition:.2s}
-.btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-weight:600;
+  transition:.2s;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--brand), #38bdf8);
+  color:#fff;
+}
 .btn-primary:hover{transform:translateY(-1px)}
 .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-/* --- Header layout: 3-column grid --- */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: saturate(180%) blur(8px);
-  background: rgba(11,18,32,.75);
-  border-bottom: 1px solid rgba(148,163,184,.15);
+/* =======================================================
+   Header (shared) – 3-column grid: brand | nav | CTAs
+   ======================================================= */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:saturate(180%) blur(8px);
+  background:rgba(11,18,32,.75);
+  border-bottom:1px solid rgba(148,163,184,.15);
 }
 
-/* was: display:flex; -> now grid */
+/* The header inner uses a grid so the center nav stays centered and
+   the CTAs are pinned right, without overlapping at any width */
 .site-header__inner{
-  display: grid;
-  grid-template-columns: auto 1fr auto; /* brand | nav | ctas */
-  align-items: center;
-  gap: 16px;
-  height: 80px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:16px;
+  height:80px;
+  /* when header.html is used inside .container, width/padding come from .container */
 }
 
 /* Left: brand */
-.site-brand{display:flex; align-items:center; gap:12px; white-space:nowrap; text-decoration:none}
+.site-brand{
+  display:flex; align-items:center; gap:12px;
+  white-space:nowrap; text-decoration:none;
+  justify-self:start;                 /* pin left in the grid */
+}
 .site-brand__logo{height:28px; width:auto; display:block}
 .site-brand__name{font-weight:800}
 
-/* Center: nav — stays centered, won’t overlap */
+/* Center: nav */
 .site-nav{
   display:flex;
   gap:18px;
-  justify-content: center;   /* center in its grid column */
-  margin-inline: 12px;       /* tiny breathing room from brand/CTAs */
-  min-width: 0;              /* allow shrink without overflow */
-  overflow-x: auto;          /* on small widths, nav can scroll horizontally */
-  white-space: nowrap;
-  scrollbar-width: none;
+  justify-content:center;             /* keep items centered in the middle column */
+  min-width:0;                        /* allow flex items to shrink */
+  white-space:nowrap;
+  overflow-x:auto;                    /* if not enough room, let it scroll, not wrap */
+  scrollbar-width:none;
+  margin-inline:12px;                 /* tiny cushion from brand/CTAs */
+
+  /* >>> Key: side padding so tabs never sit under logo or CTAs <<< */
+  padding-left:clamp(28px, 8vw, 120px);
+  padding-right:clamp(28px, 8vw, 140px);
 }
 .site-nav::-webkit-scrollbar{display:none}
 
-/* Right: CTAs pinned right */
+.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
+.site-nav a:hover{background:rgba(148,163,184,.08)}
+
+/* Right: CTAs */
 .site-ctas{
   display:flex; gap:10px; white-space:nowrap;
+  justify-self:end;                   /* pin right in the grid */
 }
+.site-ctas a{display:inline-flex; align-items:center; height:42px}
 
-/* Make header links align nicely */
-.site-nav a, .site-ctas a{
-  display:inline-flex; align-items:center; height:42px;
-}
-
-/* Optional: if space gets really tight, hide the “Log in” label first */
+/* Small screens: keep header tidy; you can hide the text label on the ghost CTA if needed */
 @media (max-width: 900px){
-  /* .site-ctas .btn.btn-ghost{display:none;} */
+  /* .site-ctas .btn.btn-ghost{display:none} */
 }
 
-/* Common cards (used on pricing/compare/contact) */
-.card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15); border-radius:16px; padding:18px}
+/* ---------- Shared card style (pricing/compare/contact) ---------- */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border:1px solid rgba(148,163,184,.15);
+  border-radius:16px;
+  padding:18px;
+}
