@@ -112,7 +112,7 @@ a{color:inherit;text-decoration:none}
   /* Keep center nav away from brand/CTAs */
   .site-nav{
     gap: 14px;                 /* a tad tighter between links */
-    padding-left: 72px;        /* space from the brand */
-    padding-right: 88px;       /* space from the CTAs (Log in / Get started) */
+    padding-left: 84px;        /* space from the brand */
+    padding-right: 100px;       /* space from the CTAs (Log in / Get started) */
   }
 }
