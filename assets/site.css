@@ -1,44 +1,5 @@
 /* ========== CreativeJobHub — SHARED SITE CSS ========== */
-/* --- HARD STOP: never let the header logo grow huge --- */
-.site-header img,
-.site-brand img {
-  height: 32px;
-  width: auto !important;   /* beats any global img { width:100% } */
-  display: block;
-}
 
-/* Header grid: brand | centered nav | CTAs pinned right */
-.site-header__inner {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 24px;                 /* gives space so brand/nav/CTAs don’t collide */
-  height: 80px;
-}
-
-/* Make sure the nav can shrink/scroll instead of overlapping */
-.site-nav {
-  display: flex;
-  gap: 18px;
-  justify-content: center;
-  min-width: 0;              /* allows flex shrink */
-  white-space: nowrap;
-  overflow-x: auto;
-  padding-left: 36px;        /* breathing room from brand */
-  padding-right: 36px;       /* breathing room from CTAs */
-}
-.site-nav::-webkit-scrollbar { display: none; }
-
-/* CTAs stay on the right */
-.site-ctas {
-  display: flex;
-  gap: 10px;
-  justify-self: end;         /* pins to the right grid column */
-  white-space: nowrap;
-}
-
-/* Space under sticky header so content isn't hidden */
-body { padding-top: 92px; }
 /* ---------- Theme ---------- */
 :root{
   --bg:#0b1220;
@@ -47,16 +8,11 @@ body { padding-top: 92px; }
   --text:#e5e7eb;
   --brand:#0ea5e9;
   --brand-2:#22c55e;
-
-  /* runtime-updated by header JS to avoid nav items being placed under the brand / CTAs */
-  --nav-safe-left: 12px;
-  --nav-safe-right: 12px;
 }
 
 /* ---------- Base ---------- */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-
 body{
   font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
   color:var(--text);
@@ -65,11 +21,9 @@ body{
     radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
     var(--bg);
   line-height:1.6;
-
-  /* space for sticky header so page content isn't hidden */
-  padding-top: 92px;
+  /* space for sticky header so content isn't hidden */
+  padding-top:92px;
 }
-
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
@@ -82,77 +36,65 @@ a{color:inherit;text-decoration:none}
   font-weight:600;
   transition:.2s;
 }
-.btn-primary{
-  background:linear-gradient(135deg, var(--brand), #38bdf8);
-  color:#fff;
-}
+.btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
 .btn-primary:hover{transform:translateY(-1px)}
 .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-/* =======================================================
-   Header (shared) – 3-column grid: brand | nav | CTAs
-   ======================================================= */
-/* Use sticky header consistently across pages */
+/* ---------- Header (shared) ---------- */
 .site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
+  position:sticky; top:0; z-index:100;
   backdrop-filter:saturate(180%) blur(8px);
   background:rgba(11,18,32,.75);
   border-bottom:1px solid rgba(148,163,184,.15);
 }
 
-/* The header inner uses a grid so the center nav stays centered and
-   the CTAs are pinned right, without overlapping at any width.
-   Use min-content for the side columns so they reserve the space they need. */
+/* HARD STOP: never let the header logo grow huge */
+.site-header img,
+.site-brand img{
+  height:32px;
+  width:auto !important;   /* beats any global img { width:100% } */
+  display:block;
+}
+
+/* One single definition for the header grid: brand | nav | CTAs */
 .site-header__inner{
   display:grid;
-  grid-template-columns: min-content 1fr min-content;
+  grid-template-columns:min-content 1fr min-content; /* brand | nav | ctas */
   align-items:center;
-  gap:16px;
+  gap:24px;
   height:80px;
-  /* width/padding come from .container when used */
 }
 
-/* ensure brand / CTAs paint above the nav (so they remain clickable) */
-.site-brand,
-.site-ctas{ position:relative; z-index: 105; }
-
-/* Center: nav
-   Keep nav centered by letting the middle column be flexible.
-   Use CSS variables (set by JS) to ensure nav items never lie under the brand/CTAs. */
-.site-nav{
-  display:flex;
-  gap:18px;
-  justify-content:center;             /* keep items centered in the middle column */
-  min-width:0;                        /* allow flex items to shrink */
-  white-space:nowrap;
-  overflow-x:auto;                    /* if not enough room, let it scroll, not wrap */
-  scrollbar-width:none;
-  margin-inline:12px;                 /* tiny cushion from brand/CTAs */
-
-  /* Use runtime-safe paddings (JS sets these to the measured widths of brand/CTAs) */
-  padding-left: var(--nav-safe-left);
-  padding-right: var(--nav-safe-right);
+/* Brand (left) */
+.site-brand{
+  display:flex; align-items:center; gap:12px;
+  white-space:nowrap; text-decoration:none;
+  justify-self:start;
 }
-.site-nav::-webkit-scrollbar{display:none}
 
-.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
-.site-nav a:hover{background:rgba(148,163,184,.08)}
-
-/* Right: CTAs */
+/* CTAs (right) */
 .site-ctas{
   display:flex; gap:10px; white-space:nowrap;
-  justify-self:end;                   /* pin right in the grid */
+  justify-self:end;
 }
 .site-ctas a{display:inline-flex; align-items:center; height:42px}
 
-/* Small screens: keep header tidy; you can hide the text label on the ghost CTA if needed */
-@media (max-width: 900px){
-  /* .site-ctas .btn.btn-ghost{display:none} */
-  /* allow the nav to scroll with smaller paddings */
-  .site-nav{gap:12px}
-  /* allow JS to reduce safe paddings on tiny widths */
+/* Center nav — keep centered and give breathing room so it doesn't collide */
+.site-nav{
+  display:flex; gap:18px; justify-content:center;
+  min-width:0; white-space:nowrap; overflow-x:auto; scrollbar-width:none;
+  padding-left:48px;   /* more room from the brand */
+  padding-right:48px;  /* more room from the CTAs */
+  margin-inline:4px;
+}
+.site-nav::-webkit-scrollbar{display:none}
+.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
+.site-nav a:hover{background:rgba(148,163,184,.08)}
+
+/* Small screens: reduce gaps; nav can scroll horizontally */
+@media (max-width:980px){
+  .site-header__inner{gap:16px}
+  .site-nav{gap:12px; padding-left:16px; padding-right:16px}
 }
 
 /* ---------- Shared card style (pricing/compare/contact) ---------- */
