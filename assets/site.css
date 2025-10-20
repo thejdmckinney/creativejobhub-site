@@ -104,3 +104,15 @@ a{color:inherit;text-decoration:none}
   border-radius:16px;
   padding:18px;
 }
+/* --- Header spacing fix (desktop) --- */
+@media (min-width: 1024px){
+  /* Give the whole header a bit more room */
+  .container{ max-width: 1240px; }  /* try 1240; 1280 is fine too */
+
+  /* Keep center nav away from brand/CTAs */
+  .site-nav{
+    gap: 14px;                 /* a tad tighter between links */
+    padding-left: 72px;        /* space from the brand */
+    padding-right: 88px;       /* space from the CTAs (Log in / Get started) */
+  }
+}
