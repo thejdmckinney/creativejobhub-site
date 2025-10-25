@@ -92,19 +92,59 @@
     /* highlight Pro */
     .plan--pro{outline:2px solid #ffe580}
   </style>
+
+  <!-- Pricing schema: SoftwareApplication + plan offers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Creative Job Hub",
+        "url": "https://creativejobhub.com",
+        "logo": "https://creativejobhub.com/assets/logo-white.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Creative Job Hub",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "url": "https://creativejobhub.com",
+        "image": "https://creativejobhub.com/assets/og-dark.jpg",
+        "offers": {
+          "@type": "AggregateOffer",
+          "offers": [
+            { "@type": "Offer", "name": "Lite (Free)", "price": "0.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Essential (Monthly)", "price": "79.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Essential (Annual, per month)", "price": "69.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Pro (Monthly)", "price": "149.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Pro (Annual, per month)", "price": "139.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Growth (Monthly)", "price": "249.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Growth (Annual, per month)", "price": "199.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
   <!-- Shared header (identical to index) -->
   <div id="site-header"></div>
-  <script src="/assets/header.js" defer></script>
+  <script>
+    // Keep behavior consistent with your homepage header loader
+    fetch('/assets/header.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('site-header').outerHTML = html; });
+  </script>
 
   <main>
     <div class="wrap">
       <div class="page-header">
         <div>
-          <h1>CreativeJobHub Pricing</h1>
+          <h1>Creative Job Hub Pricing</h1>
           <p>Save with annual billing. Switch anytime.</p>
         </div>
         <div class="toggle" role="group" aria-label="Billing cycle">
@@ -245,9 +285,9 @@
 
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="y"></span> CreativeJobHub</div>
+      <div>© <span id="y"></span> Creative Job Hub</div>
       <div class="row">
-        <a class="btn btn-ghost" href="/pricing.html">Pricing</a>
+        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
         <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
         <a class="btn btn-ghost" href="/terms.html">Terms</a>
         <a class="btn btn-ghost" href="/contact.html">Contact</a>
@@ -257,6 +297,11 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Header (consistent with homepage)
+    // (Kept inline here so you don't rely on a separate header.js file)
+    // If you prefer header.js, you can remove this and add: <script src="/assets/header.js" defer></script>
+    // fetch('/assets/header.html')... is already above.
 
     // Pricing toggle logic
     const btnMonthly = document.getElementById('btn-monthly');
