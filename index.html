@@ -3,25 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CreativeJobHub — Field service app for scheduling, dispatch, and invoices</title>
-  <meta name="description" content="CreativeJobHub is your field service app: schedule jobs, dispatch techs, track time, and send invoices—fast.">
-  <meta property="og:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
-  <meta property="og:description" content="Schedule, dispatch, track time, and invoice in one place.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://creativejobhub.com/">
-  <link rel="canonical" href="https://creativejobhub.com/">
-  <meta property="og:site_name" content="CreativeJobHub">
-  <meta property="og:image" content="https://creativejobhub.com/assets/logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CreativeJobHub — Field service app for scheduling, dispatch, and invoices">
-  <meta name="twitter:description" content="Schedule, dispatch, track time, and invoice in one place.">
-  <meta name="twitter:image" content="https://creativejobhub.com/assets/logo.png">
+
+  <title>Creative Job Hub — Field Service Management for Modern Teams</title>
+  <meta name="description" content="Creative Job Hub is modern field service management for small teams: scheduling & dispatch, estimates & invoices, payments, mobile apps, and offline PWA." />
+  <link rel="canonical" href="https://creativejobhub.com/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="Creative Job Hub — Field Service Management for Modern Teams" />
+  <meta property="og:description" content="Scheduling, dispatch, estimates & invoices, payments, mobile apps, and offline PWA — built for small field-service teams." />
+  <meta property="og:url" content="https://creativejobhub.com/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Creative Job Hub — Field Service Management for Modern Teams" />
+  <meta name="twitter:description" content="Scheduling, dispatch, estimates & invoices, payments, mobile apps, and offline PWA — built for small field-service teams." />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <!-- Robots / theme -->
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#0ea5e9" />
-  <link rel="icon" type="image/png" href="/assets/logo.png">
 
-  <!-- Shared site CSS (one include only) -->
-  <link rel="stylesheet" href="/assets/site.css?v=9" />
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo-white.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=10" />
+
+  <!-- Optional: Preload hero for best LCP (safe if it 404s; browser ignores) -->
+  <link rel="preload" as="image" href="/assets/hero.webp" imagesrcset="/assets/hero.webp" imagesizes="100vw">
 
   <style>
     :root{
@@ -38,19 +52,18 @@
         radial-gradient(900px 500px at 90% -20%, rgba(14,165,233,.12), transparent 60%),
         var(--bg);
       line-height:1.6;
-      /* space for sticky header so content isn't hidden */
-      padding-top: 92px;
+      padding-top: 96px; /* sticky header space */
     }
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* Buttons */
     .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:600;transition:.2s}
-    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
-    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff; box-shadow:0 8px 24px rgba(14,165,233,.25)}
+    .btn-primary:hover{transform:translateY(-1px); box-shadow:0 10px 32px rgba(14,165,233,.35)}
     .btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
 
-    /* Page sections (no header CSS here) */
+    /* Sections */
     .hero{padding:64px 0 36px}
     .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:28px}
     .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px}
@@ -87,8 +100,39 @@
     }
   </style>
 
+  <!-- Structured data: Organization + SoftwareApplication + FAQ (for your FAQ section) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"CreativeJobHub","url":"https://creativejobhub.com/","logo":"https://creativejobhub.com/assets/logo.png"}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Creative Job Hub",
+        "url": "https://creativejobhub.com",
+        "logo": "https://creativejobhub.com/assets/logo-white.png",
+        "sameAs": []
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Creative Job Hub",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "description": "Field service management for small teams: scheduling, dispatch, estimates & invoices, payments, mobile app, and offline PWA.",
+        "url": "https://creativejobhub.com",
+        "image": "https://creativejobhub.com/assets/og-dark.jpg",
+        "brand": { "@type": "Brand", "name": "Creative Job Hub" },
+        "offers": { "@type": "Offer", "price": "49.00", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Is there a free plan?", "acceptedAnswer": { "@type": "Answer", "text": "Yes—start free and add paid features when you need them." } },
+          { "@type": "Question", "name": "Does it work on phones?", "acceptedAnswer": { "@type": "Answer", "text": "Yep. The app is mobile-friendly; techs can use iOS or Android." } },
+          { "@type": "Question", "name": "How do invoices and payments work?", "acceptedAnswer": { "@type": "Answer", "text": "Create invoices from job data and accept online payment; export for accounting." } }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
@@ -108,20 +152,35 @@
         <div>
           <span class="eyebrow">Built for field service teams</span>
           <h1>Run your field service business in one app.</h1>
-          <p class="lead">CreativeJobHub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back-and-forth.</p>
+          <p class="lead">Creative Job Hub helps you schedule jobs, dispatch techs, capture photos & notes, track time and materials, and send invoices—without the back-and-forth.</p>
           <div class="row">
             <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
             <a class="btn btn-ghost" href="/pricing/">See pricing</a>
           </div>
-          <div class="badges">
-            <span class="badge">iOS & Android friendly</span>
-            <span class="badge">Email & SMS notifications</span>
-            <span class="badge">QuickBooks-friendly exports</span>
+          <!-- Trust badges (now link to the right sections) -->
+          <div class="badges" style="margin-top:14px">
+            <a class="badge" href="#features" aria-label="Works on iOS and Android">iOS &amp; Android friendly</a>
+            <a class="badge" href="#features" aria-label="Email and SMS notifications">Email &amp; SMS notifications</a>
+            <a class="badge" href="#features" aria-label="QuickBooks-friendly exports">QuickBooks-friendly exports</a>
           </div>
         </div>
+
         <div class="hero-card">
           <div class="hero-card-inner">
-            <img src="/assets/logo.png?v=3" alt="CreativeJobHub app" style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));">
+            <!-- Performance-friendly hero: modern formats + safe fallback -->
+            <picture>
+              <source srcset="/assets/hero.avif" type="image/avif">
+              <source srcset="/assets/hero.webp" type="image/webp">
+              <img
+                src="/assets/logo.png?v=3"  <!-- fallback until you upload hero.webp/avif -->
+                alt="Creative Job Hub product preview"
+                width="1400" height="900"   <!-- update to your exported hero dimensions -->
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));"
+              >
+            </picture>
           </div>
         </div>
       </div>
@@ -134,7 +193,7 @@
         <h2>90-second tour</h2>
         <div class="card" style="padding:0; overflow:hidden">
           <div style="position:relative; padding-top:56.25%">
-            <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="CreativeJobHub Demo" style="position:absolute; inset:0; width:100%; height:100%; border:0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID?rel=0" title="Creative Job Hub Demo" style="position:absolute; inset:0; width:100%; height:100%; border:0" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -143,7 +202,7 @@
     <!-- FEATURES -->
     <section id="features">
       <div class="container">
-        <span class="kicker">Why CreativeJobHub</span>
+        <span class="kicker">Why Creative Job Hub</span>
         <h2>Everything you need to go from request to paid</h2>
         <div class="grid-3">
           <div class="card">
@@ -165,7 +224,7 @@
     <!-- COMPARISON BLURBS -->
     <section id="compare">
       <div class="container">
-        <span class="kicker">Why choose CreativeJobHub</span>
+        <span class="kicker">Why choose Creative Job Hub</span>
         <h2>Built for small field-service teams—not bloated enterprise software</h2>
         <div class="grid-3">
           <div class="card">
@@ -209,7 +268,15 @@
               <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
               <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
             </div>
+
+            <!-- Trust badges under CTAs (linked) -->
+            <div class="badges" style="margin-top:12px">
+              <a class="badge" href="#features">iOS &amp; Android friendly</a>
+              <a class="badge" href="#features">Email &amp; SMS notifications</a>
+              <a class="badge" href="#features">QuickBooks-friendly exports</a>
+            </div>
           </div>
+
           <div class="panel">
             <h3 style="margin:0">Prefer updates by email?</h3>
             <form action="https://formspree.io/f/your-id" method="POST">
@@ -239,7 +306,7 @@
 
   <footer>
     <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="y"></span> CreativeJobHub</div>
+      <div>© <span id="y"></span> Creative Job Hub</div>
       <div class="row">
         <a class="btn btn-ghost" href="/pricing/">See pricing</a>
         <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
