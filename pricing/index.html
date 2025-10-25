@@ -32,7 +32,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/assets/logo-white.png">
 
-  <!-- Shared site CSS (matches index header/buttons/layout) -->
+  <!-- Shared site CSS -->
   <link rel="stylesheet" href="/assets/site.css?v=6" />
 
   <style>
@@ -49,11 +49,11 @@
       --radius:18px;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
 
-    /* Page-specific UI */
+    /* Header container spacing matches the rest of the site.css */
     .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 6px}
     .page-header h1{margin:0 0 4px 0;font-size:28px}
     .page-header p{margin:0;color:var(--muted)}
@@ -89,11 +89,10 @@
     ul.feats li{display:flex;gap:8px;align-items:flex-start}
     .check{color:var(--ok);margin-top:2px}
 
-    /* highlight Pro */
     .plan--pro{outline:2px solid #ffe580}
   </style>
 
-  <!-- Pricing schema: SoftwareApplication + plan offers -->
+  <!-- Schema: Organization + SoftwareApplication (Offers) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -127,18 +126,52 @@
     ]
   }
   </script>
+
+  <!-- FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I switch plans anytime?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a free plan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer annual billing discounts?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes—annual plans are discounted vs. paying month-to-month. Toggle Pay annually to see the savings." }
+      },
+      {
+        "@type": "Question",
+        "name": "What’s included in paid plans?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do cancellations and refunds work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cancel anytime from your account settings. Future renewals will not be charged. Contact support if you need help." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you charge per technician or per seat?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Plans include a set number of seats. You can add more seats at any time; pricing updates instantly." }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
-  <!-- Shared header (identical to index) -->
+  <!-- Shared header (loaded from /assets/header.html) -->
   <div id="site-header"></div>
-  <script>
-    // Keep behavior consistent with your homepage header loader
-    fetch('/assets/header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('site-header').outerHTML = html; });
-  </script>
 
   <main>
     <div class="wrap">
@@ -150,7 +183,8 @@
         <div class="toggle" role="group" aria-label="Billing cycle">
           <button type="button" id="btn-monthly" aria-pressed="false">Pay monthly</button>
           <button type="button" id="btn-yearly" aria-pressed="true">
-            Pay annually <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Save ~13%</span>
+            Pay annually
+            <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Save ~13%</span>
           </button>
         </div>
       </div>
@@ -280,6 +314,44 @@
           </ul>
         </article>
       </section>
+
+      <!-- PRICING FAQ -->
+      <section id="pricing-faq" class="wrap" style="padding-top:24px">
+        <span class="kicker" style="color:#94a3b8; text-transform:uppercase; letter-spacing:.12em; font-size:14px">FAQ</span>
+        <h2 style="margin:8px 0 10px; font-size: clamp(22px, 3.6vw, 34px);">Pricing &amp; billing questions</h2>
+
+        <div class="grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:12px">
+          <div class="card">
+            <strong>Can I switch plans anytime?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated.</p>
+          </div>
+
+          <div class="card">
+            <strong>Is there a free plan?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready.</p>
+          </div>
+
+          <div class="card">
+            <strong>Do you offer annual billing discounts?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Yep—annual plans are discounted vs. paying month-to-month. You’ll see the savings when you toggle “Pay annually.”</p>
+          </div>
+
+          <div class="card">
+            <strong>What’s included in paid plans?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more (see plan details above).</p>
+          </div>
+
+          <div class="card">
+            <strong>How do cancellations and refunds work?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Cancel anytime from your account settings. We’ll stop future renewals. If something goes sideways, contact support and we’ll help.</p>
+          </div>
+
+          <div class="card">
+            <strong>Do you charge per technician or per seat?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Plans include a set number of seats. Add more seats as needed; pricing updates instantly.</p>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -296,52 +368,56 @@
   </footer>
 
   <script>
+    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Header (consistent with homepage)
-    // (Kept inline here so you don't rely on a separate header.js file)
-    // If you prefer header.js, you can remove this and add: <script src="/assets/header.js" defer></script>
-    // fetch('/assets/header.html')... is already above.
+    // Load shared header
+    fetch('/assets/header.html')
+      .then(r => r.text())
+      .then(html => { document.getElementById('site-header').outerHTML = html; });
 
-    // Pricing toggle logic
-    const btnMonthly = document.getElementById('btn-monthly');
-    const btnYearly  = document.getElementById('btn-yearly');
-    const priceBlocks = [...document.querySelectorAll('[data-price]')];
+    // Pricing toggle
+    (function(){
+      const btnMonthly = document.getElementById('btn-monthly');
+      const btnYearly  = document.getElementById('btn-yearly');
+      const priceBlocks = Array.from(document.querySelectorAll('[data-price]'));
 
-    function setMode(mode){
-      const yearly = mode === 'yearly';
-      btnMonthly.setAttribute('aria-pressed', (!yearly).toString());
-      btnYearly.setAttribute('aria-pressed', yearly.toString());
+      function setMode(mode){
+        const yearly = mode === 'yearly';
+        btnMonthly.setAttribute('aria-pressed', (!yearly).toString());
+        btnYearly.setAttribute('aria-pressed', yearly.toString());
 
-      priceBlocks.forEach(p=>{
-        const monthly = p.dataset.monthly;
-        const yearlyPrice = p.dataset.yearly;
-        const amountEl = p.querySelector('[data-amount]');
-        const foot     = p.parentElement.querySelector('[data-foot]');
+        priceBlocks.forEach(p=>{
+          const monthly = p.dataset.monthly;
+          const yearlyPrice = p.dataset.yearly;
+          const amountEl = p.querySelector('[data-amount]');
+          const foot     = p.parentElement.querySelector('[data-foot]');
 
-        if(!monthly || !yearlyPrice){
-          amountEl.textContent = 'Free';
-          if(foot) foot.textContent = '';
-          return;
-        }
+          if(!monthly || !yearlyPrice){
+            amountEl.textContent = 'Free';
+            if(foot) foot.textContent = '';
+            return;
+          }
 
-        amountEl.textContent = Number(yearly ? yearlyPrice : monthly).toFixed(2);
+          amountEl.textContent = Number(yearly ? yearlyPrice : monthly).toFixed(2);
 
-        if(foot){
-          const yearlyTotals = {
-            essential: "$839.88 billed yearly",
-            pro: "$1,679.88 billed yearly",
-            growth: "$2,399.88 billed yearly"
-          };
-          const planKey = p.parentElement.dataset.plan;
-          foot.textContent = yearly ? `or ${yearlyTotals[planKey]}` : "Billed monthly, cancel anytime";
-        }
-      });
-    }
+          if(foot){
+            const yearlyTotals = {
+              essential: "$839.88 billed yearly",
+              pro: "$1,679.88 billed yearly",
+              growth: "$2,399.88 billed yearly"
+            };
+            const planKey = p.parentElement.dataset.plan;
+            foot.textContent = yearly ? `or ${yearlyTotals[planKey]}` : "Billed monthly, cancel anytime";
+          }
+        });
+      }
 
-    btnMonthly.addEventListener('click', ()=>setMode('monthly'));
-    btnYearly .addEventListener('click', ()=>setMode('yearly'));
-    setMode('yearly');
+      btnMonthly.addEventListener('click', ()=>setMode('monthly'));
+      btnYearly .addEventListener('click', ()=>setMode('yearly'));
+      setMode('yearly');
+    })();
   </script>
 </body>
 </html>
+
