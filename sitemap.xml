@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- main pages -->
+  <url><loc>https://creativejobhub.com/</loc></url>
+  <url><loc>https://creativejobhub.com/how-it-works.html</loc></url>
+  <url><loc>https://creativejobhub.com/contact.html</loc></url>
+  <url><loc>https://creativejobhub.com/privacy.html</loc></url>
+  <url><loc>https://creativejobhub.com/terms.html</loc></url>
+
+  <!-- pricing & comparison section -->
+  <url><loc>https://creativejobhub.com/pricing/</loc></url>
+  <url><loc>https://creativejobhub.com/compare/</loc></url>
+
+  <!-- individual comparison pages -->
+  <url><loc>https://www.creativejobhub.com/compare/jobber-alternative.html</loc></url>
+  <url><loc>https://www.creativejobhub.com/compare/housecall-pro-alternative.html</loc></url>
+  <url><loc>https://www.creativejobhub.com/compare/workiz-alternative.html</loc></url>
+</urlset>
