@@ -67,7 +67,20 @@
     h1{font-size: clamp(28px, 5vw, 52px); line-height:1.1; margin:14px 0}
     .lead{font-size: clamp(16px, 2.6vw, 20px); color:var(--muted); margin:18px 0 26px}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.35)}
-    .hero-card-inner{height:100%; background:#0f172a; border-radius:14px; border:1px solid rgba(148,163,184,.12); display:grid; place-items:center; padding:18px; text-align:center}
+    .hero-card-inner{
+      height:100%;
+      border-radius:14px;
+      border:1px solid rgba(148,163,184,.12);
+      display:grid; place-items:center;
+      padding:0; text-align:center;
+
+      /* Image as background so it can't break */
+      background:
+        linear-gradient(0deg, rgba(0,0,0,.05), rgba(0,0,0,.05)),
+        url('https://creativejobhub.com/assets/og-dark.jpg') center / cover no-repeat,
+        #0f172a;
+      min-height: 340px; /* ensures visible height on short content */
+    }
     .row{display:flex; gap:12px; flex-wrap:wrap}
     .badges{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
     .badge{border:1px solid #334155; padding:6px 10px; border-radius:999px; color:#cbd5e1; font-size:14px}
@@ -94,6 +107,7 @@
 
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
+      .hero-card-inner{min-height:260px}
     }
   </style>
 
@@ -163,15 +177,8 @@
         </div>
 
         <div class="hero-card">
-          <div class="hero-card-inner">
-            <img
-              src="https://creativejobhub.com/assets/og-dark.jpg"
-              alt="Creative Job Hub product preview"
-              width="1200" height="630"
-              loading="eager" fetchpriority="high" decoding="async"
-              style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));"
-            />
-          </div>
+          <!-- Background image renders here; no <img> tag needed -->
+          <div class="hero-card-inner" role="img" aria-label="Creative Job Hub product preview"></div>
         </div>
       </div>
     </section>
@@ -312,3 +319,4 @@
   </script>
 </body>
 </html>
+
