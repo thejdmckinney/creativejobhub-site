@@ -34,9 +34,6 @@
   <!-- Shared site CSS -->
   <link rel="stylesheet" href="/assets/site.css?v=10" />
 
-  <!-- Optional: Preload hero for best LCP (safe if it 404s; browser ignores) -->
-  <link rel="preload" as="image" href="/assets/hero.webp" imagesrcset="/assets/hero.webp" imagesizes="100vw">
-
   <style>
     :root{
       --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
@@ -100,7 +97,7 @@
     }
   </style>
 
-  <!-- Structured data: Organization + SoftwareApplication + FAQ (for your FAQ section) -->
+  <!-- Structured data: Organization + SoftwareApplication + FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -137,7 +134,7 @@
 </head>
 <body>
 
-  <!-- Shared header (same as every other page) -->
+  <!-- Shared header (loaded from /assets/header.html) -->
   <div id="site-header"></div>
   <script>
     fetch('/assets/header.html')
@@ -157,7 +154,7 @@
             <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
             <a class="btn btn-ghost" href="/pricing/">See pricing</a>
           </div>
-          <!-- Trust badges (now link to the right sections) -->
+          <!-- Trust badges -->
           <div class="badges" style="margin-top:14px">
             <a class="badge" href="#features" aria-label="Works on iOS and Android">iOS &amp; Android friendly</a>
             <a class="badge" href="#features" aria-label="Email and SMS notifications">Email &amp; SMS notifications</a>
@@ -167,21 +164,13 @@
 
         <div class="hero-card">
           <div class="hero-card-inner">
-            <!-- Performance-friendly hero: modern formats + safe fallback -->
-            <picture>
-              <source srcset="/assets/hero.avif" type="image/avif">
-              <source srcset="/assets/hero.webp" type="image/webp">
-             <!-- HERO card image -->
-<img
-  src="/assets/og-dark.jpg"
-  alt="Creative Job Hub product preview"
-  width="1200" height="630"
-  loading="eager" fetchpriority="high" decoding="async"
-  style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));"
-/>
-
-              >
-            </picture>
+            <img
+              src="https://creativejobhub.com/assets/og-dark.jpg"
+              alt="Creative Job Hub product preview"
+              width="1200" height="630"
+              loading="eager" fetchpriority="high" decoding="async"
+              style="width:100%; height:auto; border-radius:14px; filter: drop-shadow(0 10px 28px rgba(0,0,0,.45));"
+            />
           </div>
         </div>
       </div>
@@ -270,7 +259,7 @@
               <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
             </div>
 
-            <!-- Trust badges under CTAs (linked) -->
+            <!-- Trust badges under CTAs -->
             <div class="badges" style="margin-top:12px">
               <a class="badge" href="#features">iOS &amp; Android friendly</a>
               <a class="badge" href="#features">Email &amp; SMS notifications</a>
@@ -317,6 +306,9 @@
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
