@@ -1,4 +1,4 @@
-/* ========== CreativeJobHub — SHARED SITE CSS ========== */
+/* ========== CreativeJobHub — SHARED SITE CSS (unified) ========== */
 
 /* ---------- Theme ---------- */
 :root{
@@ -8,6 +8,7 @@
   --text:#e5e7eb;
   --brand:#0ea5e9;
   --brand-2:#22c55e;
+  --ring:rgba(148,163,184,.15);
 }
 
 /* ---------- Base ---------- */
@@ -22,109 +23,127 @@ body{
     var(--bg);
   line-height:1.6;
   /* space for sticky header so content isn't hidden */
-  padding-top:92px;
+  padding-top:72px;
 }
 a{color:inherit;text-decoration:none}
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1200px;margin:0 auto;padding:24px 16px}
+
+/* Helpful focus ring */
+:focus-visible{outline:2px solid var(--brand); outline-offset:3px; border-radius:10px}
 
 /* ---------- Buttons ---------- */
 .btn{
-  display:inline-block;
+  display:inline-flex; align-items:center; justify-content:center;
   padding:12px 18px;
   border-radius:12px;
   border:1px solid transparent;
-  font-weight:600;
-  transition:.2s;
+  font-weight:700;
+  transition:transform .05s ease, filter .15s ease;
 }
-.btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
+.btn-primary{
+  background:linear-gradient(135deg, var(--brand), #38bdf8);
+  color:#fff;
+  box-shadow:0 8px 24px rgba(14,165,233,.25);
+}
 .btn-primary:hover{transform:translateY(-1px)}
-.btn-ghost{border-color:#334155;color:#e2e8f0;background:transparent}
+.btn-ghost{background:transparent; border-color:#334155; color:#e2e8f0}
 
-/* ---------- Header (shared) ---------- */
-.site-header{
-  position:sticky; top:0; z-index:100;
-  backdrop-filter:saturate(180%) blur(8px);
-  background:rgba(11,18,32,.75);
-  border-bottom:1px solid rgba(148,163,184,.15);
-}
-
-/* HARD STOP: never let the header logo grow huge */
-.site-header img,
-.site-brand img{
-  height:32px;
-  width:auto !important;   /* beats any global img { width:100% } */
-  display:block;
-}
-
-/* One single definition for the header grid: brand | nav | CTAs */
-.site-header__inner{
-  display:grid;
-  grid-template-columns:min-content 1fr min-content; /* brand | nav | ctas */
-  align-items:center;
-  gap:24px;
-  height:80px;
-}
-
-/* Brand (left) */
-.site-brand{
-  display:flex; align-items:center; gap:12px;
-  white-space:nowrap; text-decoration:none;
-  justify-self:start;
-}
-
-/* CTAs (right) */
-.site-ctas{
-  display:flex; gap:10px; white-space:nowrap;
-  justify-self:end;
-}
-.site-ctas a{display:inline-flex; align-items:center; height:42px}
-
-/* Center nav — keep centered and give breathing room so it doesn't collide */
-.site-nav{
-  display:flex; gap:18px; justify-content:center;
-  min-width:0; white-space:nowrap; overflow-x:auto; scrollbar-width:none;
-  padding-left:48px;   /* more room from the brand */
-  padding-right:48px;  /* more room from the CTAs */
-  margin-inline:4px;
-}
-.site-nav::-webkit-scrollbar{display:none}
-.site-nav a{display:inline-flex; align-items:center; height:42px; padding:0 10px; border-radius:10px}
-.site-nav a:hover{background:rgba(148,163,184,.08)}
-
-/* Small screens: reduce gaps; nav can scroll horizontally */
-@media (max-width:980px){
-  .site-header__inner{gap:16px}
-  .site-nav{gap:12px; padding-left:16px; padding-right:16px}
-}
-
-/* ---------- Shared card style (pricing/compare/contact) ---------- */
+/* ---------- Cards (shared) ---------- */
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-  border:1px solid rgba(148,163,184,.15);
+  border:1px solid var(--ring);
   border-radius:16px;
   padding:18px;
 }
-/* --- Header spacing fix (desktop) --- */
-@media (min-width: 1024px){
-  /* Give the whole header a bit more room */
-  .container{ max-width: 1240px; }  /* try 1240; 1280 is fine too */
 
-  /* Keep center nav away from brand/CTAs */
-  .site-nav{
-    gap: 14px;                 /* a tad tighter between links */
-    padding-left: 84px;        /* space from the brand */
-    padding-right: 100px;       /* space from the CTAs (Log in / Get started) */
+/* =================================================================
+   HEADER / NAV  (matches your inline HTML on pages)
+   Structure:
+   <header class="site-header">
+     <a class="brand"><img /></a>
+     <button class="nav-toggle">...</button>
+     <nav id="primary-nav" class="nav">...</nav>
+   </header>
+   ================================================================= */
+.site-header{
+  position:sticky; top:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  height:72px;
+  padding:10px 16px;
+  background:#0b1220; /* opaque for logo clarity */
+  border-bottom:1px solid var(--ring);
+  backdrop-filter:saturate(120%) blur(6px);
+}
+
+/* ---- LOGO: hard-protect from global img rules ---- */
+.brand img{
+  display:block !important;
+  height:36px !important;    /* adjust to 36px if you prefer a bit larger */
+  width:auto !important;
+  max-width:none !important;  /* beats img{max-width:100%} */
+  opacity:1 !important;
+  filter:none !important;
+}
+
+/* Desktop nav */
+.nav{
+  display:flex; gap:16px; align-items:center;
+}
+.nav a{
+  font-weight:700; padding:8px 10px; border-radius:10px;
+}
+.nav a:hover{background:rgba(255,255,255,.06)}
+.nav .cta{
+  background:linear-gradient(135deg, var(--brand), #38bdf8);
+  color:#fff;
+  box-shadow:0 6px 18px rgba(14,165,233,.25);
+}
+.nav .cta:hover{filter:brightness(.98)}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle{
+  display:none; position:relative; width:40px; height:40px;
+  border:1px solid #334155; border-radius:10px; background:#0b1220; cursor:pointer;
+}
+.nav-toggle span{
+  position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
+  transition:transform .25s, opacity .25s;
+}
+.nav-toggle span:nth-child(1){ top:12px }
+.nav-toggle span:nth-child(2){ top:19px }
+.nav-toggle span:nth-child(3){ top:26px }
+
+/* Mobile menu behavior (CSS only; JS toggles .nav-open on header) */
+@media (max-width: 860px){
+  .nav{
+    position:absolute; top:72px; left:0; right:0;
+    display:grid; gap:6px; padding:12px 16px;
+    background:#0b1220; border-bottom:1px solid var(--ring);
+    transform:translateY(-12px); opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
   }
-}
-/* === Logo size bump (safe) === */
-.site-header .site-brand img {
-  height: 36px;   /* was 32px — try 40px if you want a bit larger */
-  width: auto;
-  display: block;
+  .nav a{
+    padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border:1px solid rgba(148,163,184,.15);
+  }
+  .nav .cta{ box-shadow:none }
+  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
+
+  .site-header.nav-open .nav{
+    opacity:1; pointer-events:auto; transform:translateY(0)
+  }
+  .site-header.nav-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg) }
+  .site-header.nav-open .nav-toggle span:nth-child(2){ opacity:0 }
+  .site-header.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg) }
 }
 
-/* Give the header a hair more room so nothing feels cramped */
-.site-header__inner { height: 84px; }  /* was 80px */
+/* Wider containers on large screens (optional; feels roomier) */
+@media (min-width: 1024px){
+  .container{ max-width:1240px; }
+}
 
-/* Keep page content from sliding under the sticky header */
-body { padding-top: 96px; }            /* was 92px */
+/* ---------- Footer helpers ---------- */
+footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid var(--ring)}
+.footer-actions{display:flex; gap:12px; flex-wrap:wrap}
+
