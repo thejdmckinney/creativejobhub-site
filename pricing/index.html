@@ -47,14 +47,64 @@
       --ring:#2b3652;
       --shadow: 0 10px 25px rgba(0,0,0,.35);
       --radius:18px;
+
+      /* header vars to match site */
+      --header-bg:#0b1220;
+      --header-border:rgba(148,163,184,.15);
+      --brand:#0ea5e9;
+      --brand-2:#22c55e;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding-top:72px}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
 
-    /* Header container spacing matches the rest of the site.css */
-    .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 6px}
+    /* Focus ring (keyboard only) */
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 10px; }
+
+    /* ======= Header / Nav (desktop + mobile hamburger) ======= */
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px; padding:10px 16px; background:var(--header-bg);
+      border-bottom:1px solid var(--header-border);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+    .brand img{height:32px; display:block}
+    .nav{display:flex; gap:16px; align-items:center}
+    .nav a{font-weight:700; padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .nav .cta{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff; box-shadow:0 6px 18px rgba(14,165,233,.25)}
+    .nav .cta:hover{filter:brightness(.98)}
+    .nav-toggle{
+      display:none; position:relative; width:40px; height:40px;
+      border:1px solid #334155; border-radius:10px; background:var(--header-bg); cursor:pointer
+    }
+    .nav-toggle span{
+      position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-toggle span:nth-child(1){ top:12px }
+    .nav-toggle span:nth-child(2){ top:19px }
+    .nav-toggle span:nth-child(3){ top:26px }
+    @media (max-width: 860px){
+      .nav{
+        position:absolute; top:72px; left:0; right:0;
+        display:grid; gap:6px; padding:12px 16px; background:var(--header-bg);
+        border-bottom:1px solid var(--header-border);
+        transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+      }
+      .nav a{ padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15) }
+      .nav .cta{ box-shadow:none }
+      .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
+      .site-header.nav-open .nav{ opacity:1; pointer-events:auto; transform:translateY(0) }
+      .site-header.nav-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg) }
+      .site-header.nav-open .nav-toggle span:nth-child(2){ opacity:0 }
+      .site-header.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg) }
+    }
+
+    /* Page header (hero for pricing) */
+    .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 6px;flex-wrap:wrap}
     .page-header h1{margin:0 0 4px 0;font-size:28px}
     .page-header p{margin:0;color:var(--muted)}
 
@@ -133,36 +183,12 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Can I switch plans anytime?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there a free plan?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer annual billing discounts?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes—annual plans are discounted vs. paying month-to-month. Toggle Pay annually to see the savings." }
-      },
-      {
-        "@type": "Question",
-        "name": "What’s included in paid plans?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more." }
-      },
-      {
-        "@type": "Question",
-        "name": "How do cancellations and refunds work?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Cancel anytime from your account settings. Future renewals will not be charged. Contact support if you need help." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you charge per technician or per seat?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Plans include a set number of seats. You can add more seats at any time; pricing updates instantly." }
-      }
+      {"@type":"Question","name":"Can I switch plans anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated."}},
+      {"@type":"Question","name":"Is there a free plan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready."}},
+      {"@type":"Question","name":"Do you offer annual billing discounts?","acceptedAnswer":{"@type":"Answer","text":"Yes—annual plans are discounted vs. paying month-to-month. Toggle Pay annually to see the savings."}},
+      {"@type":"Question","name":"What’s included in paid plans?","acceptedAnswer":{"@type":"Answer","text":"Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more."}},
+      {"@type":"Question","name":"How do cancellations and refunds work?","acceptedAnswer":{"@type":"Answer","text":"Cancel anytime from your account settings. Future renewals will not be charged. Contact support if you need help."}},
+      {"@type":"Question","name":"Do you charge per technician or per seat?","acceptedAnswer":{"@type":"Answer","text":"Plans include a set number of seats. You can add more seats at any time; pricing updates instantly."}}
     ]
   }
   </script>
@@ -170,8 +196,25 @@
 
 <body>
 
-  <!-- Shared header (loaded from /assets/header.html) -->
-  <div id="site-header"></div>
+  <!-- Inline, accessible header (desktop + mobile hamburger) -->
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Creative Job Hub Home">
+      <img src="/assets/logo-white.png" alt="Creative Job Hub" width="128" height="32">
+    </a>
+
+    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/compare/">Compare</a>
+      <a href="/pricing/" aria-current="page">Pricing</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
+    </nav>
+  </header>
 
   <main>
     <div class="wrap">
@@ -368,13 +411,23 @@
   </footer>
 
   <script>
-    // Year
+    // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Load shared header
-    fetch('/assets/header.html')
-      .then(r => r.text())
-      .then(html => { document.getElementById('site-header').outerHTML = html; });
+    // Mobile nav toggle
+    (function () {
+      const header = document.querySelector('.site-header');
+      const btn = header.querySelector('.nav-toggle');
+      const nav = header.querySelector('#primary-nav');
+      function toggle() {
+        const open = header.classList.toggle('nav-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', toggle);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && header.classList.contains('nav-open')) toggle(); });
+      nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggle(); });
+    })();
 
     // Pricing toggle
     (function(){
@@ -420,4 +473,5 @@
   </script>
 </body>
 </html>
+
 
