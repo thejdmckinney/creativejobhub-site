@@ -2,75 +2,364 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>Housecall Pro Alternative for Field Service Teams | CreativeJobHub</title>
-  <meta name="description" content="Switch from Housecall Pro to CreativeJobHub for built-in timesheets, AI insights, recurring maintenance & inspections, and modern integrations." />
+  <title>Creative Job Hub vs Housecall Pro — The Modern Housecall Pro Alternative</title>
+  <meta name="description" content="Looking for a Housecall Pro alternative? Compare Creative Job Hub on scheduling, time tracking, inspections, invoicing, payments, and pricing for small field-service teams." />
   <link rel="canonical" href="https://creativejobhub.com/compare/housecall-pro-alternative.html" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="CreativeJobHub" />
-  <meta property="og:title" content="Housecall Pro Alternative" />
-  <meta property="og:description" content="Built for small teams. Faster scheduling, native insights, and clear pricing." />
+  <meta property="og:title" content="Creative Job Hub vs Housecall Pro — The Modern Housecall Pro Alternative" />
+  <meta property="og:description" content="Compare Creative Job Hub with Housecall Pro on features and pricing for field-service teams." />
   <meta property="og:url" content="https://creativejobhub.com/compare/housecall-pro-alternative.html" />
   <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Housecall Pro Alternative" />
-  <meta name="twitter:description" content="Built for small teams. Faster scheduling, native insights, and clear pricing." />
+  <meta name="twitter:title" content="Creative Job Hub vs Housecall Pro — The Modern Housecall Pro Alternative" />
+  <meta name="twitter:description" content="See the differences in scheduling, mobile job sheets, time tracking, invoicing, and payments." />
   <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
 
   <!-- Breadcrumbs JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Compare", "item": "https://creativejobhub.com/compare/" },
-      { "@type": "ListItem", "position": 2, "name": "CreativeJobHub vs Housecall Pro", "item": "https://creativejobhub.com/compare/housecall-pro-alternative.html" }
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Compare","item":"https://creativejobhub.com/compare/"},
+      {"@type":"ListItem","position":2,"name":"Creative Job Hub vs Housecall Pro","item":"https://creativejobhub.com/compare/housecall-pro-alternative.html"}
     ]
   }
   </script>
 
+  <!-- Organization + Article JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {"@type":"Organization","name":"Creative Job Hub","url":"https://creativejobhub.com","logo":"https://creativejobhub.com/assets/logo-white.png"},
+      {"@type":"Article","headline":"Creative Job Hub vs Housecall Pro — Housecall Pro Alternative","description":"Feature-by-feature overview comparing Creative Job Hub to Housecall Pro for field-service teams.","author":{"@type":"Organization","name":"Creative Job Hub"},"mainEntityOfPage":"https://creativejobhub.com/compare/housecall-pro-alternative.html"}
+    ]
+  }
+  </script>
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="/assets/logo-white.png">
-  <link rel="stylesheet" href="/assets/site.css?v=6">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=10" />
 
   <style>
-    .wrap{max-width:900px;margin:0 auto;padding:24px 16px 64px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(148,163,184,.18);border-radius:16px;padding:18px;margin:16px 0}
-    .btn-inline{display:inline-block;margin-right:10px}
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e; --ring:rgba(148,163,184,.15);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding-top:72px}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:auto;padding:0 20px}
+
+    /* Focus ring (keyboard only) */
+    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 10px; }
+
+    /* Header / Nav (desktop + mobile hamburger) */
+    .site-header{
+      position:sticky; top:0; z-index:1000;
+      display:flex; align-items:center; justify-content:space-between;
+      height:72px; padding:10px 16px; background:#0b1220;
+      border-bottom:1px solid var(--ring);
+      backdrop-filter:saturate(120%) blur(6px);
+    }
+    .brand img{height:32px; display:block}
+    .nav{display:flex; gap:16px; align-items:center}
+    .nav a{font-weight:700; padding:8px 10px; border-radius:10px}
+    .nav a:hover{background:rgba(255,255,255,.06)}
+    .nav .cta{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff; box-shadow:0 6px 18px rgba(14,165,233,.25)}
+    .nav .cta:hover{filter:brightness(.98)}
+    .nav-toggle{
+      display:none; position:relative; width:40px; height:40px;
+      border:1px solid #334155; border-radius:10px; background:#0b1220; cursor:pointer
+    }
+    .nav-toggle span{
+      position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
+      transition: transform .25s, opacity .25s;
+    }
+    .nav-toggle span:nth-child(1){ top:12px }
+    .nav-toggle span:nth-child(2){ top:19px }
+    .nav-toggle span:nth-child(3){ top:26px }
+    @media (max-width: 860px){
+      .nav{
+        position:absolute; top:72px; left:0; right:0;
+        display:grid; gap:6px; padding:12px 16px; background:#0b1220;
+        border-bottom:1px solid var(--ring);
+        transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+      }
+      .nav a{ padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15) }
+      .nav .cta{ box-shadow:none }
+      .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
+      .site-header.nav-open .nav{ opacity:1; pointer-events:auto; transform:translateY(0) }
+      .site-header.nav-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg) }
+      .site-header.nav-open .nav-toggle span:nth-child(2){ opacity:0 }
+      .site-header.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg) }
+    }
+
+    /* Page sections */
+    .hero{padding:48px 0 28px}
+    .eyebrow{display:inline-block; padding:6px 10px; border:1px solid #334155; border-radius:999px; color:#a5b4fc; font-weight:700; letter-spacing:.3px}
+    h1{font-size:clamp(26px,5vw,46px);line-height:1.1;margin:14px 0}
+    .lead{font-size:clamp(16px,2.6vw,20px); color:var(--muted); margin:12px 0 18px}
+    .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid transparent; font-weight:800}
+    .btn-primary{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff}
+    .btn-ghost{border-color:#334155; color:#e2e8f0; background:transparent}
+
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--ring); border-radius:16px; padding:18px}
+    .card h3{margin:0 0 6px 0}
+    @media (max-width: 900px){ .cards{grid-template-columns:1fr} }
+
+    section{padding:42px 0}
+    .kicker{font-size:14px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em}
+    h2{font-size: clamp(22px, 3.6vw, 34px); margin:8px 0 10px}
+
+    /* Compare table */
+    .table-wrap{overflow:auto; -webkit-overflow-scrolling:touch; border:1px solid var(--ring); border-radius:14px}
+    table{width:100%; border-collapse:separate; border-spacing:0; min-width:720px; background:rgba(255,255,255,.02)}
+    thead th{position:sticky; top:0; background:#0f172a; border-bottom:1px solid var(--ring); text-align:left; padding:14px; font-size:14px}
+    tbody td, tbody th{padding:14px; border-bottom:1px solid var(--ring); vertical-align:top}
+    tbody tr:last-child td, tbody tr:last-child th{border-bottom:none}
+    .col-head{font-weight:800}
+    .yes{color:#22c55e; font-weight:800}
+    .note{color:var(--muted); font-size:13px}
+
+    /* FAQ grid */
+    .faq{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+    .faq .card p{color:#cbd5e1; margin:8px 0 0}
+    @media (max-width: 860px){ .faq{grid-template-columns:1fr} }
+
+    footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid var(--ring)}
   </style>
 </head>
 
-
 <body>
-  <!-- shared header -->
-  <div id="site-header"></div>
-  <script>
-    fetch('/assets/header.html').then(r=>r.text()).then(h=>{document.getElementById('site-header').outerHTML=h});
+  <!-- Inline header (desktop + mobile) -->
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Creative Job Hub Home">
+      <img src="/assets/logo-white.png" alt="Creative Job Hub" width="128" height="32">
+    </a>
+
+    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/compare/" aria-current="page">Compare</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Compare</span>
+        <h1>Creative Job Hub vs Housecall Pro</h1>
+        <p class="lead">A lightweight, modern alternative focused on small field-service teams—fast on phones, built-in time tracking, inspections, and clear pricing.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
+          <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK POINTS -->
+    <section>
+      <div class="container cards">
+        <div class="card">
+          <h3>Built-in time management</h3>
+          <p>Clock-in/out, GPS, approvals, OT rules, and payroll exports—no add-on required.</p>
+        </div>
+        <div class="card">
+          <h3>Recurring maintenance & inspections</h3>
+          <p>Service plans and checklists keep work flowing and quality consistent.</p>
+        </div>
+        <div class="card">
+          <h3>Modern integrations</h3>
+          <p>Stripe, Twilio (SMS), Resend (email), Google Drive, QuickBooks, Mapbox—ready to go.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section>
+      <div class="container">
+        <span class="kicker">Feature overview</span>
+        <h2>How Creative Job Hub compares</h2>
+        <p class="note" style="margin:6px 0 14px">Notes reflect Creative Job Hub’s capabilities. For the other product, check the vendor’s site—features and pricing can change.</p>
+
+        <div class="table-wrap">
+          <table aria-describedby="compare-caption">
+            <caption id="compare-caption" class="sr-only">Comparison of key features</caption>
+            <thead>
+              <tr>
+                <th class="col-head">Feature</th>
+                <th class="col-head">Creative Job Hub</th>
+                <th class="col-head">Housecall Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Scheduling & Dispatch</th>
+                <td class="yes">✓ Drag-and-drop calendar, route planning, statuses, ETA texts</td>
+                <td class="note">Varies by plan — see vendor</td>
+              </tr>
+              <tr>
+                <th>Mobile Job Sheets</th>
+                <td class="yes">✓ Photos, notes, parts, signatures; optimized for phones</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Time Tracking</th>
+                <td class="yes">✓ Clock-in/out, GPS, approvals, OT rules, payroll export</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Recurring Maintenance</th>
+                <td class="yes">✓ Schedules that auto-create jobs + reminders</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Inspection Checklists</th>
+                <td class="yes">✓ Custom templates, pass/fail, photos, history</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Invoices & Payments</th>
+                <td class="yes">✓ Estimates → invoices, online payments (Stripe), reminders</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Client Portal</th>
+                <td class="yes">✓ Branded portal for jobs, invoices, estimates, bookings</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Analytics & AI Insights</th>
+                <td class="yes">✓ Trends, forecasts, actionable suggestions</td>
+                <td class="note">See vendor</td>
+              </tr>
+              <tr>
+                <th>Pricing Style</th>
+                <td class="yes">✓ Straightforward tiers + free plan</td>
+                <td class="note">See vendor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <strong>Bottom line:</strong> If you want a fast, modern app that covers the full journey—from request to paid—without heavy complexity, Creative Job Hub is a great fit for small field-service teams.
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="card" style="display:grid; grid-template-columns:1fr auto; gap:16px; align-items:center">
+          <div>
+            <h2 style="margin:0 0 6px 0">Try Creative Job Hub free</h2>
+            <p class="note" style="margin:0">Create an account, invite your team, and start scheduling jobs in minutes.</p>
+          </div>
+          <div class="cta-row" style="margin:0">
+            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
+            <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <div class="container">
+        <span class="kicker">FAQ</span>
+        <h2>Questions about switching?</h2>
+        <div class="faq">
+          <div class="card">
+            <strong>Is there a free plan?</strong>
+            <p>Yes—start free and add paid features when you need them.</p>
+          </div>
+          <div class="card">
+            <strong>Will it work on phones?</strong>
+            <p>Yep. Techs can view jobs, capture photos, and complete work on iOS or Android.</p>
+          </div>
+          <div class="card">
+            <strong>Can I import my clients?</strong>
+            <p>Import clients and items from CSV, and connect QuickBooks for sync.</p>
+          </div>
+          <div class="card">
+            <strong>Can I switch plans anytime?</strong>
+            <p>Upgrade or downgrade whenever you like. Changes take effect immediately.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> Creative Job Hub</div>
+      <div class="cta-row">
+        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Page FAQ schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Is there a free plan?","acceptedAnswer":{"@type":"Answer","text":"Yes—start free and add paid features when you need them."}},
+      {"@type":"Question","name":"Will it work on phones?","acceptedAnswer":{"@type":"Answer","text":"Yes. Techs can view jobs, capture photos, and complete work on iOS or Android."}},
+      {"@type":"Question","name":"Can I import my clients?","acceptedAnswer":{"@type":"Answer","text":"Import clients and items from CSV, and connect QuickBooks for sync."}},
+      {"@type":"Question","name":"Can I switch plans anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upgrade or downgrade whenever you like; changes take effect immediately."}}
+    ]
+  }
   </script>
 
-  <main class="wrap">
-    <p><a href="/">← Back to CreativeJobHub</a></p>
-    <h1>Housecall Pro Alternative</h1>
-    <p>Everything you need to go from request to paid—without extra modules.</p>
+  <script>
+    // Mobile nav toggle (hamburger)
+    (function () {
+      const header = document.querySelector('.site-header');
+      const btn = header.querySelector('.nav-toggle');
+      const nav = header.querySelector('#primary-nav');
+      function toggleNav() {
+        const open = header.classList.toggle('nav-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', toggleNav);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && header.classList.contains('nav-open')) toggleNav(); });
+      nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggleNav(); });
+    })();
 
-    <div class="card">
-      <h3>Why teams switch</h3>
-      <ul>
-        <li>Scheduling + built-in timesheets and time admin</li>
-        <li>AI insights & revenue forecasts</li>
-        <li>Recurring maintenance and inspection checklists</li>
-        <li>Modern integrations: Stripe, Twilio, Resend, Google Drive, Mapbox</li>
-      </ul>
-    </div>
-
-    <p>
-      <a class="btn btn-primary btn-inline" href="/pricing/">See pricing</a>
-      <a class="btn btn-ghost btn-inline" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-    </p>
-  </main>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
