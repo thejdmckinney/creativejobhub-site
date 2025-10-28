@@ -161,16 +161,25 @@ a{color:inherit;text-decoration:none}
 /* Hamburger button (hidden on desktop) */
 .nav-toggle{
   display:none; position:relative; width:44px; height:44px;
-  border:2px solid #38bdf8; border-radius:10px; background:#0b1220; cursor:pointer;
+  border:2px solid #38bdf8; border-radius:8px; background:#1e293b; cursor:pointer;
   z-index:1001; /* Above header content */
+  transition:background .2s ease, border-color .2s ease;
+}
+.nav-toggle:hover{
+  background:#334155;
+  border-color:#0ea5e9;
 }
 .nav-toggle span{
-  position:absolute; left:10px; right:10px; height:3px; background:#38bdf8;
-  transition:transform .25s, opacity .25s;
+  position:absolute; left:8px; right:8px; height:3px; background:#38bdf8;
+  border-radius:2px;
+  transition:transform .25s ease, opacity .25s ease, background .2s ease;
 }
-.nav-toggle span:nth-child(1){ top:13px }
+.nav-toggle:hover span{
+  background:#0ea5e9;
+}
+.nav-toggle span:nth-child(1){ top:11px }
 .nav-toggle span:nth-child(2){ top:20px }
-.nav-toggle span:nth-child(3){ top:27px }
+.nav-toggle span:nth-child(3){ top:29px }
 
 /* Mobile menu behavior (CSS only; JS toggles .nav-open on header) */
 @media (max-width: 860px){
@@ -234,19 +243,19 @@ a{color:inherit;text-decoration:none}
     opacity:1; pointer-events:auto; transform:translateY(0)
   }
   
-  /* Hamburger animation when menu is open - make it white X */
+  /* Hamburger animation when menu is open - transform to X */
   .site-header.nav-open .nav-toggle{
-    border-color:#fff;
-    background:rgba(56,189,248,0.1);
+    border-color:#22c55e;
+    background:#1e293b;
   }
   .site-header.nav-open .nav-toggle span:nth-child(1){ 
-    transform: translateY(7px) rotate(45deg); 
-    background:#fff; 
+    transform: translateY(9px) rotate(45deg); 
+    background:#22c55e; 
   }
   .site-header.nav-open .nav-toggle span:nth-child(2){ opacity:0 }
   .site-header.nav-open .nav-toggle span:nth-child(3){ 
-    transform: translateY(-7px) rotate(-45deg); 
-    background:#fff; 
+    transform: translateY(-9px) rotate(-45deg); 
+    background:#22c55e; 
   }
   
   /* Hide site-ctas on mobile to save space */
@@ -268,8 +277,17 @@ a{color:inherit;text-decoration:none}
   .nav-toggle{
     width:40px !important;
     height:40px !important;
-    border-width:2px !important;
+    border-width:3px !important;
+    border-color:#22c55e !important;
+    background:#1e293b !important;
   }
+  .nav-toggle span{
+    background:#22c55e !important;
+    height:3px !important;
+  }
+  .nav-toggle span:nth-child(1){ top:10px !important; }
+  .nav-toggle span:nth-child(2){ top:18px !important; }
+  .nav-toggle span:nth-child(3){ top:26px !important; }
 }
 
 /* Wider containers on large screens (optional; feels roomier) */
