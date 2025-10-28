@@ -79,7 +79,7 @@ a{color:inherit;text-decoration:none}
 /* ---- LOGO: hard-protect from global img rules ---- */
 .brand img{
   display:block !important;
-  height:36px !important;    /* adjust to 36px if you prefer a bit larger */
+  height:56px !important;    /* adjust to 36px if you prefer a bit larger */
   width:auto !important;
   max-width:none !important;  /* beats img{max-width:100%} */
   opacity:1 !important;
@@ -95,7 +95,7 @@ a{color:inherit;text-decoration:none}
 }
 .site-brand__logo{
   display:block !important;
-  height:48px !important;    /* matches .brand img size */
+  height:56px !important;    /* matches .brand img size */
   width:auto !important;
   max-width:none !important;
   opacity:1 !important;
