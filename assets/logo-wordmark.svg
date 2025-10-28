@@ -1,20 +1,35 @@
-<!-- /assets/logo-wordmark.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" width="160" height="32" viewBox="0 0 640 128" role="img" aria-label="Creative Job Hub">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 120" role="img" aria-label="Creative Job Hub">
   <defs>
+    <!-- Cyan stroke similar to your app artwork -->
+    <linearGradient id="cjhCyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"  stop-color="#10d5ff"/>
+      <stop offset="1"  stop-color="#07c3f2"/>
+    </linearGradient>
     <style>
-      .t { font: 700 48px/1 Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial; }
+      .icon-stroke{stroke:url(#cjhCyan);stroke-width:8;stroke-linecap:round;stroke-linejoin:round;fill:none}
+      .word{font: 800 42px/1.05 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial}
+      .sub {font: 800 42px/1.05 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial}
     </style>
   </defs>
 
-  <!-- Icon block -->
-  <g transform="translate(0,12)">
-    <rect x="0" y="0" width="48" height="48" rx="12" fill="#0ea5e9"/>
-    <!-- little accent "spark" -->
-    <circle cx="40" cy="8" r="6" fill="#22c55e"/>
-    <!-- subtle check mark -->
-    <path d="M12 26 l8 8 16-16" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Icon group (left) -->
+  <g transform="translate(8,8)">
+    <!-- rounded outer square -->
+    <rect x="0" y="0" width="104" height="104" rx="22" class="icon-stroke"/>
+    <!-- traces -->
+    <circle cx="74" cy="20" r="10" class="icon-stroke"/>
+    <path d="M22 76c18-18 36-36 54-54" class="icon-stroke"/>
+    <path d="M42 92c24-24 33-33 57-57" class="icon-stroke"/>
+    <path d="M22 52h24" class="icon-stroke"/>
+    <path d="M58 72h24" class="icon-stroke"/>
+    <circle cx="22" cy="52" r="5" class="icon-stroke"/>
+    <circle cx="42" cy="92" r="5" class="icon-stroke"/>
+    <circle cx="82" cy="72" r="5" class="icon-stroke"/>
   </g>
 
-  <!-- Wordmark -->
-  <text class="t" x="64" y="52" fill="#ffffff">Creative Job Hub</text>
+  <!-- Wordmark (right) -->
+  <g transform="translate(132,38)" fill="#e5e7eb">
+    <text class="word" x="0" y="0">Creative</text>
+    <text class="sub"  x="0" y="48">Job Hub</text>
+  </g>
 </svg>
