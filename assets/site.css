@@ -180,12 +180,14 @@ a{color:inherit;text-decoration:none}
     transform:translateY(-12px); opacity:0; pointer-events:none;
     transition:opacity .2s ease, transform .2s ease;
   }
-  .nav a, .site-nav a{
+  .nav a, .site-nav a, .site-nav .btn{
     padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
     border:1px solid rgba(148,163,184,.15);
+    display:block !important;
+    text-align:center !important;
   }
   .nav .cta, .site-nav .btn{ box-shadow:none }
-  .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
+  .nav-toggle{ display:inline-flex !important; align-items:center; justify-content:center }
 
   .site-header.nav-open .nav,
   .site-header.nav-open .site-nav{

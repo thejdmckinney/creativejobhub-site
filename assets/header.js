@@ -160,5 +160,34 @@
         if (ov2) ov2.redistribute();
       }, 120);
     });
+
+    // === Mobile hamburger navigation toggle ===
+    const header = document.querySelector('.site-header');
+    const navToggle = header.querySelector('.nav-toggle');
+    const nav = header.querySelector('.site-nav');
+
+    if (navToggle && nav) {
+      function toggleNav() {
+        const isOpen = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      }
+
+      navToggle.addEventListener('click', toggleNav);
+      
+      // Close menu on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && header.classList.contains('nav-open')) {
+          toggleNav();
+        }
+      });
+
+      // Close menu when clicking nav links
+      nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && header.classList.contains('nav-open')) {
+          toggleNav();
+        }
+      });
+    }
   });
 })();
