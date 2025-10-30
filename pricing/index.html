@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>Pricing — Creative Job Hub</title>
-  <meta name="description" content="Creative Job Hub pricing: Lite (Free), Essential, Pro, Growth. Save with annual billing." />
+  <meta name="description" content="All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price. Simple, transparent pricing: Starter $29 ($300/yr), Team $49 ($468/yr), Pro $89 ($948/yr). No add-ons, no hidden fees." />
   <link rel="canonical" href="https://creativejobhub.com/pricing/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:site_name" content="Creative Job Hub" />
   <meta property="og:title" content="Pricing — Creative Job Hub" />
-  <meta property="og:description" content="Creative Job Hub pricing: Lite (Free), Essential, Pro, Growth. Save with annual billing." />
+  <meta property="og:description" content="Simple, transparent pricing. Starter $29/mo or $300/yr, Team $49/mo or $468/yr, Pro $89/mo or $948/yr. Full features without the enterprise price tag." />
   <meta property="og:url" content="https://creativejobhub.com/pricing/" />
   <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pricing — Creative Job Hub" />
-  <meta name="twitter:description" content="Creative Job Hub pricing: Lite (Free), Essential, Pro, Growth. Save with annual billing." />
+  <meta name="twitter:description" content="All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price." />
   <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
 
   <!-- Robots / theme -->
@@ -47,8 +47,6 @@
       --ring:#2b3652;
       --shadow: 0 10px 25px rgba(0,0,0,.35);
       --radius:18px;
-
-      /* header vars to match site */
       --header-bg:#0b1220;
       --header-border:rgba(148,163,184,.15);
       --brand:#0ea5e9;
@@ -58,42 +56,21 @@
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding-top:72px}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
-
-    /* Focus ring (keyboard only) */
     :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 10px; }
 
-    /* ======= Header / Nav (desktop + mobile hamburger) ======= */
-    .site-header{
-      position:sticky; top:0; z-index:1000;
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px; padding:10px 16px; background:var(--header-bg);
-      border-bottom:1px solid var(--header-border);
-      backdrop-filter:saturate(120%) blur(6px);
-    }
+    /* Header/Nav */
+    .site-header{position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; height:72px; padding:10px 16px; background:var(--header-bg); border-bottom:1px solid var(--header-border); backdrop-filter:saturate(120%) blur(6px);}
     .brand img{height:32px; display:block}
     .nav{display:flex; gap:16px; align-items:center}
     .nav a{font-weight:700; padding:8px 10px; border-radius:10px}
     .nav a:hover{background:rgba(255,255,255,.06)}
     .nav .cta{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff; box-shadow:0 6px 18px rgba(14,165,233,.25)}
     .nav .cta:hover{filter:brightness(.98)}
-    .nav-toggle{
-      display:none; position:relative; width:40px; height:40px;
-      border:1px solid #334155; border-radius:10px; background:var(--header-bg); cursor:pointer
-    }
-    .nav-toggle span{
-      position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
-      transition: transform .25s, opacity .25s;
-    }
-    .nav-toggle span:nth-child(1){ top:12px }
-    .nav-toggle span:nth-child(2){ top:19px }
-    .nav-toggle span:nth-child(3){ top:26px }
+    .nav-toggle{display:none; position:relative; width:40px; height:40px; border:1px solid #334155; border-radius:10px; background:var(--header-bg); cursor:pointer}
+    .nav-toggle span{position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb; transition: transform .25s, opacity .25s;}
+    .nav-toggle span:nth-child(1){ top:12px } .nav-toggle span:nth-child(2){ top:19px } .nav-toggle span:nth-child(3){ top:26px }
     @media (max-width: 860px){
-      .nav{
-        position:absolute; top:72px; left:0; right:0;
-        display:grid; gap:6px; padding:12px 16px; background:var(--header-bg);
-        border-bottom:1px solid var(--header-border);
-        transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
-      }
+      .nav{position:absolute; top:72px; left:0; right:0; display:grid; gap:6px; padding:12px 16px; background:var(--header-bg); border-bottom:1px solid var(--header-border); transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;}
       .nav a{ padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15) }
       .nav .cta{ box-shadow:none }
       .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
@@ -103,43 +80,38 @@
       .site-header.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg) }
     }
 
-    /* Page header (hero for pricing) */
+    /* Page header */
     .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 6px;flex-wrap:wrap}
     .page-header h1{margin:0 0 4px 0;font-size:28px}
     .page-header p{margin:0;color:var(--muted)}
-
     .toggle{display:flex;gap:8px;background:var(--card);border:1px solid var(--ring);padding:6px;border-radius:999px;box-shadow:var(--shadow)}
     .toggle button{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600}
     .toggle button[aria-pressed="true"]{background:var(--accent);color:#fff}
 
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:18px}
+    /* Plans grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
     @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:680px){.grid{grid-template-columns:1fr}}
-
     .plan{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:16px;position:relative;box-shadow:var(--shadow);min-height:100%}
     .badge{position:absolute;top:-12px;left:18px;background:#ffe580;color:#3b2f00;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.3px}
     .head{display:flex;flex-direction:column;gap:6px}
     .title{font-size:20px;font-weight:800}
     .desc{color:var(--muted);font-size:14px}
     .seats{color:#cbd5e1;font-size:13px}
-
     .price{display:flex;align-items:baseline;gap:8px}
     .currency{font-size:22px;line-height:1;margin-right:2px;opacity:.95;position:relative;top:1px}
     .amount{font-size:42px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;font-feature-settings:"lnum","tnum"}
     .per{font-size:14px;line-height:1.1;color:var(--muted)}
     .footnote{color:var(--muted);font-size:12px;margin-top:6px}
-
     .cta{display:inline-flex;justify-content:center;align-items:center;padding:12px 14px;border-radius:12px;font-weight:800;border:1px solid transparent;transition:transform .05s ease;box-shadow:var(--shadow)}
     .cta.primary{background:var(--accent);color:#fff}
     .cta.primary:hover{background:var(--accent-strong)}
     .cta.ghost{background:transparent;border-color:var(--ring);color:#fff}
     .cta:active{transform:translateY(1px)}
-
     ul.feats{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
     ul.feats li{display:flex;gap:8px;align-items:flex-start}
     .check{color:var(--ok);margin-top:2px}
-
-    .plan--pro{outline:2px solid #ffe580}
+    .plan--highlight{outline:2px solid #ffe580}
   </style>
 
   <!-- Schema: Organization + SoftwareApplication (Offers) -->
@@ -163,13 +135,12 @@
         "offers": {
           "@type": "AggregateOffer",
           "offers": [
-            { "@type": "Offer", "name": "Lite (Free)", "price": "0.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Essential (Monthly)", "price": "79.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Essential (Annual, per month)", "price": "69.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Pro (Monthly)", "price": "149.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Pro (Annual, per month)", "price": "139.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Growth (Monthly)", "price": "249.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
-            { "@type": "Offer", "name": "Growth (Annual, per month)", "price": "199.99", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" }
+            { "@type": "Offer", "name": "Starter (Monthly)", "price": "29.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Starter (Annual)",  "price": "300.00","priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Team (Monthly)",    "price": "49.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Team (Annual)",     "price": "468.00","priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Pro (Monthly)",     "price": "89.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" },
+            { "@type": "Offer", "name": "Pro (Annual)",      "price": "948.00","priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://creativejobhub.com/pricing/" }
           ]
         }
       }
@@ -184,11 +155,9 @@
     "@type": "FAQPage",
     "mainEntity": [
       {"@type":"Question","name":"Can I switch plans anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated."}},
-      {"@type":"Question","name":"Is there a free plan?","acceptedAnswer":{"@type":"Answer","text":"Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready."}},
-      {"@type":"Question","name":"Do you offer annual billing discounts?","acceptedAnswer":{"@type":"Answer","text":"Yes—annual plans are discounted vs. paying month-to-month. Toggle Pay annually to see the savings."}},
-      {"@type":"Question","name":"What’s included in paid plans?","acceptedAnswer":{"@type":"Answer","text":"Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more."}},
-      {"@type":"Question","name":"How do cancellations and refunds work?","acceptedAnswer":{"@type":"Answer","text":"Cancel anytime from your account settings. Future renewals will not be charged. Contact support if you need help."}},
-      {"@type":"Question","name":"Do you charge per technician or per seat?","acceptedAnswer":{"@type":"Answer","text":"Plans include a set number of seats. You can add more seats at any time; pricing updates instantly."}}
+      {"@type":"Question","name":"Do you offer annual billing discounts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Starter $300/yr, Team $468/yr, Pro $948/yr. That’s effectively $25, $39, and $79 per month when billed annually."}},
+      {"@type":"Question","name":"What’s included in every plan?","acceptedAnswer":{"@type":"Answer","text":"Scheduling, estimates, invoices, payments, client alerts, time tracking, Mapbox live tracking, QuickBooks Online, Google Drive, Twilio and Resend integrations, and a mobile-optimized experience."}},
+      {"@type":"Question","name":"Are there hidden fees or add-ons?","acceptedAnswer":{"@type":"Answer","text":"No. We don’t nickel-and-dime. All core features are included. Bring your own Stripe/Twilio/Resend accounts for transaction or messaging fees."}}
     ]
   }
   </script>
@@ -196,7 +165,7 @@
 
 <body>
 
-  <!-- Inline, accessible header (desktop + mobile hamburger) -->
+  <!-- Header -->
   <header class="site-header">
     <a class="brand" href="/" aria-label="Creative Job Hub Home">
       <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="128" height="32">
@@ -220,142 +189,116 @@
     <div class="wrap">
       <div class="page-header">
         <div>
-          <h1>Creative Job Hub Pricing</h1>
-          <p>Save with annual billing. Switch anytime.</p>
+          <h1>All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price.</h1>
+          <p>No add-ons. No hidden fees. Just straightforward pricing that helps your team work smarter.</p>
         </div>
+
+        <!-- Billing toggle -->
         <div class="toggle" role="group" aria-label="Billing cycle">
-          <button type="button" id="btn-monthly" aria-pressed="false">Pay monthly</button>
-          <button type="button" id="btn-yearly" aria-pressed="true">
+          <button type="button" id="btn-monthly" aria-pressed="true">Pay monthly</button>
+          <button type="button" id="btn-yearly" aria-pressed="false">
             Pay annually
-            <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Save ~13%</span>
+            <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Best value</span>
           </button>
         </div>
       </div>
 
       <section class="grid" id="plans">
-        <!-- Lite -->
-        <article class="plan" data-plan="lite">
+        <!-- Starter -->
+        <article class="plan" data-plan="starter">
           <div class="head">
-            <div class="title">Lite</div>
-            <div class="desc">Free starter plan to help small teams get organized. Includes clients & contacts, scheduling, estimates, jobs, invoices, and card payments. Capped at 30 invoices, 30 jobs, and 30 estimates per month.</div>
-            <div class="seats">Seats: 1</div>
+            <div class="title">Starter</div>
+            <div class="desc">All-in-one job management for solo pros. Scheduling, estimates, invoices, payments, client alerts, and time tracking — plus integrations that just work.</div>
+            <div class="seats">Users: 1</div>
           </div>
 
-          <div class="price" data-price>
-            <span class="currency"></span>
-            <span class="amount" data-amount>Free</span>
-            <span class="per" data-per>/month</span>
+          <div class="price" data-price data-monthly="29" data-yearly="25">
+            <span class="currency">$</span>
+            <span class="amount" data-amount>29</span>
+            <span class="per">/month</span>
           </div>
+          <div class="footnote" data-foot>or $300 billed yearly</div>
 
-          <a class="cta primary" href="https://app.creativejobhub.com/auth?mode=signup">Free forever</a>
+          <a class="cta ghost plan-cta" data-plan="starter" href="#">Start Free Trial</a>
 
           <ul class="feats">
-            <li><span class="check">✔</span> Clients & contacts CRM (lite)</li>
-            <li><span class="check">✔</span> Calendar scheduling (lite)</li>
-            <li><span class="check">✔</span> Estimates (up to 30/mo)</li>
-            <li><span class="check">✔</span> Jobs & work orders (up to 30/mo)</li>
-            <li><span class="check">✔</span> Invoices (up to 30/mo)</li>
-            <li><span class="check">✔</span> Card payments (Stripe)</li>
-            <li><span class="check">✔</span> Price book (items)</li>
-            <li><span class="check">✔</span> Email support</li>
+            <li><span class="check">✔</span> Estimates, invoices & payments (Stripe)</li>
+            <li><span class="check">✔</span> Job scheduling & reminders</li>
+            <li><span class="check">✔</span> Client text/email alerts (Twilio + Resend)</li>
+            <li><span class="check">✔</span> GPS map tracking (Mapbox)</li>
+            <li><span class="check">✔</span> Time tracking & job notes</li>
+            <li><span class="check">✔</span> Google Drive & QuickBooks Online</li>
+            <li><span class="check">✔</span> Mobile-optimized for field use</li>
+            <li><span class="check">✔</span> Unlimited clients, jobs & estimates</li>
           </ul>
         </article>
 
-        <!-- Essential -->
-        <article class="plan" data-plan="essential">
+        <!-- Team -->
+        <article class="plan plan--highlight" data-plan="team">
+          <div class="badge">BEST VALUE</div>
           <div class="head">
-            <div class="title">Essential</div>
-            <div class="desc">Everything you need for day-to-day operations: clients & contacts, estimates with approvals, price book, jobs & scheduling, invoices and card payments, mobile tech view, basic reports, email notifications, maps & routing.</div>
-            <div class="seats">Seats: 2</div>
+            <div class="title">Team</div>
+            <div class="desc">Everything in Starter, built for small crews. Up to 5 users with live tech tracking, recurring maintenance, and real-time collaboration.</div>
+            <div class="seats">Users: up to 5</div>
           </div>
 
-          <div class="price" data-price data-monthly="79.99" data-yearly="69.99">
+          <div class="price" data-price data-monthly="49" data-yearly="39">
             <span class="currency">$</span>
-            <span class="amount" data-amount>69.99</span>
+            <span class="amount" data-amount>49</span>
             <span class="per">/month</span>
           </div>
-          <div class="footnote" data-foot>or $839.88 billed yearly</div>
+          <div class="footnote" data-foot>or $468 billed yearly</div>
 
-          <a class="cta ghost" href="https://app.creativejobhub.com/auth?mode=signup">Choose Essential</a>
+          <a class="cta primary plan-cta" data-plan="team" href="#">Start Free Trial</a>
 
           <ul class="feats">
-            <li><span class="check">✔</span> Clients & Contacts CRM</li>
-            <li><span class="check">✔</span> Estimates with customer approvals</li>
-            <li><span class="check">✔</span> Price book (items, labor, materials)</li>
-            <li><span class="check">✔</span> Jobs & calendar scheduling</li>
-            <li><span class="check">✔</span> Invoices & card payments</li>
-            <li><span class="check">✔</span> Mobile tech view (work orders)</li>
-            <li><span class="check">✔</span> Basic reports: jobs & revenue</li>
-            <li><span class="check">✔</span> Email notifications & reminders</li>
+            <li><span class="check">✔</span> Everything in Starter</li>
+            <li><span class="check">✔</span> Live technician tracking (Mapbox)</li>
+            <li><span class="check">✔</span> Recurring maintenance scheduling</li>
+            <li><span class="check">✔</span> Team scheduling & workload view</li>
+            <li><span class="check">✔</span> QuickBooks sync for all techs</li>
+            <li><span class="check">✔</span> Multi-user permissions & activity logs</li>
+            <li><span class="check">✔</span> Client text/email alerts</li>
           </ul>
         </article>
 
         <!-- Pro -->
-        <article class="plan plan--pro" data-plan="pro">
-          <div class="badge">BEST VALUE</div>
+        <article class="plan" data-plan="pro">
           <div class="head">
-            <div class="title">Pro (Most Popular)</div>
-            <div class="desc">Everything in Essential, plus workflows & checklists, SMS reminders and 2-way texting, QuickBooks Online sync, advanced scheduling, custom fields & tags, team permissions, priority support, expense tracking and margin per job, client portal, analytics with AI insights, leads, and automations.</div>
-            <div class="seats">Seats: 5</div>
+            <div class="title">Pro</div>
+            <div class="desc">Unlimited users and premium features. AI Receptionist, multi-location management, and advanced analytics — with priority support.</div>
+            <div class="seats">Users: unlimited</div>
           </div>
 
-          <div class="price" data-price data-monthly="149.99" data-yearly="139.99">
+          <div class="price" data-price data-monthly="89" data-yearly="79">
             <span class="currency">$</span>
-            <span class="amount" data-amount>139.99</span>
+            <span class="amount" data-amount>89</span>
             <span class="per">/month</span>
           </div>
-          <div class="footnote" data-foot>or $1,679.88 billed yearly</div>
+          <div class="footnote" data-foot>or $948 billed yearly</div>
 
-          <a class="cta primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
-
-          <ul class="feats">
-            <li><span class="check">✔</span> Everything in Essential</li>
-            <li><span class="check">✔</span> Job workflows & checklists</li>
-            <li><span class="check">✔</span> SMS reminders & 2-way texting</li>
-            <li><span class="check">✔</span> QuickBooks Online sync</li>
-            <li><span class="check">✔</span> Advanced scheduling & routing</li>
-            <li><span class="check">✔</span> Custom job fields & tags</li>
-            <li><span class="check">✔</span> Team permissions & activity log</li>
-            <li><span class="check">✔</span> Priority chat + email support</li>
-            <li><span class="check">✔</span> Expense tracking per job</li>
-            <li><span class="check">✔</span> Margin per job (cost vs. revenue)</li>
-            <li><span class="check">✔</span> Client portal</li>
-            <li><span class="check">✔</span> Analytics with AI insights</li>
-            <li><span class="check">✔</span> Leads management</li>
-            <li><span class="check">✔</span> Integrations & automations</li>
-          </ul>
-        </article>
-
-        <!-- Growth -->
-        <article class="plan" data-plan="growth">
-          <div class="head">
-            <div class="title">Growth</div>
-            <div class="desc">Everything in Pro, plus dispatch board with drag-and-drop, capacity planning, advanced profitability reporting, service territories & travel windows, SLAs with alerts, multi-location support, granular roles & permissions, custom branding, and an onboarding call.</div>
-            <div class="seats">Seats: 10</div>
-          </div>
-
-          <div class="price" data-price data-monthly="249.99" data-yearly="199.99">
-            <span class="currency">$</span>
-            <span class="amount" data-amount>199.99</span>
-            <span class="per">/month</span>
-          </div>
-          <div class="footnote" data-foot>or $2,399.88 billed yearly</div>
-
-          <a class="cta ghost" href="https://app.creativejobhub.com/auth?mode=signup">Choose Growth</a>
+          <a class="cta ghost plan-cta" data-plan="pro" href="#">Start Free Trial</a>
 
           <ul class="feats">
-            <li><span class="check">✔</span> Everything in Pro</li>
-            <li><span class="check">✔</span> Dispatch board & capacity planning</li>
-            <li><span class="check">✔</span> Advanced reporting (profit by job/tech)</li>
-            <li><span class="check">✔</span> Service territories & travel windows</li>
-            <li><span class="check">✔</span> SLA’s with alerts</li>
-            <li><span class="check">✔</span> Multi-location support</li>
-            <li><span class="check">✔</span> Granular roles & permissions</li>
-            <li><span class="check">✔</span> Custom branding (docs & emails)</li>
-            <li><span class="check">✔</span> Onboarding call + priority support</li>
-            <li><span class="check">✔</span> Time management & hours tracking</li>
+            <li><span class="check">✔</span> Everything in Team</li>
+            <li><span class="check">✔</span> AI Receptionist</li>
+            <li><span class="check">✔</span> Multi-location management</li>
+            <li><span class="check">✔</span> Advanced analytics & reporting</li>
+            <li><span class="check">✔</span> Custom branding (docs & messaging)</li>
+            <li><span class="check">✔</span> Priority onboarding & support</li>
           </ul>
         </article>
+      </section>
+
+      <!-- Every plan includes -->
+      <section style="margin-top:28px">
+        <span class="kicker" style="color:#94a3b8; text-transform:uppercase; letter-spacing:.12em; font-size:14px">Included in every plan</span>
+        <ul class="feats" style="margin-top:10px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px">
+          <li><span class="check">✔</span> No add-ons. No hidden fees.</li>
+          <li><span class="check">✔</span> 7-day free trial — full access</li>
+          <li><span class="check">✔</span> Stripe, Twilio, Resend, Google Drive, Mapbox, QuickBooks Online</li>
+          <li><span class="check">✔</span> Mobile-optimized, real-time syncing</li>
+        </ul>
       </section>
 
       <!-- PRICING FAQ -->
@@ -370,28 +313,18 @@
           </div>
 
           <div class="card">
-            <strong>Is there a free plan?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Yes. Lite is free forever for a single seat with usage limits. Upgrade when you’re ready.</p>
+            <strong>Do you offer annual billing?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Yes. Starter $300/yr, Team $468/yr, Pro $948/yr. That’s effectively $25, $39, and $79 per month when billed annually.</p>
           </div>
 
           <div class="card">
-            <strong>Do you offer annual billing discounts?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Yep—annual plans are discounted vs. paying month-to-month. You’ll see the savings when you toggle “Pay annually.”</p>
+            <strong>What’s included in every plan?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">Scheduling, estimates, invoices, payments, client alerts, Mapbox live tracking, time tracking, QuickBooks Online & Google Drive integrations, and a mobile-optimized experience.</p>
           </div>
 
           <div class="card">
-            <strong>What’s included in paid plans?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Everything in Lite, plus advanced scheduling, SMS, QuickBooks Online sync, permissions, analytics with AI insights, and more (see plan details above).</p>
-          </div>
-
-          <div class="card">
-            <strong>How do cancellations and refunds work?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Cancel anytime from your account settings. We’ll stop future renewals. If something goes sideways, contact support and we’ll help.</p>
-          </div>
-
-          <div class="card">
-            <strong>Do you charge per technician or per seat?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Plans include a set number of seats. Add more seats as needed; pricing updates instantly.</p>
+            <strong>Are there hidden fees or add-ons?</strong>
+            <p style="margin:8px 0 0; color:#cbd5e1">No. Bring your own Stripe/Twilio/Resend accounts for transaction or messaging costs; we don’t add markups.</p>
           </div>
         </div>
       </section>
@@ -429,49 +362,71 @@
       nav.addEventListener('click', (e) => { if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggle(); });
     })();
 
-    // Pricing toggle
+    // --- Stripe Price IDs mapping (monthly & annual) ---
+    const PRICE_IDS = {
+      starter: { monthly: "price_1SNlao6P3cMj5sLGQCXrKNee", annual: "price_1SNlao6P3cMj5sLGAM4vv5Qp" },
+      team:    { monthly: "price_1SNllh6P3cMj5sLGRuLa37lD", annual: "price_1SNllh6P3cMj5sLGMWeq8FEa" },
+      pro:     { monthly: "price_1SNltf6P3cMj5sLGioRqwmdy", annual: "price_1SNltf6P3cMj5sLGDGo5dW7G" }
+    };
+
+    // Monthly ↔ Annual pricing toggle
     (function(){
       const btnMonthly = document.getElementById('btn-monthly');
       const btnYearly  = document.getElementById('btn-yearly');
       const priceBlocks = Array.from(document.querySelectorAll('[data-price]'));
+      let billingMode = 'monthly'; // default
+
+      function updateButtons() {
+        // Update all CTA links to include priceId & billing mode
+        document.querySelectorAll('.plan-cta').forEach(btn => {
+          const plan = btn.getAttribute('data-plan');
+          const priceId = PRICE_IDS[plan][billingMode];
+          const url = new URL('https://app.creativejobhub.com/auth');
+          url.searchParams.set('mode','signup');
+          url.searchParams.set('plan', plan);
+          url.searchParams.set('billing', billingMode);
+          url.searchParams.set('priceId', priceId);
+          btn.setAttribute('href', url.toString());
+        });
+      }
 
       function setMode(mode){
-        const yearly = mode === 'yearly';
+        billingMode = mode;
+        const yearly = mode === 'annual';
         btnMonthly.setAttribute('aria-pressed', (!yearly).toString());
         btnYearly.setAttribute('aria-pressed', yearly.toString());
 
         priceBlocks.forEach(p=>{
-          const monthly = p.dataset.monthly;
-          const yearlyPrice = p.dataset.yearly;
+          const monthly = Number(p.dataset.monthly);   // e.g. 29
+          const yearlyEff = Number(p.dataset.yearly);  // e.g. 25 (effective monthly)
           const amountEl = p.querySelector('[data-amount]');
-          const foot     = p.parentElement.querySelector('[data-foot]');
+          const perEl = p.querySelector('.per');
+          const foot = p.parentElement.querySelector('[data-foot]');
+          const planKey = p.parentElement.dataset.plan;
 
-          if(!monthly || !yearlyPrice){
-            amountEl.textContent = 'Free';
-            if(foot) foot.textContent = '';
-            return;
+          if(yearly){
+            amountEl.textContent = yearlyEff.toString();
+            perEl.textContent = '/month';
+          } else {
+            amountEl.textContent = monthly.toString();
+            perEl.textContent = '/month';
           }
 
-          amountEl.textContent = Number(yearly ? yearlyPrice : monthly).toFixed(2);
-
-          if(foot){
-            const yearlyTotals = {
-              essential: "$839.88 billed yearly",
-              pro: "$1,679.88 billed yearly",
-              growth: "$2,399.88 billed yearly"
-            };
-            const planKey = p.parentElement.dataset.plan;
-            foot.textContent = yearly ? `or ${yearlyTotals[planKey]}` : "Billed monthly, cancel anytime";
-          }
+          const annualTotals = {
+            starter: '$300 billed yearly',
+            team: '$468 billed yearly',
+            pro: '$948 billed yearly'
+          };
+          if(foot) foot.textContent = annualTotals[planKey];
         });
+
+        updateButtons();
       }
 
       btnMonthly.addEventListener('click', ()=>setMode('monthly'));
-      btnYearly .addEventListener('click', ()=>setMode('yearly'));
-      setMode('yearly');
+      btnYearly .addEventListener('click', ()=>setMode('annual'));
+      setMode('monthly'); // default
     })();
   </script>
 </body>
 </html>
-
-
