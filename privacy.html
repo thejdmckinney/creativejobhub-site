@@ -2,142 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Privacy Policy — Creative Job Hub</title>
-  <meta name="description" content="Privacy Policy for Creative Job Hub — what we collect, how we use it, third parties, and how you can control or delete your data." />
+  <meta name="description" content="Privacy Policy for Creative Job Hub." />
+  <link rel="canonical" href="https://creativejobhub.com/privacy.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="Privacy Policy — Creative Job Hub" />
+  <meta property="og:description" content="Privacy Policy for Creative Job Hub." />
+  <meta property="og:url" content="https://creativejobhub.com/privacy.html" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy — Creative Job Hub" />
+  <meta name="twitter:description" content="Privacy Policy for Creative Job Hub." />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo-white.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=10" />
+
   <style>
-    /* Minimal, readable policy styling */
-    body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans",sans-serif; line-height:1.6; color:#111827; padding:24px; max-width:900px; margin:0 auto; }
-    h1,h2,h3 { color:#0f172a; }
-    p { margin:0 0 12px; }
-    ul { margin:0 0 12px 20px; }
-    .meta { color:#6b7280; font-size:0.95rem; margin-bottom:18px; }
-    .small { font-size:0.95rem; color:#374151; }
-    .databox { background:#f8fafc; padding:12px; border-radius:6px; border:1px solid #e6eef6; margin:12px 0; }
-    table { border-collapse:collapse; width:100%; margin:12px 0; }
-    th,td { text-align:left; padding:8px; border:1px solid #e6eef6; }
-    a { color:#0ea5e9; text-decoration:none; }
-    a:hover { text-decoration:underline; }
+    /* keep your existing color variables but ensure policy content is readable */
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e; --ring:rgba(148,163,184,.15);
+    }
+    /* small tweaks for the policy area to display well */
+    .policy-wrap { max-width:900px; margin:0 auto; padding:24px 16px 64px; background:transparent; color:var(--text) }
+    .policy-wrap h1{ margin:0 0 8px; font-weight:700; font-size:2rem }
+    .policy-wrap h2{ margin-top:20px; color:#e6eef6 }
+    .policy-wrap p, .policy-wrap li { color:var(--muted); font-size:1rem; line-height:1.6 }
+    .policy-box { background:#0f1724; border:1px solid rgba(255,255,255,.04); padding:14px; border-radius:8px; margin:12px 0; color:var(--muted)}
+    table.privacy-table { width:100%; border-collapse:collapse; margin:12px 0; color:var(--muted) }
+    table.privacy-table th, table.privacy-table td { padding:8px; border:1px solid rgba(255,255,255,.04); text-align:left }
+    a { color:var(--brand) }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Creative Constructors LLC",
-    "url":"https://createdjobhub.com",
-    "email":"hello@creativejobhub.com"
-  }
-  </script>
 </head>
 <body>
-  <header>
-    <h1>Privacy Policy</h1>
-    <div class="meta">Last updated: October 2025</div>
+
+  <!-- Inline, accessible header (kept exactly as original) -->
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Creative Job Hub Home">
+      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="128" height="32">
+    </a>
+
+    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <a href="/">Home</a>
+      <a href="/compare/">Compare</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html" aria-current="page">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
+      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
+    </nav>
   </header>
 
-  <section>
-    <p class="small">Creative Constructors LLC (“we”, “us”, “Creative Job Hub”) provides the Creative Job Hub mobile application and related services. This Privacy Policy describes the categories of personal data we collect, how we use and share it, how long we retain it, and how you can exercise your privacy rights.</p>
-  </section>
+  <main class="policy-wrap">
 
-  <h2 id="what-we-collect">1. Information we collect</h2>
-  <p>We collect the following categories of information when you use Creative Job Hub:</p>
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: <strong>October 2025</strong></p>
 
-  <ul>
-    <li><strong>Account & profile data</strong>: name, email, phone number, company/organization, role, and other profile fields you provide.</li>
-    <li><strong>Location data</strong>: precise (GPS) location of technicians to enable live tracking, dispatch, routing, and estimated arrival times.</li>
-    <li><strong>Content you upload</strong>: photos, notes, documents and other job-related attachments.</li>
-    <li><strong>Payment & billing metadata</strong>: subscription and invoice metadata. Payments are processed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>; Creative Job Hub does not store full card numbers.</li>
-    <li><strong>Device, log & usage data</strong>: device identifiers, OS version, crash reports, diagnostic and analytics data used to improve the app and troubleshoot issues.</li>
-    <li><strong>Communications</strong>: messages, SMS, and email content when you use in-app messaging or we send service messages.</li>
-  </ul>
+    <h2>1. Information we collect</h2>
+    <p>We collect the following categories of information when you use Creative Job Hub:</p>
+    <ul>
+      <li><strong>Account & profile</strong> — name, email, phone, company, role and other profile fields.</li>
+      <li><strong>Location</strong> — precise (GPS) technician location for live tracking, routing and dispatch.</li>
+      <li><strong>Content you upload</strong> — photos, notes, documents and attachments related to jobs.</li>
+      <li><strong>Payments & billing metadata</strong> — subscription and invoice metadata (payments processed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>).</li>
+      <li><strong>Device, logs & usage</strong> — device identifiers, OS version, crash logs and analytics data.</li>
+      <li><strong>Communications</strong> — messages, SMS and emails used for service and support.</li>
+    </ul>
 
-  <h2 id="how-we-use">2. How we use information</h2>
-  <p>We use personal data to provide, maintain, and improve the Service, including:</p>
-  <ul>
-    <li>Core functionality: scheduling, dispatch, job management, maps, and live technician tracking.</li>
-    <li>Payments & invoices: processing subscriptions and payments via Stripe.</li>
-    <li>Communications: service messages, job notifications, and support.</li>
-    <li>Analytics & operations: performance monitoring, crash reporting and product improvement.</li>
-    <li>Security & fraud prevention.</li>
-    <li>Legal obligations and compliance.</li>
-  </ul>
+    <h2>2. How we use information</h2>
+    <p>We use personal data to:</p>
+    <ul>
+      <li>Provide and operate service features — scheduling, dispatch, jobs, and maps;</li>
+      <li>Enable live tracking and routing for technicians;</li>
+      <li>Process invoices and payments via Stripe;</li>
+      <li>Send job and account notifications, and provide support;</li>
+      <li>Analyze usage and improve the product; and</li>
+      <li>Protect against fraud and secure the platform.</li>
+    </ul>
 
-  <h2 id="location">3. Location collection and use (important)</h2>
-  <p>We collect <strong>precise location</strong> (GPS) of technicians only with their explicit permission. Location enables live tracking, dispatch, routing, and time-on-site calculations. Typical location usage patterns:</p>
-  <ul>
-    <li>Collected while a technician is on an active job or when they explicitly enable tracking.</li>
-    <li>Used for route optimization, arrival estimates, and display on the Jobs Map.</li>
-    <li>Users can stop location collection by disabling location permissions for the app in device settings or by toggling tracking off in the app (where available).</li>
-  </ul>
+    <h2>3. Location collection and use</h2>
+    <p><strong>Precise location</strong> is collected only with explicit permission. Location is used for live technician tracking, route optimization, and arrival estimates. Typically:</p>
+    <ul>
+      <li>Location is collected while a technician is on an active job or explicitly enables tracking;</li>
+      <li>Users can stop location collection by disabling app location permission in device settings or by toggling tracking off in-app;</li>
+      <li>Location is retained for troubleshooting and dispute resolution — see retention below.</li>
+    </ul>
 
-  <div class="databox">
-    <strong>Suggested location retention:</strong> location data is retained for up to <strong>30 days</strong> after job completion for troubleshooting and dispute resolution, unless you request deletion sooner.
-  </div>
+    <div class="policy-box"><strong>Suggested retention:</strong> precise location data is retained up to <strong>30 days</strong> after a job completes, unless you request earlier deletion.</div>
 
-  <h2 id="third-parties">4. Third parties and processors</h2>
-  <p>We use third-party service providers to operate the Service. These processors act on our behalf under contract and only process data as instructed by us. Major providers include:</p>
-  <ul>
-    <li><a href="https://supabase.com/legal/privacy" target="_blank" rel="noopener">Supabase</a> — backend & database (data storage).</li>
-    <li><a href="https://www.mapbox.com/privacy/" target="_blank" rel="noopener">Mapbox</a> — maps and geolocation services.</li>
-    <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> — payment processing.</li>
-    <li><a href="https://www.twilio.com/legal/privacy" target="_blank" rel="noopener">Twilio</a> — SMS and communications.</li>
-    <li><a href="https://sentry.io/privacy/" target="_blank" rel="noopener">Sentry</a> or <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Firebase</a> — optional crash reporting / analytics (if used).</li>
-  </ul>
-  <p>We may share data with law enforcement or in response to legal process when required by law.</p>
+    <h2>4. Third parties and processors</h2>
+    <p>We use third parties to operate the Service. Key processors (and links to their privacy pages):</p>
+    <ul>
+      <li><a href="https://supabase.com/legal/privacy" target="_blank" rel="noopener">Supabase</a> — backend & storage</li>
+      <li><a href="https://www.mapbox.com/privacy/" target="_blank" rel="noopener">Mapbox</a> — maps & geolocation</li>
+      <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> — payments</li>
+      <li><a href="https://www.twilio.com/legal/privacy" target="_blank" rel="noopener">Twilio</a> — SMS & communications</li>
+      <li>Sentry / Firebase — optional crash/analytics (if enabled)</li>
+    </ul>
+    <p>We do not sell personal data. We may share data with law enforcement or to comply with legal process when required by law.</p>
 
-  <h2 id="retention">5. Data retention</h2>
-  <p>We retain personal data only as long as necessary to provide the Service and for legitimate business, legal, and tax purposes. Typical retention periods (you may adjust these to fit your policies):</p>
-  <table>
-    <thead>
-      <tr><th>Data category</th><th>Suggested retention</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Account & profile</td><td>Until account deletion + 1 year</td></tr>
-      <tr><td>Job data, photos, documents</td><td>Until job deletion or up to 2 years after job completion</td></tr>
-      <tr><td>Location data</td><td>Up to 30 days after job completion</td></tr>
-      <tr><td>Payments & invoices</td><td>7 years (tax/accounting compliance)</td></tr>
-      <tr><td>Logs & analytics</td><td>Up to 180 days (aggregated/anonymized where possible)</td></tr>
-    </tbody>
-  </table>
+    <h2>5. Data retention</h2>
+    <p>We retain personal data only as needed. Typical retention windows:</p>
+    <table class="privacy-table">
+      <thead><tr><th>Data category</th><th>Retention</th></tr></thead>
+      <tbody>
+        <tr><td>Account & profile</td><td>Until account deletion + 1 year</td></tr>
+        <tr><td>Job data, photos, documents</td><td>Until job deletion or up to 2 years after completion</td></tr>
+        <tr><td>Location data</td><td>Up to 30 days after job completion</td></tr>
+        <tr><td>Payments & invoices</td><td>7 years (tax/accounting compliance)</td></tr>
+        <tr><td>Logs & analytics</td><td>Up to 180 days (aggregated/anonymized where possible)</td></tr>
+      </tbody>
+    </table>
 
-  <h2 id="security">6. Security</h2>
-  <p>We use industry-standard protections such as TLS for data in transit and access controls for stored data. We limit access to personal data on a need-to-know basis. While we strive to protect data, no method is 100% secure.</p>
+    <h2>6. Security</h2>
+    <p>We use industry standard protections (TLS in transit, access controls) to protect data. No method is 100% secure, but we apply reasonable safeguards and limit access to authorized personnel only.</p>
 
-  <h2 id="international">7. International transfers</h2>
-  <p>Your data may be stored or processed in countries other than your country of residence (for example, servers in the United States). We take appropriate safeguards to protect personal data when transferred internationally (contractual protections, standard contractual clauses where required).</p>
+    <h2>7. International transfers</h2>
+    <p>Data may be transferred to servers outside your country (for example the United States). We apply contractual safeguards where required by law.</p>
 
-  <h2 id="user-rights">8. Your choices and rights</h2>
-  <p>You may request access, correction, restriction, or deletion of your personal data by emailing <strong>hello@creativejobhub.com</strong>. We will verify requests and respond in accordance with applicable law. To stop location tracking, disable the app’s location permission in your device settings or turn off tracking in the app.</p>
+    <h2>8. Your choices & rights</h2>
+    <p>You can request access, correction, restriction, or deletion of your personal data by emailing <strong>hello@creativejobhub.com</strong>. We will verify requests and respond according to applicable law. To stop location tracking, disable the app’s location permission in your device settings or toggle tracking off in the app.</p>
 
-  <h2 id="payments">9. Payments</h2>
-  <p>We process payments using <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>. We do not store full credit card numbers on our servers. For payment disputes or refunds, contact support.</p>
+    <h2>9. Payments</h2>
+    <p>Payments are processed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>. We do not store full card numbers on our servers. For disputes or refunds contact support at <strong>hello@creativejobhub.com</strong>.</p>
 
-  <h2 id="children">10. Children</h2>
-  <p>This app is intended for professional use and is not directed to children under the age of 13 (or local minimum age). If you believe a child has provided personal data without parental consent, contact us and we will remove the information.</p>
+    <h2>10. Children</h2>
+    <p>This app is for professional use and is not directed at children under 13 (or the applicable local age). If you believe a child has provided data without consent, contact us to remove the data.</p>
 
-  <h2 id="changes">11. Changes to this policy</h2>
-  <p>We may update this policy from time to time. If we make material changes, we will post the revised policy with an updated “Last updated” date.</p>
+    <h2>11. Changes to this policy</h2>
+    <p>We may update this policy from time to time. We will post the updated policy with an updated “Last updated” date.</p>
 
-  <h2 id="data-safety">12. Data Safety — quick map for Google Play</h2>
-  <p>Use the following mapping when completing the Play Console Data Safety form (answer the related prompts consistently with this policy):</p>
+    <h2>12. Data safety — quick mapping for Play</h2>
+    <p>Use the following mapping when completing the Play Data Safety form:</p>
+    <table class="privacy-table">
+      <thead><tr><th>Category</th><th>Collected?</th><th>Purpose</th><th>Shared?</th></tr></thead>
+      <tbody>
+        <tr><td>Precise location</td><td>Yes</td><td>Live tracking, dispatch</td><td>Yes (Mapbox, Supabase)</td></tr>
+        <tr><td>Personal info (name, email, phone)</td><td>Yes</td><td>Account management & support</td><td>Yes (Supabase, Stripe)</td></tr>
+        <tr><td>Photos & files</td><td>Yes</td><td>Job records</td><td>Yes (Supabase/storage)</td></tr>
+        <tr><td>Financial & billing</td><td>Yes</td><td>Payments & invoices</td><td>Yes (Stripe)</td></tr>
+        <tr><td>Device & diagnostics</td><td>Yes</td><td>Crash reporting & analytics</td><td>Yes (Sentry/Firebase)</td></tr>
+      </tbody>
+    </table>
 
-  <table>
-    <thead><tr><th>Category</th><th>Collected?</th><th>Purpose(s)</th><th>Shared?</th></tr></thead>
-    <tbody>
-      <tr><td>Precise location</td><td>Yes</td><td>App functionality (live tracking, dispatch)</td><td>Yes (Mapbox, Supabase)</td></tr>
-      <tr><td>Personal info (name, email, phone)</td><td>Yes</td><td>Account management, communication</td><td>Yes (Supabase, Stripe)</td></tr>
-      <tr><td>Photos & files</td><td>Yes</td><td>Job records</td><td>Yes (Supabase / storage provider)</td></tr>
-      <tr><td>Financial & billing</td><td>Yes (metadata)</td><td>Payments & invoices</td><td>Yes (Stripe)</td></tr>
-      <tr><td>Device & diagnostics</td><td>Yes</td><td>Crash reporting, analytics</td><td>Yes (Sentry / Firebase)</td></tr>
-    </tbody>
-  </table>
+    <h2>13. Contact</h2>
+    <p>For privacy requests or questions, contact: <strong>hello@creativejobhub.com</strong></p>
 
-  <h2 id="how-to-request">13. How to make requests or contact us</h2>
-  <p>For privacy requests (access, correction, deletion), questions, or complaints, contact: <strong>hello@creativejobhub.com</strong>.</p>
+  </main>
 
+  <!-- Footer (kept from your original template) -->
   <footer>
-    <p class="small">Creative Constructors LLC —  &middot; <a href="https://createdjobhub.com" target="_blank" rel="noopener">https://createdjobhub.com</a></p>
-    <p class="small">This policy was last updated October 2025.</p>
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>© <span id="y"></span> Creative Job Hub</div>
+      <div class="footer-actions">
+        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+        <a class="btn btn-ghost" href="/privacy.html" aria-current="page">Privacy</a>
+        <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        <a class="btn btn-ghost" href="/contact.html">Contact</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Mobile nav toggle (desktop unaffected)
+    (function(){
+      const header = document.querySelector('.site-header');
+      const btn = header.querySelector('.nav-toggle');
+      const nav = header.querySelector('#primary-nav');
+
+      function toggleNav(){
+        const open = header.classList.toggle('nav-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+      btn.addEventListener('click', toggleNav);
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && header.classList.contains('nav-open')) toggleNav(); });
+      nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A' && header.classList.contains('nav-open')) toggleNav(); });
+    })();
+  </script>
 </body>
 </html>
