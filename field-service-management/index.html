@@ -1,296 +1,55 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+<div style="margin-top:18px" class="screens">
+  <!-- Analytics (desktop / tablet) -->
+  <picture>
+    <source type="image/jpeg"
+            srcset="/assets/images/pillar/Pillar-analytics-800.jpg 800w,
+                    /assets/images/pillar/pillar-analytics-1222.jpg 1222w"
+            sizes="(max-width:920px) 100vw, 50vw">
+    <img src="/assets/images/pillar/pillar-analytics-1222.jpg"
+         alt="Analytics dashboard showing team and revenue trends"
+         style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)">
+  </picture>
 
-  <title>Field Service Management Software for Small Teams — Creative Job Hub</title>
-  <meta name="description" content="A complete guide to field service management for small teams — scheduling, mobile job sheets, invoicing, route optimization, and how to choose the right software. Start free with Creative Job Hub." />
-  <link rel="canonical" href="https://creativejobhub.com/field-service-management/" />
-  <meta name="robots" content="index,follow" />
+  <!-- Dashboard (desktop) -->
+  <picture>
+    <source type="image/jpeg"
+            srcset="/assets/images/pillar/pillar-dashboard-mobile.jpg 600w,
+                    /assets/images/pillar/pillar-dashboard-1200.jpg 1200w"
+            sizes="(max-width:920px) 100vw, 50vw">
+    <img src="/assets/images/pillar/pillar-dashboard-1200.jpg"
+         alt="Product dashboard with schedule and quick actions"
+         style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)">
+  </picture>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="CreativeJobHub" />
-  <meta property="og:title" content="Field Service Management Software for Small Teams — Creative Job Hub" />
-  <meta property="og:description" content="A complete guide to field service management for small teams — scheduling, mobile job sheets, invoicing, route optimization, and how to choose the right software." />
-  <meta property="og:url" content="https://creativejobhub.com/field-service-management/" />
-  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+  <!-- Invoices & payments (uses the exact filename you uploaded) -->
+  <picture>
+    <source type="image/jpeg"
+            srcset="/assets/images/pillar/pillar-invoices-1222.jgp.jpg 1222w"
+            sizes="(max-width:920px) 100vw, 50vw">
+    <img src="/assets/images/pillar/pillar-invoices-1222.jgp.jpg"
+         alt="Invoice preview and online payment option"
+         style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)">
+  </picture>
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Field Service Management Software for Small Teams — Creative Job Hub" />
-  <meta name="twitter:description" content="A complete guide to field service management for small teams — scheduling, mobile job sheets, invoicing, route optimization, and how to choose the right software." />
-  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+  <!-- Job map / route (desktop + small) -->
+  <picture>
+    <source type="image/jpeg"
+            srcset="/assets/images/pillar/pillar-jobmap-400.jpg 400w,
+                    /assets/images/pillar/pillar-jobmap-1200-.jpg 1200w"
+            sizes="(max-width:920px) 100vw, 50vw">
+    <img src="/assets/images/pillar/pillar-jobmap-1200-.jpg"
+         alt="Route optimization map with multiple job stops"
+         style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)">
+  </picture>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/assets/site.css?v=10" />
-
-  <style>
-    /* small, page-specific styling consistent with the rest of the site */
-    .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
-    .hero { display:grid; grid-template-columns:1fr 460px; gap:28px; align-items:center; padding:40px 0 24px; }
-    .eyebrow { display:inline-block; padding:6px 12px; border-radius:999px; border:1px solid rgba(148,163,184,.12); color:#a5b4fc; font-weight:700; }
-    .lead { color:#9ca3af; margin-top:8px; font-size:18px; }
-    .jump-links { margin:16px 0 4px; display:flex; gap:8px; flex-wrap:wrap; }
-    .jump-links a { color:#94a3b8; padding:8px 10px; border-radius:999px; background:transparent; border:1px solid rgba(148,163,184,.06); text-decoration:none; font-weight:600; }
-    .panel-cta { padding:20px; background:linear-gradient(180deg, rgba(34,197,94,.06), rgba(34,197,94,.02)); border-radius:12px; border:1px solid rgba(148,163,184,.12); }
-    .screens { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
-    .faq-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    @media (max-width:920px){ .hero{grid-template-columns:1fr; } .screens{grid-template-columns:1fr;} .faq-grid{grid-template-columns:1fr}}
-  </style>
-
-  <!-- Structured data (Organization + SoftwareApplication + Breadcrumb + FAQ) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "Creative Job Hub",
-        "url": "https://creativejobhub.com",
-        "logo": "https://creativejobhub.com/assets/logo-white.png",
-        "sameAs": []
-      },
-      {
-        "@type": "SoftwareApplication",
-        "name": "Creative Job Hub",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web, iOS, Android",
-        "url": "https://creativejobhub.com",
-        "description": "Complete field service management platform: scheduling, mobile job sheets, invoicing, route optimization, and QuickBooks integration.",
-        "image": "https://creativejobhub.com/assets/og-dark.jpg"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://creativejobhub.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Field Service Management", "item": "https://creativejobhub.com/field-service-management/" }
-        ]
-      }
-    ]
-  }
-  </script>
-
-</head>
-<body>
-  <!-- Shared header -->
-  <div id="site-header"></div>
-  <script src="/assets/header.js" defer></script>
-
-  <main class="wrap">
-
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="page-title">
-      <div>
-        <span class="eyebrow">Field service software</span>
-        <h1 id="page-title" style="margin:12px 0 8px">Field Service Management Software for Small Teams</h1>
-        <p class="lead">How small field-service teams can use scheduling, mobile job sheets, and streamlined invoicing to cut admin time, improve jobs on-site, and get paid faster. This guide explains what to look for and why Creative Job Hub is built for small teams.</p>
-
-        <div style="margin-top:18px;">
-          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-          <a class="btn btn-ghost" href="/pricing/" style="margin-left:10px">See pricing</a>
-        </div>
-
-        <div class="jump-links" style="margin-top:18px">
-          <a href="#what-is">What is FSM?</a>
-          <a href="#features">Core features</a>
-          <a href="#evaluate">How to choose</a>
-          <a href="#case-study">Case studies</a>
-          <a href="#faq">FAQ</a>
-        </div>
-      </div>
-
-      <aside>
-        <div class="panel-cta">
-          <h3 style="margin:0 0 10px">90-second tour</h3>
-          <p style="margin:0 0 12px; color:#94a3b8;">Watch a quick demo to see how scheduling, mobile job sheets, and invoicing work in the app.</p>
-          <div style="position:relative; padding-top:56.25%">
-            <iframe src="https://www.youtube.com/embed/AkY3jtGKrFQ?rel=0&modestbranding=1&showinfo=0"
-                    title="Creative Job Hub Demo - Field Service Management Software"
-                    style="position:absolute; inset:0; width:100%; height:100%; border:0"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-          </div>
-          <div style="margin-top:12px; display:flex; gap:8px">
-            <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Open app</a>
-            <a class="btn btn-ghost" href="/contact.html">Book a demo</a>
-          </div>
-        </div>
-
-        <div style="margin-top:14px; font-size:13px; color:#94a3b8">
-          <strong>Pro tip:</strong> Look for offline mobile job sheets and QuickBooks or Stripe integrations when comparing vendors.
-        </div>
-      </aside>
-    </section>
-
-    <!-- WHAT IS -->
-    <section id="what-is" style="padding-top:18px;">
-      <h2>What is field service management software?</h2>
-      <p style="color:#cbd5e1">Field service management (FSM) software helps teams schedule and dispatch work, manage jobs from mobile devices, invoice customers, and export accounting data. For small teams, the most important traits are speed, reliability on phones, and a lightweight workflow that doesn’t require heavy administration.</p>
-    </section>
-
-    <!-- FEATURES -->
-    <section id="features" style="padding-top:10px;">
-      <h2>Core features small teams actually use</h2>
-
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px;">
-        <div class="card">
-          <h3>Scheduling & dispatch</h3>
-          <p>Drag-and-drop calendar, route planning, job statuses, ETA texts to customers, and quick assignment for technicians.</p>
-        </div>
-        <div class="card">
-          <h3>Mobile job sheets</h3>
-          <p>Capture photos, notes, parts, digital signatures and offline sync so techs can finish jobs even without a signal.</p>
-        </div>
-        <div class="card">
-          <h3>Invoicing & payments</h3>
-          <p>Create estimates, convert to invoices, and accept online payments. Export to QuickBooks for easy accounting.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:18px" class="screens">
-        <img src="/assets/images/pillar-screens-1.jpg" alt="Scheduling calendar screenshot" style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)" />
-        <img src="/assets/images/pillar-screens-2.jpg" alt="Mobile job sheet screenshot" style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)" />
-      </div>
-    </section>
-
-    <!-- EVALUATION -->
-    <section id="evaluate" style="padding-top:18px;">
-      <h2>How to evaluate vendors (quick checklist)</h2>
-      <ul style="line-height:1.9; color:#cbd5e1; margin-top:8px;">
-        <li><strong>Mobile-first and fast on phones</strong> — techs must open jobs on-site quickly.</li>
-        <li><strong>Offline mode</strong> — job sheets should capture photos and signatures offline.</li>
-        <li><strong>Scheduling + routing</strong> — easy drag-and-drop calendar + route optimization.</li>
-        <li><strong>Payments & accounting</strong> — online payments and QuickBooks export.</li>
-        <li><strong>Simple pricing</strong> — no surprises as your team grows.</li>
-        <li><strong>Easy onboarding</strong> — CSV imports and quick setup matter for small teams.</li>
-      </ul>
-
-      <p style="margin-top:10px;color:#94a3b8">Want a printable checklist? <a href="/pricing/" style="color:inherit; font-weight:700">See pricing & compare plans</a>.</p>
-    </section>
-
-    <!-- HOW CJH HELPS -->
-    <section id="how-it-helps" style="padding-top:18px;">
-      <h2>How Creative Job Hub helps small teams</h2>
-      <p>Creative Job Hub focuses on the features small contractors use daily: fast mobile workflows, reliable offline job sheets, transparent pricing, and integrations (Stripe for payments, QuickBooks for accounting, Mapbox for maps). We built the app to go from request to paid in a few taps.</p>
-
-      <div style="margin-top:12px">
-        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-        <a class="btn btn-ghost" href="/compare/" style="margin-left:10px">See comparisons</a>
-      </div>
-    </section>
-
-    <!-- CASE STUDY -->
-    <section id="case-study" style="padding-top:18px;">
-      <h2>Real results — example</h2>
-      <p><strong>Example:</strong> A 3-person electrical contractor switched to Creative Job Hub and removed double-data entry, saving ~2 hours/day across the team. With online payments and automated reminders, they saw a 30% faster invoice-to-payment time.</p>
-    </section>
-
-    <!-- CTA -->
-    <section id="get-started" style="padding-top:18px;">
-      <div class="panel-cta">
-        <h2 style="margin-top:0">Ready to try it?</h2>
-        <p style="color:#94a3b8">Start free and add paid features as you grow. See pricing or open the app to create your first job in minutes.</p>
-        <div style="margin-top:12px;">
-          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-          <a class="btn btn-ghost" href="/pricing/" style="margin-left:10px">See pricing</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" style="padding-top:18px;">
-      <h2>Frequently asked questions</h2>
-
-      <div class="faq-grid" style="margin-top:12px">
-        <div class="card">
-          <strong>Is there a free plan?</strong><br>
-          Yes. Creative Job Hub offers a free Lite plan designed for single-person teams and paid plans for growing teams.
-        </div>
-        <div class="card">
-          <strong>Does the mobile app work offline?</strong><br>
-          Yes — the mobile job sheet supports offline capture and syncs when connected.
-        </div>
-        <div class="card">
-          <strong>Can I export to QuickBooks?</strong><br>
-          Yes — export invoices and accounting data into QuickBooks-compatible files.
-        </div>
-        <div class="card">
-          <strong>How does routing work?</strong><br>
-          We offer multi-stop route planning to reduce travel time and optimize technician routes.
-        </div>
-        <div class="card">
-          <strong>What integrations are available?</strong><br>
-          Integrations include Stripe (payments), QuickBooks, Mapbox (maps), Twilio (SMS), and Google Drive.
-        </div>
-        <div class="card">
-          <strong>How long to get started?</strong><br>
-          Most small teams can set up and import customers in under an hour. We also provide onboarding materials.
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section style="padding-top:24px; margin-bottom:40px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div style="font-weight:800">Start managing jobs the easy way</div>
-        <div>
-          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free</a>
-          <a class="btn btn-ghost" href="/contact.html" style="margin-left:10px">Contact sales</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="y"></span> Creative Job Hub</div>
-      <div class="row">
-        <a class="btn btn-ghost" href="/pricing/">See pricing</a>
-        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
-        <a class="btn btn-ghost" href="/terms.html">Terms</a>
-        <a class="btn btn-ghost" href="/contact.html">Contact</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- FAQ structured data for rich results -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is there a free plan?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Creative Job Hub offers a Lite plan for single-person teams and paid plans for growing teams." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the mobile app work offline?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — the mobile job sheet supports offline capture and will sync when a connection is available." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I export to QuickBooks?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — export invoices and accounting data into QuickBooks-compatible files." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does setup take?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most small teams can import customers and create jobs in under an hour with our onboarding materials." }
-      }
-    ]
-  }
-  </script>
-
-</body>
-</html>
+  <!-- Scheduling (desktop) -->
+  <picture>
+    <source type="image/jpeg"
+            srcset="/assets/images/pillar/pillar-schedule-1200.jpg 1200w,
+                    /assets/images/pillar/pillar-schedule-mobile.jpg 600w"
+            sizes="(max-width:920px) 100vw, 50vw">
+    <img src="/assets/images/pillar/pillar-schedule-1200.jpg"
+         alt="Drag-and-drop scheduling calendar with route planning"
+         style="width:100%; border-radius:12px; border:1px solid rgba(148,163,184,.08)">
+  </picture>
+</div>
