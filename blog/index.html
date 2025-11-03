@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Blog — Creative Job Hub</title>
+  <meta name="description" content="Field service management insights, tips, and best practices for small teams. Learn how to grow your business with Creative Job Hub." />
+  <link rel="canonical" href="https://creativejobhub.com/blog/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="Blog — Creative Job Hub" />
+  <meta property="og:description" content="Field service management insights, tips, and best practices for small teams." />
+  <meta property="og:url" content="https://creativejobhub.com/blog/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Creative Job Hub" />
+  <meta name="twitter:description" content="Field service management insights, tips, and best practices for small teams." />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Creative Job Hub Blog" href="/blog/feed.xml" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo-white.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=10" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e;
+    }
+    
+    .wrap { max-width:1100px; margin:0 auto; padding:28px 20px 60px; }
+    .page-header { text-align:center; padding:40px 0 60px; }
+    .page-header h1 { margin:0 0 12px; font-size:48px; font-weight:800; }
+    .page-header p { color:var(--muted); font-size:18px; margin:0; }
+    
+    .blog-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:24px; margin-top:40px; }
+    .blog-card { 
+      background:var(--panel); 
+      border-radius:12px; 
+      overflow:hidden; 
+      border:1px solid rgba(148,163,184,.08);
+      transition:transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .blog-card:hover { 
+      transform:translateY(-2px); 
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+    .blog-card img { width:100%; height:200px; object-fit:cover; }
+    .blog-card-content { padding:24px; }
+    .blog-card h3 { margin:0 0 8px; font-size:20px; }
+    .blog-card h3 a { color:var(--text); text-decoration:none; }
+    .blog-card h3 a:hover { color:var(--brand); }
+    .blog-card p { color:var(--muted); margin:0 0 16px; line-height:1.6; }
+    .blog-meta { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      font-size:14px; 
+      color:#64748b;
+    }
+    .blog-tag { 
+      background:rgba(14,165,233,.1); 
+      color:var(--brand); 
+      padding:4px 8px; 
+      border-radius:4px; 
+      font-size:12px; 
+      font-weight:600;
+    }
+    
+    .coming-soon {
+      text-align:center;
+      padding:80px 20px;
+      color:var(--muted);
+    }
+    .coming-soon h2 { color:var(--text); margin:0 0 16px; }
+    
+    @media (max-width: 768px) {
+      .page-header h1 { font-size:36px; }
+      .blog-grid { grid-template-columns:1fr; }
+    }
+  </style>
+
+  <!-- Dynamic header injection -->
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Creative Job Hub Blog",
+    "description": "Field service management insights, tips, and best practices for small teams",
+    "url": "https://creativejobhub.com/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Job Hub",
+      "url": "https://creativejobhub.com",
+      "logo": "https://creativejobhub.com/assets/logo-white.png"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <main class="wrap">
+    <div class="page-header">
+      <h1>Field Service Insights</h1>
+      <p>Tips, best practices, and industry insights to help grow your field service business</p>
+    </div>
+
+    <!-- Blog posts will be added here -->
+    <div class="coming-soon">
+      <h2>📝 Coming Soon</h2>
+      <p>We're preparing valuable content about field service management, scheduling optimization, mobile workflows, and business growth strategies.</p>
+      <p style="margin-top:16px;">
+        <a href="/contact.html" style="color:var(--brand);">Get notified</a> when we publish new posts, or 
+        <a href="/" style="color:var(--brand);">explore Creative Job Hub</a> in the meantime.
+      </p>
+    </div>
+
+    <!-- Future blog grid -->
+    <div class="blog-grid" style="display:none;">
+      <!-- Blog posts will be dynamically inserted here -->
+    </div>
+  </main>
+
+  <footer style="margin-top:60px; padding:40px 0; border-top:1px solid rgba(148,163,184,.08);">
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#94a3b8;">
+      <div>© <span id="y"></span> Creative Job Hub</div>
+      <div style="display:flex; gap:16px;">
+        <a href="/pricing/" style="color:inherit;">Pricing</a>
+        <a href="/privacy.html" style="color:inherit;">Privacy</a>
+        <a href="/terms.html" style="color:inherit;">Terms</a>
+        <a href="/contact.html" style="color:inherit;">Contact</a>
+        <a href="/blog/feed.xml" style="color:inherit;">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

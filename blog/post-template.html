@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- CUSTOMIZE THESE FOR EACH POST -->
+  <title>[POST_TITLE] — Creative Job Hub Blog</title>
+  <meta name="description" content="[POST_DESCRIPTION]" />
+  <link rel="canonical" href="https://creativejobhub.com/blog/posts/[POST_SLUG]/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="[POST_TITLE]" />
+  <meta property="og:description" content="[POST_DESCRIPTION]" />
+  <meta property="og:url" content="https://creativejobhub.com/blog/posts/[POST_SLUG]/" />
+  <meta property="og:image" content="https://creativejobhub.com/blog/assets/[POST_IMAGE]" />
+  <meta property="article:published_time" content="[PUBLISH_DATE]" />
+  <meta property="article:author" content="Creative Job Hub Team" />
+  <meta property="article:section" content="Field Service Management" />
+  <meta property="article:tag" content="[TAGS]" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="[POST_TITLE]" />
+  <meta name="twitter:description" content="[POST_DESCRIPTION]" />
+  <meta name="twitter:image" content="https://creativejobhub.com/blog/assets/[POST_IMAGE]" />
+
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Creative Job Hub Blog" href="/blog/feed.xml" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo-white.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=10" />
+
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e;
+    }
+    
+    .wrap { max-width:800px; margin:0 auto; padding:28px 20px 60px; }
+    .article-header { padding:40px 0 60px; text-align:center; }
+    .article-header h1 { 
+      margin:0 0 16px; 
+      font-size:48px; 
+      font-weight:800; 
+      line-height:1.1;
+    }
+    .article-meta { 
+      display:flex; 
+      justify-content:center; 
+      gap:16px; 
+      font-size:14px; 
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+    .article-tag { 
+      background:rgba(14,165,233,.1); 
+      color:var(--brand); 
+      padding:4px 8px; 
+      border-radius:4px; 
+      font-size:12px; 
+      font-weight:600;
+    }
+    .article-image { 
+      width:100%; 
+      height:400px; 
+      object-fit:cover; 
+      border-radius:12px; 
+      margin:32px 0;
+    }
+    
+    .article-content { 
+      line-height:1.8; 
+      font-size:18px;
+    }
+    .article-content h2 { 
+      margin:40px 0 16px; 
+      font-size:32px; 
+      color:var(--text);
+    }
+    .article-content h3 { 
+      margin:32px 0 12px; 
+      font-size:24px; 
+      color:var(--text);
+    }
+    .article-content p { 
+      margin:0 0 24px; 
+      color:#cbd5e1;
+    }
+    .article-content ul, 
+    .article-content ol { 
+      margin:0 0 24px; 
+      padding-left:24px;
+      color:#cbd5e1;
+    }
+    .article-content li { 
+      margin-bottom:8px;
+    }
+    .article-content blockquote { 
+      margin:32px 0; 
+      padding:24px; 
+      background:var(--panel); 
+      border-left:4px solid var(--brand); 
+      border-radius:8px;
+      font-style:italic;
+    }
+    .article-content img { 
+      width:100%; 
+      border-radius:8px; 
+      margin:24px 0;
+    }
+    .article-content code { 
+      background:var(--panel); 
+      padding:2px 6px; 
+      border-radius:4px; 
+      font-size:16px;
+    }
+    .article-content pre { 
+      background:var(--panel); 
+      padding:24px; 
+      border-radius:8px; 
+      overflow-x:auto; 
+      margin:24px 0;
+    }
+    
+    .article-footer { 
+      margin-top:60px; 
+      padding-top:40px; 
+      border-top:1px solid rgba(148,163,184,.08);
+      text-align:center;
+    }
+    .cta-section { 
+      background:linear-gradient(135deg, rgba(14,165,233,.1), rgba(34,197,94,.1)); 
+      padding:40px; 
+      border-radius:12px; 
+      margin:40px 0;
+      text-align:center;
+    }
+    .cta-section h3 { margin:0 0 16px; }
+    .cta-section p { margin:0 0 24px; color:var(--muted); }
+    
+    .nav-links { 
+      display:flex; 
+      justify-content:space-between; 
+      gap:20px; 
+      margin:40px 0;
+    }
+    .nav-links a { 
+      flex:1; 
+      padding:16px; 
+      background:var(--panel); 
+      border-radius:8px; 
+      text-decoration:none; 
+      color:var(--text);
+      transition:background 0.2s ease;
+    }
+    .nav-links a:hover { background:rgba(148,163,184,.1); }
+    .nav-links .prev { text-align:left; }
+    .nav-links .next { text-align:right; }
+    
+    @media (max-width: 768px) {
+      .article-header h1 { font-size:36px; }
+      .article-content { font-size:16px; }
+      .nav-links { flex-direction:column; }
+    }
+  </style>
+
+  <!-- Dynamic header injection -->
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "[POST_TITLE]",
+    "description": "[POST_DESCRIPTION]",
+    "url": "https://creativejobhub.com/blog/posts/[POST_SLUG]/",
+    "datePublished": "[PUBLISH_DATE]",
+    "dateModified": "[MODIFIED_DATE]",
+    "author": {
+      "@type": "Organization",
+      "name": "Creative Job Hub Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Job Hub",
+      "url": "https://creativejobhub.com",
+      "logo": "https://creativejobhub.com/assets/logo-white.png"
+    },
+    "image": "https://creativejobhub.com/blog/assets/[POST_IMAGE]",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://creativejobhub.com/blog/posts/[POST_SLUG]/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <main class="wrap">
+    <article>
+      <header class="article-header">
+        <div class="article-meta">
+          <span>[PUBLISH_DATE_FORMATTED]</span>
+          <span>•</span>
+          <span>[READ_TIME] min read</span>
+          <span>•</span>
+          <span class="article-tag">[CATEGORY]</span>
+        </div>
+        <h1>[POST_TITLE]</h1>
+        <p style="color:var(--muted); font-size:20px; margin:0;">[POST_DESCRIPTION]</p>
+      </header>
+
+      <!-- Featured image -->
+      <img class="article-image" src="/blog/assets/[POST_IMAGE]" alt="[POST_TITLE]" />
+
+      <div class="article-content">
+        <!-- BLOG POST CONTENT GOES HERE -->
+        
+        <h2>Introduction</h2>
+        <p>Start your blog post content here. This template provides a clean, professional layout for your field service management blog posts.</p>
+
+        <h3>Key Points to Cover</h3>
+        <ul>
+          <li>Use clear headings and subheadings</li>
+          <li>Include practical tips and examples</li>
+          <li>Add relevant images and screenshots</li>
+          <li>Include actionable takeaways</li>
+        </ul>
+
+        <blockquote>
+          "Pro tip: Use blockquotes to highlight important insights or customer quotes."
+        </blockquote>
+
+        <h2>Conclusion</h2>
+        <p>Wrap up your post with a clear summary and call-to-action.</p>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <h3>Ready to streamline your field service business?</h3>
+          <p>Creative Job Hub helps small teams schedule jobs, manage customers, and get paid faster.</p>
+          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free trial</a>
+        </div>
+      </div>
+
+      <footer class="article-footer">
+        <div class="nav-links">
+          <a href="/blog/" class="prev">← Back to Blog</a>
+          <!-- <a href="/blog/posts/next-post/" class="next">Next Post →</a> -->
+        </div>
+        
+        <p style="color:var(--muted);">
+          Have questions about field service management? 
+          <a href="/contact.html" style="color:var(--brand);">Get in touch</a> with our team.
+        </p>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="margin-top:60px; padding:40px 0; border-top:1px solid rgba(148,163,184,.08);">
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#94a3b8;">
+      <div>© <span id="y"></span> Creative Job Hub</div>
+      <div style="display:flex; gap:16px;">
+        <a href="/pricing/" style="color:inherit;">Pricing</a>
+        <a href="/privacy.html" style="color:inherit;">Privacy</a>
+        <a href="/terms.html" style="color:inherit;">Terms</a>
+        <a href="/contact.html" style="color:inherit;">Contact</a>
+        <a href="/blog/feed.xml" style="color:inherit;">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

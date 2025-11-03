@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Creative Job Hub Blog</title>
+    <description>Field service management insights, tips, and best practices for small teams</description>
+    <link>https://creativejobhub.com/blog/</link>
+    <atom:link href="https://creativejobhub.com/blog/feed.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <managingEditor>hello@creativejobhub.com (Creative Job Hub Team)</managingEditor>
+    <webMaster>hello@creativejobhub.com (Creative Job Hub Team)</webMaster>
+    <lastBuildDate>Sat, 02 Nov 2024 00:00:00 GMT</lastBuildDate>
+    <category>Field Service Management</category>
+    <generator>Creative Job Hub</generator>
+    <image>
+      <url>https://creativejobhub.com/assets/logo-white.png</url>
+      <title>Creative Job Hub Blog</title>
+      <link>https://creativejobhub.com/blog/</link>
+      <width>144</width>
+      <height>144</height>
+    </image>
+
+    <!-- Blog posts will be added here as they're published -->
+    <!-- 
+    Example post structure:
+    <item>
+      <title>How to Optimize Field Service Scheduling</title>
+      <description>Learn the best practices for scheduling field service jobs efficiently and improving customer satisfaction.</description>
+      <link>https://creativejobhub.com/blog/posts/optimize-field-service-scheduling/</link>
+      <guid>https://creativejobhub.com/blog/posts/optimize-field-service-scheduling/</guid>
+      <pubDate>Fri, 01 Nov 2024 10:00:00 GMT</pubDate>
+      <author>hello@creativejobhub.com (Creative Job Hub Team)</author>
+      <category>Scheduling</category>
+    </item>
+    -->
+    
+  </channel>
+</rss>
