@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>hello@creativejobhub.com (Creative Job Hub Team)</managingEditor>
     <webMaster>hello@creativejobhub.com (Creative Job Hub Team)</webMaster>
-    <lastBuildDate>Sat, 02 Nov 2024 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2025 00:00:00 GMT</lastBuildDate>
     <category>Field Service Management</category>
     <generator>Creative Job Hub</generator>
     <image>
@@ -19,19 +19,26 @@
       <height>144</height>
     </image>
 
-    <!-- Blog posts will be added here as they're published -->
-    <!-- 
-    Example post structure:
+    <!-- Blog posts -->
     <item>
-      <title>How to Optimize Field Service Scheduling</title>
-      <description>Learn the best practices for scheduling field service jobs efficiently and improving customer satisfaction.</description>
-      <link>https://creativejobhub.com/blog/posts/optimize-field-service-scheduling/</link>
-      <guid>https://creativejobhub.com/blog/posts/optimize-field-service-scheduling/</guid>
-      <pubDate>Fri, 01 Nov 2024 10:00:00 GMT</pubDate>
+      <title>How to Choose Field Service Software for a 1–10 Person Team</title>
+      <description>A practical checklist and scoring system for small field-service teams to choose the right field service management software.</description>
+      <link>https://creativejobhub.com/blog/posts/choose-field-service-software/</link>
+      <guid>https://creativejobhub.com/blog/posts/choose-field-service-software/</guid>
+      <pubDate>Sat, 02 Nov 2025 00:00:00 GMT</pubDate>
       <author>hello@creativejobhub.com (Creative Job Hub Team)</author>
-      <category>Scheduling</category>
+      <category>Guide</category>
     </item>
-    -->
+
+    <item>
+      <title>Getting Started with Field Service Management</title>
+      <description>Essential tips and best practices for implementing field service management in your growing business.</description>
+      <link>https://creativejobhub.com/blog/posts/getting-started-field-service-management/</link>
+      <guid>https://creativejobhub.com/blog/posts/getting-started-field-service-management/</guid>
+      <pubDate>Fri, 01 Nov 2025 10:00:00 GMT</pubDate>
+      <author>hello@creativejobhub.com (Creative Job Hub Team)</author>
+      <category>Getting Started</category>
+    </item>
     
   </channel>
 </rss>
