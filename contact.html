@@ -145,39 +145,55 @@
       <p class="contact-lead">Have a question or want a quick demo? Send a message and we’ll get back ASAP.</p>
 
       <div class="contact-grid">
-        <!-- Form -->
+        <!-- HubSpot Contact Form -->
         <div class="contact-card">
-          <form class="contact-form" action="https://formspree.io/f/xkgqepro" method="POST">
-            <div>
-              <label for="name">Your name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required />
-            </div>
-
-            <div>
-              <label for="email">Your email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required />
-            </div>
-
-            <div>
-              <label for="message">Your message</label>
-              <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-            </div>
-
-            <!-- spam honeypot -->
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-            <!-- Optional subject -->
-            <input type="hidden" name="_subject" value="New contact from Creative Job Hub">
-
-            <!-- Optional success redirect:
-            <input type="hidden" name="_next" value="/thanks.html">
+          <div id="hubspot-contact-form">
+            <!-- 
+            REPLACE THIS COMMENT WITH YOUR HUBSPOT FORM EMBED CODE
+            
+            To get your HubSpot embed code:
+            1. Go to HubSpot Marketing > Lead Capture > Forms
+            2. Create a new form with fields: Name, Email, Message
+            3. Click "Publish" > "Embed" 
+            4. Copy the embed code and paste it here
+            
+            It will look something like:
+            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+            <script>
+              hbspt.forms.create({
+                region: "na1",
+                portalId: "YOUR_PORTAL_ID",
+                formId: "YOUR_FORM_ID"
+              });
+            </script>
             -->
+            
+            <!-- Fallback form while you get HubSpot code -->
+            <form class="contact-form" action="https://formspree.io/f/xkgqepro" method="POST">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
 
-            <div class="contact-actions">
-              <button class="btn btn-primary" type="submit">Send message</button>
-              <span class="muted">We typically reply within one business day.</span>
-            </div>
-          </form>
+              <div>
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+
+              <div>
+                <label for="message">Your message</label>
+                <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+              </div>
+
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+              <input type="hidden" name="_subject" value="New contact from Creative Job Hub">
+
+              <div class="contact-actions">
+                <button class="btn btn-primary" type="submit">Send message</button>
+                <span class="muted">We typically reply within one business day.</span>
+              </div>
+            </form>
+          </div>
         </div>
 
         <!-- Side info -->

@@ -1805,6 +1805,76 @@
     });
   </script>
 
+  <!-- HubSpot Exit-Intent Popup Configuration -->
+  <script>
+    // Configure HubSpot popup targeting and behavior
+    window.hsPopupSettings = {
+      // Target all visitors (can be refined)
+      targetAll: true,
+      
+      // Show after 30 seconds if no exit intent detected
+      timeDelay: 30000,
+      
+      // Exit intent detection
+      exitIntent: true,
+      
+      // Don't show more than once per session
+      frequency: 'once-per-session',
+      
+      // Custom targeting (optional)
+      // url: '/pricing/', // Only show on pricing page
+      // device: 'desktop', // Only show on desktop
+    };
+
+    /* 
+    EXIT-INTENT POPUP SETUP INSTRUCTIONS:
+    
+    1. Go to HubSpot Marketing > Lead Capture > Forms
+    
+    2. Create Exit-Intent Popup Form:
+       - Click "Create form" 
+       - Choose "Pop-up form"
+       - Form name: "Exit Intent - Field Service Guide"
+       
+    3. Setup Form Fields:
+       - Name (required)
+       - Email (required) 
+       - Company (optional)
+       
+    4. Configure Popup Settings:
+       - Trigger: "Exit intent"
+       - Display frequency: "Once per session"
+       - Target pages: "All pages" or specific pages
+       - Device: "All devices" or "Desktop only"
+       
+    5. Design Your Offer:
+       - Headline: "Wait! Get Our Free Field Service Guide"
+       - Description: "Discover 10 ways to boost efficiency and grow your field service business"
+       - Button text: "Get Free Guide"
+       - Thank you message: "Check your email for the guide!"
+       
+    6. Lead Magnet Ideas:
+       ✅ "Field Service Efficiency Guide" 
+       ✅ "10 Ways to Reduce No-Shows"
+       ✅ "ROI Calculator Template"
+       ✅ "Free 30-day trial + setup call"
+       ✅ "Industry Benchmarking Report"
+       
+    7. Follow-up Automation:
+       - Set up email sequence to deliver lead magnet
+       - Add to relevant contact lists
+       - Trigger sales notifications for qualified leads
+       
+    8. A/B Testing:
+       - Test different headlines and offers
+       - Try different exit-intent triggers
+       - Test popup timing (immediate vs delayed)
+       
+    The popup will automatically show based on HubSpot's built-in targeting rules.
+    No additional code needed once you create the popup in HubSpot!
+    */
+  </script>
+
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
   <!-- End of HubSpot Embed Code -->
