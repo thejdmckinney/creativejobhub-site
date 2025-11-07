@@ -57,7 +57,7 @@
   <rect x="245" y="145" width="110" height="80" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="6"/>
   
   <!-- Customer Info -->
-  <text x="250" y="160" fill="#cbd5e1" font-family="system-ui" font-size="9" font-weight="500">📍 123 Main St, Austin TX</text>
+  <text x="250" y="160" fill="#cbd5e1" font-family="system-ui" font-size="9" font-weight="500">📍 123 Main St, Austin</text>
   <text x="250" y="175" fill="#94a3b8" font-family="system-ui" font-size="9">📞 (555) 123-4567</text>
   <text x="250" y="190" fill="#94a3b8" font-family="system-ui" font-size="9">🕒 2:00 PM - 4:00 PM</text>
   
