@@ -1,0 +1,112 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0284c7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Comparison cards representing different software options -->
+  <!-- Card 1 -->
+  <rect x="80" y="150" width="280" height="350" rx="16" fill="url(#cardGrad)" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+  <rect x="100" y="170" width="240" height="80" rx="8" fill="url(#accent1)"/>
+  <text x="220" y="225" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Software A</text>
+  
+  <!-- Features for Card 1 -->
+  <circle cx="130" cy="270" r="6" fill="#22c55e"/>
+  <text x="150" y="277" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Scheduling</text>
+  <circle cx="130" cy="295" r="6" fill="#22c55e"/>
+  <text x="150" y="302" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Invoicing</text>
+  <circle cx="130" cy="320" r="6" fill="#ef4444"/>
+  <text x="150" y="327" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Mobile App</text>
+  <circle cx="130" cy="345" r="6" fill="#22c55e"/>
+  <text x="150" y="352" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Reporting</text>
+  
+  <!-- Score -->
+  <rect x="100" y="450" width="240" height="30" rx="15" fill="url(#accent1)" opacity="0.2"/>
+  <text x="220" y="470" text-anchor="middle" fill="#0ea5e9" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Score: 8/10</text>
+  
+  <!-- Card 2 -->
+  <rect x="460" y="100" width="280" height="400" rx="16" fill="url(#cardGrad)" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+  <rect x="480" y="120" width="240" height="80" rx="8" fill="url(#accent2)"/>
+  <text x="600" y="175" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Software B</text>
+  
+  <!-- Crown icon for winner -->
+  <path d="M580 90 L585 80 L590 85 L595 75 L600 85 L605 75 L610 85 L615 80 L620 90 L610 100 L590 100 Z" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  
+  <!-- Features for Card 2 -->
+  <circle cx="510" cy="220" r="6" fill="#22c55e"/>
+  <text x="530" y="227" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Scheduling</text>
+  <circle cx="510" cy="245" r="6" fill="#22c55e"/>
+  <text x="530" y="252" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Invoicing</text>
+  <circle cx="510" cy="270" r="6" fill="#22c55e"/>
+  <text x="530" y="277" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Mobile App</text>
+  <circle cx="510" cy="295" r="6" fill="#22c55e"/>
+  <text x="530" y="302" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Reporting</text>
+  <circle cx="510" cy="320" r="6" fill="#22c55e"/>
+  <text x="530" y="327" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Team Features</text>
+  <circle cx="510" cy="345" r="6" fill="#22c55e"/>
+  <text x="530" y="352" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Integration</text>
+  
+  <!-- Score -->
+  <rect x="480" y="450" width="240" height="30" rx="15" fill="url(#accent2)" opacity="0.2"/>
+  <text x="600" y="470" text-anchor="middle" fill="#22c55e" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Score: 10/10</text>
+  
+  <!-- Card 3 -->
+  <rect x="840" y="150" width="280" height="350" rx="16" fill="url(#cardGrad)" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+  <rect x="860" y="170" width="240" height="80" rx="8" fill="url(#accent3)"/>
+  <text x="980" y="225" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Software C</text>
+  
+  <!-- Features for Card 3 -->
+  <circle cx="890" cy="270" r="6" fill="#22c55e"/>
+  <text x="910" y="277" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Scheduling</text>
+  <circle cx="890" cy="295" r="6" fill="#ef4444"/>
+  <text x="910" y="302" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Invoicing</text>
+  <circle cx="890" cy="320" r="6" fill="#22c55e"/>
+  <text x="910" y="327" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Mobile App</text>
+  <circle cx="890" cy="345" r="6" fill="#ef4444"/>
+  <text x="910" y="352" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="14">Reporting</text>
+  
+  <!-- Score -->
+  <rect x="860" y="450" width="240" height="30" rx="15" fill="url(#accent3)" opacity="0.2"/>
+  <text x="980" y="470" text-anchor="middle" fill="#a855f7" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Score: 6/10</text>
+  
+  <!-- Title overlay -->
+  <rect x="0" y="520" width="1200" height="80" fill="rgba(15,23,42,0.9)"/>
+  <text x="600" y="550" text-anchor="middle" fill="#e5e7eb" font-family="Arial, sans-serif" font-size="28" font-weight="bold">Choose Field Service Software</text>
+  <text x="600" y="575" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="16">Compare features, scores, and find the best fit for your team</text>
+  
+  <!-- Checklist icon -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="60" height="80" rx="8" fill="url(#cardGrad)" stroke="rgba(148,163,184,0.3)" stroke-width="2"/>
+    <line x1="15" y1="20" x2="45" y2="20" stroke="#94a3b8" stroke-width="2"/>
+    <line x1="15" y1="30" x2="45" y2="30" stroke="#94a3b8" stroke-width="2"/>
+    <line x1="15" y1="40" x2="45" y2="40" stroke="#94a3b8" stroke-width="2"/>
+    <line x1="15" y1="50" x2="45" y2="50" stroke="#94a3b8" stroke-width="2"/>
+    <circle cx="12" cy="20" r="3" fill="#22c55e"/>
+    <circle cx="12" cy="30" r="3" fill="#22c55e"/>
+    <circle cx="12" cy="40" r="3" fill="#ef4444"/>
+    <circle cx="12" cy="50" r="3" fill="#22c55e"/>
+  </g>
+</svg>
