@@ -198,6 +198,149 @@
         height: 250px !important;
       }
     }
+
+    /* ========== ANIMATED STATS & SCROLL ANIMATIONS ========== */
+    .stats-section {
+      padding: 64px 0;
+      background: linear-gradient(180deg, rgba(14,165,233,0.03), rgba(34,197,94,0.03));
+      border-top: 1px solid rgba(148,163,184,0.1);
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 24px 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(14,165,233,0.2);
+    }
+
+    .stat-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      transform: scaleX(0);
+      transition: transform 0.6s ease;
+    }
+
+    .stat-item.visible::before {
+      transform: scaleX(1);
+    }
+
+    .stat-number {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-unit {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--brand-2);
+    }
+
+    /* Scroll Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .animate-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll[data-animation="slide-up"] {
+      transform: translateY(50px);
+    }
+
+    .animate-on-scroll[data-animation="slide-up"].visible {
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll[data-animation="fade-up"] {
+      transform: translateY(20px);
+    }
+
+    .animate-on-scroll[data-animation="fade-up"].visible {
+      transform: translateY(0);
+    }
+
+    .animate-on-scroll[data-animation="slide-left"] {
+      transform: translateX(-50px);
+    }
+
+    .animate-on-scroll[data-animation="slide-left"].visible {
+      transform: translateX(0);
+    }
+
+    .animate-on-scroll[data-animation="slide-right"] {
+      transform: translateX(50px);
+    }
+
+    .animate-on-scroll[data-animation="slide-right"].visible {
+      transform: translateX(0);
+    }
+
+    /* Feature illustrations get scroll animations too */
+    .feature-illustration {
+      transition: transform 0.3s ease, filter 0.3s ease, opacity 0.8s ease;
+    }
+
+    @media (max-width: 860px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .stat-item {
+        padding: 20px 12px;
+      }
+      
+      .stat-number {
+        font-size: clamp(24px, 8vw, 36px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
   </style>
 
   <!-- Structured data: Organization + SoftwareApplication + FAQ -->
@@ -364,12 +507,38 @@
       </div>
     </section>
 
-    <!-- DEMO -->
-    <section id="demo">
+    <!-- ANIMATED STATS -->
+    <section id="stats" class="stats-section">
       <div class="container">
-        <span class="kicker">Watch it in action</span>
-        <h2>90-second tour</h2>
-        <div class="card" style="padding:0; overflow:hidden">
+        <div class="stats-grid animate-on-scroll" data-animation="fade-up">
+          <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="0">
+            <div class="stat-number" data-count="15">0</div>
+            <div class="stat-label">Hours saved per week</div>
+          </div>
+          <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="200">
+            <div class="stat-number" data-count="89">0</div>
+            <div class="stat-label">Average completion rate</div>
+            <div class="stat-unit">%</div>
+          </div>
+          <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="400">
+            <div class="stat-number" data-count="3.2">0</div>
+            <div class="stat-label">Minutes to create invoice</div>
+          </div>
+          <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="600">
+            <div class="stat-number" data-count="24">0</div>
+            <div class="stat-label">Faster payment collection</div>
+            <div class="stat-unit">%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo" class="animate-on-scroll" data-animation="fade-up">
+      <div class="container">
+        <span class="kicker animate-on-scroll" data-animation="fade-up" data-delay="200">Watch it in action</span>
+        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="400">90-second tour</h2>
+        <div class="card animate-on-scroll" data-animation="slide-up" data-delay="600" style="padding:0; overflow:hidden">
           <div style="position:relative; padding-top:56.25%">
             <iframe src="https://www.youtube.com/embed/AkY3jtGKrFQ?rel=0&modestbranding=1&showinfo=0"
                     title="Creative Job Hub Demo - Field Service Management Software"
@@ -385,8 +554,8 @@
     <!-- FEATURES -->
     <section id="features">
       <div class="container">
-        <span class="kicker">Why Creative Job Hub</span>
-        <h2>Everything you need to go from request to paid</h2>
+        <span class="kicker animate-on-scroll" data-animation="fade-up">Why Creative Job Hub</span>
+        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Everything you need to go from request to paid</h2>
         
         <!-- Interactive Feature Showcases -->
         <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 32px;">
@@ -466,8 +635,8 @@
     <!-- COMPARISON BLURBS -->
     <section id="compare">
       <div class="container">
-        <span class="kicker">Why choose Creative Job Hub</span>
-        <h2>Built for small field-service teams—not bloated enterprise software</h2>
+        <span class="kicker animate-on-scroll" data-animation="fade-up">Why choose Creative Job Hub</span>
+        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Built for small field-service teams—not bloated enterprise software</h2>
         <div class="grid-3">
           <div class="card">
             <h3>Faster scheduling & time</h3>
@@ -625,6 +794,134 @@
 
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ========== SCROLL ANIMATIONS & ANIMATED COUNTERS ==========
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.dataset.delay || 0;
+          
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+            
+            // Trigger counter animation if this is a stat item
+            const statNumber = entry.target.querySelector('.stat-number[data-count]');
+            if (statNumber && !statNumber.classList.contains('animated')) {
+              animateCounter(statNumber);
+            }
+          }, delay);
+          
+          // Stop observing after animation
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animation elements
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Animated counter function
+    function animateCounter(element) {
+      const target = parseFloat(element.dataset.count);
+      const duration = 2000; // 2 seconds
+      const start = performance.now();
+      
+      element.classList.add('animated');
+      
+      function update(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease-out animation curve
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        const current = target * easedProgress;
+        
+        // Format number based on target
+        if (target % 1 === 0) {
+          // Integer
+          element.textContent = Math.floor(current);
+        } else {
+          // Decimal
+          element.textContent = current.toFixed(1);
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          element.textContent = target % 1 === 0 ? target : target.toFixed(1);
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+
+    // Add scroll animations to feature illustrations
+    const featureObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          featureObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Apply to feature illustrations
+    document.querySelectorAll('.feature-illustration').forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transitionDelay = `${index * 200}ms`;
+      featureObserver.observe(el);
+    });
+
+    // Add staggered animation to comparison cards
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const cards = entry.target.querySelectorAll('.card');
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, index * 100);
+          });
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Apply to comparison sections
+    document.querySelectorAll('#compare .grid-3').forEach(grid => {
+      grid.querySelectorAll('.card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      });
+      cardObserver.observe(grid);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
   </script>
 </body>
 </html>
