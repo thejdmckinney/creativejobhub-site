@@ -50,7 +50,8 @@
   
   <!-- Header -->
   <rect x="240" y="100" width="120" height="35" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.2)" stroke-width="1" rx="8"/>
-  <text x="300" y="120" text-anchor="middle" fill="#e5e7eb" font-family="system-ui" font-size="12" font-weight="600">HVAC Repair - Johnson</text>
+  <text x="300" y="115" text-anchor="middle" fill="#e5e7eb" font-family="system-ui" font-size="10" font-weight="600">HVAC Repair</text>
+  <text x="300" y="128" text-anchor="middle" fill="#94a3b8" font-family="system-ui" font-size="9" font-weight="500">Johnson Residence</text>
   
   <!-- Job Details Section -->
   <rect x="245" y="145" width="110" height="80" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="6"/>
@@ -60,11 +61,11 @@
   <text x="250" y="175" fill="#94a3b8" font-family="system-ui" font-size="9">📞 (555) 123-4567</text>
   <text x="250" y="190" fill="#94a3b8" font-family="system-ui" font-size="9">🕒 2:00 PM - 4:00 PM</text>
   
-  <!-- Status Indicator -->
-  <circle cx="330" cy="160" r="4" fill="#22c55e">
+  <!-- Status Indicator - centered on screen -->
+  <circle cx="275" cy="210" r="4" fill="#22c55e">
     <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/>
   </circle>
-  <text x="340" y="163" fill="#22c55e" font-family="system-ui" font-size="8" font-weight="500">In Progress</text>
+  <text x="285" y="213" fill="#22c55e" font-family="system-ui" font-size="8" font-weight="500">In Progress</text>
   
   <!-- Photo Capture Section -->
   <rect x="245" y="235" width="110" height="40" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="6"/>
