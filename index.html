@@ -161,9 +161,42 @@
     .logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
     .logo-row svg{height:26px; width:auto; opacity:.9}
 
+    /* Interactive SVG Illustrations */
+    .feature-illustration {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    
+    .feature-illustration:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+    
+    .feature-illustration object {
+      border: 1px solid rgba(148,163,184,0.1);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-illustration:hover object {
+      border-color: rgba(14,165,233,0.3);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.15);
+    }
+
     @media (max-width: 860px){
       .hero-grid, .grid-3, .how, .cta{grid-template-columns:1fr}
       .hero-card-inner{min-height:260px}
+      
+      /* Make feature illustrations responsive */
+      #features [style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+      }
+      
+      #features .feature-illustration {
+        order: -1; /* Show illustrations first on mobile */
+      }
+      
+      .feature-illustration object {
+        height: 250px !important;
+      }
     }
   </style>
 
@@ -354,19 +387,78 @@
       <div class="container">
         <span class="kicker">Why Creative Job Hub</span>
         <h2>Everything you need to go from request to paid</h2>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Scheduling & dispatch</h3>
-            <p>Drag-and-drop calendar, route planning, job statuses, and ETA texts to customers.</p>
+        
+        <!-- Interactive Feature Showcases -->
+        <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 32px;">
+          
+          <!-- Scheduling & Dispatch -->
+          <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center;">
+            <div>
+              <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">📅 Scheduling & Dispatch</h3>
+              <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Drag-and-drop calendar with smart route planning, real-time job tracking, and automatic ETA updates to keep customers informed.</p>
+              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+                <li>Visual drag-and-drop scheduling</li>
+                <li>Automatic route optimization</li>
+                <li>Real-time ETA updates to customers</li>
+                <li>Team workload balancing</li>
+              </ul>
+            </div>
+            <div class="feature-illustration">
+              <object data="/assets/illustrations/scheduling-calendar.svg" type="image/svg+xml" style="width: 100%; height: 300px; border-radius: 12px; background: transparent;"></object>
+            </div>
           </div>
-          <div class="card">
-            <h3>Mobile job sheets</h3>
-            <p>Capture photos, notes, parts, and signatures onsite. Works great on phones.</p>
+
+          <!-- Mobile Job Sheets -->
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;">
+            <div class="feature-illustration">
+              <object data="/assets/illustrations/mobile-job-sheets.svg" type="image/svg+xml" style="width: 100%; height: 300px; border-radius: 12px; background: transparent;"></object>
+            </div>
+            <div>
+              <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">📱 Mobile Job Sheets</h3>
+              <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Capture photos, notes, signatures, and job details on mobile devices. Works offline when signal is poor, syncs automatically.</p>
+              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+                <li>Works offline with auto-sync</li>
+                <li>Photo capture with GPS tagging</li>
+                <li>Digital signatures and notes</li>
+                <li>Real-time job status updates</li>
+              </ul>
+            </div>
           </div>
-          <div class="card">
-            <h3>Invoices & payments</h3>
-            <p>Create estimates, convert to invoices, and get paid online with automatic reminders.</p>
+
+          <!-- Route Optimization -->
+          <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center;">
+            <div>
+              <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">🗺️ Route Optimization</h3>
+              <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">AI-powered route planning that saves time and fuel. Live GPS tracking, traffic-aware routing, and automatic customer notifications.</p>
+              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+                <li>Smart route optimization</li>
+                <li>Live GPS tracking</li>
+                <li>Traffic-aware routing</li>
+                <li>Automatic customer ETA updates</li>
+              </ul>
+            </div>
+            <div class="feature-illustration">
+              <object data="/assets/illustrations/route-optimization.svg" type="image/svg+xml" style="width: 100%; height: 300px; border-radius: 12px; background: transparent;"></object>
+            </div>
           </div>
+
+          <!-- Invoices & Payments -->
+          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;">
+            <div class="feature-illustration">
+              <object data="/assets/illustrations/invoicing-payments.svg" type="image/svg+xml" style="width: 100%; height: 300px; border-radius: 12px; background: transparent;"></object>
+            </div>
+            <div>
+              <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">💳 Invoices & Payments</h3>
+              <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Professional invoicing with online payments through Stripe. Automatic QuickBooks sync and payment reminders keep cash flow steady.</p>
+              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+                <li>Professional invoice templates</li>
+                <li>Online payments via Stripe</li>
+                <li>Automatic QuickBooks sync</li>
+                <li>Payment reminders and tracking</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

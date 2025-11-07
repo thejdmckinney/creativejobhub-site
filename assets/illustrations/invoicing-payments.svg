@@ -1,0 +1,186 @@
+<!-- Interactive Invoicing & Payments Illustration -->
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="invoiceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="paidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="100%" style="stop-color:#16a34a"/>
+    </linearGradient>
+    <linearGradient id="pendingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#4f46e5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#0b1220"/>
+  
+  <!-- Main Invoice Document -->
+  <rect x="50" y="40" width="200" height="280" rx="12" fill="url(#invoiceGrad)" stroke="rgba(148,163,184,0.2)" stroke-width="1" filter="url(#shadow)"/>
+  
+  <!-- Invoice Header -->
+  <rect x="60" y="50" width="180" height="40" rx="6" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.2)" stroke-width="1"/>
+  <text x="70" y="70" fill="#e5e7eb" font-family="system-ui" font-size="14" font-weight="600">Invoice #2024-001</text>
+  <text x="70" y="85" fill="#94a3b8" font-family="system-ui" font-size="10">Johnson Residence</text>
+  
+  <!-- Invoice Items -->
+  <g class="invoice-items">
+    <!-- Item 1 -->
+    <rect x="60" y="100" width="180" height="25" fill="rgba(255,255,255,0.02)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <text x="65" y="115" fill="#cbd5e1" font-family="system-ui" font-size="10" font-weight="500">HVAC System Repair</text>
+    <text x="220" y="115" text-anchor="end" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="600">$275.00</text>
+    
+    <!-- Item 2 -->
+    <rect x="60" y="130" width="180" height="25" fill="rgba(255,255,255,0.02)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <text x="65" y="145" fill="#cbd5e1" font-family="system-ui" font-size="10" font-weight="500">Parts & Materials</text>
+    <text x="220" y="145" text-anchor="end" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="600">$125.50</text>
+    
+    <!-- Item 3 -->
+    <rect x="60" y="160" width="180" height="25" fill="rgba(255,255,255,0.02)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <text x="65" y="175" fill="#cbd5e1" font-family="system-ui" font-size="10" font-weight="500">Labor (2 hours)</text>
+    <text x="220" y="175" text-anchor="end" fill="#22c55e" font-family="system-ui" font-size="10" font-weight="600">$150.00</text>
+  </g>
+  
+  <!-- Total Section -->
+  <rect x="60" y="200" width="180" height="35" fill="rgba(14,165,233,0.1)" stroke="rgba(14,165,233,0.3)" stroke-width="1" rx="6"/>
+  <text x="65" y="218" fill="#e5e7eb" font-family="system-ui" font-size="12" font-weight="600">Total Amount</text>
+  <text x="220" y="225" text-anchor="end" fill="#0ea5e9" font-family="system-ui" font-size="16" font-weight="700">$550.50</text>
+  
+  <!-- Status Badge -->
+  <rect x="65" y="250" width="60" height="20" rx="10" fill="url(#paidGrad)" opacity="0">
+    <animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite"/>
+  </rect>
+  <text x="95" y="263" text-anchor="middle" fill="white" font-family="system-ui" font-size="9" font-weight="600" opacity="0">
+    PAID
+    <animate attributeName="opacity" values="0;1;1;0" dur="6s" repeatCount="indefinite"/>
+  </text>
+  
+  <!-- Payment Flow Arrow -->
+  <g class="payment-flow" transform="translate(270, 180)">
+    <path d="M0 0 Q30 -20 60 0" stroke="#0ea5e9" stroke-width="3" fill="none" stroke-dasharray="5,3" opacity="0.8">
+      <animate attributeName="stroke-dashoffset" values="0;8" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M50 -5 L60 0 L50 5" stroke="#0ea5e9" stroke-width="2" fill="#0ea5e9"/>
+  </g>
+  
+  <!-- Payment Methods Section -->
+  <g class="payment-methods" transform="translate(350, 120)">
+    <!-- Credit Card -->
+    <rect x="0" y="0" width="180" height="100" rx="12" fill="url(#cardGrad)" filter="url(#shadow)" style="cursor:pointer">
+      <animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="4s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Card Details -->
+    <circle cx="20" cy="25" r="8" fill="rgba(255,255,255,0.3)"/>
+    <circle cx="35" cy="25" r="8" fill="rgba(255,255,255,0.5)"/>
+    <text x="20" y="50" fill="white" font-family="system-ui" font-size="12" font-weight="600">•••• •••• •••• 4242</text>
+    <text x="20" y="65" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="10">John Johnson</text>
+    <text x="20" y="80" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="10">12/25</text>
+    <text x="140" y="80" text-anchor="end" fill="rgba(255,255,255,0.8)" font-family="system-ui" font-size="10">VISA</text>
+  </g>
+  
+  <!-- Online Payment Processing -->
+  <g class="payment-processing" transform="translate(380, 240)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="rgba(255,255,255,0.05)" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+    
+    <!-- Stripe Logo Placeholder -->
+    <rect x="10" y="10" width="40" height="15" rx="3" fill="#635bff"/>
+    <text x="15" y="21" fill="white" font-family="system-ui" font-size="8" font-weight="600">stripe</text>
+    
+    <!-- Processing Animation -->
+    <g class="processing-dots">
+      <circle cx="70" cy="30" r="3" fill="#0ea5e9">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0s"/>
+      </circle>
+      <circle cx="85" cy="30" r="3" fill="#0ea5e9">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0.3s"/>
+      </circle>
+      <circle cx="100" cy="30" r="3" fill="#0ea5e9">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
+      </circle>
+    </g>
+    
+    <text x="10" y="55" fill="#cbd5e1" font-family="system-ui" font-size="11" font-weight="500">Processing Payment...</text>
+    <text x="10" y="70" fill="#94a3b8" font-family="system-ui" font-size="9">$550.50</text>
+  </g>
+  
+  <!-- Success Checkmark (appears after processing) -->
+  <g class="success-check" transform="translate(450, 180)" opacity="0">
+    <circle cx="0" cy="0" r="20" fill="url(#paidGrad)" filter="url(#glow)">
+      <animate attributeName="r" values="15;25;20" dur="0.5s" begin="4s" fill="freeze"/>
+    </circle>
+    <path d="M-8,-2 L-3,5 L8,-8" stroke="white" stroke-width="3" fill="none" stroke-linecap="round">
+      <animate attributeName="stroke-dasharray" values="0,20; 20,0" dur="0.5s" begin="4.2s" fill="freeze"/>
+    </path>
+    
+    <animateOpacity attributeName="opacity" values="0;1" dur="0.3s" begin="4s" fill="freeze"/>
+  </g>
+  
+  <!-- QuickBooks Integration -->
+  <g class="quickbooks-sync" transform="translate(50, 350)">
+    <rect x="0" y="0" width="200" height="35" rx="6" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.3)" stroke-width="1"/>
+    <text x="10" y="20" fill="#22c55e" font-family="system-ui" font-size="12" font-weight="600">📊 Auto-sync to QuickBooks</text>
+    
+    <!-- Sync Animation -->
+    <g class="sync-icon" transform="translate(180, 17)">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#22c55e" stroke-width="2">
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <path d="M-4,-2 L0,2 L4,-2" stroke="#22c55e" stroke-width="2" fill="none">
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Payment History Sidebar -->
+  <g class="payment-history" transform="translate(350, 40)">
+    <text x="0" y="0" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Recent Payments</text>
+    
+    <!-- Payment 1 -->
+    <rect x="0" y="15" width="180" height="25" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <circle cx="10" cy="27" r="3" fill="#22c55e"/>
+    <text x="20" y="30" fill="#cbd5e1" font-family="system-ui" font-size="9">Smith HVAC Service</text>
+    <text x="160" y="30" text-anchor="end" fill="#22c55e" font-family="system-ui" font-size="9">$425.00</text>
+    
+    <!-- Payment 2 -->
+    <rect x="0" y="45" width="180" height="25" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <circle cx="10" cy="57" r="3" fill="#f59e0b"/>
+    <text x="20" y="60" fill="#cbd5e1" font-family="system-ui" font-size="9">Wilson Plumbing</text>
+    <text x="160" y="60" text-anchor="end" fill="#f59e0b" font-family="system-ui" font-size="9">$280.00</text>
+    
+    <!-- Payment 3 -->
+    <rect x="0" y="75" width="180" height="25" fill="rgba(255,255,255,0.03)" stroke="rgba(148,163,184,0.1)" stroke-width="1" rx="4"/>
+    <circle cx="10" cy="87" r="3" fill="#22c55e"/>
+    <text x="20" y="90" fill="#cbd5e1" font-family="system-ui" font-size="9">Davis Electric</text>
+    <text x="160" y="90" text-anchor="end" fill="#22c55e" font-family="system-ui" font-size="9">$675.50</text>
+  </g>
+  
+  <!-- Interactive Styles -->
+  <style>
+    .payment-methods rect:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .invoice-items rect:hover {
+      fill: rgba(255,255,255,0.05);
+      transition: fill 0.2s ease;
+    }
+  </style>
+</svg>
