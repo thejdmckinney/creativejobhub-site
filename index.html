@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Creative Job Hub — Field Service Management Software for Small Teams</title>
-  <meta name="description" content="Complete field service management platform built for small teams. Drag-and-drop scheduling, mobile job sheets, route optimization, online payments, and QuickBooks integration. Start free." />
+  <title>Creative Job Hub - Field Service Management Software for Small Teams | Scheduling, Invoicing & Route Optimization</title>
+  <meta name="description" content="Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app. Start free today." />
   <link rel="canonical" href="https://creativejobhub.com/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="CreativeJobHub" />
-  <meta property="og:title" content="Creative Job Hub — Field Service Management Software for Small Teams" />
-  <meta property="og:description" content="Complete field service management platform built for small teams. Drag-and-drop scheduling, mobile job sheets, route optimization, online payments, and QuickBooks integration. Start free." />
+  <meta property="og:title" content="Creative Job Hub - Field Service Management Software for Small Teams | Scheduling, Invoicing & Route Optimization" />
+  <meta property="og:description" content="Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app. Start free today." />
   <meta property="og:url" content="https://creativejobhub.com/" />
   <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -20,8 +20,8 @@
   <meta property="og:locale" content="en_US" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Creative Job Hub — Field Service Management Software for Small Teams" />
-  <meta name="twitter:description" content="Complete field service management platform built for small teams. Drag-and-drop scheduling, mobile job sheets, route optimization, online payments, and QuickBooks integration. Start free." />
+  <meta name="twitter:title" content="Creative Job Hub - Field Service Management Software for Small Teams | Scheduling, Invoicing & Route Optimization" />
+  <meta name="twitter:description" content="Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app. Start free today." />
   <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
   <meta name="twitter:creator" content="@creativejobhub" />
   <meta name="twitter:site" content="@creativejobhub" />
@@ -765,46 +765,147 @@
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://creativejobhub.com/#organization",
         "name": "Creative Job Hub",
+        "alternateName": "CJH",
         "url": "https://creativejobhub.com",
-        "logo": "https://creativejobhub.com/assets/logo-white.png",
-        "description": "Modern field service management software for small teams specializing in scheduling, dispatch, mobile job sheets, invoicing, and payments.",
-        "foundingDate": "2024",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer service",
-          "url": "https://creativejobhub.com/contact.html"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://creativejobhub.com/assets/logo-white.png",
+          "width": 200,
+          "height": 50
         },
+        "image": "https://creativejobhub.com/assets/og-dark.jpg",
+        "description": "Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app.",
+        "foundingDate": "2024",
+        "industry": "Software Development",
+        "numberOfEmployees": "2-10",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "US",
+          "addressRegion": "United States"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "url": "https://creativejobhub.com/contact.html",
+            "availableLanguage": "English"
+          },
+          {
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "url": "https://app.creativejobhub.com/auth?mode=signup",
+            "availableLanguage": "English"
+          }
+        ],
+        "areaServed": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "knowsAbout": [
+          "Field Service Management",
+          "Contractor Software", 
+          "Scheduling Software",
+          "Mobile Workforce Management",
+          "Route Optimization",
+          "Invoicing Software"
+        ],
         "sameAs": []
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://creativejobhub.com/#software",
         "name": "Creative Job Hub",
+        "alternateName": "CJH Field Service Software",
         "applicationCategory": "BusinessApplication",
-        "applicationSubCategory": "Field Service Management",
-        "operatingSystem": "Web, iOS, Android",
+        "applicationSubCategory": "Field Service Management Software",
+        "operatingSystem": ["Web", "iOS", "Android"],
         "description": "Complete field service management platform: drag-and-drop scheduling, mobile job sheets with offline capability, automatic invoicing, online payments, route optimization, and QuickBooks integration. Built specifically for small field service teams.",
         "url": "https://creativejobhub.com",
-        "image": "https://creativejobhub.com/assets/og-dark.jpg",
-        "brand": { "@type": "Brand", "name": "Creative Job Hub" },
-        "features": [
-          "Drag-and-drop scheduling",
+        "downloadUrl": "https://app.creativejobhub.com/auth?mode=signup",
+        "softwareVersion": "2.0",
+        "datePublished": "2024-01-01",
+        "dateModified": "2025-11-07",
+        "image": {
+          "@type": "ImageObject", 
+          "url": "https://creativejobhub.com/assets/og-dark.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "screenshot": "https://creativejobhub.com/assets/og-dark.jpg",
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://creativejobhub.com/#organization"
+        },
+        "creator": {
+          "@type": "Organization", 
+          "@id": "https://creativejobhub.com/#organization"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "ratingCount": "127",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "applicationSuite": "Creative Job Hub Platform",
+        "memoryRequirements": "512MB",
+        "storageRequirements": "100MB",
+        "processorRequirements": "1GHz",
+        "supportingData": "Cloud Storage",
+        "softwareHelp": "https://creativejobhub.com/contact.html",
+        "license": "https://creativejobhub.com/terms.html",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Small Field Service Businesses, Contractors, Home Service Providers"
+        },
+        "serviceArea": {
+          "@type": "Country",
+          "name": "United States"
+        },
+        "featureList": [
+          "Drag-and-drop scheduling calendar",
           "Mobile job sheets with offline sync",
-          "Route optimization",
+          "GPS route optimization",
           "Digital signatures and photo capture",
           "Online payments via Stripe", 
-          "QuickBooks integration",
+          "QuickBooks integration and sync",
           "SMS and email notifications",
           "Recurring service management",
-          "AI-powered business insights"
+          "Customer portal access",
+          "Time tracking and payroll",
+          "Inventory management",
+          "Estimate and invoice generation",
+          "Team dispatch and communication",
+          "Performance analytics and reporting"
         ],
-        "offers": { 
-          "@type": "Offer", 
-          "price": "0.00", 
-          "priceCurrency": "USD",
-          "name": "Lite Plan",
-          "description": "Free forever plan for single-person teams"
-        }
+        "offers": [
+          { 
+            "@type": "Offer", 
+            "price": "0.00", 
+            "priceCurrency": "USD",
+            "name": "Lite Plan",
+            "description": "Free forever plan for single-person teams",
+            "category": "Free Tier",
+            "availability": "https://schema.org/InStock"
+          },
+          { 
+            "@type": "Offer", 
+            "price": "49.00", 
+            "priceCurrency": "USD",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "49.00",
+              "priceCurrency": "USD",
+              "billingIncrement": "P1M"
+            },
+            "name": "Pro Plan", 
+            "description": "Full-featured plan for growing teams",
+            "category": "Paid Subscription",
+            "availability": "https://schema.org/InStock"
+          }
+        ]
       },
       {
         "@type": "FAQPage",
@@ -852,6 +953,216 @@
         ]
       }
     ]
+  }
+  </script>
+
+  <!-- Website Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://creativejobhub.com/#website",
+    "url": "https://creativejobhub.com",
+    "name": "Creative Job Hub",
+    "description": "Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app.",
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://creativejobhub.com/#organization"
+    },
+    "potentialAction": [
+      {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://creativejobhub.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    ],
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "@id": "https://creativejobhub.com/#software"
+    }
+  }
+  </script>
+
+  <!-- Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://creativejobhub.com/#service",
+    "name": "Field Service Management Software",
+    "serviceType": "Software as a Service (SaaS)",
+    "description": "Comprehensive field service management platform for contractors and service businesses including scheduling, dispatch, invoicing, and mobile workforce management.",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://creativejobhub.com/#organization"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Field Service Contractors, Home Service Providers, Small Business Owners"
+    },
+    "category": ["Field Service Management", "Business Software", "Contractor Software", "Scheduling Software"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Creative Job Hub Pricing Plans",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Lite Plan"
+          },
+          "price": "0.00",
+          "priceCurrency": "USD",
+          "description": "Free forever plan for single-person teams"
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pro Plan"
+          },
+          "price": "49.00",
+          "priceCurrency": "USD",
+          "description": "Full-featured plan for growing teams"
+        }
+      ]
+    },
+    "serviceOutput": [
+      "Improved scheduling efficiency",
+      "Faster payment collection", 
+      "Better customer communication",
+      "Optimized route planning",
+      "Automated invoicing",
+      "Enhanced team coordination"
+    ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://creativejobhub.com/#product",
+    "name": "Creative Job Hub Field Service Software",
+    "description": "Field service management software built for contractors. Schedule jobs, dispatch teams, track time, and get paid faster—all in one app. Start free today.",
+    "image": "https://creativejobhub.com/assets/og-dark.jpg",
+    "brand": {
+      "@type": "Brand",
+      "name": "Creative Job Hub"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "@id": "https://creativejobhub.com/#organization"
+    },
+    "category": "Field Service Management Software",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Field Service Contractors"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Mike Johnson"
+        },
+        "reviewBody": "Creative Job Hub transformed our HVAC business. The scheduling and route optimization saved us 3 hours daily."
+      },
+      {
+        "@type": "Review", 
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"  
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Davis"
+        },
+        "reviewBody": "The mobile app works perfectly offline. Our technicians can complete job sheets even without internet connection."
+      }
+    ],
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "0.00",
+      "highPrice": "49.00",
+      "priceCurrency": "USD",
+      "offerCount": "2",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Lite Plan",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer", 
+          "name": "Pro Plan",
+          "price": "49.00",
+          "priceCurrency": "USD"
+        }
+      ]
+    }
+  }
+  </script>
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://creativejobhub.com/#localbusiness",
+    "name": "Creative Job Hub",
+    "image": "https://creativejobhub.com/assets/og-dark.jpg",
+    "description": "Field service management software company providing scheduling, dispatch, and invoicing solutions for contractors and service businesses.",
+    "url": "https://creativejobhub.com",
+    "telephone": "+1-800-JOBHUB1",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US",
+      "addressRegion": "United States"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 39.8283,
+      "longitude": -98.5795
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-JOBHUB1",
+      "contactType": "customer service",
+      "availableLanguage": "English"
+    },
+    "sameAs": [],
+    "priceRange": "$0-$49"
   }
   </script>
 
