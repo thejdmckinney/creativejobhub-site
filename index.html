@@ -1805,74 +1805,282 @@
     });
   </script>
 
-  <!-- HubSpot Exit-Intent Popup Configuration -->
-  <script>
-    // Configure HubSpot popup targeting and behavior
-    window.hsPopupSettings = {
-      // Target all visitors (can be refined)
-      targetAll: true,
+  <!-- Custom Exit-Intent Popup -->
+  <div id="exit-intent-popup" class="exit-popup-overlay" style="display: none;">
+    <div class="exit-popup-container">
+      <button class="exit-popup-close" aria-label="Close popup">&times;</button>
       
-      // Show after 30 seconds if no exit intent detected
-      timeDelay: 30000,
-      
-      // Exit intent detection
-      exitIntent: true,
-      
-      // Don't show more than once per session
-      frequency: 'once-per-session',
-      
-      // Custom targeting (optional)
-      // url: '/pricing/', // Only show on pricing page
-      // device: 'desktop', // Only show on desktop
-    };
+      <div class="exit-popup-content">
+        <div class="exit-popup-icon">📊</div>
+        <h2 class="exit-popup-headline">Wait! Get Our Free Field Service ROI Calculator</h2>
+        <p class="exit-popup-description">Discover how much you could save by switching to Creative Job Hub. See your potential ROI in under 2 minutes.</p>
+        
+        <form class="exit-popup-form" name="exit-intent" method="POST" data-netlify="true" netlify-honeypot="bot-field-popup">
+          <input type="hidden" name="bot-field-popup" />
+          <input type="hidden" name="form_name" value="exit_intent_popup" />
+          <input type="hidden" name="page_url" />
+          <input type="hidden" name="referrer" />
+          <input type="hidden" name="timestamp" />
+          
+          <div class="exit-popup-fields">
+            <input type="text" name="name" placeholder="First name" required />
+            <input type="email" name="email" placeholder="Email address" required />
+          </div>
+          
+          <button type="submit" class="exit-popup-cta">Get My Free ROI Calculator</button>
+          <p class="exit-popup-privacy">No spam. Unsubscribe anytime. We respect your privacy.</p>
+        </form>
+      </div>
+    </div>
+  </div>
 
-    /* 
-    EXIT-INTENT POPUP SETUP INSTRUCTIONS:
+  <style>
+    /* Exit Intent Popup Styles */
+    .exit-popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease-out;
+    }
     
-    1. Go to HubSpot Marketing > Lead Capture > Forms
+    .exit-popup-container {
+      background: linear-gradient(135deg, #111827, #1f2937);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 20px;
+      max-width: 480px;
+      width: 90%;
+      padding: 40px 32px;
+      position: relative;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.4s ease-out;
+    }
     
-    2. Create Exit-Intent Popup Form:
-       - Click "Create form" 
-       - Choose "Pop-up form"
-       - Form name: "Exit Intent - Field Service Guide"
-       
-    3. Setup Form Fields:
-       - Name (required)
-       - Email (required) 
-       - Company (optional)
-       
-    4. Configure Popup Settings:
-       - Trigger: "Exit intent"
-       - Display frequency: "Once per session"
-       - Target pages: "All pages" or specific pages
-       - Device: "All devices" or "Desktop only"
-       
-    5. Design Your Offer:
-       - Headline: "Wait! Get Our Free Field Service Guide"
-       - Description: "Discover 10 ways to boost efficiency and grow your field service business"
-       - Button text: "Get Free Guide"
-       - Thank you message: "Check your email for the guide!"
-       
-    6. Lead Magnet Ideas:
-       ✅ "Field Service Efficiency Guide" 
-       ✅ "10 Ways to Reduce No-Shows"
-       ✅ "ROI Calculator Template"
-       ✅ "Free 30-day trial + setup call"
-       ✅ "Industry Benchmarking Report"
-       
-    7. Follow-up Automation:
-       - Set up email sequence to deliver lead magnet
-       - Add to relevant contact lists
-       - Trigger sales notifications for qualified leads
-       
-    8. A/B Testing:
-       - Test different headlines and offers
-       - Try different exit-intent triggers
-       - Test popup timing (immediate vs delayed)
-       
-    The popup will automatically show based on HubSpot's built-in targeting rules.
-    No additional code needed once you create the popup in HubSpot!
-    */
+    .exit-popup-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    
+    .exit-popup-close:hover {
+      color: #e5e7eb;
+    }
+    
+    .exit-popup-content {
+      text-align: center;
+    }
+    
+    .exit-popup-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    
+    .exit-popup-headline {
+      color: #e5e7eb;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin: 0 0 16px;
+    }
+    
+    .exit-popup-description {
+      color: #94a3b8;
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0 0 32px;
+    }
+    
+    .exit-popup-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .exit-popup-fields input {
+      background: #0b1220;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      color: #e5e7eb;
+      font-size: 16px;
+      padding: 16px 20px;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    
+    .exit-popup-fields input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .exit-popup-fields input::placeholder {
+      color: #64748b;
+    }
+    
+    .exit-popup-cta {
+      background: linear-gradient(135deg, #dc2626, #ea580c);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 32px;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    }
+    
+    .exit-popup-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+    }
+    
+    .exit-popup-privacy {
+      color: #64748b;
+      font-size: 12px;
+      margin: 16px 0 0;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .exit-popup-container {
+        padding: 32px 24px;
+        margin: 20px;
+      }
+      
+      .exit-popup-headline {
+        font-size: 24px;
+      }
+      
+      .exit-popup-description {
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  <script>
+    // Exit Intent Popup Logic
+    (function() {
+      let exitIntentShown = false;
+      let timeOnPage = 0;
+      const SHOW_AFTER_SECONDS = 30; // Fallback timer
+      const MOUSE_LEAVE_THRESHOLD = 5; // Pixels from top
+      
+      // Check if popup was already shown in this session
+      if (sessionStorage.getItem('exitIntentShown') === 'true') {
+        return;
+      }
+      
+      const popup = document.getElementById('exit-intent-popup');
+      const closeBtn = popup.querySelector('.exit-popup-close');
+      const form = popup.querySelector('.exit-popup-form');
+      
+      function showPopup() {
+        if (exitIntentShown) return;
+        
+        exitIntentShown = true;
+        sessionStorage.setItem('exitIntentShown', 'true');
+        
+        // Populate hidden fields
+        const now = new Date().toISOString();
+        form.querySelector('input[name="page_url"]').value = window.location.href;
+        form.querySelector('input[name="referrer"]').value = document.referrer;
+        form.querySelector('input[name="timestamp"]').value = now;
+        
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Track popup shown event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'exit_intent_popup_shown', {
+            'page_url': window.location.href
+          });
+        }
+      }
+      
+      function hidePopup() {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      
+      // Exit intent detection (desktop)
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= MOUSE_LEAVE_THRESHOLD && !exitIntentShown) {
+          showPopup();
+        }
+      });
+      
+      // Time-based fallback (mobile + desktop)
+      setTimeout(function() {
+        if (!exitIntentShown) {
+          showPopup();
+        }
+      }, SHOW_AFTER_SECONDS * 1000);
+      
+      // Close popup events
+      closeBtn.addEventListener('click', hidePopup);
+      
+      popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+          hidePopup();
+        }
+      });
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && popup.style.display === 'flex') {
+          hidePopup();
+        }
+      });
+      
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        // Let Netlify handle the form submission
+        hidePopup();
+        
+        // Track conversion event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'exit_intent_conversion', {
+            'page_url': window.location.href
+          });
+        }
+        
+        // Show thank you message
+        setTimeout(function() {
+          alert('Thanks! Check your email for the ROI Calculator link.');
+        }, 100);
+      });
+      
+    })();
   </script>
 
   <!-- Start of HubSpot Embed Code -->

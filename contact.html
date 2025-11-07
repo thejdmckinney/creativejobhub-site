@@ -145,55 +145,59 @@
       <p class="contact-lead">Have a question or want a quick demo? Send a message and we’ll get back ASAP.</p>
 
       <div class="contact-grid">
-        <!-- HubSpot Contact Form -->
+        <!-- Enhanced Contact Form with Lead Tracking -->
         <div class="contact-card">
-          <div id="hubspot-contact-form">
-            <!-- 
-            REPLACE THIS COMMENT WITH YOUR HUBSPOT FORM EMBED CODE
+          <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks.html">
+            <!-- Honeypot for spam protection -->
+            <input type="hidden" name="bot-field" />
             
-            To get your HubSpot embed code:
-            1. Go to HubSpot Marketing > Lead Capture > Forms
-            2. Create a new form with fields: Name, Email, Message
-            3. Click "Publish" > "Embed" 
-            4. Copy the embed code and paste it here
-            
-            It will look something like:
-            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
-            <script>
-              hbspt.forms.create({
-                region: "na1",
-                portalId: "YOUR_PORTAL_ID",
-                formId: "YOUR_FORM_ID"
-              });
-            </script>
-            -->
-            
-            <!-- Fallback form while you get HubSpot code -->
-            <form class="contact-form" action="https://formspree.io/f/xkgqepro" method="POST">
-              <div>
-                <label for="name">Your name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required />
-              </div>
+            <!-- Hidden fields for lead tracking -->
+            <input type="hidden" name="form_name" value="contact_form" />
+            <input type="hidden" name="page_url" id="page_url" />
+            <input type="hidden" name="referrer" id="referrer" />
+            <input type="hidden" name="timestamp" id="timestamp" />
 
-              <div>
-                <label for="email">Your email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required />
-              </div>
+            <div>
+              <label for="name">Your name *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
 
-              <div>
-                <label for="message">Your message</label>
-                <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
-              </div>
+            <div>
+              <label for="email">Email address *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
 
-              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-              <input type="hidden" name="_subject" value="New contact from Creative Job Hub">
+            <div>
+              <label for="company">Company name</label>
+              <input id="company" name="company" type="text" autocomplete="organization" />
+            </div>
 
-              <div class="contact-actions">
-                <button class="btn btn-primary" type="submit">Send message</button>
-                <span class="muted">We typically reply within one business day.</span>
-              </div>
-            </form>
-          </div>
+            <div>
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+
+            <div>
+              <label for="team_size">Team size</label>
+              <select id="team_size" name="team_size">
+                <option value="">Select...</option>
+                <option value="1">Just me</option>
+                <option value="2-5">2-5 people</option>
+                <option value="6-20">6-20 people</option>
+                <option value="21+">21+ people</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message">How can we help? *</label>
+              <textarea id="message" name="message" placeholder="Tell us about your field service business and what you're looking for..." required rows="4"></textarea>
+            </div>
+
+            <div class="contact-actions">
+              <button class="btn btn-primary" type="submit">Send message</button>
+              <span class="muted">We typically reply within one business day.</span>
+            </div>
+          </form>
         </div>
 
         <!-- Side info -->
@@ -225,6 +229,13 @@
   <script>
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Populate form tracking fields
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('page_url').value = window.location.href;
+      document.getElementById('referrer').value = document.referrer;
+      document.getElementById('timestamp').value = new Date().toISOString();
+    });
 
     // Mobile nav toggle (desktop unaffected)
     (function(){
