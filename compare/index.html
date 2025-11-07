@@ -98,6 +98,61 @@
     @media (max-width:900px){ .grid{grid-template-columns:1fr} }
 
     footer{padding:36px 0 60px; color:#94a3b8; border-top:1px solid var(--ring)}
+
+    /* Savings Calculator Enhancements */
+    .savings-calculator-widget::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, #22c55e20, #34d39920, #0ea5e920);
+      border-radius: 18px;
+      z-index: -1;
+      animation: shimmer 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .competitor-option:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+    }
+
+    .competitor-option.selected {
+      border-color: #22c55e !important;
+      background: rgba(34,197,94,0.1) !important;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.5); }
+    }
+
+    @media (max-width: 640px) {
+      .savings-calculator-widget {
+        margin: 24px auto !important;
+        padding: 24px !important;
+      }
+      
+      .savings-calculator-widget div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      
+      .competitor-option {
+        padding: 12px !important;
+      }
+      
+      #monthly-savings {
+        font-size: 24px !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -126,6 +181,43 @@
   <main class="wrap">
     <h1>Compare CreativeJobHub</h1>
     <p class="muted">Built for small field-service teams: faster scheduling, built-in timesheets, AI insights, and clear pricing.</p>
+
+    <!-- Savings Comparison Widget -->
+    <div class="savings-calculator-widget" style="max-width: 700px; margin: 32px auto; background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 32px; text-align: center; position: relative; overflow: hidden; backdrop-filter: blur(10px) saturate(120%); -webkit-backdrop-filter: blur(10px) saturate(120%); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);">
+      <div style="background: linear-gradient(135deg, #22c55e, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 18px; font-weight: 600; margin-bottom: 8px;">💰 Savings Calculator</div>
+      <h3 style="margin: 0 0 16px; font-size: 24px; color: #e5e7eb;">See how much you can save switching to Creative Job Hub</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
+        <div class="competitor-option" data-competitor="jobber" data-price="79" style="background: rgba(255,255,255,0.06); border: 2px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.3s ease;">
+          <div style="font-weight: 600; color: #e5e7eb; margin-bottom: 4px;">Jobber</div>
+          <div style="color: #94a3b8; font-size: 14px;">Mid-tier plan</div>
+          <div style="font-size: 20px; font-weight: 700; color: #f59e0b; margin-top: 8px;">$79/mo</div>
+        </div>
+        
+        <div class="competitor-option" data-competitor="housecall" data-price="89" style="background: rgba(255,255,255,0.06); border: 2px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.3s ease;">
+          <div style="font-weight: 600; color: #e5e7eb; margin-bottom: 4px;">Housecall Pro</div>
+          <div style="color: #94a3b8; font-size: 14px;">Mid-tier plan</div>
+          <div style="font-size: 20px; font-weight: 700; color: #f59e0b; margin-top: 8px;">$89/mo</div>
+        </div>
+        
+        <div class="competitor-option" data-competitor="workiz" data-price="99" style="background: rgba(255,255,255,0.06); border: 2px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 16px; cursor: pointer; transition: all 0.3s ease;">
+          <div style="font-weight: 600; color: #e5e7eb; margin-bottom: 4px;">Workiz</div>
+          <div style="color: #94a3b8; font-size: 14px;">Mid-tier plan</div>
+          <div style="font-size: 20px; font-weight: 700; color: #f59e0b; margin-top: 8px;">$99/mo</div>
+        </div>
+      </div>
+      
+      <div id="savings-result" style="background: linear-gradient(135deg, #22c55e20, #34d39920); border: 1px solid #22c55e40; border-radius: 12px; padding: 20px; margin: 24px 0; opacity: 0; transform: translateY(10px); transition: all 0.4s ease;">
+        <div style="font-size: 16px; color: #cbd5e1; margin-bottom: 8px;">By switching to Creative Job Hub Team ($49/mo), you save:</div>
+        <div id="monthly-savings" style="font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #22c55e, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px;">$30/month</div>
+        <div id="yearly-savings" style="font-size: 18px; font-weight: 600; color: #22c55e;">$360/year</div>
+        <div style="margin-top: 12px; font-size: 14px; color: #94a3b8;">That's enough to hire a part-time assistant or invest in new equipment!</div>
+      </div>
+      
+      <div style="margin-top: 24px;">
+        <a href="/pricing/" style="display: inline-block; background: linear-gradient(135deg, #22c55e, #34d399); color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);">See Full Pricing Comparison</a>
+      </div>
+    </div>
 
     <section class="grid" style="margin-top:16px">
       <article class="card" id="jobber">
@@ -204,6 +296,86 @@
       btn.addEventListener('click', toggleNav);
       document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && header.classList.contains('nav-open')) toggleNav(); });
       nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A' && header.classList.contains('nav-open')) toggleNav(); });
+    })();
+
+    // Savings Calculator
+    (function(){
+      const competitorOptions = document.querySelectorAll('.competitor-option');
+      const savingsResult = document.getElementById('savings-result');
+      const monthlySavings = document.getElementById('monthly-savings');
+      const yearlySavings = document.getElementById('yearly-savings');
+      const cjhPrice = 49; // Creative Job Hub Team plan price
+
+      function calculateSavings(competitorPrice) {
+        const monthly = competitorPrice - cjhPrice;
+        const yearly = monthly * 12;
+        return { monthly, yearly };
+      }
+
+      function updateSavings(competitorPrice, competitorName) {
+        const savings = calculateSavings(competitorPrice);
+        
+        monthlySavings.textContent = `$${savings.monthly}/month`;
+        yearlySavings.textContent = `$${savings.yearly.toLocaleString()}/year`;
+        
+        // Show result with animation
+        savingsResult.style.opacity = '1';
+        savingsResult.style.transform = 'translateY(0)';
+        
+        // Add some flair based on savings amount
+        const encouragement = savings.yearly >= 600 
+          ? "That's enough to hire a part-time assistant or invest in new equipment!"
+          : savings.yearly >= 300
+          ? "Perfect for reinvesting in your business growth!"
+          : "Every dollar saved helps your bottom line!";
+        
+        document.querySelector('#savings-result div:last-child').textContent = encouragement;
+      }
+
+      competitorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          // Reset all options
+          competitorOptions.forEach(opt => {
+            opt.classList.remove('selected');
+            opt.style.borderColor = 'rgba(148,163,184,0.2)';
+            opt.style.background = 'rgba(255,255,255,0.06)';
+          });
+          
+          // Highlight selected option
+          this.classList.add('selected');
+          this.style.borderColor = '#22c55e';
+          this.style.background = 'rgba(34,197,94,0.1)';
+          
+          // Calculate and show savings
+          const price = parseInt(this.dataset.price);
+          const competitor = this.dataset.competitor;
+          updateSavings(price, competitor);
+        });
+
+        // Add hover effects
+        option.addEventListener('mouseenter', function() {
+          if (this.style.borderColor !== 'rgb(34, 197, 94)') {
+            this.style.borderColor = 'rgba(148,163,184,0.4)';
+            this.style.background = 'rgba(255,255,255,0.08)';
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+          }
+        });
+
+        option.addEventListener('mouseleave', function() {
+          if (!this.classList.contains('selected')) {
+            this.style.borderColor = 'rgba(148,163,184,0.2)';
+            this.style.background = 'rgba(255,255,255,0.06)';
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = 'none';
+          }
+        });
+      });
+
+      // Auto-select Jobber as default example
+      setTimeout(() => {
+        competitorOptions[0].click();
+      }, 500);
     })();
   </script>
 </body>
