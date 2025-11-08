@@ -1839,10 +1839,25 @@
       updateROICalculator();
     }
 
-    // Initialize calculator on page load
+    // Make function available globally
+    window.handleSliderChange = handleSliderChange;
+    window.updateROICalculator = updateROICalculator;
+
+    // Initialize calculator on page load with fallback event listeners
     document.addEventListener('DOMContentLoaded', function() {
       updateROICalculator(); // Initial calculation
       console.log('ROI Calculator: Initialized with inline event handlers');
+      
+      // Fallback event listeners in case inline handlers don't work
+      const sliders = ['team-size', 'hourly-rate', 'jobs-per-week'];
+      sliders.forEach(id => {
+        const slider = document.getElementById(id);
+        if (slider) {
+          slider.addEventListener('input', handleSliderChange);
+          slider.addEventListener('change', handleSliderChange);
+          console.log('Fallback event listener attached to:', id);
+        }
+      });
     });
   </script>
 
