@@ -1518,17 +1518,21 @@
             </p>
             <!-- Debug buttons for testing -->
             <div style="margin-bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
-              <button onclick="updateROICalculator(); console.log('Manual calculation test')" 
+              <button onclick="alert('JavaScript is working!'); console.log('Basic JavaScript test successful')" 
                       style="background: #dc2626; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                Test Calculation
+                Test JS
               </button>
-              <button onclick="document.getElementById('team-size').value = 10; updateROICalculator(); console.log('Team size set to 10')" 
+              <button onclick="console.log('Elements found:', {teamSize: !!document.getElementById('team-size'), hourlyRate: !!document.getElementById('hourly-rate'), jobsWeek: !!document.getElementById('jobs-per-week')})" 
                       style="background: #059669; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                Set Team Size = 10
+                Find Elements
               </button>
-              <button onclick="console.log('Slider values:', {team: document.getElementById('team-size').value, rate: document.getElementById('hourly-rate').value, jobs: document.getElementById('jobs-per-week').value})" 
+              <button onclick="var t=document.getElementById('team-size'); if(t) {console.log('Team size slider:', t.value, t.min, t.max); t.value=15; console.log('Set to 15, now:', t.value)} else console.log('Team size slider not found')" 
                       style="background: #7c3aed; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                Log Values
+                Test Slider
+              </button>
+              <button onclick="try{updateROICalculator(); console.log('Calculator function works')} catch(e){console.error('Calculator error:', e)}" 
+                      style="background: #ea580c; color: white; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                Test Calculator
               </button>
             </div>
             <div class="row" style="justify-content: center; gap: 16px;">
