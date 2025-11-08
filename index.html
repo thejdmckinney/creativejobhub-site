@@ -1458,9 +1458,7 @@
             <div class="input-group">
               <label for="team-size" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">Team Size</label>
               <input type="range" id="team-size" min="1" max="50" value="5" 
-                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;"
-                     oninput="handleSliderChange()"
-                     onchange="handleSliderChange()">
+                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--muted);">
                 <span>1 person</span>
                 <span id="team-size-value" style="font-weight: 600; color: var(--brand);">5 people</span>
@@ -1471,9 +1469,7 @@
             <div class="input-group">
               <label for="hourly-rate" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">Average Hourly Rate</label>
               <input type="range" id="hourly-rate" min="25" max="150" value="75" 
-                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;"
-                     oninput="handleSliderChange()"
-                     onchange="handleSliderChange()">
+                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--muted);">
                 <span>$25/hr</span>
                 <span id="hourly-rate-value" style="font-weight: 600; color: var(--brand);">$75/hr</span>
@@ -1484,9 +1480,7 @@
             <div class="input-group">
               <label for="jobs-per-week" style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text);">Jobs Per Week</label>
               <input type="range" id="jobs-per-week" min="5" max="200" value="25" 
-                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;"
-                     oninput="handleSliderChange()"
-                     onchange="handleSliderChange()">
+                     style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: var(--muted);">
                 <span>5 jobs</span>
                 <span id="jobs-per-week-value" style="font-weight: 600; color: var(--brand);">25 jobs</span>
@@ -1524,7 +1518,7 @@
             </p>
 
             <!-- Debug test button -->
-            <button onclick="alert('JavaScript is working!'); console.log('Test button works'); try{updateROICalculator(); console.log('Calculator function works')} catch(e){console.error('Calculator error:', e)}" 
+            <button id="test-calculator-btn" 
                     style="background: #dc2626; color: white; padding: 4px 12px; border: none; border-radius: 4px; margin-bottom: 16px; cursor: pointer; font-size: 12px;">
               🔧 Test Calculator
             </button>
@@ -1842,31 +1836,60 @@
       document.getElementById('roi-percentage').textContent = `${Math.round(Math.max(roi, 0)).toLocaleString()}%`;
     }
 
-    // Global function for slider changes (called by inline handlers)
+    // Slider change handler function
     function handleSliderChange() {
-      console.log('Slider moved!');
+      console.log('✅ Slider moved successfully!');
       updateROICalculator();
     }
 
-    // Make function available globally
-    window.handleSliderChange = handleSliderChange;
-    window.updateROICalculator = updateROICalculator;
-
-    // Initialize calculator on page load with fallback event listeners
+    // Initialize ROI Calculator with pure event listeners
     document.addEventListener('DOMContentLoaded', function() {
-      updateROICalculator(); // Initial calculation
-      console.log('ROI Calculator: Initialized with inline event handlers');
+      console.log('🎯 DOM loaded, setting up ROI calculator...');
       
-      // Fallback event listeners in case inline handlers don't work
-      const sliders = ['team-size', 'hourly-rate', 'jobs-per-week'];
-      sliders.forEach(id => {
-        const slider = document.getElementById(id);
-        if (slider) {
-          slider.addEventListener('input', handleSliderChange);
-          slider.addEventListener('change', handleSliderChange);
-          console.log('Fallback event listener attached to:', id);
+      // Set up test button
+      const testBtn = document.getElementById('test-calculator-btn');
+      if (testBtn) {
+        testBtn.addEventListener('click', function() {
+          alert('JavaScript is working!');
+          console.log('✅ Test button works');
+          try {
+            updateROICalculator();
+            console.log('✅ Calculator function works');
+          } catch(e) {
+            console.error('❌ Calculator error:', e);
+          }
+        });
+        console.log('✅ Test button event listener attached');
+      }
+      
+      // Set up slider event listeners
+      const sliders = [
+        { id: 'team-size', name: 'Team Size' },
+        { id: 'hourly-rate', name: 'Hourly Rate' },
+        { id: 'jobs-per-week', name: 'Jobs Per Week' }
+      ];
+      
+      sliders.forEach(slider => {
+        const element = document.getElementById(slider.id);
+        if (element) {
+          // Add multiple event types for maximum compatibility
+          element.addEventListener('input', handleSliderChange);
+          element.addEventListener('change', handleSliderChange);
+          element.addEventListener('mousemove', function(e) {
+            if (e.buttons === 1) { // Only if mouse is pressed
+              handleSliderChange();
+            }
+          });
+          element.addEventListener('touchmove', handleSliderChange);
+          console.log(`✅ ${slider.name} slider events attached`);
+        } else {
+          console.error(`❌ ${slider.name} slider not found`);
         }
       });
+      
+      // Initial calculation
+      updateROICalculator();
+      console.log('🎯 ROI Calculator initialization complete');
     });
   </script>
 
