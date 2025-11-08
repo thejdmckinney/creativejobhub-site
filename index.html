@@ -1517,17 +1517,7 @@
               reduced travel time with route optimization, and elimination of manual paperwork processes.
             </p>
 
-            <!-- Debug test buttons -->
-            <div style="margin-bottom: 16px;">
-              <button id="test-calculator-btn" 
-                      style="background: #dc2626; color: white; padding: 4px 12px; border: none; border-radius: 4px; margin-right: 8px; cursor: pointer; font-size: 12px;">
-                🔧 Test Calculator
-              </button>
-              <button id="test-slider-btn" 
-                      style="background: #059669; color: white; padding: 4px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
-                🎚️ Test Sliders
-              </button>
-            </div>
+
 
             <div class="row" style="justify-content: center; gap: 16px;">
               <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">Start saving today</a>
@@ -1852,54 +1842,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       console.log('🎯 DOM loaded, setting up ROI calculator...');
       
-      // Set up test buttons
-      const testBtn = document.getElementById('test-calculator-btn');
-      if (testBtn) {
-        testBtn.addEventListener('click', function() {
-          alert('JavaScript is working!');
-          console.log('✅ Test button works');
-          try {
-            updateROICalculator();
-            console.log('✅ Calculator function works');
-          } catch(e) {
-            console.error('❌ Calculator error:', e);
-          }
-        });
-        console.log('✅ Test button event listener attached');
-      }
-      
-      const testSliderBtn = document.getElementById('test-slider-btn');
-      if (testSliderBtn) {
-        testSliderBtn.addEventListener('click', function() {
-          console.log('🎚️ Testing slider manipulation...');
-          const teamSlider = document.getElementById('team-size');
-          if (teamSlider) {
-            console.log('Current team size value:', teamSlider.value);
-            
-            // Test 1: Direct value change
-            teamSlider.value = 15;
-            console.log('Set team size to 15, now:', teamSlider.value);
-            
-            // Test 2: Trigger input event manually
-            const inputEvent = new Event('input', { bubbles: true });
-            teamSlider.dispatchEvent(inputEvent);
-            console.log('Dispatched input event');
-            
-            // Test 3: Try both input and change events
-            const changeEvent = new Event('change', { bubbles: true });
-            teamSlider.dispatchEvent(changeEvent);
-            console.log('Dispatched change event');
-            
-            // Manual update
-            updateROICalculator();
-            alert('Slider test complete - check console and calculator display');
-          } else {
-            alert('Team slider not found!');
-            console.error('❌ Team slider element not found');
-          }
-        });
-        console.log('✅ Slider test button event listener attached');
-      }
+
       
       // Set up slider event listeners
       const sliders = [
