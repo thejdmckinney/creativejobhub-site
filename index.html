@@ -617,6 +617,9 @@
         outline: none !important;
         cursor: pointer !important;
         pointer-events: auto !important;
+        position: relative !important;
+        z-index: 10 !important;
+        touch-action: manipulation !important;
       }
       
       .calculator-inputs input[type="range"]::-webkit-slider-thumb {
@@ -1526,6 +1529,11 @@
               <strong>Calculation based on:</strong> Reduced admin time (2-4 hrs/week per person), faster job completion (15% efficiency gain), 
               reduced travel time with route optimization, and elimination of manual paperwork processes.
             </p>
+            <!-- Debug button for testing -->
+            <button onclick="updateROICalculator(); console.log('Manual test button clicked')" 
+                    style="background: #dc2626; color: white; padding: 8px 16px; border: none; border-radius: 4px; margin-bottom: 16px; cursor: pointer;">
+              Test Calculator (Debug)
+            </button>
             <div class="row" style="justify-content: center; gap: 16px;">
               <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">Start saving today</a>
               <a href="/pricing/" class="btn btn-ghost">See pricing</a>
@@ -1792,11 +1800,18 @@
 
     // ========== ROI CALCULATOR ==========
     function updateROICalculator() {
-      console.log('ROI Calculator: updateROICalculator called');
-      const teamSize = parseInt(document.getElementById('team-size').value);
-      const hourlyRate = parseInt(document.getElementById('hourly-rate').value);
-      const jobsPerWeek = parseInt(document.getElementById('jobs-per-week').value);
-      console.log('ROI Calculator values:', { teamSize, hourlyRate, jobsPerWeek });
+      const teamSizeEl = document.getElementById('team-size');
+      const hourlyRateEl = document.getElementById('hourly-rate');
+      const jobsPerWeekEl = document.getElementById('jobs-per-week');
+      
+      if (!teamSizeEl || !hourlyRateEl || !jobsPerWeekEl) {
+        console.error('ROI Calculator: Missing input elements');
+        return;
+      }
+      
+      const teamSize = parseInt(teamSizeEl.value);
+      const hourlyRate = parseInt(hourlyRateEl.value);
+      const jobsPerWeek = parseInt(jobsPerWeekEl.value);
       
       // Update display values
       document.getElementById('team-size-value').textContent = `${teamSize} ${teamSize === 1 ? 'person' : 'people'}`;
@@ -1830,22 +1845,45 @@
     }
 
     // Initialize ROI calculator
-    document.addEventListener('DOMContentLoaded', function() {
+    function initROICalculator() {
+      console.log('ROI Calculator: Attempting to initialize...');
       const inputs = ['team-size', 'hourly-rate', 'jobs-per-week'];
+      let attachedCount = 0;
+      
       inputs.forEach(id => {
         const input = document.getElementById(id);
         if (input) {
-          // Add both 'input' and 'change' event listeners for better compatibility
-          input.addEventListener('input', updateROICalculator);
-          input.addEventListener('change', updateROICalculator);
-          console.log('ROI Calculator: Event listeners attached to', id);
+          // Remove any existing listeners first
+          input.removeEventListener('input', updateROICalculator);
+          input.removeEventListener('change', updateROICalculator);
+          
+          // Add multiple event types for maximum compatibility
+          input.addEventListener('input', updateROICalculator, { passive: true });
+          input.addEventListener('change', updateROICalculator, { passive: true });
+          input.addEventListener('mousemove', updateROICalculator, { passive: true });
+          input.addEventListener('touchmove', updateROICalculator, { passive: true });
+          
+          console.log('ROI Calculator: Event listeners attached to', id, input);
+          attachedCount++;
         } else {
           console.error('ROI Calculator: Could not find element with id', id);
         }
       });
+      
+      console.log(`ROI Calculator: Attached listeners to ${attachedCount}/${inputs.length} inputs`);
       updateROICalculator(); // Initial calculation
-      console.log('ROI Calculator: Initialized');
-    });
+      console.log('ROI Calculator: Initialization complete');
+    }
+
+    // Try multiple initialization methods
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initROICalculator);
+    } else {
+      initROICalculator();
+    }
+    
+    // Fallback initialization after a delay
+    setTimeout(initROICalculator, 1000);
   </script>
 
   <!-- Custom Exit-Intent Popup -->
@@ -2036,8 +2074,8 @@
     (function() {
       let exitIntentShown = false;
       let timeOnPage = 0;
-      const SHOW_AFTER_SECONDS = 30; // Fallback timer
-      const MOUSE_LEAVE_THRESHOLD = 5; // Pixels from top
+      const SHOW_AFTER_SECONDS = 120; // Fallback timer (2 minutes)
+      const MOUSE_LEAVE_THRESHOLD = -10; // Pixels from top (negative to ensure mouse actually leaves viewport)
       
       // Check if popup was already shown in this session
       if (sessionStorage.getItem('exitIntentShown') === 'true') {
@@ -2076,9 +2114,9 @@
         document.body.style.overflow = '';
       }
       
-      // Exit intent detection (desktop)
-      document.addEventListener('mouseleave', function(e) {
-        if (e.clientY <= MOUSE_LEAVE_THRESHOLD && !exitIntentShown) {
+      // Exit intent detection (desktop) - only trigger when mouse leaves the top of the viewport
+      document.documentElement.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= MOUSE_LEAVE_THRESHOLD && !exitIntentShown && e.relatedTarget === null) {
           showPopup();
         }
       });
