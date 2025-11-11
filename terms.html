@@ -97,27 +97,8 @@
 </head>
 <body>
 
-  <!-- Inline, accessible header -->
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Creative Job Hub Home">
-      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="128" height="32">
-    </a>
-
-    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
-
-    <nav id="primary-nav" class="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/compare/">Compare</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html" aria-current="page">Terms</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
-    </nav>
-  </header>
+  <!-- Standard Navigation System -->
+  <div id="site-header"></div>
 
   <main class="wrap">
     <h1>Terms of Service</h1>
@@ -179,6 +160,9 @@
   </script>
 
   <!-- Start of HubSpot Embed Code -->
+  <!-- Standard Navigation System -->
+  <script src="/assets/header.js?v=1"></script>
+
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
   <!-- End of HubSpot Embed Code -->
 </body>
