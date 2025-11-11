@@ -44,46 +44,7 @@
     }
     a{color:inherit;text-decoration:none}
 
-    /* Header / Nav (desktop + mobile hamburger) */
-    .site-header{
-      position:sticky; top:0; z-index:1000;
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px; padding:10px 16px; background:#0b1220;
-      border-bottom:1px solid var(--ring);
-      backdrop-filter:saturate(120%) blur(6px);
-    }
-    .brand img{height:32px; display:block}
-    .nav{display:flex; gap:16px; align-items:center}
-    .nav a{font-weight:700; padding:8px 10px; border-radius:10px}
-    .nav a:hover{background:rgba(255,255,255,.06)}
-    .nav .cta{background:linear-gradient(135deg, var(--brand), #38bdf8); color:#fff; box-shadow:0 6px 18px rgba(14,165,233,.25)}
-    .nav .cta:hover{filter:brightness(.98)}
-    .nav-toggle{
-      display:none; position:relative; width:40px; height:40px;
-      border:1px solid #334155; border-radius:10px; background:#0b1220; cursor:pointer
-    }
-    .nav-toggle span{
-      position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
-      transition: transform .25s, opacity .25s;
-    }
-    .nav-toggle span:nth-child(1){ top:12px }
-    .nav-toggle span:nth-child(2){ top:19px }
-    .nav-toggle span:nth-child(3){ top:26px }
-    @media (max-width: 860px){
-      .nav{
-        position:absolute; top:72px; left:0; right:0;
-        display:grid; gap:6px; padding:12px 16px; background:#0b1220;
-        border-bottom:1px solid var(--ring);
-        transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
-      }
-      .nav a{ padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15) }
-      .nav .cta{ box-shadow:none }
-      .nav-toggle{ display:inline-flex; align-items:center; justify-content:center }
-      .site-header.nav-open .nav{ opacity:1; pointer-events:auto; transform:translateY(0) }
-      .site-header.nav-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg) }
-      .site-header.nav-open .nav-toggle span:nth-child(2){ opacity:0 }
-      .site-header.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg) }
-    }
+    /* Using standard navigation system from site.css */
 
     /* Page */
     .contact-wrap{max-width:1100px;margin:0 auto;padding:28px 20px 72px}
@@ -119,25 +80,8 @@
 </head>
 <body>
 
-  <!-- Inline, accessible header -->
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Creative Job Hub Home">
-      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="128" height="32">
-    </a>
-
-    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
-
-    <nav id="primary-nav" class="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/compare/">Compare</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/contact.html" aria-current="page">Contact</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
-    </nav>
-  </header>
+  <!-- Standard Navigation System -->
+  <div id="site-header"></div>
 
   <main>
     <div class="contact-wrap">
@@ -249,22 +193,11 @@
       document.getElementById('timestamp').value = new Date().toISOString();
     });
 
-    // Mobile nav toggle (desktop unaffected)
-    (function(){
-      const header = document.querySelector('.site-header');
-      const btn = header.querySelector('.nav-toggle');
-      const nav = header.querySelector('#primary-nav');
-
-      function toggleNav(){
-        const open = header.classList.toggle('nav-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        document.body.style.overflow = open ? 'hidden' : '';
-      }
-      btn.addEventListener('click', toggleNav);
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && header.classList.contains('nav-open')) toggleNav(); });
-      nav.addEventListener('click', (e)=>{ if(e.target.tagName==='A' && header.classList.contains('nav-open')) toggleNav(); });
-    })();
+    // Navigation handled by standard header.js system
   </script>
+
+  <!-- Standard Navigation System -->
+  <script src="/assets/header.js?v=1"></script>
 
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>

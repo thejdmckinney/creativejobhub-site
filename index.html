@@ -50,70 +50,7 @@
   <link rel="stylesheet" href="/assets/site.min.css?v=11" />
 
   <style>
-    /* Navigation Dropdown */
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .nav-dropdown-toggle {
-      padding: 8px 0;
-      font-weight: 500;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .nav-dropdown:hover .nav-dropdown-toggle {
-      color: var(--brand, #0ea5e9);
-    }
-    .nav-dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      background: #111827;
-      border: 1px solid rgba(148,163,184,0.15);
-      border-radius: 8px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s;
-      z-index: 1000;
-      padding: 8px 0;
-    }
-    .nav-dropdown:hover .nav-dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .nav-dropdown-menu a {
-      display: block;
-      padding: 12px 16px;
-      color: #e5e7eb;
-      text-decoration: none;
-      transition: all 0.2s;
-      font-weight: 500;
-    }
-    .nav-dropdown-menu a:hover {
-      background: rgba(14,165,233,0.1);
-      color: #0ea5e9;
-    }
-    
-    @media (max-width: 768px) {
-      .nav-dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        padding: 0;
-        margin-left: 20px;
-      }
-      .nav-dropdown-toggle::after {
-        content: "";
-      }
-    }
+    /* Using standard navigation system from site.css */
   </style>
 
   <style>
@@ -1227,37 +1164,8 @@
     <div class="particle"></div>
   </div>
 
-  <!-- Accessible, responsive header (desktop nav + mobile hamburger) -->
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Creative Job Hub Home">
-      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub">
-    </a>
-
-    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
-
-    <nav id="primary-nav" class="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/field-service-management/">Field Service</a>
-      <div class="nav-dropdown">
-        <span class="nav-dropdown-toggle">Industries ▼</span>
-        <div class="nav-dropdown-menu">
-          <a href="/hvac-field-service-software/">HVAC Software</a>
-          <a href="/plumbing-field-service-software/">Plumbing Software</a>
-          <a href="/electrical-field-service-software/">Electrical Software</a>
-          <a href="/landscaping-field-service-software/">Landscaping Software</a>
-          <a href="/handyman-field-service-software/">Handyman Software</a>
-        </div>
-      </div>
-      <a href="/blog/">Blog</a>
-      <a href="/compare/">Compare</a>
-      <a href="/pricing/">Pricing</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:linear-gradient(135deg, var(--brand-2), #34d399)">Start free</a>
-    </nav>
-  </header>
+  <!-- Standard Navigation System -->
+  <div id="site-header"></div>
 
   <main>
     <!-- HERO -->
@@ -2296,6 +2204,9 @@
       
     })();
   </script>
+
+  <!-- Standard Navigation System -->
+  <script src="/assets/header.js?v=1"></script>
 
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
