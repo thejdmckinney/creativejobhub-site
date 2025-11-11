@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Graph Image Generator - Creative Job Hub</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .og-template {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #0b1220 0%, #111827 50%, #1e293b 100%);
+      position: relative;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+    }
+    
+    /* Animated background elements */
+    .og-template::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(14,165,233,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(34,197,94,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(168,85,247,0.08) 0%, transparent 50%);
+    }
+    
+    .logo {
+      position: absolute;
+      top: 60px;
+      left: 80px;
+      height: 40px;
+      color: #0ea5e9;
+      font-size: 24px;
+      font-weight: 800;
+    }
+    
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+    
+    .subtitle {
+      font-size: 24px;
+      color: #94a3b8;
+      line-height: 1.4;
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+    
+    .features {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    
+    .feature-tag {
+      background: rgba(14,165,233,0.2);
+      color: #7dd3fc;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid rgba(14,165,233,0.3);
+    }
+    
+    .domain {
+      position: absolute;
+      bottom: 60px;
+      right: 80px;
+      color: #64748b;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    /* Specific page variants */
+    .og-founder-story .title {
+      background: linear-gradient(135deg, #0ea5e9, #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .og-pricing .feature-tag {
+      background: rgba(34,197,94,0.2);
+      color: #86efac;
+      border-color: rgba(34,197,94,0.3);
+    }
+    
+    .og-ai-features .feature-tag {
+      background: rgba(168,85,247,0.2);
+      color: #c4b5fd;
+      border-color: rgba(168,85,247,0.3);
+    }
+    
+    .og-how-it-works .feature-tag {
+      background: rgba(249,115,22,0.2);
+      color: #fed7aa;
+      border-color: rgba(249,115,22,0.3);
+    }
+  </style>
+</head>
+<body>
+  <!-- Homepage OG Image -->
+  <div class="og-template og-homepage" id="homepage">
+    <div class="logo">Creative Job Hub</div>
+    <div class="content">
+      <h1 class="title">AI-Powered Field Service Management Software</h1>
+      <p class="subtitle">Revolutionary field service platform with smart photo analysis, predictive maintenance, and dynamic routing. Built by contractors, for contractors.</p>
+      <div class="features">
+        <div class="feature-tag">🤖 AI-Powered</div>
+        <div class="feature-tag">📱 Mobile-First</div>
+        <div class="feature-tag">💰 69% Cost Savings</div>
+        <div class="feature-tag">⚡ Built by Contractors</div>
+      </div>
+    </div>
+    <div class="domain">creativejobhub.com</div>
+  </div>
+
+  <!-- Founder Story OG Image -->
+  <div class="og-template og-founder-story" id="founder-story" style="display: none;">
+    <div class="logo">Creative Job Hub</div>
+    <div class="content">
+      <h1 class="title">How I Wasted $2,655 on Field Service Software</h1>
+      <p class="subtitle">Real founder story: 11 months testing Jobber, Housecall Pro, and Workiz led to building a better solution at 69% less cost.</p>
+      <div class="features">
+        <div class="feature-tag">💸 $2,655 Wasted</div>
+        <div class="feature-tag">📊 11 Months Testing</div>
+        <div class="feature-tag">🏗️ Built Better Solution</div>
+        <div class="feature-tag">💰 69% Savings</div>
+      </div>
+    </div>
+    <div class="domain">creativejobhub.com/case-studies</div>
+  </div>
+
+  <!-- Pricing OG Image -->
+  <div class="og-template og-pricing" id="pricing" style="display: none;">
+    <div class="logo">Creative Job Hub</div>
+    <div class="content">
+      <h1 class="title">Transparent Pricing That Scales With You</h1>
+      <p class="subtitle">No hidden fees. No feature limitations. Everything included. Start free, upgrade when the app pays for itself.</p>
+      <div class="features">
+        <div class="feature-tag">🆓 Free Forever Plan</div>
+        <div class="feature-tag">📈 Scales With Growth</div>
+        <div class="feature-tag">🔓 All Features Included</div>
+        <div class="feature-tag">💳 No Hidden Costs</div>
+      </div>
+    </div>
+    <div class="domain">creativejobhub.com/pricing</div>
+  </div>
+
+  <!-- How It Works OG Image -->
+  <div class="og-template og-how-it-works" id="how-it-works" style="display: none;">
+    <div class="logo">Creative Job Hub</div>
+    <div class="content">
+      <h1 class="title">From Request to Paid in 3 Simple Steps</h1>
+      <p class="subtitle">Schedule & dispatch → Do the work → Invoice & get paid. See how Creative Job Hub streamlines your entire workflow.</p>
+      <div class="features">
+        <div class="feature-tag">1️⃣ Schedule & Dispatch</div>
+        <div class="feature-tag">2️⃣ Mobile Job Sheets</div>
+        <div class="feature-tag">3️⃣ Invoice & Payment</div>
+      </div>
+    </div>
+    <div class="domain">creativejobhub.com/how-it-works</div>
+  </div>
+
+  <script>
+    // Function to show specific template
+    function showTemplate(id) {
+      document.querySelectorAll('.og-template').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'flex';
+    }
+    
+    // Show homepage by default
+    showTemplate('homepage');
+    
+    // You can call showTemplate('founder-story'), showTemplate('pricing'), etc. 
+    // to generate different images
+  </script>
+</body>
+</html>
