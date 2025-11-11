@@ -90,6 +90,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- case studies -->
+  <url>
+    <loc>https://creativejobhub.com/case-studies/founder-story.html</loc>
+    <lastmod>2025-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- individual comparison pages -->
   <url>
     <loc>https://creativejobhub.com/compare/jobber-alternative.html</loc>

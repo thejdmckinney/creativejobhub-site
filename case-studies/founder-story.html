@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How a Texas Contractor Built Creative Job Hub After Wasting $2,655 on Overpriced Software | Case Study</title>
+  <meta name="description" content="Real founder story: How a Texas contractor built Creative Job Hub after spending $2,655 on Jobber, Housecall Pro, and Workiz. See the 69% cost reduction and features competitors charge $500+ for.">
+  
+  <!-- Canonical and Open Graph -->
+  <link rel="canonical" href="https://creativejobhub.com/case-studies/founder-story/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How a Texas Contractor Built Creative Job Hub After Wasting $2,655 on Overpriced Software" />
+  <meta property="og:description" content="Real founder story: 11 months testing Jobber, Housecall Pro, and Workiz led to building a better solution at 69% less cost." />
+  <meta property="og:url" content="https://creativejobhub.com/case-studies/founder-story/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How a Texas Contractor Built Creative Job Hub After Wasting $2,655 on Overpriced Software" />
+  <meta name="twitter:description" content="Real founder story: 11 months testing expensive field service software led to building a better solution." />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --brand: #0ea5e9;
+      --brand-2: #22c55e;
+      --ring: rgba(148, 163, 184, .15);
+    }
+
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      padding-top: 72px;
+    }
+    
+    a { color: inherit; text-decoration: none; }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header (shared styling) */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      padding: 10px 16px;
+      background: rgba(11, 18, 32, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--ring);
+    }
+    
+    .brand img { height: 32px; }
+    .nav { display: flex; gap: 16px; align-items: center; }
+    .nav a {
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+    .nav a:hover { background: rgba(255,255,255,.06); }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), #0284c7);
+      color: #fff;
+      box-shadow: 0 8px 25px rgba(14,165,233,.4);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(14,165,233,.6);
+    }
+    
+    .btn-ghost {
+      border-color: rgba(148,163,184,.3);
+      color: #e2e8f0;
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(14,165,233,0.5);
+    }
+
+    /* Article Styling */
+    .article-header {
+      background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(220,38,38,0.1));
+      padding: 80px 0 60px;
+      border-bottom: 1px solid var(--ring);
+      text-align: center;
+    }
+    
+    .article-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 24px;
+      background: linear-gradient(135deg, var(--brand), #dc2626);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    
+    .article-subtitle {
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin: 0 0 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .author-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--panel);
+      border: 1px solid var(--ring);
+      border-radius: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .author-details h4 {
+      margin: 0;
+      font-size: 16px;
+      color: var(--text);
+    }
+    
+    .author-details p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .article-content {
+      padding: 60px 0;
+      line-height: 1.8;
+    }
+    
+    .article-content h2 {
+      font-size: 1.8rem;
+      margin: 48px 0 24px;
+      color: var(--text);
+    }
+    
+    .article-content h3 {
+      font-size: 1.4rem;
+      margin: 36px 0 16px;
+      color: var(--brand);
+    }
+    
+    .article-content p {
+      margin: 0 0 20px;
+      color: #cbd5e1;
+    }
+    
+    .article-content ul, .article-content ol {
+      margin: 20px 0;
+      padding-left: 24px;
+      color: #cbd5e1;
+    }
+    
+    .article-content li {
+      margin-bottom: 8px;
+    }
+
+    /* Special callout boxes */
+    .challenge-box {
+      background: linear-gradient(135deg, rgba(220,38,38,0.1), rgba(239,68,68,0.05));
+      border-left: 4px solid #dc2626;
+      padding: 32px;
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+    }
+    
+    .solution-box {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(22,163,74,0.05));
+      border-left: 4px solid #22c55e;
+      padding: 32px;
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+    }
+    
+    .results-box {
+      background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(59,130,246,0.05));
+      border-left: 4px solid var(--brand);
+      padding: 32px;
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+    }
+
+    .cost-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    
+    .cost-card {
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .cost-before {
+      background: linear-gradient(135deg, rgba(220,38,38,0.1), rgba(239,68,68,0.05));
+      border: 1px solid rgba(220,38,38,0.3);
+    }
+    
+    .cost-after {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(22,163,74,0.05));
+      border: 1px solid rgba(34,197,94,0.3);
+    }
+    
+    .cost-amount {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 16px 0;
+    }
+    
+    .cost-before .cost-amount { color: #dc2626; }
+    .cost-after .cost-amount { color: #22c55e; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+    
+    .feature-card {
+      background: var(--panel);
+      border: 1px solid var(--ring);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    
+    .feature-card h4 {
+      margin: 0 0 16px;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .feature-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .feature-list li::before {
+      content: "✅";
+      font-size: 14px;
+    }
+
+    .cta-section {
+      background: var(--panel);
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid var(--ring);
+    }
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+      margin: 0 0 16px;
+      font-size: 2rem;
+    }
+    
+    .cta-content p {
+      margin: 0 0 32px;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .article-title {
+        font-size: 2rem;
+      }
+      
+      .cost-comparison {
+        grid-template-columns: 1fr;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How a Texas Contractor Built Creative Job Hub After Wasting $2,655 on Overpriced Software",
+    "description": "Case study of a Texas contractor who built Creative Job Hub after spending $2,655 on Jobber, Housecall Pro, and Workiz over 11 months.",
+    "author": {
+      "@type": "Person",
+      "name": "Jeremy McKinney",
+      "jobTitle": "Founder & General Contractor"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Job Hub",
+      "url": "https://creativejobhub.com"
+    },
+    "datePublished": "2025-11-10",
+    "dateModified": "2025-11-10",
+    "mainEntityOfPage": "https://creativejobhub.com/case-studies/founder-story/",
+    "image": "https://creativejobhub.com/assets/og-dark.jpg"
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <a class="brand" href="/">
+      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub">
+    </a>
+    <nav class="nav">
+      <a href="/">Home</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#ai-features">AI Features</a>
+      <a href="/case-studies/founder-story/" style="color: var(--brand);">Case Study</a>
+      <a href="/contact.html">Contact</a>
+      <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get Started</a>
+    </nav>
+  </header>
+
+  <!-- Article Header -->
+  <section class="article-header">
+    <div class="container">
+      <h1 class="article-title">How a Texas Contractor Built Creative Job Hub After Wasting $2,655 on Overpriced Software</h1>
+      <p class="article-subtitle">11 months testing Jobber, Housecall Pro, and Workiz led to building a field service platform that delivers enterprise features at 69% less cost.</p>
+      
+      <div class="author-info">
+        <div class="author-avatar">J</div>
+        <div class="author-details">
+          <h4>Jeremy McKinney</h4>
+          <p>Founder & General Contractor</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <article class="article-content">
+    <div class="container">
+      
+      <div class="challenge-box">
+        <h2>🔥 The Challenge</h2>
+        <p>As a general contractor and handyman running a growing business in Texas, I needed field service management software that wouldn't break the bank. Over 11 months, I tried three of the industry's leading platforms:</p>
+        
+        <ul>
+          <li><strong>Jobber</strong> (3 months)</li>
+          <li><strong>Housecall Pro</strong> (3 months)</li>
+          <li><strong>Workiz</strong> (5 months - $295/month)</li>
+        </ul>
+
+        <p>The problem? I was paying nearly <strong>$3,000 per year</strong> for Workiz and only getting the basics: CRM, estimates, invoices, and work orders. Everything else - marketing tools, routing, advanced analytics - cost extra. For a small to medium-sized business, these "enterprise" features were either locked behind premium tiers or required expensive add-ons.</p>
+        
+        <div style="text-align: center; margin: 24px 0; padding: 20px; background: rgba(220,38,38,0.2); border-radius: 8px;">
+          <strong style="font-size: 1.4rem; color: #fca5a5;">Total spent on inadequate software: $2,655 in 11 months</strong>
+        </div>
+      </div>
+
+      <h2>💔 The Breaking Point</h2>
+      <p>After spending $295/month on Workiz for a bare-bones system, I realized something: I was paying for a brand name, not actual value. The features I needed to truly grow my business - marketing automation, route optimization, real-time analytics, comprehensive reporting - would cost <strong>hundreds more per month</strong>.</p>
+      
+      <p><strong>That's when I decided to build Creative Job Hub.</strong></p>
+
+      <div class="solution-box">
+        <h2>💡 The Solution</h2>
+        <p>I built Creative Job Hub to be everything the expensive platforms should be - at a fraction of the cost. Our most comprehensive plan costs <strong>$89.99/month</strong> and includes features that competitors charge <strong>$300+ for</strong>:</p>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <h4>🏗️ Core Features (Standard in All Plans)</h4>
+            <ul class="feature-list">
+              <li>Complete CRM for client management</li>
+              <li>Estimates, invoices, and work orders</li>
+              <li>Interactive schedule with drag and drop</li>
+              <li>Time tracking with clock in/out for techs</li>
+              <li>PTO request management</li>
+              <li>Price book for services and products</li>
+            </ul>
+          </div>
+          
+          <div class="feature-card">
+            <h4>🚀 Advanced Features (Included, Not Extra)</h4>
+            <ul class="feature-list">
+              <li>Dashboard with real-time KPIs</li>
+              <li>Activity feed - Never miss what's happening</li>
+              <li>Interactive map view powered by Mapbox</li>
+              <li>Jobs page with smart filtering & expense tracking</li>
+              <li>Lead management system</li>
+              <li>Time admin dashboard for managers</li>
+              <li>AI-powered analytics with revenue tips</li>
+              <li>Marketing campaign manager</li>
+              <li>Advanced CSV reporting</li>
+              <li>SMS integration (Twilio)</li>
+              <li>Email automation (Resend)</li>
+              <li>Payment processing (Stripe)</li>
+              <li>QuickBooks Online integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-box">
+        <h2>📊 The Results</h2>
+        
+        <div class="cost-comparison">
+          <div class="cost-card cost-before">
+            <h3>Before (Workiz)</h3>
+            <div class="cost-amount">$295</div>
+            <p>per month for basic features</p>
+          </div>
+          
+          <div class="cost-card cost-after">
+            <h3>After (Creative Job Hub)</h3>
+            <div class="cost-amount">$89.99</div>
+            <p>per month with everything included</p>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin: 32px 0;">
+          <div style="background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(22,163,74,0.1)); padding: 24px; border-radius: 12px; border: 1px solid rgba(34,197,94,0.3);">
+            <h3 style="margin: 0 0 16px; color: #22c55e;">💰 Cost savings: $205.01 per month (69% reduction)</h3>
+            <h3 style="margin: 0; color: #22c55e;">📅 Annual savings: $2,460.12</h3>
+          </div>
+        </div>
+
+        <p>But it's not just about the money. Creative Job Hub delivers features that would cost <strong>$500+ per month</strong> with competitors:</p>
+        
+        <ul>
+          <li>✅ Everything included in one price - no nickel-and-diming for basic features</li>
+          <li>✅ AI-powered insights that actually help grow the business</li>
+          <li>✅ Real-time profitability tracking per job</li>
+          <li>✅ Marketing tools built in, not sold separately</li>
+          <li>✅ Interactive map view of all properties</li>
+          <li>✅ Complete payroll management system</li>
+          <li>✅ Advanced integrations (Stripe, QuickBooks, Twilio, Resend) included</li>
+        </ul>
+      </div>
+
+      <h2>🎯 Why Creative Job Hub Works</h2>
+      <blockquote style="background: var(--panel); border-left: 4px solid var(--brand); padding: 24px; margin: 32px 0; font-style: italic; font-size: 1.1rem;">
+        "I built Creative Job Hub because I got tired of being overcharged for basic features. As a contractor, I know what field service businesses actually need - not what software companies think we need. Every feature was designed from real-world experience running jobs, managing crews, and trying to grow a business without wasting money on bloated software."
+        <footer style="margin-top: 16px; font-weight: 600; color: var(--brand);">- Jeremy, Founder & General Contractor</footer>
+      </blockquote>
+
+      <h2>💯 The Bottom Line</h2>
+      <p>Field service management software shouldn't cost more than your insurance. Creative Job Hub proves you can have enterprise-level features at a small business price - because that's what small businesses deserve.</p>
+      
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Stop Overpaying for Field Service Software?</h2>
+        <p>Join hundreds of contractors who switched from overpriced platforms to Creative Job Hub. Start your free trial today and see why we built the platform we wish we had.</p>
+        
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start Free Trial - No Credit Card Required</a>
+          <a class="btn btn-ghost" href="/contact.html">Schedule a Demo</a>
+          <a class="btn btn-ghost" href="/pricing/">See Pricing</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
