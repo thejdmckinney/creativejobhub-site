@@ -1742,37 +1742,46 @@
     // Debug: Test if JavaScript is executing at all
     console.log('🚀 JavaScript execution started successfully');
 
-    // Mobile nav toggle (hamburger). Desktop unaffected.
-    (function () {
+    // ========== INITIALIZE ALL INTERACTIONS WHEN DOM IS READY ==========
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🎯 DOM ready - initializing all interactions...');
+      
+      // Mobile nav toggle (hamburger). Desktop unaffected.
       const header = document.querySelector('.site-header');
-      const btn = header.querySelector('.nav-toggle');
-      const nav = header.querySelector('#primary-nav');
+      if (header) {
+        const btn = header.querySelector('.nav-toggle');
+        const nav = header.querySelector('#primary-nav');
+        
+        if (btn && nav) {
+          function toggleNav() {
+            const open = header.classList.toggle('nav-open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.style.overflow = open ? 'hidden' : '';
+          }
 
-      function toggleNav() {
-        const open = header.classList.toggle('nav-open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        document.body.style.overflow = open ? 'hidden' : '';
+          btn.addEventListener('click', toggleNav);
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && header.classList.contains('nav-open')) toggleNav();
+          });
+          nav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggleNav();
+          });
+        }
       }
-
-      btn.addEventListener('click', toggleNav);
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && header.classList.contains('nav-open')) toggleNav();
-      });
-      nav.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggleNav();
-      });
-    })();
-
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // ========== SCROLL ANIMATIONS & ANIMATED COUNTERS ==========
-    
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    };
+      
+      // Footer year
+      const yearElement = document.getElementById('y');
+      if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+      }
+      
+      // ========== SCROLL ANIMATIONS & ANIMATED COUNTERS ==========
+      
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1832,11 +1841,48 @@
       });
     }, 500);
 
+    // Ultra-aggressive fallback - animate ALL counters after page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        console.log('🚨 EMERGENCY: Animating all counters regardless of visibility');
+        document.querySelectorAll('.stat-number[data-count]').forEach(statNumber => {
+          // Reset any previous animation state
+          statNumber.classList.remove('animated');
+          console.log('Emergency animating:', statNumber, 'target:', statNumber.dataset.count);
+          animateCounter(statNumber);
+        });
+      }, 1000);
+    });
+
+    // IMMEDIATE counter animation - don't wait for anything
+    setTimeout(() => {
+      console.log('🎯 IMMEDIATE: Finding and animating all counters now');
+      const counters = document.querySelectorAll('.stat-number[data-count]');
+      console.log('Found counters:', counters.length);
+      
+      counters.forEach((counter, index) => {
+        console.log(`Counter ${index}:`, counter, 'data-count:', counter.dataset.count);
+        // Set to 0 first to ensure we start from 0
+        counter.textContent = '0';
+        // Animate with a slight delay between each counter
+        setTimeout(() => {
+          animateCounter(counter);
+        }, index * 200);
+      });
+    }, 100);
+
     // Animated counter function
     function animateCounter(element) {
       const target = parseFloat(element.dataset.count);
       const duration = 2000; // 2 seconds
       const start = performance.now();
+      
+      console.log('🔢 Starting counter animation:', {
+        element: element,
+        target: target,
+        currentText: element.textContent,
+        dataset: element.dataset.count
+      });
       
       element.classList.add('animated');
       
@@ -1861,6 +1907,7 @@
           requestAnimationFrame(update);
         } else {
           element.textContent = target % 1 === 0 ? target : target.toFixed(1);
+          console.log('✅ Counter animation completed:', element.textContent);
         }
       }
       
@@ -1912,19 +1959,22 @@
       cardObserver.observe(grid);
     });
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
       });
-    });
+      
+      console.log('✅ All animations and interactions initialized successfully!');
+    }); // End of single DOM ready function
 
     // ========== ROI CALCULATOR ==========
     function updateROICalculator() {
@@ -1978,11 +2028,8 @@
       updateROICalculator();
     }
 
-    // Initialize ROI Calculator with pure event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('🎯 DOM loaded, setting up ROI calculator...');
-      
-
+      // ========== ROI CALCULATOR SETUP ==========
+      console.log('🎯 Setting up ROI calculator...');
       
       // Set up slider event listeners
       const sliders = [
@@ -2012,7 +2059,6 @@
       // Initial calculation
       updateROICalculator();
       console.log('🎯 ROI Calculator initialization complete');
-    });
   </script>
 
   <!-- Custom Exit-Intent Popup -->
