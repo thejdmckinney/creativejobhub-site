@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting to Pricing - Creative Job Hub</title>
+  
+  <!-- Immediate JavaScript redirect -->
+  <script>
+    window.location.replace('/pricing/');
+  </script>
+  
+  <!-- Meta refresh backup -->
+  <meta http-equiv="refresh" content="0; url=/pricing/">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://creativejobhub.com/pricing/">
+  
+  <!-- SEO meta tags -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Redirecting to Creative Job Hub pricing page">
+</head>
+<body>
+  <div style="font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #0b1220; color: #e5e7eb; min-height: 100vh;">
+    <h1 style="color: #0ea5e9; margin-bottom: 20px;">Redirecting...</h1>
+    <p>You're being redirected to our pricing page.</p>
+    <p><a href="/pricing/" style="color: #0ea5e9; text-decoration: none;">Click here if you're not redirected automatically</a></p>
+    
+    <script>
+      // Fallback redirect after 1 second
+      setTimeout(function() {
+        if (window.location.pathname === '/pricing.html') {
+          window.location.href = '/pricing/';
+        }
+      }, 1000);
+    </script>
+  </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /pricing.html
 
 Sitemap: https://creativejobhub.com/sitemap.xml

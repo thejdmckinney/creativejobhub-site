@@ -1,0 +1,19 @@
+# Netlify-style redirects (for future hosting compatibility)
+# Redirect common incorrect URLs to correct paths
+
+# Pricing page redirect
+/pricing.html /pricing/ 301
+
+# Other potential redirects for common URL variations
+/pricing/pricing.html /pricing/ 301
+/pricing.htm /pricing/ 301
+
+# Ensure trailing slashes are consistent
+/pricing /pricing/ 301
+/compare /compare/ 301
+/blog /blog/ 301
+
+# Legacy URL patterns (in case any exist)
+/price /pricing/ 301
+/plans /pricing/ 301
+/cost /pricing/ 301
