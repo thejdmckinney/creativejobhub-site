@@ -252,6 +252,36 @@
       color: var(--muted);
     }
     
+    .preview-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: white;
+    }
+    
+    .media-item:hover .preview-overlay {
+      opacity: 1;
+    }
+    
+    .preview-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .preview-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
     .media-info {
       padding: 16px;
     }
@@ -289,6 +319,83 @@
       background: rgba(239,68,68,0.1);
       color: var(--danger);
       border: 1px solid rgba(239,68,68,0.3);
+    }
+    
+    .btn-view {
+      background: rgba(14,165,233,0.1);
+      color: var(--brand);
+      border: 1px solid rgba(14,165,233,0.3);
+    }
+    
+    /* Media Modal */
+    .media-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      background: var(--panel);
+      border: 1px solid var(--ring);
+      border-radius: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--ring);
+    }
+    
+    .modal-title {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 1.2rem;
+      word-break: break-word;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    
+    .modal-close:hover {
+      background: var(--bg);
+      color: var(--text);
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+      overflow: auto;
+      text-align: center;
+    }
+    
+    .modal-footer {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      border-top: 1px solid var(--ring);
+      justify-content: flex-end;
     }
     
     /* Progress Bar */
@@ -809,6 +916,11 @@
       // Check if already logged in
       if (sessionStorage.getItem('adminLoggedIn') === 'true') {
         showDashboard();
+        
+        // Refresh media library display on load
+        setTimeout(() => {
+          renderMediaLibrary();
+        }, 100);
       }
     });
     
@@ -927,19 +1039,22 @@
     
     // Add file to media library
     function addToMediaLibrary(file) {
-      const fileUrl = URL.createObjectURL(file);
-      const fileInfo = {
-        id: Date.now() + Math.random(),
-        name: file.name,
-        size: file.size,
-        type: file.type,
-        url: fileUrl,
-        uploadDate: new Date().toISOString()
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const fileInfo = {
+          id: Date.now() + Math.random(),
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          url: e.target.result, // Use data URL instead of blob URL for persistence
+          uploadDate: new Date().toISOString()
+        };
+        
+        mediaLibrary.push(fileInfo);
+        saveMediaLibrary();
+        renderMediaLibrary();
       };
-      
-      mediaLibrary.push(fileInfo);
-      saveMediaLibrary();
-      renderMediaLibrary();
+      reader.readAsDataURL(file);
     }
     
     // Render media library
@@ -958,21 +1073,28 @@
       }
       
       grid.innerHTML = mediaLibrary.map(item => `
-        <div class="media-item">
+        <div class="media-item" onclick="openMediaPreview('${item.id}')" style="cursor: pointer;">
           <div class="media-preview">
             ${getPreviewContent(item)}
+            <div class="preview-overlay">
+              <span class="preview-icon">👁️</span>
+              <span class="preview-text">Click to view</span>
+            </div>
           </div>
           <div class="media-info">
             <div class="media-name">${item.name}</div>
             <div class="media-meta">
               ${formatFileSize(item.size)} • ${new Date(item.uploadDate).toLocaleDateString()}
             </div>
-            <div class="media-actions">
+            <div class="media-actions" onclick="event.stopPropagation();">
               <button class="btn btn-small btn-copy" onclick="copyFileUrl('${item.id}')">
                 📋 Copy URL
               </button>
               <button class="btn btn-small btn-delete" onclick="deleteFile('${item.id}')">
                 🗑️ Delete
+              </button>
+              <button class="btn btn-small btn-view" onclick="openMediaPreview('${item.id}')">
+                👁️ View
               </button>
             </div>
           </div>
@@ -983,9 +1105,9 @@
     // Get preview content based on file type
     function getPreviewContent(item) {
       if (item.type.startsWith('image/')) {
-        return `<img src="${item.url}" alt="${item.name}" loading="lazy">`;
+        return `<img src="${item.url}" alt="${item.name}" loading="lazy" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\\'file-icon\\'>🖼️</div><div style=\\'color:var(--muted);font-size:12px;margin-top:8px;\\'>Image preview unavailable</div>';">`;
       } else if (item.type.startsWith('video/')) {
-        return `<video src="${item.url}" muted></video>`;
+        return `<video src="${item.url}" muted onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\\'file-icon\\'>🎥</div><div style=\\'color:var(--muted);font-size:12px;margin-top:8px;\\'>Video preview unavailable</div>';"></video>`;
       } else {
         return `<div class="file-icon">📄</div>`;
       }
@@ -1050,8 +1172,76 @@
       }, 3000);
     }
     
-    console.log('🚀 Creative Job Hub Admin Dashboard loaded!');
+    // Media Preview Modal Functions
+    function openMediaPreview(fileId) {
+      const file = mediaLibrary.find(f => f.id == fileId);
+      if (!file) return;
+      
+      const modal = document.getElementById('mediaModal');
+      const title = document.getElementById('modalTitle');
+      const body = document.getElementById('modalBody');
+      const copyBtn = document.getElementById('modalCopyBtn');
+      const deleteBtn = document.getElementById('modalDeleteBtn');
+      
+      title.textContent = file.name;
+      
+      if (file.type.startsWith('image/')) {
+        body.innerHTML = `<img src="${file.url}" alt="${file.name}" style="max-width: 100%; max-height: 70vh; object-fit: contain;">`;
+      } else if (file.type.startsWith('video/')) {
+        body.innerHTML = `<video src="${file.url}" controls style="max-width: 100%; max-height: 70vh;">Your browser does not support video playback.</video>`;
+      } else {
+        body.innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">�</div>
+            <div style="font-weight: 600; margin-bottom: 0.5rem;">${file.name}</div>
+            <div style="color: var(--muted); margin-bottom: 1rem;">Size: ${formatFileSize(file.size)}</div>
+            <div style="color: var(--muted);">Uploaded: ${new Date(file.uploadDate).toLocaleString()}</div>
+          </div>
+        `;
+      }
+      
+      copyBtn.onclick = () => copyFileUrl(fileId);
+      deleteBtn.onclick = () => {
+        deleteFile(fileId);
+        closeMediaPreview();
+      };
+      
+      modal.style.display = 'flex';
+    }
+    
+    function closeMediaPreview() {
+      const modal = document.getElementById('mediaModal');
+      modal.style.display = 'none';
+    }
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMediaPreview();
+      }
+    });
+
+    console.log('�🚀 Creative Job Hub Admin Dashboard loaded!');
     console.log('💡 Default credentials: admin / creativejobhub2024');
   </script>
+
+  <!-- Media Preview Modal -->
+  <div id="mediaModal" class="media-modal" style="display: none;" onclick="closeMediaPreview()">
+    <div class="modal-content" onclick="event.stopPropagation();">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Media Preview</span>
+        <button class="modal-close" onclick="closeMediaPreview()">×</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Media content will be inserted here -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-copy" id="modalCopyBtn">📋 Copy URL</button>
+        <button class="btn btn-delete" id="modalDeleteBtn">🗑️ Delete</button>
+        <button class="btn" onclick="closeMediaPreview()">Close</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
