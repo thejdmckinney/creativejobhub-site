@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Integration - Creative Job Hub</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0b1220;
+      --panel: #111827;
+      --muted: #9ca3af;
+      --text: #e5e7eb;
+      --brand: #0ea5e9;
+      --brand-2: #22c55e;
+      --ring: rgba(148,163,184,.15);
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+    }
+    
+    .integration-panel {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--panel);
+      border: 1px solid var(--ring);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    
+    .integration-panel h1 {
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    
+    .media-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    
+    .media-option {
+      border: 2px solid var(--ring);
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .media-option:hover {
+      border-color: var(--brand);
+      background: rgba(14,165,233,0.05);
+    }
+    
+    .media-option.selected {
+      border-color: var(--brand);
+      background: rgba(14,165,233,0.1);
+    }
+    
+    .code-output {
+      background: var(--bg);
+      border: 1px solid var(--ring);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 14px;
+      line-height: 1.4;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid var(--brand);
+      background: rgba(14,165,233,0.1);
+      color: var(--brand);
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    
+    .btn:hover {
+      background: var(--brand);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="integration-panel">
+    <h1>🔗 Media Integration Helper</h1>
+    <p style="color: var(--muted); margin-bottom: 24px;">
+      Select media from your library and get the HTML code to use in your site.
+    </p>
+    
+    <div id="mediaSelector" class="media-selector">
+      <!-- Media options will be loaded here -->
+    </div>
+    
+    <div style="margin: 20px 0;">
+      <label style="display: block; margin-bottom: 8px; font-weight: 600;">Usage Context:</label>
+      <select id="usageContext" style="padding: 8px 12px; border-radius: 6px; border: 1px solid var(--ring); background: var(--bg); color: var(--text);">
+        <option value="og-image">Open Graph Social Image</option>
+        <option value="hero-image">Hero Section Image</option>
+        <option value="feature-image">Feature Section Image</option>
+        <option value="testimonial-image">Testimonial Image</option>
+        <option value="blog-image">Blog Post Image</option>
+        <option value="app-screenshot">App Screenshot</option>
+        <option value="background-video">Background Video</option>
+      </select>
+    </div>
+    
+    <div style="display: flex; gap: 12px; margin: 20px 0;">
+      <button class="btn" onclick="generateCode()">🛠️ Generate HTML Code</button>
+      <a href="../assets/og-images/generator.html" class="btn">🎨 OG Image Generator</a>
+      <a href="index.html" class="btn">📁 Media Library</a>
+    </div>
+    
+    <div id="codeOutput" class="code-output" style="display: none;"></div>
+  </div>
+
+  <script>
+    let selectedMedia = null;
+    
+    // Load media library
+    function loadMediaLibrary() {
+      const saved = localStorage.getItem('creativejobhub_media');
+      const mediaLibrary = saved ? JSON.parse(saved) : [];
+      
+      const selector = document.getElementById('mediaSelector');
+      
+      if (mediaLibrary.length === 0) {
+        selector.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">
+            <div style="font-size: 48px; margin-bottom: 16px;">📁</div>
+            <div>No media files found</div>
+            <div style="font-size: 14px; margin-top: 8px;">
+              <a href="index.html" style="color: var(--brand);">Upload some files first</a>
+            </div>
+          </div>
+        `;
+        return;
+      }
+      
+      selector.innerHTML = mediaLibrary.map(item => `
+        <div class="media-option" data-id="${item.id}" onclick="selectMedia('${item.id}')">
+          <div style="width: 100%; height: 120px; background: var(--bg); border-radius: 6px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            ${getPreview(item)}
+          </div>
+          <div style="font-size: 12px; font-weight: 600; margin-bottom: 4px;">${item.name}</div>
+          <div style="font-size: 10px; color: var(--muted);">${formatFileSize(item.size)}</div>
+        </div>
+      `).join('');
+    }
+    
+    function getPreview(item) {
+      if (item.type.startsWith('image/')) {
+        return `<img src="${item.url}" style="width: 100%; height: 100%; object-fit: cover;" alt="${item.name}">`;
+      } else if (item.type.startsWith('video/')) {
+        return `<video src="${item.url}" style="width: 100%; height: 100%; object-fit: cover;" muted></video>`;
+      } else {
+        return `<div style="font-size: 24px; color: var(--muted);">📄</div>`;
+      }
+    }
+    
+    function selectMedia(id) {
+      // Remove previous selection
+      document.querySelectorAll('.media-option').forEach(opt => opt.classList.remove('selected'));
+      
+      // Add selection
+      document.querySelector(`[data-id="${id}"]`).classList.add('selected');
+      
+      // Store selected media
+      const saved = localStorage.getItem('creativejobhub_media');
+      const mediaLibrary = saved ? JSON.parse(saved) : [];
+      selectedMedia = mediaLibrary.find(item => item.id == id);
+    }
+    
+    function generateCode() {
+      if (!selectedMedia) {
+        alert('Please select a media file first');
+        return;
+      }
+      
+      const context = document.getElementById('usageContext').value;
+      const output = document.getElementById('codeOutput');
+      
+      let code = '';
+      const filename = selectedMedia.name;
+      const relativePath = `/admin/media/images/${filename}`;
+      
+      switch(context) {
+        case 'og-image':
+          code = `<!-- Open Graph Meta Tags -->
+<meta property="og:image" content="${relativePath}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="${selectedMedia.type}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${relativePath}">`;
+          break;
+          
+        case 'hero-image':
+          code = `<!-- Hero Section Image -->
+<div class="hero-image">
+  <img src="${relativePath}" 
+       alt="Creative Job Hub - Field Service Management" 
+       loading="eager"
+       style="width: 100%; height: auto; border-radius: 12px;">
+</div>`;
+          break;
+          
+        case 'feature-image':
+          code = `<!-- Feature Section Image -->
+<div class="feature-illustration">
+  <img src="${relativePath}" 
+       alt="Feature demonstration" 
+       loading="lazy"
+       style="width: 100%; max-width: 400px; height: auto;">
+</div>`;
+          break;
+          
+        case 'app-screenshot':
+          code = `<!-- App Screenshot -->
+<div class="app-screenshot">
+  <img src="${relativePath}" 
+       alt="Creative Job Hub app interface" 
+       loading="lazy"
+       style="width: 100%; max-width: 300px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+</div>`;
+          break;
+          
+        case 'background-video':
+          code = `<!-- Background Video -->
+<video autoplay muted loop playsinline 
+       style="width: 100%; height: 100%; object-fit: cover;">
+  <source src="/admin/media/videos/${filename}" type="${selectedMedia.type}">
+  Your browser does not support the video tag.
+</video>`;
+          break;
+          
+        case 'testimonial-image':
+          code = `<!-- Testimonial Image -->
+<div class="testimonial-avatar">
+  <img src="${relativePath}" 
+       alt="Customer photo" 
+       loading="lazy"
+       style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+</div>`;
+          break;
+          
+        case 'blog-image':
+          code = `<!-- Blog Post Image -->
+<figure class="blog-image">
+  <img src="${relativePath}" 
+       alt="Blog post illustration" 
+       loading="lazy"
+       style="width: 100%; height: auto; border-radius: 8px;">
+  <figcaption style="color: var(--muted); font-size: 14px; text-align: center; margin-top: 8px;">
+    Caption for the image
+  </figcaption>
+</figure>`;
+          break;
+      }
+      
+      output.textContent = code;
+      output.style.display = 'block';
+      
+      // Copy to clipboard
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✅ Code copied to clipboard!');
+      });
+    }
+    
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadMediaLibrary);
+  </script>
+</body>
+</html>

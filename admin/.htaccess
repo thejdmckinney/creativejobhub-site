@@ -1,0 +1,23 @@
+# Protect admin directory from unauthorized access
+# Place this in /admin/.htaccess if using Apache server
+
+AuthType Basic
+AuthName "Creative Job Hub Admin Area"
+AuthUserFile /path/to/.htpasswd
+Require valid-user
+
+# Block direct access to sensitive files
+<Files "*.json">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+<Files "*.log">
+    Order Deny,Allow  
+    Deny from all
+</Files>
+
+# Security headers
+Header always set X-Frame-Options SAMEORIGIN
+Header always set X-Content-Type-Options nosniff
+Header always set X-XSS-Protection "1; mode=block"

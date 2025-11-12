@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Open Graph Image Generator - Creative Job Hub</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -116,9 +117,154 @@
       color: #fed7aa;
       border-color: rgba(249,115,22,0.3);
     }
+
+    /* App mockup container */
+    .app-mockup {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 360px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.2);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .app-screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      position: relative;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-header {
+      background: linear-gradient(135deg, #0ea5e9, #22c55e);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .app-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .app-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 10px;
+      color: #e2e8f0;
+      font-size: 10px;
+      line-height: 1.3;
+    }
+
+    .app-stats {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .app-stat {
+      flex: 1;
+      background: rgba(14,165,233,0.1);
+      border: 1px solid rgba(14,165,233,0.3);
+      border-radius: 4px;
+      padding: 6px;
+      text-align: center;
+      font-size: 8px;
+      color: #60a5fa;
+    }
+
+    /* Control Panel */
+    .control-panel {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.9);
+      padding: 20px;
+      border-radius: 12px;
+      color: white;
+      z-index: 1000;
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .control-panel h3 {
+      margin: 0 0 15px 0;
+      color: #0ea5e9;
+    }
+
+    .template-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border: 1px solid #0ea5e9;
+      background: rgba(14,165,233,0.1);
+      color: #0ea5e9;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 12px;
+    }
+
+    .btn:hover {
+      background: #0ea5e9;
+      color: white;
+    }
+
+    .btn.active {
+      background: #0ea5e9;
+      color: white;
+    }
+
+    .download-btn {
+      background: #22c55e;
+      border-color: #22c55e;
+      color: white;
+      font-weight: 600;
+    }
+
+    .download-btn:hover {
+      background: #16a34a;
+    }
   </style>
 </head>
 <body>
+  <!-- Control Panel -->
+  <div class="control-panel">
+    <h3>🎨 OG Image Generator</h3>
+    <div class="template-buttons">
+      <button class="btn active" onclick="showTemplate('homepage')" id="btn-homepage">Homepage</button>
+      <button class="btn" onclick="showTemplate('founder-story')" id="btn-founder-story">Founder Story</button>
+      <button class="btn" onclick="showTemplate('pricing')" id="btn-pricing">Pricing</button>
+      <button class="btn" onclick="showTemplate('how-it-works')" id="btn-how-it-works">How It Works</button>
+      <button class="btn" onclick="showTemplate('blog-post')" id="btn-blog-post">Blog Post</button>
+    </div>
+    <button class="btn download-btn" onclick="downloadCurrentTemplate()">📥 Download Image</button>
+    <div style="margin-top: 15px; font-size: 11px; color: #94a3b8; line-height: 1.3;">
+      1. Click template<br>
+      2. Download image<br> 
+      3. Use in meta tags
+    </div>
+  </div>
   <!-- Homepage OG Image -->
   <div class="og-template og-homepage" id="homepage">
     <div class="logo">Creative Job Hub</div>
@@ -132,6 +278,45 @@
         <div class="feature-tag">⚡ Built by Contractors</div>
       </div>
     </div>
+    
+    <!-- App Mockup -->
+    <div class="app-mockup">
+      <div class="app-screen">
+        <div class="app-header">📋 Today's Jobs</div>
+        <div class="app-content">
+          <div class="app-card">
+            <strong>🔧 HVAC Repair - Johnson Residence</strong><br>
+            📍 2.3 miles away • ⏰ 2:00 PM<br>
+            💰 Est. $245 • ⚡ High Priority
+          </div>
+          <div class="app-card">
+            <strong>🚿 Plumbing Install - Office Complex</strong><br>
+            📍 5.7 miles away • ⏰ 4:30 PM<br>
+            💰 Est. $892 • 🔄 Follow-up
+          </div>
+          <div class="app-card">
+            <strong>⚡ Electrical Inspection - New Build</strong><br>
+            📍 1.8 miles away • ⏰ Tomorrow 9:00 AM<br>
+            💰 Est. $156 • ✅ Routine
+          </div>
+        </div>
+        <div class="app-stats">
+          <div class="app-stat">
+            <div style="font-weight: 600;">15</div>
+            <div>Jobs Today</div>
+          </div>
+          <div class="app-stat">
+            <div style="font-weight: 600;">94%</div>
+            <div>On-Time</div>
+          </div>
+          <div class="app-stat">
+            <div style="font-weight: 600;">$3.2K</div>
+            <div>Revenue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <div class="domain">creativejobhub.com</div>
   </div>
 
@@ -148,7 +333,45 @@
         <div class="feature-tag">💰 69% Savings</div>
       </div>
     </div>
-    <div class="domain">creativejobhub.com/case-studies</div>
+    
+    <!-- Cost Comparison Mockup -->
+    <div class="app-mockup">
+      <div class="app-screen">
+        <div class="app-header">💸 Cost Comparison</div>
+        <div class="app-content">
+          <div class="app-card" style="background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3);">
+            <strong style="color: #fca5a5;">Jobber Pro Plan</strong><br>
+            💰 $169/month × 11 months<br>
+            📊 Limited customization<br>
+            ❌ Missing key features
+          </div>
+          <div class="app-card" style="background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3);">
+            <strong style="color: #fca5a5;">Housecall Pro</strong><br>
+            💰 $79/month + $2,100 setup<br>
+            📱 Poor mobile experience<br>
+            🔗 Limited integrations
+          </div>
+          <div class="app-card" style="background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.3);">
+            <strong style="color: #86efac;">Creative Job Hub</strong><br>
+            💰 $49/month all-inclusive<br>
+            🤖 AI-powered features<br>
+            ✅ Built by contractors
+          </div>
+        </div>
+        <div class="app-stats">
+          <div class="app-stat" style="background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #fca5a5;">
+            <div style="font-weight: 600;">$2,655</div>
+            <div>Wasted</div>
+          </div>
+          <div class="app-stat" style="background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.3); color: #86efac;">
+            <div style="font-weight: 600;">69%</div>
+            <div>Savings</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="domain">creativejobhub.com/case-studies/founder-story</div>
   </div>
 
   <!-- Pricing OG Image -->
@@ -182,18 +405,133 @@
     <div class="domain">creativejobhub.com/how-it-works</div>
   </div>
 
+  <!-- Blog Post Template -->
+  <div class="og-template og-blog-post" id="blog-post" style="display: none;">
+    <div class="logo">Creative Job Hub</div>
+    <div class="content">
+      <h1 class="title">5 Field Service Software Features That Actually Matter</h1>
+      <p class="subtitle">Skip the fluff. Here are the only features you need to run a profitable field service business in 2024.</p>
+      <div class="features">
+        <div class="feature-tag">📱 Mobile Job Sheets</div>
+        <div class="feature-tag">💳 Payment Processing</div>
+        <div class="feature-tag">📊 Real-time Tracking</div>
+        <div class="feature-tag">🤖 Smart Scheduling</div>
+      </div>
+    </div>
+    
+    <!-- Feature List Mockup -->
+    <div class="app-mockup">
+      <div class="app-screen">
+        <div class="app-header">📋 Essential Features</div>
+        <div class="app-content">
+          <div class="app-card" style="background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.3);">
+            <strong style="color: #86efac;">✅ Mobile Job Sheets</strong><br>
+            Work offline, sync online<br>
+            Digital signatures & photos
+          </div>
+          <div class="app-card" style="background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.3);">
+            <strong style="color: #86efac;">✅ Instant Payments</strong><br>
+            Card reader integration<br>
+            Get paid on the spot
+          </div>
+          <div class="app-card" style="background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3);">
+            <strong style="color: #fca5a5;">❌ Complex Workflows</strong><br>
+            Too many steps<br>
+            Confuses technicians
+          </div>
+        </div>
+        <div class="app-stats">
+          <div class="app-stat">
+            <div style="font-weight: 600;">5</div>
+            <div>Must-Have</div>
+          </div>
+          <div class="app-stat">
+            <div style="font-weight: 600;">20+</div>
+            <div>Skip These</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="domain">creativejobhub.com/blog</div>
+  </div>
+
   <script>
+    let currentTemplate = 'homepage';
+    
     // Function to show specific template
     function showTemplate(id) {
+      // Hide all templates
       document.querySelectorAll('.og-template').forEach(el => el.style.display = 'none');
+      
+      // Show selected template
       document.getElementById(id).style.display = 'flex';
+      
+      // Update button states
+      document.querySelectorAll('.template-buttons .btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById('btn-' + id).classList.add('active');
+      
+      // Update current template
+      currentTemplate = id;
+      
+      console.log('Showing template:', id);
     }
+    
+    // Function to download current template as image
+    function downloadCurrentTemplate() {
+      const template = document.getElementById(currentTemplate);
+      const filename = `${currentTemplate}-og-image.png`;
+      
+      console.log('Downloading template:', currentTemplate);
+      
+      // Use html2canvas to convert the template to image
+      html2canvas(template, {
+        width: 1200,
+        height: 630,
+        scale: 1,
+        backgroundColor: null,
+        logging: false,
+        useCORS: true
+      }).then(canvas => {
+        // Create download link
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = canvas.toDataURL('image/png');
+        
+        // Trigger download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        console.log('Downloaded:', filename);
+        alert(`✅ Downloaded: ${filename}\n\nUse this image in your meta tags:\n<meta property="og:image" content="/assets/og-images/${filename}">`);
+      }).catch(error => {
+        console.error('Download failed:', error);
+        alert('❌ Download failed. Please try again.');
+      });
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.ctrlKey || e.metaKey) {
+        switch(e.key) {
+          case '1': showTemplate('homepage'); e.preventDefault(); break;
+          case '2': showTemplate('founder-story'); e.preventDefault(); break;
+          case '3': showTemplate('pricing'); e.preventDefault(); break;
+          case '4': showTemplate('how-it-works'); e.preventDefault(); break;
+          case '5': showTemplate('blog-post'); e.preventDefault(); break;
+          case 's': downloadCurrentTemplate(); e.preventDefault(); break;
+        }
+      }
+    });
     
     // Show homepage by default
     showTemplate('homepage');
     
-    // You can call showTemplate('founder-story'), showTemplate('pricing'), etc. 
-    // to generate different images
+    console.log('🎨 OG Image Generator loaded successfully!');
+    console.log('💡 Keyboard shortcuts: Ctrl/Cmd + 1-5 for templates, Ctrl/Cmd + S to download');
   </script>
 </body>
 </html>
