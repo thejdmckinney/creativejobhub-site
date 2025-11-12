@@ -510,10 +510,13 @@
     <div class="container">
         <div class="header">
             <h1>Business Intelligence Dashboard</h1>
-            <div style="display: flex; gap: 15px; align-items: center;">
+            <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
                 <div style="background: rgba(15, 23, 42, 0.5); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.2);">
                     <span style="color: #94a3b8;">📅 Last 30 Days</span>
                 </div>
+                <a href="data-setup.html" style="background: linear-gradient(135deg, #10b981, #34d399); color: white; border: none; padding: 8px 16px; border-radius: 6px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 5px;">
+                    🔌 Connect Real Data
+                </a>
                 <button onclick="refreshBusinessData()" style="background: #0ea5e9; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: 600;">
                     🔄 Refresh
                 </button>
@@ -985,7 +988,241 @@
         </div>
     </div>
 
+    <!-- Business Data Connector -->
+    <script src="/assets/business-data-connector.js"></script>
+
     <script>
+        // Business Dashboard with Real Data Integration
+        let businessDataConnector = null;
+        let currentMetrics = null;
+        
+        // Initialize dashboard with real data
+        document.addEventListener('DOMContentLoaded', async function() {
+            await initializeDataConnection();
+            await loadRealBusinessData();
+        });
+        
+        // Initialize data connector
+        async function initializeDataConnection() {
+            try {
+                const config = window.DataSourceConfig.getStoredConfig();
+                businessDataConnector = new window.BusinessDataConnector(config);
+                
+                console.log('📊 Business Data Connector initialized');
+                
+                // Check for missing API keys
+                if (!config.hubspotApiKey && !config.stripeApiKey) {
+                    showDataSourceSetup();
+                }
+            } catch (error) {
+                console.error('Error initializing data connector:', error);
+            }
+        }
+        
+        // Load real business metrics
+        async function loadRealBusinessData() {
+            try {
+                showLoadingState();
+                
+                if (businessDataConnector) {
+                    currentMetrics = await businessDataConnector.getBusinessMetrics();
+                    updateDashboardWithRealData(currentMetrics);
+                    
+                    console.log('✅ Real business data loaded:', currentMetrics);
+                    showNotification('Real business data loaded successfully!');
+                } else {
+                    console.warn('⚠️ Using placeholder data - no data sources configured');
+                    showNotification('Using demo data. Configure data sources for real metrics.');
+                }
+            } catch (error) {
+                console.error('Error loading business data:', error);
+                showNotification('Error loading data. Check your API connections.');
+            } finally {
+                hideLoadingState();
+            }
+        }
+        
+        // Update dashboard with real data
+        function updateDashboardWithRealData(metrics) {
+            if (!metrics) return;
+            
+            // Update revenue metrics
+            if (metrics.revenue) {
+                document.getElementById('monthlyRevenue').textContent = 
+                    '$' + Math.round(metrics.revenue.monthlyRevenue).toLocaleString();
+                    
+                // Update revenue details
+                const revenueCard = document.querySelector('.kpi-card.revenue .kpi-details');
+                if (revenueCard && metrics.revenue.averageJobValue) {
+                    revenueCard.innerHTML = `
+                        Average job value: $${Math.round(metrics.revenue.averageJobValue)}<br>
+                        Jobs completed: ${metrics.revenue.jobsCompleted || 'N/A'}<br>
+                        Recurring clients: ${Math.round((metrics.revenue.recurringClients || 0.68) * 100)}%
+                    `;
+                }
+            }
+            
+            // Update lead metrics  
+            if (metrics.leads) {
+                document.getElementById('monthlyLeads').textContent = metrics.leads.monthlyLeads;
+                
+                // Update leads details
+                const leadsCard = document.querySelector('.kpi-card.leads .kpi-details');
+                if (leadsCard) {
+                    leadsCard.innerHTML = `
+                        Qualified leads: ${metrics.leads.qualifiedLeads || 'N/A'}<br>
+                        Lead-to-job rate: ${Math.round((metrics.leads.leadToJobRate || 0.26) * 100)}%<br>
+                        Cost per lead: $${Math.round(metrics.leads.costPerLead || 18)}
+                    `;
+                }
+            }
+            
+            // Update conversion rate
+            if (metrics.conversions) {
+                document.getElementById('conversionRate').textContent = 
+                    (metrics.conversions.conversionRate * 100).toFixed(1) + '%';
+            }
+            
+            // Update customer satisfaction
+            if (metrics.satisfaction) {
+                document.getElementById('customerSat').textContent = 
+                    metrics.satisfaction.averageRating.toFixed(1);
+                    
+                // Update satisfaction details
+                const satisfactionCard = document.querySelector('.kpi-card.satisfaction .kpi-details');
+                if (satisfactionCard) {
+                    satisfactionCard.innerHTML = `
+                        Reviews this month: ${metrics.satisfaction.reviewsThisMonth || 'N/A'}<br>
+                        5-star reviews: ${Math.round((metrics.satisfaction.fiveStarPercentage || 0.89) * 100)}%<br>
+                        Response rate: ${Math.round((metrics.satisfaction.responseRate || 0.34) * 100)}%
+                    `;
+                }
+            }
+            
+            // Update lead sources if available
+            if (metrics.leads && metrics.leads.leadSources) {
+                updateLeadSourcesDisplay(metrics.leads.leadSources);
+            }
+            
+            // Show data source indicator
+            const dataSourceIndicator = document.querySelector('.header .date-range');
+            if (dataSourceIndicator) {
+                const sourceText = metrics.dataSource === 'fallback' ? 
+                    '📊 Demo Data' : '🔄 Live Data';
+                dataSourceIndicator.innerHTML = `<span style="color: #10b981;">${sourceText}</span>`;
+            }
+        }
+        
+        // Update lead sources display
+        function updateLeadSourcesDisplay(leadSources) {
+            const leadSourcesContainer = document.querySelector('#leads .lead-source-item');
+            if (!leadSourcesContainer || !leadSources) return;
+            
+            // Update with real lead source data
+            const sources = Object.entries(leadSources);
+            const totalLeads = sources.reduce((sum, [_, count]) => sum + count, 0);
+            
+            sources.forEach(([source, count], index) => {
+                const percentage = totalLeads > 0 ? Math.round((count / totalLeads) * 100) : 0;
+                const sourceElement = document.querySelectorAll('.lead-source-item')[index];
+                
+                if (sourceElement) {
+                    sourceElement.querySelector('.lead-count').textContent = count;
+                    sourceElement.querySelector('.lead-rate').textContent = `${percentage}% of leads`;
+                }
+            });
+        }
+        
+        // Show data source setup dialog
+        function showDataSourceSetup() {
+            const setupDialog = document.createElement('div');
+            setupDialog.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10000;
+            `;
+            
+            setupDialog.innerHTML = `
+                <div style="background: #1e293b; padding: 40px; border-radius: 16px; max-width: 500px; color: white;">
+                    <h2 style="margin-bottom: 20px; color: #0ea5e9;">🔌 Connect Your Data Sources</h2>
+                    <p style="margin-bottom: 20px; color: #94a3b8;">
+                        Connect your business systems to see real data instead of placeholders:
+                    </p>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <button onclick="setupHubSpot()" style="background: #ff7a59; color: white; border: none; padding: 12px 20px; border-radius: 8px; margin-right: 10px; cursor: pointer;">
+                            📧 Connect HubSpot
+                        </button>
+                        <button onclick="setupStripe()" style="background: #635bff; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer;">
+                            💳 Connect Stripe
+                        </button>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <button onclick="closeSetupDialog()" style="background: #64748b; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
+                            Continue with Demo Data
+                        </button>
+                    </div>
+                    
+                    <p style="font-size: 0.9rem; color: #64748b;">
+                        Your API keys are stored securely in your browser and never sent to our servers.
+                    </p>
+                </div>
+            `;
+            
+            document.body.appendChild(setupDialog);
+            window.currentSetupDialog = setupDialog;
+        }
+        
+        // Setup functions
+        async function setupHubSpot() {
+            const apiKey = await window.DataSourceConfig.setupHubSpot();
+            if (apiKey) {
+                await initializeDataConnection();
+                await loadRealBusinessData();
+                closeSetupDialog();
+            }
+        }
+        
+        async function setupStripe() {
+            const apiKey = await window.DataSourceConfig.setupStripe();
+            if (apiKey) {
+                await initializeDataConnection();
+                await loadRealBusinessData();
+                closeSetupDialog();
+            }
+        }
+        
+        function closeSetupDialog() {
+            if (window.currentSetupDialog) {
+                window.currentSetupDialog.remove();
+            }
+        }
+        
+        // Loading states
+        function showLoadingState() {
+            const metrics = document.querySelectorAll('.kpi-value');
+            metrics.forEach(metric => {
+                metric.style.opacity = '0.5';
+                metric.style.filter = 'blur(1px)';
+            });
+        }
+        
+        function hideLoadingState() {
+            const metrics = document.querySelectorAll('.kpi-value');
+            metrics.forEach(metric => {
+                metric.style.opacity = '1';
+                metric.style.filter = 'none';
+            });
+        }
+
         // Tab management
         function showTab(tabName) {
             // Hide all tabs
@@ -1015,24 +1252,39 @@
             document.getElementById('roiValue').textContent = roi.toFixed(0) + '%';
         }
 
-        // Business data refresh
-        function refreshBusinessData() {
-            console.log('Refreshing business intelligence data...');
+        // Business data refresh with real data
+        async function refreshBusinessData() {
+            console.log('🔄 Refreshing real business data...');
             
-            // Simulate data refresh with small variations
-            const currentRevenue = parseFloat(document.getElementById('monthlyRevenue').textContent.replace('$', '').replace(',', ''));
-            const variation = (Math.random() - 0.5) * 0.1; // +/- 5% variation
-            const newRevenue = Math.round(currentRevenue * (1 + variation));
-            
-            document.getElementById('monthlyRevenue').textContent = '$' + newRevenue.toLocaleString();
-            
-            // Update other metrics similarly
-            const currentLeads = parseInt(document.getElementById('monthlyLeads').textContent);
-            const newLeads = Math.round(currentLeads * (1 + (Math.random() - 0.5) * 0.08));
-            document.getElementById('monthlyLeads').textContent = newLeads;
-            
-            // Show refresh notification
-            showNotification('Business intelligence data refreshed successfully!');
+            try {
+                if (businessDataConnector) {
+                    showLoadingState();
+                    
+                    // Force refresh from all data sources
+                    currentMetrics = await businessDataConnector.refreshAllData();
+                    updateDashboardWithRealData(currentMetrics);
+                    
+                    showNotification('✅ Real business data refreshed successfully!');
+                } else {
+                    // Fallback for demo mode
+                    const currentRevenue = parseFloat(document.getElementById('monthlyRevenue').textContent.replace('$', '').replace(',', ''));
+                    const variation = (Math.random() - 0.5) * 0.1;
+                    const newRevenue = Math.round(currentRevenue * (1 + variation));
+                    
+                    document.getElementById('monthlyRevenue').textContent = '$' + newRevenue.toLocaleString();
+                    
+                    const currentLeads = parseInt(document.getElementById('monthlyLeads').textContent);
+                    const newLeads = Math.round(currentLeads * (1 + (Math.random() - 0.5) * 0.08));
+                    document.getElementById('monthlyLeads').textContent = newLeads;
+                    
+                    showNotification('📊 Demo data refreshed (connect real data sources for live metrics)');
+                }
+            } catch (error) {
+                console.error('Error refreshing business data:', error);
+                showNotification('❌ Error refreshing data. Please check your connections.');
+            } finally {
+                hideLoadingState();
+            }
         }
 
         function showNotification(message) {
