@@ -401,7 +401,17 @@
     <div class="dashboard-content">
       <!-- Media Library Section -->
       <div id="mediaSection" class="section active">
-        <h2 style="margin-bottom: 24px;">📁 Media Library</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 15px;">
+          <h2 style="margin: 0;">📁 Media Library</h2>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="image-optimizer.html" class="btn" style="background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%); color: white; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              🎨 Image Optimizer
+            </a>
+            <a href="batch-processor.html" class="btn" style="background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%); color: white; text-decoration: none; display: flex; align-items: center; gap: 8px;">
+              ⚡ Batch Processor
+            </a>
+          </div>
+        </div>
         
         <!-- Upload Zone -->
         <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">

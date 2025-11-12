@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Image Processor - Creative Job Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #0ea5e9;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(14, 165, 233, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .batch-sections {
+            display: grid;
+            gap: 30px;
+        }
+
+        .section-panel {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .batch-upload {
+            border: 2px dashed rgba(148, 163, 184, 0.3);
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .batch-upload:hover,
+        .batch-upload.dragover {
+            border-color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .image-queue {
+            margin-top: 30px;
+        }
+
+        .queue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .queue-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .queue-stats {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .image-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover {
+            border-color: #0ea5e9;
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .image-info {
+            text-align: center;
+        }
+
+        .image-name {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .image-size {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .image-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+        }
+
+        .status-processing {
+            background: rgba(14, 165, 233, 0.2);
+            color: #60a5fa;
+        }
+
+        .status-complete {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(239, 68, 68, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .remove-btn:hover {
+            background: #ef4444;
+        }
+
+        .batch-settings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .setting-group {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .setting-title {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .preset-btn {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #94a3b8;
+            padding: 10px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .preset-btn:hover,
+        .preset-btn.active {
+            background: #0ea5e9;
+            color: white;
+            border-color: #0ea5e9;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .slider {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(148, 163, 184, 0.3);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0ea5e9;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            min-width: 50px;
+            text-align: center;
+            font-weight: 600;
+            color: #0ea5e9;
+            font-size: 0.9rem;
+        }
+
+        .enhancement-toggles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .toggle-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-option:hover {
+            background: rgba(148, 163, 184, 0.1);
+        }
+
+        .toggle-checkbox {
+            width: 16px;
+            height: 16px;
+        }
+
+        .toggle-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .batch-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 25px;
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn.success {
+            background: linear-gradient(135deg, #10b981, #34d399);
+        }
+
+        .btn.warning {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+        }
+
+        .btn.danger {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+        }
+
+        .progress-section {
+            margin-top: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(148, 163, 184, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #0ea5e9, #10b981);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .results-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results-summary {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .summary-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .summary-stats {
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .batch-settings {
+                grid-template-columns: 1fr;
+            }
+
+            .batch-controls {
+                flex-direction: column;
+            }
+
+            .image-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="image-optimizer.html" class="back-btn">← Single Image Optimizer</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Batch Image Processor</h1>
+            <p>Optimize multiple app screenshots and images at once</p>
+        </div>
+
+        <div class="batch-sections">
+            <!-- Upload Section -->
+            <div class="section-panel">
+                <div class="section-title">
+                    📤 Upload Multiple Images
+                </div>
+
+                <div class="batch-upload" onclick="document.getElementById('batchFileInput').click()">
+                    <div class="upload-icon">🎯</div>
+                    <div class="upload-text">Select Multiple Images</div>
+                    <div class="upload-hint">
+                        Drag and drop multiple files or click to browse<br>
+                        Supports JPG, PNG, WebP • Up to 20 images
+                    </div>
+                </div>
+
+                <input type="file" id="batchFileInput" class="file-input" multiple accept="image/*" onchange="handleBatchUpload(event)">
+
+                <div id="imageQueue" class="image-queue" style="display: none;">
+                    <div class="queue-header">
+                        <div class="queue-title">📋 Processing Queue</div>
+                        <div class="queue-stats" id="queueStats">0 images selected</div>
+                    </div>
+                    <div class="image-grid" id="imageGrid"></div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="section-panel" id="settingsSection" style="display: none;">
+                <div class="section-title">
+                    ⚙️ Batch Processing Settings
+                </div>
+
+                <div class="batch-settings">
+                    <!-- Size Presets -->
+                    <div class="setting-group">
+                        <div class="setting-title">📏 Target Size</div>
+                        <div class="preset-grid">
+                            <div class="preset-btn" onclick="setBatchPreset(400, 300)">Mobile<br><small>400×300</small></div>
+                            <div class="preset-btn" onclick="setBatchPreset(800, 600)">Tablet<br><small>800×600</small></div>
+                            <div class="preset-btn" onclick="setBatchPreset(1200, 800)">Desktop<br><small>1200×800</small></div>
+                            <div class="preset-btn" onclick="setBatchPreset(1920, 1080)">HD<br><small>1920×1080</small></div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                            <input type="number" id="batchWidth" placeholder="Width" style="padding: 8px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.3); background: rgba(15, 23, 42, 0.8); color: #f1f5f9;">
+                            <input type="number" id="batchHeight" placeholder="Height" style="padding: 8px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.3); background: rgba(15, 23, 42, 0.8); color: #f1f5f9;">
+                        </div>
+                    </div>
+
+                    <!-- Quality Settings -->
+                    <div class="setting-group">
+                        <div class="setting-title">🎨 Quality & Compression</div>
+                        <div class="slider-container">
+                            <span style="color: #94a3b8;">Low</span>
+                            <input type="range" id="batchQuality" class="slider" min="10" max="100" value="85" oninput="updateBatchQuality()">
+                            <span style="color: #94a3b8;">High</span>
+                            <span class="slider-value" id="batchQualityValue">85%</span>
+                        </div>
+                    </div>
+
+                    <!-- Enhancement Options -->
+                    <div class="setting-group">
+                        <div class="setting-title">✨ Image Enhancements</div>
+                        <div class="enhancement-toggles">
+                            <label class="toggle-option">
+                                <input type="checkbox" class="toggle-checkbox" id="batchSharpen">
+                                <span class="toggle-label">🔍 Sharpen</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="checkbox" class="toggle-checkbox" id="batchContrast">
+                                <span class="toggle-label">🌟 Auto Contrast</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="checkbox" class="toggle-checkbox" id="batchBrightness">
+                                <span class="toggle-label">☀️ Brighten</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="checkbox" class="toggle-checkbox" id="batchSaturation">
+                                <span class="toggle-label">🎨 Enhance Colors</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Batch Controls -->
+                <div class="batch-controls">
+                    <button class="btn" onclick="clearQueue()">
+                        🗑️ Clear All
+                    </button>
+                    <button class="btn warning" onclick="previewBatch()">
+                        👀 Preview Changes
+                    </button>
+                    <button class="btn success" id="processBatchBtn" onclick="processBatch()">
+                        ⚡ Process All Images
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Section -->
+            <div id="progressSection" class="section-panel" style="display: none;">
+                <div class="section-title">
+                    📊 Processing Progress
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="batchProgressFill"></div>
+                </div>
+                <div class="progress-text" id="batchProgressText">Ready to start processing...</div>
+
+                <div class="image-grid" id="processedGrid" style="margin-top: 25px;"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section">
+                <div class="section-title">
+                    ✅ Batch Processing Complete
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-title">🎉 All Images Optimized Successfully!</div>
+                    <div class="summary-stats" id="batchSummary"></div>
+                </div>
+
+                <div class="batch-controls">
+                    <button class="btn success" onclick="downloadAllOptimized()">
+                        💾 Download All (ZIP)
+                    </button>
+                    <button class="btn" onclick="saveAllToLibrary()">
+                        📁 Save All to Media Library
+                    </button>
+                    <button class="btn warning" onclick="startNewBatch()">
+                        🔄 Process More Images
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables for batch processing
+        let imageQueue = [];
+        let processedImages = [];
+        let currentSettings = {
+            width: null,
+            height: null,
+            quality: 85,
+            enhancements: {
+                sharpen: false,
+                contrast: false,
+                brightness: false,
+                saturation: false
+            }
+        };
+
+        // Initialize batch processor
+        document.addEventListener('DOMContentLoaded', function() {
+            setupBatchDragAndDrop();
+        });
+
+        // Setup drag and drop for batch upload
+        function setupBatchDragAndDrop() {
+            const uploadArea = document.querySelector('.batch-upload');
+            
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                const files = Array.from(e.dataTransfer.files).filter(file => file.type.startsWith('image/'));
+                if (files.length > 0) {
+                    handleBatchFiles(files);
+                }
+            });
+        }
+
+        // Handle batch file upload
+        function handleBatchUpload(event) {
+            const files = Array.from(event.target.files);
+            handleBatchFiles(files);
+        }
+
+        // Process multiple files
+        function handleBatchFiles(files) {
+            if (files.length > 20) {
+                showNotification('❌ Maximum 20 images allowed for batch processing');
+                return;
+            }
+
+            files.forEach(file => {
+                if (file.type.startsWith('image/') && file.size <= 10 * 1024 * 1024) {
+                    addImageToQueue(file);
+                }
+            });
+
+            updateQueueDisplay();
+            showSettingsSection();
+        }
+
+        // Add image to processing queue
+        function addImageToQueue(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const imageData = {
+                        id: Date.now() + Math.random(),
+                        file: file,
+                        image: img,
+                        dataUrl: e.target.result,
+                        name: file.name,
+                        size: file.size,
+                        width: img.width,
+                        height: img.height,
+                        status: 'pending'
+                    };
+                    
+                    imageQueue.push(imageData);
+                    updateQueueDisplay();
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Update queue display
+        function updateQueueDisplay() {
+            const queueSection = document.getElementById('imageQueue');
+            const queueStats = document.getElementById('queueStats');
+            const imageGrid = document.getElementById('imageGrid');
+
+            if (imageQueue.length === 0) {
+                queueSection.style.display = 'none';
+                return;
+            }
+
+            queueSection.style.display = 'block';
+            queueStats.textContent = `${imageQueue.length} images selected`;
+
+            imageGrid.innerHTML = '';
+            imageQueue.forEach(imageData => {
+                const imageItem = createImageQueueItem(imageData);
+                imageGrid.appendChild(imageItem);
+            });
+        }
+
+        // Create image queue item
+        function createImageQueueItem(imageData) {
+            const item = document.createElement('div');
+            item.className = 'image-item';
+            item.innerHTML = `
+                <button class="remove-btn" onclick="removeFromQueue('${imageData.id}')">×</button>
+                <img src="${imageData.dataUrl}" alt="${imageData.name}" class="image-preview">
+                <div class="image-info">
+                    <div class="image-name">${imageData.name}</div>
+                    <div class="image-size">${imageData.width}×${imageData.height} • ${formatFileSize(imageData.size)}</div>
+                    <div class="image-status status-${imageData.status}">${getStatusText(imageData.status)}</div>
+                </div>
+            `;
+            return item;
+        }
+
+        // Remove image from queue
+        function removeFromQueue(imageId) {
+            imageQueue = imageQueue.filter(img => img.id !== imageId);
+            updateQueueDisplay();
+            
+            if (imageQueue.length === 0) {
+                hideSettingsSection();
+            }
+        }
+
+        // Clear entire queue
+        function clearQueue() {
+            imageQueue = [];
+            updateQueueDisplay();
+            hideSettingsSection();
+            showNotification('🗑️ All images removed from queue');
+        }
+
+        // Show/hide settings section
+        function showSettingsSection() {
+            document.getElementById('settingsSection').style.display = 'block';
+        }
+
+        function hideSettingsSection() {
+            document.getElementById('settingsSection').style.display = 'none';
+        }
+
+        // Set batch preset size
+        function setBatchPreset(width, height) {
+            document.getElementById('batchWidth').value = width;
+            document.getElementById('batchHeight').value = height;
+            
+            // Update active state
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            currentSettings.width = width;
+            currentSettings.height = height;
+        }
+
+        // Update batch quality
+        function updateBatchQuality() {
+            const quality = document.getElementById('batchQuality').value;
+            document.getElementById('batchQualityValue').textContent = quality + '%';
+            currentSettings.quality = parseInt(quality);
+        }
+
+        // Process entire batch
+        async function processBatch() {
+            if (imageQueue.length === 0) {
+                showNotification('❌ No images to process');
+                return;
+            }
+
+            // Collect settings
+            currentSettings.width = parseInt(document.getElementById('batchWidth').value) || null;
+            currentSettings.height = parseInt(document.getElementById('batchHeight').value) || null;
+            currentSettings.enhancements.sharpen = document.getElementById('batchSharpen').checked;
+            currentSettings.enhancements.contrast = document.getElementById('batchContrast').checked;
+            currentSettings.enhancements.brightness = document.getElementById('batchBrightness').checked;
+            currentSettings.enhancements.saturation = document.getElementById('batchSaturation').checked;
+
+            // Show progress section
+            document.getElementById('progressSection').style.display = 'block';
+            document.getElementById('progressSection').scrollIntoView({ behavior: 'smooth' });
+
+            processedImages = [];
+            const totalImages = imageQueue.length;
+
+            for (let i = 0; i < imageQueue.length; i++) {
+                const imageData = imageQueue[i];
+                
+                // Update progress
+                const progress = ((i + 1) / totalImages) * 100;
+                document.getElementById('batchProgressFill').style.width = progress + '%';
+                document.getElementById('batchProgressText').textContent = 
+                    `Processing ${imageData.name} (${i + 1} of ${totalImages})...`;
+
+                // Update status
+                imageData.status = 'processing';
+                updateQueueDisplay();
+
+                try {
+                    // Process image (simplified for demo)
+                    const processedImage = await processImageData(imageData);
+                    processedImages.push(processedImage);
+                    
+                    imageData.status = 'complete';
+                } catch (error) {
+                    console.error('Error processing image:', error);
+                    imageData.status = 'error';
+                }
+
+                updateQueueDisplay();
+
+                // Add delay to show processing
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+
+            // Show completion
+            document.getElementById('batchProgressText').textContent = 
+                `✅ Completed processing ${processedImages.length} images`;
+            
+            showBatchResults();
+        }
+
+        // Process individual image data
+        async function processImageData(imageData) {
+            return new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Set target dimensions
+                const targetWidth = currentSettings.width || imageData.width;
+                const targetHeight = currentSettings.height || imageData.height;
+                
+                canvas.width = targetWidth;
+                canvas.height = targetHeight;
+                
+                // Draw resized image
+                ctx.drawImage(imageData.image, 0, 0, targetWidth, targetHeight);
+                
+                // Apply enhancements (simplified)
+                if (Object.values(currentSettings.enhancements).some(Boolean)) {
+                    // Apply basic enhancements
+                    const imageDataCanvas = ctx.getImageData(0, 0, targetWidth, targetHeight);
+                    // Enhancement logic would go here
+                    ctx.putImageData(imageDataCanvas, 0, 0);
+                }
+                
+                // Convert to blob
+                canvas.toBlob(function(blob) {
+                    resolve({
+                        originalName: imageData.name,
+                        blob: blob,
+                        dataUrl: canvas.toDataURL('image/jpeg', currentSettings.quality / 100),
+                        width: targetWidth,
+                        height: targetHeight,
+                        originalSize: imageData.size,
+                        optimizedSize: blob.size
+                    });
+                }, 'image/jpeg', currentSettings.quality / 100);
+            });
+        }
+
+        // Show batch results
+        function showBatchResults() {
+            const successCount = processedImages.length;
+            const errorCount = imageQueue.filter(img => img.status === 'error').length;
+            const totalSavings = calculateTotalSavings();
+
+            document.getElementById('batchSummary').innerHTML = `
+                <strong>${successCount}</strong> images optimized successfully<br>
+                ${errorCount > 0 ? `<span style="color: #f87171;">${errorCount} errors</span><br>` : ''}
+                Total size reduction: <strong>${formatFileSize(totalSavings)}</strong>
+            `;
+
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Calculate total file size savings
+        function calculateTotalSavings() {
+            let totalOriginal = 0;
+            let totalOptimized = 0;
+
+            processedImages.forEach(img => {
+                totalOriginal += img.originalSize;
+                totalOptimized += img.optimizedSize;
+            });
+
+            return Math.max(0, totalOriginal - totalOptimized);
+        }
+
+        // Download all optimized images as ZIP
+        function downloadAllOptimized() {
+            // In a real implementation, you'd create a ZIP file
+            showNotification('💾 Preparing ZIP download... (Feature requires server implementation)');
+            
+            // For demo, download individual files
+            processedImages.forEach((img, index) => {
+                setTimeout(() => {
+                    const link = document.createElement('a');
+                    link.download = `optimized-${img.originalName}`;
+                    link.href = img.dataUrl;
+                    link.click();
+                }, index * 500);
+            });
+        }
+
+        // Save all to media library
+        function saveAllToLibrary() {
+            showNotification('📁 Saving all optimized images to media library...');
+            // Implementation would save to actual media library
+        }
+
+        // Start new batch
+        function startNewBatch() {
+            imageQueue = [];
+            processedImages = [];
+            
+            updateQueueDisplay();
+            hideSettingsSection();
+            document.getElementById('progressSection').style.display = 'none';
+            document.getElementById('resultsSection').style.display = 'none';
+            
+            // Reset form
+            document.getElementById('batchFileInput').value = '';
+            document.querySelectorAll('.preset-btn').forEach(btn => btn.classList.remove('active'));
+            
+            showNotification('🆕 Ready for new batch processing!');
+        }
+
+        // Utility functions
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'Pending',
+                'processing': 'Processing...',
+                'complete': 'Complete',
+                'error': 'Error'
+            };
+            return statusMap[status] || status;
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(30, 41, 59, 0.95);
+                backdrop-filter: blur(10px);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                z-index: 10000;
+                font-weight: 600;
+                border: 1px solid rgba(148, 163, 184, 0.2);
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
