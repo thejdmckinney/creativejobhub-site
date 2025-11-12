@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Creative Job Hub Demo Video -->
+  <url>
+    <loc>https://creativejobhub.com/videos/demo.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/AkY3jtGKrFQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Creative Job Hub Demo - Field Service Management Software</video:title>
+      <video:description>Watch our comprehensive demo of Creative Job Hub's field service management software. See how our app streamlines scheduling, invoicing, customer management, and more for service businesses. Perfect for HVAC, plumbing, electrical, landscaping, and other service professionals looking to grow their business with better organization and automation.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=AkY3jtGKrFQ</video:content_loc>
+      <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/embed/AkY3jtGKrFQ</video:player_loc>
+      <video:duration>330</video:duration>
+      <video:publication_date>2024-01-15T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:view_count>1250</video:view_count>
+      <video:rating>4.9</video:rating>
+      <video:tag>field service management</video:tag>
+      <video:tag>scheduling software</video:tag>
+      <video:tag>invoicing app</video:tag>
+      <video:tag>customer management</video:tag>
+      <video:tag>service business</video:tag>
+      <video:tag>HVAC software</video:tag>
+      <video:tag>plumbing software</video:tag>
+      <video:tag>electrical software</video:tag>
+      <video:tag>business automation</video:tag>
+      <video:category>Technology</video:category>
+    </video:video>
+    <lastmod>2024-01-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Video Library Index Page -->
+  <url>
+    <loc>https://creativejobhub.com/videos/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/AkY3jtGKrFQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Creative Job Hub Video Library - Field Service Management Software</video:title>
+      <video:description>Explore our comprehensive video library featuring demos, tutorials, and guides for Creative Job Hub's field service management software. Learn how to streamline your service business operations with our powerful tools.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=AkY3jtGKrFQ</video:content_loc>
+      <video:player_loc allow_embed="yes" autoplay="ap=1">https://www.youtube.com/embed/AkY3jtGKrFQ</video:player_loc>
+      <video:duration>330</video:duration>
+      <video:publication_date>2024-01-15T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:view_count>1250</video:view_count>
+      <video:rating>4.9</video:rating>
+      <video:tag>field service management</video:tag>
+      <video:tag>software tutorial</video:tag>
+      <video:tag>business software</video:tag>
+      <video:tag>service business</video:tag>
+      <video:category>Technology</video:category>
+    </video:video>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Embedded videos on main pages -->
+  <url>
+    <loc>https://creativejobhub.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/AkY3jtGKrFQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Creative Job Hub - Field Service Management Software Demo</video:title>
+      <video:description>See how Creative Job Hub transforms field service businesses with powerful scheduling, invoicing, and customer management tools. Perfect for HVAC, plumbing, electrical, and other service professionals.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=AkY3jtGKrFQ</video:content_loc>
+      <video:player_loc allow_embed="yes">https://www.youtube.com/embed/AkY3jtGKrFQ</video:player_loc>
+      <video:duration>330</video:duration>
+      <video:publication_date>2024-01-15T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:tag>field service management</video:tag>
+      <video:tag>business software</video:tag>
+      <video:tag>service business</video:tag>
+      <video:category>Technology</video:category>
+    </video:video>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://creativejobhub.com/field-service-management/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/AkY3jtGKrFQ/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Field Service Management Software Features - Creative Job Hub</video:title>
+      <video:description>Discover the comprehensive features of Creative Job Hub's field service management software. See scheduling, invoicing, customer management, and mobile app capabilities in action.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=AkY3jtGKrFQ</video:content_loc>
+      <video:player_loc allow_embed="yes">https://www.youtube.com/embed/AkY3jtGKrFQ</video:player_loc>
+      <video:duration>330</video:duration>
+      <video:publication_date>2024-01-15T00:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:tag>field service management</video:tag>
+      <video:tag>software features</video:tag>
+      <video:tag>service business tools</video:tag>
+      <video:category>Technology</video:category>
+    </video:video>
+    <lastmod>2024-11-12T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

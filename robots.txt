@@ -3,3 +3,5 @@ Allow: /
 Disallow: /pricing.html
 
 Sitemap: https://creativejobhub.com/sitemap.xml
+Sitemap: https://creativejobhub.com/video-sitemap.xml
+Sitemap: https://creativejobhub.com/sitemap-index.xml
