@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Management - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header h1::before {
+            content: "🎨";
+            font-size: 2.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .template-sections {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .template-card {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+            position: relative;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .template-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #6c757d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-preview.has-image {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .template-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-built-in {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .badge-custom {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .badge-premium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .template-info {
+            padding: 20px;
+        }
+
+        .template-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .template-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .template-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .btn-edit {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-duplicate {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-use {
+            background: #667eea;
+            color: white;
+        }
+
+        .create-template-card {
+            border: 2px dashed #667eea;
+            background: rgba(102, 126, 234, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 280px;
+        }
+
+        .create-template-card:hover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #5a67d8;
+        }
+
+        .create-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .create-text {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .create-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+
+        .form-select {
+            background: white;
+            cursor: pointer;
+        }
+
+        .category-section {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .category-count {
+            background: #e9ecef;
+            color: #6c757d;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .template-actions {
+                justify-content: center;
+            }
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="pages.html" class="back-btn">← Back to Pages</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Template Management</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="importTemplate()">
+                    📥 Import Template
+                </button>
+                <button class="btn btn-primary" onclick="createTemplate()">
+                    ➕ Create Template
+                </button>
+            </div>
+        </div>
+
+        <div class="template-sections">
+            <!-- Built-in Templates -->
+            <div class="section">
+                <div class="category-header">
+                    <div class="section-title">
+                        🏗️ Built-in Templates
+                    </div>
+                    <span class="category-count">6 templates</span>
+                </div>
+                
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <div class="template-preview">📄</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">Landing Page</div>
+                            <div class="template-description">Perfect for service businesses with hero section, features, testimonials and contact form.</div>
+                            <div class="template-meta">
+                                <span>Updated: Nov 10, 2024</span>
+                                <span>Used: 12 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('landing')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('landing')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">📝</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">Blog Post</div>
+                            <div class="template-description">Clean blog layout with featured image, content sections, and related posts.</div>
+                            <div class="template-meta">
+                                <span>Updated: Nov 8, 2024</span>
+                                <span>Used: 8 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('blog')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('blog')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">💼</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">Service Page</div>
+                            <div class="template-description">Showcase specific services with pricing, benefits, and booking options.</div>
+                            <div class="template-meta">
+                                <span>Updated: Nov 5, 2024</span>
+                                <span>Used: 15 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('service')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('service')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">📞</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">Contact Page</div>
+                            <div class="template-description">Contact form, office locations, business hours, and map integration.</div>
+                            <div class="template-meta">
+                                <span>Updated: Nov 3, 2024</span>
+                                <span>Used: 20 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('contact')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('contact')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">ℹ️</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">About Us</div>
+                            <div class="template-description">Company story, team members, mission, values, and achievements.</div>
+                            <div class="template-meta">
+                                <span>Updated: Oct 28, 2024</span>
+                                <span>Used: 6 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('about')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('about')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">📄</div>
+                        <div class="template-badge badge-built-in">Built-in</div>
+                        <div class="template-info">
+                            <div class="template-name">Basic Page</div>
+                            <div class="template-description">Simple page with header, content area, and footer. Great starting point.</div>
+                            <div class="template-meta">
+                                <span>Updated: Oct 25, 2024</span>
+                                <span>Used: 25 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('basic')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-secondary btn-small" onclick="previewTemplate('basic')">
+                                    👁️ Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Templates -->
+            <div class="section">
+                <div class="category-header">
+                    <div class="section-title">
+                        🎨 Custom Templates
+                    </div>
+                    <span class="category-count">2 templates</span>
+                </div>
+                
+                <div class="templates-grid">
+                    <div class="create-template-card" onclick="createTemplate()">
+                        <div class="create-icon">➕</div>
+                        <div class="create-text">Create New Template</div>
+                        <div class="create-description">Build a custom template from scratch or save an existing page as a template</div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">🏠</div>
+                        <div class="template-badge badge-custom">Custom</div>
+                        <div class="template-info">
+                            <div class="template-name">HVAC Service Landing</div>
+                            <div class="template-description">Custom template for HVAC services with emergency call-out sections and service areas.</div>
+                            <div class="template-meta">
+                                <span>Created: Nov 1, 2024</span>
+                                <span>Used: 3 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('hvac')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-edit btn-small" onclick="editTemplate('hvac')">
+                                    ✏️ Edit
+                                </button>
+                                <button class="btn btn-duplicate btn-small" onclick="duplicateTemplate('hvac')">
+                                    📋 Duplicate
+                                </button>
+                                <button class="btn btn-delete btn-small" onclick="deleteTemplate('hvac')">
+                                    🗑️ Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="template-card">
+                        <div class="template-preview">🔧</div>
+                        <div class="template-badge badge-custom">Custom</div>
+                        <div class="template-info">
+                            <div class="template-name">Plumbing Emergency</div>
+                            <div class="template-description">Emergency plumbing services with 24/7 contact and quick booking form.</div>
+                            <div class="template-meta">
+                                <span>Created: Oct 20, 2024</span>
+                                <span>Used: 7 times</span>
+                            </div>
+                            <div class="template-actions">
+                                <button class="btn btn-use btn-small" onclick="useTemplate('plumbing')">
+                                    🎨 Use Template
+                                </button>
+                                <button class="btn btn-edit btn-small" onclick="editTemplate('plumbing')">
+                                    ✏️ Edit
+                                </button>
+                                <button class="btn btn-duplicate btn-small" onclick="duplicateTemplate('plumbing')">
+                                    📋 Duplicate
+                                </button>
+                                <button class="btn btn-delete btn-small" onclick="deleteTemplate('plumbing')">
+                                    🗑️ Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Template Modal -->
+    <div class="modal" id="createTemplateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Create New Template</div>
+                <button class="close-btn" onclick="closeModal('createTemplateModal')">&times;</button>
+            </div>
+            
+            <form onsubmit="saveNewTemplate(event)">
+                <div class="form-group">
+                    <label class="form-label">Template Name</label>
+                    <input type="text" class="form-input" id="templateName" placeholder="Enter template name..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-input form-textarea" id="templateDescription" placeholder="Describe what this template is for..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-input form-select" id="templateCategory">
+                        <option value="custom">Custom</option>
+                        <option value="landing">Landing Pages</option>
+                        <option value="service">Service Pages</option>
+                        <option value="blog">Blog Templates</option>
+                        <option value="ecommerce">E-commerce</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Starting Point</label>
+                    <select class="form-input form-select" id="templateBase">
+                        <option value="blank">Blank Template</option>
+                        <option value="basic">Basic Page Template</option>
+                        <option value="landing">Landing Page Template</option>
+                        <option value="current">Current Page in Editor</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 25px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('createTemplateModal')">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        🎨 Create Template
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Import Template Modal -->
+    <div class="modal" id="importTemplateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Import Template</div>
+                <button class="close-btn" onclick="closeModal('importTemplateModal')">&times;</button>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Import Method</label>
+                <select class="form-input form-select" id="importMethod" onchange="toggleImportMethod()">
+                    <option value="file">Upload Template File</option>
+                    <option value="url">Import from URL</option>
+                    <option value="code">Paste Template Code</option>
+                </select>
+            </div>
+            
+            <div id="fileImport" class="form-group">
+                <label class="form-label">Template File</label>
+                <input type="file" class="form-input" accept=".json,.html,.zip" id="templateFile">
+                <small style="color: #6c757d;">Supported formats: .json, .html, .zip</small>
+            </div>
+            
+            <div id="urlImport" class="form-group" style="display: none;">
+                <label class="form-label">Template URL</label>
+                <input type="url" class="form-input" id="templateUrl" placeholder="https://example.com/template.json">
+            </div>
+            
+            <div id="codeImport" class="form-group" style="display: none;">
+                <label class="form-label">Template Code</label>
+                <textarea class="form-input form-textarea" id="templateCode" placeholder="Paste your template code here..." style="min-height: 120px;"></textarea>
+            </div>
+            
+            <div style="display: flex; gap: 15px; justify-content: flex-end; margin-top: 25px;">
+                <button type="button" class="btn btn-secondary" onclick="closeModal('importTemplateModal')">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary" onclick="processImport()">
+                    📥 Import Template
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Template management functions
+        function createTemplate() {
+            document.getElementById('createTemplateModal').classList.add('active');
+        }
+
+        function importTemplate() {
+            document.getElementById('importTemplateModal').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function toggleImportMethod() {
+            const method = document.getElementById('importMethod').value;
+            
+            document.getElementById('fileImport').style.display = method === 'file' ? 'block' : 'none';
+            document.getElementById('urlImport').style.display = method === 'url' ? 'block' : 'none';
+            document.getElementById('codeImport').style.display = method === 'code' ? 'block' : 'none';
+        }
+
+        function useTemplate(templateId) {
+            if (confirm(`Create a new page using the ${templateId} template?`)) {
+                // In real implementation, this would create a new page with the template
+                showSuccessMessage(`New page created using ${templateId} template!`);
+                
+                // Simulate redirect to editor after short delay
+                setTimeout(() => {
+                    window.location.href = `editor.html?template=${templateId}`;
+                }, 1500);
+            }
+        }
+
+        function previewTemplate(templateId) {
+            // Open template preview in new window
+            window.open(`template-preview.html?id=${templateId}`, '_blank', 'width=1200,height=800');
+        }
+
+        function editTemplate(templateId) {
+            window.location.href = `editor.html?template=${templateId}&mode=edit`;
+        }
+
+        function duplicateTemplate(templateId) {
+            const newName = prompt('Enter name for the duplicated template:');
+            if (newName) {
+                showSuccessMessage(`Template "${newName}" created as a copy of ${templateId}!`);
+                
+                // Refresh the template list (in real implementation)
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            }
+        }
+
+        function deleteTemplate(templateId) {
+            if (confirm(`Are you sure you want to delete the "${templateId}" template? This action cannot be undone.`)) {
+                showSuccessMessage(`Template "${templateId}" has been deleted.`);
+                
+                // Remove from UI (in real implementation, would delete from backend)
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            }
+        }
+
+        function saveNewTemplate(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('templateName').value,
+                description: document.getElementById('templateDescription').value,
+                category: document.getElementById('templateCategory').value,
+                base: document.getElementById('templateBase').value
+            };
+            
+            // Simulate template creation
+            showSuccessMessage(`Template "${formData.name}" created successfully!`);
+            closeModal('createTemplateModal');
+            
+            // In real implementation, this would save to backend and refresh UI
+            setTimeout(() => {
+                if (formData.base === 'current') {
+                    // If creating from current page, go to editor
+                    window.location.href = 'editor.html?save_as_template=true';
+                } else {
+                    // Otherwise refresh template list
+                    location.reload();
+                }
+            }, 1500);
+        }
+
+        function processImport() {
+            const method = document.getElementById('importMethod').value;
+            let isValid = false;
+            
+            switch(method) {
+                case 'file':
+                    const file = document.getElementById('templateFile').files[0];
+                    isValid = file !== undefined;
+                    break;
+                case 'url':
+                    const url = document.getElementById('templateUrl').value;
+                    isValid = url.length > 0;
+                    break;
+                case 'code':
+                    const code = document.getElementById('templateCode').value;
+                    isValid = code.trim().length > 0;
+                    break;
+            }
+            
+            if (isValid) {
+                showSuccessMessage('Template imported successfully!');
+                closeModal('importTemplateModal');
+                
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+            } else {
+                alert('Please provide valid template data before importing.');
+            }
+        }
+
+        function showSuccessMessage(message) {
+            const notification = document.createElement('div');
+            notification.className = 'success-message';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                }
+            }
+        });
+
+        // Initialize template data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // In real implementation, this would load templates from backend
+            console.log('Template management system initialized');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Management - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header h1::before {
+            content: "📄";
+            font-size: 2.5rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .search-filters {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .search-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filter-select {
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .page-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #6c757d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-thumbnail.has-image {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200"><rect fill="%23f8f9fa" width="300" height="200"/><text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="16" fill="%236c757d">Page Preview</text></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .page-info h3 {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .page-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .meta-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-draft {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-archived {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .page-url {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        .page-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+
+        .page-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        .btn-edit {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-seo {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .empty-state p {
+            color: #6c757d;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .page-num {
+            padding: 10px 15px;
+            border: 2px solid #e9ecef;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-num.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .page-num:hover:not(.active) {
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .search-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .pages-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+
+    <div class="container">
+        <div class="header">
+            <h1>Page Management</h1>
+            <div class="header-actions">
+                <a href="templates.html" class="btn btn-secondary">
+                    🎨 Templates
+                </a>
+                <a href="url-manager.html" class="btn btn-secondary">
+                    🔗 URLs
+                </a>
+                <button class="btn btn-primary" onclick="createNewPage()">
+                    ➕ Create Page
+                </button>
+            </div>
+        </div>
+
+        <div class="search-filters">
+            <div class="search-row">
+                <input type="text" class="search-input" placeholder="Search pages..." id="searchInput" oninput="filterPages()">
+                <select class="filter-select" id="statusFilter" onchange="filterPages()">
+                    <option value="">All Status</option>
+                    <option value="published">Published</option>
+                    <option value="draft">Draft</option>
+                    <option value="archived">Archived</option>
+                </select>
+                <select class="filter-select" id="typeFilter" onchange="filterPages()">
+                    <option value="">All Types</option>
+                    <option value="page">Page</option>
+                    <option value="blog">Blog Post</option>
+                    <option value="landing">Landing Page</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pages-grid" id="pagesGrid">
+            <!-- Pages will be populated here -->
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- Pagination will be populated here -->
+        </div>
+    </div>
+
+    <script>
+        // Sample page data - in real implementation, this would come from backend
+        let pages = [
+            {
+                id: 1,
+                title: "Homepage",
+                url: "/index.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-11-10",
+                views: "15,234",
+                seoScore: 95,
+                hasImage: true,
+                description: "Main landing page showcasing services and features"
+            },
+            {
+                id: 2,
+                title: "How It Works",
+                url: "/how-it-works.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-11-08",
+                views: "8,432",
+                seoScore: 88,
+                hasImage: false,
+                description: "Explaining the platform workflow and features"
+            },
+            {
+                id: 3,
+                title: "Field Service Management Guide",
+                url: "/field-service-management/index.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-11-05",
+                views: "12,543",
+                seoScore: 92,
+                hasImage: true,
+                description: "Complete guide to field service management best practices"
+            },
+            {
+                id: 4,
+                title: "Pricing Plans",
+                url: "/pricing/index.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-11-03",
+                views: "9,876",
+                seoScore: 85,
+                hasImage: false,
+                description: "Comprehensive pricing information and plan comparisons"
+            },
+            {
+                id: 5,
+                title: "New Feature Announcement",
+                url: "/blog/posts/new-features-2024/",
+                status: "draft",
+                type: "blog",
+                lastModified: "2024-11-11",
+                views: "0",
+                seoScore: 78,
+                hasImage: false,
+                description: "Upcoming blog post about new platform features"
+            },
+            {
+                id: 6,
+                title: "Contact Us",
+                url: "/contact.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-10-28",
+                views: "3,421",
+                seoScore: 82,
+                hasImage: false,
+                description: "Customer contact form and support information"
+            },
+            {
+                id: 7,
+                title: "Privacy Policy",
+                url: "/privacy.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-10-15",
+                views: "1,234",
+                seoScore: 75,
+                hasImage: false,
+                description: "Legal privacy policy and data handling information"
+            },
+            {
+                id: 8,
+                title: "Terms of Service",
+                url: "/terms.html",
+                status: "published",
+                type: "page",
+                lastModified: "2024-10-15",
+                views: "987",
+                seoScore: 73,
+                hasImage: false,
+                description: "Terms and conditions for platform usage"
+            }
+        ];
+
+        let filteredPages = [...pages];
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        function renderPages() {
+            const grid = document.getElementById('pagesGrid');
+            
+            if (filteredPages.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No pages found</h3>
+                        <p>Try adjusting your search filters or create a new page.</p>
+                        <button class="btn btn-primary" onclick="createNewPage()">
+                            ➕ Create Your First Page
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const pageData = filteredPages.slice(startIndex, endIndex);
+
+            grid.innerHTML = pageData.map(page => `
+                <div class="page-card">
+                    <div class="page-thumbnail ${page.hasImage ? 'has-image' : ''}">
+                        ${page.hasImage ? '🖼️' : '📄'}
+                    </div>
+                    <div class="page-info">
+                        <h3>${page.title}</h3>
+                        <div class="page-meta">
+                            <span class="meta-badge status-${page.status}">${page.status.toUpperCase()}</span>
+                            <span class="meta-badge" style="background: #e3f2fd; color: #1565c0;">${page.type.toUpperCase()}</span>
+                        </div>
+                        <div class="page-url">${page.url}</div>
+                        <p style="color: #6c757d; font-size: 0.9rem; margin-bottom: 15px;">${page.description}</p>
+                        <div class="page-stats">
+                            <span>📅 ${page.lastModified}</span>
+                            <span>👀 ${page.views} views</span>
+                            <span>🎯 SEO: ${page.seoScore}%</span>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-edit btn-small" onclick="editPage(${page.id})">
+                                ✏️ Edit
+                            </button>
+                            <button class="btn btn-seo btn-small" onclick="optimizeSEO(${page.id})">
+                                🎯 SEO
+                            </button>
+                            <button class="btn btn-secondary btn-small" onclick="viewPage('${page.url}')">
+                                👁️ View
+                            </button>
+                            <button class="btn btn-delete btn-small" onclick="deletePage(${page.id})">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            const pagination = document.getElementById('pagination');
+            const totalPages = Math.ceil(filteredPages.length / itemsPerPage);
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            
+            // Previous button
+            if (currentPage > 1) {
+                html += `<div class="page-num" onclick="changePage(${currentPage - 1})">← Previous</div>`;
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<div class="page-num ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</div>`;
+            }
+
+            // Next button
+            if (currentPage < totalPages) {
+                html += `<div class="page-num" onclick="changePage(${currentPage + 1})">Next →</div>`;
+            }
+
+            pagination.innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderPages();
+        }
+
+        function filterPages() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const typeFilter = document.getElementById('typeFilter').value;
+
+            filteredPages = pages.filter(page => {
+                const matchesSearch = page.title.toLowerCase().includes(searchTerm) || 
+                                    page.description.toLowerCase().includes(searchTerm) ||
+                                    page.url.toLowerCase().includes(searchTerm);
+                const matchesStatus = !statusFilter || page.status === statusFilter;
+                const matchesType = !typeFilter || page.type === typeFilter;
+
+                return matchesSearch && matchesStatus && matchesType;
+            });
+
+            currentPage = 1;
+            renderPages();
+        }
+
+        function createNewPage() {
+            // In real implementation, this would open a modal or redirect to editor
+            const title = prompt('Enter page title:');
+            if (!title) return;
+
+            const newPage = {
+                id: pages.length + 1,
+                title: title,
+                url: `/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.html`,
+                status: 'draft',
+                type: 'page',
+                lastModified: new Date().toISOString().split('T')[0],
+                views: '0',
+                seoScore: 0,
+                hasImage: false,
+                description: 'New page - add description in editor'
+            };
+
+            pages.unshift(newPage);
+            filterPages();
+            
+            // Redirect to editor
+            setTimeout(() => {
+                window.location.href = `editor.html?id=${newPage.id}`;
+            }, 500);
+        }
+
+        function editPage(id) {
+            window.location.href = `editor.html?id=${id}`;
+        }
+
+        function optimizeSEO(id) {
+            window.location.href = `seo-tools.html?id=${id}`;
+        }
+
+        function viewPage(url) {
+            window.open(url.startsWith('/') ? `..${url}` : url, '_blank');
+        }
+
+        function deletePage(id) {
+            const page = pages.find(p => p.id === id);
+            if (!page) return;
+
+            if (confirm(`Are you sure you want to delete "${page.title}"? This action cannot be undone.`)) {
+                pages = pages.filter(p => p.id !== id);
+                filterPages();
+                
+                // Show success message
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #d4edda;
+                    color: #155724;
+                    padding: 15px 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    z-index: 1001;
+                `;
+                notification.textContent = `"${page.title}" has been deleted.`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderPages();
+        });
+
+        // Auto-save search and filter state
+        document.getElementById('searchInput').addEventListener('input', function() {
+            localStorage.setItem('pageSearchTerm', this.value);
+        });
+
+        // Restore previous search state
+        const savedSearch = localStorage.getItem('pageSearchTerm');
+        if (savedSearch) {
+            document.getElementById('searchInput').value = savedSearch;
+            filterPages();
+        }
+    </script>
+</body>
+</html>

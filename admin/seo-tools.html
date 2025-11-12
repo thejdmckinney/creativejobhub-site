@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Tools - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header h1::before {
+            content: "🎯";
+            font-size: 2.5rem;
+        }
+
+        .page-info {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .main-panel {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            color: #6c757d;
+        }
+
+        .char-counter.warning {
+            color: #ffc107;
+        }
+
+        .char-counter.danger {
+            color: #dc3545;
+        }
+
+        .char-counter.good {
+            color: #28a745;
+        }
+
+        .preview-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f8f9fa;
+            margin-bottom: 20px;
+        }
+
+        .preview-title {
+            color: #1a0dab;
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1.3;
+        }
+
+        .preview-url {
+            color: #006621;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .preview-description {
+            color: #545454;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .og-preview {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .og-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #6c757d;
+        }
+
+        .og-content {
+            padding: 15px;
+        }
+
+        .og-title {
+            font-weight: 600;
+            color: #1c1e21;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .og-description {
+            color: #606770;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+
+        .og-domain {
+            color: #606770;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .score-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .score-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            position: relative;
+        }
+
+        .score-excellent {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .score-good {
+            background: linear-gradient(135deg, #28a745 0%, #ffc107 100%);
+        }
+
+        .score-fair {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+        }
+
+        .score-poor {
+            background: linear-gradient(135deg, #fd7e14 0%, #dc3545 100%);
+        }
+
+        .score-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .recommendations {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendation {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .recommendation.critical {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+
+        .recommendation.warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .recommendation.success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        .recommendation-icon {
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .recommendation-text {
+            flex: 1;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #495057;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #e3f2fd;
+            color: #1565c0;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+
+        .keyword-input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 8px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            min-height: 45px;
+            align-items: center;
+        }
+
+        .keyword-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 100px;
+            padding: 4px;
+            font-size: 16px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .seo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>SEO Optimization</h1>
+                <div class="page-info">
+                    Optimizing: <strong id="currentPageTitle">Homepage</strong><br>
+                    URL: <span id="currentPageUrl">/index.html</span>
+                </div>
+            </div>
+            <a href="pages.html" class="back-btn">← Back to Pages</a>
+        </div>
+
+        <div class="seo-grid">
+            <div class="main-panel">
+                <div class="section-title">
+                    📝 Meta Information
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">SEO Title</label>
+                    <input type="text" class="form-input" id="seoTitle" placeholder="Enter your page title..." oninput="updatePreviews()">
+                    <div class="char-counter" id="titleCounter">0 / 60 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Meta Description</label>
+                    <textarea class="form-input form-textarea" id="seoDescription" placeholder="Write a compelling description..." oninput="updatePreviews()"></textarea>
+                    <div class="char-counter" id="descriptionCounter">0 / 160 characters</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Focus Keywords</label>
+                    <div class="keyword-input-container" id="keywordContainer">
+                        <input type="text" class="keyword-input" id="keywordInput" placeholder="Type keyword and press Enter..." onkeypress="addKeyword(event)">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Open Graph Image URL</label>
+                    <input type="url" class="form-input" id="ogImage" placeholder="https://example.com/image.jpg" oninput="updatePreviews()">
+                </div>
+
+                <div class="section-title" style="margin-top: 40px;">
+                    👁️ Search Engine Preview
+                </div>
+
+                <div class="preview-card">
+                    <a href="#" class="preview-title" id="previewTitle">Creative Job Hub - Field Service Management Software</a>
+                    <div class="preview-url" id="previewUrl">https://creativejobhub.com/</div>
+                    <div class="preview-description" id="previewDescription">Streamline your field service operations with our comprehensive management software. Schedule jobs, track technicians, and grow your business.</div>
+                </div>
+
+                <div class="section-title">
+                    📱 Social Media Preview
+                </div>
+
+                <div class="og-preview">
+                    <div class="og-image" id="ogImagePreview">🖼️</div>
+                    <div class="og-content">
+                        <div class="og-title" id="ogTitle">Creative Job Hub - Field Service Management Software</div>
+                        <div class="og-description" id="ogDescription">Streamline your field service operations with our comprehensive management software.</div>
+                        <div class="og-domain">creativejobhub.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="panel">
+                    <div class="section-title">
+                        📊 SEO Score
+                    </div>
+                    <div class="score-card">
+                        <div class="score-circle score-good" id="seoScoreCircle">85</div>
+                        <div class="score-label">Good SEO Score</div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="section-title">
+                        💡 Recommendations
+                    </div>
+                    <ul class="recommendations" id="recommendationsList">
+                        <li class="recommendation success">
+                            <span class="recommendation-icon">✅</span>
+                            <div class="recommendation-text">Title length is optimal</div>
+                        </li>
+                        <li class="recommendation warning">
+                            <span class="recommendation-icon">⚠️</span>
+                            <div class="recommendation-text">Add focus keywords to improve ranking</div>
+                        </li>
+                        <li class="recommendation critical">
+                            <span class="recommendation-icon">❌</span>
+                            <div class="recommendation-text">Meta description is missing</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="panel">
+                    <div class="section-title">
+                        🔍 Keyword Analysis
+                    </div>
+                    <div id="keywordAnalysis">
+                        <p style="color: #6c757d; font-style: italic;">Add keywords to see analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-secondary" onclick="generateSuggestions()">
+                🤖 AI Suggestions
+            </button>
+            <button class="btn btn-primary" onclick="saveSEOSettings()">
+                💾 Save SEO Settings
+            </button>
+            <button class="btn btn-primary" onclick="openPageEditor()">
+                ✏️ Edit Page Content
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentKeywords = [];
+        
+        // Sample page data
+        let pageData = {
+            id: new URLSearchParams(window.location.search).get('id') || '1',
+            title: 'Homepage',
+            url: '/index.html',
+            seoTitle: 'Creative Job Hub - Field Service Management Software',
+            seoDescription: 'Streamline your field service operations with our comprehensive management software. Schedule jobs, track technicians, and grow your business.',
+            ogImage: '',
+            keywords: ['field service', 'management software', 'scheduling']
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadPageData();
+            updatePreviews();
+            analyzeCurrentSEO();
+        });
+
+        function loadPageData() {
+            document.getElementById('currentPageTitle').textContent = pageData.title;
+            document.getElementById('currentPageUrl').textContent = pageData.url;
+            document.getElementById('seoTitle').value = pageData.seoTitle;
+            document.getElementById('seoDescription').value = pageData.seoDescription;
+            document.getElementById('ogImage').value = pageData.ogImage;
+            
+            currentKeywords = [...pageData.keywords];
+            renderKeywords();
+        }
+
+        function updatePreviews() {
+            const title = document.getElementById('seoTitle').value || pageData.title;
+            const description = document.getElementById('seoDescription').value || 'No description available';
+            const ogImage = document.getElementById('ogImage').value;
+
+            // Update search preview
+            document.getElementById('previewTitle').textContent = title;
+            document.getElementById('previewDescription').textContent = description;
+
+            // Update social media preview
+            document.getElementById('ogTitle').textContent = title;
+            document.getElementById('ogDescription').textContent = description.substring(0, 100) + (description.length > 100 ? '...' : '');
+            
+            const ogImagePreview = document.getElementById('ogImagePreview');
+            if (ogImage) {
+                ogImagePreview.style.backgroundImage = `url(${ogImage})`;
+                ogImagePreview.style.backgroundSize = 'cover';
+                ogImagePreview.style.backgroundPosition = 'center';
+                ogImagePreview.textContent = '';
+            } else {
+                ogImagePreview.style.backgroundImage = '';
+                ogImagePreview.textContent = '🖼️';
+            }
+
+            // Update character counters
+            updateCharacterCounters();
+            
+            // Update SEO score
+            calculateSEOScore();
+        }
+
+        function updateCharacterCounters() {
+            const title = document.getElementById('seoTitle').value;
+            const description = document.getElementById('seoDescription').value;
+
+            // Title counter
+            const titleCounter = document.getElementById('titleCounter');
+            titleCounter.textContent = `${title.length} / 60 characters`;
+            titleCounter.className = 'char-counter';
+            if (title.length > 60) {
+                titleCounter.classList.add('danger');
+            } else if (title.length > 50) {
+                titleCounter.classList.add('warning');
+            } else if (title.length > 30) {
+                titleCounter.classList.add('good');
+            }
+
+            // Description counter
+            const descriptionCounter = document.getElementById('descriptionCounter');
+            descriptionCounter.textContent = `${description.length} / 160 characters`;
+            descriptionCounter.className = 'char-counter';
+            if (description.length > 160) {
+                descriptionCounter.classList.add('danger');
+            } else if (description.length > 150) {
+                descriptionCounter.classList.add('warning');
+            } else if (description.length > 120) {
+                descriptionCounter.classList.add('good');
+            }
+        }
+
+        function addKeyword(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const input = event.target;
+                const keyword = input.value.trim().toLowerCase();
+                
+                if (keyword && !currentKeywords.includes(keyword)) {
+                    currentKeywords.push(keyword);
+                    input.value = '';
+                    renderKeywords();
+                    analyzeKeywords();
+                    calculateSEOScore();
+                }
+            }
+        }
+
+        function renderKeywords() {
+            const container = document.getElementById('keywordContainer');
+            const input = container.querySelector('.keyword-input');
+            
+            // Remove existing keyword tags
+            container.querySelectorAll('.keyword-tag').forEach(tag => tag.remove());
+            
+            // Add keyword tags
+            currentKeywords.forEach(keyword => {
+                const tag = document.createElement('span');
+                tag.className = 'keyword-tag';
+                tag.innerHTML = `${keyword} <span onclick="removeKeyword('${keyword}')" style="cursor: pointer; margin-left: 4px;">×</span>`;
+                container.insertBefore(tag, input);
+            });
+        }
+
+        function removeKeyword(keyword) {
+            currentKeywords = currentKeywords.filter(k => k !== keyword);
+            renderKeywords();
+            analyzeKeywords();
+            calculateSEOScore();
+        }
+
+        function analyzeKeywords() {
+            const analysisContainer = document.getElementById('keywordAnalysis');
+            
+            if (currentKeywords.length === 0) {
+                analysisContainer.innerHTML = '<p style="color: #6c757d; font-style: italic;">Add keywords to see analysis</p>';
+                return;
+            }
+
+            const title = document.getElementById('seoTitle').value.toLowerCase();
+            const description = document.getElementById('seoDescription').value.toLowerCase();
+            
+            let analysisHTML = '';
+            
+            currentKeywords.forEach(keyword => {
+                const inTitle = title.includes(keyword);
+                const inDescription = description.includes(keyword);
+                
+                let status = 'poor';
+                let icon = '❌';
+                let message = 'Not found in title or description';
+                
+                if (inTitle && inDescription) {
+                    status = 'excellent';
+                    icon = '✅';
+                    message = 'Found in both title and description';
+                } else if (inTitle || inDescription) {
+                    status = 'good';
+                    icon = '⚠️';
+                    message = inTitle ? 'Found in title only' : 'Found in description only';
+                }
+                
+                analysisHTML += `
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 0.9rem;">
+                        <span>${icon}</span>
+                        <strong>${keyword}</strong>
+                        <span style="color: #6c757d;">- ${message}</span>
+                    </div>
+                `;
+            });
+            
+            analysisContainer.innerHTML = analysisHTML;
+        }
+
+        function calculateSEOScore() {
+            let score = 0;
+            const recommendations = [];
+
+            const title = document.getElementById('seoTitle').value;
+            const description = document.getElementById('seoDescription').value;
+            
+            // Title analysis
+            if (title.length >= 30 && title.length <= 60) {
+                score += 20;
+                recommendations.push({ type: 'success', icon: '✅', text: 'Title length is optimal' });
+            } else if (title.length > 0) {
+                score += 10;
+                recommendations.push({ type: 'warning', icon: '⚠️', text: title.length > 60 ? 'Title is too long' : 'Title could be longer' });
+            } else {
+                recommendations.push({ type: 'critical', icon: '❌', text: 'Title is missing' });
+            }
+
+            // Description analysis
+            if (description.length >= 120 && description.length <= 160) {
+                score += 20;
+                recommendations.push({ type: 'success', icon: '✅', text: 'Meta description length is optimal' });
+            } else if (description.length > 0) {
+                score += 10;
+                recommendations.push({ type: 'warning', icon: '⚠️', text: description.length > 160 ? 'Description is too long' : 'Description could be longer' });
+            } else {
+                recommendations.push({ type: 'critical', icon: '❌', text: 'Meta description is missing' });
+            }
+
+            // Keywords analysis
+            if (currentKeywords.length >= 2) {
+                score += 20;
+                recommendations.push({ type: 'success', icon: '✅', text: 'Good number of focus keywords' });
+            } else if (currentKeywords.length === 1) {
+                score += 10;
+                recommendations.push({ type: 'warning', icon: '⚠️', text: 'Consider adding more keywords' });
+            } else {
+                recommendations.push({ type: 'critical', icon: '❌', text: 'No focus keywords defined' });
+            }
+
+            // Keyword in title/description
+            let keywordInContent = false;
+            currentKeywords.forEach(keyword => {
+                if (title.toLowerCase().includes(keyword) || description.toLowerCase().includes(keyword)) {
+                    keywordInContent = true;
+                }
+            });
+
+            if (keywordInContent && currentKeywords.length > 0) {
+                score += 20;
+                recommendations.push({ type: 'success', icon: '✅', text: 'Keywords found in content' });
+            } else if (currentKeywords.length > 0) {
+                recommendations.push({ type: 'warning', icon: '⚠️', text: 'Keywords not found in title/description' });
+            }
+
+            // Open Graph image
+            const ogImage = document.getElementById('ogImage').value;
+            if (ogImage) {
+                score += 20;
+                recommendations.push({ type: 'success', icon: '✅', text: 'Open Graph image is set' });
+            } else {
+                recommendations.push({ type: 'warning', icon: '⚠️', text: 'Consider adding an Open Graph image' });
+            }
+
+            // Update score display
+            const scoreCircle = document.getElementById('seoScoreCircle');
+            scoreCircle.textContent = score;
+            
+            // Update score class
+            scoreCircle.className = 'score-circle';
+            if (score >= 90) {
+                scoreCircle.classList.add('score-excellent');
+            } else if (score >= 70) {
+                scoreCircle.classList.add('score-good');
+            } else if (score >= 50) {
+                scoreCircle.classList.add('score-fair');
+            } else {
+                scoreCircle.classList.add('score-poor');
+            }
+
+            // Update recommendations
+            renderRecommendations(recommendations);
+        }
+
+        function renderRecommendations(recommendations) {
+            const list = document.getElementById('recommendationsList');
+            list.innerHTML = recommendations.map(rec => `
+                <li class="recommendation ${rec.type}">
+                    <span class="recommendation-icon">${rec.icon}</span>
+                    <div class="recommendation-text">${rec.text}</div>
+                </li>
+            `).join('');
+        }
+
+        function analyzeCurrentSEO() {
+            // This would typically analyze the actual page content
+            updatePreviews();
+            analyzeKeywords();
+        }
+
+        function generateSuggestions() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '🤖 Generating...';
+            btn.classList.add('loading');
+            
+            // Simulate AI generation
+            setTimeout(() => {
+                const suggestions = {
+                    title: 'Professional Field Service Management Software | Creative Job Hub',
+                    description: 'Boost efficiency with Creative Job Hub\'s field service management software. Schedule jobs, track technicians, manage customers, and grow your business with our all-in-one platform.',
+                    keywords: ['field service management', 'scheduling software', 'technician tracking', 'service business']
+                };
+                
+                if (confirm('Apply AI-generated suggestions?\n\nTitle: ' + suggestions.title + '\n\nDescription: ' + suggestions.description)) {
+                    document.getElementById('seoTitle').value = suggestions.title;
+                    document.getElementById('seoDescription').value = suggestions.description;
+                    currentKeywords = suggestions.keywords;
+                    renderKeywords();
+                    updatePreviews();
+                }
+                
+                btn.innerHTML = originalText;
+                btn.classList.remove('loading');
+            }, 2000);
+        }
+
+        function saveSEOSettings() {
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '💾 Saving...';
+            btn.classList.add('loading');
+            
+            // Collect data
+            const seoData = {
+                title: document.getElementById('seoTitle').value,
+                description: document.getElementById('seoDescription').value,
+                ogImage: document.getElementById('ogImage').value,
+                keywords: currentKeywords
+            };
+            
+            // Simulate save
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('loading');
+                
+                showSuccessMessage('SEO settings saved successfully!');
+            }, 1000);
+        }
+
+        function openPageEditor() {
+            window.location.href = `editor.html?id=${pageData.id}`;
+        }
+
+        function showSuccessMessage(message) {
+            const notification = document.createElement('div');
+            notification.className = 'success-message';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Auto-save functionality
+        let saveTimeout;
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(() => {
+                    // Auto-save draft
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
