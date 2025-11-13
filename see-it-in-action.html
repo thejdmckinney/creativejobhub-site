@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Creative Job Hub in Action - Live Demos & Screenshots</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="See Creative Job Hub field service management software in action with live video demos and detailed app screenshots. Watch how scheduling, invoicing, and mobile job management work.">
+    <meta name="keywords" content="field service software demo, live demo, app screenshots, video demo, software walkthrough, field service management">
+    <link rel="canonical" href="https://creativejobhub.com/see-it-in-action.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="See Creative Job Hub in Action - Live Demos & Screenshots">
+    <meta property="og:description" content="Watch live demos and explore detailed screenshots of our field service management software.">
+    <meta property="og:image" content="https://creativejobhub.com/assets/og-demo.jpg">
+    <meta property="og:url" content="https://creativejobhub.com/see-it-in-action.html">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/site.css">
+    
+    <style>
+        .hero {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #0ea5e9;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 15px 30px;
+            background: rgba(30, 41, 59, 0.6);
+            color: #e2e8f0;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border-color: #0ea5e9;
+        }
+
+        .tab-button:hover:not(.active) {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: #0ea5e9;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .video-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #0ea5e9;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .video-info {
+            padding: 25px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .video-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .video-duration {
+            background: rgba(14, 165, 233, 0.2);
+            color: #0ea5e9;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .screenshot-item {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: #0ea5e9;
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .screenshot-caption {
+            padding: 15px;
+            text-align: center;
+            color: #94a3b8;
+            font-weight: 500;
+        }
+
+        .cta-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .video-grid,
+            .screenshot-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-tabs {
+                gap: 10px;
+            }
+
+            .tab-button {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include standard header -->
+    <div id="site-header"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>See Creative Job Hub in Action</h1>
+            <p>Explore our field service management software through interactive demos and detailed screenshots. Watch how Creative Job Hub streamlines scheduling, invoicing, and mobile job management for field service businesses.</p>
+        </div>
+
+        <!-- Demo Navigation Tabs -->
+        <div class="demo-tabs">
+            <button class="tab-button active" onclick="showTab('videos')">📹 Video Demos</button>
+            <button class="tab-button" onclick="showTab('screenshots')">📱 App Screenshots</button>
+            <button class="tab-button" onclick="showTab('live')">🎯 Live Demo</button>
+        </div>
+
+        <!-- Video Demos Tab -->
+        <div id="videos" class="tab-content active">
+            <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.2rem;">Video Demonstrations</h2>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        🎥 Dashboard Overview Demo
+                        <br><small>Coming Soon</small>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Dashboard & Analytics</h3>
+                        <p class="video-description">See how the main dashboard provides real-time insights into your business performance, job status, and team productivity.</p>
+                        <span class="video-duration">3:45 min</span>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        🎥 Smart Scheduling Demo
+                        <br><small>Coming Soon</small>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Smart Scheduling & Routing</h3>
+                        <p class="video-description">Watch how AI-powered scheduling optimizes routes, assigns jobs based on technician skills, and maximizes daily efficiency.</p>
+                        <span class="video-duration">4:20 min</span>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        🎥 Mobile App Demo
+                        <br><small>Coming Soon</small>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Mobile Job Management</h3>
+                        <p class="video-description">Discover how technicians use the mobile app for job sheets, photo capture, customer signatures, and instant updates.</p>
+                        <span class="video-duration">5:10 min</span>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        🎥 Invoicing Demo
+                        <br><small>Coming Soon</small>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Instant Invoicing</h3>
+                        <p class="video-description">Learn how to generate and send professional invoices instantly upon job completion with automated calculations.</p>
+                        <span class="video-duration">3:30 min</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots Tab -->
+        <div id="screenshots" class="tab-content">
+            <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.2rem;">App Interface Screenshots</h2>
+            
+            <div class="screenshot-gallery">
+                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                    <img class="screenshot-image" src="/assets/screenshots/dashboard-overview.jpg" alt="Dashboard Overview" 
+                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
+                    <div class="screenshot-caption">Dashboard Overview</div>
+                </div>
+
+                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                    <img class="screenshot-image" src="/assets/screenshots/scheduling-interface.jpg" alt="Scheduling Interface"
+                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
+                    <div class="screenshot-caption">Smart Scheduling</div>
+                </div>
+
+                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                    <img class="screenshot-image" src="/assets/screenshots/mobile-job-sheet.jpg" alt="Mobile Job Sheet"
+                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
+                    <div class="screenshot-caption">Mobile Job Management</div>
+                </div>
+
+                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                    <img class="screenshot-image" src="/assets/screenshots/invoicing-system.jpg" alt="Invoicing System"
+                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
+                    <div class="screenshot-caption">Invoicing System</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="/app-screenshots.html" class="btn btn-primary">View All Screenshots →</a>
+            </div>
+        </div>
+
+        <!-- Live Demo Tab -->
+        <div id="live" class="tab-content">
+            <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.2rem;">Try Creative Job Hub Live</h2>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px;">
+                    Ready to experience Creative Job Hub firsthand? Start your free trial and explore all features with sample data, or schedule a personalized demo with our team.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">
+                        🚀 Start Free Trial
+                    </a>
+                    <a href="/contact.html" class="btn btn-ghost" style="font-size: 1.1rem; padding: 15px 30px;">
+                        📅 Schedule Demo
+                    </a>
+                </div>
+
+                <div style="margin-top: 40px; padding: 30px; background: rgba(14, 165, 233, 0.1); border-radius: 12px; border: 1px solid rgba(14, 165, 233, 0.2);">
+                    <h4 style="color: #0ea5e9; margin-bottom: 15px;">What's Included in Your Trial</h4>
+                    <ul style="text-align: left; color: #94a3b8; max-width: 400px; margin: 0 auto;">
+                        <li>✅ Full access to all features</li>
+                        <li>✅ Sample jobs and customer data</li>
+                        <li>✅ Mobile app access</li>
+                        <li>✅ 14-day free trial</li>
+                        <li>✅ No credit card required</li>
+                        <li>✅ Email support included</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 style="color: #0ea5e9; margin-bottom: 15px; font-size: 2.2rem;">Ready to Transform Your Field Service Business?</h2>
+            <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 25px;">
+                Join thousands of field service professionals who trust Creative Job Hub to streamline their operations and grow their business.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
+                    🎯 Get Started Free
+                </a>
+                <a href="/pricing/" class="btn btn-ghost">
+                    💰 View Pricing
+                </a>
+                <a href="/contact.html" class="btn btn-ghost">
+                    💬 Contact Sales
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/header.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Track in Google Analytics
+            gtag('event', 'demo_tab_view', {
+                'content_type': 'demo_section',
+                'tab_name': tabName
+            });
+        }
+
+        // Track video card clicks
+        document.querySelectorAll('.video-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('.video-title').textContent;
+                gtag('event', 'video_demo_click', {
+                    'content_type': 'video',
+                    'video_title': title
+                });
+            });
+        });
+    </script>
+</body>
+</html>
