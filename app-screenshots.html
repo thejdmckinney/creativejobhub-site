@@ -25,6 +25,9 @@
         gtag('config', 'G-XKCW07R8CM');
     </script>
     
+    <!-- Shared site CSS -->
+    <link rel="stylesheet" href="/assets/site.min.css?v=11" />
+    
     <style>
         * {
             margin: 0;
@@ -348,7 +351,7 @@
 </head>
 <body>
     <!-- Include standard header -->
-    <div id="header-placeholder"></div>
+    <div id="site-header"></div>
 
     <div class="container">
         <!-- Hero Section -->
@@ -509,25 +512,10 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            loadHeader();
             loadMediaLibraryScreenshots(); // Load from localStorage first
             renderScreenshots();
             setupEventListeners();
         });
-
-        // Load standard header
-        function loadHeader() {
-            fetch('/assets/header.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('header-placeholder').innerHTML = data;
-                    // Load header JavaScript
-                    const script = document.createElement('script');
-                    script.src = '/assets/header.js';
-                    document.head.appendChild(script);
-                })
-                .catch(error => console.error('Error loading header:', error));
-        }
 
         // Render screenshots with proper fallback handling
         function renderScreenshots() {
@@ -629,5 +617,8 @@
             document.body.style.overflow = 'auto';
         }
     </script>
+
+    <!-- Standard Navigation System -->
+    <script src="/assets/header.js?v=1"></script>
 </body>
 </html>
