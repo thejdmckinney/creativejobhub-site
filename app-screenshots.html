@@ -209,14 +209,18 @@
             max-width: 90vw;
             max-height: 90vh;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
         }
 
         .modal-image {
             max-width: 100%;
-            max-height: 80vh;
+            max-height: 60vh;
             object-fit: contain;
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
         }
 
         .modal-info {
@@ -226,6 +230,7 @@
             border-radius: 12px;
             margin-top: 20px;
             border: 1px solid rgba(148, 163, 184, 0.2);
+            flex-shrink: 0;
         }
 
         .modal-close {
@@ -311,6 +316,32 @@
 
             .cta-title {
                 font-size: 1.8rem;
+            }
+
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+
+            .modal-image {
+                max-height: 50vh;
+            }
+
+            .modal-info {
+                padding: 20px;
+                margin-top: 15px;
+            }
+
+            .modal-close {
+                top: -40px;
+                right: 0;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
             }
         }
     </style>
