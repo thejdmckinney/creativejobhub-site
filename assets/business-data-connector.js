@@ -4,7 +4,8 @@
 class BusinessDataConnector {
     constructor(config = {}) {
         this.config = {
-            hubspotApiKey: config.hubspotApiKey || null,
+            hubspotAccessToken: config.hubspotAccessToken || null,
+            hubspotPortalId: config.hubspotPortalId || null,
             stripeApiKey: config.stripeApiKey || null,
             googleAnalyticsPropertyId: config.googleAnalyticsPropertyId || '454127161',
             refreshInterval: config.refreshInterval || 300000, // 5 minutes
@@ -99,7 +100,7 @@ class BusinessDataConnector {
         
         try {
             // HubSpot Integration
-            if (this.config.hubspotApiKey) {
+            if (this.config.hubspotAccessToken) {
                 const leads = await this.fetchHubSpotLeads();
                 this.cache.set(cacheKey, leads);
                 return leads;
@@ -136,7 +137,7 @@ class BusinessDataConnector {
         
         try {
             // HubSpot Deal Pipeline
-            if (this.config.hubspotApiKey) {
+            if (this.config.hubspotAccessToken) {
                 const conversions = await this.fetchHubSpotConversions();
                 this.cache.set(cacheKey, conversions);
                 return conversions;
@@ -243,32 +244,56 @@ class BusinessDataConnector {
         };
     }
     
-    // HubSpot API Integration  
+    // HubSpot Private App API Integration  
     async fetchHubSpotLeads() {
+        if (!this.config.hubspotAccessToken) {
+            console.warn('HubSpot access token not configured');
+            return this.generateDemoLeadData();
+        }
+
         const endpoint = `https://api.hubapi.com/crm/v3/objects/contacts`;
-        const response = await fetch(`${endpoint}?hapikey=${this.config.hubspotApiKey}&limit=100`);
+        const response = await fetch(`${endpoint}?limit=100&properties=firstname,lastname,email,createdate,lifecyclestage,hs_lead_status`, {
+            headers: {
+                'Authorization': `Bearer ${this.config.hubspotAccessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
         
         if (!response.ok) {
-            throw new Error(`HubSpot API error: ${response.status}`);
+            console.error(`HubSpot API error: ${response.status}`);
+            // Fallback to demo data if API fails
+            return this.generateDemoLeadData();
         }
         
         const data = await response.json();
         
         // Process HubSpot contacts into lead metrics
-        return this.processHubSpotContacts(data.results);
+        return this.processHubSpotContacts(data.results || []);
     }
     
     // HubSpot Deal Pipeline Integration
     async fetchHubSpotConversions() {
+        if (!this.config.hubspotAccessToken) {
+            console.warn('HubSpot access token not configured');
+            return this.generateDemoConversionData();
+        }
+
         const endpoint = `https://api.hubapi.com/crm/v3/objects/deals`;
-        const response = await fetch(`${endpoint}?hapikey=${this.config.hubspotApiKey}&limit=100`);
+        const response = await fetch(`${endpoint}?limit=100&properties=dealname,amount,closedate,dealstage,pipeline,createdate`, {
+            headers: {
+                'Authorization': `Bearer ${this.config.hubspotAccessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
         
         if (!response.ok) {
-            throw new Error(`HubSpot Deals API error: ${response.status}`);
+            console.error(`HubSpot Deals API error: ${response.status}`);
+            // Fallback to demo data if API fails
+            return this.generateDemoConversionData();
         }
         
         const data = await response.json();
-        return this.processHubSpotDeals(data.results);
+        return this.processHubSpotDeals(data.results || []);
     }
     
     // Google Reviews API Integration
@@ -360,6 +385,49 @@ class BusinessDataConnector {
         };
     }
     
+    // Demo data fallback methods
+    generateDemoLeadData() {
+        return {
+            monthlyLeads: 342,
+            qualifiedLeads: 89,
+            leadToJobRate: 0.26,
+            costPerLead: 18,
+            leadSources: {
+                'Google Ads': 45,
+                'Organic Search': 32,
+                'Referrals': 28,
+                'Social Media': 19,
+                'Direct': 12
+            },
+            leadTrends: this.generateTrendData(7, 30, 60),
+            dataSource: 'demo'
+        };
+    }
+    
+    generateDemoConversionData() {
+        return {
+            conversionRate: 0.264,
+            industryAverage: 0.22,
+            bestPerformingSource: 'Referrals',
+            bestConversionRate: 0.45,
+            improvementTarget: 0.30,
+            dataSource: 'demo'
+        };
+    }
+    
+    generateTrendData(days, min, max) {
+        const data = [];
+        for (let i = days; i >= 0; i--) {
+            const date = new Date();
+            date.setDate(date.getDate() - i);
+            data.push({
+                date: date.toISOString().split('T')[0],
+                value: Math.floor(Math.random() * (max - min) + min)
+            });
+        }
+        return data;
+    }
+
     // Helper methods
     calculateCostPerLead(leadCount) {
         // Estimate based on typical marketing spend
@@ -384,10 +452,22 @@ class BusinessDataConnector {
 // Configuration setup helper
 class DataSourceConfig {
     static async setupHubSpot() {
-        const apiKey = prompt('Enter your HubSpot Private App Token:');
-        if (apiKey) {
-            localStorage.setItem('hubspot_api_key', apiKey);
-            return apiKey;
+        const accessToken = prompt('Enter your HubSpot Private App Access Token:');
+        if (accessToken) {
+            localStorage.setItem('hubspot_access_token', accessToken);
+            return accessToken;
+        }
+        return null;
+    }
+    
+    static getHubSpotConfig() {
+        const saved = localStorage.getItem('hubspot_config');
+        if (saved) {
+            try {
+                return JSON.parse(saved);
+            } catch (e) {
+                console.error('Error parsing saved HubSpot config:', e);
+            }
         }
         return null;
     }

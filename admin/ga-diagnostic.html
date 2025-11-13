@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Analytics Diagnostic - Creative Job Hub</title>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XKCW07R8CM', {
+            debug_mode: true // Enable debug mode for testing
+        });
+        
+        // Track page view
+        gtag('event', 'page_view', {
+            page_title: 'Google Analytics Diagnostic',
+            page_location: window.location.href
+        });
+        
+        console.log('✅ Google Analytics tracking code loaded');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #0ea5e9;
+            margin-bottom: 10px;
+        }
+
+        .diagnostic-panel {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .status-pass {
+            border-left-color: #10b981;
+        }
+
+        .status-warning {
+            border-left-color: #f59e0b;
+        }
+
+        .status-fail {
+            border-left-color: #ef4444;
+        }
+
+        .status-label {
+            font-weight: 600;
+        }
+
+        .status-value {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-pass .status-value {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .status-warning .status-value {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .status-fail .status-value {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .info-box {
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .timeline {
+            margin: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .timeline-time {
+            min-width: 120px;
+            font-weight: 600;
+            color: #0ea5e9;
+        }
+
+        .timeline-desc {
+            color: #94a3b8;
+        }
+
+        .code-block {
+            background: #0f172a;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Google Analytics Diagnostic</h1>
+            <p>Checking your Creative Job Hub analytics setup</p>
+        </div>
+
+        <div class="diagnostic-panel">
+            <h2 style="margin-bottom: 20px; color: #f1f5f9;">🔍 Tracking Status</h2>
+            
+            <div class="status-item" id="trackingCode">
+                <span class="status-label">Google Analytics Tracking Code</span>
+                <span class="status-value">Loading...</span>
+            </div>
+            
+            <div class="status-item" id="propertyId">
+                <span class="status-label">Property ID (G-XKCW07R8CM)</span>
+                <span class="status-value">Checking...</span>
+            </div>
+            
+            <div class="status-item" id="dataLayer">
+                <span class="status-label">Data Layer</span>
+                <span class="status-value">Checking...</span>
+            </div>
+            
+            <div class="status-item" id="realTime">
+                <span class="status-label">Real-time Tracking</span>
+                <span class="status-value">Testing...</span>
+            </div>
+        </div>
+
+        <div class="diagnostic-panel">
+            <h2 style="margin-bottom: 20px; color: #f1f5f9;">⏰ Data Population Timeline</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-time">5-10 minutes</span>
+                    <span class="timeline-desc">Real-time data appears in Google Analytics</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">24-48 hours</span>
+                    <span class="timeline-desc">Standard reports fully populate</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-time">7+ days</span>
+                    <span class="timeline-desc">Meaningful trend analysis available</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3 style="margin-bottom: 10px; color: #0ea5e9;">💡 Next Steps</h3>
+            <p style="margin-bottom: 15px;">To see your data populate in the admin analytics dashboard:</p>
+            <ol style="padding-left: 20px; line-height: 1.6;">
+                <li><strong>Wait 24-48 hours</strong> for Google Analytics to collect data</li>
+                <li><strong>Set up Google Analytics API</strong> for real-time dashboard integration</li>
+                <li><strong>Configure service account</strong> for automated data fetching</li>
+                <li><strong>Test the connection</strong> using the business dashboard</li>
+            </ol>
+        </div>
+
+        <div class="diagnostic-panel">
+            <h3 style="margin-bottom: 15px; color: #f1f5f9;">🔗 Quick Actions</h3>
+            <a href="https://analytics.google.com/analytics/web/#/p454127161/realtime" target="_blank" class="btn">
+                📊 View Real-time Analytics
+            </a>
+            <a href="../admin/business-dashboard.html" class="btn">
+                🏢 Business Dashboard
+            </a>
+            <a href="../admin/data-setup.html" class="btn">
+                ⚙️ API Setup Guide
+            </a>
+        </div>
+
+        <div class="diagnostic-panel">
+            <h3 style="margin-bottom: 15px; color: #f1f5f9;">📋 Manual Verification Steps</h3>
+            
+            <div class="code-block">
+<strong>1. Check Browser Console (F12):</strong>
+Look for: "✅ Google Analytics tracking code loaded"
+
+<strong>2. Network Tab:</strong>
+Look for requests to: "googletagmanager.com"
+
+<strong>3. Google Analytics Real-time:</strong>
+Visit: analytics.google.com → Real-time reports
+Should show "1 active user" when you're on this page
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Diagnostic checks
+        function runDiagnostics() {
+            // Check if gtag is loaded
+            setTimeout(() => {
+                const trackingElement = document.getElementById('trackingCode');
+                const propertyElement = document.getElementById('propertyId');
+                const dataLayerElement = document.getElementById('dataLayer');
+                const realTimeElement = document.getElementById('realTime');
+                
+                // Check tracking code
+                if (typeof gtag !== 'undefined') {
+                    trackingElement.classList.add('status-pass');
+                    trackingElement.querySelector('.status-value').textContent = '✅ Loaded';
+                } else {
+                    trackingElement.classList.add('status-fail');
+                    trackingElement.querySelector('.status-value').textContent = '❌ Not Found';
+                }
+                
+                // Check property ID
+                if (window.dataLayer && window.dataLayer.length > 0) {
+                    propertyElement.classList.add('status-pass');
+                    propertyElement.querySelector('.status-value').textContent = '✅ Active';
+                } else {
+                    propertyElement.classList.add('status-fail');
+                    propertyElement.querySelector('.status-value').textContent = '❌ Issue';
+                }
+                
+                // Check data layer
+                if (window.dataLayer) {
+                    dataLayerElement.classList.add('status-pass');
+                    dataLayerElement.querySelector('.status-value').textContent = `✅ ${window.dataLayer.length} events`;
+                } else {
+                    dataLayerElement.classList.add('status-fail');
+                    dataLayerElement.querySelector('.status-value').textContent = '❌ Missing';
+                }
+                
+                // Test real-time tracking
+                gtag('event', 'diagnostic_test', {
+                    'custom_parameter': 'diagnostic_page_visit',
+                    'timestamp': new Date().toISOString()
+                });
+                
+                realTimeElement.classList.add('status-pass');
+                realTimeElement.querySelector('.status-value').textContent = '✅ Event Sent';
+                
+            }, 2000);
+        }
+        
+        // Run diagnostics when page loads
+        window.addEventListener('load', runDiagnostics);
+        
+        // Send test events
+        setTimeout(() => {
+            gtag('event', 'engagement', {
+                'engagement_time_msec': 5000
+            });
+        }, 5000);
+        
+        console.log('🔍 Google Analytics Diagnostic Page');
+        console.log('📊 Property ID: G-XKCW07R8CM');
+        console.log('⏰ Check Google Analytics Real-time in 5-10 minutes');
+    </script>
+</body>
+</html>
