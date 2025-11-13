@@ -189,5 +189,71 @@
         }
       });
     }
+
+    // === Dropdown navigation functionality ===
+    function setupDropdowns() {
+      const dropdowns = document.querySelectorAll('.nav-dropdown');
+      
+      dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+        
+        if (!toggle || !menu) return;
+
+        // Desktop: hover behavior
+        if (window.innerWidth > 860) {
+          dropdown.addEventListener('mouseenter', () => {
+            dropdown.classList.add('active');
+          });
+
+          dropdown.addEventListener('mouseleave', () => {
+            dropdown.classList.remove('active');
+          });
+        }
+        
+        // Mobile: click behavior
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          // On mobile, toggle this dropdown
+          if (window.innerWidth <= 860) {
+            const isActive = dropdown.classList.contains('active');
+            
+            // Close all other dropdowns
+            dropdowns.forEach(d => d.classList.remove('active'));
+            
+            // Toggle current dropdown
+            if (!isActive) {
+              dropdown.classList.add('active');
+            }
+          }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+          }
+        });
+
+        // Close dropdown on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            dropdown.classList.remove('active');
+          }
+        });
+      });
+    }
+
+    // Initialize dropdowns
+    setupDropdowns();
+
+    // Reinitialize on window resize to switch between mobile/desktop behavior
+    let dropdownTimer = null;
+    window.addEventListener('resize', () => {
+      if (dropdownTimer) clearTimeout(dropdownTimer);
+      dropdownTimer = setTimeout(setupDropdowns, 100);
+    });
   });
 })();

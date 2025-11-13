@@ -11,17 +11,38 @@
   </button>
 
   <nav id="site-nav" class="site-nav" aria-label="Main">
-    <a class="btn" href="/pricing/">Pricing</a>
+    <!-- Core navigation items -->
     <a class="btn" href="/#features">Features</a>
-    <a class="btn" href="/videos/" style="background: linear-gradient(135deg, #e11d48, #f97316); color: white; border: none;">🎥 Videos</a>
-    <a class="btn" href="/media-gallery.html" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa); color: white; border: none;">📸 Gallery</a>
-    <a class="btn" href="/#ai-features" style="background: linear-gradient(135deg, var(--brand), #7c3aed); color: white; border: none;">🤖 AI Features</a>
-    <a class="btn" href="/case-studies/founder-story/" style="background: linear-gradient(135deg, #dc2626, #ea580c); color: white; border: none;">📖 Founder Story</a>
-    <a class="btn" href="/field-service-management/">Field Service</a>
-    <a class="btn" href="/blog/">Blog</a>
-    <a class="btn" href="/how-it-works.html">How it works</a>
+    <a class="btn" href="/pricing/">Pricing</a>
+    
+    <!-- Resources dropdown -->
+    <div class="nav-dropdown">
+      <button class="btn dropdown-toggle" aria-expanded="false">
+        Resources <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-link" href="/videos/">🎥 Demo Videos</a>
+        <a class="dropdown-link" href="/app-screenshots.html">📸 App Screenshots</a>
+        <a class="dropdown-link" href="/how-it-works.html">⚙️ How It Works</a>
+        <a class="dropdown-link" href="/case-studies/founder-story/">📖 Founder Story</a>
+        <a class="dropdown-link" href="/blog/">📝 Blog</a>
+      </div>
+    </div>
+    
+    <!-- Solutions dropdown -->
+    <div class="nav-dropdown">
+      <button class="btn dropdown-toggle" aria-expanded="false">
+        Solutions <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-link" href="/field-service-management/">🔧 Field Service</a>
+        <a class="dropdown-link" href="/#ai-features">🤖 AI Features</a>
+        <a class="dropdown-link" href="/compare/">⚖️ Compare</a>
+      </div>
+    </div>
+    
+    <!-- Support items -->
     <a class="btn" href="/#faq">FAQ</a>
-    <a class="btn" href="/compare/">Compare</a>
     <a class="btn" href="/contact.html">Contact</a>
   </nav>
 
