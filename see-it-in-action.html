@@ -427,11 +427,33 @@
         // Load screenshots from localStorage or use defaults
         function loadScreenshots() {
             try {
-                const mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
-                const gallery = document.getElementById('screenshotGallery');
-                
+                // Try both possible localStorage keys
+                let mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
                 if (mediaLibrary.length === 0) {
+                    mediaLibrary = JSON.parse(localStorage.getItem('creativejobhub_media') || '[]');
+                }
+                
+                const gallery = document.getElementById('screenshotGallery');
+                console.log('Raw mediaLibrary from localStorage:', mediaLibrary.slice(0, 2)); // Log first 2 items for debugging
+                
+                // Filter for valid images with data URLs (base64)
+                const validImages = mediaLibrary.filter(item => {
+                    const hasValidUrl = item.url && 
+                        typeof item.url === 'string' && 
+                        item.url.startsWith('data:image/');
+                    
+                    if (!hasValidUrl && item.url) {
+                        console.warn('Invalid image URL found:', item.url.substring(0, 50) + '...');
+                    }
+                    
+                    return hasValidUrl;
+                });
+                
+                console.log(`Found ${validImages.length} valid images out of ${mediaLibrary.length} total items in localStorage`);
+                
+                if (validImages.length === 0) {
                     // Use default screenshots
+                    console.log('No valid images in localStorage, using defaults');
                     gallery.innerHTML = defaultScreenshots.map((screenshot, index) => `
                         <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
                             <img class="screenshot-image" src="${screenshot.fallbackSvg}" alt="${screenshot.title}" loading="lazy">
@@ -442,17 +464,44 @@
                         </div>
                     `).join('');
                 } else {
-                    // Use uploaded images from localStorage
-                    const screenshots = mediaLibrary.slice(0, 4); // Limit to 4 screenshots
-                    gallery.innerHTML = screenshots.map((item, index) => `
-                        <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                            <img class="screenshot-image" src="${item.url}" alt="${item.name}" loading="lazy">
-                            <div class="screenshot-caption">
-                                <strong>${item.name}</strong><br>
-                                <small style="opacity: 0.8;">Added ${new Date(item.timestamp).toLocaleDateString()}</small>
+                    // Use uploaded images from localStorage - mix with defaults if not enough
+                    console.log(`Using ${validImages.length} valid images from localStorage`);
+                    const screenshots = validImages.slice(0, 4); // Limit to 4 screenshots
+                    
+                    // Fill remaining slots with defaults if needed
+                    while (screenshots.length < 4) {
+                        const defaultIndex = screenshots.length;
+                        if (defaultScreenshots[defaultIndex]) {
+                            screenshots.push({
+                                name: defaultScreenshots[defaultIndex].title,
+                                url: defaultScreenshots[defaultIndex].fallbackSvg,
+                                timestamp: Date.now(),
+                                isDefault: true,
+                                description: defaultScreenshots[defaultIndex].description
+                            });
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    gallery.innerHTML = screenshots.map((item, index) => {
+                        const fallbackUrl = defaultScreenshots[index] ? defaultScreenshots[index].fallbackSvg : defaultScreenshots[0].fallbackSvg;
+                        return `
+                            <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                                <img class="screenshot-image" 
+                                     src="${item.url}" 
+                                     alt="${item.name || 'Screenshot'}" 
+                                     loading="lazy"
+                                     onerror="this.src='${fallbackUrl}'; this.onerror=null; console.warn('Image failed to load, using fallback for:', '${item.name || 'unknown'}');">
+                                <div class="screenshot-caption">
+                                    <strong>${item.name || 'Screenshot'}</strong><br>
+                                    <small style="opacity: 0.8;">
+                                        ${item.isDefault ? (item.description || 'Default placeholder') : `Added ${item.uploadDate ? new Date(item.uploadDate).toLocaleDateString() : 'Recently'}`}
+                                    </small>
+                                </div>
                             </div>
-                        </div>
-                    `).join('');
+                        `;
+                    }).join('');
                 }
             } catch (error) {
                 console.warn('Error loading screenshots:', error);
