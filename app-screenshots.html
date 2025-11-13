@@ -238,25 +238,49 @@
 
         .modal-close {
             position: absolute;
-            top: -50px;
-            right: 0;
-            background: rgba(239, 68, 68, 0.9);
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
             color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            backdrop-filter: blur(10px);
         }
 
         .modal-close:hover {
-            background: rgba(239, 68, 68, 1);
-            transform: scale(1.1);
+            background: rgba(239, 68, 68, 0.9);
+            border-color: rgba(239, 68, 68, 0.6);
+            transform: scale(1.05);
+        }
+        
+        .modal-back-button {
+            background: rgba(148, 163, 184, 0.2);
+            color: #e2e8f0;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-right: 12px;
+        }
+        
+        .modal-back-button:hover {
+            background: rgba(148, 163, 184, 0.3);
+            transform: translateY(-2px);
         }
 
         .cta-section {
@@ -340,11 +364,11 @@
             }
 
             .modal-close {
-                top: -40px;
-                right: 0;
-                width: 35px;
-                height: 35px;
-                font-size: 18px;
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
             }
         }
     </style>
@@ -589,7 +613,10 @@
                         ${screenshot.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
                     </div>
                 </div>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <button class="modal-back-button" onclick="closeModal()">
+                        ← Back to Screenshots
+                    </button>
                     <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
                         🚀 Try This Feature
                     </a>
