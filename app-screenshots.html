@@ -151,6 +151,12 @@
             height: 250px;
             object-fit: cover;
             border-radius: 12px 12px 0 0;
+            background: rgba(30, 41, 59, 0.5);
+            transition: opacity 0.3s ease;
+        }
+        
+        .screenshot-image:not([src*="data:image/"]):not([src*="/assets/screenshots/"]) {
+            opacity: 0.8;
         }
 
         .screenshot-info {
@@ -366,40 +372,64 @@
 
     <script>
         // App screenshots data
+        // Create placeholder SVG generator
+        function createScreenshotPlaceholder(icon, title, color) {
+            return `data:image/svg+xml,${encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+                    <defs>
+                        <linearGradient id="grad${icon}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:${color};stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:${color};stop-opacity:0.05" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="250" fill="url(#grad${icon})" stroke="${color}" stroke-width="2" rx="12"/>
+                    <text x="200" y="100" text-anchor="middle" font-size="48" fill="${color}">${icon}</text>
+                    <text x="200" y="140" text-anchor="middle" font-size="18" fill="${color}" font-family="system-ui">${title}</text>
+                    <text x="200" y="165" text-anchor="middle" font-size="12" fill="${color}" opacity="0.7" font-family="system-ui">Creative Job Hub Interface</text>
+                </svg>
+            `)}`;
+        }
+
+        // Screenshot data with built-in fallbacks
         const appScreenshots = [
             {
                 id: 1,
-                title: "Dashboard Overview",
-                description: "Get a complete view of your business with real-time metrics, job status updates, and key performance indicators all in one place.",
-                image: "/assets/screenshots/dashboard-overview.jpg",
-                features: ["Real-time Analytics", "Job Status", "Revenue Tracking", "Team Performance"]
+                title: "Smart Scheduling Dashboard",
+                description: "Comprehensive scheduling interface with drag-and-drop functionality, real-time updates, and intelligent route optimization for maximum efficiency.",
+                image: "/assets/screenshots/scheduling-dashboard.jpg",
+                fallback: createScreenshotPlaceholder('📅', 'Scheduling Dashboard', '#0ea5e9'),
+                features: ["Drag & Drop", "Real-time Updates", "Route Optimization", "Calendar Integration"]
             },
             {
                 id: 2,
-                title: "Smart Scheduling",
-                description: "AI-powered scheduling system that optimizes routes, assigns jobs based on technician skills, and maximizes daily efficiency.",
-                image: "/assets/screenshots/scheduling-interface.jpg",
-                features: ["AI Route Optimization", "Drag & Drop", "Skill Matching", "Time Blocking"]
+                title: "Mobile Job Management",
+                description: "Complete mobile interface allowing technicians to manage jobs, capture photos, collect signatures, and update job status in real-time.",
+                image: "/assets/screenshots/mobile-job-sheets.jpg",
+                fallback: createScreenshotPlaceholder('📱', 'Mobile Interface', '#22c55e'),
+                features: ["Photo Capture", "Digital Signatures", "Offline Mode", "GPS Tracking"]
             },
             {
                 id: 3,
-                title: "Mobile Job Management",
-                description: "Complete job management on mobile devices with offline capabilities, photo capture, customer signatures, and instant updates.",
-                image: "/assets/screenshots/mobile-job-sheet.jpg",
-                features: ["Offline Mode", "Photo Capture", "Digital Signatures", "GPS Tracking"]
+                title: "Customer Portal",
+                description: "Self-service customer portal for booking appointments, tracking job progress, viewing invoices, and managing service history.",
+                image: "/assets/screenshots/customer-portal.jpg",
+                fallback: createScreenshotPlaceholder('👤', 'Customer Portal', '#8b5cf6'),
+                features: ["Online Booking", "Job Tracking", "Invoice History", "Service Requests"]
             },
             {
                 id: 4,
-                title: "Customer Portal",
-                description: "Professional customer portal where clients can book services, track job progress, view invoices, and communicate with your team.",
-                image: "/assets/screenshots/customer-portal.jpg",
-                features: ["Online Booking", "Job Tracking", "Invoice Access", "Communication Hub"]
+                title: "Inventory Management",
+                description: "Advanced inventory tracking with automatic reorder alerts, supplier management, and integration with job costing and invoicing systems.",
+                image: "/assets/screenshots/inventory-management.jpg",
+                fallback: createScreenshotPlaceholder('📦', 'Inventory System', '#f59e0b'),
+                features: ["Stock Tracking", "Auto Reorder", "Supplier Management", "Cost Integration"]
             },
             {
                 id: 5,
                 title: "Instant Invoicing",
                 description: "Generate and send professional invoices instantly upon job completion with automated calculations, tax handling, and payment processing.",
                 image: "/assets/screenshots/invoicing-system.jpg",
+                fallback: createScreenshotPlaceholder('💰', 'Invoicing System', '#ef4444'),
                 features: ["Auto Calculations", "Payment Processing", "Tax Management", "Professional Templates"]
             },
             {
@@ -407,13 +437,48 @@
                 title: "Analytics & Reporting",
                 description: "Comprehensive business intelligence with detailed reports on revenue, performance, customer satisfaction, and growth trends.",
                 image: "/assets/screenshots/analytics-reports.jpg",
+                fallback: createScreenshotPlaceholder('📊', 'Analytics Dashboard', '#06b6d4'),
                 features: ["Revenue Reports", "Performance Metrics", "Growth Analysis", "Custom Dashboards"]
             }
         ];
 
+        // Load screenshots from localStorage or use defaults
+        function loadMediaLibraryScreenshots() {
+            try {
+                // Try both possible localStorage keys
+                let mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
+                if (mediaLibrary.length === 0) {
+                    mediaLibrary = JSON.parse(localStorage.getItem('creativejobhub_media') || '[]');
+                }
+                
+                // Filter for valid images with data URLs (base64)
+                const validImages = mediaLibrary.filter(item => 
+                    item.url && 
+                    typeof item.url === 'string' && 
+                    item.url.startsWith('data:image/')
+                );
+                
+                console.log(`Found ${validImages.length} valid images in localStorage for app screenshots`);
+                
+                if (validImages.length > 0) {
+                    // Replace default screenshots with uploaded ones
+                    validImages.forEach((item, index) => {
+                        if (index < appScreenshots.length) {
+                            appScreenshots[index].image = item.url;
+                            appScreenshots[index].title = item.name || appScreenshots[index].title;
+                            appScreenshots[index].description = `Uploaded ${item.uploadDate ? new Date(item.uploadDate).toLocaleDateString() : 'recently'} - ${appScreenshots[index].description}`;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.warn('Error loading media library screenshots:', error);
+            }
+        }
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             loadHeader();
+            loadMediaLibraryScreenshots(); // Load from localStorage first
             renderScreenshots();
             setupEventListeners();
         });
@@ -432,23 +497,33 @@
                 .catch(error => console.error('Error loading header:', error));
         }
 
-        // Render screenshots
+        // Render screenshots with proper fallback handling
         function renderScreenshots() {
             const grid = document.getElementById('screenshotGrid');
             
-            grid.innerHTML = appScreenshots.map(screenshot => `
-                <div class="screenshot-card" onclick="openModal(${screenshot.id})">
-                    <img class="screenshot-image" src="${screenshot.image}" alt="${screenshot.title}" loading="lazy" 
-                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
-                    <div class="screenshot-info">
-                        <h3 class="screenshot-title">${screenshot.title}</h3>
-                        <p class="screenshot-description">${screenshot.description}</p>
-                        <div class="screenshot-features">
-                            ${screenshot.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+            grid.innerHTML = appScreenshots.map(screenshot => {
+                // Use fallback immediately if the original image doesn't start with data:
+                const imageUrl = (screenshot.image.startsWith('data:image/') || screenshot.image.startsWith('/assets/screenshots/')) 
+                    ? screenshot.image 
+                    : screenshot.fallback;
+                
+                return `
+                    <div class="screenshot-card" onclick="openModal(${screenshot.id})">
+                        <img class="screenshot-image" 
+                             src="${imageUrl}" 
+                             alt="${screenshot.title}" 
+                             loading="lazy" 
+                             onerror="this.src='${screenshot.fallback}'; this.onerror=null;">
+                        <div class="screenshot-info">
+                            <h3 class="screenshot-title">${screenshot.title}</h3>
+                            <p class="screenshot-description">${screenshot.description}</p>
+                            <div class="screenshot-features">
+                                ${screenshot.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                            </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         // Setup event listeners
@@ -473,10 +548,16 @@
             const modalImage = document.getElementById('modalImage');
             const modalInfo = document.getElementById('modalInfo');
 
-            modalImage.src = screenshot.image;
+            // Use fallback immediately if the original image doesn't start with data:
+            const imageUrl = (screenshot.image.startsWith('data:image/') || screenshot.image.startsWith('/assets/screenshots/')) 
+                ? screenshot.image 
+                : screenshot.fallback;
+                
+            modalImage.src = imageUrl;
             modalImage.alt = screenshot.title;
             modalImage.onerror = function() {
-                this.src = '/assets/illustrations/placeholder-dashboard.svg';
+                this.src = screenshot.fallback;
+                this.onerror = null;
             };
 
             modalInfo.innerHTML = `
