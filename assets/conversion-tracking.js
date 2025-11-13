@@ -4,6 +4,12 @@
 (function() {
     'use strict';
     
+    // Prevent multiple initialization
+    if (window._conversionTrackingInitialized) {
+        return;
+    }
+    window._conversionTrackingInitialized = true;
+    
     // Conversion tracking configuration
     const CONVERSIONS = {
         CONTACT_FORM: 'contact_form_submission',
@@ -18,20 +24,32 @@
     
     // Track conversion with Google Analytics
     function trackConversion(eventName, eventData = {}) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', eventName, {
-                event_category: 'conversion',
-                event_label: eventData.label || '',
-                value: eventData.value || 0,
-                custom_parameter: eventData.custom || ''
-            });
-            
-            console.log('Conversion tracked:', eventName, eventData);
+        // Prevent recursion by checking if gtag exists and is a function
+        if (typeof gtag === 'function' && window.dataLayer && !window._gtagRecursionGuard) {
+            try {
+                window._gtagRecursionGuard = true;
+                gtag('event', eventName, {
+                    event_category: 'conversion',
+                    event_label: eventData.label || '',
+                    value: eventData.value || 0,
+                    custom_parameter: eventData.custom || ''
+                });
+                
+                console.log('Conversion tracked:', eventName, eventData);
+            } catch (error) {
+                console.warn('Error tracking conversion:', error);
+            } finally {
+                window._gtagRecursionGuard = false;
+            }
         }
         
-        // Also send to our analytics dashboard if available
-        if (window.trackConversion) {
-            window.trackConversion(eventName, eventData.value);
+        // Also send to external analytics dashboard if available
+        if (typeof window.externalAnalytics === 'function') {
+            try {
+                window.externalAnalytics(eventName, eventData.value);
+            } catch (error) {
+                console.warn('Error sending to external analytics dashboard:', error);
+            }
         }
     }
     
@@ -327,12 +345,13 @@
     // Initialize specific element tracking after a short delay
     setTimeout(trackSpecificElements, 1000);
     
-    // Export tracking function for manual use
-    window.trackConversion = trackConversion;
-    window.ConversionTracker = {
-        track: trackConversion,
-        EVENTS: CONVERSIONS
-    };
+    // Export tracking function for manual use (avoid circular reference)
+    if (!window.ConversionTracker) {
+        window.ConversionTracker = {
+            track: trackConversion,
+            EVENTS: CONVERSIONS
+        };
+    }
     
     console.log('Enhanced conversion tracking initialized');
 })();
