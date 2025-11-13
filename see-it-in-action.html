@@ -185,6 +185,14 @@
             text-align: center;
             color: #94a3b8;
             font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .screenshot-caption strong {
+            color: #f1f5f9;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
         }
 
         .cta-section {
@@ -254,9 +262,10 @@
             
             <div class="video-grid">
                 <div class="video-card">
-                    <div class="video-placeholder">
-                        🎥 Dashboard Overview Demo
-                        <br><small>Coming Soon</small>
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #1e293b, #0f172a); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 1.1rem;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">📊</div>
+                        <div>Dashboard Overview Demo</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">Coming Soon</div>
                     </div>
                     <div class="video-info">
                         <h3 class="video-title">Dashboard & Analytics</h3>
@@ -266,9 +275,10 @@
                 </div>
 
                 <div class="video-card">
-                    <div class="video-placeholder">
-                        🎥 Smart Scheduling Demo
-                        <br><small>Coming Soon</small>
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #1e293b, #0f172a); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 1.1rem;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">📅</div>
+                        <div>Smart Scheduling Demo</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">Coming Soon</div>
                     </div>
                     <div class="video-info">
                         <h3 class="video-title">Smart Scheduling & Routing</h3>
@@ -278,9 +288,10 @@
                 </div>
 
                 <div class="video-card">
-                    <div class="video-placeholder">
-                        🎥 Mobile App Demo
-                        <br><small>Coming Soon</small>
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #1e293b, #0f172a); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 1.1rem;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">📱</div>
+                        <div>Mobile App Demo</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">Coming Soon</div>
                     </div>
                     <div class="video-info">
                         <h3 class="video-title">Mobile Job Management</h3>
@@ -290,9 +301,10 @@
                 </div>
 
                 <div class="video-card">
-                    <div class="video-placeholder">
-                        🎥 Invoicing Demo
-                        <br><small>Coming Soon</small>
+                    <div class="video-placeholder" style="background: linear-gradient(135deg, #1e293b, #0f172a); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #94a3b8; font-size: 1.1rem;">
+                        <div style="font-size: 3rem; margin-bottom: 10px;">💰</div>
+                        <div>Invoicing Demo</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">Coming Soon</div>
                     </div>
                     <div class="video-info">
                         <h3 class="video-title">Instant Invoicing</h3>
@@ -307,30 +319,8 @@
         <div id="screenshots" class="tab-content">
             <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.2rem;">App Interface Screenshots</h2>
             
-            <div class="screenshot-gallery">
-                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                    <img class="screenshot-image" src="/assets/screenshots/dashboard-overview.jpg" alt="Dashboard Overview" 
-                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
-                    <div class="screenshot-caption">Dashboard Overview</div>
-                </div>
-
-                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                    <img class="screenshot-image" src="/assets/screenshots/scheduling-interface.jpg" alt="Scheduling Interface"
-                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
-                    <div class="screenshot-caption">Smart Scheduling</div>
-                </div>
-
-                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                    <img class="screenshot-image" src="/assets/screenshots/mobile-job-sheet.jpg" alt="Mobile Job Sheet"
-                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
-                    <div class="screenshot-caption">Mobile Job Management</div>
-                </div>
-
-                <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                    <img class="screenshot-image" src="/assets/screenshots/invoicing-system.jpg" alt="Invoicing System"
-                         onerror="this.src='/assets/illustrations/placeholder-dashboard.svg'">
-                    <div class="screenshot-caption">Invoicing System</div>
-                </div>
+            <div class="screenshot-gallery" id="screenshotGallery">
+                <!-- Screenshots will be populated by JavaScript -->
             </div>
 
             <div style="text-align: center; margin-top: 30px;">
@@ -392,6 +382,94 @@
 
     <script src="/assets/header.js"></script>
     <script>
+        // Default screenshots with fallback data
+        const defaultScreenshots = [
+            {
+                title: 'Dashboard Overview',
+                description: 'Real-time business metrics and job status tracking',
+                fallbackSvg: createPlaceholderSvg('📊', 'Dashboard Overview', '#0ea5e9')
+            },
+            {
+                title: 'Smart Scheduling',
+                description: 'AI-powered scheduling and route optimization',
+                fallbackSvg: createPlaceholderSvg('📅', 'Smart Scheduling', '#22c55e')
+            },
+            {
+                title: 'Mobile Job Management',
+                description: 'Complete job management on mobile devices',
+                fallbackSvg: createPlaceholderSvg('📱', 'Mobile App', '#f59e0b')
+            },
+            {
+                title: 'Invoicing System',
+                description: 'Instant professional invoicing and payments',
+                fallbackSvg: createPlaceholderSvg('💰', 'Invoicing', '#ef4444')
+            }
+        ];
+
+        // Create placeholder SVG
+        function createPlaceholderSvg(icon, title, color) {
+            return `data:image/svg+xml,${encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:${color};stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:${color};stop-opacity:0.05" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="250" fill="url(#grad)" stroke="${color}" stroke-width="2" rx="12"/>
+                    <text x="200" y="100" text-anchor="middle" font-size="48" fill="${color}">${icon}</text>
+                    <text x="200" y="140" text-anchor="middle" font-size="18" fill="${color}" font-family="system-ui">${title}</text>
+                    <text x="200" y="165" text-anchor="middle" font-size="12" fill="${color}" opacity="0.7" font-family="system-ui">Creative Job Hub Interface</text>
+                </svg>
+            `)}`;
+        }
+
+        // Load screenshots from localStorage or use defaults
+        function loadScreenshots() {
+            try {
+                const mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
+                const gallery = document.getElementById('screenshotGallery');
+                
+                if (mediaLibrary.length === 0) {
+                    // Use default screenshots
+                    gallery.innerHTML = defaultScreenshots.map((screenshot, index) => `
+                        <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                            <img class="screenshot-image" src="${screenshot.fallbackSvg}" alt="${screenshot.title}" loading="lazy">
+                            <div class="screenshot-caption">
+                                <strong>${screenshot.title}</strong><br>
+                                <small style="opacity: 0.8;">${screenshot.description}</small>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    // Use uploaded images from localStorage
+                    const screenshots = mediaLibrary.slice(0, 4); // Limit to 4 screenshots
+                    gallery.innerHTML = screenshots.map((item, index) => `
+                        <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                            <img class="screenshot-image" src="${item.url}" alt="${item.name}" loading="lazy">
+                            <div class="screenshot-caption">
+                                <strong>${item.name}</strong><br>
+                                <small style="opacity: 0.8;">Added ${new Date(item.timestamp).toLocaleDateString()}</small>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.warn('Error loading screenshots:', error);
+                // Fallback to default screenshots
+                const gallery = document.getElementById('screenshotGallery');
+                gallery.innerHTML = defaultScreenshots.map((screenshot, index) => `
+                    <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
+                        <img class="screenshot-image" src="${screenshot.fallbackSvg}" alt="${screenshot.title}" loading="lazy">
+                        <div class="screenshot-caption">
+                            <strong>${screenshot.title}</strong><br>
+                            <small style="opacity: 0.8;">${screenshot.description}</small>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
         function showTab(tabName) {
             // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(tab => {
@@ -409,6 +487,11 @@
             // Add active class to clicked button
             event.target.classList.add('active');
             
+            // Load screenshots when screenshots tab is shown
+            if (tabName === 'screenshots') {
+                loadScreenshots();
+            }
+            
             // Track in Google Analytics
             gtag('event', 'demo_tab_view', {
                 'content_type': 'demo_section',
@@ -416,13 +499,18 @@
             });
         }
 
-        // Track video card clicks
-        document.querySelectorAll('.video-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const title = card.querySelector('.video-title').textContent;
-                gtag('event', 'video_demo_click', {
-                    'content_type': 'video',
-                    'video_title': title
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadScreenshots(); // Load screenshots on page load
+            
+            // Track video card clicks
+            document.querySelectorAll('.video-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('.video-title').textContent;
+                    gtag('event', 'video_demo_click', {
+                        'content_type': 'video',
+                        'video_title': title
+                    });
                 });
             });
         });
