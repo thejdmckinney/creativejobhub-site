@@ -461,12 +461,13 @@
                 console.log(`Found ${validImages.length} valid images in localStorage for app screenshots`);
                 
                 if (validImages.length > 0) {
-                    // Replace default screenshots with uploaded ones
+                    // Replace default screenshots with uploaded ones (keep original titles & descriptions)
                     validImages.forEach((item, index) => {
                         if (index < appScreenshots.length) {
                             appScreenshots[index].image = item.url;
-                            appScreenshots[index].title = item.name || appScreenshots[index].title;
-                            appScreenshots[index].description = `Uploaded ${item.uploadDate ? new Date(item.uploadDate).toLocaleDateString() : 'recently'} - ${appScreenshots[index].description}`;
+                            // Keep original title and description - don't overwrite with filename
+                            // appScreenshots[index].title stays the same
+                            // appScreenshots[index].description stays the same
                         }
                     });
                 }
