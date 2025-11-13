@@ -605,6 +605,7 @@
     <script>
         // Global variables
         let originalImage = null;
+        let originalFile = null;
         let optimizedImage = null;
         let currentEnhancements = new Set();
         let canvas = null;
@@ -653,15 +654,17 @@
         // Process uploaded image file
         function handleImageFile(file) {
             if (!file.type.startsWith('image/')) {
-                showNotification('❌ Please select a valid image file');
+                showNotification('❌ Please select a valid image file', 'error');
                 return;
             }
 
             if (file.size > 10 * 1024 * 1024) {
-                showNotification('❌ File size must be less than 10MB');
+                showNotification('❌ File size must be less than 10MB', 'error');
                 return;
             }
 
+            originalFile = file; // Store the original file info
+            
             const reader = new FileReader();
             reader.onload = function(e) {
                 const img = new Image();
@@ -865,13 +868,50 @@
 
         // Save to media library
         function saveToMediaLibrary() {
-            if (!optimizedImage) return;
+            if (!optimizedImage) {
+                showNotification('❌ No optimized image to save', 'error');
+                return;
+            }
 
-            // Simulate saving to media library
-            showNotification('✅ Image saved to media library!');
-            
-            // In a real implementation, you would upload to your media library here
-            console.log('Saving optimized image to media library...');
+            try {
+                // Get existing media library from localStorage
+                const existingLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
+                
+                // Create file info for the optimized image
+                const optimizedSize = Math.round(optimizedImage.dataUrl.length * 0.75); // Approximate file size
+                const compressionRatio = originalFile ? Math.round((1 - optimizedSize / originalFile.size) * 100) : 0;
+                
+                const fileInfo = {
+                    id: Date.now() + Math.random(),
+                    name: `optimized_${originalFile ? originalFile.name : 'image.jpg'}`,
+                    size: optimizedSize,
+                    type: originalFile ? originalFile.type : 'image/jpeg',
+                    url: optimizedImage.dataUrl,
+                    uploadDate: new Date().toISOString(),
+                    optimized: true,
+                    originalSize: originalFile ? originalFile.size : 0,
+                    compressionRatio: compressionRatio > 0 ? compressionRatio : 'N/A'
+                };
+                
+                // Add to media library
+                existingLibrary.push(fileInfo);
+                
+                // Save back to localStorage
+                localStorage.setItem('mediaLibrary', JSON.stringify(existingLibrary));
+                
+                showNotification(`✅ Image saved to media library! Compressed by ${fileInfo.compressionRatio}%`, 'success');
+                
+                // Optional: redirect back to media library after a delay
+                setTimeout(() => {
+                    if (confirm('Would you like to go back to the media library to see your saved image?')) {
+                        window.location.href = 'index.html#media';
+                    }
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error saving to media library:', error);
+                showNotification('❌ Failed to save image to media library', 'error');
+            }
         }
 
         // Reset all settings
@@ -902,6 +942,7 @@
         // Start over with new image
         function startOver() {
             originalImage = null;
+            originalFile = null;
             optimizedImage = null;
             
             document.getElementById('originalImage').style.display = 'none';
@@ -927,13 +968,25 @@
             return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
         }
 
-        function showNotification(message) {
+        function showNotification(message, type = 'info') {
             const notification = document.createElement('div');
+            
+            let backgroundColor = 'rgba(30, 41, 59, 0.95)';
+            let borderColor = 'rgba(148, 163, 184, 0.2)';
+            
+            if (type === 'success') {
+                backgroundColor = 'rgba(34, 197, 94, 0.9)';
+                borderColor = 'rgba(34, 197, 94, 0.3)';
+            } else if (type === 'error') {
+                backgroundColor = 'rgba(239, 68, 68, 0.9)';
+                borderColor = 'rgba(239, 68, 68, 0.3)';
+            }
+            
             notification.style.cssText = `
                 position: fixed;
                 top: 20px;
                 right: 20px;
-                background: rgba(30, 41, 59, 0.95);
+                background: ${backgroundColor};
                 backdrop-filter: blur(10px);
                 color: white;
                 padding: 15px 20px;
@@ -941,7 +994,8 @@
                 box-shadow: 0 8px 25px rgba(0,0,0,0.3);
                 z-index: 10000;
                 font-weight: 600;
-                border: 1px solid rgba(148, 163, 184, 0.2);
+                border: 1px solid ${borderColor};
+                max-width: 400px;
             `;
             notification.textContent = message;
             
