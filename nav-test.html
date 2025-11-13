@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <link rel="stylesheet" href="/assets/site.css?v=5">
+    <style>
+        /* Debug CSS to test dropdowns */
+        body { 
+            padding-top: 80px; 
+            background: #0b1220; 
+            color: white; 
+            font-family: sans-serif; 
+        }
+        
+        .test-info {
+            padding: 20px;
+            margin: 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        
+        /* FORCE HIDE dropdowns - this should definitely work */
+        .dropdown-menu {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+        }
+        
+        /* Desktop show */
+        @media (min-width: 861px) {
+            .nav-dropdown:hover .dropdown-menu {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                background: rgba(11, 18, 32, 0.98) !important;
+                border: 1px solid rgba(148, 163, 184, 0.2) !important;
+                border-radius: 12px !important;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+                padding: 8px 0 !important;
+                min-width: 220px !important;
+                z-index: 1000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Static header for testing -->
+    <header class="site-header">
+      <!-- Left: brand -->
+      <a class="site-brand" href="/">
+        <img class="site-brand__logo" src="/assets/logo-wordmark.svg?v=3" alt="CreativeJobHub logo">
+        <span class="site-brand__name">CreativeJobHub</span>
+      </a>
+
+      <!-- Mobile hamburger button -->
+      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <a class="nav-link" href="/#features">Features</a>
+        <a class="nav-link" href="/pricing/">Pricing</a>
+        
+        <!-- Resources dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            Resources <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-link" href="/blog/">📝 Blog</a>
+            <a class="dropdown-link" href="/how-it-works.html">⚙️ How It Works</a>
+            <a class="dropdown-link" href="/#faq">❓ FAQ</a>
+            <a class="dropdown-link" href="/case-studies/founder-story/">📖 Success Stories</a>
+          </div>
+        </div>
+        
+        <!-- Industries dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            Industries <span class="dropdown-arrow">▼</span>
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-link" href="/hvac-field-service-software/">🌡️ HVAC</a>
+            <a class="dropdown-link" href="/plumbing-field-service-software/">🚰 Plumbing</a>
+            <a class="dropdown-link" href="/electrical-field-service-software/">⚡ Electrical</a>
+            <a class="dropdown-link" href="/landscaping-field-service-software/">🌿 Landscaping</a>
+            <a class="dropdown-link" href="/handyman-field-service-software/">🔨 Handyman</a>
+          </div>
+        </div>
+        
+        <a class="nav-link" href="/see-it-in-action.html">See It in Action</a>
+        <a class="nav-link" href="/about.html">About</a>
+      </nav>
+
+      <!-- Right: CTAs -->
+      <div class="site-ctas">
+        <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth">Log in</a>
+        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Get started</a>
+        <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank">Follow on LinkedIn</a>
+      </div>
+    </header>
+
+    <div class="test-info">
+        <h1>Navigation Test Page</h1>
+        <p><strong>What you should see:</strong></p>
+        <ul>
+            <li>Features, Pricing, Resources, Industries, See It in Action, About</li>
+            <li>NO individual HVAC, Plumbing, Blog, etc. links in the main nav</li>
+            <li>Hover over Resources and Industries to see dropdown menus</li>
+        </ul>
+        
+        <p><strong>If you still see individual industry/resource links:</strong></p>
+        <ul>
+            <li>The CSS is not loading properly</li>
+            <li>There's a CSS specificity issue</li>
+            <li>Browser caching is the problem</li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('Dropdowns found:', document.querySelectorAll('.nav-dropdown').length);
+        console.log('Dropdown menus found:', document.querySelectorAll('.dropdown-menu').length);
+        
+        // Log computed styles for debugging
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+        dropdownMenus.forEach((menu, index) => {
+            const styles = window.getComputedStyle(menu);
+            console.log(`Dropdown ${index} styles:`, {
+                display: styles.display,
+                opacity: styles.opacity,
+                visibility: styles.visibility,
+                position: styles.position
+            });
+        });
+    </script>
+</body>
+</html>
