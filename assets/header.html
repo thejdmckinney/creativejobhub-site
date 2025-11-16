@@ -19,23 +19,46 @@
     position: absolute !important; 
     top: 100% !important; 
     left: 0 !important; 
-    background: rgba(11, 18, 32, 0.98) !important; 
-    border: 1px solid rgba(148, 163, 184, 0.2) !important; 
-    border-radius: 12px !important; 
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important; 
-    padding: 8px 0 !important; 
-    min-width: 220px !important; 
+    background: linear-gradient(145deg, rgba(11, 18, 32, 0.98), rgba(15, 23, 42, 0.98)) !important; 
+    border: 1px solid rgba(148, 163, 184, 0.3) !important; 
+    border-radius: 16px !important; 
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset !important; 
+    padding: 16px 0 !important; 
+    min-width: 280px !important; 
     z-index: 1000 !important; 
+    backdrop-filter: blur(20px) !important;
   }
   .dropdown-link { 
-    display: block !important; 
-    padding: 12px 18px !important; 
+    display: flex !important; 
+    align-items: center !important;
+    padding: 14px 20px !important; 
     color: #e2e8f0 !important; 
     text-decoration: none !important; 
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    transition: all 0.2s ease !important;
+    border-left: 3px solid transparent !important;
   }
   .dropdown-link:hover { 
-    background: rgba(14, 165, 233, 0.15) !important; 
+    background: linear-gradient(90deg, rgba(14, 165, 233, 0.12), rgba(14, 165, 233, 0.05)) !important; 
     color: #0ea5e9 !important; 
+    border-left-color: #0ea5e9 !important;
+    transform: translateX(4px) !important;
+  }
+  .dropdown-icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 12px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(148, 163, 184, 0.1) !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+  }
+  .dropdown-link:hover .dropdown-icon {
+    background: rgba(14, 165, 233, 0.2) !important;
+    color: #0ea5e9 !important;
   }
 }
 </style>
@@ -62,10 +85,22 @@
         Resources <span class="dropdown-arrow">▼</span>
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-link" href="/blog/">📝 Blog</a>
-        <a class="dropdown-link" href="/how-it-works.html">⚙️ How It Works</a>
-        <a class="dropdown-link" href="/#faq">❓ FAQ</a>
-        <a class="dropdown-link" href="/case-studies/founder-story/">📖 Success Stories</a>
+        <a class="dropdown-link" href="/blog/">
+          <span class="dropdown-icon">📝</span>
+          <span>Blog & Insights</span>
+        </a>
+        <a class="dropdown-link" href="/how-it-works.html">
+          <span class="dropdown-icon">⚙️</span>
+          <span>How It Works</span>
+        </a>
+        <a class="dropdown-link" href="/#faq">
+          <span class="dropdown-icon">❓</span>
+          <span>FAQ & Support</span>
+        </a>
+        <a class="dropdown-link" href="/case-studies/founder-story/">
+          <span class="dropdown-icon">📖</span>
+          <span>Success Stories</span>
+        </a>
       </div>
     </div>
     
@@ -75,11 +110,26 @@
         Industries <span class="dropdown-arrow">▼</span>
       </button>
       <div class="dropdown-menu">
-        <a class="dropdown-link" href="/hvac-field-service-software/">🌡️ HVAC</a>
-        <a class="dropdown-link" href="/plumbing-field-service-software/">🚰 Plumbing</a>
-        <a class="dropdown-link" href="/electrical-field-service-software/">⚡ Electrical</a>
-        <a class="dropdown-link" href="/landscaping-field-service-software/">🌿 Landscaping</a>
-        <a class="dropdown-link" href="/handyman-field-service-software/">🔨 Handyman</a>
+        <a class="dropdown-link" href="/hvac-field-service-software/">
+          <span class="dropdown-icon">🌡️</span>
+          <span>HVAC Services</span>
+        </a>
+        <a class="dropdown-link" href="/plumbing-field-service-software/">
+          <span class="dropdown-icon">🚰</span>
+          <span>Plumbing Services</span>
+        </a>
+        <a class="dropdown-link" href="/electrical-field-service-software/">
+          <span class="dropdown-icon">⚡</span>
+          <span>Electrical Services</span>
+        </a>
+        <a class="dropdown-link" href="/landscaping-field-service-software/">
+          <span class="dropdown-icon">🌿</span>
+          <span>Landscaping Services</span>
+        </a>
+        <a class="dropdown-link" href="/handyman-field-service-software/">
+          <span class="dropdown-icon">🔨</span>
+          <span>Handyman Services</span>
+        </a>
       </div>
     </div>
     
