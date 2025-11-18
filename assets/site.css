@@ -317,6 +317,8 @@ a{color:inherit;text-decoration:none}
 /* Base dropdown styles - FORCE HIDE by default */
 .site-nav .nav-dropdown .dropdown-menu,
 nav .nav-dropdown .dropdown-menu,
+
+/* Hide dropdowns by default, but allow .active to override display */
 .nav-dropdown .dropdown-menu {
   display: none !important;
   opacity: 0 !important;
@@ -327,6 +329,19 @@ nav .nav-dropdown .dropdown-menu,
   max-height: 0 !important;
   overflow: hidden !important;
   z-index: -1 !important;
+}
+
+.nav-dropdown.active .dropdown-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(0) scale(1) !important;
+  max-height: none !important;
+  overflow: visible !important;
+  z-index: 1000 !important;
 }
 
 /* Professional Dropdown Styles - Desktop Only */
