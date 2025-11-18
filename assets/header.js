@@ -200,6 +200,10 @@
         
         if (!toggle || !menu) return;
 
+        // Remove previous event listeners by cloning
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+
         // Desktop: hover behavior
         if (window.innerWidth > 860) {
           dropdown.addEventListener('mouseenter', () => {
@@ -212,7 +216,7 @@
         }
         
         // Click behavior for all screen sizes
-        toggle.addEventListener('click', (e) => {
+        newToggle.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
           
@@ -225,7 +229,7 @@
           
           // Toggle current dropdown
           dropdown.classList.toggle('active', !isActive);
-          toggle.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+          newToggle.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
         });
       });
 
@@ -252,7 +256,7 @@
       });
     }
 
-    // Initialize dropdowns
+    // Initialize dropdowns after header is injected
     setupDropdowns();
 
     // Reinitialize on window resize
@@ -261,5 +265,63 @@
       if (dropdownTimer) clearTimeout(dropdownTimer);
       dropdownTimer = setTimeout(setupDropdowns, 100);
     });
+  });
+
+  // Fallback: If header is already present (e.g. homepage), ensure dropdowns are initialized
+  document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.site-header')) {
+      // Only run if not already initialized
+      if (!window._dropdownsInitialized) {
+        window._dropdownsInitialized = true;
+        // Use the same setupDropdowns function as above
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        dropdowns.forEach(dropdown => {
+          const toggle = dropdown.querySelector('.dropdown-toggle');
+          const menu = dropdown.querySelector('.dropdown-menu');
+          if (!toggle || !menu) return;
+          // Remove previous event listeners by cloning
+          const newToggle = toggle.cloneNode(true);
+          toggle.parentNode.replaceChild(newToggle, toggle);
+          // Desktop: hover behavior
+          if (window.innerWidth > 860) {
+            dropdown.addEventListener('mouseenter', () => {
+              dropdown.classList.add('active');
+            });
+            dropdown.addEventListener('mouseleave', () => {
+              dropdown.classList.remove('active');
+            });
+          }
+          // Click behavior for all screen sizes
+          newToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isActive = dropdown.classList.contains('active');
+            dropdowns.forEach(d => { if (d !== dropdown) d.classList.remove('active'); });
+            dropdown.classList.toggle('active', !isActive);
+            newToggle.setAttribute('aria-expanded', !isActive ? 'true' : 'false');
+          });
+        });
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('.nav-dropdown')) {
+            dropdowns.forEach(dropdown => {
+              dropdown.classList.remove('active');
+              const toggle = dropdown.querySelector('.dropdown-toggle');
+              if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+        // Close dropdowns on escape key
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            dropdowns.forEach(dropdown => {
+              dropdown.classList.remove('active');
+              const toggle = dropdown.querySelector('.dropdown-toggle');
+              if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            });
+          }
+        });
+      }
+    }
   });
 })();

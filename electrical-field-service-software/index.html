@@ -26,227 +26,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="/assets/logo-white.png">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
 
-  <link rel="stylesheet" href="/assets/site.min.css?v=12">
+  <link rel="stylesheet" href="/assets/site.min.css?v=13">
 
-  <style>
-    :root{
-      --bg:#0b1220; --panel:#111827; --muted:#94a3b8; --text:#e5e7eb;
-      --brand:#0ea5e9; --brand-2:#22c55e; --ring:rgba(148,163,184,.15);
-      --electrical-yellow: #eab308; --electrical-orange: #f97316;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding-top:72px}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    
-    /* Header */
-    .site-header{
-      position:sticky; top:0; z-index:1000;
-      display:flex; align-items:center; justify-content:space-between;
-      height:72px; padding:10px 16px; background:#0b1220;
-      border-bottom:1px solid var(--ring);
-      backdrop-filter:saturate(120%) blur(6px);
-    }
-    .brand img{height:32px}
-    .nav{display:flex; gap:24px; align-items:center}
-    .nav a{padding:8px 0; font-weight:500; transition:color 0.2s}
-    .nav a:hover, .nav a[aria-current="page"]{color:var(--brand)}
-    .cta{background:var(--brand); color:white; padding:10px 16px; border-radius:6px; font-weight:600}
-    .nav-toggle{display:none; background:none; border:none; flex-direction:column; gap:4px; cursor:pointer}
-    .nav-toggle span{width:20px; height:2px; background:var(--text); transition:all 0.3s}
-
-    /* Mobile Navigation */
-    @media (max-width: 768px) {
-      .nav-toggle{display:flex}
-      .nav{
-        position:fixed; top:72px; left:0; right:0; bottom:0;
-        background:#0b1220; /* Solid background instead of CSS variable */
-        backdrop-filter:blur(10px); /* Additional blur for better readability */
-        border-right:1px solid rgba(148,163,184,.2);
-        box-shadow:0 4px 20px rgba(0,0,0,0.3);
-        flex-direction:column; justify-content:flex-start;
-        padding:20px; gap:16px; transform:translateY(-100%);
-        transition:transform 0.3s; z-index:999;
-      }
-      .nav a{
-        background:rgba(255,255,255,0.08); 
-        border:1px solid rgba(148,163,184,0.2);
-        padding:16px 20px; 
-        border-radius:12px;
-        transition:all 0.2s;
-      }
-      .nav a:hover{
-        background:rgba(255,255,255,0.15);
-        border-color:var(--electrical-yellow);
-      }
-      .site-header.nav-open .nav{transform:translateY(0)}
-      .site-header.nav-open{border-bottom:none; background:#0b1220;}
-      .site-header.nav-open .nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-      .site-header.nav-open .nav-toggle span:nth-child(2){opacity:0}
-      .site-header.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-    }
-
-    /* Typography */
-    h1{font-size:clamp(32px, 6vw, 56px); line-height:1.1; margin:0 0 16px; font-weight:800}
-    h2{font-size:clamp(24px, 4vw, 36px); line-height:1.2; margin:0 0 12px; font-weight:700}
-    h3{font-size:clamp(20px, 3vw, 28px); line-height:1.3; margin:0 0 8px; font-weight:600}
-    .kicker{color:var(--electrical-yellow); font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:1px}
-    .lead{font-size:clamp(18px, 2.5vw, 22px); color:var(--muted); margin:16px 0 24px; line-height:1.5}
-
-    /* Buttons */
-    .btn{display:inline-block; padding:12px 24px; border-radius:8px; font-weight:600; text-decoration:none; transition:all 0.3s}
-    .btn-primary{background:linear-gradient(135deg, var(--electrical-yellow), var(--electrical-orange)); color:white; box-shadow:0 4px 12px rgba(234,179,8,0.3)}
-    .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 25px rgba(234,179,8,0.4)}
-    .btn-ghost{border:1px solid var(--ring); color:var(--text); background:rgba(255,255,255,0.05)}
-    .btn-ghost:hover{background:rgba(255,255,255,0.1); border-color:var(--electrical-yellow)}
-
-    /* Sections */
-    section{padding:60px 0}
-    .hero{background:linear-gradient(135deg, rgba(234,179,8,0.1), rgba(249,115,22,0.1)); padding:80px 0}
-    .hero-grid{display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center}
-
-    /* Pain Points */
-    .pain-points{background:rgba(239,68,68,0.05); border-left:4px solid #ef4444; padding:24px; border-radius:0 12px 12px 0; margin:24px 0}
-    .pain-points h3{color:#fca5a5; margin-bottom:16px}
-    .pain-points ul{margin:0; color:#fecaca}
-    .pain-points li{margin-bottom:8px}
-
-    /* Solution */
-    .solution{background:rgba(34,197,94,0.05); border-left:4px solid #22c55e; padding:24px; border-radius:0 12px 12px 0; margin:24px 0}
-    .solution h3{color:#86efac; margin-bottom:16px}
-    .solution ul{margin:0; color:#bbf7d0}
-
-    /* Features Grid */
-    .features-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-top:32px}
-    .feature-card{
-      background:linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-      border:1px solid var(--ring); border-radius:16px; padding:24px;
-      transition:all 0.3s; position:relative; overflow:hidden;
-    }
-    .feature-card:hover{transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.3)}
-    .feature-card::before{
-      content:''; position:absolute; top:-2px; left:-2px; right:-2px; bottom:-2px;
-      background:linear-gradient(135deg, var(--electrical-yellow), var(--electrical-orange));
-      border-radius:18px; z-index:-1; opacity:0; transition:opacity 0.3s;
-    }
-    .feature-card:hover::before{opacity:0.5}
-    .feature-icon{font-size:32px; margin-bottom:16px; display:block}
-
-    /* Workflows */
-    .workflow-steps{display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; margin:32px 0}
-    .workflow-step{
-      background:rgba(255,255,255,0.06); border:1px solid var(--ring); border-radius:12px; padding:20px;
-      position:relative; text-align:center;
-    }
-    .workflow-step::before{
-      content:attr(data-step); position:absolute; top:-12px; left:50%;
-      transform:translateX(-50%); background:var(--electrical-yellow); color:black;
-      width:24px; height:24px; border-radius:50%; font-size:12px; font-weight:700;
-      display:flex; align-items:center; justify-content:center;
-    }
-
-    /* Social Proof */
-    .testimonial{
-      background:rgba(255,255,255,0.08); border-left:4px solid var(--electrical-yellow);
-      padding:24px; border-radius:0 12px 12px 0; margin:24px 0;
-    }
-    .testimonial-quote{font-style:italic; margin-bottom:16px; font-size:18px}
-    .testimonial-author{color:var(--electrical-yellow); font-weight:600}
-
-    /* CTA Section */
-    .cta-section{
-      background:linear-gradient(135deg, var(--electrical-yellow), var(--electrical-orange));
-      padding:60px 0; text-align:center; color:black;
-    }
-    .cta-section h2{color:black}
-
-    /* Internal Links */
-    .related-industries{
-      background:rgba(255,255,255,0.05); padding:32px; border-radius:16px; margin:40px 0;
-    }
-    .industry-links{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-top:20px}
-    .industry-link{
-      background:rgba(255,255,255,0.06); border:1px solid var(--ring); padding:16px; border-radius:8px;
-      text-align:center; transition:all 0.3s; text-decoration:none;
-    }
-    .industry-link:hover{background:rgba(255,255,255,0.1); transform:translateY(-2px)}
-
-    @media (max-width: 768px) {
-      .hero-grid{grid-template-columns:1fr; gap:24px}
-      .features-grid{grid-template-columns:1fr}
-      .workflow-steps{grid-template-columns:1fr}
-      .industry-links{grid-template-columns:repeat(2, 1fr)}
-    }
-  </style>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Creative Job Hub - Electrical Field Service Software",
-    "applicationCategory": "BusinessApplication",
-    "applicationSubCategory": "Electrical Field Service Management",
-    "operatingSystem": "Web, iOS, Android",
-    "description": "Complete electrical field service management software with code compliance tracking, panel upgrade scheduling, safety inspection logs, permit management, and emergency response automation.",
-    "url": "https://creativejobhub.com/electrical-field-service-software/",
-    "screenshot": "https://creativejobhub.com/assets/og-electrical.jpg",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "167"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "USD",
-      "name": "Free Trial",
-      "description": "14-day free trial for electrical contractors"
-    },
-    "featureList": [
-      "NEC code compliance tracking",
-      "Panel upgrade scheduling", 
-      "Safety inspection management",
-      "Permit tracking and renewal",
-      "Emergency electrical response",
-      "Circuit load calculations",
-      "GPS routing for urgent calls",
-      "Digital invoicing and payments",
-      "Customer portal access",
-      "Integration with electrical suppliers"
-    ],
-    "audience": {
-      "@type": "Audience",
-      "audienceType": "Electrical Contractors, Licensed Electricians, Electrical Service Companies"
-    }
-  }
-  </script>
 </head>
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Creative Job Hub Home">
-      <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="128" height="32">
-    </a>
-
-    <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
-      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-    </button>
-
-    <nav id="primary-nav" class="nav" aria-label="Primary">
-      <a href="/">Home</a>
-      <a href="/field-service-management/">Field Service</a>
-      <a href="/electrical-field-service-software/" aria-current="page">Electrical Software</a>
-      <a href="/blog/">Blog</a>
-      <a href="/compare/">Compare</a>
-      <a href="/pricing/">Pricing</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth">Log in</a>
-      <a class="cta" href="https://app.creativejobhub.com/auth?mode=signup" style="background:var(--electrical-yellow); color:black;">Start Free Trial</a>
-    </nav>
-  </header>
-
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
   <main>
     <!-- Hero Section -->
     <section class="hero">
@@ -256,54 +43,50 @@
             <span class="kicker">⚡ Electrical Field Service Software</span>
             <h1>Built for Licensed Electricians</h1>
             <p class="lead">Streamline your electrical operations with specialized field service management. Handle code compliance, panel upgrades, safety inspections, permit tracking, and emergency calls—all from one platform designed for electrical professionals.</p>
-            
             <!-- Pain Points -->
             <div class="pain-points">
               <h3>❌ Common Electrical Business Challenges</h3>
               <ul>
-                <li><strong>Code compliance tracking</strong> across multiple jurisdictions and constantly changing regulations</li>
-                <li><strong>Panel upgrade paperwork</strong> scattered across clipboards, trucks, and filing cabinets</li>
-                <li><strong>Safety inspection schedules</strong> missed due to manual tracking and busy workloads</li>
-                <li><strong>Permit renewal deadlines</strong> overlooked, causing project delays and penalties</li>
-                <li><strong>Emergency call prioritization</strong> without proper load assessment or safety protocols</li>
+                <li><strong>Missed code updates</strong> leading to failed inspections and costly rework</li>
+                <li><strong>Manual permit tracking</strong> causing project delays and compliance issues</li>
+                <li><strong>Paper-based safety logs</strong> resulting in lost records and liability risks</li>
+                <li><strong>Emergency call disruptions</strong> with no automated dispatch or crew notifications</li>
+                <li><strong>Difficulty managing recurring maintenance</strong> and upselling additional services</li>
               </ul>
             </div>
-
             <!-- Solution -->
             <div class="solution">
               <h3>✅ How Creative Job Hub Solves These Problems</h3>
               <ul>
-                <li><strong>Automated NEC compliance tracking</strong> with jurisdiction-specific code updates and alerts</li>
-                <li><strong>Digital panel upgrade management</strong> with load calculations, photos, and inspection scheduling</li>
-                <li><strong>Safety inspection automation</strong> with digital checklists, photo documentation, and reminders</li>
-                <li><strong>Permit tracking system</strong> with renewal alerts, application status, and deadline management</li>
-                <li><strong>Emergency response protocols</strong> with safety assessment and proper technician dispatch</li>
+                <li><strong>Automated code compliance tracking</strong> with reminders for updates and inspections</li>
+                <li><strong>Digital permit management</strong> and project scheduling</li>
+                <li><strong>Safety inspection logs</strong> with digital recordkeeping and reporting</li>
+                <li><strong>Emergency dispatch automation</strong> with GPS routing and crew notifications</li>
+                <li><strong>Recurring maintenance automation</strong> and easy upsell of additional services</li>
               </ul>
             </div>
-
             <div style="margin-top:32px;">
               <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary" style="margin-right:16px;">Start Your Free Trial - Built for Electricians</a>
               <a href="#features" class="btn btn-ghost">See Electrical Features</a>
             </div>
           </div>
-          
           <div>
             <div style="background:linear-gradient(135deg, rgba(234,179,8,0.2), rgba(249,115,22,0.2)); padding:32px; border-radius:16px; text-align:center;">
-              <div style="font-size:64px; margin-bottom:16px;">⚡</div>
-              <h3 style="color:white; margin-bottom:16px;">Join 400+ Electrical Contractors</h3>
-              <p style="color:#cbd5e1; margin:0;">Managing 12,000+ electrical inspections with Creative Job Hub</p>
+              <div style="font-size:64px; margin-bottom:16px;">💡</div>
+              <h3 style="color:white; margin-bottom:16px;">Join 350+ Electrical Contractors</h3>
+              <p style="color:#cbd5e1; margin:0;">Managing 10,000+ projects with Creative Job Hub</p>
               <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; text-align:center;">
                 <div>
-                  <div style="font-size:24px; font-weight:700; color:var(--electrical-yellow);">100%</div>
-                  <div style="font-size:12px; color:#cbd5e1;">Code compliance rate</div>
+                  <div style="font-size:24px; font-weight:700; color:#eab308;">97%</div>
+                  <div style="font-size:12px; color:#cbd5e1;">Inspection pass rate</div>
                 </div>
                 <div>
-                  <div style="font-size:24px; font-weight:700; color:var(--electrical-yellow);">$2,100</div>
+                  <div style="font-size:24px; font-weight:700; color:#eab308;">$1,800</div>
                   <div style="font-size:12px; color:#cbd5e1;">Avg. monthly savings</div>
                 </div>
                 <div>
-                  <div style="font-size:24px; font-weight:700; color:var(--electrical-yellow);">35%</div>
-                  <div style="font-size:12px; color:#cbd5e1;">Faster inspections</div>
+                  <div style="font-size:24px; font-weight:700; color:#eab308;">25%</div>
+                  <div style="font-size:12px; color:#cbd5e1;">More jobs completed</div>
                 </div>
               </div>
             </div>
@@ -315,85 +98,88 @@
     <!-- Electrical-Specific Features -->
     <section id="features">
       <div class="container">
-        <span class="kicker">⚡ Electrical-Specific Features</span>
-        <h2>Everything You Need for Electrical Success</h2>
-        <p class="lead">Purpose-built tools that understand the unique needs of electrical contractors, from NEC compliance to emergency safety protocols.</p>
-        
+        <span class="kicker">🔌 Electrical-Specific Features</span>
+        <h2>Everything You Need for Code Compliance & Project Success</h2>
+        <p class="lead">Purpose-built tools that understand the unique needs of electrical contractors, from code compliance to emergency response.</p>
         <div class="features-grid">
           <div class="feature-card">
             <span class="feature-icon">📋</span>
-            <h3>NEC Code Compliance Tracking</h3>
-            <p>Stay current with National Electrical Code requirements across all jurisdictions. Automatic updates and compliance alerts keep you code-compliant.</p>
+            <h3>Code Compliance & Inspections</h3>
+            <p>Automate code updates, inspection reminders, and digital recordkeeping for every project.</p>
             <ul style="color:var(--muted); margin-top:12px;">
-              <li>Jurisdiction-specific code tracking</li>
-              <li>NEC update notifications</li>
-              <li>Compliance checklist automation</li>
-              <li>Inspection requirement alerts</li>
-            </ul>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-icon">🔧</span>
-            <h3>Panel Upgrade Management</h3>
-            <p>Complete panel upgrade workflow with load calculations, permit tracking, inspection scheduling, and customer communication automation.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
-              <li>Load calculation tools</li>
-              <li>Before/after documentation</li>
-              <li>Permit application tracking</li>
+              <li>Automated code reminders</li>
               <li>Inspection scheduling</li>
+              <li>Digital compliance logs</li>
+              <li>Photo & document uploads</li>
             </ul>
           </div>
-
           <div class="feature-card">
-            <span class="feature-icon">🛡️</span>
-            <h3>Safety Inspection Logs</h3>
-            <p>Digital safety inspection checklists with photo documentation, hazard identification, and automated reporting for insurance and compliance.</p>
+            <span class="feature-icon">📝</span>
+            <h3>Permit Management & Scheduling</h3>
+            <p>Track permits, manage project schedules, and automate renewal reminders for every job.</p>
             <ul style="color:var(--muted); margin-top:12px;">
-              <li>Digital safety checklists</li>
-              <li>Hazard photo documentation</li>
-              <li>Arc flash analysis tracking</li>
-              <li>Safety compliance reports</li>
+              <li>Digital permit tracking</li>
+              <li>Automated renewal reminders</li>
+              <li>Project scheduling</li>
+              <li>Permit document uploads</li>
             </ul>
           </div>
-
           <div class="feature-card">
-            <span class="feature-icon">📄</span>
-            <h3>Permit Management System</h3>
-            <p>Track electrical permits from application to approval with deadline reminders, renewal alerts, and inspection scheduling automation.</p>
+            <span class="feature-icon">🦺</span>
+            <h3>Safety Inspections & Reporting</h3>
+            <p>Log safety inspections, generate digital reports, and share results with customers and regulators.</p>
             <ul style="color:var(--muted); margin-top:12px;">
-              <li>Permit application tracking</li>
-              <li>Renewal deadline alerts</li>
-              <li>Inspection coordination</li>
-              <li>Approval status monitoring</li>
+              <li>Inspection result tracking</li>
+              <li>PDF report generation</li>
+              <li>Customer portal access</li>
+              <li>Automated follow-ups</li>
             </ul>
           </div>
-
           <div class="feature-card">
-            <span class="feature-icon">🚨</span>
-            <h3>Emergency Response Protocols</h3>
-            <p>Priority dispatch system for electrical emergencies with safety assessment protocols and proper technician certification matching.</p>
+            <span class="feature-icon">💡</span>
+            <h3>Custom Service Plans & Invoicing</h3>
+            <p>Create custom service plans, generate branded work orders, estimates, and invoices for every job.</p>
             <ul style="color:var(--muted); margin-top:12px;">
-              <li>Emergency safety protocols</li>
-              <li>Technician certification matching</li>
-              <li>Hazard level assessment</li>
-              <li>Real-time safety updates</li>
-            </ul>
-          </div>
-
-          <div class="feature-card">
-            <span class="feature-icon">📊</span>
-            <h3>Circuit Load Management</h3>
-            <p>Calculate and track circuit loads with capacity planning, upgrade recommendations, and energy efficiency reporting for customers.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
-              <li>Load calculation tools</li>
-              <li>Capacity planning reports</li>
-              <li>Energy efficiency analysis</li>
-              <li>Upgrade recommendations</li>
+              <li>Customizable service plans</li>
+              <li>Branded work orders & invoices</li>
+              <li>Downloadable PDFs</li>
+              <li>Online payment options</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Workflow Section -->
+    <section>
+      <div class="container">
+        <h3 style="margin-top:40px;">⚡ Emergency Response Workflow</h3>
+        <div class="workflow-steps">
+          <div class="workflow-step" data-step="1">
+            <h4>Call Intake & Prioritization</h4>
+            <p>Emergency calls are automatically prioritized and routed to the nearest available crew.</p>
+          </div>
+          <div class="workflow-step" data-step="2">
+            <h4>GPS Dispatch</h4>
+            <p>Crews receive instant GPS directions and job details on their mobile devices.</p>
+          </div>
+          <div class="workflow-step" data-step="3">
+            <h4>On-Site Service</h4>
+            <p>Technicians complete repairs, log findings, and upload photos for compliance.</p>
+          </div>
+          <div class="workflow-step" data-step="4">
+            <h4>Customer Updates</h4>
+            <p>Automatic notifications keep customers informed of arrival times and job status.</p>
+          </div>
+          <div class="workflow-step" data-step="5">
+            <h4>Compliance & Reporting</h4>
+            <p>All work is logged for compliance, and digital reports are generated for customers and regulators.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof (existing content) -->
 
     <!-- Common Workflows -->
     <section>
@@ -519,11 +305,11 @@
         
         <div style="margin-bottom:24px;">
           <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn" style="background:black; color:white; margin-right:16px; font-size:18px; padding:16px 32px;">Start Your Free Trial - Built for Electricians</a>
-          <a href="/pricing/" class="btn" style="border:2px solid black; color:black; background:transparent; font-size:18px; padding:14px 32px;">View Pricing</a>
+          <a href="/pricing/" class="btn" style="border:2px solid #eab308; color:#eab308; background:transparent; font-size:18px; padding:14px 32px;">View Pricing</a>
         </div>
         
         <div style="font-size:14px; opacity:0.8; color:black;">
-          ✓ 14-day free trial ✓ No setup fees ✓ Cancel anytime ✓ Electrical-specific training included
+          <div style="color:#eab308; font-weight:600;">✓ 7-day free trial ✓ No setup fees ✓ Cancel anytime ✓ Electrical-specific training included</div>
         </div>
       </div>
     </section>

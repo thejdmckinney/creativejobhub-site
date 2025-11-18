@@ -161,21 +161,50 @@
     </div>
   </main>
 
-  <footer style="margin-top:60px; padding:40px 0; border-top:1px solid rgba(148,163,184,.08);">
-    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#94a3b8;">
-      <div>© <span id="y"></span> Creative Job Hub</div>
-      <div style="display:flex; gap:16px;">
-        <a href="/pricing/" style="color:inherit;">Pricing</a>
-        <a href="/privacy.html" style="color:inherit;">Privacy</a>
-        <a href="/terms.html" style="color:inherit;">Terms</a>
-        <a href="/contact.html" style="color:inherit;">Contact</a>
-        <a href="/blog/feed.xml" style="color:inherit;">RSS</a>
+
+  <footer style="padding:40px 0; background:#111827; border-top:1px solid var(--ring);">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:32px;">
+        <div>
+          <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="160" height="40" style="margin-bottom:16px;">
+          <p style="color:var(--muted); margin:0;">Field service software built for modern teams. Streamline operations, boost efficiency, and grow your business with Creative Job Hub.</p>
+        </div>
+        <div>
+          <h4 style="margin:0 0 16px; color:white;">Features</h4>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a href="/#features" style="color:var(--muted); text-decoration:none;">CRM & Scheduling</a>
+            <a href="/#features" style="color:var(--muted); text-decoration:none;">Recurring Maintenance</a>
+            <a href="/#features" style="color:var(--muted); text-decoration:none;">Service Plans</a>
+            <a href="/#features" style="color:var(--muted); text-decoration:none;">Branded Invoices</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 16px; color:white;">Industries</h4>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a href="/hvac-field-service-software/" style="color:var(--muted); text-decoration:none;">HVAC</a>
+            <a href="/plumbing-field-service-software/" style="color:var(--muted); text-decoration:none;">Plumbing</a>
+            <a href="/electrical-field-service-software/" style="color:var(--muted); text-decoration:none;">Electrical</a>
+            <a href="/landscaping-field-service-software/" style="color:var(--muted); text-decoration:none;">Landscaping</a>
+            <a href="/handyman-field-service-software/" style="color:var(--muted); text-decoration:none;">Handyman</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="margin:0 0 16px; color:white;">Company</h4>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <a href="/pricing/" style="color:var(--muted); text-decoration:none;">Pricing</a>
+            <a href="/compare/" style="color:var(--muted); text-decoration:none;">Compare</a>
+            <a href="/blog/" style="color:var(--muted); text-decoration:none;">Blog</a>
+            <a href="/contact.html" style="color:var(--muted); text-decoration:none;">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--ring); margin-top:32px; padding-top:24px; text-align:center; color:var(--muted);">
+        <p>&copy; <span id="y">2025</span> Creative Job Hub. <a href="/privacy.html" style="color:inherit;">Privacy</a> | <a href="/terms.html" style="color:inherit;">Terms</a></p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 
