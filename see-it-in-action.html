@@ -179,6 +179,15 @@
             height: 200px;
             object-fit: cover;
         }
+        .screenshot-image.mobile-large {
+            width: 100%;
+            height: 320px;
+            max-width: 260px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            object-fit: contain;
+        }
 
         .screenshot-caption {
             padding: 15px;
@@ -318,11 +327,58 @@
         <!-- Screenshots Tab -->
         <div id="screenshots" class="tab-content">
             <h2 style="text-align: center; color: #f1f5f9; margin-bottom: 40px; font-size: 2.2rem;">App Interface Screenshots</h2>
-            
-            <div class="screenshot-gallery" id="screenshotGallery">
-                <!-- Screenshots will be populated by JavaScript -->
+            <div class="screenshot-gallery">
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/drag&drop_schedule.png', 'Drag-and-drop Scheduling', 'Visually assign jobs, balance workloads, and optimize routes with a simple drag-and-drop calendar.')">
+                    <img class="screenshot-image" src="/assets/illustrations/drag&drop_schedule.png" alt="Drag-and-drop Scheduling" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Drag-and-drop Scheduling</strong><br>
+                        <small style="opacity: 0.8;">Visually assign jobs, balance workloads, and optimize routes with a simple drag-and-drop calendar.</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/mobile_jobs_sheet.png', 'Mobile Job Sheets', 'Capture job details, photos, notes, and customer signatures directly from the field—works offline and syncs automatically.')">
+                    <img class="screenshot-image mobile-large" src="/assets/illustrations/mobile_jobs_sheet.png" alt="Mobile Job Sheets" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Mobile Job Sheets</strong><br>
+                        <small style="opacity: 0.8;">Capture job details, photos, notes, and customer signatures directly from the field—works offline and syncs automatically.</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/all_routes.png', 'Route Optimization', 'AI-powered route planning saves time and fuel, with live GPS tracking and automatic ETA updates for customers.')">
+                    <img class="screenshot-image" src="/assets/illustrations/all_routes.png" alt="Route Optimization" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Route Optimization</strong><br>
+                        <small style="opacity: 0.8;">AI-powered route planning saves time and fuel, with live GPS tracking and automatic ETA updates for customers.</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/mobile_job_details.png', 'Job Details View', 'See all job information, status, and history in one place for fast updates and better team coordination.')">
+                    <img class="screenshot-image mobile-large" src="/assets/illustrations/mobile_job_details.png" alt="Job Details View" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Job Details View</strong><br>
+                        <small style="opacity: 0.8;">See all job information, status, and history in one place for fast updates and better team coordination.</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/mobile_dashboard.png', 'Mobile Dashboard', 'Technicians and managers get a real-time overview of jobs, schedules, and performance from any device.')">
+                    <img class="screenshot-image mobile-large" src="/assets/illustrations/mobile_dashboard.png" alt="Mobile Dashboard" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Mobile Dashboard</strong><br>
+                        <small style="opacity: 0.8;">Technicians and managers get a real-time overview of jobs, schedules, and performance from any device.</small>
+                    </div>
+                </div>
+                <div class="screenshot-item" onclick="openScreenshotModal('/assets/illustrations/route_details.png', 'Route Details', 'Drill down into each route to see stops, technician assignments, and live progress updates.')">
+                    <img class="screenshot-image" src="/assets/illustrations/route_details.png" alt="Route Details" loading="lazy">
+                    <div class="screenshot-caption">
+                        <strong>Route Details</strong><br>
+                        <small style="opacity: 0.8;">Drill down into each route to see stops, technician assignments, and live progress updates.</small>
+                    </div>
+                </div>
+        <!-- Screenshot Modal -->
+        <div id="screenshotModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.92); align-items:center; justify-content:center;">
+            <div style="max-width:95vw; max-height:95vh; background:rgba(30,41,59,0.98); border-radius:18px; box-shadow:0 8px 40px #000; padding:32px 24px 24px 24px; position:relative; display:flex; flex-direction:column; align-items:center;">
+                <button onclick="closeScreenshotModal()" style="position:absolute; top:18px; right:18px; background:rgba(0,0,0,0.7); color:#fff; border:none; border-radius:50%; width:40px; height:40px; font-size:2rem; cursor:pointer;">&times;</button>
+                <img id="modalScreenshotImg" src="" alt="Screenshot" style="max-width:90vw; max-height:60vh; border-radius:12px; box-shadow:0 4px 24px #000; background:#181f2c; margin-bottom:24px;">
+                <div id="modalScreenshotCaption" style="color:#f1f5f9; text-align:center; font-size:1.2rem;"></div>
             </div>
-
+        </div>
+            </div>
             <div style="text-align: center; margin-top: 30px;">
                 <a href="/app-screenshots.html" class="btn btn-primary">View All Screenshots →</a>
             </div>
@@ -382,187 +438,41 @@
 
     <script src="/assets/header.js"></script>
     <script>
-        // Default screenshots with fallback data
-        const defaultScreenshots = [
-            {
-                title: 'Dashboard Overview',
-                description: 'Real-time business metrics and job status tracking',
-                fallbackSvg: createPlaceholderSvg('📊', 'Dashboard Overview', '#0ea5e9')
-            },
-            {
-                title: 'Smart Scheduling',
-                description: 'AI-powered scheduling and route optimization',
-                fallbackSvg: createPlaceholderSvg('📅', 'Smart Scheduling', '#22c55e')
-            },
-            {
-                title: 'Mobile Job Management',
-                description: 'Complete job management on mobile devices',
-                fallbackSvg: createPlaceholderSvg('📱', 'Mobile App', '#f59e0b')
-            },
-            {
-                title: 'Invoicing System',
-                description: 'Instant professional invoicing and payments',
-                fallbackSvg: createPlaceholderSvg('💰', 'Invoicing', '#ef4444')
-            }
-        ];
-
-        // Create placeholder SVG
-        function createPlaceholderSvg(icon, title, color) {
-            return `data:image/svg+xml,${encodeURIComponent(`
-                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
-                    <defs>
-                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:${color};stop-opacity:0.2" />
-                            <stop offset="100%" style="stop-color:${color};stop-opacity:0.05" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="400" height="250" fill="url(#grad)" stroke="${color}" stroke-width="2" rx="12"/>
-                    <text x="200" y="100" text-anchor="middle" font-size="48" fill="${color}">${icon}</text>
-                    <text x="200" y="140" text-anchor="middle" font-size="18" fill="${color}" font-family="system-ui">${title}</text>
-                    <text x="200" y="165" text-anchor="middle" font-size="12" fill="${color}" opacity="0.7" font-family="system-ui">Creative Job Hub Interface</text>
-                </svg>
-            `)}`;
-        }
-
-        // Load screenshots from localStorage or use defaults
-        function loadScreenshots() {
-            try {
-                // Try both possible localStorage keys
-                let mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
-                if (mediaLibrary.length === 0) {
-                    mediaLibrary = JSON.parse(localStorage.getItem('creativejobhub_media') || '[]');
-                }
-                
-                const gallery = document.getElementById('screenshotGallery');
-                console.log('Raw mediaLibrary from localStorage:', mediaLibrary.slice(0, 2)); // Log first 2 items for debugging
-                
-                // Filter for valid images with data URLs (base64)
-                const validImages = mediaLibrary.filter(item => {
-                    const hasValidUrl = item.url && 
-                        typeof item.url === 'string' && 
-                        item.url.startsWith('data:image/');
-                    
-                    if (!hasValidUrl && item.url) {
-                        console.warn('Invalid image URL found:', item.url.substring(0, 50) + '...');
-                    }
-                    
-                    return hasValidUrl;
-                });
-                
-                console.log(`Found ${validImages.length} valid images out of ${mediaLibrary.length} total items in localStorage`);
-                
-                if (validImages.length === 0) {
-                    // Use default screenshots
-                    console.log('No valid images in localStorage, using defaults');
-                    gallery.innerHTML = defaultScreenshots.map((screenshot, index) => `
-                        <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                            <img class="screenshot-image" src="${screenshot.fallbackSvg}" alt="${screenshot.title}" loading="lazy">
-                            <div class="screenshot-caption">
-                                <strong>${screenshot.title}</strong><br>
-                                <small style="opacity: 0.8;">${screenshot.description}</small>
-                            </div>
-                        </div>
-                    `).join('');
-                } else {
-                    // Use uploaded images from localStorage - mix with defaults if not enough
-                    console.log(`Using ${validImages.length} valid images from localStorage`);
-                    const screenshots = validImages.slice(0, 4); // Limit to 4 screenshots
-                    
-                    // Fill remaining slots with defaults if needed
-                    while (screenshots.length < 4) {
-                        const defaultIndex = screenshots.length;
-                        if (defaultScreenshots[defaultIndex]) {
-                            screenshots.push({
-                                name: defaultScreenshots[defaultIndex].title,
-                                url: defaultScreenshots[defaultIndex].fallbackSvg,
-                                timestamp: Date.now(),
-                                isDefault: true,
-                                description: defaultScreenshots[defaultIndex].description
-                            });
-                        } else {
-                            break;
-                        }
-                    }
-                    
-                    gallery.innerHTML = screenshots.map((item, index) => {
-                        const fallbackUrl = defaultScreenshots[index] ? defaultScreenshots[index].fallbackSvg : defaultScreenshots[0].fallbackSvg;
-                        return `
-                            <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                                <img class="screenshot-image" 
-                                     src="${item.url}" 
-                                     alt="${item.name || 'Screenshot'}" 
-                                     loading="lazy"
-                                     onerror="this.src='${fallbackUrl}'; this.onerror=null; console.warn('Image failed to load, using fallback for:', '${item.name || 'unknown'}');">
-                                <div class="screenshot-caption">
-                                    <strong>${item.name || 'Screenshot'}</strong><br>
-                                    <small style="opacity: 0.8;">
-                                        ${item.isDefault ? (item.description || 'Default placeholder') : `Added ${item.uploadDate ? new Date(item.uploadDate).toLocaleDateString() : 'Recently'}`}
-                                    </small>
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
-                }
-            } catch (error) {
-                console.warn('Error loading screenshots:', error);
-                // Fallback to default screenshots
-                const gallery = document.getElementById('screenshotGallery');
-                gallery.innerHTML = defaultScreenshots.map((screenshot, index) => `
-                    <div class="screenshot-item" onclick="window.open('/app-screenshots.html', '_blank')">
-                        <img class="screenshot-image" src="${screenshot.fallbackSvg}" alt="${screenshot.title}" loading="lazy">
-                        <div class="screenshot-caption">
-                            <strong>${screenshot.title}</strong><br>
-                            <small style="opacity: 0.8;">${screenshot.description}</small>
-                        </div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        function showTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-            
-            // Load screenshots when screenshots tab is shown
-            if (tabName === 'screenshots') {
-                loadScreenshots();
-            }
-            
-            // Track in Google Analytics
-            gtag('event', 'demo_tab_view', {
-                'content_type': 'demo_section',
-                'tab_name': tabName
-            });
-        }
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            loadScreenshots(); // Load screenshots on page load
-            
-            // Track video card clicks
-            document.querySelectorAll('.video-card').forEach(card => {
-                card.addEventListener('click', () => {
-                    const title = card.querySelector('.video-title').textContent;
-                    gtag('event', 'video_demo_click', {
-                        'content_type': 'video',
-                        'video_title': title
-                    });
-                });
-            });
+    function showTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
         });
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(tabName).classList.add('active');
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            if (btn.textContent.includes(tabName.charAt(0).toUpperCase() + tabName.slice(1))) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Modal logic for screenshots
+    function openScreenshotModal(imgSrc, title, desc) {
+        document.getElementById('modalScreenshotImg').src = imgSrc;
+        document.getElementById('modalScreenshotImg').alt = title;
+        document.getElementById('modalScreenshotCaption').innerHTML = '<strong>' + title + '</strong><br><span style="color:#94a3b8; font-size:1rem;">' + desc + '</span>';
+        document.getElementById('screenshotModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeScreenshotModal() {
+        document.getElementById('screenshotModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    // Close modal on ESC or background click
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeScreenshotModal();
+    });
+    document.addEventListener('click', function(e) {
+        var modal = document.getElementById('screenshotModal');
+        if (modal && e.target === modal) closeScreenshotModal();
+    });
     </script>
 </body>
 </html>
