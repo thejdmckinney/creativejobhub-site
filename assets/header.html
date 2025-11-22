@@ -14,10 +14,9 @@
   <nav id="site-nav" class="site-nav" aria-label="Main">
     <a class="nav-link" href="/#features">Features</a>
     <a class="nav-link" href="/pricing/">Pricing</a>
-    
     <!-- Resources dropdown -->
     <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false">
+      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
         Resources <span class="dropdown-arrow">▼</span>
       </button>
       <div class="dropdown-menu">
@@ -39,10 +38,9 @@
         </a>
       </div>
     </div>
-    
     <!-- Industries dropdown -->
     <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false">
+      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
         Industries <span class="dropdown-arrow">▼</span>
       </button>
       <div class="dropdown-menu">
@@ -68,10 +66,9 @@
         </a>
       </div>
     </div>
-    
     <!-- Compare dropdown -->
     <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false">
+      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
         Compare <span class="dropdown-arrow">▼</span>
       </button>
       <div class="dropdown-menu">
@@ -93,9 +90,36 @@
         </a>
       </div>
     </div>
-    
     <a class="nav-link" href="/see-it-in-action.html">See It in Action</a>
     <a class="nav-link" href="/about.html">About</a>
+    <script>
+      function toggleDropdown(event, button) {
+        event.preventDefault();
+        var parent = button.parentElement;
+        var menu = parent.querySelector('.dropdown-menu');
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        // Close all other dropdowns
+        document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(function(btn) {
+          if (btn !== button) {
+            btn.setAttribute('aria-expanded', 'false');
+            if (btn.parentElement.querySelector('.dropdown-menu')) {
+              btn.parentElement.querySelector('.dropdown-menu').style.display = 'none';
+            }
+          }
+        });
+        // Toggle this dropdown
+        button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        menu.style.display = expanded ? 'none' : 'block';
+      }
+      // Hide dropdowns by default on mobile
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth <= 860) {
+          document.querySelectorAll('.nav-dropdown .dropdown-menu').forEach(function(menu) {
+            menu.style.display = 'none';
+          });
+        }
+      });
+    </script>
   </nav>
 
   <!-- Right: CTAs -->
