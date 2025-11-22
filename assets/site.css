@@ -272,6 +272,9 @@ a{color:inherit;text-decoration:none}
    ================================================================= */
 .site-header{
   position:sticky; top:0; z-index:1000;
+  background-clip:padding-box;
+  box-sizing:border-box;
+  overflow:visible;
   display:flex; align-items:center; justify-content:space-between;
   height:72px;
   padding:10px 16px;
@@ -283,11 +286,12 @@ a{color:inherit;text-decoration:none}
 /* ---- LOGO: hard-protect from global img rules ---- */
 .brand img{
   display:block !important;
-  height:128px !important;    /* doubled from 64px */
+  height:64px !important;    /* reduce height so logo doesn't get cut off */
   width:auto !important;
   max-width:none !important;  /* beats img{max-width:100%} */
   opacity:1 !important;
   filter:none !important;
+  margin-top:0 !important;
 }
 
 /* ---- BRAND STYLING for header.html (site-brand classes) ---- */
@@ -411,9 +415,11 @@ a{color:inherit;text-decoration:none}
   /* Reduce logo size on mobile */
   .brand img{
     height:28px !important;
+    margin-top:0 !important;
   }
   .site-brand__logo{
     height:28px !important;
+    margin-top:0 !important;
   }
   
   /* Hide brand name on small screens to save space */
