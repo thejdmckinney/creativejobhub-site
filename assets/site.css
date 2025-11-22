@@ -145,6 +145,21 @@
   --brand:#0ea5e9;
   --brand-2:#22c55e;
   --ring:rgba(148,163,184,.15);
+  --logo-orange:#ff9900;
+  --logo-orange-dark:#ff7a00;
+/* Orange trial button for pricing plans */
+.plan-cta {
+  background: var(--logo-orange) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(255,153,0,0.15) !important;
+  font-weight: 800 !important;
+  transition: background 0.2s;
+}
+.plan-cta:hover {
+  background: var(--logo-orange-dark) !important;
+  color: #fff !important;
+}
 }
 
 /* ---------- Base ---------- */
