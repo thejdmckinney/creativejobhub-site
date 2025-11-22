@@ -12,86 +12,115 @@
   </button>
 
   <nav id="site-nav" class="site-nav" aria-label="Main">
-    <a class="nav-link" href="/#features">Features</a>
-    <a class="nav-link" href="/pricing/">Pricing</a>
-    <!-- Resources dropdown -->
-    <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
-        Resources <span class="dropdown-arrow">▼</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-link" href="/blog/">
-          <span class="dropdown-icon">📝</span>
-          <span>Blog & Insights</span>
-        </a>
-        <a class="dropdown-link" href="/how-it-works.html">
-          <span class="dropdown-icon">⚙️</span>
-          <span>How It Works</span>
-        </a>
-        <a class="dropdown-link" href="/#faq">
-          <span class="dropdown-icon">❓</span>
-          <span>FAQ & Support</span>
-        </a>
-        <a class="dropdown-link" href="/case-studies/founder-story/">
-          <span class="dropdown-icon">📖</span>
-          <span>Success Stories</span>
-        </a>
+    <div class="nav-section">
+      <a class="nav-link" href="/#features">Features</a>
+      <a class="nav-link" href="/pricing/">Pricing</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-dropdown">
+        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+          Resources <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-link" href="/blog/">
+            <span class="dropdown-icon">📝</span>
+            <span>Blog & Insights</span>
+          </a>
+          <a class="dropdown-link" href="/how-it-works.html">
+            <span class="dropdown-icon">⚙️</span>
+            <span>How It Works</span>
+          </a>
+          <a class="dropdown-link" href="/#faq">
+            <span class="dropdown-icon">❓</span>
+            <span>FAQ & Support</span>
+          </a>
+          <a class="dropdown-link" href="/case-studies/founder-story/">
+            <span class="dropdown-icon">📖</span>
+            <span>Success Stories</span>
+          </a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+          Industries <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-link" href="/hvac-field-service-software/">
+            <span class="dropdown-icon">🌡️</span>
+            <span>HVAC Services</span>
+          </a>
+          <a class="dropdown-link" href="/plumbing-field-service-software/">
+            <span class="dropdown-icon">🚰</span>
+            <span>Plumbing Services</span>
+          </a>
+          <a class="dropdown-link" href="/electrical-field-service-software/">
+            <span class="dropdown-icon">⚡</span>
+            <span>Electrical Services</span>
+          </a>
+          <a class="dropdown-link" href="/landscaping-field-service-software/">
+            <span class="dropdown-icon">🌿</span>
+            <span>Landscaping Services</span>
+          </a>
+          <a class="dropdown-link" href="/handyman-field-service-software/">
+            <span class="dropdown-icon">🔨</span>
+            <span>Handyman Services</span>
+          </a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+          Compare <span class="dropdown-arrow">▼</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-link" href="/compare/">
+            <span class="dropdown-icon">⚖️</span>
+            <span>Compare All</span>
+          </a>
+          <a class="dropdown-link" href="/compare/housecall-pro-alternative.html">
+            <span class="dropdown-icon">🏠</span>
+            <span>vs HousecallPro</span>
+          </a>
+          <a class="dropdown-link" href="/compare/jobber-alternative.html">
+            <span class="dropdown-icon">💼</span>
+            <span>vs Jobber</span>
+          </a>
+          <a class="dropdown-link" href="/compare/workiz-alternative.html">
+            <span class="dropdown-icon">⚡</span>
+            <span>vs Workiz</span>
+          </a>
+        </div>
       </div>
     </div>
-    <!-- Industries dropdown -->
-    <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
-        Industries <span class="dropdown-arrow">▼</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-link" href="/hvac-field-service-software/">
-          <span class="dropdown-icon">🌡️</span>
-          <span>HVAC Services</span>
-        </a>
-        <a class="dropdown-link" href="/plumbing-field-service-software/">
-          <span class="dropdown-icon">🚰</span>
-          <span>Plumbing Services</span>
-        </a>
-        <a class="dropdown-link" href="/electrical-field-service-software/">
-          <span class="dropdown-icon">⚡</span>
-          <span>Electrical Services</span>
-        </a>
-        <a class="dropdown-link" href="/landscaping-field-service-software/">
-          <span class="dropdown-icon">🌿</span>
-          <span>Landscaping Services</span>
-        </a>
-        <a class="dropdown-link" href="/handyman-field-service-software/">
-          <span class="dropdown-icon">🔨</span>
-          <span>Handyman Services</span>
-        </a>
-      </div>
+    <div class="nav-section">
+      <a class="nav-link" href="/see-it-in-action.html">See It in Action</a>
+      <a class="nav-link" href="/about.html">About</a>
     </div>
-    <!-- Compare dropdown -->
-    <div class="nav-dropdown">
-      <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
-        Compare <span class="dropdown-arrow">▼</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-link" href="/compare/">
-          <span class="dropdown-icon">⚖️</span>
-          <span>Compare All</span>
-        </a>
-        <a class="dropdown-link" href="/compare/housecall-pro-alternative.html">
-          <span class="dropdown-icon">🏠</span>
-          <span>vs HousecallPro</span>
-        </a>
-        <a class="dropdown-link" href="/compare/jobber-alternative.html">
-          <span class="dropdown-icon">💼</span>
-          <span>vs Jobber</span>
-        </a>
-        <a class="dropdown-link" href="/compare/workiz-alternative.html">
-          <span class="dropdown-icon">⚡</span>
-          <span>vs Workiz</span>
-        </a>
-      </div>
-    </div>
-    <a class="nav-link" href="/see-it-in-action.html">See It in Action</a>
-    <a class="nav-link" href="/about.html">About</a>
+    <script>
+      function toggleDropdown(event, button) {
+        event.preventDefault();
+        var parent = button.parentElement;
+        var menu = parent.querySelector('.dropdown-menu');
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        // Close all other dropdowns
+        document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(function(btn) {
+          if (btn !== button) {
+            btn.setAttribute('aria-expanded', 'false');
+            btn.parentElement.classList.remove('active');
+          }
+        });
+        // Toggle this dropdown
+        button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        parent.classList.toggle('active', !expanded);
+      }
+      // Hide dropdowns by default on mobile
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth <= 860) {
+          document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
+            drop.classList.remove('active');
+          });
+        }
+      });
+    </script>
     <script>
       function toggleDropdown(event, button) {
         event.preventDefault();

@@ -1,3 +1,17 @@
+/* Navigation section separation for mobile */
+@media (max-width: 860px) {
+  .nav-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1px solid rgba(148,163,184,.10) !important;
+  }
+  .nav-section:last-child {
+    border-bottom: none !important;
+  }
+}
 /* Related Industries / Industry Links Grid */
 .related-industries {
   background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(14,165,233,0.03));
