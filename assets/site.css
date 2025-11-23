@@ -276,7 +276,7 @@ a{color:inherit;text-decoration:none}
   box-sizing:border-box;
   overflow:visible;
   display:flex; align-items:center; justify-content:space-between;
-  height:72px;
+  height:128px;
   padding:10px 16px;
   background:#0b1220; /* opaque for logo clarity */
   border-bottom:1px solid var(--ring);
@@ -404,7 +404,7 @@ a{color:inherit;text-decoration:none}
   /* Make header more compact on mobile */
   .site-header{
     padding:8px 12px;
-    height:64px;
+    height:96px;
   }
   
   /* Adjust body padding for smaller mobile header */
@@ -733,6 +733,7 @@ nav .nav-dropdown .dropdown-menu,
 @media (max-width: 480px){
   .site-header{
     padding:6px 10px;
+    height:72px;
   }
   
   /* Even smaller logo on very small screens */
