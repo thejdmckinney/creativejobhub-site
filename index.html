@@ -293,7 +293,7 @@
     .site-header{
       position:sticky; top:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
-      height:72px;
+  height:160px;
       padding:10px 16px; 
       background: rgba(11, 18, 32, 0.8);
       backdrop-filter: blur(20px) saturate(120%);
@@ -1179,7 +1179,8 @@
   }
   </script>
 </head>
-<body>
+  <body>
+    <div id="site-header"></div>
 
   <!-- Floating Particles Background -->
   <div class="particles-bg">
@@ -1200,14 +1201,13 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <section class="hero" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #0ea5e9 0%, #1e293b 100%); padding:80px 0 60px 0;">
+      <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
           <span class="eyebrow" style="background: rgba(34,197,94,0.18); color: #22c55e; border: 1px solid #22c55e;">Save $2,000+/year vs. Jobber & Housecall Pro!</span>
           <h1>Get All Field Service Features for $89/mo—No Add-On Fees, No Surprises</h1>
           <p class="lead">Stop paying $300+/mo for basic features. Creative Job Hub gives you scheduling, invoicing, service plans, and marketing tools—all included. Try it free and see your savings instantly.</p>
           <div style="margin: 18px 0 0 0; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-            <a id="labor-rate-calculator-cta" class="btn btn-enhanced" href="#labor-rate-popup" style="background: linear-gradient(90deg, #f59e0b, #22c55e); color: #fff; font-size: 20px; padding: 16px 32px; border-radius: 14px; margin-bottom: 10px; box-shadow: 0 6px 24px rgba(34,197,94,0.18); font-weight: 800; letter-spacing: 0.5px; transition: background 0.2s;">Get Your Free Labor Rate Calculator</a>
+            <a id="labor-rate-calculator-cta" class="btn btn-enhanced" href="#labor-rate-popup" style="background: linear-gradient(90deg, #f59e0b, #22c55e); color: #fff; font-size: 20px; padding: 16px 32px; border-radius: 14px; margin-bottom: 10px; box-shadow: 0 6px 24px rgba(34,197,94,0.18); font-weight: 800; letter-spacing: 0.5px; transition: background 0.2s;">Get Our Free Labor Rate Calculator</a>
             <span style="color: #22c55e; font-weight: 700; font-size: 16px;">No credit card required</span>
             <div style="margin-top: 8px; color: #fbbf24; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 6px;">
               <svg width="20" height="20" fill="none" stroke="#fbbf24" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
@@ -1215,41 +1215,7 @@
             </div>
               <!-- Integration Logos Row -->
               <div class="logo-row" style="display:flex; gap:32px; align-items:center; justify-content:center; margin:32px 0 0 0; flex-wrap:wrap; opacity:.92;">
-                <!-- Stripe -->
-                <a href="https://stripe.com" target="_blank" rel="noopener" title="Stripe">
-                  <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="80" height="32" rx="6" fill="#635BFF"/>
-                    <text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold">Stripe</text>
-                  </svg>
-                </a>
-                <!-- Twilio -->
-                <a href="https://twilio.com" target="_blank" rel="noopener" title="Twilio">
-                  <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="80" height="32" rx="6" fill="#F22F46"/>
-                    <text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold">Twilio</text>
-                  </svg>
-                </a>
-                <!-- Resend -->
-                <a href="https://resend.com" target="_blank" rel="noopener" title="Resend">
-                  <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="80" height="32" rx="6" fill="#FF6B00"/>
-                    <text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold">Resend</text>
-                  </svg>
-                </a>
-                <!-- QuickBooks Online -->
-                <a href="https://quickbooks.intuit.com/online/" target="_blank" rel="noopener" title="QuickBooks Online">
-                  <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="80" height="32" rx="6" fill="#2CA01C"/>
-                    <text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold">QuickBooks</text>
-                  </svg>
-                </a>
-                <!-- Mapbox -->
-                <a href="https://mapbox.com" target="_blank" rel="noopener" title="Mapbox">
-                  <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="80" height="32" rx="6" fill="#4264FB"/>
-                    <text x="40" y="22" text-anchor="middle" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold">Mapbox</text>
-                  </svg>
-                </a>
+
               </div>
           </div>
           
@@ -1257,15 +1223,15 @@
           <div style="background: rgba(139, 92, 246, 0.08); border: 1px solid #8b5cf6; border-radius: 12px; padding: 20px; margin: 24px 0; position: relative;">
             <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
               <div style="background: rgba(59, 130, 246, 0.15); border-radius: 8px; padding: 12px; text-align: center; flex: 1;">
-                <div style="font-size: 14px; color: #2563eb; font-weight: 600;">Others</div>
-                <div style="font-size: 24px; font-weight: 700; color: #2563eb;">$300+/mo</div>
-                <div style="font-size: 12px; color: #60a5fa;">+ hidden fees</div>
+                <div style="font-size: 14px; color: #e2e8f0; font-weight: 600;">Others</div>
+                <div style="font-size: 24px; font-weight: 700; color: #e2e8f0;">$300+/mo</div>
+                <div style="font-size: 12px; color: #e2e8f0;">+ hidden fees</div>
               </div>
-              <div style="color: #64748b; font-size: 24px; font-weight: 700;">VS</div>
+              <div style="color: #e2e8f0; font-size: 24px; font-weight: 700;">VS</div>
               <div style="background: rgba(139, 92, 246, 0.15); border-radius: 8px; padding: 12px; text-align: center; flex: 1;">
-                <div style="font-size: 14px; color: #8b5cf6; font-weight: 600;">Creative Job Hub</div>
+                <div style="font-size: 14px; color: #e2e8f0; font-weight: 600;">Creative Job Hub</div>
                 <div style="font-size: 24px; font-weight: 700; color: #8b5cf6;">$29/mo</div>
-                <div style="font-size: 12px; color: #c4b5fd;">All features included</div>
+                <div style="font-size: 12px; color: #e2e8f0;">All features included</div>
               </div>
             </div>
             <div style="text-align: center; color: #8b5cf6; font-weight: 600; font-size: 16px;">💰 Save $3,252+ per year</div>
@@ -1278,7 +1244,7 @@
             <div id="labor-rate-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(11,18,32,0.85); z-index:9999; justify-content:center; align-items:center;">
               <div style="background:#fff; color:#222; border-radius:16px; max-width:400px; width:90vw; padding:32px; box-shadow:0 8px 32px rgba(0,0,0,0.25); position:relative; text-align:center;">
                 <button id="close-labor-rate-popup" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; color:#64748b; cursor:pointer;">&times;</button>
-                <h3 style="margin-bottom:12px; color:#0ea5e9;">Get Your Free Labor Rate Calculator</h3>
+                <h3 style="margin-bottom:12px; color:#0ea5e9;">Get Our Free Labor Rate Calculator</h3>
                 <p style="margin-bottom:18px; font-size:16px; color:#334155;">Enter your email to unlock the calculator and start optimizing your business instantly.</p>
                 <form action="https://formspree.io/f/xwkzjvqd" method="POST" style="display:flex; flex-direction:column; gap:12px;">
                   <input type="email" name="email" required placeholder="Your email" style="padding:12px; border-radius:8px; border:1px solid #cbd5e1; font-size:16px;">
@@ -1320,9 +1286,29 @@
       </div>
     </section>
 
+    <!-- TESTIMONIAL & SPECIAL OFFER -->
+  <div class="testimonial-offer animated-offer" style="background: #1e293b; border-radius: 14px; padding: 32px 0; margin-bottom: 28px; text-align: center; font-size: 1.1rem; color: #f1f5f9; font-weight: 500; max-width:100vw; box-shadow: 0 4px 32px rgba(14,165,233,0.10);">
+      <p style="font-size:1.15rem; font-weight:600; margin-bottom:10px; animation: fadeInUp 1.2s;">“No, we don’t have 150,000 monthly subscribers like Jobber—but don’t let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!”</p>
+      <div style="margin-top: 12px; font-weight: 700; color: #38bdf8; font-size:1.08rem; letter-spacing:0.5px; animation: pulseOffer 2s infinite;">First 500 signups get price locked for life—never pay a dime more!</div>
+      <style>
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseOffer {
+          0% { text-shadow: 0 0 0 #38bdf8; }
+          50% { text-shadow: 0 0 12px #38bdf8; }
+          100% { text-shadow: 0 0 0 #38bdf8; }
+        }
+        .testimonial-offer { background: #1e293b !important; color: #f1f5f9 !important; border-radius: 14px; box-shadow: 0 4px 32px rgba(14,165,233,0.10); max-width: 700px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 600px) {
+          .testimonial-offer { padding: 18px 2vw !important; font-size: 1rem !important; }
+        }
+      </style>
+    </div>
+
     <!-- SOCIAL PROOF -->
-    <section id="social-proof" style="padding: 60px 0; background: rgba(255,255,255,0.02); opacity: 1 !important; transform: none !important;">
-      <div class="container">
+    <section id="social-proof" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #1e293b 0%, #0ea5e9 100%); padding:60px 0; opacity: 1 !important; transform: none !important;">
         <span class="kicker animate-on-scroll" data-animation="fade-up">Trusted by contractors nationwide</span>
         <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Real results from field service teams</h2>
         
@@ -1357,8 +1343,7 @@
     </section>
 
     <!-- ANIMATED STATS -->
-    <section id="stats" class="stats-section">
-      <div class="container">
+    <section id="stats" class="stats-section" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #0ea5e9 0%, #1e293b 100%); padding:64px 0;">
         <div class="stats-grid animate-on-scroll" data-animation="fade-up">
           <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="0">
             <div class="stat-icon" style="font-size: 2.2rem; color: var(--brand); margin-bottom: 8px;">👥</div>
@@ -1380,32 +1365,16 @@
       </div>
     </section>
 
-    <!-- DEMO -->
-    <section id="demo" class="animate-on-scroll" data-animation="fade-up">
-      <div class="container">
-        <span class="kicker animate-on-scroll" data-animation="fade-up" data-delay="200">Watch it in action</span>
-        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="400">90-second tour</h2>
-        <div class="card animate-on-scroll" data-animation="slide-up" data-delay="600" style="padding:0; overflow:hidden">
-          <div style="position:relative; padding-top:56.25%">
-            <iframe src="https://www.youtube.com/embed/AkY3jtGKrFQ?rel=0&modestbranding=1&showinfo=0"
-                    title="Creative Job Hub Demo - Field Service Management Software"
-                    style="position:absolute; inset:0; width:100%; height:100%; border:0"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-          </div>
-        </div>
-        <div style="text-align: center; margin-top: 1.5rem;">
-          <a href="/videos/demo.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-            🎥 Watch Full Demo Page
-          </a>
-        </div>
-      </div>
+    <!-- DEMO LINK ONLY -->
+    <section id="demo-link" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #1e293b 0%, #0ea5e9 100%); padding:48px 0; text-align:center;">
+      <a href="/videos/demo.html" style="display: inline-block; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white; padding: 1rem 2rem; border-radius: 10px; font-weight: 700; font-size: 1.2rem; text-decoration: none; box-shadow: 0 2px 12px rgba(30,41,59,0.10); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)';">
+        🎥 See it in action
+      </a>
+    </section>
     </section>
 
     <!-- FEATURES -->
-    <section id="features">
-      <div class="container">
+    <section id="features" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #0ea5e9 0%, #1e293b 100%); padding:64px 0;">
         <span class="kicker animate-on-scroll" data-animation="fade-up">Why Creative Job Hub</span>
         <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Everything you need to go from request to paid</h2>
         
@@ -1417,7 +1386,7 @@
             <div>
               <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">📅 Scheduling &amp; Dispatch</h3>
               <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Drag-and-drop calendar with smart route planning, real-time job tracking, and automatic ETA updates to keep customers informed.</p>
-              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <ul style="color: #e2e8f0; margin: 0; padding-left: 20px; line-height: 1.6;">
                 <li>Visual drag-and-drop scheduling</li>
                 <li>Automatic route optimization</li>
                 <li>Real-time ETA updates to customers</li>
@@ -1437,7 +1406,7 @@
             <div>
               <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">📱 Mobile Job Sheets</h3>
               <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Capture photos, notes, signatures, and job details on mobile devices. Works offline when signal is poor, syncs automatically.</p>
-              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <ul style="color: #e2e8f0; margin: 0; padding-left: 20px; line-height: 1.6;">
                 <li>Works offline with auto-sync</li>
                 <li>Photo capture with GPS tagging</li>
                 <li>Digital signatures and notes</li>
@@ -1451,7 +1420,7 @@
             <div>
               <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">🗺️ Route Optimization</h3>
               <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">AI-powered route planning that saves time and fuel. Live GPS tracking, traffic-aware routing, and automatic customer notifications.</p>
-              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <ul style="color: #e2e8f0; margin: 0; padding-left: 20px; line-height: 1.6;">
                 <li>Smart route optimization</li>
                 <li>Live GPS tracking</li>
                 <li>Traffic-aware routing</li>
@@ -1471,7 +1440,7 @@
             <div>
               <h3 style="margin: 0 0 12px; font-size: 24px; color: #e5e7eb;">💳 Invoices &amp; Payments</h3>
               <p style="color: #cbd5e1; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Professional invoicing with online payments through Stripe. Automatic QuickBooks sync and payment reminders keep cash flow steady.</p>
-              <ul style="color: #94a3b8; margin: 0; padding-left: 20px; line-height: 1.6;">
+              <ul style="color: #e2e8f0; margin: 0; padding-left: 20px; line-height: 1.6;">
                 <li>Professional invoice templates</li>
                 <li>Online payments via Stripe</li>
                 <li>Automatic QuickBooks sync</li>
@@ -1485,8 +1454,7 @@
     </section>
 
     <!-- COMPARISON BLURBS -->
-    <section id="compare">
-      <div class="container">
+    <section id="compare" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #1e293b 0%, #0ea5e9 100%); padding:64px 0;">
         <span class="kicker animate-on-scroll" data-animation="fade-up">Why choose Creative Job Hub</span>
         <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Built for small field-service teams—not bloated enterprise software</h2>
         <div class="grid-3">
@@ -1521,12 +1489,11 @@
     </section>
 
     <!-- AI-POWERED OPERATIONS -->
-    <section id="ai-features" style="background: linear-gradient(135deg, rgba(14,165,233,0.03), rgba(168,85,247,0.03)); padding: 80px 0; border-top: 1px solid rgba(148,163,184,0.1); position: relative; overflow: hidden;">
+    <section id="ai-features" style="width:100vw; max-width:100%; background:linear-gradient(135deg, #0ea5e9 0%, #1e293b 100%); padding:80px 0; border-top: 1px solid rgba(148,163,184,0.1); position: relative; overflow: hidden;">
       <!-- Animated background elements -->
       <div style="position: absolute; top: 10%; left: 10%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(14,165,233,0.1), transparent); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
       <div style="position: absolute; top: 60%; right: 15%; width: 80px; height: 80px; background: radial-gradient(circle, rgba(168,85,247,0.1), transparent); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
-      
-      <div class="container">
+      <div style="max-width:1200px; margin:0 auto;">
         <div class="text-center" style="margin-bottom: 64px;">
           <span class="kicker animate-on-scroll" data-animation="fade-up" style="color: var(--brand); font-weight: 700;">🤖 Next-Generation Technology</span>
           <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200" style="margin-bottom: 16px; font-size: 2.5rem;">AI-Powered Operations</h2>
@@ -1538,13 +1505,7 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-bottom: 48px;">
           
           <!-- Smart Photo Analysis -->
-          <div class="glass enhanced-card animate-on-scroll" data-animation="slide-up" data-delay="100" style="padding: 32px; text-align: center; position: relative;">
-            <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, var(--brand), #0284c7); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-            </div>
-            <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Smart Photo Analysis System</h3>
-            <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">AI automatically analyzes job site photos to identify equipment models, detect issues, and suggest repair solutions. Reduces diagnostic time by 60%.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Automatic equipment identification</li>
               <li>Issue detection & classification</li>
               <li>Repair recommendation engine</li>
@@ -1559,7 +1520,7 @@
             </div>
             <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Predictive Maintenance System</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Machine learning algorithms predict equipment failures before they happen, automatically scheduling preventive maintenance and reducing emergency calls by 45%.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Failure prediction algorithms</li>
               <li>Automatic maintenance scheduling</li>
               <li>Equipment lifespan forecasting</li>
@@ -1574,7 +1535,7 @@
             </div>
             <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Dynamic AI Routing</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Intelligent routing engine that continuously adapts to traffic, weather, technician skills, and job priorities. Saves 3+ hours per day per technician.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Real-time traffic adaptation</li>
               <li>Weather-aware scheduling</li>
               <li>Skill-based job matching</li>
@@ -1589,7 +1550,7 @@
             </div>
             <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Traffic Intelligence Engine</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Advanced traffic pattern analysis predicts delays and automatically adjusts schedules. Customers get accurate ETAs and fewer "running late" calls.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Predictive delay forecasting</li>
               <li>Automatic schedule adjustments</li>
               <li>Real-time ETA updates</li>
@@ -1604,7 +1565,7 @@
             </div>
             <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Multi-Technician Coordination</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">AI coordinates complex jobs requiring multiple technicians, automatically scheduling arrivals, managing handoffs, and optimizing team efficiency.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Automated team scheduling</li>
               <li>Skill complement matching</li>
               <li>Handoff coordination</li>
@@ -1619,7 +1580,7 @@
             </div>
             <h3 style="margin: 0 0 16px; color: #e5e7eb; font-size: 20px;">Emergency Insertion System</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Intelligent emergency job insertion that automatically finds the optimal technician and time slot for urgent repairs without disrupting existing schedules.</p>
-            <ul style="color: #94a3b8; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e2e8f0; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Rapid response optimization</li>
               <li>Minimal schedule disruption</li>
               <li>Priority-based insertion</li>
@@ -1766,7 +1727,7 @@
 
           <div class="panel">
             <h3 style="margin:0">Connect with the founder</h3>
-            <p style="margin:8px 0 16px; color:#94a3b8;">Follow for updates, insights, and behind-the-scenes content</p>
+            <p style="margin:8px 0 16px; color:#e2e8f0;">Follow for updates, insights, and behind-the-scenes content</p>
             <div style="text-align:center; margin-bottom: 8px;">
               <div style="display: inline-flex; gap: 12px; align-items: center;">
                 <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#fff; transition:box-shadow 0.2s;">
@@ -1838,6 +1799,13 @@
 
     <!-- BENEFITS -->
     <section id="benefits" style="background:var(--panel); padding:80px 0">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" style="background:var(--panel); padding:80px 0">
       <div class="container">
         <span class="kicker">Why field service teams choose us</span>
         <h2>Stop juggling multiple apps and spreadsheets</h2>
@@ -1870,13 +1838,13 @@
     </section>
   </main>
 
-  <footer style="background:#111827; color:#94a3b8; border-top:1px solid var(--ring); padding:48px 0 32px;">
+  <footer style="background:#111827; color:#e2e8f0; border-top:1px solid var(--ring); padding:48px 0 32px;">
     <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
       <!-- Company Info -->
       <div style="min-width:220px; flex:1; margin-bottom:24px;">
   <img src="/assets/illustrations/CJH_Logo_Primary_New.png" alt="Creative Job Hub logo" style="height:128px; margin-bottom:12px;">
         <div style="font-size:16px; font-weight:600; color:#e5e7eb; margin-bottom:8px;">Creative Job Hub</div>
-        <div style="font-size:14px; color:#94a3b8; margin-bottom:16px;">Modern software for field service pros.</div>
+  <div style="font-size:14px; color:#e2e8f0; margin-bottom:16px;">Modern software for field service pros.</div>
         <div style="display:flex; gap:12px; margin-top:8px;">
           <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#fff;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1929,175 +1897,119 @@
   <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';
+    s0.parentNode.insertBefore(s1,s0);
   })();
-  </script>
-  <!--End of Tawk.to Script-->
-
-  <script>
-    // Debug: Test if JavaScript is executing at all
-    console.log('🚀 JavaScript execution started successfully');
-
-    // ========== INITIALIZE ALL INTERACTIONS WHEN DOM IS READY ==========
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('🎯 DOM ready - initializing all interactions...');
-      
-      // Mobile nav toggle (hamburger). Desktop unaffected.
-      const header = document.querySelector('.site-header');
-      if (header) {
-        const btn = header.querySelector('.nav-toggle');
-        const nav = header.querySelector('#primary-nav');
-        
-        if (btn && nav) {
-          function toggleNav() {
-            const open = header.classList.toggle('nav-open');
-            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            document.body.style.overflow = open ? 'hidden' : '';
+  // Footer year
+  const yearElement = document.getElementById('y');
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+  // ========== SCROLL ANIMATIONS & ANIMATED COUNTERS ==========
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+          // Trigger counter animation if this is a stat item
+          const statNumber = entry.target.querySelector('.stat-number[data-count]');
+          if (statNumber && !statNumber.classList.contains('animated')) {
+            animateCounter(statNumber);
           }
-
-          btn.addEventListener('click', toggleNav);
-          document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && header.classList.contains('nav-open')) toggleNav();
-          });
-          nav.addEventListener('click', (e) => {
-            if (e.target.tagName === 'A' && header.classList.contains('nav-open')) toggleNav();
-          });
-        }
+        }, delay);
+        // Stop observing after animation
+        observer.unobserve(entry.target);
       }
-      
-      // Footer year
-      const yearElement = document.getElementById('y');
-      if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-      }
-      
-      // ========== SCROLL ANIMATIONS & ANIMATED COUNTERS ==========
-      
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const delay = entry.target.dataset.delay || 0;
-          
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-            
-            // Trigger counter animation if this is a stat item
-            const statNumber = entry.target.querySelector('.stat-number[data-count]');
-            if (statNumber && !statNumber.classList.contains('animated')) {
-              animateCounter(statNumber);
-            }
-          }, delay);
-          
-          // Stop observing after animation
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe all animation elements
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observer.observe(el);
     });
-
-    // Emergency fallback: Force show all animations after 2 seconds if they haven't been shown
+  }, observerOptions);
+  // Observe all animation elements
+  document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+  });
+  // Emergency fallback: Force show all animations after 2 seconds if they haven't been shown
+  setTimeout(() => {
+    document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
+      console.log('Force showing element:', el);
+      el.classList.add('visible');
+      // Also trigger counter animation for any stat numbers
+      const statNumber = el.querySelector('.stat-number[data-count]');
+      if (statNumber && !statNumber.classList.contains('animated')) {
+        animateCounter(statNumber);
+      }
+    });
+    // Force animate any remaining counters that haven't been animated
+    document.querySelectorAll('.stat-number[data-count]:not(.animated)').forEach(statNumber => {
+      console.log('Force animating counter:', statNumber);
+      animateCounter(statNumber);
+    });
+  }, 2000);
+  // Also add an immediate check for visible counters
+  setTimeout(() => {
+    document.querySelectorAll('.stat-number[data-count]:not(.animated)').forEach(statNumber => {
+      const rect = statNumber.getBoundingClientRect();
+      // If element is visible in viewport, animate immediately
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        console.log('Immediate counter animation:', statNumber);
+        animateCounter(statNumber);
+      }
+    });
+  }, 500);
+  // Ultra-aggressive fallback - animate ALL counters after page load
+  window.addEventListener('load', () => {
     setTimeout(() => {
-      document.querySelectorAll('.animate-on-scroll:not(.visible)').forEach(el => {
-        console.log('Force showing element:', el);
-        el.classList.add('visible');
-        
-        // Also trigger counter animation for any stat numbers
-        const statNumber = el.querySelector('.stat-number[data-count]');
-        if (statNumber && !statNumber.classList.contains('animated')) {
-          animateCounter(statNumber);
-        }
-      });
-      
-      // Force animate any remaining counters that haven't been animated
-      document.querySelectorAll('.stat-number[data-count]:not(.animated)').forEach(statNumber => {
-        console.log('Force animating counter:', statNumber);
+      console.log('🚨 EMERGENCY: Animating all counters regardless of visibility');
+      document.querySelectorAll('.stat-number[data-count]').forEach(statNumber => {
+        // Reset any previous animation state
+        statNumber.classList.remove('animated');
+        console.log('Emergency animating:', statNumber, 'target:', statNumber.dataset.count);
         animateCounter(statNumber);
       });
-    }, 2000);
-
-    // Also add an immediate check for visible counters
-    setTimeout(() => {
-      document.querySelectorAll('.stat-number[data-count]:not(.animated)').forEach(statNumber => {
-        const rect = statNumber.getBoundingClientRect();
-        // If element is visible in viewport, animate immediately
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          console.log('Immediate counter animation:', statNumber);
-          animateCounter(statNumber);
-        }
-      });
-    }, 500);
-
-    // Ultra-aggressive fallback - animate ALL counters after page load
-    window.addEventListener('load', () => {
+    }, 1000);
+  });
+  // IMMEDIATE counter animation - don't wait for anything
+  setTimeout(() => {
+    console.log('🎯 IMMEDIATE: Finding and animating all counters now');
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    console.log('Found counters:', counters.length);
+    counters.forEach((counter, index) => {
+      console.log(`Counter ${index}:`, counter, 'data-count:', counter.dataset.count);
+      // Set to 0 first to ensure we start from 0
+      counter.textContent = '0';
+      // Animate with a slight delay between each counter
       setTimeout(() => {
-        console.log('🚨 EMERGENCY: Animating all counters regardless of visibility');
-        document.querySelectorAll('.stat-number[data-count]').forEach(statNumber => {
-          // Reset any previous animation state
-          statNumber.classList.remove('animated');
-          console.log('Emergency animating:', statNumber, 'target:', statNumber.dataset.count);
-          animateCounter(statNumber);
-        });
-      }, 1000);
+        animateCounter(counter);
+      }, index * 200);
     });
-
-    // IMMEDIATE counter animation - don't wait for anything
-    setTimeout(() => {
-      console.log('🎯 IMMEDIATE: Finding and animating all counters now');
-      const counters = document.querySelectorAll('.stat-number[data-count]');
-      console.log('Found counters:', counters.length);
-      
-      counters.forEach((counter, index) => {
-        console.log(`Counter ${index}:`, counter, 'data-count:', counter.dataset.count);
-        // Set to 0 first to ensure we start from 0
-        counter.textContent = '0';
-        // Animate with a slight delay between each counter
-        setTimeout(() => {
-          animateCounter(counter);
-        }, index * 200);
-      });
-    }, 100);
-
-    // Animated counter function
-    function animateCounter(element) {
-      const target = parseFloat(element.dataset.count);
-      const duration = 2000; // 2 seconds
-      const start = performance.now();
-      
-      console.log('🔢 Starting counter animation:', {
-        element: element,
-        target: target,
-        currentText: element.textContent,
-        dataset: element.dataset.count
-      });
-      
-      element.classList.add('animated');
-      
-      function update(currentTime) {
-        const elapsed = currentTime - start;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Ease-out animation curve
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
-        const current = target * easedProgress;
-        
-        // Format number based on target
-        if (target % 1 === 0) {
-          // Integer
+  }, 100);
+  // Animated counter function
+  function animateCounter(element) {
+    const target = parseFloat(element.dataset.count);
+    const duration = 2000; // 2 seconds
+    const start = performance.now();
+    console.log('🔢 Starting counter animation:', {
+      element: element,
+      target: target,
+      currentText: element.textContent,
+      dataset: element.dataset.count
+    });
+    element.classList.add('animated');
+    function update(currentTime) {
+      const elapsed = currentTime - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out animation curve
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
+      const current = target * easedProgress;
+      // Format number based on target
+      if (target % 1 === 0) {
+        // Integer
           element.textContent = Math.floor(current);
         } else {
           // Decimal
@@ -2175,7 +2087,7 @@
       });
       
       console.log('✅ All animations and interactions initialized successfully!');
-    }); // End of single DOM ready function
+// End of DOMContentLoaded or main script block
 
     // ========== ROI CALCULATOR ==========
     function updateROICalculator() {

@@ -1,4 +1,3 @@
-      
 <!doctype html>
 <html lang="en">
 <head>
@@ -154,31 +153,30 @@
 </head>
 
 <body>
+  <div id="site-header"></div>
 
   <!-- Header -->
   <div id="site-header"></div>
 
   <main>
-    <div class="wrap">
-      <div class="page-header">
-        <div>
-          <h1>All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price.</h1>
-          <p>No add-ons. No hidden fees. Just straightforward pricing that helps your team work smarter.</p>
-        </div>
-
-        <!-- Billing toggle -->
-        <div class="toggle" role="group" aria-label="Billing cycle">
-          <button type="button" id="btn-monthly" aria-pressed="true">Pay monthly</button>
-          <button type="button" id="btn-yearly" aria-pressed="false">
+    <section class="full-width-hero" style="background:linear-gradient(90deg,#1e293b 0%,#334155 100%);padding:64px 0 32px;">
+      <div class="container" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px;">
+        <h1 style="font-size:clamp(2.2rem,5vw,3.2rem);color:#fff;font-weight:800;text-align:center;line-height:1.1;margin-bottom:12px;">All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price.</h1>
+        <p style="font-size:clamp(1.1rem,2vw,1.4rem);color:#cbd5e1;text-align:center;max-width:600px;margin-bottom:24px;">No add-ons. No hidden fees. Just straightforward pricing that helps your team work smarter.</p>
+        <div class="toggle" role="group" aria-label="Billing cycle" style="display:flex;gap:12px;justify-content:center;">
+          <button type="button" id="btn-monthly" aria-pressed="true" style="padding:8px 20px;font-size:1rem;border-radius:8px;background:#334155;color:#fff;border:none;cursor:pointer;">Pay monthly</button>
+          <button type="button" id="btn-yearly" aria-pressed="false" style="padding:8px 20px;font-size:1rem;border-radius:8px;background:#1b2340;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;">
             Pay annually
             <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Best value</span>
           </button>
         </div>
       </div>
+    </section>
 
-      <section class="grid" id="plans">
+    <section id="plans" class="full-width-plans" style="background:#f1f5f9;padding:56px 0 32px;">
+      <div class="container" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;">
         <!-- Starter -->
-        <article class="plan" data-plan="starter">
+        <article class="plan" data-plan="starter" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.07);padding:32px 24px;display:flex;flex-direction:column;gap:18px;">
           <div class="head">
             <div class="title">Starter</div>
             <div class="desc">All-in-one job management for solo pros. Scheduling, estimates, invoices, payments, client alerts, and time tracking — plus integrations that just work.</div>
@@ -207,7 +205,7 @@
         </article>
 
         <!-- Team -->
-        <article class="plan plan--highlight" data-plan="team">
+        <article class="plan plan--highlight" data-plan="team" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.12);padding:32px 24px;display:flex;flex-direction:column;gap:18px;position:relative;">
           <div class="badge">BEST VALUE</div>
           <div class="head">
             <div class="title">Team</div>
@@ -236,7 +234,7 @@
         </article>
 
         <!-- Pro -->
-        <article class="plan" data-plan="pro">
+        <article class="plan" data-plan="pro" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.07);padding:32px 24px;display:flex;flex-direction:column;gap:18px;">
           <div class="head">
             <div class="title">Pro</div>
             <div class="desc">Unlimited users and premium features. AI Receptionist, multi-location management, and advanced analytics — with priority support.</div>
@@ -261,59 +259,23 @@
             <li><span class="check">✔</span> Priority onboarding &amp; support</li>
           </ul>
         </article>
-      </section>
+      </div>
+    </section>
 
-      <!-- Every plan includes -->
-      <section style="margin-top:28px">
-        <span class="kicker" style="color:#94a3b8; text-transform:uppercase; letter-spacing:.12em; font-size:14px">Included in every plan</span>
-        <ul class="feats" style="margin-top:10px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px">
-          <li><span class="check">✔</span> No add-ons. No hidden fees.</li>
-          <li><span class="check">✔</span> 7-day free trial — full access</li>
-          <li><span class="check">✔</span> Stripe, Twilio, Resend, Google Drive, Mapbox, QuickBooks Online</li>
-          <li><span class="check">✔</span> Mobile-optimized, real-time syncing</li>
-        </ul>
-      </section>
 
-      <!-- PRICING FAQ -->
-      <section id="pricing-faq" class="wrap" style="padding-top:24px">
+    <section id="pricing-faq" class="full-width-faq" style="background:#f1f5f9;padding:48px 0 32px;">
+      <div class="container" style="max-width:900px;margin:0 auto;">
         <span class="kicker" style="color:#94a3b8; text-transform:uppercase; letter-spacing:.12em; font-size:14px">FAQ</span>
-        <h2 style="margin:8px 0 10px; font-size: clamp(22px, 3.6vw, 34px);">Pricing &amp; billing questions</h2>
-
-        <div class="grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:12px">
-          <div class="card">
-            <strong>Can I switch plans anytime?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated.</p>
+        <h2 style="margin:8px 0 10px; font-size: clamp(22px, 3.6vw, 34px); color:#fff;">Pricing &amp; billing questions</h2>
+          <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; margin-top:12px">
+            <!-- Only the main 6 FAQ cards should appear here. Any duplicate or commented FAQ questions are now fully removed. -->
           </div>
-
-          <div class="card">
-            <strong>Do you offer annual billing?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Yes. Starter $300/yr, Team $468/yr, Pro $948/yr. That’s effectively $25, $39, and $79 per month when billed annually.</p>
-          </div>
-
-          <div class="card">
-            <strong>What's included in every plan?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">Scheduling, estimates, invoices, payments, client alerts, Mapbox live tracking, time tracking, QuickBooks Online &amp; Google Drive integrations, and a mobile-optimized experience.</p>
-          </div>
-
-          <div class="card">
-            <strong>Are there hidden fees or add-ons?</strong>
-            <p style="margin:8px 0 0; color:#cbd5e1">No. Bring your own Stripe/Twilio/Resend accounts for transaction or messaging costs; we don’t add markups.</p>
-          </div>
-        </div>
-      </section>
+      </div>
+    </section>
     </div>
   </main>
 
-  <footer>
-    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
-      <div>© <span id="y"></span> Creative Job Hub</div>
-      <div class="row">
-        <a class="btn btn-ghost" href="/pricing/">Pricing</a>
-        <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
-        <a class="btn btn-ghost" href="/terms.html">Terms</a>
-        <a class="btn btn-ghost" href="/contact.html">Contact</a>
-      </div>
-    </div>
+  
   <footer style="background:#111827; color:#94a3b8; border-top:1px solid var(--ring); padding:48px 0 32px;">
     <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
       <!-- Company Info -->
@@ -378,76 +340,6 @@
   })();
   </script>
   <!--End of Tawk.to Script-->
-    // Footer year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Navigation handled by standard header.js system
-
-    // --- Stripe Price IDs mapping (monthly & annual) ---
-    const PRICE_IDS = {
-      starter: { monthly: "price_1SNlao6P3cMj5sLGQCXrKNee", annual: "price_1SNlao6P3cMj5sLGAM4vv5Qp" },
-      team:    { monthly: "price_1SNllh6P3cMj5sLGRuLa37lD", annual: "price_1SNllh6P3cMj5sLGMWeq8FEa" },
-      pro:     { monthly: "price_1SNltf6P3cMj5sLGioRqwmdy", annual: "price_1SNltf6P3cMj5sLGDGo5dW7G" }
-    };
-
-    // Monthly ↔ Annual pricing toggle
-    (function(){
-      const btnMonthly = document.getElementById('btn-monthly');
-      const btnYearly  = document.getElementById('btn-yearly');
-      const priceBlocks = Array.from(document.querySelectorAll('[data-price]'));
-      let billingMode = 'monthly'; // default
-
-      function updateButtons() {
-        // Update all CTA links to include priceId & billing mode
-        document.querySelectorAll('.plan-cta').forEach(btn => {
-          const plan = btn.getAttribute('data-plan');
-          const priceId = PRICE_IDS[plan][billingMode];
-          const url = new URL('https://app.creativejobhub.com/auth');
-          url.searchParams.set('mode','signup');
-          url.searchParams.set('plan', plan);
-          url.searchParams.set('billing', billingMode);
-          url.searchParams.set('priceId', priceId);
-          btn.setAttribute('href', url.toString());
-        });
-      }
-
-      function setMode(mode){
-        billingMode = mode;
-        const yearly = mode === 'annual';
-        btnMonthly.setAttribute('aria-pressed', (!yearly).toString());
-        btnYearly.setAttribute('aria-pressed', yearly.toString());
-
-        priceBlocks.forEach(p=>{
-          const monthly = Number(p.dataset.monthly);   // e.g. 29
-          const yearlyEff = Number(p.dataset.yearly);  // e.g. 25 (effective monthly)
-          const amountEl = p.querySelector('[data-amount]');
-          const perEl = p.querySelector('.per');
-          const foot = p.parentElement.querySelector('[data-foot]');
-          const planKey = p.parentElement.dataset.plan;
-
-          if(yearly){
-            amountEl.textContent = yearlyEff.toString();
-            perEl.textContent = '/month';
-          } else {
-            amountEl.textContent = monthly.toString();
-            perEl.textContent = '/month';
-          }
-
-          const annualTotals = {
-            starter: '$300 billed yearly',
-            team: '$468 billed yearly',
-            pro: '$948 billed yearly'
-          };
-          if(foot) foot.textContent = annualTotals[planKey];
-        });
-
-        updateButtons();
-      }
-
-      btnMonthly.addEventListener('click', ()=>setMode('monthly'));
-      btnYearly .addEventListener('click', ()=>setMode('annual'));
-      setMode('monthly'); // default
-    })();
   </script>
 
   <!-- Standard Navigation System -->

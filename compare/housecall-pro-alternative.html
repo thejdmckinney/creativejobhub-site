@@ -75,7 +75,7 @@
       border-bottom:1px solid var(--ring);
       backdrop-filter:saturate(120%) blur(6px);
     }
-    .brand img{height:32px; display:block}
+  .brand img{height:128px; display:block}
     .nav{display:flex; gap:16px; align-items:center}
     .nav a{font-weight:700; padding:8px 10px; border-radius:10px}
     .nav a:hover{background:rgba(255,255,255,.06)}
@@ -147,6 +147,7 @@
 </head>
 
 <body>
+  <div id="site-header"></div>
   <div id="site-header"></div>
 
   <main>
@@ -325,44 +326,58 @@
 
 
   <footer style="padding:40px 0; background:#111827; border-top:1px solid var(--ring);">
-    <div class="container">
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:32px;">
-        <div>
-          <img src="/assets/logo-wordmark.svg" alt="Creative Job Hub" width="160" height="40" style="margin-bottom:16px;">
-          <p style="color:var(--muted); margin:0;">Field service software built for modern teams. Streamline operations, boost efficiency, and grow your business with Creative Job Hub.</p>
-        </div>
-        <div>
-          <h4 style="margin:0 0 16px; color:white;">Features</h4>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <a href="/#features" style="color:var(--muted); text-decoration:none;">CRM & Scheduling</a>
-            <a href="/#features" style="color:var(--muted); text-decoration:none;">Recurring Maintenance</a>
-            <a href="/#features" style="color:var(--muted); text-decoration:none;">Service Plans</a>
-            <a href="/#features" style="color:var(--muted); text-decoration:none;">Branded Invoices</a>
-          </div>
-        </div>
-        <div>
-          <h4 style="margin:0 0 16px; color:white;">Industries</h4>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <a href="/hvac-field-service-software/" style="color:var(--muted); text-decoration:none;">HVAC</a>
-            <a href="/plumbing-field-service-software/" style="color:var(--muted); text-decoration:none;">Plumbing</a>
-            <a href="/electrical-field-service-software/" style="color:var(--muted); text-decoration:none;">Electrical</a>
-            <a href="/landscaping-field-service-software/" style="color:var(--muted); text-decoration:none;">Landscaping</a>
-            <a href="/handyman-field-service-software/" style="color:var(--muted); text-decoration:none;">Handyman</a>
-          </div>
-        </div>
-        <div>
-          <h4 style="margin:0 0 16px; color:white;">Company</h4>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <a href="/pricing/" style="color:var(--muted); text-decoration:none;">Pricing</a>
-            <a href="/compare/" style="color:var(--muted); text-decoration:none;">Compare</a>
-            <a href="/blog/" style="color:var(--muted); text-decoration:none;">Blog</a>
-            <a href="/contact.html" style="color:var(--muted); text-decoration:none;">Contact</a>
-          </div>
+    <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
+      <!-- Company Info -->
+      <div style="min-width:220px; flex:1; margin-bottom:24px;">
+  <img src="/assets/illustrations/CJH_Logo_Primary_New.png" alt="Creative Job Hub logo" style="height:128px; margin-bottom:12px;">
+        <div style="font-size:16px; font-weight:600; color:#e5e7eb; margin-bottom:8px;">Creative Job Hub</div>
+        <div style="font-size:14px; color:#e2e8f0; margin-bottom:16px;">Modern software for field service pros.</div>
+        <div style="display:flex; gap:12px; margin-top:8px;">
+          <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#fff;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?viewas=100000686899395&id=61582571702601" target="_blank" title="Follow on Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#1877f3; color:#fff;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+            </svg>
+          </a>
         </div>
       </div>
-      <div style="border-top:1px solid var(--ring); margin-top:32px; padding-top:24px; text-align:center; color:var(--muted);">
-        <p>&copy; <span id="y">2025</span> Creative Job Hub. <a href="/privacy.html" style="color:inherit;">Privacy</a> | <a href="/terms.html" style="color:inherit;">Terms</a></p>
+      <!-- Navigation Links -->
+      <div style="min-width:160px; flex:1; margin-bottom:24px;">
+        <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Navigation</div>
+        <nav style="display:flex; flex-direction:column; gap:8px;">
+          <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+          <a class="btn btn-ghost" href="/compare/">Compare</a>
+          <a class="btn btn-ghost" href="/blog/">Blog</a>
+          <a class="btn btn-ghost" href="/contact.html">Contact</a>
+        </nav>
       </div>
+      <!-- Industries Links -->
+      <div style="min-width:180px; flex:1; margin-bottom:24px;">
+        <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Industries</div>
+        <nav style="display:flex; flex-direction:column; gap:8px;">
+          <a class="btn btn-ghost" href="/field-service-management/">Field Service</a>
+          <a class="btn btn-ghost" href="/hvac-field-service-software/">HVAC</a>
+          <a class="btn btn-ghost" href="/plumbing-field-service-software/">Plumbing</a>
+          <a class="btn btn-ghost" href="/electrical-field-service-software/">Electrical</a>
+          <a class="btn btn-ghost" href="/landscaping-field-service-software/">Landscaping</a>
+          <a class="btn btn-ghost" href="/handyman-field-service-software/">Handyman</a>
+        </nav>
+      </div>
+      <!-- Legal Links -->
+      <div style="min-width:120px; flex:1; margin-bottom:24px;">
+        <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Legal</div>
+        <nav style="display:flex; flex-direction:column; gap:8px;">
+          <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+          <a class="btn btn-ghost" href="/terms.html">Terms</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container" style="border-top:1px solid rgba(148,163,184,0.15); margin-top:32px; padding-top:16px; text-align:center; font-size:14px; color:#64748b;">
+      © <span id="y"></span> Creative Job Hub. All rights reserved.
     </div>
   </footer>
 
