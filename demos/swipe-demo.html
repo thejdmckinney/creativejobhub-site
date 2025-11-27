@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Creative Job Hub - Mobile Jobs Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f1f5f9;
+            min-height: 100vh;
+            color: #1e293b;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 430px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #f8fafc;
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .header-badge {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* New Job Button */
+        .new-job-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: calc(100% - 40px);
+            margin: 16px 20px;
+            padding: 14px;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .new-job-btn:active {
+            transform: scale(0.98);
+        }
+
+        .new-job-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            padding: 0 20px 16px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .search-box svg {
+            width: 20px;
+            height: 20px;
+            color: #94a3b8;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 14px;
+            color: #1e293b;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: #94a3b8;
+        }
+
+        .filter-dropdown {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: white;
+            border: 2px solid #6366f1;
+            border-radius: 12px;
+            color: #4f46e5;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .filter-dropdown svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Swipe Instructions */
+        .swipe-hint {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 50%, #fefce8 100%);
+            margin: 0 20px 16px;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #475569;
+        }
+
+        .hint-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .hint-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .hint-green { background: #10b981; }
+        .hint-red { background: #ef4444; }
+        .hint-blue { background: #3b82f6; }
+
+        /* Job Cards Container */
+        .jobs-container {
+            padding: 0 20px;
+        }
+
+        /* Individual Job Card */
+        .job-card-wrapper {
+            position: relative;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        /* Swipe Action Backgrounds */
+        .swipe-actions {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .swipe-action-left {
+            flex: 1;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            display: flex;
+            align-items: center;
+            padding-left: 24px;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        .swipe-action-right {
+            flex: 1;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 24px;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            gap: 8px;
+        }
+
+        .swipe-action-left svg,
+        .swipe-action-right svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* The actual job card */
+        .job-card {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            touch-action: pan-y;
+            cursor: grab;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+        }
+
+        .job-card.dragging {
+            transition: none;
+            cursor: grabbing;
+        }
+
+        .job-card.completing {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .job-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 16px 12px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .job-number {
+            font-size: 16px;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        .job-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: lowercase;
+        }
+
+        .status-scheduled {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .status-in-progress {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .status-completed {
+            background: #d1fae5;
+            color: #047857;
+        }
+
+        .job-card-body {
+            padding: 12px 16px 16px;
+        }
+
+        .job-detail-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .job-detail-row svg {
+            width: 18px;
+            height: 18px;
+            color: #94a3b8;
+            flex-shrink: 0;
+        }
+
+        .job-detail-row.customer {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .job-description {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* Line Items Preview */
+        .line-items-preview {
+            margin-top: 12px;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .line-items-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .line-items-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .line-items-total {
+            font-size: 14px;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .line-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .line-item:not(:last-child) {
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .line-item-name {
+            color: #475569;
+        }
+
+        .line-item-price {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Card Actions */
+        .job-card-actions {
+            display: flex;
+            gap: 10px;
+            padding: 0 16px 16px;
+        }
+
+        .card-action-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .card-action-btn:active {
+            background: #f1f5f9;
+            transform: scale(0.98);
+        }
+
+        .card-action-btn.primary {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: none;
+            color: white;
+        }
+
+        .card-action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Quick Action Row */
+        .quick-actions-row {
+            display: flex;
+            gap: 8px;
+            padding: 0 16px 16px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+            margin-top: 4px;
+        }
+
+        .quick-action {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 11px;
+            color: #64748b;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .quick-action:active {
+            background: #f1f5f9;
+        }
+
+        .quick-action svg {
+            width: 20px;
+            height: 20px;
+            color: #6366f1;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 430px;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 20px 20px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+        }
+
+        .nav-item.active {
+            color: #4f46e5;
+        }
+
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1e293b;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-out;
+            z-index: 300;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .toast.success { background: #059669; }
+        .toast.info { background: #4f46e5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-top">
+                <h1 class="header-title">Jobs</h1>
+                <span class="header-badge">3 Today</span>
+            </div>
+            <p class="header-subtitle">Track and manage field service jobs</p>
+        </div>
+
+        <!-- New Job Button -->
+        <button class="new-job-btn" onclick="showToast('✨ New job creation coming soon!', 'info')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            New Job
+        </button>
+
+        <!-- Search and Filter -->
+        <div class="search-filter">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="Search by job number or notes..." onclick="showToast('🔍 Search functionality coming soon!', 'info')">
+            </div>
+            <div class="filter-dropdown" onclick="showToast('📋 Filter options coming soon!', 'info')">
+                <span>All Jobs</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Swipe Hint -->
+        <div class="swipe-hint">
+            <div class="hint-item">
+                <span class="hint-dot hint-green"></span>
+                <span>Swipe right = Start</span>
+            </div>
+            <div class="hint-item">
+                <span class="hint-dot hint-blue"></span>
+                <span>Swipe left = Complete</span>
+            </div>
+        </div>
+
+        <!-- Job Cards -->
+        <div class="jobs-container" id="jobsContainer">
+            <!-- Cards populated by JavaScript -->
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Schedule</span>
+            </button>
+            <button class="nav-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+                <span>Jobs</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>Clients</span>
+            </button>
+            <button class="nav-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+                <span>More</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast success" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span id="toastMessage">Line item added!</span>
+    </div>
+
+    <script>
+        // Job data
+        const jobs = [
+            {
+                id: '00091',
+                status: 'scheduled',
+                date: '11/27/2025',
+                time: '11:00 AM',
+                customer: 'Jeremy McKinney',
+                address: '7525 Holly Hill Dr.',
+                city: 'Dallas, TX 75231',
+                phone: '(214) 555-0147',
+                description: 'Check washer line hook ups to ensure no leaks',
+                lineItems: [
+                    { name: 'Washer Line Inspection', price: 75, qty: 1 }
+                ]
+            },
+            {
+                id: '00090',
+                status: 'scheduled',
+                date: '11/27/2025',
+                time: '2:00 PM',
+                customer: 'Sarah Thompson',
+                address: '4521 Oak Lawn Ave',
+                city: 'Highland Park, TX 75205',
+                phone: '(214) 555-0293',
+                description: 'Replace kitchen faucet - customer has already purchased new faucet',
+                lineItems: [
+                    { name: 'Faucet Installation', price: 125, qty: 1 }
+                ]
+            },
+            {
+                id: '00089',
+                status: 'scheduled',
+                date: '11/27/2025',
+                time: '4:30 PM',
+                customer: 'Rodriguez Family',
+                address: '8901 Preston Rd',
+                city: 'University Park, TX 75225',
+                phone: '(214) 555-0384',
+                description: 'Multiple electrical issues - 3 outlets not working in living room',
+                lineItems: [
+                    { name: 'Outlet Diagnostic', price: 65, qty: 1 },
+                    { name: 'Outlet Replacement', price: 45, qty: 3 }
+                ]
+            }
+        ];
+
+        // Render all job cards
+        function renderJobs() {
+            const container = document.getElementById('jobsContainer');
+            container.innerHTML = '';
+
+            jobs.forEach(job => {
+                const total = job.lineItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                
+                const cardHtml = `
+                    <div class="job-card-wrapper" id="wrapper-${job.id}">
+                        <div class="swipe-actions">
+                            <div class="swipe-action-left">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                COMPLETE
+                            </div>
+                            <div class="swipe-action-right">
+                                START
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="job-card" id="card-${job.id}" data-job-id="${job.id}">
+                            <div class="job-card-header">
+                                <span class="job-number">#${job.id}</span>
+                                <span class="job-status status-${job.status}">${job.status}</span>
+                            </div>
+                            <div class="job-card-body">
+                                <div class="job-detail-row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    <span>${job.date}</span>
+                                </div>
+                                <div class="job-detail-row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    <span>${job.time}</span>
+                                </div>
+                                <div class="job-detail-row customer">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    <span>${job.customer}</span>
+                                </div>
+                                <div class="job-detail-row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                    <span>${job.address}, ${job.city}</span>
+                                </div>
+                                <p class="job-description">${job.description}</p>
+                                
+                                <!-- Line Items Preview -->
+                                <div class="line-items-preview">
+                                    <div class="line-items-header">
+                                        <span class="line-items-title">Line Items</span>
+                                        <span class="line-items-total">$${total.toFixed(2)}</span>
+                                    </div>
+                                    ${job.lineItems.map(item => `
+                                        <div class="line-item">
+                                            <span class="line-item-name">${item.name} ${item.qty > 1 ? `(x${item.qty})` : ''}</span>
+                                            <span class="line-item-price">$${(item.price * item.qty).toFixed(2)}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Actions -->
+                            <div class="quick-actions-row">
+                                <button class="quick-action" onclick="showToast('🗺️ Navigation integration coming soon!', 'info')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                                    </svg>
+                                    Navigate
+                                </button>
+                                <button class="quick-action" onclick="showToast('📞 Click-to-call coming soon!', 'info')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                    Call
+                                </button>
+                                <button class="quick-action" onclick="showToast('📸 Photo capture coming soon!', 'info')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                                        <circle cx="12" cy="13" r="4"></circle>
+                                    </svg>
+                                    Photo
+                                </button>
+                                <button class="quick-action" onclick="showToast('📝 Quick notes coming soon!', 'info')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                    Note
+                                </button>
+                            </div>
+                            
+                            <!-- Card Actions -->
+                            <div class="job-card-actions">
+                                <button class="card-action-btn" onclick="showToast('📋 Job details view coming soon!', 'info')">
+                                    View Details
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        <polyline points="12 5 19 12 12 19"></polyline>
+                                    </svg>
+                                </button>
+                                <button class="card-action-btn primary" onclick="showToast('➕ Add line items coming soon!', 'info')">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Add Item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+
+            // Initialize swipe handlers
+            initSwipeHandlers();
+        }
+
+        // Swipe handling
+        function initSwipeHandlers() {
+            const cards = document.querySelectorAll('.job-card');
+            
+            cards.forEach(card => {
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                const handleStart = (e) => {
+                    // Don't swipe if clicking buttons
+                    if (e.target.closest('button')) return;
+                    
+                    isDragging = true;
+                    card.classList.add('dragging');
+                    startX = e.touches ? e.touches[0].clientX : e.clientX;
+                };
+
+                const handleMove = (e) => {
+                    if (!isDragging) return;
+                    
+                    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                    currentX = clientX - startX;
+                    
+                    // Limit the swipe distance
+                    currentX = Math.max(-150, Math.min(150, currentX));
+                    
+                    card.style.transform = `translateX(${currentX}px)`;
+                };
+
+                const handleEnd = () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    card.classList.remove('dragging');
+
+                    const threshold = 100;
+                    const jobId = card.dataset.jobId;
+
+                    if (currentX > threshold) {
+                        // Swipe right - Start
+                        triggerSwipeAction(card, 'start', jobId);
+                    } else if (currentX < -threshold) {
+                        // Swipe left - Complete
+                        triggerSwipeAction(card, 'complete', jobId);
+                    } else {
+                        // Snap back
+                        card.style.transform = '';
+                    }
+
+                    currentX = 0;
+                };
+
+                card.addEventListener('touchstart', handleStart, { passive: true });
+                card.addEventListener('touchmove', handleMove, { passive: true });
+                card.addEventListener('touchend', handleEnd);
+                card.addEventListener('mousedown', handleStart);
+                document.addEventListener('mousemove', handleMove);
+                document.addEventListener('mouseup', handleEnd);
+            });
+        }
+
+        function triggerSwipeAction(card, action, jobId) {
+            if (action === 'start') {
+                card.classList.add('completing');
+                card.style.transform = 'translateX(400px)';
+                card.style.opacity = '0';
+                
+                setTimeout(() => {
+                    showToast('✅ Job started! Timer running...', 'success');
+                    // Update job status
+                    const job = jobs.find(j => j.id === jobId);
+                    if (job) job.status = 'in-progress';
+                    renderJobs();
+                }, 300);
+            } else if (action === 'complete') {
+                card.classList.add('completing');
+                card.style.transform = 'translateX(-400px)';
+                card.style.opacity = '0';
+                
+                setTimeout(() => {
+                    showToast('🎉 Job completed! Invoice ready!', 'success');
+                    // Update job status
+                    const job = jobs.find(j => j.id === jobId);
+                    if (job) job.status = 'completed';
+                    renderJobs();
+                }, 300);
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toast.className = 'toast ' + type;
+            toastMessage.textContent = message;
+            toast.classList.add('visible');
+            
+            setTimeout(() => {
+                toast.classList.remove('visible');
+            }, 3000);
+        }
+
+        // Initialize
+        renderJobs();
+    </script>
+</body>
+</html>
