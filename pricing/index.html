@@ -314,14 +314,79 @@
   </script>
   <!--End of Tawk.to Script-->
 
+  <!-- Disable HubSpot Chat Widget -->
+  <style>
+    /* Hide all HubSpot chat widgets */
+    #hubspot-conversations-iframe,
+    [id*="hubspot-conversations"],
+    .hubspot-conversations-widget,
+    #hs-conversations-widget-wrapper,
+    [class*="hubspot-conversations"],
+    iframe[src*="hubspot"] {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+  
+  <script>
+    // Completely disable HubSpot chat
+    window.hsConversationsSettings = { 
+      loadImmediately: false,
+      enableWidgetCookieBanner: false,
+      disableAttachment: true,
+      inlineEmbedSelector: null
+    };
+    
+    // Prevent HubSpot from loading
+    window.hsConversationsOnReady = [];
+    window.HubSpotConversations = { widget: { load: () => {}, open: () => {}, close: () => {} } };
+    
+    // Aggressively hide any HubSpot elements
+    const hideAllHubSpot = () => {
+      // Hide by ID and class
+      const selectors = [
+        '#hubspot-conversations-iframe',
+        '[id*="hubspot-conversations"]',
+        '.hubspot-conversations-widget',
+        '#hs-conversations-widget-wrapper',
+        '[class*="hubspot-conversations"]',
+        'iframe[src*="hubspot"]',
+        '[data-test-id*="chat"]',
+        '.widget-align-right'
+      ];
+      
+      selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.opacity = '0';
+          el.remove();
+        });
+      });
+    };
+    
+    // Run immediately and continuously
+    hideAllHubSpot();
+    document.addEventListener('DOMContentLoaded', hideAllHubSpot);
+    setInterval(hideAllHubSpot, 500);
+    
+    // Override HubSpot methods
+    window.addEventListener('load', () => {
+      if (window.HubSpotConversations) {
+        window.HubSpotConversations.widget.load = () => {};
+        window.HubSpotConversations.widget.open = () => {};
+        window.HubSpotConversations.widget.refresh = () => {};
+      }
+    });
+  </script>
+
   <script>
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-
-  <!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
-  <!-- End of HubSpot Embed Code -->
 
   <!-- Pricing Toggle Logic -->
   <script>
