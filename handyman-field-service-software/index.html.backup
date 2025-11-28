@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Handyman Field Service Software | Manage Projects, Maximize Profits</title>
+  <meta name="description" content="Run your handyman business smarter with Creative Job Hub. Manage multi-trade projects, automate dispatch, track time, and win more repeat customers. Try it free—no credit card required!" />
+  <link rel="canonical" href="https://creativejobhub.com/handyman-field-service-software/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Creative Job Hub" />
+  <meta property="og:title" content="Handyman Field Service Software Built for Multi-Trade Contractors" />
+  <meta property="og:description" content="Streamline handyman operations with specialized field service software. Manage multi-trade projects, skill-based dispatch, time tracking, and home repair workflows." />
+  <meta property="og:url" content="https://creativejobhub.com/handyman-field-service-software/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-handyman.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Handyman Field Service Software Built for Multi-Trade Contractors" />
+  <meta name="twitter:description" content="Complete handyman management: multi-trade tracking, project workflows, skill-based dispatch, time tracking, and home repair automation." />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/og-handyman.jpg" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+
+  <link rel="stylesheet" href="/assets/site.min.css?v=13">
+
+</head>
+<body>
+  <div id="site-header"></div>
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+      <div class="hero-grid" style="max-width:1400px; margin:0 auto; padding:0 24px; display:flex; gap:48px; flex-wrap:wrap; align-items:center;">
+        <div style="flex:1; min-width:300px;">
+          <span class="kicker" style="color: #0ea5e9; font-size:1.1rem; font-weight:700;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            Handyman Field Service Software
+          </span>
+          <h1 style="color:#fff; font-size:2.8rem; margin-bottom:18px;">Built for Multi-Trade Contractors</h1>
+          <p class="lead" style="color:#cbd5e1; font-size:1.25rem;">Streamline your handyman operations with specialized field service management. Handle multi-trade projects, skill-based dispatch, time tracking, and home repair workflows—all from one platform designed for handyman professionals.</p>
+            <!-- Pain Points -->
+            <div class="pain-points">
+              <h3>❌ Common Handyman Business Challenges</h3>
+              <ul>
+                <li><strong>Multi-trade project chaos</strong> causing scheduling conflicts and lost revenue</li>
+                <li><strong>Manual time tracking</strong> leading to inaccurate billing and payroll issues</li>
+                <li><strong>Paper-based job notes</strong> resulting in lost information and inconsistent service</li>
+                <li><strong>Skill-based dispatch difficulties</strong> with no automated matching</li>
+                <li><strong>Difficulty managing recurring maintenance</strong> and upselling additional services</li>
+              </ul>
+            </div>
+            <!-- Solution -->
+            <div class="solution">
+              <h3>✅ How Creative Job Hub Solves These Problems</h3>
+              <ul>
+                <li><strong>Automated multi-trade project tracking</strong> with skill-based crew assignments</li>
+                <li><strong>Digital time tracking</strong> and automated payroll calculations</li>
+                <li><strong>Job notes and service history</strong> stored digitally for every project</li>
+                <li><strong>Skill-based dispatch automation</strong> for faster, more efficient scheduling</li>
+                <li><strong>Recurring maintenance automation</strong> and easy upsell of additional services</li>
+              </ul>
+            </div>
+            <div style="margin-top:32px;">
+              <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary" style="margin-right:16px;">Start Your Free Trial - Built for Handyman Pros</a>
+              <a href="#features" class="btn btn-ghost">See Handyman Features</a>
+            </div>
+          </div>
+          <div>
+            <div style="background: #0ea5e9, rgba(234,88,12,0.2)); padding:32px; border-radius:16px; text-align:center; box-shadow:0 8px 32px rgba(220,38,38,0.10);">
+              <div style="font-size:64px; margin-bottom:16px;">🔨</div>
+              <h3 style="color:white; margin-bottom:16px;">Join other Handyman Contractors</h3>
+              <p style="color:#cbd5e1; margin:0 0 16px 0;">Grow your handyman business with tools built for the trade: multi-trade project management, skill-based dispatch, time tracking, home repair workflows, and more—all in one platform.</p>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; text-align:center;">
+                <div>
+                  <div style="font-size:24px; font-weight:700; color: #0ea5e9;">72%</div>
+                  <div style="font-size:12px; color:#cbd5e1;">Repeat customer rate</div>
+                </div>
+                <div>
+                  <div style="font-size:24px; font-weight:700; color: #0ea5e9;">$1,900</div>
+                  <div style="font-size:12px; color:#cbd5e1;">Avg. monthly savings</div>
+                </div>
+                <div>
+                  <div style="font-size:24px; font-weight:700; color: #0ea5e9;">61%</div>
+                  <div style="font-size:12px; color:#cbd5e1;">Quotes accepted</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial and Special Offer -->
+    <div class="testimonial-offer animated-offer" style="background: #1e293b; border-radius: 14px; padding: 32px 0; margin-bottom: 28px; text-align: center; font-size: 1.1rem; color: #f1f5f9; font-weight: 500; max-width:100vw; box-shadow: 0 4px 32px rgba(220,38,38,0.10);">
+      <p style="font-size:1.15rem; font-weight:600; margin-bottom:10px; animation: fadeInUp 1.2s;">“No, we don’t have 150,000 monthly subscribers like Jobber—but don’t let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!”</p>
+      <div style="margin-top: 12px; font-weight: 700; color: #dc2626; font-size:1.08rem; letter-spacing:0.5px; animation: pulseOffer 2s infinite;">First 500 signups get price locked for life—never pay a dime more!</div>
+      <style>
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(30px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseOffer {
+          0% { text-shadow: 0 0 0 #dc2626; }
+          50% { text-shadow: 0 0 12px #dc2626; }
+          100% { text-shadow: 0 0 0 #dc2626; }
+        }
+        .animated-offer { transition: background 0.3s, box-shadow 0.3s; }
+        @media (max-width: 600px) {
+          .testimonial-offer { padding: 18px 2vw; font-size: 1rem; }
+        }
+      </style>
+    </div>
+      <p>“No, we don’t have 150,000 monthly subscribers like Jobber—but don’t let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!”</p>
+      <div style="margin-top: 10px; font-weight: 700; color: #b91c1c;">First 500 signups get price locked for life—never pay a dime more!</div>
+    </div>
+
+    <!-- Handyman-Specific Features -->
+    <section id="features" style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+        <span class="kicker">🔧 Handyman-Specific Features</span>
+  <h2 style="color:#fff; font-size:2.2rem; margin-bottom:18px;">Everything You Need for Multi-Trade Success</h2>
+  <p class="lead" style="color:#cbd5e1; font-size:1.15rem;">Purpose-built tools that understand the unique needs of handyman contractors, from multi-trade project management to skill-based dispatch.</p>
+        <div class="features-grid">
+          <div class="features-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; max-width:1400px; margin:0 auto;">
+            <span class="feature-icon">🗂️</span>
+            <h3>Multi-Trade Project Tracking</h3>
+            <p>Track plumbing, electrical, carpentry, painting, and other trades within single projects with separate time tracking and billing rates.</p>
+            <ul style="color:var(--muted); margin-top:12px;">
+              <li>Trade-specific time tracking</li>
+              <li>Different billing rates per trade</li>
+              <li>Project phase management</li>
+              <li>Multi-skill requirement matching</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">⏱️</span>
+            <h3>Time Tracking & Payroll</h3>
+            <p>Automate time tracking for every crew member and project, with digital payroll calculations.</p>
+            <ul style="color:var(--muted); margin-top:12px;">
+              <li>Digital time logs</li>
+              <li>Automated payroll</li>
+              <li>Mobile check-in/out</li>
+              <li>Job cost analysis</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">📋</span>
+            <h3>Job Notes & Service History</h3>
+            <p>Store job notes, photos, and service history for every project, accessible from anywhere.</p>
+            <ul style="color:var(--muted); margin-top:12px;">
+              <li>Photo & document uploads</li>
+              <li>Digital job notes</li>
+              <li>Service history tracking</li>
+              <li>Customer communication logs</li>
+            </ul>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🧑‍🔧</span>
+            <h3>Skill-Based Dispatch & Invoicing</h3>
+            <p>Automate dispatch based on crew skills, and generate branded work orders, estimates, and invoices for every job.</p>
+            <ul style="color:var(--muted); margin-top:12px;">
+              <li>Skill-based crew matching</li>
+              <li>Branded work orders & invoices</li>
+              <li>Downloadable PDFs</li>
+              <li>Online payment options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+        <h3 style="margin-top:40px;">🛠️ Multi-Trade Project Workflow</h3>
+  <h3 style="margin-top:40px; color:#fff; font-size:2rem;">🛠️ Multi-Trade Project Workflow</h3>
+        <div class="workflow-steps">
+          <div class="workflow-steps" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:1200px; margin:32px auto 0 auto;">
+            <h4>Project Intake & Planning</h4>
+            <p>Projects are logged with all required trades, phases, and skill requirements.</p>
+          </div>
+          <div class="workflow-step" data-step="2">
+            <h4>Crew Assignment</h4>
+            <p>Crews are assigned based on skills, availability, and project phase.</p>
+          </div>
+          <div class="workflow-step" data-step="3">
+            <h4>On-Site Service</h4>
+            <p>Crews complete tasks, log time, and upload photos and notes for each trade.</p>
+          </div>
+          <div class="workflow-step" data-step="4">
+            <h4>Customer Updates</h4>
+            <p>Automatic notifications keep customers informed of progress and next steps.</p>
+          </div>
+          <div class="workflow-step" data-step="5">
+            <h4>Project Completion & Invoicing</h4>
+            <p>All work is logged, and branded invoices are generated for the customer.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof (existing content) -->
+    <!-- Related Industries -->
+    <section>
+      <div class="container">
+        <div class="related-industries">
+          <h2>Field Service Software for Other Trades</h2>
+          <p>Creative Job Hub serves contractors across multiple industries with specialized features for each trade.</p>
+          <div class="industry-links">
+            <a href="/hvac-field-service-software/" class="industry-link">
+              <div style="font-size:24px; margin-bottom:8px;">❄️</div>
+              <strong>HVAC Software</strong>
+              <div style="font-size:14px; color:var(--muted);">Refrigerant tracking, mobile diagnostics, maintenance</div>
+            </a>
+            <a href="/plumbing-field-service-software/" class="industry-link">
+              <div style="font-size:24px; margin-bottom:8px;">🔧</div>
+              <strong>Plumbing Software</strong>
+              <div style="font-size:14px; color:var(--muted);">Pipe tracking, leak detection, hydro-jetting</div>
+            </a>
+            <a href="/electrical-field-service-software/" class="industry-link">
+              <div style="font-size:24px; margin-bottom:8px;">⚡</div>
+              <strong>Electrical Software</strong>
+              <div style="font-size:14px; color:var(--muted);">Code compliance, panel upgrades, safety inspections</div>
+            </a>
+            <a href="/landscaping-field-service-software/" class="industry-link">
+              <div style="font-size:24px; margin-bottom:8px;">🌿</div>
+              <strong>Landscaping Software</strong>
+              <div style="font-size:14px; color:var(--muted);">Crew management, weather routing, property tracking</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:#111827; color:#94a3b8; border-top:1px solid var(--ring); padding:48px 0 32px;">
+      <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
+        <!-- Company Info -->
+        <div style="min-width:220px; flex:1; margin-bottom:24px;">
+    <img src="/assets/illustrations/CJH_Logo_Primary_New.png" alt="Creative Job Hub logo" style="height:128px; margin-bottom:12px;">
+          <div style="font-size:16px; font-weight:600; color:#e5e7eb; margin-bottom:8px;">Creative Job Hub</div>
+          <div style="font-size:14px; color:#94a3b8; margin-bottom:16px;">Modern software for field service pros.</div>
+          <div style="display:flex; gap:12px; margin-top:8px;">
+            <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#fff;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?viewas=100000686899395&id=61582571702601" target="_blank" title="Follow on Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#1877f3; color:#fff;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- Navigation Links -->
+        <div style="min-width:160px; flex:1; margin-bottom:24px;">
+          <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Navigation</div>
+          <nav style="display:flex; flex-direction:column; gap:8px;">
+            <a class="btn btn-ghost" href="/pricing/">Pricing</a>
+            <a class="btn btn-ghost" href="/compare/">Compare</a>
+            <a class="btn btn-ghost" href="/blog/">Blog</a>
+            <a class="btn btn-ghost" href="/contact.html">Contact</a>
+          </nav>
+        </div>
+        <!-- Industries Links -->
+        <div style="min-width:180px; flex:1; margin-bottom:24px;">
+          <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Industries</div>
+          <nav style="display:flex; flex-direction:column; gap:8px;">
+            <a class="btn btn-ghost" href="/field-service-management/">Field Service</a>
+            <a class="btn btn-ghost" href="/hvac-field-service-software/">HVAC</a>
+            <a class="btn btn-ghost" href="/plumbing-field-service-software/">Plumbing</a>
+            <a class="btn btn-ghost" href="/electrical-field-service-software/">Electrical</a>
+            <a class="btn btn-ghost" href="/landscaping-field-service-software/">Landscaping</a>
+            <a class="btn btn-ghost" href="/handyman-field-service-software/">Handyman</a>
+          </nav>
+        </div>
+        <!-- Legal Links -->
+        <div style="min-width:120px; flex:1; margin-bottom:24px;">
+          <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Legal</div>
+          <nav style="display:flex; flex-direction:column; gap:8px;">
+            <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
+            <a class="btn btn-ghost" href="/terms.html">Terms</a>
+          </nav>
+        </div>
+      </div>
+      <div class="container" style="border-top:1px solid rgba(148,163,184,0.15); margin-top:32px; padding-top:16px; text-align:center; font-size:14px; color:#64748b;">
+        © <span id="y"></span> Creative Job Hub. All rights reserved.
+      </div>
+    </footer>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  </main>
+</body>
+
