@@ -37,12 +37,17 @@
   <script src="/assets/header.js" defer></script>
   <main>
     <!-- Hero Section -->
-    <section class="hero" style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1) 0 0;">
-      <div class="hero-grid" style="max-width:1400px; margin:0 auto; display:flex; gap:48px; flex-wrap:wrap; align-items:center;">
-          <div>
-            <span class="kicker" style="color: #0ea5e9; font-size:1.1rem; font-weight:700;">🛠️ Handyman Field Service Software</span>
-            <h1 style="color:#fff; font-size:2.8rem; margin-bottom:18px;">Built for Multi-Trade Contractors</h1>
-            <p class="lead" style="color:#cbd5e1; font-size:1.25rem;">Streamline your handyman operations with specialized field service management. Handle multi-trade projects, skill-based dispatch, time tracking, and home repair workflows—all from one platform designed for handyman professionals.</p>
+    <section class="hero" style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+      <div class="hero-grid" style="max-width:1400px; margin:0 auto; padding:0 24px; display:flex; gap:48px; flex-wrap:wrap; align-items:center;">
+        <div style="flex:1; min-width:300px;">
+          <span class="kicker" style="color: #0ea5e9; font-size:1.1rem; font-weight:700;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            Handyman Field Service Software
+          </span>
+          <h1 style="color:#fff; font-size:2.8rem; margin-bottom:18px;">Built for Multi-Trade Contractors</h1>
+          <p class="lead" style="color:#cbd5e1; font-size:1.25rem;">Streamline your handyman operations with specialized field service management. Handle multi-trade projects, skill-based dispatch, time tracking, and home repair workflows—all from one platform designed for handyman professionals.</p>
             <!-- Pain Points -->
             <div class="pain-points">
               <h3>❌ Common Handyman Business Challenges</h3>
@@ -96,73 +101,92 @@
     </section>
 
     <!-- Testimonial and Special Offer -->
-    <div class="testimonial-offer animated-offer" style="background: #1e293b; border-radius: 14px; padding: 32px 0; margin-bottom: 28px; text-align: center; font-size: 1.1rem; color: #f1f5f9; font-weight: 500; max-width:100vw; box-shadow: 0 4px 32px rgba(220,38,38,0.10);">
-      <p style="font-size:1.15rem; font-weight:600; margin-bottom:10px; animation: fadeInUp 1.2s;">“No, we don’t have 150,000 monthly subscribers like Jobber—but don’t let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!”</p>
-      <div style="margin-top: 12px; font-weight: 700; color: #dc2626; font-size:1.08rem; letter-spacing:0.5px; animation: pulseOffer 2s infinite;">First 500 signups get price locked for life—never pay a dime more!</div>
-      <style>
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(30px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulseOffer {
-          0% { text-shadow: 0 0 0 #dc2626; }
-          50% { text-shadow: 0 0 12px #dc2626; }
-          100% { text-shadow: 0 0 0 #dc2626; }
-        }
-        .animated-offer { transition: background 0.3s, box-shadow 0.3s; }
-        @media (max-width: 600px) {
-          .testimonial-offer { padding: 18px 2vw; font-size: 1rem; }
-        }
-      </style>
-    </div>
-      <p>“No, we don’t have 150,000 monthly subscribers like Jobber—but don’t let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!”</p>
-      <div style="margin-top: 10px; font-weight: 700; color: #b91c1c;">First 500 signups get price locked for life—never pay a dime more!</div>
-    </div>
+    <section style="width:100vw; max-width:100%; background: #0b1220; padding: 40px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+        <div style="background: rgba(14,165,233,0.05); border:1px solid rgba(14,165,233,0.2); border-radius: 12px; padding: 32px; text-align: center;">
+          <p style="color:#cbd5e1; font-size:1.1rem; margin-bottom:16px; line-height:1.6;">"No, we don't have 150,000 monthly subscribers like Jobber—but don't let that stop you from saving money every month. Try Creative Job Hub risk-free: no strings attached, no credit card required. You have nothing to lose and everything to gain. Be part of a growing company that puts small businesses first!"</p>
+          <div style="font-weight: 700; color: #0ea5e9; font-size:1.1rem;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            First 500 signups get price locked for life—never pay a dime more!
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Handyman-Specific Features -->
     <section id="features" style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-        <span class="kicker">🔧 Handyman-Specific Features</span>
-  <h2 style="color:#fff; font-size:2.2rem; margin-bottom:18px;">Everything You Need for Multi-Trade Success</h2>
-  <p class="lead" style="color:#cbd5e1; font-size:1.15rem;">Purpose-built tools that understand the unique needs of handyman contractors, from multi-trade project management to skill-based dispatch.</p>
-        <div class="features-grid">
-          <div class="features-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:32px; max-width:1400px; margin:0 auto;">
-            <span class="feature-icon">🗂️</span>
-            <h3>Multi-Trade Project Tracking</h3>
-            <p>Track plumbing, electrical, carpentry, painting, and other trades within single projects with separate time tracking and billing rates.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
+      <div class="container" style="max-width:1400px; margin:0 auto; padding:0 24px;">
+        <span class="kicker" style="color:#0ea5e9; font-size:1rem; font-weight:700;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:6px;">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          Handyman-Specific Features
+        </span>
+        <h2 style="color:#fff; font-size:2.2rem; margin-bottom:18px;">Everything You Need for Multi-Trade Success</h2>
+        <p class="lead" style="color:#cbd5e1; font-size:1.15rem; margin-bottom:32px;">Purpose-built tools that understand the unique needs of handyman contractors, from multi-trade project management to skill-based dispatch.</p>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:32px; border-radius:12px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin-bottom:16px;">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <h3 style="color:#fff; font-size:1.3rem; margin-bottom:12px;">Multi-Trade Project Tracking</h3>
+            <p style="color:#cbd5e1; margin-bottom:16px;">Track plumbing, electrical, carpentry, painting, and other trades within single projects with separate time tracking and billing rates.</p>
+            <ul style="color:#94a3b8; margin:0; padding-left:20px; line-height:1.8;">
               <li>Trade-specific time tracking</li>
               <li>Different billing rates per trade</li>
               <li>Project phase management</li>
               <li>Multi-skill requirement matching</li>
             </ul>
           </div>
-          <div class="feature-card">
-            <span class="feature-icon">⏱️</span>
-            <h3>Time Tracking & Payroll</h3>
-            <p>Automate time tracking for every crew member and project, with digital payroll calculations.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:32px; border-radius:12px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin-bottom:16px;">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <h3 style="color:#fff; font-size:1.3rem; margin-bottom:12px;">Time Tracking & Payroll</h3>
+            <p style="color:#cbd5e1; margin-bottom:16px;">Automate time tracking for every crew member and project, with digital payroll calculations.</p>
+            <ul style="color:#94a3b8; margin:0; padding-left:20px; line-height:1.8;">
               <li>Digital time logs</li>
               <li>Automated payroll</li>
               <li>Mobile check-in/out</li>
               <li>Job cost analysis</li>
             </ul>
           </div>
-          <div class="feature-card">
-            <span class="feature-icon">📋</span>
-            <h3>Job Notes & Service History</h3>
-            <p>Store job notes, photos, and service history for every project, accessible from anywhere.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:32px; border-radius:12px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin-bottom:16px;">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <h3 style="color:#fff; font-size:1.3rem; margin-bottom:12px;">Job Notes & Service History</h3>
+            <p style="color:#cbd5e1; margin-bottom:16px;">Store job notes, photos, and service history for every project, accessible from anywhere.</p>
+            <ul style="color:#94a3b8; margin:0; padding-left:20px; line-height:1.8;">
               <li>Photo & document uploads</li>
               <li>Digital job notes</li>
               <li>Service history tracking</li>
               <li>Customer communication logs</li>
             </ul>
           </div>
-          <div class="feature-card">
-            <span class="feature-icon">🧑‍🔧</span>
-            <h3>Skill-Based Dispatch & Invoicing</h3>
-            <p>Automate dispatch based on crew skills, and generate branded work orders, estimates, and invoices for every job.</p>
-            <ul style="color:var(--muted); margin-top:12px;">
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:32px; border-radius:12px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin-bottom:16px;">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <h3 style="color:#fff; font-size:1.3rem; margin-bottom:12px;">Skill-Based Dispatch & Invoicing</h3>
+            <p style="color:#cbd5e1; margin-bottom:16px;">Automate dispatch based on crew skills, and generate branded work orders, estimates, and invoices for every job.</p>
+            <ul style="color:#94a3b8; margin:0; padding-left:20px; line-height:1.8;">
               <li>Skill-based crew matching</li>
               <li>Branded work orders & invoices</li>
               <li>Downloadable PDFs</li>
@@ -175,28 +199,43 @@
 
     <!-- Workflow Section -->
     <section style="width:100vw; max-width:100%; background: #0b1220; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-        <h3 style="margin-top:40px;">🛠️ Multi-Trade Project Workflow</h3>
-  <h3 style="margin-top:40px; color:#fff; font-size:2rem;">🛠️ Multi-Trade Project Workflow</h3>
-        <div class="workflow-steps">
-          <div class="workflow-steps" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:1200px; margin:32px auto 0 auto;">
-            <h4>Project Intake & Planning</h4>
-            <p>Projects are logged with all required trades, phases, and skill requirements.</p>
+      <div class="container" style="max-width:1400px; margin:0 auto; padding:0 24px;">
+        <h3 style="color:#fff; font-size:2rem; margin-bottom:32px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:middle; margin-right:8px;">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          Multi-Trade Project Workflow
+        </h3>
+        
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px;">
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:24px; border-radius:12px; position:relative;">
+            <div style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; background:#0ea5e9; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">1</div>
+            <h4 style="color:#fff; font-size:1.1rem; margin-bottom:8px;">Project Intake & Planning</h4>
+            <p style="color:#cbd5e1; margin:0;">Projects are logged with all required trades, phases, and skill requirements.</p>
           </div>
-          <div class="workflow-step" data-step="2">
-            <h4>Crew Assignment</h4>
-            <p>Crews are assigned based on skills, availability, and project phase.</p>
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:24px; border-radius:12px; position:relative;">
+            <div style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; background:#0ea5e9; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">2</div>
+            <h4 style="color:#fff; font-size:1.1rem; margin-bottom:8px;">Crew Assignment</h4>
+            <p style="color:#cbd5e1; margin:0;">Crews are assigned based on skills, availability, and project phase.</p>
           </div>
-          <div class="workflow-step" data-step="3">
-            <h4>On-Site Service</h4>
-            <p>Crews complete tasks, log time, and upload photos and notes for each trade.</p>
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:24px; border-radius:12px; position:relative;">
+            <div style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; background:#0ea5e9; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">3</div>
+            <h4 style="color:#fff; font-size:1.1rem; margin-bottom:8px;">On-Site Service</h4>
+            <p style="color:#cbd5e1; margin:0;">Crews complete tasks, log time, and upload photos and notes for each trade.</p>
           </div>
-          <div class="workflow-step" data-step="4">
-            <h4>Customer Updates</h4>
-            <p>Automatic notifications keep customers informed of progress and next steps.</p>
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:24px; border-radius:12px; position:relative;">
+            <div style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; background:#0ea5e9; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">4</div>
+            <h4 style="color:#fff; font-size:1.1rem; margin-bottom:8px;">Customer Updates</h4>
+            <p style="color:#cbd5e1; margin:0;">Automatic notifications keep customers informed of progress and next steps.</p>
           </div>
-          <div class="workflow-step" data-step="5">
-            <h4>Project Completion & Invoicing</h4>
-            <p>All work is logged, and branded invoices are generated for the customer.</p>
+          
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); padding:24px; border-radius:12px; position:relative;">
+            <div style="position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%; background:#0ea5e9; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">5</div>
+            <h4 style="color:#fff; font-size:1.1rem; margin-bottom:8px;">Project Completion & Invoicing</h4>
+            <p style="color:#cbd5e1; margin:0;">All work is logged, and branded invoices are generated for the customer.</p>
           </div>
         </div>
       </div>
@@ -211,22 +250,30 @@
           <p>Creative Job Hub serves contractors across multiple industries with specialized features for each trade.</p>
           <div class="industry-links">
             <a href="/hvac-field-service-software/" class="industry-link">
-              <div style="font-size:24px; margin-bottom:8px;">❄️</div>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin:0 auto 12px;">
+                <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+              </svg>
               <strong>HVAC Software</strong>
               <div style="font-size:14px; color:var(--muted);">Refrigerant tracking, mobile diagnostics, maintenance</div>
             </a>
             <a href="/plumbing-field-service-software/" class="industry-link">
-              <div style="font-size:24px; margin-bottom:8px;">🔧</div>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin:0 auto 12px;">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
               <strong>Plumbing Software</strong>
-              <div style="font-size:14px; color:var(--muted);">Pipe tracking, leak detection, hydro-jetting</div>
+              <div style="font-size:14px; color:var(--muted);">Pipe tracking, inspection records, hydro-jetting</div>
             </a>
             <a href="/electrical-field-service-software/" class="industry-link">
-              <div style="font-size:24px; margin-bottom:8px;">⚡</div>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin:0 auto 12px;">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
               <strong>Electrical Software</strong>
               <div style="font-size:14px; color:var(--muted);">Code compliance, panel upgrades, safety inspections</div>
             </a>
             <a href="/landscaping-field-service-software/" class="industry-link">
-              <div style="font-size:24px; margin-bottom:8px;">🌿</div>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="2" style="display:block; margin:0 auto 12px;">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
               <strong>Landscaping Software</strong>
               <div style="font-size:14px; color:var(--muted);">Crew management, weather routing, property tracking</div>
             </a>
