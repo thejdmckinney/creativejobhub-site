@@ -42,66 +42,7 @@
   <link rel="icon" type="image/png" href="/assets/logo.png">
 
   <!-- Shared site CSS -->
-  <link rel="stylesheet" href="/assets/site.css?v=13" />
-
-  <style>
-    :root{
-      --bg:#0b1320;
-      --card:#121a2b;
-      --muted:#94a3b8;
-      --text:#f8fafc;
-      --accent:#7c6cf3;
-      --accent-strong:#6a58f0;
-      --ok:#22c55e;
-      --ring:#2b3652;
-      --shadow: 0 10px 25px rgba(0,0,0,.35);
-      --radius:18px;
-      --header-bg:#0b1220;
-      --header-border:rgba(148,163,184,.15);
-      --brand:#0ea5e9;
-      --brand-2:#22c55e;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;padding-top:72px}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:auto;padding:24px 16px 80px}
-    :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 10px; }
-
-    /* Using standard navigation system from site.css */
-
-    /* Page header */
-    .page-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 6px;flex-wrap:wrap}
-    .page-header h1{margin:0 0 4px 0;font-size:28px}
-    .page-header p{margin:0;color:var(--muted)}
-    .toggle{display:flex;gap:8px;background:var(--card);border:1px solid var(--ring);padding:6px;border-radius:999px;box-shadow:var(--shadow)}
-    .toggle button{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:999px;cursor:pointer;font-weight:600}
-    .toggle button[aria-pressed="true"]{background:var(--accent);color:#fff}
-
-    /* Plans grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:680px){.grid{grid-template-columns:1fr}}
-    .plan{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:16px;position:relative;box-shadow:var(--shadow);min-height:100%}
-    .badge{position:absolute;top:-12px;left:18px;background:#ffe580;color:#3b2f00;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.3px}
-    .head{display:flex;flex-direction:column;gap:6px}
-    .title{font-size:20px;font-weight:800}
-    .desc{color:var(--muted);font-size:14px}
-    .seats{color:#cbd5e1;font-size:13px}
-    .price{display:flex;align-items:baseline;gap:8px}
-    .currency{font-size:22px;line-height:1;margin-right:2px;opacity:.95;position:relative;top:1px}
-    .amount{font-size:42px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;font-feature-settings:"lnum","tnum"}
-    .per{font-size:14px;line-height:1.1;color:var(--muted)}
-    .footnote{color:var(--muted);font-size:12px;margin-top:6px}
-    .cta{display:inline-flex;justify-content:center;align-items:center;padding:12px 14px;border-radius:12px;font-weight:800;border:1px solid transparent;transition:transform .05s ease;box-shadow:var(--shadow)}
-    .cta.primary{background:var(--accent);color:#fff}
-    .cta.primary:hover{background:var(--accent-strong)}
-    .cta.ghost{background:transparent;border-color:var(--ring);color:#fff}
-    .cta:active{transform:translateY(1px)}
-    ul.feats{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
-    ul.feats li{display:flex;gap:8px;align-items:flex-start}
-    .check{color:var(--ok);margin-top:2px}
-    .plan--highlight{outline:2px solid #ffe580}
-  </style>
+  <link rel="stylesheet" href="/assets/site.min.css?v=13">
 
   <!-- Schema: Organization + SoftwareApplication (Offers) -->
   <script type="application/ld+json">
@@ -154,128 +95,156 @@
 
 <body>
   <div id="site-header"></div>
-
-  <!-- Header -->
-  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
 
   <main>
-    <section class="full-width-hero" style="background: #0b1220;padding:64px 0 32px;">
-      <div class="container" style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:32px;">
-        <h1 style="font-size:clamp(2.2rem,5vw,3.2rem);color:#fff;font-weight:800;text-align:center;line-height:1.1;margin-bottom:12px;">All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price.</h1>
-        <p style="font-size:clamp(1.1rem,2vw,1.4rem);color:#cbd5e1;text-align:center;max-width:600px;margin-bottom:24px;">No add-ons. No hidden fees. Just straightforward pricing that helps your team work smarter.</p>
-        <div class="toggle" role="group" aria-label="Billing cycle" style="display:flex;gap:12px;justify-content:center;">
-          <button type="button" id="btn-monthly" aria-pressed="true" style="padding:8px 20px;font-size:1rem;border-radius:8px;background:#334155;color:#fff;border:none;cursor:pointer;">Pay monthly</button>
-          <button type="button" id="btn-yearly" aria-pressed="false" style="padding:8px 20px;font-size:1rem;border-radius:8px;background:#1b2340;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;">
-            Pay annually
-            <span class="save" style="color:#a5b4fc;font-size:12px;font-weight:700;background:#1b2340;border:1px solid var(--ring);padding:4px 8px;border-radius:6px">Best value</span>
-          </button>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <span class="kicker">💰 Pricing</span>
+          <h1>All the power of Jobber, Workiz, and Housecall Pro — for a fraction of the price</h1>
+          <p class="lead">No add-ons. No hidden fees. Just straightforward pricing that helps your team work smarter.</p>
+          
+          <div style="display: flex; gap: 12px; justify-content: center; margin-top: 32px; flex-wrap: wrap;">
+            <button type="button" id="btn-monthly" aria-pressed="true" class="btn btn-primary" style="min-width: 140px;">Pay monthly</button>
+            <button type="button" id="btn-yearly" aria-pressed="false" class="btn btn-ghost" style="min-width: 140px; display: flex; align-items: center; gap: 8px; justify-content: center;">
+              Pay annually
+              <span style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; border: 1px solid rgba(14, 165, 233, 0.3);">Best value</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="plans" class="full-width-plans" style="background:#f1f5f9;padding:56px 0 32px;">
-      <div class="container" style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;">
-        <!-- Starter -->
-        <article class="plan" data-plan="starter" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.07);padding:32px 24px;display:flex;flex-direction:column;gap:18px;">
-          <div class="head">
-            <div class="title">Starter</div>
-            <div class="desc">All-in-one job management for solo pros. Scheduling, estimates, invoices, payments, client alerts, and time tracking — plus integrations that just work.</div>
-            <div class="seats">Users: 1</div>
+    <!-- Pricing Plans -->
+    <section id="plans" style="padding: 48px 0;">
+      <div class="container">
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1100px; margin: 0 auto; padding-top: 20px;">
+          <!-- Starter Plan -->
+          <div class="feature-card" data-plan="starter" style="position: relative;">
+            <h3 style="color: #fff; font-size: 24px; margin-bottom: 8px;">Starter</h3>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">All-in-one job management for solo pros. Scheduling, estimates, invoices, payments, client alerts, and time tracking — plus integrations that just work.</p>
+            <div style="color: #cbd5e1; font-size: 13px; margin-bottom: 16px;">Users: 1</div>
+            
+            <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;" data-price data-monthly="29" data-yearly="25">
+              <span style="font-size: 22px; color: #0ea5e9;">$</span>
+              <span style="font-size: 48px; font-weight: 900; line-height: 1; color: #fff;" data-amount>29</span>
+              <span style="font-size: 14px; color: #94a3b8;">/month</span>
+            </div>
+            <div style="color: #94a3b8; font-size: 13px; margin-bottom: 24px;" data-foot>or $300 billed yearly</div>
+
+            <a class="btn btn-ghost plan-cta" data-plan="starter" href="https://app.creativejobhub.com/auth?mode=signup" style="width: 100%; justify-content: center; margin-bottom: 24px;">Start Free Trial</a>
+
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; color: #cbd5e1; font-size: 14px;">
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Estimates, invoices &amp; payments (Stripe)</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Job scheduling &amp; reminders</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Client text/email alerts (Twilio + Resend)</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>GPS map tracking (Mapbox)</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Time tracking &amp; job notes</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Google Drive &amp; QuickBooks Online</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Mobile-optimized for field use</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Unlimited clients, jobs &amp; estimates</span></li>
+            </ul>
           </div>
 
-          <div class="price" data-price data-monthly="29" data-yearly="25">
-            <span class="currency">$</span>
-            <span class="amount" data-amount>29</span>
-            <span class="per">/month</span>
-          </div>
-          <div class="footnote" data-foot>or $300 billed yearly</div>
+          <!-- Team Plan (Highlighted) -->
+          <div class="feature-card" data-plan="team" style="position: relative; border: 2px solid #0ea5e9; box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.2); overflow: visible;">
+            <div style="position: absolute; top: -12px; left: 24px; background: #0ea5e9; color: #fff; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.5px;">BEST VALUE</div>
+            <h3 style="color: #fff; font-size: 24px; margin-bottom: 8px;">Team</h3>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">Everything in Starter, built for small crews. Up to 5 users with live tech tracking, recurring maintenance, and real-time collaboration.</p>
+            <div style="color: #cbd5e1; font-size: 13px; margin-bottom: 16px;">Users: up to 5</div>
+            
+            <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;" data-price data-monthly="49" data-yearly="39">
+              <span style="font-size: 22px; color: #0ea5e9;">$</span>
+              <span style="font-size: 48px; font-weight: 900; line-height: 1; color: #fff;" data-amount>49</span>
+              <span style="font-size: 14px; color: #94a3b8;">/month</span>
+            </div>
+            <div style="color: #94a3b8; font-size: 13px; margin-bottom: 24px;" data-foot>or $468 billed yearly</div>
 
-          <a class="cta ghost plan-cta" data-plan="starter" href="#">Start Free Trial</a>
+            <a class="btn btn-primary plan-cta" data-plan="team" href="https://app.creativejobhub.com/auth?mode=signup" style="width: 100%; justify-content: center; margin-bottom: 24px;">Start Free Trial</a>
 
-          <ul class="feats">
-            <li><span class="check">✔</span> Estimates, invoices &amp; payments (Stripe)</li>
-            <li><span class="check">✔</span> Job scheduling &amp; reminders</li>
-            <li><span class="check">✔</span> Client text/email alerts (Twilio + Resend)</li>
-            <li><span class="check">✔</span> GPS map tracking (Mapbox)</li>
-            <li><span class="check">✔</span> Time tracking &amp; job notes</li>
-            <li><span class="check">✔</span> Google Drive &amp; QuickBooks Online</li>
-            <li><span class="check">✔</span> Mobile-optimized for field use</li>
-            <li><span class="check">✔</span> Unlimited clients, jobs &amp; estimates</li>
-          </ul>
-        </article>
-
-        <!-- Team -->
-        <article class="plan plan--highlight" data-plan="team" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.12);padding:32px 24px;display:flex;flex-direction:column;gap:18px;position:relative;">
-          <div class="badge">BEST VALUE</div>
-          <div class="head">
-            <div class="title">Team</div>
-            <div class="desc">Everything in Starter, built for small crews. Up to 5 users with live tech tracking, recurring maintenance, and real-time collaboration.</div>
-            <div class="seats">Users: up to 5</div>
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; color: #cbd5e1; font-size: 14px;">
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Everything in Starter</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Live technician tracking (Mapbox)</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Recurring maintenance scheduling</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Team scheduling &amp; workload view</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>QuickBooks sync for all techs</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Multi-user permissions &amp; activity logs</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Client text/email alerts</span></li>
+            </ul>
           </div>
 
-          <div class="price" data-price data-monthly="49" data-yearly="39">
-            <span class="currency">$</span>
-            <span class="amount" data-amount>49</span>
-            <span class="per">/month</span>
+          <!-- Pro Plan -->
+          <div class="feature-card" data-plan="pro" style="position: relative;">
+            <h3 style="color: #fff; font-size: 24px; margin-bottom: 8px;">Pro</h3>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 16px;">Unlimited users and premium features. AI Receptionist, multi-location management, and advanced analytics — with priority support.</p>
+            <div style="color: #cbd5e1; font-size: 13px; margin-bottom: 16px;">Users: unlimited</div>
+            
+            <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 8px;" data-price data-monthly="89" data-yearly="79">
+              <span style="font-size: 22px; color: #0ea5e9;">$</span>
+              <span style="font-size: 48px; font-weight: 900; line-height: 1; color: #fff;" data-amount>89</span>
+              <span style="font-size: 14px; color: #94a3b8;">/month</span>
+            </div>
+            <div style="color: #94a3b8; font-size: 13px; margin-bottom: 24px;" data-foot>or $948 billed yearly</div>
+
+            <a class="btn btn-ghost plan-cta" data-plan="pro" href="https://app.creativejobhub.com/auth?mode=signup" style="width: 100%; justify-content: center; margin-bottom: 24px;">Start Free Trial</a>
+
+            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; color: #cbd5e1; font-size: 14px;">
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Everything in Team</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>AI Receptionist</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Multi-location management</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Advanced analytics &amp; reporting</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Custom branding (docs &amp; messaging)</span></li>
+              <li style="display: flex; gap: 8px; align-items: flex-start;"><span style="color: #22c55e; margin-top: 2px;">✔</span> <span>Priority onboarding &amp; support</span></li>
+            </ul>
           </div>
-          <div class="footnote" data-foot>or $468 billed yearly</div>
-
-          <a class="cta primary plan-cta" data-plan="team" href="#">Start Free Trial</a>
-
-          <ul class="feats">
-            <li><span class="check">✔</span> Everything in Starter</li>
-            <li><span class="check">✔</span> Live technician tracking (Mapbox)</li>
-            <li><span class="check">✔</span> Recurring maintenance scheduling</li>
-            <li><span class="check">✔</span> Team scheduling &amp; workload view</li>
-            <li><span class="check">✔</span> QuickBooks sync for all techs</li>
-            <li><span class="check">✔</span> Multi-user permissions &amp; activity logs</li>
-            <li><span class="check">✔</span> Client text/email alerts</li>
-          </ul>
-        </article>
-
-        <!-- Pro -->
-        <article class="plan" data-plan="pro" style="background:#fff;border-radius:18px;box-shadow:0 2px 16px rgba(30,41,59,0.07);padding:32px 24px;display:flex;flex-direction:column;gap:18px;">
-          <div class="head">
-            <div class="title">Pro</div>
-            <div class="desc">Unlimited users and premium features. AI Receptionist, multi-location management, and advanced analytics — with priority support.</div>
-            <div class="seats">Users: unlimited</div>
-          </div>
-
-          <div class="price" data-price data-monthly="89" data-yearly="79">
-            <span class="currency">$</span>
-            <span class="amount" data-amount>89</span>
-            <span class="per">/month</span>
-          </div>
-          <div class="footnote" data-foot>or $948 billed yearly</div>
-
-          <a class="cta ghost plan-cta" data-plan="pro" href="#">Start Free Trial</a>
-
-          <ul class="feats">
-            <li><span class="check">✔</span> Everything in Team</li>
-            <li><span class="check">✔</span> AI Receptionist</li>
-            <li><span class="check">✔</span> Multi-location management</li>
-            <li><span class="check">✔</span> Advanced analytics &amp; reporting</li>
-            <li><span class="check">✔</span> Custom branding (docs &amp; messaging)</li>
-            <li><span class="check">✔</span> Priority onboarding &amp; support</li>
-          </ul>
-        </article>
+        </div>
       </div>
     </section>
 
-
-    <section id="pricing-faq" class="full-width-faq" style="background:#f1f5f9;padding:48px 0 32px;">
-      <div class="container" style="max-width:900px;margin:0 auto;">
-        <span class="kicker" style="color:#94a3b8; text-transform:uppercase; letter-spacing:.12em; font-size:14px">FAQ</span>
-        <h2 style="margin:8px 0 10px; font-size: clamp(22px, 3.6vw, 34px); color:#fff;">Pricing &amp; billing questions</h2>
-          <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; margin-top:12px">
-            <!-- Only the main 6 FAQ cards should appear here. Any duplicate or commented FAQ questions are now fully removed. -->
+    <!-- FAQ Section -->
+    <section id="pricing-faq" style="padding: 48px 0;">
+      <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <span class="kicker">FAQ</span>
+        <h2>Pricing &amp; billing questions</h2>
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px;">
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">Can I switch plans anytime?</h3>
+            <p style="color: #94a3b8; margin: 0;">Yes. You can upgrade or downgrade at any time. Changes take effect immediately and are prorated.</p>
           </div>
+          
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">Do you offer annual billing discounts?</h3>
+            <p style="color: #94a3b8; margin: 0;">Yes. Starter $300/yr, Team $468/yr, Pro $948/yr. That's effectively $25, $39, and $79 per month when billed annually.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">What's included in every plan?</h3>
+            <p style="color: #94a3b8; margin: 0;">Scheduling, estimates, invoices, payments, client alerts, time tracking, Mapbox live tracking, QuickBooks Online, Google Drive, Twilio and Resend integrations, and a mobile-optimized experience.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">Are there hidden fees or add-ons?</h3>
+            <p style="color: #94a3b8; margin: 0;">No. We don't nickel-and-dime. All core features are included. Bring your own Stripe/Twilio/Resend accounts for transaction or messaging fees.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">Is there a free trial?</h3>
+            <p style="color: #94a3b8; margin: 0;">Yes! Try any plan free for 14 days. No credit card required to start. Full access to all features during your trial.</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3 style="color: #fff; font-size: 18px; margin-bottom: 12px;">What payment methods do you accept?</h3>
+            <p style="color: #94a3b8; margin: 0;">We accept all major credit cards (Visa, Mastercard, American Express, Discover) through our secure Stripe payment processor.</p>
+          </div>
+        </div>
       </div>
     </section>
-    </div>
   </main>
 
-  
+
+  <!-- Footer -->
   <footer style="background:#111827; color:#94a3b8; border-top:1px solid var(--ring); padding:48px 0 32px;">
     <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
       <!-- Company Info -->
@@ -285,10 +254,14 @@
         <div style="font-size:14px; color:#94a3b8; margin-bottom:16px;">Modern software for field service pros.</div>
         <div style="display:flex; gap:12px; margin-top:8px;">
           <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#fff;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452H16.893V14.883C16.893 13.555 16.866 11.846 15.041 11.846C13.188 11.846 12.905 13.291 12.905 14.785V20.452H9.351V9H12.765V10.561H12.811C13.288 9.661 14.448 8.711 16.181 8.711C19.782 8.711 20.448 11.081 20.448 14.166V20.452H20.447ZM5.337 7.433C4.193 7.433 3.274 6.507 3.274 5.368C3.274 4.23 4.194 3.305 5.337 3.305C6.477 3.305 7.401 4.23 7.401 5.368C7.401 6.507 6.476 7.433 5.337 7.433ZM7.119 20.452H3.555V9H7.119V20.452ZM22.225 0H1.771C0.792 0 0 0.774 0 1.729V22.271C0 23.227 0.792 24 1.771 24H22.222C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.222 0H22.225Z" fill="currentColor"/>
+            </svg>
           </a>
           <a href="https://www.facebook.com/profile.php?viewas=100000686899395&id=61582571702601" target="_blank" title="Follow on Facebook" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#1877f3; color:#fff;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/>
+            </svg>
           </a>
         </div>
       </div>
@@ -306,7 +279,7 @@
       <div style="min-width:180px; flex:1; margin-bottom:24px;">
         <div style="font-weight:600; color:#e5e7eb; margin-bottom:10px;">Industries</div>
         <nav style="display:flex; flex-direction:column; gap:8px;">
-          <a class="btn btn-ghost" href="/field-service-management/">Field</a>
+          <a class="btn btn-ghost" href="/field-service-management/">Field Service</a>
           <a class="btn btn-ghost" href="/hvac-field-service-software/">HVAC</a>
           <a class="btn btn-ghost" href="/plumbing-field-service-software/">Plumbing</a>
           <a class="btn btn-ghost" href="/electrical-field-service-software/">Electrical</a>
@@ -340,16 +313,63 @@
   })();
   </script>
   <!--End of Tawk.to Script-->
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
-
-  <!-- Standard Navigation System -->
-  <script src="/assets/header.js?v=1"></script>
-
-  <!-- Enhanced Conversion Tracking -->
-  <script src="/assets/conversion-tracking.js"></script>
 
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
   <!-- End of HubSpot Embed Code -->
+
+  <!-- Pricing Toggle Logic -->
+  <script>
+    const btnMonthly = document.getElementById('btn-monthly');
+    const btnYearly = document.getElementById('btn-yearly');
+    const prices = document.querySelectorAll('[data-price]');
+    
+    function switchTo(mode) {
+      const isMonthly = mode === 'monthly';
+      btnMonthly.setAttribute('aria-pressed', isMonthly);
+      btnYearly.setAttribute('aria-pressed', !isMonthly);
+      
+      if (isMonthly) {
+        btnMonthly.classList.add('btn-primary');
+        btnMonthly.classList.remove('btn-ghost');
+        btnYearly.classList.add('btn-ghost');
+        btnYearly.classList.remove('btn-primary');
+      } else {
+        btnYearly.classList.add('btn-primary');
+        btnYearly.classList.remove('btn-ghost');
+        btnMonthly.classList.add('btn-ghost');
+        btnMonthly.classList.remove('btn-primary');
+      }
+      
+      prices.forEach(priceEl => {
+        const monthly = priceEl.getAttribute('data-monthly');
+        const yearly = priceEl.getAttribute('data-yearly');
+        const amount = priceEl.querySelector('[data-amount]');
+        const foot = priceEl.parentElement.querySelector('[data-foot]');
+        
+        if (isMonthly) {
+          amount.textContent = monthly;
+          if (foot) {
+            const annualPrice = { '29': '300', '49': '468', '89': '948' }[monthly];
+            foot.textContent = `or $${annualPrice} billed yearly`;
+          }
+        } else {
+          amount.textContent = yearly;
+          if (foot) {
+            const annualPrice = { '25': '300', '39': '468', '79': '948' }[yearly];
+            foot.textContent = `$${annualPrice} billed yearly`;
+          }
+        }
+      });
+    }
+    
+    btnMonthly.addEventListener('click', () => switchTo('monthly'));
+    btnYearly.addEventListener('click', () => switchTo('yearly'));
+  </script>
 </body>
 </html>
