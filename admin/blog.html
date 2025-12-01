@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/assets/site.min.css?v=15">
   
   <!-- Blog system for markdown processing -->
-  <script src="/assets/blog-system.js" defer></script>
+  <script src="/assets/blog-system.js?v=1201" defer></script>
   
   <style>
     .admin-container {
@@ -274,6 +274,7 @@
         <div class="admin-card">
           <h3>🚀 Quick Actions</h3>
           <button class="btn-admin" onclick="refreshBlogList()">Refresh Posts</button>
+          <button class="btn-admin secondary" onclick="hardRefresh()">Hard Refresh (Clear Cache)</button>
           <button class="btn-admin secondary" onclick="previewBlog()">Preview Site</button>
           <button class="btn-admin secondary" onclick="openGitHub()">Open Repository</button>
           <button class="btn-admin secondary" onclick="viewAnalytics()">Blog Analytics</button>
@@ -492,6 +493,8 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
           window.blogSystem.postsLoaded = false; // Reset cache
           const posts = await window.blogSystem.loadPosts();
           
+          console.log(`Admin: Blog system returned ${posts.length} posts:`, posts.map(p => `${p.title} (${p.slug})`));
+          
           // Convert to admin format and include all posts regardless of status
           const adminPosts = posts.map(post => ({
             title: post.title,
@@ -501,6 +504,8 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
             category: post.category,
             author: post.author
           }));
+          
+          console.log(`Admin: Converted to ${adminPosts.length} admin posts:`, adminPosts);
           
           // Add hardcoded posts that might not be detected automatically
           const hardcodedPosts = [
@@ -540,16 +545,24 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
           
           // Combine and deduplicate posts
           const allPosts = [...adminPosts];
+          console.log(`Admin: Starting with ${allPosts.length} detected posts`);
+          
           hardcodedPosts.forEach(hardcodedPost => {
-            if (!allPosts.find(p => p.slug === hardcodedPost.slug)) {
+            const exists = allPosts.find(p => p.slug === hardcodedPost.slug);
+            if (!exists) {
+              console.log(`Admin: Adding hardcoded post: ${hardcodedPost.title}`);
               allPosts.push(hardcodedPost);
+            } else {
+              console.log(`Admin: Post ${hardcodedPost.slug} already exists, skipping duplicate`);
             }
           });
+          
+          console.log(`Admin: Combined to ${allPosts.length} posts before sorting`);
           
           // Sort by date (newest first)
           allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
           
-          console.log(`Admin: Found ${allPosts.length} total posts:`, allPosts.map(p => `${p.title} (${p.slug})`));
+          console.log(`Admin: Final ${allPosts.length} posts after sorting:`, allPosts.map(p => `${p.title} - ${p.date} (${p.slug})`));
           updateBlogList(allPosts);
         } else {
           // Enhanced fallback if blog system still not loaded
@@ -663,7 +676,25 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
     }
 
     function refreshBlogList() {
+      console.log('Admin: Manual refresh triggered');
+      // Clear any cached data
+      if (window.blogSystem) {
+        window.blogSystem.postsLoaded = false;
+        window.blogSystem.posts = [];
+      }
+      // Force reload
       loadBlogPosts();
+    }
+
+    // Add hard refresh function for debugging
+    function hardRefresh() {
+      console.log('Admin: Hard refresh - clearing all caches');
+      // Clear localStorage if used
+      if (localStorage.getItem('blogPosts')) {
+        localStorage.removeItem('blogPosts');
+      }
+      // Reload the page with cache bypass
+      window.location.reload(true);
     }
 
     function previewBlog() {
