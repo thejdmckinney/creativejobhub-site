@@ -35,6 +35,9 @@
 
   <!-- Shared site CSS -->
   <link rel="stylesheet" href="/assets/site.min.css?v=11" />
+  
+  <!-- Blog system for markdown processing -->
+  <script src="/assets/blog-system.js" defer></script>
 
   <style>
     :root{
@@ -125,9 +128,10 @@
     </div>
 
     <!-- Blog posts -->
-    <div class="blog-grid">
+    <div class="blog-grid" id="blog-posts">
+      <!-- Dynamic markdown posts will be inserted here by blog-system.js -->
       
-      <!-- New Post: Field Notes Issue #2 -->
+      <!-- Existing hardcoded posts (will be merged with markdown posts) -->
       <article class="blog-card">
      <img src="/assets/images/blog/field-notes-cover-2-1200.png"
        alt="Field Notes Issue 2 Cover"
@@ -142,7 +146,6 @@
         </div>
       </article>
 
-      <!-- New Post: Choose Field Service Software -->
       <article class="blog-card">
         <img src="/assets/images/blog/choose-field-service-software-1200.svg" 
              alt="Field service software selection guide showing comparison cards and evaluation checklist"
@@ -157,7 +160,6 @@
         </div>
       </article>
 
-      <!-- Example Post: Getting Started -->
       <article class="blog-card">
         <img src="/assets/images/blog/getting-started-1200.svg" 
              alt="Getting started roadmap with 4 steps: setup, clients, scheduling, and success"
@@ -172,9 +174,6 @@
         </div>
       </article>
 
-    </div>    <!-- Future blog grid -->
-    <div class="blog-grid" style="display:none;">
-      <!-- Blog posts will be dynamically inserted here -->
     </div>
   </main>
 

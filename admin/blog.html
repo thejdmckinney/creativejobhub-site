@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog Admin | Creative Job Hub</title>
+  <meta name="description" content="Manage Creative Job Hub blog posts, monitor n8n automation, and publish content." />
+  <meta name="robots" content="noindex, nofollow" />
+  
+  <link rel="stylesheet" href="/assets/site.min.css?v=15">
+  
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0b1220;
+      min-height: 100vh;
+    }
+    
+    .admin-header {
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .admin-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    
+    .admin-card h3 {
+      color: #0ea5e9;
+      margin: 0 0 16px 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .status-good { color: #22c55e; }
+    .status-warning { color: #fbbf24; }
+    .status-error { color: #f87171; }
+    
+    .blog-list {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 8px;
+      padding: 0;
+    }
+    
+    .blog-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+    }
+    
+    .blog-item:last-child {
+      border-bottom: none;
+    }
+    
+    .blog-item-title {
+      color: #e5e7eb;
+      font-weight: 600;
+      flex: 1;
+    }
+    
+    .blog-item-date {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-right: 12px;
+    }
+    
+    .blog-item-status {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .status-published {
+      background: rgba(34, 197, 94, 0.2);
+      color: #22c55e;
+    }
+    
+    .status-draft {
+      background: rgba(251, 191, 36, 0.2);
+      color: #fbbf24;
+    }
+    
+    .markdown-editor {
+      width: 100%;
+      min-height: 300px;
+      background: #1f2937;
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: 8px;
+      padding: 16px;
+      color: #e5e7eb;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 14px;
+      resize: vertical;
+    }
+    
+    .form-group {
+      margin-bottom: 16px;
+    }
+    
+    .form-label {
+      display: block;
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 12px;
+      background: #1f2937;
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: 8px;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+    
+    .btn-admin {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 12px;
+      margin-bottom: 8px;
+    }
+    
+    .btn-admin:hover {
+      background: #0284c7;
+    }
+    
+    .btn-admin.secondary {
+      background: #374151;
+    }
+    
+    .btn-admin.secondary:hover {
+      background: #4b5563;
+    }
+    
+    .workflow-info {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+    
+    .workflow-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    
+    .workflow-step-number {
+      background: #22c55e;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1 style="color: white; margin: 0 0 8px 0;">📝 Blog Admin Dashboard</h1>
+      <p style="color: #94a3b8; margin: 0;">Manage Creative Job Hub blog posts and monitor n8n automation</p>
+    </div>
+
+    <div class="admin-grid">
+      <!-- Left Column: Quick Actions & Status -->
+      <div>
+        <div class="admin-card">
+          <h3>🚀 Quick Actions</h3>
+          <button class="btn-admin" onclick="refreshBlogList()">Refresh Posts</button>
+          <button class="btn-admin secondary" onclick="previewBlog()">Preview Site</button>
+          <button class="btn-admin secondary" onclick="openGitHub()">Open Repository</button>
+          <button class="btn-admin secondary" onclick="viewAnalytics()">Blog Analytics</button>
+        </div>
+
+        <div class="admin-card">
+          <h3>📊 System Status</h3>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="color: #cbd5e1;">GitHub API:</span>
+            <span id="github-status" class="status-good">● Connected</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="color: #cbd5e1;">n8n Workflow:</span>
+            <span id="workflow-status" class="status-good">● Active</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="color: #cbd5e1;">Last Deployment:</span>
+            <span id="last-deploy" style="color: #94a3b8;">Loading...</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: #cbd5e1;">Total Posts:</span>
+            <span id="total-posts" style="color: #0ea5e9;">Loading...</span>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <h3>🤖 n8n Integration Guide</h3>
+          <div class="workflow-info">
+            <div class="workflow-step">
+              <div class="workflow-step-number">1</div>
+              <span>n8n creates markdown file with frontmatter</span>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-step-number">2</div>
+              <span>Commits to /blog/posts/[slug]/</span>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-step-number">3</div>
+              <span>GitHub auto-deploys via Pages</span>
+            </div>
+            <div class="workflow-step">
+              <div class="workflow-step-number">4</div>
+              <span>Blog index updates automatically</span>
+            </div>
+          </div>
+          <button class="btn-admin secondary" style="margin-top: 12px;" onclick="showWorkflowDetails()">View Webhook URL</button>
+        </div>
+      </div>
+
+      <!-- Right Column: Blog Posts List -->
+      <div>
+        <div class="admin-card">
+          <h3>📄 Published Posts</h3>
+          <div id="blog-posts" class="blog-list">
+            <div class="blog-item">
+              <div class="blog-item-title">Loading blog posts...</div>
+              <div class="blog-item-date">--</div>
+              <div class="blog-item-status status-published">Loading</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manual Post Creation (Development/Testing) -->
+    <div class="admin-card">
+      <h3>✍️ Manual Post Creation (Testing)</h3>
+      <p style="color: #94a3b8; margin-bottom: 16px;">Use this for testing the markdown system before setting up n8n automation</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="form-group">
+          <label class="form-label">Post Title</label>
+          <input type="text" id="post-title" class="form-input" placeholder="How to Improve Your Field Service Operations">
+        </div>
+        <div class="form-group">
+          <label class="form-label">URL Slug</label>
+          <input type="text" id="post-slug" class="form-input" placeholder="improve-field-service-operations">
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="form-group">
+          <label class="form-label">Author</label>
+          <input type="text" id="post-author" class="form-input" value="Creative Job Hub Team">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="post-category" class="form-input">
+            <option value="field-service">Field Service Tips</option>
+            <option value="business">Business Growth</option>
+            <option value="software">Software Updates</option>
+            <option value="industry">Industry News</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select id="post-status" class="form-input">
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Excerpt (SEO Description)</label>
+        <textarea id="post-excerpt" class="form-input" rows="2" placeholder="Brief description for search engines and social sharing..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Markdown Content</label>
+        <textarea id="post-content" class="markdown-editor" placeholder="# Your Blog Post Title
+
+Write your content here in **markdown** format.
+
+## Key Benefits
+
+- Benefit one
+- Benefit two
+- Benefit three
+
+Remember to include relevant keywords for SEO!"></textarea>
+      </div>
+
+      <button class="btn-admin" onclick="generateMarkdown()">Generate Markdown File</button>
+      <button class="btn-admin secondary" onclick="previewPost()">Preview Post</button>
+    </div>
+
+    <!-- Markdown Template -->
+    <div class="admin-card">
+      <h3>📋 n8n Markdown Template</h3>
+      <p style="color: #94a3b8; margin-bottom: 16px;">Use this template structure in your n8n workflow:</p>
+      <pre style="background: #1f2937; border: 1px solid rgba(148,163,184,0.3); border-radius: 8px; padding: 16px; color: #e5e7eb; font-size: 14px; overflow-x: auto;">---
+title: "Your Blog Post Title Here"
+date: "2025-11-30"
+author: "Creative Job Hub Team"
+excerpt: "Brief description for SEO and social sharing"
+category: "field-service"
+tags: ["field service", "business tips", "productivity"]
+status: "published"
+featured_image: "/assets/images/blog/your-post-image.jpg"
+---
+
+# Your Blog Post Title
+
+Your content here in **markdown** format.
+
+## Benefits for Field Service Businesses
+
+- Improved efficiency
+- Better customer satisfaction  
+- Increased revenue
+
+Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com/auth?mode=signup).</pre>
+    </div>
+  </div>
+
+  <script>
+    // Initialize admin dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      loadBlogPosts();
+      updateSystemStatus();
+      
+      // Auto-generate slug from title
+      document.getElementById('post-title').addEventListener('input', function(e) {
+        const slug = e.target.value
+          .toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .trim();
+        document.getElementById('post-slug').value = slug;
+      });
+    });
+
+    // Load and display blog posts
+    async function loadBlogPosts() {
+      try {
+        const response = await fetch('/blog/posts/', { cache: 'no-cache' });
+        const html = await response.text();
+        
+        // Parse blog posts from directory listing or API
+        // This is a placeholder - in production you'd implement actual blog parsing
+        updateBlogList([
+          {
+            title: "Getting Started with Field Service Management",
+            date: "2025-11-28",
+            status: "published",
+            slug: "getting-started-field-service-management"
+          },
+          {
+            title: "5 Ways to Improve Customer Satisfaction",
+            date: "2025-11-25",
+            status: "published", 
+            slug: "improve-customer-satisfaction"
+          },
+          {
+            title: "Draft: Upcoming Features Preview",
+            date: "2025-11-30",
+            status: "draft",
+            slug: "upcoming-features-preview"
+          }
+        ]);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+        document.getElementById('blog-posts').innerHTML = 
+          '<div class="blog-item"><div class="blog-item-title" style="color: #f87171;">Error loading posts</div></div>';
+      }
+    }
+
+    function updateBlogList(posts) {
+      const container = document.getElementById('blog-posts');
+      container.innerHTML = posts.map(post => `
+        <div class="blog-item">
+          <div class="blog-item-title">${post.title}</div>
+          <div class="blog-item-date">${post.date}</div>
+          <div class="blog-item-status ${post.status === 'published' ? 'status-published' : 'status-draft'}">
+            ${post.status}
+          </div>
+        </div>
+      `).join('');
+      
+      document.getElementById('total-posts').textContent = posts.filter(p => p.status === 'published').length;
+    }
+
+    function updateSystemStatus() {
+      // Simulate checking GitHub API status
+      setTimeout(() => {
+        document.getElementById('last-deploy').textContent = new Date().toLocaleString();
+      }, 1000);
+    }
+
+    function refreshBlogList() {
+      loadBlogPosts();
+    }
+
+    function previewBlog() {
+      window.open('/blog/', '_blank');
+    }
+
+    function openGitHub() {
+      window.open('https://github.com/thejdmckinney/creativejobhub-site', '_blank');
+    }
+
+    function viewAnalytics() {
+      alert('Connect Google Analytics to view blog traffic stats');
+    }
+
+    function showWorkflowDetails() {
+      alert(`n8n Webhook URL Setup:
+
+1. GitHub API Token: Required for commits
+2. Repository: thejdmckinney/creativejobhub-site  
+3. Branch: main
+4. File Path: blog/posts/{slug}/index.md
+
+Webhook endpoint will be: https://your-n8n-instance.com/webhook/blog-publish`);
+    }
+
+    function generateMarkdown() {
+      const title = document.getElementById('post-title').value;
+      const slug = document.getElementById('post-slug').value;
+      const author = document.getElementById('post-author').value;
+      const category = document.getElementById('post-category').value;
+      const status = document.getElementById('post-status').value;
+      const excerpt = document.getElementById('post-excerpt').value;
+      const content = document.getElementById('post-content').value;
+
+      if (!title || !slug || !content) {
+        alert('Please fill in title, slug, and content fields');
+        return;
+      }
+
+      const markdown = `---
+title: "${title}"
+date: "${new Date().toISOString().split('T')[0]}"
+author: "${author}"
+excerpt: "${excerpt}"
+category: "${category}"
+tags: ["${category}", "field service", "business tips"]
+status: "${status}"
+featured_image: "/assets/images/blog/${slug}.jpg"
+---
+
+${content}`;
+
+      // Copy to clipboard
+      navigator.clipboard.writeText(markdown).then(() => {
+        alert(`Markdown generated and copied to clipboard!
+
+File should be saved as: blog/posts/${slug}/index.md`);
+      });
+    }
+
+    function previewPost() {
+      alert('Preview functionality would show how the post will look on the live site');
+    }
+  </script>
+</body>
+</html>

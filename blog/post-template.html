@@ -177,6 +177,9 @@
   <!-- Dynamic header injection -->
   <div id="site-header"></div>
   <script src="/assets/header.js" defer></script>
+  
+  <!-- Blog system for dynamic markdown rendering -->
+  <script src="/assets/blog-system.js" defer></script>
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -211,46 +214,24 @@
   <main class="wrap">
     <article>
       <header class="article-header">
-        <div class="article-meta">
-          <span>[PUBLISH_DATE_FORMATTED]</span>
+        <div class="article-meta" id="post-meta">
+          <span id="post-date">Loading...</span>
           <span>•</span>
-          <span>[READ_TIME] min read</span>
+          <span id="read-time">-- min read</span>
           <span>•</span>
-          <span class="article-tag">[CATEGORY]</span>
+          <span class="article-tag" id="post-category">Loading</span>
         </div>
-        <h1>[POST_TITLE]</h1>
-        <p style="color:var(--muted); font-size:20px; margin:0;">[POST_DESCRIPTION]</p>
+        <h1 id="post-title">Loading blog post...</h1>
+        <p style="color:var(--muted); font-size:20px; margin:0;" id="post-excerpt">Please wait while we load the content...</p>
       </header>
 
       <!-- Featured image -->
-      <img class="article-image" src="/blog/assets/[POST_IMAGE]" alt="[POST_TITLE]" />
+      <img class="article-image" id="post-image" src="/assets/images/blog/default.jpg" alt="" style="display: none;" />
 
-      <div class="article-content">
-        <!-- BLOG POST CONTENT GOES HERE -->
-        
-        <h2>Introduction</h2>
-        <p>Start your blog post content here. This template provides a clean, professional layout for your field service management blog posts.</p>
-
-        <h3>Key Points to Cover</h3>
-        <ul>
-          <li>Use clear headings and subheadings</li>
-          <li>Include practical tips and examples</li>
-          <li>Add relevant images and screenshots</li>
-          <li>Include actionable takeaways</li>
-        </ul>
-
-        <blockquote>
-          "Pro tip: Use blockquotes to highlight important insights or customer quotes."
-        </blockquote>
-
-        <h2>Conclusion</h2>
-        <p>Wrap up your post with a clear summary and call-to-action.</p>
-
-        <!-- CTA Section -->
-        <div class="cta-section">
-          <h3>Ready to streamline your field service business?</h3>
-          <p>Creative Job Hub helps small teams schedule jobs, manage customers, and get paid faster.</p>
-          <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start free trial</a>
+      <div class="article-content" id="post-content">
+        <!-- Content will be dynamically loaded from markdown -->
+        <div id="loading-message" style="text-align: center; padding: 40px; color: var(--muted);">
+          <p>Loading blog post...</p>
         </div>
       </div>
 
@@ -297,6 +278,12 @@
   <script>
     // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Initialize blog post rendering when blog-system.js loads
+    window.addEventListener('DOMContentLoaded', function() {
+      // The blog-system.js will automatically detect this is a blog post page
+      // and load the appropriate markdown content based on the URL
+    });
   </script>
 </body>
 </html>
