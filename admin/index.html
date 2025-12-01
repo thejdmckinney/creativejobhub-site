@@ -1281,9 +1281,34 @@
           renderMediaLibrary();
           loadSavedSettings();
           setupToggleFunctionality();
+          
+          // Check for pending OAuth code
+          checkPendingOAuth();
         }, 100);
       }
     });
+
+    // Check for pending OAuth authentication
+    function checkPendingOAuth() {
+      const authCode = localStorage.getItem('ga_auth_code');
+      const authTimestamp = localStorage.getItem('ga_auth_timestamp');
+      
+      if (authCode && authTimestamp) {
+        const timeDiff = Date.now() - parseInt(authTimestamp);
+        
+        // If auth code is less than 5 minutes old, process it
+        if (timeDiff < 300000) { // 5 minutes
+          console.log('Found pending OAuth code, processing...');
+          showNotification('Completing Google Analytics authentication...', 'info');
+          exchangeAuthCodeForTokens(authCode);
+        } else {
+          // Code is too old, clear it
+          console.log('Auth code expired, clearing...');
+          localStorage.removeItem('ga_auth_code');
+          localStorage.removeItem('ga_auth_timestamp');
+        }
+      }
+    }
     
     // Login functionality
     document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -2445,31 +2470,62 @@ ${new Date().toISOString()},Revenue,45670`;
       if (header) {
         const buttonContainer = header.querySelector('div[style*="display: flex; gap: 10px"]');
         if (buttonContainer) {
-          // Check if button already exists
+          // Remove existing button first
           const existingBtn = buttonContainer.querySelector('.ga-connect-btn');
-          if (existingBtn) return;
+          if (existingBtn) {
+            existingBtn.remove();
+          }
           
           const connectBtn = document.createElement('button');
           connectBtn.className = 'btn ga-connect-btn';
           
           // Check authentication status
-          const isAuthenticated = localStorage.getItem('ga_access_token') && 
-                                 localStorage.getItem('ga_token_expiry') && 
-                                 Date.now() < parseInt(localStorage.getItem('ga_token_expiry'));
+          const authCode = localStorage.getItem('ga_auth_code');
+          const accessToken = localStorage.getItem('ga_access_token');
+          const tokenExpiry = localStorage.getItem('ga_token_expiry');
+          
+          console.log('Auth status check:', { authCode: !!authCode, accessToken: !!accessToken, tokenExpiry });
+          
+          const isAuthenticated = (accessToken && tokenExpiry && Date.now() < parseInt(tokenExpiry)) || authCode;
           
           if (isAuthenticated) {
             connectBtn.style.cssText = 'background: linear-gradient(135deg, #22c55e, #10b981); color: white; display: flex; align-items: center; gap: 8px;';
-            connectBtn.innerHTML = '✅ Google Analytics Connected';
+            connectBtn.innerHTML = '✅ Analytics Connected - Refresh Data';
             connectBtn.onclick = () => {
-              showNotification('Google Analytics is already connected and active!', 'success');
+              showNotification('Refreshing analytics data...', 'info');
+              simulateRealData();
+              updateDashboardWithRealData();
+              showNotification('✅ Analytics data refreshed!', 'success');
             };
           } else {
             connectBtn.style.cssText = 'background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; display: flex; align-items: center; gap: 8px;';
             connectBtn.innerHTML = '🔗 Connect Google Analytics';
-            connectBtn.onclick = initializeRealAnalytics;
+            connectBtn.onclick = () => {
+              console.log('Connect button clicked');
+              showNotification('Initiating Google Analytics connection...', 'info');
+              initializeRealAnalytics();
+            };
           }
           
           buttonContainer.insertBefore(connectBtn, buttonContainer.firstChild);
+          
+          // Add debug button in development
+          if (window.location.hostname === 'localhost') {
+            const debugBtn = document.createElement('button');
+            debugBtn.className = 'btn';
+            debugBtn.style.cssText = 'background: #8b5cf6; color: white; font-size: 12px; padding: 4px 8px;';
+            debugBtn.innerHTML = '🐛 Debug';
+            debugBtn.onclick = () => {
+              console.log('Debug info:', {
+                authCode: localStorage.getItem('ga_auth_code'),
+                accessToken: localStorage.getItem('ga_access_token'),
+                tokenExpiry: localStorage.getItem('ga_token_expiry'),
+                currentTime: Date.now()
+              });
+              showNotification('Check console for debug info', 'info');
+            };
+            buttonContainer.appendChild(debugBtn);
+          }
         }
       }
     }
