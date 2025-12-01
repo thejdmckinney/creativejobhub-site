@@ -315,15 +315,54 @@ The system now creates both:
 
 ### Images Not Showing
 
-**For Automated Posts:** Uses default hero image (`default-hero-1200.svg`)
+**✅ FIXED**: Enhanced image loading with better error handling and fallback system.
 
-**For Custom Images:**
+**For Automated Posts:** 
+- Default: Uses `default-hero-1200.svg` (professional gradient design)
+- Custom: Create topic-specific images for better engagement
+
+**Image Creation Options:**
+
+**Option 1: Use Default Images**
+```javascript
+image: "default-hero-1200.svg"
+featured_image: "default-hero-1200.svg"
+```
+
+**Option 2: Create Custom SVG Images (Recommended)**
+```javascript
+// In your n8n workflow, detect topic and use appropriate image
+const topicImages = {
+  'jobber': 'jobber-alternative-comparison.svg',
+  'scheduling': 'scheduling-software-comparison.svg', 
+  'hvac': 'hvac-field-service-hero.svg',
+  'productivity': 'productivity-tips-hero.svg'
+};
+
+const topicKeyword = (title + ' ' + content).toLowerCase();
+let selectedImage = 'default-hero-1200.svg';
+
+for (const [keyword, imageName] of Object.entries(topicImages)) {
+  if (topicKeyword.includes(keyword)) {
+    selectedImage = imageName;
+    break;
+  }
+}
+```
+
+**Option 3: Upload Custom Photos**
 1. Upload image to `/assets/images/blog/your-image.jpg` first
 2. Then reference it in n8n:
 ```javascript
 image: "your-image.jpg"
 featured_image: "your-image.jpg"
 ```
+
+**🎨 Custom Image Tips:**
+- **Size**: 1200x600px for optimal display
+- **Format**: SVG for scalable graphics, JPG/PNG for photos
+- **Content**: Include your brand colors and relevant visuals
+- **Text**: Keep it readable at different sizes
 
 ### Posts Not Appearing on Blog Index
 
