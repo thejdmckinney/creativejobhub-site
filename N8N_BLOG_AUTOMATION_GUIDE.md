@@ -67,14 +67,15 @@ Example:
 ```json
 {
   "title": "Your Blog Post Title",
-  "slug": "your-blog-post-slug",
+  "slug": "your-blog-post-slug", 
   "excerpt": "Brief description of your blog post",
   "content": "# Your Blog Post Content\n\nYour markdown content goes here...",
   "author": "Creative Job Hub Team",
   "category": "Field Service Management",
   "tags": ["productivity", "field-service", "business"],
   "publishDate": "{{ new Date().toISOString() }}",
-  "status": "published"
+  "status": "published",
+  "image": "default-hero-1200.svg"
 }
 ```
 
@@ -99,8 +100,8 @@ const slug = post.slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 // Handle tags array
 const tags = Array.isArray(post.tags) ? post.tags : (post.tags ? [post.tags] : []);
 
-// Handle image filename - use provided image or generate default
-const image = post.image || `${slug}-hero.jpg`;
+// Handle image filename - use provided image or default hero image
+const image = post.image || 'default-hero-1200.svg';
 
 // Create frontmatter
 const frontmatter = `---
@@ -327,6 +328,13 @@ For external content management systems:
 - **Supported formats**: JPG, PNG, SVG
 - **Max file size**: 5MB
 - **SEO tip**: Use descriptive filenames with keywords
+
+#### Default Hero Image
+
+- **Automatic fallback**: `default-hero-1200.svg` - professional design matching your site theme
+- **No upload needed**: Default image is already available in your repository
+- **Consistent branding**: Maintains visual consistency across all automated blog posts
+- **Override option**: Upload custom image through admin interface to replace default
 
 ### 4.3 Scheduling
 

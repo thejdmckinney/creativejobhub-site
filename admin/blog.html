@@ -627,7 +627,7 @@ Webhook endpoint will be: https://your-n8n-instance.com/webhook/blog-publish`);
 
     function generateImageFilename(slug) {
       if (!uploadedImage || !uploadedImageName) {
-        return `${slug}-hero.jpg`; // Default fallback
+        return 'default-hero-1200.svg'; // Use consistent default hero image
       }
       
       const extension = uploadedImageName.split('.').pop().toLowerCase();
@@ -668,6 +668,8 @@ ${content}`;
       let instructions = '';
       if (uploadedImage) {
         instructions = `\n\n📸 IMPORTANT: Upload your image to GitHub:\n1. Upload "${uploadedImageName}" to /assets/images/blog/\n2. Rename it to "${imageFilename}"\n3. Then run your n8n workflow\n\nImage path in frontmatter: image: "${imageFilename}"`;
+      } else {
+        instructions = `\n\n📸 Using default hero image: ${imageFilename}\nNo additional upload needed - this image is already available.`;
       }
 
       // Copy to clipboard
