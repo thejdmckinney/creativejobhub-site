@@ -9,6 +9,9 @@
   
   <link rel="stylesheet" href="/assets/site.min.css?v=15">
   
+  <!-- Blog system for markdown processing -->
+  <script src="/assets/blog-system.js" defer></script>
+  
   <style>
     .admin-container {
       max-width: 1200px;
@@ -477,49 +480,118 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
       try {
         console.log('Admin: Refreshing blog posts...');
         
-        // Force reload the blog system
+        // Wait for blog system to load if not ready
+        let attempts = 0;
+        while (!window.blogSystem && attempts < 20) {
+          console.log('Admin: Waiting for blog system to load...');
+          await new Promise(resolve => setTimeout(resolve, 100));
+          attempts++;
+        }
+        
         if (window.blogSystem) {
           window.blogSystem.postsLoaded = false; // Reset cache
           const posts = await window.blogSystem.loadPosts();
           
-          // Convert to admin format
+          // Convert to admin format and include all posts regardless of status
           const adminPosts = posts.map(post => ({
             title: post.title,
             date: post.date,
-            status: post.status,
+            status: post.status || 'published', // Default to published if no status
             slug: post.slug,
             category: post.category,
             author: post.author
           }));
           
-          console.log(`Admin: Found ${adminPosts.length} posts`);
-          updateBlogList(adminPosts);
-        } else {
-          // Fallback if blog system not loaded
-          console.log('Admin: Blog system not loaded, using fallback');
-          updateBlogList([
+          // Add hardcoded posts that might not be detected automatically
+          const hardcodedPosts = [
             {
               title: "Getting Started with Field Service Management",
-              date: "2025-11-28",
+              date: "2025-11-01",
               status: "published",
-              slug: "getting-started-field-service-management"
+              slug: "getting-started-field-service-management",
+              category: "Getting Started",
+              author: "Creative Job Hub Team"
             },
             {
-              title: "Best Scheduling Software Comparison", 
+              title: "How to Choose Field Service Software for a 1–10 Person Team",
+              date: "2025-11-02",
+              status: "published",
+              slug: "choose-field-service-software",
+              category: "Guide",
+              author: "Creative Job Hub Team"
+            },
+            {
+              title: "Field Notes – Issue #2: The Follow-Up System That Tripled My Recurring Revenue",
+              date: "2025-11-18",
+              status: "published",
+              slug: "field-notes-issue-2",
+              category: "Field Notes",
+              author: "Creative Job Hub Team"
+            }
+          ];
+          
+          // Combine and deduplicate posts
+          const allPosts = [...adminPosts];
+          hardcodedPosts.forEach(hardcodedPost => {
+            if (!allPosts.find(p => p.slug === hardcodedPost.slug)) {
+              allPosts.push(hardcodedPost);
+            }
+          });
+          
+          // Sort by date (newest first)
+          allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+          
+          console.log(`Admin: Found ${allPosts.length} total posts:`, allPosts.map(p => `${p.title} (${p.slug})`));
+          updateBlogList(allPosts);
+        } else {
+          // Enhanced fallback if blog system still not loaded
+          console.log('Admin: Blog system not loaded after waiting, using enhanced fallback');
+          const fallbackPosts = [
+            {
+              title: "Why I Ditched Jobber (And Found a Better Alternative for $89/Month)",
               date: "2025-12-01",
               status: "published",
-              slug: "best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to"
+              slug: "why-i-ditched-jobber-and-found-a-better-alternative-for-89-month",
+              category: "Comparison",
+              author: "Creative Job Hub Team"
+            },
+            {
+              title: "Field Notes – Issue #2: The Follow-Up System That Tripled My Recurring Revenue",
+              date: "2025-11-18",
+              status: "published",
+              slug: "field-notes-issue-2",
+              category: "Field Notes",
+              author: "Creative Job Hub Team"
+            },
+            {
+              title: "How to Choose Field Service Software for a 1–10 Person Team",
+              date: "2025-11-02",
+              status: "published",
+              slug: "choose-field-service-software",
+              category: "Guide",
+              author: "Creative Job Hub Team"
+            },
+            {
+              title: "Getting Started with Field Service Management",
+              date: "2025-11-01",
+              status: "published",
+              slug: "getting-started-field-service-management",
+              category: "Getting Started",
+              author: "Creative Job Hub Team"
             }
-          ]);
+          ];
+          updateBlogList(fallbackPosts);
         }
       } catch (error) {
         console.error('Admin: Error loading blog posts:', error);
         updateBlogList([
           {
-            title: "Error loading posts - please refresh",
+            title: "⚠️ Error loading posts - check console for details",
             date: new Date().toISOString().split('T')[0],
             status: "error",
-            slug: "error"
+            slug: "error",
+            category: "System",
+            author: "System"
           }
         ]);
       }
@@ -527,17 +599,52 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
 
     function updateBlogList(posts) {
       const container = document.getElementById('blog-posts');
-      container.innerHTML = posts.map(post => `
-        <div class="blog-item">
-          <div class="blog-item-title">${post.title}</div>
-          <div class="blog-item-date">${post.date}</div>
-          <div class="blog-item-status ${post.status === 'published' ? 'status-published' : 'status-draft'}">
-            ${post.status}
-          </div>
-        </div>
-      `).join('');
       
-      document.getElementById('total-posts').textContent = posts.filter(p => p.status === 'published').length;
+      if (posts.length === 0) {
+        container.innerHTML = `
+          <div class="blog-item">
+            <div class="blog-item-title">No posts found</div>
+            <div class="blog-item-date">--</div>
+            <div class="blog-item-status status-draft">Empty</div>
+          </div>
+        `;
+        document.getElementById('total-posts').textContent = '0';
+        return;
+      }
+      
+      container.innerHTML = posts.map(post => {
+        const statusClass = post.status === 'published' ? 'status-published' : 
+                          post.status === 'error' ? 'status-draft' : 'status-draft';
+        
+        // Format date for display
+        const displayDate = new Date(post.date).toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        });
+        
+        return `
+          <div class="blog-item" onclick="window.open('/blog/posts/${post.slug}/', '_blank')" style="cursor: pointer;">
+            <div class="blog-item-title" title="${post.title}">
+              ${post.title}
+              ${post.category ? `<span style="font-size: 12px; color: #64748b; font-weight: normal;"> • ${post.category}</span>` : ''}
+            </div>
+            <div class="blog-item-date">${displayDate}</div>
+            <div class="blog-item-status ${statusClass}">
+              ${post.status}
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      const publishedCount = posts.filter(p => p.status === 'published').length;
+      document.getElementById('total-posts').textContent = publishedCount;
+      
+      // Also update the last deployment time if we have posts
+      if (posts.length > 0) {
+        const latestPost = posts.sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+        document.getElementById('last-deploy').textContent = new Date(latestPost.date).toLocaleDateString();
+      }
     }
 
     function updateSystemStatus() {

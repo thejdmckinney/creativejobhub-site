@@ -124,6 +124,7 @@ class BlogSystem {
       const knownSlugs = [
         'field-service-productivity-tips',
         'best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to',
+        'why-i-ditched-jobber-and-found-a-better-alternative-for-89-month',
       ];
       
       // Combine discovered and known slugs, removing duplicates

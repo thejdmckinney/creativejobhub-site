@@ -132,24 +132,135 @@ Creative Job Hub provides all the tools you need to streamline operations, boost
 [Start Your Free Trial Today](https://app.creativejobhub.com/auth?mode=signup) and see the difference professional field service management can make.
 `;
 
-// Prepare the output for GitHub API
-const output = {
-  slug: slug,
-  title: title,
-  content: markdownContent,
-  filename: `blog/posts/${slug}/index.md`,
-  commit_message: `Add blog post: ${title}`,
-  branch: 'main'
-};
+// Read the template HTML file content
+const templateHtml = `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>${escapeYaml(title)} — Creative Job Hub Blog</title>
+  <meta name="description" content="${escapeYaml(excerpt)}" />
+  <link rel="canonical" href="https://creativejobhub.com/blog/posts/${slug}/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="${escapeYaml(title)}" />
+  <meta property="og:description" content="${escapeYaml(excerpt)}" />
+  <meta property="og:url" content="https://creativejobhub.com/blog/posts/${slug}/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/images/blog/default-hero-1200.svg" />
+  <meta property="article:published_time" content="${dateString}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="alternate" type="application/rss+xml" title="Creative Job Hub Blog" href="/blog/feed.xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="stylesheet" href="/assets/site.min.css?v=11" />
+  <script src="/assets/blog-system.js" defer></script>
+  <style>:root{--bg:#0b1220;--panel:#111827;--muted:#9ca3af;--text:#e5e7eb;--brand:#0ea5e9;--brand-2:#22c55e;}.wrap{max-width:800px;margin:0 auto;padding:28px 20px 60px;}.article-header{padding:40px 0 60px;text-align:center;}.article-header h1{margin:0 0 16px;font-size:48px;font-weight:800;line-height:1.1;}.article-meta{display:flex;justify-content:center;gap:16px;font-size:14px;color:var(--muted);margin-bottom:24px;}.article-tag{background:rgba(14,165,233,.1);color:var(--brand);padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600;}.article-image{width:100%;height:400px;object-fit:cover;border-radius:12px;margin:32px 0;}.article-content{line-height:1.8;font-size:18px;}.article-content h2{margin:40px 0 16px;font-size:32px;color:var(--text);}.article-content h3{margin:32px 0 12px;font-size:24px;color:var(--text);}.article-content p{margin:0 0 24px;color:#cbd5e1;}.article-footer{margin-top:60px;padding-top:40px;border-top:1px solid rgba(148,163,184,.08);text-align:center;}@media(max-width:768px){.article-header h1{font-size:36px;}.article-content{font-size:16px;}}</style>
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"${escapeYaml(title)}","description":"${escapeYaml(excerpt)}","url":"https://creativejobhub.com/blog/posts/${slug}/","datePublished":"${dateString}","author":{"@type":"Organization","name":"Creative Job Hub Team"},"publisher":{"@type":"Organization","name":"Creative Job Hub","url":"https://creativejobhub.com","logo":"https://creativejobhub.com/assets/logo.png"},"image":"https://creativejobhub.com/assets/images/blog/default-hero-1200.svg"}</script>
+</head>
+<body>
+<main class="wrap">
+<article>
+<header class="article-header">
+<div class="article-meta" id="post-meta">
+<span id="post-date">Loading...</span><span>•</span><span id="read-time">-- min read</span><span>•</span><span class="article-tag" id="post-category">Loading</span>
+</div>
+<h1 id="post-title">Loading blog post...</h1>
+<p style="color:var(--muted);font-size:20px;margin:0;" id="post-excerpt">Please wait while we load the content...</p>
+</header>
+<img class="article-image" id="post-image" src="/assets/images/blog/default-hero-1200.svg" alt="" style="display:block;" />
+<div class="article-content" id="post-content">
+<div id="loading-message" style="text-align:center;padding:40px;color:var(--muted);"><p>Loading blog post...</p></div>
+</div>
+<footer class="article-footer">
+<div style="display:flex;justify-content:space-between;gap:20px;margin:40px 0;"><a href="/blog/" style="flex:1;padding:16px;background:var(--panel);border-radius:8px;text-decoration:none;color:var(--text);">← Back to Blog</a></div>
+<p style="color:var(--muted);">Have questions? <a href="/contact.html" style="color:var(--brand);">Get in touch</a> with our team.</p>
+</footer>
+</article>
+</main>
+<footer style="margin-top:60px;padding:40px 0;border-top:1px solid rgba(148,163,184,.08);"><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#94a3b8;"><div>© <span id="y"></span> Creative Job Hub</div><div style="display:flex;gap:16px;"><a href="/pricing/" style="color:inherit;">Pricing</a><a href="/privacy.html" style="color:inherit;">Privacy</a><a href="/terms.html" style="color:inherit;">Terms</a><a href="/contact.html" style="color:inherit;">Contact</a></div></div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script type="text/javascript">var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();</script>
+</body>
+</html>`;
 
-console.log('Final output:', JSON.stringify(output, null, 2));
-console.log('Generated filename:', output.filename);
-console.log('Content preview:', markdownContent.substring(0, 300) + '...');
+// Prepare outputs for BOTH files (markdown + HTML wrapper)
+const outputs = [
+  // 1. Create the markdown content file
+  {
+    slug: slug,
+    title: title,
+    content: markdownContent,
+    filename: `blog/posts/${slug}/index.md`,
+    commit_message: `Add blog post content: ${title}`,
+    branch: 'main',
+    type: 'markdown'
+  },
+  // 2. Create the HTML wrapper file  
+  {
+    slug: slug,
+    title: title,
+    content: templateHtml,
+    filename: `blog/posts/${slug}/index.html`,
+    commit_message: `Add blog post HTML wrapper: ${title}`,
+    branch: 'main',
+    type: 'html'
+  }
+];
 
-return output;
+console.log('Final output (creating both files):', JSON.stringify(outputs, null, 2));
+console.log('Files to create:', outputs.map(o => o.filename));
+
+return outputs;
 ```
 
-## 🔧 GitHub API Configuration
+## � COMPLETE AUTOMATION: No Manual HTML Creation!
+
+### ✅ **The New Enhanced Workflow:**
+
+Your n8n workflow now creates **BOTH files automatically**:
+
+1. **Markdown File**: `blog/posts/your-slug/index.md` (content)
+2. **HTML Wrapper**: `blog/posts/your-slug/index.html` (web page)
+
+### 🔄 **How This Works:**
+
+**Before (Manual):**
+- n8n creates → `.md` file only  
+- You manually create → `.html` wrapper file
+- Result: 50% automation
+
+**After (Full Automation):**
+- n8n creates → **BOTH** `.md` AND `.html` files
+- HTML wrapper automatically loads markdown content
+- Result: **100% automation** 🎉
+
+### 📁 **What Gets Created:**
+
+```
+/blog/posts/your-new-post/
+├── index.md          ← Markdown content (from n8n)
+├── index.html        ← HTML wrapper (also from n8n!)
+```
+
+**Both files are now created by your n8n workflow!**
+
+### 🎯 **N8N Node Configuration:**
+
+Since the JavaScript now returns an **array** of 2 files, you need to:
+
+1. **Add a "Split In Batches" node** after your JavaScript
+2. **Configure GitHub node** to process each file individually
+3. **Set iteration** to handle both markdown and HTML creation
+
+**Split In Batches Settings:**
+- Batch Size: `1`
+- Reset: `true`
+
+This will process both files (markdown + HTML) in sequence.
+
+## �🔧 GitHub API Configuration
 
 Use these exact settings in your n8n GitHub node:
 
