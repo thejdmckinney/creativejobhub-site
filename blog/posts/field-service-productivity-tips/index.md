@@ -6,7 +6,7 @@ excerpt: "Discover how modern field service management software can transform yo
 category: "field-service"
 tags: ["field service", "productivity", "small business", "efficiency"]
 status: "published"
-featured_image: "/assets/images/blog/field-service-productivity.jpg"
+image: "default-hero-1200.svg"
 seo_title: "5 Ways Field Service Software Boosts Small Business Productivity"
 seo_description: "Learn how field service management software increases productivity for small businesses. Get scheduling, mobile apps, GPS tracking, and more in one platform."
 ---
