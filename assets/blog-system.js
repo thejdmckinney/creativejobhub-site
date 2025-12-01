@@ -402,14 +402,29 @@ class BlogSystem {
     }
     
     // Show featured image if available
-    if (imageElement && (post.image || post.featured_image)) {
-      const imagePath = post.image || post.featured_image;
-      imageElement.src = imagePath.startsWith('/') ? imagePath : `/assets/images/blog/${imagePath}`;
-      imageElement.alt = post.title;
+    if (imageElement) {
+      const imagePath = post.image || post.featured_image || 'default-hero-1200.svg';
+      const fullImagePath = imagePath.startsWith('/') ? imagePath : `/assets/images/blog/${imagePath}`;
+      
+      // Add error handling for broken images
+      imageElement.onerror = function() {
+        console.log(`Blog System: Image failed to load: ${fullImagePath}, falling back to default`);
+        this.src = '/assets/images/blog/default-hero-1200.svg';
+        this.onerror = function() {
+          console.error('Blog System: Default image also failed to load');
+          this.style.display = 'none';
+        };
+      };
+      
+      imageElement.onload = function() {
+        console.log(`Blog System: Image loaded successfully: ${fullImagePath}`);
+      };
+      
+      imageElement.src = fullImagePath;
+      imageElement.alt = post.title || 'Blog post image';
       imageElement.style.display = 'block';
-    } else if (imageElement) {
-      // Show default image
-      imageElement.style.display = 'block';
+      
+      console.log(`Blog System: Setting image source to: ${fullImagePath}`);
     }
 
     // Update meta tags
