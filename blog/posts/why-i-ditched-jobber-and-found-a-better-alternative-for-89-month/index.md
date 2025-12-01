@@ -8,6 +8,7 @@ excerpt: "Why I Ditched Jobber After Burning Through $10K+ And Found a Better Al
 description: "Why I Ditched Jobber After Burning Through $10K+ And Found a Better Alternative  After dropping $10K+ on Jobber and watching my monthly bills skyrocket while fe..."
 image: "jobber-alternative-comparison.svg"
 featured_image: "jobber-alternative-comparison.svg"
+status: "published"
 word_count: "2093"
 article_type: "Opinion/Rant"
 keyword: "Jobber Alternative"

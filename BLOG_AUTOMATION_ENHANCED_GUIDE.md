@@ -121,6 +121,7 @@ excerpt: "${escapeYaml(excerpt)}"
 description: "${escapeYaml(description || excerpt)}"
 image: "default-hero-1200.svg"
 featured_image: "default-hero-1200.svg"
+status: "published"
 ---
 
 ${content}

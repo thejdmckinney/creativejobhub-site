@@ -158,8 +158,8 @@ class BlogSystem {
       // Sort by date (newest first)
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
       
-      // Filter published posts only (for public display)
-      this.posts = posts.filter(post => post.status === 'published');
+      // Filter published posts only (for public display) - default to published if no status
+      this.posts = posts.filter(post => (post.status || 'published') === 'published');
       this.postsLoaded = true;
       
       console.log(`Blog System: Loaded ${this.posts.length} published posts`);
