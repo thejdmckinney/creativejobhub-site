@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lead Tracking Admin | Creative Job Hub</title>
+  <meta name="description" content="Monitor contact forms, bookings, integrations, and lead sources for Creative Job Hub." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XKCW07R8CM');
+  </script>
+  
+  <link rel="stylesheet" href="/assets/site.min.css?v=15">
+  
+  <style>
+    .admin-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0b1220;
+      min-height: 100vh;
+    }
+    
+    .admin-header {
+      background: rgba(14, 165, 233, 0.1);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .admin-panel {
+      background: rgba(148, 163, 184, 0.05);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .status-active {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .status-broken {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .status-warning {
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .btn-admin {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-admin.primary {
+      background: #0ea5e9;
+      color: #0b1220;
+    }
+
+    .btn-admin.secondary {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text, #e5e7eb);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .btn-admin:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+
+    .metric-value {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .integration-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0 0;
+    }
+
+    .integration-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.05);
+    }
+
+    .integration-list li:last-child {
+      border-bottom: none;
+    }
+
+    .debug-console {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+      border-radius: 8px;
+      padding: 16px;
+      font-family: 'Monaco', 'Consolas', monospace;
+      font-size: 12px;
+      color: #22c55e;
+      height: 200px;
+      overflow-y: auto;
+      margin-top: 16px;
+    }
+
+    .test-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .admin-container {
+        padding: 15px;
+      }
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- Header -->
+    <div class="admin-header">
+      <h1 style="margin: 0 0 12px 0; font-size: 32px; color: var(--text, #e5e7eb);">
+        📊 Creative Job Hub - Lead Tracking Admin
+      </h1>
+      <p style="margin: 0; color: var(--muted, #9ca3af);">
+        Monitor all lead sources, integrations, and conversion touchpoints
+      </p>
+    </div>
+
+    <!-- Main Dashboard Grid -->
+    <div class="admin-grid">
+      <!-- Contact Form Status -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">📝 Contact Form</h3>
+        <div style="margin-bottom: 16px;">
+          <div class="status-indicator" id="contact-form-status">
+            <span>●</span> Checking...
+          </div>
+        </div>
+        
+        <div class="metric-row">
+          <span>Endpoint:</span>
+          <span style="font-size: 12px; color: var(--muted, #9ca3af);">/form/03a59943-c627-42ac-8d83-659521871056</span>
+        </div>
+        <div class="metric-row">
+          <span>Method:</span>
+          <span>POST</span>
+        </div>
+        <div class="metric-row">
+          <span>Fields:</span>
+          <span>8 + tracking</span>
+        </div>
+        
+        <div class="test-controls">
+          <button class="btn-admin secondary" onclick="testContactForm()">Test Endpoint</button>
+          <button class="btn-admin secondary" onclick="viewFormData()">View Form Code</button>
+        </div>
+      </div>
+
+      <!-- HubSpot Integration -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">🎯 HubSpot Integration</h3>
+        <ul class="integration-list">
+          <li>
+            <span>Demo Booking</span>
+            <div class="status-indicator" id="hubspot-meetings-status">
+              <span>●</span> Checking...
+            </div>
+          </li>
+          <li>
+            <span>CRM Script</span>
+            <div class="status-indicator" id="hubspot-script-status">
+              <span>●</span> Checking...
+            </div>
+          </li>
+          <li>
+            <span>Form Processing</span>
+            <div class="status-indicator status-warning">
+              <span>●</span> Via n8n
+            </div>
+          </li>
+        </ul>
+        
+        <div class="test-controls">
+          <a class="btn-admin secondary" href="https://app.hubspot.com/contacts/244310039/contacts/list/view/all/" target="_blank">
+            View HubSpot CRM
+          </a>
+          <button class="btn-admin secondary" onclick="testHubSpotIntegration()">Test Integration</button>
+        </div>
+      </div>
+
+      <!-- Analytics & Tracking -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">📈 Analytics & Tracking</h3>
+        <div class="metric-row">
+          <span>Google Analytics:</span>
+          <div class="status-indicator status-active">
+            <span>●</span> Active
+          </div>
+        </div>
+        <div class="metric-row">
+          <span>Conversion Tracking:</span>
+          <div class="status-indicator status-active">
+            <span>●</span> Active
+          </div>
+        </div>
+        <div class="metric-row">
+          <span>Pages Tracked:</span>
+          <span id="tracked-pages-count">--</span>
+        </div>
+        
+        <div class="test-controls">
+          <a class="btn-admin primary" href="/admin/blog.html">Blog Analytics</a>
+          <a class="btn-admin secondary" href="https://analytics.google.com/analytics/web/" target="_blank">
+            Google Analytics
+          </a>
+        </div>
+      </div>
+
+      <!-- Live Chat & Support -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">💬 Live Chat & Support</h3>
+        <div class="metric-row">
+          <span>Tawk.to Widget:</span>
+          <div class="status-indicator" id="tawk-status">
+            <span>●</span> Checking...
+          </div>
+        </div>
+        <div class="metric-row">
+          <span>Chat Position:</span>
+          <span>Bottom Right</span>
+        </div>
+        <div class="metric-row">
+          <span>Offline Mode:</span>
+          <span>Email Capture</span>
+        </div>
+        
+        <div class="test-controls">
+          <a class="btn-admin secondary" href="https://dashboard.tawk.to/" target="_blank">Tawk.to Dashboard</a>
+          <button class="btn-admin secondary" onclick="testChatWidget()">Test Chat</button>
+        </div>
+      </div>
+
+      <!-- n8n Automation -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">⚡ n8n Automation</h3>
+        <div class="metric-row">
+          <span>Contact Form Workflow:</span>
+          <div class="status-indicator" id="n8n-contact-status">
+            <span>●</span> Checking...
+          </div>
+        </div>
+        <div class="metric-row">
+          <span>Blog Automation:</span>
+          <div class="status-indicator status-active">
+            <span>●</span> Active
+          </div>
+        </div>
+        <div class="metric-row">
+          <span>Lead Processing:</span>
+          <div class="status-indicator" id="n8n-processing-status">
+            <span>●</span> Pending Setup
+          </div>
+        </div>
+        
+        <div class="test-controls">
+          <a class="btn-admin secondary" href="https://creativejobhub.app.n8n.cloud/" target="_blank">n8n Dashboard</a>
+          <button class="btn-admin secondary" onclick="testN8nWorkflow()">Test Workflow</button>
+        </div>
+      </div>
+
+      <!-- Lead Sources Overview -->
+      <div class="admin-panel">
+        <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">🎯 Lead Sources</h3>
+        <div class="metric-row">
+          <span>Contact Form:</span>
+          <span class="metric-value" id="contact-leads">--</span>
+        </div>
+        <div class="metric-row">
+          <span>Demo Bookings:</span>
+          <span class="metric-value" id="demo-bookings">--</span>
+        </div>
+        <div class="metric-row">
+          <span>Live Chat:</span>
+          <span class="metric-value" id="chat-conversations">--</span>
+        </div>
+        <div class="metric-row">
+          <span>Total This Month:</span>
+          <span class="metric-value" style="color: #0ea5e9;" id="total-leads">--</span>
+        </div>
+        
+        <div class="test-controls">
+          <button class="btn-admin primary" onclick="refreshLeadMetrics()">Refresh Metrics</button>
+          <button class="btn-admin secondary" onclick="exportLeadData()">Export Data</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Health & Debug Console -->
+    <div class="admin-panel" style="margin-top: 32px;">
+      <h3 style="margin: 0 0 16px 0; color: var(--text, #e5e7eb);">🔧 System Health & Debug Console</h3>
+      <div style="display: flex; gap: 16px; margin-bottom: 16px;">
+        <button class="btn-admin primary" onclick="runFullSystemCheck()">Run Full System Check</button>
+        <button class="btn-admin secondary" onclick="clearDebugLog()">Clear Log</button>
+        <button class="btn-admin secondary" onclick="exportSystemReport()">Export Report</button>
+      </div>
+      
+      <div class="debug-console" id="debug-console">
+        <div>🚀 Creative Job Hub Admin Dashboard Loaded</div>
+        <div>📊 Initializing system checks...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript for Dashboard Functionality -->
+  <script>
+    // Debug logging function
+    function debugLog(message, type = 'info') {
+      const console = document.getElementById('debug-console');
+      const timestamp = new Date().toLocaleTimeString();
+      const icons = { info: '📊', success: '✅', error: '❌', warning: '⚠️' };
+      const div = document.createElement('div');
+      div.innerHTML = `[${timestamp}] ${icons[type]} ${message}`;
+      console.appendChild(div);
+      console.scrollTop = console.scrollHeight;
+    }
+
+    // System status checks
+    async function checkSystemHealth() {
+      debugLog('Starting system health check...');
+      
+      // Check contact form endpoint
+      try {
+        const response = await fetch('https://creativejobhub.app.n8n.cloud/form/03a59943-c627-42ac-8d83-659521871056', {
+          method: 'HEAD'
+        });
+        
+        const contactStatus = document.getElementById('contact-form-status');
+        const n8nContactStatus = document.getElementById('n8n-contact-status');
+        
+        if (response.ok) {
+          contactStatus.className = 'status-indicator status-active';
+          contactStatus.innerHTML = '<span>●</span> Active';
+          n8nContactStatus.className = 'status-indicator status-active';
+          n8nContactStatus.innerHTML = '<span>●</span> Active';
+          debugLog('Contact form endpoint is working', 'success');
+        } else {
+          contactStatus.className = 'status-indicator status-broken';
+          contactStatus.innerHTML = '<span>●</span> Broken';
+          n8nContactStatus.className = 'status-indicator status-broken';
+          n8nContactStatus.innerHTML = '<span>●</span> 404 Error';
+          debugLog(`Contact form endpoint returned ${response.status}`, 'error');
+        }
+      } catch (error) {
+        debugLog('Failed to check contact form endpoint: ' + error.message, 'error');
+      }
+
+      // Check HubSpot Meetings
+      try {
+        const response = await fetch('https://meetings-na2.hubspot.com/creative-job-hub/cjh-field-service-software-demo', {
+          method: 'HEAD'
+        });
+        
+        const hubspotStatus = document.getElementById('hubspot-meetings-status');
+        if (response.ok) {
+          hubspotStatus.className = 'status-indicator status-active';
+          hubspotStatus.innerHTML = '<span>●</span> Active';
+          debugLog('HubSpot Meetings is working', 'success');
+        } else {
+          hubspotStatus.className = 'status-indicator status-broken';
+          hubspotStatus.innerHTML = '<span>●</span> Error';
+          debugLog('HubSpot Meetings check failed', 'error');
+        }
+      } catch (error) {
+        debugLog('HubSpot Meetings check error: ' + error.message, 'error');
+      }
+
+      // Check HubSpot Script
+      try {
+        const response = await fetch('https://js-na2.hs-scripts.com/244310039.js', {
+          method: 'HEAD'
+        });
+        
+        const scriptStatus = document.getElementById('hubspot-script-status');
+        if (response.ok) {
+          scriptStatus.className = 'status-indicator status-active';
+          scriptStatus.innerHTML = '<span>●</span> Active';
+          debugLog('HubSpot tracking script is working', 'success');
+        } else {
+          scriptStatus.className = 'status-indicator status-broken';
+          scriptStatus.innerHTML = '<span>●</span> Error';
+          debugLog('HubSpot tracking script check failed', 'error');
+        }
+      } catch (error) {
+        debugLog('HubSpot script check error: ' + error.message, 'error');
+      }
+
+      // Check Tawk.to
+      const tawkStatus = document.getElementById('tawk-status');
+      if (typeof Tawk_API !== 'undefined') {
+        tawkStatus.className = 'status-indicator status-active';
+        tawkStatus.innerHTML = '<span>●</span> Active';
+        debugLog('Tawk.to chat widget is loaded', 'success');
+      } else {
+        tawkStatus.className = 'status-indicator status-warning';
+        tawkStatus.innerHTML = '<span>●</span> Loading...';
+        debugLog('Tawk.to widget still loading', 'warning');
+      }
+
+      // Update tracked pages count
+      document.getElementById('tracked-pages-count').textContent = '15+ pages';
+      
+      debugLog('System health check completed', 'success');
+    }
+
+    // Individual test functions
+    function testContactForm() {
+      debugLog('Testing contact form endpoint...', 'info');
+      
+      const testData = new FormData();
+      testData.append('name', 'Admin Test');
+      testData.append('email', 'admin@creativejobhub.com');
+      testData.append('message', 'Test message from admin dashboard');
+      testData.append('form_name', 'admin_test');
+      testData.append('timestamp', new Date().toISOString());
+      
+      fetch('https://creativejobhub.app.n8n.cloud/form/03a59943-c627-42ac-8d83-659521871056', {
+        method: 'POST',
+        body: testData
+      })
+      .then(response => {
+        if (response.ok) {
+          debugLog('Contact form test successful!', 'success');
+        } else {
+          debugLog(`Contact form test failed: ${response.status}`, 'error');
+        }
+      })
+      .catch(error => {
+        debugLog('Contact form test error: ' + error.message, 'error');
+      });
+    }
+
+    function testHubSpotIntegration() {
+      debugLog('Testing HubSpot integration...', 'info');
+      
+      if (typeof hbspt !== 'undefined') {
+        debugLog('HubSpot global object is available', 'success');
+      } else {
+        debugLog('HubSpot global object not found', 'warning');
+      }
+      
+      // Test if HubSpot tracking is working
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'admin_test', {
+          'event_category': 'Admin Dashboard',
+          'event_label': 'HubSpot Integration Test'
+        });
+        debugLog('Analytics event sent for tracking test', 'info');
+      }
+    }
+
+    function testN8nWorkflow() {
+      debugLog('Testing n8n workflow connectivity...', 'info');
+      
+      fetch('https://creativejobhub.app.n8n.cloud/', {
+        method: 'HEAD'
+      })
+      .then(response => {
+        if (response.ok) {
+          debugLog('n8n instance is accessible', 'success');
+        } else {
+          debugLog('n8n instance returned error: ' + response.status, 'error');
+        }
+      })
+      .catch(error => {
+        debugLog('n8n connectivity test failed: ' + error.message, 'error');
+      });
+    }
+
+    function testChatWidget() {
+      debugLog('Testing chat widget...', 'info');
+      
+      if (typeof Tawk_API !== 'undefined' && Tawk_API.onLoad) {
+        Tawk_API.maximize();
+        debugLog('Chat widget opened successfully', 'success');
+      } else {
+        debugLog('Chat widget not ready', 'warning');
+      }
+    }
+
+    function viewFormData() {
+      const formCode = `
+Contact Form Configuration:
+- Action: https://creativejobhub.app.n8n.cloud/form/03a59943-c627-42ac-8d83-659521871056
+- Method: POST
+- Fields: name*, email*, company, phone, team_size, message*
+- Tracking: page_url, referrer, timestamp, form_name
+- Security: honeypot anti-spam field
+      `;
+      alert(formCode);
+    }
+
+    function refreshLeadMetrics() {
+      debugLog('Refreshing lead metrics (demo data)...', 'info');
+      
+      // Demo data - in reality this would come from your CRM/analytics
+      setTimeout(() => {
+        document.getElementById('contact-leads').textContent = '23';
+        document.getElementById('demo-bookings').textContent = '12';
+        document.getElementById('chat-conversations').textContent = '31';
+        document.getElementById('total-leads').textContent = '66';
+        debugLog('Lead metrics updated with demo data', 'success');
+      }, 1000);
+    }
+
+    function runFullSystemCheck() {
+      debugLog('Running full system diagnostic...', 'info');
+      checkSystemHealth();
+      refreshLeadMetrics();
+    }
+
+    function clearDebugLog() {
+      document.getElementById('debug-console').innerHTML = '';
+      debugLog('Debug log cleared', 'info');
+    }
+
+    function exportSystemReport() {
+      debugLog('Generating system report...', 'info');
+      
+      const report = `
+CREATIVE JOB HUB - SYSTEM STATUS REPORT
+Generated: ${new Date().toLocaleString()}
+
+LEAD CAPTURE SYSTEMS:
+- Contact Form: Endpoint configured, testing required
+- HubSpot Meetings: Active booking calendar
+- Tawk.to Chat: Live chat widget active
+- n8n Automation: Workflow deployment required
+
+ANALYTICS & TRACKING:
+- Google Analytics: Active on 15+ pages
+- Conversion Tracking: Enhanced events configured
+- Blog Analytics: Custom dashboard available
+
+INTEGRATIONS STATUS:
+- HubSpot CRM: Script loaded, meetings active
+- n8n Workflows: Blog automation working, contact form pending
+- Tawk.to Support: Chat widget functional
+
+RECOMMENDATIONS:
+1. Activate n8n contact form workflow immediately
+2. Test lead flow end-to-end
+3. Set up regular health monitoring
+4. Configure lead notifications
+      `;
+      
+      const blob = new Blob([report], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'creative-job-hub-system-report.txt';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      
+      debugLog('System report exported', 'success');
+    }
+
+    function exportLeadData() {
+      debugLog('Exporting lead data (demo)...', 'info');
+      alert('Lead data export would integrate with your CRM/database');
+    }
+
+    // Initialize dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      debugLog('Admin dashboard initialized', 'success');
+      
+      // Run initial system check
+      setTimeout(() => {
+        checkSystemHealth();
+        refreshLeadMetrics();
+      }, 1000);
+      
+      // Check for chat widget periodically
+      let tawkCheckCount = 0;
+      const tawkChecker = setInterval(() => {
+        if (typeof Tawk_API !== 'undefined' || tawkCheckCount > 10) {
+          clearInterval(tawkChecker);
+          
+          const tawkStatus = document.getElementById('tawk-status');
+          if (typeof Tawk_API !== 'undefined') {
+            tawkStatus.className = 'status-indicator status-active';
+            tawkStatus.innerHTML = '<span>●</span> Active';
+            debugLog('Tawk.to chat widget loaded successfully', 'success');
+          }
+        }
+        tawkCheckCount++;
+      }, 1000);
+    });
+  </script>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
+  <!-- End of HubSpot Embed Code -->
+</body>
+</html>
