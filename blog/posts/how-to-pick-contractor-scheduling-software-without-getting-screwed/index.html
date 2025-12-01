@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- CUSTOMIZE THESE FOR EACH POST -->
+  <title>[POST_TITLE] — Creative Job Hub Blog</title>
+  <meta name="description" content="[POST_DESCRIPTION]" />
+  <link rel="canonical" href="https://creativejobhub.com/blog/posts/how-to-pick-contractor-scheduling-software-without-getting-screwed/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CreativeJobHub" />
+  <meta property="og:title" content="[POST_TITLE]" />
+  <meta property="og:description" content="[POST_DESCRIPTION]" />
+  <meta property="og:url" content="https://creativejobhub.com/blog/posts/how-to-pick-contractor-scheduling-software-without-getting-screwed/" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/images/blog/default-hero-1200.svg" />
+  <meta property="article:published_time" content="[PUBLISH_DATE]" />
+  <meta property="article:author" content="Creative Job Hub Team" />
+  <meta property="article:section" content="Field Service Management" />
+  <meta property="article:tag" content="[TAGS]" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="[POST_TITLE]" />
+  <meta name="twitter:description" content="[POST_DESCRIPTION]" />
+  <meta name="twitter:image" content="https://creativejobhub.com/assets/images/blog/default-hero-1200.svg" />
+
+  <!-- RSS Feed -->
+  <link rel="alternate" type="application/rss+xml" title="Creative Job Hub Blog" href="/blog/feed.xml" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.min.css?v=11" />
+  
+  <!-- Blog system for dynamic markdown rendering -->
+  <script src="/assets/blog-system.js" defer></script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#111827; --muted:#9ca3af; --text:#e5e7eb;
+      --brand:#0ea5e9; --brand-2:#22c55e;
+    }
+    
+    .wrap { max-width:800px; margin:0 auto; padding:28px 20px 60px; }
+    .article-header { padding:40px 0 60px; text-align:center; }
+    .article-header h1 { 
+      margin:0 0 16px; 
+      font-size:48px; 
+      font-weight:800; 
+      line-height:1.1;
+    }
+    .article-meta { 
+      display:flex; 
+      justify-content:center; 
+      gap:16px; 
+      font-size:14px; 
+      color:var(--muted);
+      margin-bottom:24px;
+    }
+    .article-tag { 
+      background:rgba(14,165,233,.1); 
+      color:var(--brand); 
+      padding:4px 8px; 
+      border-radius:4px; 
+      font-size:12px; 
+      font-weight:600;
+    }
+    .article-image { 
+      width:100%; 
+      height:400px; 
+      object-fit:cover; 
+      border-radius:12px; 
+      margin:32px 0;
+    }
+    
+    .article-content { 
+      line-height:1.8; 
+      font-size:18px;
+    }
+    .article-content h2 { 
+      margin:40px 0 16px; 
+      font-size:32px; 
+      color:var(--text);
+    }
+    .article-content h3 { 
+      margin:32px 0 12px; 
+      font-size:24px; 
+      color:var(--text);
+    }
+    .article-content p { 
+      margin:0 0 24px; 
+      color:#cbd5e1;
+    }
+    .article-content ul, 
+    .article-content ol { 
+      margin:0 0 24px; 
+      padding-left:24px;
+      color:#cbd5e1;
+    }
+    .article-content li { 
+      margin-bottom:8px;
+    }
+    .article-content blockquote { 
+      margin:32px 0; 
+      padding:24px; 
+      background:var(--panel); 
+      border-left:4px solid var(--brand); 
+      border-radius:8px;
+      font-style:italic;
+    }
+    .article-content img { 
+      width:100%; 
+      border-radius:8px; 
+      margin:24px 0;
+    }
+    .article-content code { 
+      background:var(--panel); 
+      padding:2px 6px; 
+      border-radius:4px; 
+      font-size:16px;
+    }
+    .article-content pre { 
+      background:var(--panel); 
+      padding:24px; 
+      border-radius:8px; 
+      overflow-x:auto; 
+      margin:24px 0;
+    }
+    
+    .article-footer { 
+      margin-top:60px; 
+      padding-top:40px; 
+      border-top:1px solid rgba(148,163,184,.08);
+      text-align:center;
+    }
+    .cta-section { 
+      background: rgba(14,165,233,0.05); 
+      border: 1px solid rgba(14,165,233,0.2); 
+      padding:40px; 
+      border-radius:12px; 
+      margin:40px 0;
+      text-align:center;
+    }
+    .cta-section h3 { margin:0 0 16px; }
+    .cta-section p { margin:0 0 24px; color:var(--muted); }
+    
+    .nav-links { 
+      display:flex; 
+      justify-content:space-between; 
+      gap:20px; 
+      margin:40px 0;
+    }
+    .nav-links a { 
+      flex:1; 
+      padding:16px; 
+      background:var(--panel); 
+      border-radius:8px; 
+      text-decoration:none; 
+      color:var(--text);
+      transition:background 0.2s ease;
+    }
+    .nav-links a:hover { background:rgba(148,163,184,.1); }
+    .nav-links .prev { text-align:left; }
+    .nav-links .next { text-align:right; }
+    
+    @media (max-width: 768px) {
+      .article-header h1 { font-size:36px; }
+      .article-content { font-size:16px; }
+      .nav-links { flex-direction:column; }
+    }
+  </style>
+
+  <!-- Dynamic header injection -->
+  <div id="site-header"></div>
+  <script src="/assets/header.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "[POST_TITLE]",
+    "description": "[POST_DESCRIPTION]",
+    "url": "https://creativejobhub.com/blog/posts/how-to-pick-contractor-scheduling-software-without-getting-screwed/",
+    "datePublished": "[PUBLISH_DATE]",
+    "dateModified": "[MODIFIED_DATE]",
+    "author": {
+      "@type": "Organization",
+      "name": "Creative Job Hub Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Job Hub",
+      "url": "https://creativejobhub.com",
+  "logo": "https://creativejobhub.com/assets/logo.png"
+    },
+    "image": "https://creativejobhub.com/assets/images/blog/default-hero-1200.svg",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://creativejobhub.com/blog/posts/how-to-pick-contractor-scheduling-software-without-getting-screwed/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <main class="wrap">
+    <article>
+      <header class="article-header">
+        <div class="article-meta" id="post-meta">
+          <span id="post-date">Loading...</span>
+          <span>•</span>
+          <span id="read-time">-- min read</span>
+          <span>•</span>
+          <span class="article-tag" id="post-category">Loading</span>
+        </div>
+        <h1 id="post-title">Loading blog post...</h1>
+        <p style="color:var(--muted); font-size:20px; margin:0;" id="post-excerpt">Please wait while we load the content...</p>
+      </header>
+
+      <!-- Featured image -->
+      <img class="article-image" id="post-image" src="/assets/images/blog/default-hero-1200.svg" alt="" style="display: none;" />
+
+      <div class="article-content" id="post-content">
+        <!-- Content will be dynamically loaded from markdown -->
+        <div id="loading-message" style="text-align: center; padding: 40px; color: var(--muted);">
+          <p>Loading blog post...</p>
+        </div>
+      </div>
+
+      <footer class="article-footer">
+        <div class="nav-links">
+          <a href="/blog/" class="prev">← Back to Blog</a>
+        </div>
+        
+        <p style="color:var(--muted);">
+          Have questions about field service management? 
+          <a href="/contact.html" style="color:var(--brand);">Get in touch</a> with our team.
+        </p>
+      </footer>
+    </article>
+  </main>
+
+  <footer style="margin-top:60px; padding:40px 0; border-top:1px solid rgba(148,163,184,.08);">
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#94a3b8;">
+      <div>© <span id="y"></span> Creative Job Hub</div>
+      <div style="display:flex; gap:16px;">
+        <a href="/pricing/" style="color:inherit;">Pricing</a>
+        <a href="/privacy.html" style="color:inherit;">Privacy</a>
+        <a href="/terms.html" style="color:inherit;">Terms</a>
+        <a href="/contact.html" style="color:inherit;">Contact</a>
+        <a href="/blog/feed.xml" style="color:inherit;">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Initialize blog post rendering when blog-system.js loads
+    window.addEventListener('DOMContentLoaded', function() {
+      // The blog-system.js will automatically detect this is a blog post page
+      // and load the appropriate markdown content based on the URL
+    });
+  </script>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/69237cb4b229be19601c09a1/1jap9u8i2';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+</body>
+</html>

@@ -262,8 +262,50 @@ class BlogSystem {
    * Get a single post by slug
    */
   async getPost(slug) {
+    // First try to find in cached posts
     await this.loadPosts();
-    return this.posts.find(post => post.slug === slug);
+    let post = this.posts.find(post => post.slug === slug);
+    
+    if (post) {
+      return post;
+    }
+
+    // If not found in cache, try to load directly from markdown file
+    console.log(`Blog System: Post not in cache, trying to load directly: ${slug}`);
+    
+    try {
+      const response = await fetch(`/blog/posts/${slug}/index.md`);
+      if (!response.ok) {
+        console.error(`Blog System: Failed to load markdown file for ${slug}: ${response.status}`);
+        return null;
+      }
+      
+      const content = await response.text();
+      const { frontmatter, content: markdownContent } = this.parseFrontmatter(content);
+      
+      post = {
+        slug: slug,
+        title: frontmatter.title || 'Untitled Post',
+        date: frontmatter.date || new Date().toISOString().split('T')[0],
+        author: frontmatter.author || 'Creative Job Hub Team',
+        category: frontmatter.category || 'Field Service Management',
+        tags: frontmatter.tags || [],
+        excerpt: frontmatter.excerpt || frontmatter.description || this.generateExcerpt(markdownContent),
+        description: frontmatter.description || frontmatter.excerpt || this.generateExcerpt(markdownContent),
+        image: frontmatter.image || frontmatter.featured_image || 'default-hero-1200.svg',
+        featured_image: frontmatter.featured_image || frontmatter.image || 'default-hero-1200.svg',
+        content: markdownContent,
+        html: this.markdownToHtml(markdownContent),
+        modified: frontmatter.modified || frontmatter.date || new Date().toISOString().split('T')[0]
+      };
+      
+      console.log(`Blog System: Successfully loaded markdown post: ${post.title}`);
+      return post;
+      
+    } catch (error) {
+      console.error(`Blog System: Error loading post ${slug}:`, error);
+      return null;
+    }
   }
 
   /**
@@ -308,52 +350,100 @@ class BlogSystem {
    * Render single blog post
    */
   async renderBlogPost(slug, container) {
+    console.log(`Blog System: Loading post data for slug: ${slug}`);
     const post = await this.getPost(slug);
     
     if (!post) {
-      container.innerHTML = '<h1>Post Not Found</h1><p>The requested blog post could not be found.</p>';
+      console.error(`Blog System: Post not found: ${slug}`);
+      // Hide loading message and show error
+      const loadingMessage = document.getElementById('loading-message');
+      if (loadingMessage) loadingMessage.style.display = 'none';
+      container.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--muted);"><h2>Post Not Found</h2><p>The requested blog post could not be found.</p></div>';
       return;
     }
 
-    // Update page title and meta
-    document.title = `${post.title} | Creative Job Hub Blog`;
+    console.log(`Blog System: Rendering post: ${post.title}`);
+
+    // Hide loading message
+    const loadingMessage = document.getElementById('loading-message');
+    if (loadingMessage) loadingMessage.style.display = 'none';
+
+    // Update page elements with post data
+    const titleElement = document.getElementById('post-title');
+    const excerptElement = document.getElementById('post-excerpt');
+    const dateElement = document.getElementById('post-date');
+    const readTimeElement = document.getElementById('read-time');
+    const categoryElement = document.getElementById('post-category');
+    const imageElement = document.getElementById('post-image');
     
-    const existingMeta = document.querySelector('meta[name="description"]');
-    if (existingMeta) {
-      existingMeta.setAttribute('content', post.excerpt);
+    if (titleElement) {
+      titleElement.textContent = post.title;
+      document.title = `${post.title} — Creative Job Hub Blog`;
+    }
+    
+    if (excerptElement) {
+      excerptElement.textContent = post.excerpt || post.description || '';
+    }
+    
+    if (dateElement) {
+      dateElement.textContent = this.formatDate(post.date);
+    }
+    
+    if (readTimeElement) {
+      // Estimate read time (200 words per minute)
+      const wordCount = post.content ? post.content.split(/\s+/).length : 0;
+      const readTime = Math.ceil(wordCount / 200);
+      readTimeElement.textContent = `${readTime} min read`;
+    }
+    
+    if (categoryElement) {
+      categoryElement.textContent = post.category || 'Field Service Management';
+    }
+    
+    // Show featured image if available
+    if (imageElement && (post.image || post.featured_image)) {
+      const imagePath = post.image || post.featured_image;
+      imageElement.src = imagePath.startsWith('/') ? imagePath : `/assets/images/blog/${imagePath}`;
+      imageElement.alt = post.title;
+      imageElement.style.display = 'block';
+    } else if (imageElement) {
+      // Show default image
+      imageElement.style.display = 'block';
     }
 
-    const html = `
-      <article class="blog-post">
-        <header class="blog-post-header">
-          <div class="blog-post-meta">
-            <span class="blog-post-date">${this.formatDate(post.date)}</span>
-            <span class="blog-post-author">By ${post.author}</span>
-            <span class="blog-post-category">${post.category}</span>
-          </div>
-          <h1 class="blog-post-title">${post.title}</h1>
-          ${(post.image || post.featured_image) ? `<img src="/assets/images/blog/${post.image || post.featured_image}" alt="${post.title}" class="blog-featured-image">` : ''}
-        </header>
-        
-        <div class="blog-post-content">
-          ${post.html}
-        </div>
-        
-        <footer class="blog-post-footer">
-          <div class="blog-post-tags">
-            ${(post.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          
-          <div class="blog-post-cta">
-            <h3>Ready to Transform Your Field Service Business?</h3>
-            <p>See how Creative Job Hub can streamline your operations and boost productivity.</p>
-            <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">Start Free Trial</a>
-          </div>
-        </footer>
-      </article>
-    `;
+    // Update meta tags
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', post.excerpt || post.description || '');
+    }
+    
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', post.title);
+    
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', post.excerpt || post.description || '');
+    
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', post.title);
+    
+    const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDesc) twitterDesc.setAttribute('content', post.excerpt || post.description || '');
 
-    container.innerHTML = html;
+    // Update structured data
+    const structuredData = document.querySelector('script[type="application/ld+json"]');
+    if (structuredData) {
+      const data = JSON.parse(structuredData.textContent);
+      data.headline = post.title;
+      data.description = post.excerpt || post.description || '';
+      data.datePublished = post.date;
+      data.dateModified = post.modified || post.date;
+      structuredData.textContent = JSON.stringify(data, null, 2);
+    }
+
+    // Render the markdown content as HTML
+    container.innerHTML = post.html || this.markdownToHtml(post.content || '');
+    
+    console.log(`Blog System: Successfully rendered post: ${post.title}`);
   }
 
   /**
