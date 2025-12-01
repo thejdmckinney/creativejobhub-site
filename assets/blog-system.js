@@ -119,6 +119,7 @@ class BlogSystem {
       // For now, we'll manually define available posts
       const postSlugs = [
         'field-service-productivity-tips',
+        'best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to',
         // Add more post slugs here as they're created
       ];
       
