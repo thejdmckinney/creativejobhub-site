@@ -176,17 +176,18 @@ class BlogSystem {
   }
 
   /**
-   * Render blog index page
+   * Render blog index page - append markdown posts to existing HTML posts
    */
   async renderBlogIndex(container) {
     const posts = await this.loadPosts();
     
+    // Don't modify existing content if no markdown posts
     if (!posts.length) {
-      container.innerHTML = '<p>No blog posts available.</p>';
       return;
     }
 
-    const html = posts.map(post => `
+    // Create markdown posts HTML
+    const markdownPostsHtml = posts.map(post => `
       <article class="blog-card">
         ${(post.image || post.featured_image) ? `<img src="/assets/images/blog/${post.image || post.featured_image}" alt="${post.title}" onerror="this.style.display='none'">` : ''}
         <div class="blog-card-content">
@@ -200,7 +201,8 @@ class BlogSystem {
       </article>
     `).join('');
 
-    container.innerHTML = html;
+    // Append markdown posts to existing content instead of replacing
+    container.insertAdjacentHTML('beforeend', markdownPostsHtml);
   }
 
   /**
