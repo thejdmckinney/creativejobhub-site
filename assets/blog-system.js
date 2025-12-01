@@ -263,26 +263,55 @@ class BlogSystem {
    * Get a single post by slug
    */
   async getPost(slug) {
+    // First check for embedded post data (bypass GitHub Pages .md serving issue)
+    if (window.embeddedPostData && window.embeddedPostData.slug === slug) {
+      console.log(`Blog System: Found embedded post data for ${slug}`);
+      return {
+        ...window.embeddedPostData,
+        html: this.markdownToHtml(window.embeddedPostData.content || ''),
+        modified: window.embeddedPostData.date
+      };
+    }
+    
     // First try to find in cached posts
+    console.log(`Blog System: getPost called for slug: ${slug}`);
     await this.loadPosts();
+    console.log(`Blog System: After loadPosts, have ${this.posts.length} cached posts:`, this.posts.map(p => p.slug));
+    
     let post = this.posts.find(post => post.slug === slug);
     
     if (post) {
+      console.log(`Blog System: Found post in cache: ${post.title}`);
       return post;
     }
+    
+    console.log(`Blog System: Post ${slug} not found in cache, cached posts are:`, this.posts.map(p => p.slug));
 
     // If not found in cache, try to load directly from markdown file
     console.log(`Blog System: Post not in cache, trying to load directly: ${slug}`);
     
     try {
-      const response = await fetch(`/blog/posts/${slug}/index.md`);
+      const markdownUrl = `/blog/posts/${slug}/index.md`;
+      console.log(`Blog System: Attempting to fetch markdown from: ${markdownUrl}`);
+      
+      const response = await fetch(markdownUrl);
+      console.log(`Blog System: Fetch response:`, {
+        ok: response.ok,
+        status: response.status,
+        statusText: response.statusText,
+        url: response.url
+      });
+      
       if (!response.ok) {
-        console.error(`Blog System: Failed to load markdown file for ${slug}: ${response.status}`);
+        console.error(`Blog System: Failed to load markdown file for ${slug}: ${response.status} ${response.statusText}`);
         return null;
       }
       
       const content = await response.text();
+      console.log(`Blog System: Loaded ${content.length} characters of content for ${slug}`);
+      
       const { frontmatter, content: markdownContent } = this.parseFrontmatter(content);
+      console.log(`Blog System: Parsed frontmatter:`, frontmatter);
       
       post = {
         slug: slug,
@@ -492,12 +521,17 @@ class BlogSystem {
     } else if (path.startsWith('/blog/posts/')) {
       // Individual blog post
       const slug = path.split('/')[3]; // Extract slug from /blog/posts/slug/
-      console.log(`Blog System: Loading individual post: ${slug}`);
+      console.log(`Blog System: Detected individual post page. Path: ${path}, Extracted slug: ${slug}`);
       const container = document.getElementById('post-content');
       if (container && slug) {
+        console.log(`Blog System: Found post-content container, loading post: ${slug}`);
         await this.renderBlogPost(slug, container);
       } else {
-        console.log('Blog System: post-content container not found or no slug');
+        console.error('Blog System: Missing requirements:', {
+          container: !!container,
+          slug: slug,
+          path: path
+        });
       }
     }
   }
