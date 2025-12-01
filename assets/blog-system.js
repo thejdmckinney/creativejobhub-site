@@ -115,17 +115,23 @@ class BlogSystem {
     if (this.postsLoaded) return this.posts;
     
     try {
-      // In a real implementation, this would scan the /blog/posts/ directory
-      // For now, we'll manually define available posts
-      const postSlugs = [
-        'field-service-productivity-tips',
-        'best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to',
-        // Add more post slugs here as they're created
-      ];
-      
       const posts = [];
       
-      for (const slug of postSlugs) {
+      // Method 1: Try to discover posts via GitHub API (if available)
+      const discoveredSlugs = await this.discoverPostSlugs();
+      
+      // Method 2: Always check known posts + common patterns
+      const knownSlugs = [
+        'field-service-productivity-tips',
+        'best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to',
+      ];
+      
+      // Combine discovered and known slugs, removing duplicates
+      const allSlugs = [...new Set([...discoveredSlugs, ...knownSlugs])];
+      
+      console.log('Blog System: Checking for posts:', allSlugs);
+      
+      for (const slug of allSlugs) {
         try {
           const response = await fetch(`/blog/posts/${slug}/index.md`);
           if (response.ok) {
@@ -140,9 +146,11 @@ class BlogSystem {
               url: `/blog/posts/${slug}/`,
               excerpt: frontmatter.excerpt || this.generateExcerpt(markdownContent)
             });
+            
+            console.log(`Blog System: Successfully loaded post: ${slug}`);
           }
         } catch (error) {
-          console.error(`Error loading post ${slug}:`, error);
+          console.log(`Blog System: Post not found or error loading ${slug}:`, error.message);
         }
       }
       
@@ -153,11 +161,101 @@ class BlogSystem {
       this.posts = posts.filter(post => post.status === 'published');
       this.postsLoaded = true;
       
+      console.log(`Blog System: Loaded ${this.posts.length} published posts`);
       return this.posts;
     } catch (error) {
       console.error('Error loading blog posts:', error);
       return [];
     }
+  }
+
+  /**
+   * Discover post slugs automatically
+   */
+  async discoverPostSlugs() {
+    const discoveredSlugs = [];
+    
+    try {
+      // Try GitHub Contents API for automatic discovery
+      const response = await fetch('https://api.github.com/repos/thejdmckinney/creativejobhub-site/contents/blog/posts');
+      
+      if (response.ok) {
+        const contents = await response.json();
+        const directories = contents.filter(item => item.type === 'dir');
+        
+        for (const dir of directories) {
+          // Check if directory contains index.md (markdown post)
+          try {
+            const postCheck = await fetch(`/blog/posts/${dir.name}/index.md`, { method: 'HEAD' });
+            if (postCheck.ok) {
+              discoveredSlugs.push(dir.name);
+            }
+          } catch (e) {
+            // Silent fail for post check
+          }
+        }
+        
+        console.log('Blog System: Auto-discovered posts via GitHub API:', discoveredSlugs);
+      }
+    } catch (error) {
+      console.log('Blog System: GitHub API discovery failed, using fallback methods');
+    }
+    
+    // Fallback: Try common post patterns based on current date and known patterns
+    const fallbackSlugs = await this.tryCommonPatterns();
+    
+    return [...new Set([...discoveredSlugs, ...fallbackSlugs])];
+  }
+
+  /**
+   * Try to find posts using common naming patterns
+   */
+  async tryCommonPatterns() {
+    const patterns = [];
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
+    
+    // Common contractor/field service topics that might be auto-generated
+    const commonTopics = [
+      'contractor-scheduling-software',
+      'field-service-management-tips',
+      'best-contractor-software',
+      'scheduling-software-comparison',
+      'field-service-productivity',
+      'contractor-management-app',
+      'small-business-field-service',
+      'hvac-scheduling-software',
+      'plumbing-software-review',
+      'electrical-contractor-app'
+    ];
+    
+    // Try common patterns with current date
+    for (const topic of commonTopics) {
+      patterns.push(`${topic}-${currentYear}`);
+      patterns.push(`${topic}-${currentYear}-${currentMonth}`);
+      patterns.push(topic);
+    }
+    
+    // Try patterns with dates
+    patterns.push(`blog-post-${currentYear}-${currentMonth}-01`);
+    patterns.push(`new-post-${currentYear}-${currentMonth}`);
+    
+    const foundSlugs = [];
+    
+    // Test each pattern quickly
+    for (const pattern of patterns.slice(0, 10)) { // Limit to avoid too many requests
+      try {
+        const response = await fetch(`/blog/posts/${pattern}/index.md`, { method: 'HEAD' });
+        if (response.ok) {
+          foundSlugs.push(pattern);
+        }
+      } catch (e) {
+        // Silent fail
+      }
+    }
+    
+    return foundSlugs;
   }
 
   /**
@@ -278,16 +376,22 @@ class BlogSystem {
     
     if (path === '/blog/' || path === '/blog/index.html') {
       // Blog index page
+      console.log('Blog System: Initializing blog index page');
       const container = document.getElementById('blog-posts');
       if (container) {
         await this.renderBlogIndex(container);
+      } else {
+        console.log('Blog System: blog-posts container not found');
       }
     } else if (path.startsWith('/blog/posts/')) {
       // Individual blog post
       const slug = path.split('/')[3]; // Extract slug from /blog/posts/slug/
-      const container = document.getElementById('blog-post');
+      console.log(`Blog System: Loading individual post: ${slug}`);
+      const container = document.getElementById('post-content');
       if (container && slug) {
         await this.renderBlogPost(slug, container);
+      } else {
+        console.log('Blog System: post-content container not found or no slug');
       }
     }
   }

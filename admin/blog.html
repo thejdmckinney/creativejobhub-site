@@ -475,35 +475,53 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
     // Load and display blog posts
     async function loadBlogPosts() {
       try {
-        const response = await fetch('/blog/posts/', { cache: 'no-cache' });
-        const html = await response.text();
+        console.log('Admin: Refreshing blog posts...');
         
-        // Parse blog posts from directory listing or API
-        // This is a placeholder - in production you'd implement actual blog parsing
+        // Force reload the blog system
+        if (window.blogSystem) {
+          window.blogSystem.postsLoaded = false; // Reset cache
+          const posts = await window.blogSystem.loadPosts();
+          
+          // Convert to admin format
+          const adminPosts = posts.map(post => ({
+            title: post.title,
+            date: post.date,
+            status: post.status,
+            slug: post.slug,
+            category: post.category,
+            author: post.author
+          }));
+          
+          console.log(`Admin: Found ${adminPosts.length} posts`);
+          updateBlogList(adminPosts);
+        } else {
+          // Fallback if blog system not loaded
+          console.log('Admin: Blog system not loaded, using fallback');
+          updateBlogList([
+            {
+              title: "Getting Started with Field Service Management",
+              date: "2025-11-28",
+              status: "published",
+              slug: "getting-started-field-service-management"
+            },
+            {
+              title: "Best Scheduling Software Comparison", 
+              date: "2025-12-01",
+              status: "published",
+              slug: "best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to"
+            }
+          ]);
+        }
+      } catch (error) {
+        console.error('Admin: Error loading blog posts:', error);
         updateBlogList([
           {
-            title: "Getting Started with Field Service Management",
-            date: "2025-11-28",
-            status: "published",
-            slug: "getting-started-field-service-management"
-          },
-          {
-            title: "5 Ways to Improve Customer Satisfaction",
-            date: "2025-11-25",
-            status: "published", 
-            slug: "improve-customer-satisfaction"
-          },
-          {
-            title: "Draft: Upcoming Features Preview",
-            date: "2025-11-30",
-            status: "draft",
-            slug: "upcoming-features-preview"
+            title: "Error loading posts - please refresh",
+            date: new Date().toISOString().split('T')[0],
+            status: "error",
+            slug: "error"
           }
         ]);
-      } catch (error) {
-        console.error('Error loading blog posts:', error);
-        document.getElementById('blog-posts').innerHTML = 
-          '<div class="blog-item"><div class="blog-item-title" style="color: #f87171;">Error loading posts</div></div>';
       }
     }
 
