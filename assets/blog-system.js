@@ -187,19 +187,16 @@ class BlogSystem {
     }
 
     const html = posts.map(post => `
-      <article class="blog-post-card">
-        <div class="blog-post-meta">
-          <span class="blog-post-date">${this.formatDate(post.date)}</span>
-          <span class="blog-post-category">${post.category}</span>
+      <article class="blog-card">
+        ${(post.image || post.featured_image) ? `<img src="/assets/images/blog/${post.image || post.featured_image}" alt="${post.title}" onerror="this.style.display='none'">` : ''}
+        <div class="blog-card-content">
+          <h3><a href="/blog/posts/${post.slug}/">${post.title}</a></h3>
+          <p>${post.excerpt}</p>
+          <div class="blog-meta">
+            <span class="blog-tag">${post.category}</span>
+            <time datetime="${post.date}">${this.formatDate(post.date)}</time>
+          </div>
         </div>
-        <h2 class="blog-post-title">
-          <a href="/blog/posts/${post.slug}/">${post.title}</a>
-        </h2>
-        <p class="blog-post-excerpt">${post.excerpt}</p>
-        <div class="blog-post-tags">
-          ${(post.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
-        </div>
-        <a href="/blog/posts/${post.slug}/" class="blog-read-more">Read More →</a>
       </article>
     `).join('');
 
@@ -234,7 +231,7 @@ class BlogSystem {
             <span class="blog-post-category">${post.category}</span>
           </div>
           <h1 class="blog-post-title">${post.title}</h1>
-          ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="blog-featured-image">` : ''}
+          ${(post.image || post.featured_image) ? `<img src="/assets/images/blog/${post.image || post.featured_image}" alt="${post.title}" class="blog-featured-image">` : ''}
         </header>
         
         <div class="blog-post-content">

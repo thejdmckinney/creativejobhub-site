@@ -99,6 +99,9 @@ const slug = post.slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 // Handle tags array
 const tags = Array.isArray(post.tags) ? post.tags : (post.tags ? [post.tags] : []);
 
+// Handle image filename - use provided image or generate default
+const image = post.image || `${slug}-hero.jpg`;
+
 // Create frontmatter
 const frontmatter = `---
 title: "${title}"
@@ -108,7 +111,7 @@ excerpt: "${excerpt}"
 category: "${category}"
 tags: [${tags.map(tag => `"${tag}"`).join(', ')}]
 status: "${status}"
-image: "${slug}-hero.jpg"
+image: "${image}"
 ---
 
 ${content}`;
@@ -302,11 +305,28 @@ For external content management systems:
 
 ### 4.2 Image Handling
 
-To include images:
+#### Option 1: Using the Blog Admin Interface (Recommended)
 
-1. Upload images to `/blog/assets/images/` directory
-2. Reference in markdown: `![Alt text](/blog/assets/images/your-image.jpg)`
-3. Set frontmatter image: `image: "your-image.jpg"`
+1. **Upload via Admin**: Visit `/admin/blog.html` and use the image upload feature
+2. **Automatic Processing**: The admin interface will:
+   - Show image preview
+   - Generate proper filename (`slug-hero.jpg`)
+   - Include correct image path in frontmatter
+   - Provide upload instructions
+
+#### Option 2: Manual Image Upload
+
+1. **Upload images** to `/assets/images/blog/` directory
+2. **Naming convention**: Use `{post-slug}-hero.{extension}` (e.g., `productivity-tips-hero.jpg`)
+3. **Reference in frontmatter**: `image: "productivity-tips-hero.jpg"`
+4. **Use in content**: `![Alt text](/assets/images/blog/productivity-tips-hero.jpg)`
+
+#### Image Specifications
+
+- **Recommended size**: 1200x600px (2:1 aspect ratio)
+- **Supported formats**: JPG, PNG, SVG
+- **Max file size**: 5MB
+- **SEO tip**: Use descriptive filenames with keywords
 
 ### 4.3 Scheduling
 

@@ -116,6 +116,65 @@
       resize: vertical;
     }
     
+    /* Image Upload Styles */
+    .image-upload-container {
+      margin-bottom: 16px;
+    }
+    
+    .image-upload-area {
+      border: 2px dashed rgba(148,163,184,0.3);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(255,255,255,0.02);
+    }
+    
+    .image-upload-area:hover {
+      border-color: var(--brand);
+      background: rgba(14,165,233,0.05);
+    }
+    
+    .upload-placeholder {
+      color: var(--muted);
+    }
+    
+    .upload-placeholder svg {
+      margin-bottom: 16px;
+      opacity: 0.6;
+    }
+    
+    .upload-placeholder p {
+      margin: 8px 0;
+    }
+    
+    .image-preview img {
+      max-height: 200px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    
+    .image-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    
+    .btn-admin.small {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+    
+    .image-upload-status.success {
+      color: var(--brand-2);
+    }
+    
+    .image-upload-status.error {
+      color: #ef4444;
+    }
+    
     .form-group {
       margin-bottom: 16px;
     }
@@ -321,6 +380,33 @@
       </div>
 
       <div class="form-group">
+        <label class="form-label">Featured Image</label>
+        <div class="image-upload-container">
+          <input type="file" id="post-image" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+          <div class="image-upload-area" onclick="document.getElementById('post-image').click()">
+            <div class="upload-placeholder" id="upload-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21,15 16,10 5,21"/>
+              </svg>
+              <p>Click to upload featured image</p>
+              <p style="font-size: 12px; color: var(--muted);">Recommended: 1200x600px, JPG/PNG/SVG</p>
+            </div>
+            <div class="image-preview" id="image-preview" style="display: none;">
+              <img id="image-preview-img" src="" alt="Preview" style="max-width: 100%; height: auto; border-radius: 8px;">
+              <div class="image-actions" style="margin-top: 12px; display: flex; gap: 8px;">
+                <button type="button" class="btn-admin secondary small" onclick="removeImage()">Remove</button>
+                <button type="button" class="btn-admin secondary small" onclick="document.getElementById('post-image').click()">Change</button>
+              </div>
+            </div>
+          </div>
+          <div class="image-filename" id="image-filename" style="display: none; margin-top: 8px; font-size: 14px; color: var(--muted);"></div>
+          <div class="image-upload-status" id="image-upload-status" style="margin-top: 8px; font-size: 14px;"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label class="form-label">Markdown Content</label>
         <textarea id="post-content" class="markdown-editor" placeholder="# Your Blog Post Title
 
@@ -470,6 +556,84 @@ Ready to get started? [Try Creative Job Hub free](https://app.creativejobhub.com
 Webhook endpoint will be: https://your-n8n-instance.com/webhook/blog-publish`);
     }
 
+    // Image Upload Functions
+    let uploadedImage = null;
+    let uploadedImageName = null;
+
+    function handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        showImageStatus('Please select an image file (JPG, PNG, SVG)', 'error');
+        return;
+      }
+
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        showImageStatus('Image must be less than 5MB', 'error');
+        return;
+      }
+
+      uploadedImage = file;
+      uploadedImageName = file.name;
+
+      // Create preview
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const placeholder = document.getElementById('upload-placeholder');
+        const preview = document.getElementById('image-preview');
+        const previewImg = document.getElementById('image-preview-img');
+        const filename = document.getElementById('image-filename');
+
+        placeholder.style.display = 'none';
+        preview.style.display = 'block';
+        previewImg.src = e.target.result;
+        filename.style.display = 'block';
+        filename.textContent = `Selected: ${file.name}`;
+
+        showImageStatus('Image ready for upload', 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeImage() {
+      uploadedImage = null;
+      uploadedImageName = null;
+      
+      const placeholder = document.getElementById('upload-placeholder');
+      const preview = document.getElementById('image-preview');
+      const filename = document.getElementById('image-filename');
+      
+      placeholder.style.display = 'block';
+      preview.style.display = 'none';
+      filename.style.display = 'none';
+      
+      document.getElementById('post-image').value = '';
+      showImageStatus('Image removed', 'success');
+    }
+
+    function showImageStatus(message, type) {
+      const status = document.getElementById('image-upload-status');
+      status.textContent = message;
+      status.className = `image-upload-status ${type}`;
+      
+      setTimeout(() => {
+        status.textContent = '';
+        status.className = 'image-upload-status';
+      }, 3000);
+    }
+
+    function generateImageFilename(slug) {
+      if (!uploadedImage || !uploadedImageName) {
+        return `${slug}-hero.jpg`; // Default fallback
+      }
+      
+      const extension = uploadedImageName.split('.').pop().toLowerCase();
+      return `${slug}-hero.${extension}`;
+    }
+
     function generateMarkdown() {
       const title = document.getElementById('post-title').value;
       const slug = document.getElementById('post-slug').value;
@@ -484,6 +648,9 @@ Webhook endpoint will be: https://your-n8n-instance.com/webhook/blog-publish`);
         return;
       }
 
+      // Generate image filename based on uploaded file or use default
+      const imageFilename = generateImageFilename(slug);
+
       const markdown = `---
 title: "${title}"
 date: "${new Date().toISOString().split('T')[0]}"
@@ -492,14 +659,20 @@ excerpt: "${excerpt}"
 category: "${category}"
 tags: ["${category}", "field service", "business tips"]
 status: "${status}"
-featured_image: "/assets/images/blog/${slug}.jpg"
+image: "${imageFilename}"
 ---
 
 ${content}`;
 
+      // Show instructions for image upload if an image was selected
+      let instructions = '';
+      if (uploadedImage) {
+        instructions = `\n\n📸 IMPORTANT: Upload your image to GitHub:\n1. Upload "${uploadedImageName}" to /assets/images/blog/\n2. Rename it to "${imageFilename}"\n3. Then run your n8n workflow\n\nImage path in frontmatter: image: "${imageFilename}"`;
+      }
+
       // Copy to clipboard
       navigator.clipboard.writeText(markdown).then(() => {
-        alert(`Markdown generated and copied to clipboard!
+        alert(`Markdown generated and copied to clipboard!${instructions}
 
 File should be saved as: blog/posts/${slug}/index.md`);
       });
