@@ -105,9 +105,9 @@
         <!-- Enhanced Contact Form with Lead Tracking -->
         <div class="contact-card">
           <div id="contact-form-container">
-            <form class="contact-form" id="contact-form" name="contact" method="POST" netlify netlify-honeypot="bot-field" action="/thanks.html">
+            <form class="contact-form" id="contact-form" name="contact">
               <!-- Honeypot for spam protection -->
-              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="bot-field" id="bot-field" />
               
               <!-- Hidden fields for lead tracking -->
               <input type="hidden" name="form_name" value="contact_form" />
@@ -289,31 +289,75 @@
       document.getElementById('timestamp').value = new Date().toISOString();
     });
 
-    // Handle contact form submission with Netlify Forms (fallback to n8n when ready)
+    // Handle contact form submission with n8n webhook
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      // Let Netlify handle the form natively for now
-      // When n8n is ready, we can add custom handling back
+      e.preventDefault(); // Prevent default form submission
       
       const submitBtn = document.getElementById('submit-btn');
       const submitText = document.getElementById('submit-text');
       const submitLoading = document.getElementById('submit-loading');
+      
+      // Check honeypot for spam
+      if (document.getElementById('bot-field').value) {
+        console.log('Spam detected');
+        return;
+      }
       
       // Show loading state
       submitBtn.disabled = true;
       submitText.style.display = 'none';
       submitLoading.style.display = 'inline';
       
-      // Track conversion
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submit', {
-          event_category: 'contact',
-          event_label: 'contact_form',
-          value: 1
-        });
-      }
+      // Collect form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company').value,
+        phone: document.getElementById('phone').value,
+        team_size: document.getElementById('team_size').value,
+        message: document.getElementById('message').value,
+        form_name: 'contact_form',
+        page_url: document.getElementById('page_url').value,
+        referrer: document.getElementById('referrer').value,
+        timestamp: document.getElementById('timestamp').value
+      };
       
-      // Let Netlify handle the actual submission
-      // Form will redirect to /thanks.html automatically
+      try {
+        // TODO: Replace with your actual n8n webhook URL after you create the workflow
+        const n8nWebhookUrl = 'https://creativejobhub.app.n8n.cloud/webhook/contact-form';
+        
+        const response = await fetch(n8nWebhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        if (response.ok) {
+          // Track conversion
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit', {
+              event_category: 'contact',
+              event_label: 'contact_form',
+              value: 1
+            });
+          }
+          
+          // Redirect to thanks page
+          window.location.href = '/thanks.html';
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        showErrorMessage('Unable to send message. Please try again or email us directly at hello@creativejobhub.com');
+        
+        // Reset button
+        submitBtn.disabled = false;
+        submitText.style.display = 'inline';
+        submitLoading.style.display = 'none';
+      }
     });
 
     function showSuccessMessage() {
