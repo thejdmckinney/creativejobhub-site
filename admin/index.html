@@ -540,7 +540,7 @@
               <h3 style="color: var(--brand-2); font-size: 18px; margin: 0;">📞 Lead Capture</h3>
               <span id="leadStatus" style="background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">ACTIVE</span>
             </div>
-            <div style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;">127</div>
+            <div id="leadCount" style="font-size: 24px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Leads this month</div>
             <div style="display: flex; gap: 8px;">
               <a href="lead-tracking.html" class="btn btn-small" style="background: var(--brand-2); color: white; flex: 1; text-align: center; text-decoration: none;">🔍 View Details</a>
@@ -554,7 +554,7 @@
               <h3 style="color: var(--brand); font-size: 18px; margin: 0;">📝 Contact Forms</h3>
               <span id="formStatus" style="background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">HEALTHY</span>
             </div>
-            <div style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;">98.5%</div>
+            <div id="formSuccessRate" style="font-size: 24px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Success rate (7 days)</div>
             <div style="display: flex; gap: 8px;">
               <button class="btn btn-small" onclick="showSection('leads')" style="background: var(--brand); color: white; flex: 1;">📊 Monitor</button>
@@ -566,9 +566,9 @@
           <div style="background: var(--panel); border: 1px solid var(--ring); border-radius: 12px; padding: 20px;">
             <div style="display: flex; align-items: center; justify-content: between; margin-bottom: 16px;">
               <h3 style="color: #f59e0b; font-size: 18px; margin: 0;">📈 Analytics</h3>
-              <span id="analyticsStatus" style="background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">TRACKING</span>
+              <span id="analyticsStatus" style="background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">NOT CONNECTED</span>
             </div>
-            <div style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;">2,847</div>
+            <div id="monthlyVisitors" style="font-size: 24px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Visitors this month</div>
             <div style="display: flex; gap: 8px;">
               <button class="btn btn-small" onclick="showSection('analytics')" style="background: #f59e0b; color: white; flex: 1;">📊 Dashboard</button>
@@ -582,7 +582,7 @@
               <h3 style="color: #8b5cf6; font-size: 18px; margin: 0;">✍️ Blog</h3>
               <span id="blogStatus" style="background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;">ACTIVE</span>
             </div>
-            <div style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;">3</div>
+            <div id="publishedPosts" style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 8px;">3</div>
             <div style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">Published posts</div>
             <div style="display: flex; gap: 8px;">
               <button class="btn btn-small" onclick="showSection('blog')" style="background: #8b5cf6; color: white; flex: 1;">✏️ Manage</button>
@@ -986,24 +986,24 @@
         <!-- Key Metrics -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
           <div style="background: var(--panel); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; text-align: center;">
-            <div style="font-size: 32px; font-weight: 700; color: var(--brand); margin-bottom: 8px;">2,847</div>
+            <div id="analyticsVisitors" style="font-size: 32px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="color: var(--muted);">Monthly Visitors</div>
-            <div style="font-size: 12px; color: var(--brand-2);">↗️ +18% vs last month</div>
+            <div style="font-size: 12px; color: var(--muted);" id="visitorsChange">Connect Google Analytics</div>
           </div>
           <div style="background: var(--panel); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; text-align: center;">
-            <div style="font-size: 32px; font-weight: 700; color: var(--brand-2); margin-bottom: 8px;">156</div>
+            <div id="analyticsConversions" style="font-size: 32px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="color: var(--muted);">Demo Requests</div>
-            <div style="font-size: 12px; color: var(--brand-2);">↗️ +34% vs last month</div>
+            <div style="font-size: 12px; color: var(--muted);" id="conversionsChange">Connect Google Analytics</div>
           </div>
           <div style="background: var(--panel); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; text-align: center;">
-            <div style="font-size: 32px; font-weight: 700; color: #f59e0b; margin-bottom: 8px;">5.2%</div>
+            <div id="analyticsConversionRate" style="font-size: 32px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="color: var(--muted);">Conversion Rate</div>
-            <div style="font-size: 12px; color: var(--brand-2);">↗️ +0.8% vs last month</div>
+            <div style="font-size: 12px; color: var(--muted);" id="conversionRateChange">Connect Google Analytics</div>
           </div>
-          <div style="background: var(--panel); border: 1st solid var(--ring); border-radius: 12px; padding: 20px; text-align: center;">
-            <div style="font-size: 32px; font-weight: 700; color: #8b5cf6; margin-bottom: 8px;">3m 24s</div>
+          <div style="background: var(--panel); border: 1px solid var(--ring); border-radius: 12px; padding: 20px; text-align: center;">
+            <div id="analyticsSessionDuration" style="font-size: 32px; font-weight: 700; color: var(--muted); margin-bottom: 8px;">--</div>
             <div style="color: var(--muted);">Avg Session</div>
-            <div style="font-size: 12px; color: var(--brand-2);">↗️ +22s vs last month</div>
+            <div style="font-size: 12px; color: var(--muted);" id="sessionDurationChange">Connect Google Analytics</div>
           </div>
         </div>
         
@@ -2694,46 +2694,35 @@ ${new Date().toISOString()},Revenue,45670`;
       
       console.log('Updating dashboard with real analytics data:', analyticsData);
 
-      // Update Overview Section Stats with real data
-      const overviewSection = document.getElementById('overviewSection');
-      if (overviewSection) {
-        const statCards = overviewSection.querySelectorAll('.stats-grid > div');
-        
-        // Update Monthly Visitors
-        if (statCards.length >= 1) {
-          const visitorElement = statCards[0].querySelector('div[style*="font-size: 24px"]');
-          if (visitorElement) {
-            visitorElement.textContent = formatNumber(analyticsData.monthlyVisitors);
-            visitorElement.style.color = 'var(--brand-2)';
-          }
-        }
-        
-        // Update Demo Requests / Conversions
-        if (statCards.length >= 2) {
-          const demoElement = statCards[1].querySelector('div[style*="font-size: 24px"]');
-          if (demoElement) {
-            demoElement.textContent = analyticsData.conversions.toString();
-            demoElement.style.color = 'var(--brand-2)';
-          }
-        }
-        
-        // Update Conversion Rate
-        if (statCards.length >= 3) {
-          const conversionElement = statCards[2].querySelector('div[style*="font-size: 24px"]');
-          if (conversionElement) {
-            conversionElement.textContent = `${analyticsData.conversionRate.toFixed(1)}%`;
-            conversionElement.style.color = 'var(--brand-2)';
-          }
-        }
-        
-        // Update Sessions (if there's a 4th stat)
-        if (statCards.length >= 4) {
-          const sessionElement = statCards[3].querySelector('div[style*="font-size: 24px"]');
-          if (sessionElement) {
-            sessionElement.textContent = formatNumber(analyticsData.sessions);
-            sessionElement.style.color = 'var(--brand-2)';
-          }
-        }
+      // Update Overview Section Cards with real Google Analytics data
+      
+      // Update Monthly Visitors Card
+      const monthlyVisitorsElement = document.getElementById('monthlyVisitors');
+      if (monthlyVisitorsElement) {
+        monthlyVisitorsElement.textContent = formatNumber(analyticsData.monthlyVisitors);
+        monthlyVisitorsElement.style.color = 'var(--brand-2)';
+      }
+      
+      // Update Lead Count (use conversions as demo requests/leads)
+      const leadCountElement = document.getElementById('leadCount');
+      if (leadCountElement) {
+        leadCountElement.textContent = analyticsData.conversions.toString();
+        leadCountElement.style.color = 'var(--brand-2)';
+      }
+      
+      // Update Analytics Status
+      const analyticsStatusElement = document.getElementById('analyticsStatus');
+      if (analyticsStatusElement) {
+        analyticsStatusElement.textContent = 'CONNECTED';
+        analyticsStatusElement.style.background = 'var(--brand-2)';
+      }
+      
+      // Update Form Success Rate (calculate from bounce rate - inverted)
+      const formSuccessRateElement = document.getElementById('formSuccessRate');
+      if (formSuccessRateElement && analyticsData.bounceRate !== undefined) {
+        const successRate = Math.max(0, 100 - analyticsData.bounceRate).toFixed(1);
+        formSuccessRateElement.textContent = `${successRate}%`;
+        formSuccessRateElement.style.color = 'var(--brand-2)';
       }
 
       // Update Analytics Section
@@ -2747,15 +2736,34 @@ ${new Date().toISOString()},Revenue,45670`;
     }
 
     function updateDashboardWithNoData() {
-      // Remove any fake data and show "No Data" states
-      const overviewSection = document.getElementById('overviewSection');
-      if (overviewSection) {
-        // Update all numbers to show no data
-        const numberElements = overviewSection.querySelectorAll('div[style*="font-size: 24px"]');
-        numberElements.forEach(element => {
-          element.textContent = '--';
-          element.style.color = 'var(--muted)';
-        });
+      // Update specific overview cards to show "No Data" states
+      
+      // Monthly Visitors - show no data
+      const monthlyVisitorsElement = document.getElementById('monthlyVisitors');
+      if (monthlyVisitorsElement) {
+        monthlyVisitorsElement.textContent = '--';
+        monthlyVisitorsElement.style.color = 'var(--muted)';
+      }
+      
+      // Lead Count - show no data
+      const leadCountElement = document.getElementById('leadCount');
+      if (leadCountElement) {
+        leadCountElement.textContent = '--';
+        leadCountElement.style.color = 'var(--muted)';
+      }
+      
+      // Form Success Rate - show no data
+      const formSuccessRateElement = document.getElementById('formSuccessRate');
+      if (formSuccessRateElement) {
+        formSuccessRateElement.textContent = '--';
+        formSuccessRateElement.style.color = 'var(--muted)';
+      }
+      
+      // Analytics Status - show not connected
+      const analyticsStatusElement = document.getElementById('analyticsStatus');
+      if (analyticsStatusElement) {
+        analyticsStatusElement.textContent = 'NOT CONNECTED';
+        analyticsStatusElement.style.background = 'var(--muted)';
       }
 
       updateAnalyticsSection();
@@ -2764,7 +2772,45 @@ ${new Date().toISOString()},Revenue,45670`;
       // Update GA connection status
       updateGAConnectionStatus();
     }
-    
+
+    // Update analytics section to show no data state
+    function updateAnalyticsSectionNoData() {
+      // Set all analytics cards to show no data
+      const analyticsVisitorsElement = document.getElementById('analyticsVisitors');
+      if (analyticsVisitorsElement) {
+        analyticsVisitorsElement.textContent = '--';
+        analyticsVisitorsElement.style.color = 'var(--muted)';
+      }
+      
+      const analyticsConversionsElement = document.getElementById('analyticsConversions');
+      if (analyticsConversionsElement) {
+        analyticsConversionsElement.textContent = '--';
+        analyticsConversionsElement.style.color = 'var(--muted)';
+      }
+      
+      const analyticsConversionRateElement = document.getElementById('analyticsConversionRate');
+      if (analyticsConversionRateElement) {
+        analyticsConversionRateElement.textContent = '--';
+        analyticsConversionRateElement.style.color = 'var(--muted)';
+      }
+      
+      const analyticsSessionDurationElement = document.getElementById('analyticsSessionDuration');
+      if (analyticsSessionDurationElement) {
+        analyticsSessionDurationElement.textContent = '--';
+        analyticsSessionDurationElement.style.color = 'var(--muted)';
+      }
+      
+      // Update change indicators
+      const changeElements = ['visitorsChange', 'conversionsChange', 'conversionRateChange', 'sessionDurationChange'];
+      changeElements.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.textContent = 'Connect Google Analytics';
+          element.style.color = 'var(--muted)';
+        }
+      });
+    }
+
     function addRealDataIndicator() {
       const analyticsSection = document.getElementById('analyticsSection');
       if (!analyticsSection) return;
@@ -3030,52 +3076,69 @@ ${new Date().toISOString()},Revenue,45670`;
       const data = analyticsData || realAnalyticsData?.data;
       if (!data) {
         console.log('No analytics data available for section update');
+        // Show no data state in analytics section
+        updateAnalyticsSectionNoData();
         return;
       }
       
-      console.log('Updating analytics section with:', data);
+      console.log('Updating analytics section with real data:', data);
 
-      // Update key metrics in the analytics section
-      const metricDivs = analyticsSection.querySelectorAll('div[style*="font-size: 32px"]');
-      console.log('Found analytics metric divs:', metricDivs.length);
+      // Update analytics section cards with specific IDs
       
-      if (metricDivs.length >= 4) {
-        // Update visitors
-        metricDivs[0].textContent = formatNumber(data.monthlyVisitors);
-        metricDivs[0].style.color = 'var(--brand-2)';
-        
-        // Update demo requests/conversions
-        metricDivs[1].textContent = data.conversions.toString();
-        metricDivs[1].style.color = 'var(--brand-2)';
-        
-        // Update conversion rate
-        metricDivs[2].textContent = data.conversionRate.toFixed(1) + '%';
-        metricDivs[2].style.color = 'var(--brand-2)';
-        
-        // Update session duration
-        metricDivs[3].textContent = formatDuration(data.avgSessionDuration);
-        metricDivs[3].style.color = 'var(--brand-2)';
+      // Update Monthly Visitors
+      const analyticsVisitorsElement = document.getElementById('analyticsVisitors');
+      if (analyticsVisitorsElement) {
+        analyticsVisitorsElement.textContent = formatNumber(data.monthlyVisitors);
+        analyticsVisitorsElement.style.color = 'var(--brand)';
+      }
+      
+      const visitorsChangeElement = document.getElementById('visitorsChange');
+      if (visitorsChangeElement) {
+        visitorsChangeElement.textContent = '📊 Real Google Analytics Data';
+        visitorsChangeElement.style.color = 'var(--brand-2)';
+      }
+      
+      // Update Demo Requests/Conversions
+      const analyticsConversionsElement = document.getElementById('analyticsConversions');
+      if (analyticsConversionsElement) {
+        analyticsConversionsElement.textContent = data.conversions.toString();
+        analyticsConversionsElement.style.color = 'var(--brand-2)';
+      }
+      
+      const conversionsChangeElement = document.getElementById('conversionsChange');
+      if (conversionsChangeElement) {
+        conversionsChangeElement.textContent = '📊 Real Google Analytics Data';
+        conversionsChangeElement.style.color = 'var(--brand-2)';
+      }
+      
+      // Update Conversion Rate
+      const analyticsConversionRateElement = document.getElementById('analyticsConversionRate');
+      if (analyticsConversionRateElement) {
+        analyticsConversionRateElement.textContent = data.conversionRate.toFixed(1) + '%';
+        analyticsConversionRateElement.style.color = '#f59e0b';
+      }
+      
+      const conversionRateChangeElement = document.getElementById('conversionRateChange');
+      if (conversionRateChangeElement) {
+        conversionRateChangeElement.textContent = '📊 Real Google Analytics Data';
+        conversionRateChangeElement.style.color = 'var(--brand-2)';
+      }
+      
+      // Update Session Duration
+      const analyticsSessionDurationElement = document.getElementById('analyticsSessionDuration');
+      if (analyticsSessionDurationElement) {
+        analyticsSessionDurationElement.textContent = formatDuration(data.avgSessionDuration);
+        analyticsSessionDurationElement.style.color = '#8b5cf6';
+      }
+      
+      const sessionDurationChangeElement = document.getElementById('sessionDurationChange');
+      if (sessionDurationChangeElement) {
+        sessionDurationChangeElement.textContent = '📊 Real Google Analytics Data';
+        sessionDurationChangeElement.style.color = 'var(--brand-2)';
       }
 
-      // Find and update additional metrics if available
-      const allMetricElements = analyticsSection.querySelectorAll('div[style*="font-size"]');
-      allMetricElements.forEach((element, index) => {
-        const text = element.parentElement?.querySelector('h4, div')?.textContent;
-        
-        // Update bounce rate if found
-        if (text && text.includes('Bounce Rate')) {
-          element.textContent = data.bounceRate.toFixed(1) + '%';
-          element.style.color = 'var(--brand-2)';
-        }
-        
-        // Update sessions if found
-        if (text && text.includes('Sessions')) {
-          element.textContent = formatNumber(data.sessions);
-          element.style.color = 'var(--brand-2)';
-        }
-      });
-
-      // Update traffic sources section
+      // Update traffic sources section if data is available
+      // (This part would need traffic source data from GA API)
       const trafficSections = analyticsSection.querySelectorAll('h3');
       let trafficContainer = null;
       
