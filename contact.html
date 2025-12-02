@@ -105,9 +105,12 @@
         <!-- Enhanced Contact Form with Lead Tracking -->
         <div class="contact-card">
           <div id="contact-form-container">
-            <form class="contact-form" id="contact-form" name="contact">
+            <form class="contact-form" id="contact-form" name="contact" action="https://formspree.io/f/xkgqepro" method="POST">
+              <!-- Formspree redirect after submission -->
+              <input type="hidden" name="_next" value="https://creativejobhub.com/thanks.html" />
+              
               <!-- Honeypot for spam protection -->
-              <input type="hidden" name="bot-field" id="bot-field" />
+              <input type="hidden" name="_gotcha" style="display:none" />
               
               <!-- Hidden fields for lead tracking -->
               <input type="hidden" name="form_name" value="contact_form" />
@@ -289,74 +292,14 @@
       document.getElementById('timestamp').value = new Date().toISOString();
     });
 
-    // Handle contact form submission with n8n webhook
-    document.getElementById('contact-form').addEventListener('submit', async function(e) {
-      e.preventDefault(); // Prevent default form submission
-      
-      const submitBtn = document.getElementById('submit-btn');
-      const submitText = document.getElementById('submit-text');
-      const submitLoading = document.getElementById('submit-loading');
-      
-      // Check honeypot for spam
-      if (document.getElementById('bot-field').value) {
-        console.log('Spam detected');
-        return;
-      }
-      
-      // Show loading state
-      submitBtn.disabled = true;
-      submitText.style.display = 'none';
-      submitLoading.style.display = 'inline';
-      
-      // Collect form data
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        company: document.getElementById('company').value,
-        phone: document.getElementById('phone').value,
-        team_size: document.getElementById('team_size').value,
-        message: document.getElementById('message').value,
-        form_name: 'contact_form',
-        page_url: document.getElementById('page_url').value,
-        referrer: document.getElementById('referrer').value,
-        timestamp: document.getElementById('timestamp').value
-      };
-      
-      try {
-        // TODO: Replace with your actual n8n webhook URL after you create the workflow
-        const n8nWebhookUrl = 'https://creativejobhub.app.n8n.cloud/webhook/contact-form';
-        
-        const response = await fetch(n8nWebhookUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
+    // Track form submission with Google Analytics
+    document.getElementById('contact-form').addEventListener('submit', function() {
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'form_submit', {
+          event_category: 'contact',
+          event_label: 'contact_form',
+          value: 1
         });
-        
-        if (response.ok) {
-          // Track conversion
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'form_submit', {
-              event_category: 'contact',
-              event_label: 'contact_form',
-              value: 1
-            });
-          }
-          
-          // Redirect to thanks page
-          window.location.href = '/thanks.html';
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        console.error('Form submission error:', error);
-        showErrorMessage('Unable to send message. Please try again or email us directly at hello@creativejobhub.com');
-        
-        // Reset button
-        submitBtn.disabled = false;
-        submitText.style.display = 'inline';
-        submitLoading.style.display = 'none';
       }
     });
 
