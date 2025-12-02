@@ -2198,7 +2198,7 @@ ${new Date().toISOString()},Revenue,45670`;
     // Google Analytics OAuth Configuration
     const gaConfig = {
       clientId: '319838161086-8ql22puql1c7n8ffdqih77jfire3gbkm.apps.googleusercontent.com',
-      clientSecret: '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', // Note: In production, keep this secure
+      // Note: Client secret should be handled server-side for security
       projectId: 'creative-job-hub-analytics',
       authUri: 'https://accounts.google.com/o/oauth2/auth',
       tokenUri: 'https://oauth2.googleapis.com/token',
@@ -2360,42 +2360,13 @@ ${new Date().toISOString()},Revenue,45670`;
     }
 
     // Refresh the access token using refresh token
+    // Note: This requires server-side implementation for security
     async function refreshAccessToken(refreshToken) {
-      const response = await fetch('https://oauth2.googleapis.com/token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-          client_id: gaConfig.clientId,
-          client_secret: gaConfig.clientSecret,
-          refresh_token: refreshToken,
-          grant_type: 'refresh_token'
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Token refresh failed: ${response.status}`);
-      }
-
-      const tokens = await response.json();
-      
-      // Store new tokens
-      localStorage.setItem('ga_access_token', tokens.access_token);
-      
-      if (tokens.refresh_token) {
-        localStorage.setItem('ga_refresh_token', tokens.refresh_token);
-      }
-      
-      if (tokens.expires_in) {
-        const expiryTime = Date.now() + (tokens.expires_in * 1000);
-        localStorage.setItem('ga_token_expiry', expiryTime.toString());
-      }
-      
-      console.log('Token refreshed successfully');
-      showNotification('🔄 Access token refreshed', 'info');
-      
-      return tokens;
+      // Client-side token refresh requires exposing client_secret which is a security risk
+      // For production, this should be handled by a secure server endpoint
+      console.warn('Token refresh requires server-side implementation for security');
+      showNotification('🔐 Token expired. Please reconnect to Google Analytics', 'warning');
+      throw new Error('Token refresh requires server-side implementation');
     }
 
     // Fetch available Google Analytics properties
