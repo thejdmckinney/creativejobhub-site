@@ -2214,9 +2214,9 @@ ${new Date().toISOString()},Revenue,45670`;
     }
 
     // Google Analytics OAuth Configuration
+    // TODO: Move these to environment variables or secure backend
     const gaConfig = {
-      clientId: '319838161086-8ql22puql1c7n8ffdqih77jfire3gbkm.apps.googleusercontent.com',
-      // Note: Client secret should be handled server-side for security
+      clientId: 'YOUR_GOOGLE_OAUTH_CLIENT_ID', // Replace with your OAuth client ID
       projectId: 'creative-job-hub-analytics',
       authUri: 'https://accounts.google.com/o/oauth2/auth',
       tokenUri: 'https://oauth2.googleapis.com/token',
