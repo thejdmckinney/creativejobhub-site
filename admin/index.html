@@ -1358,12 +1358,24 @@
       
       // Initialize analytics data
       setTimeout(() => {
-        updateGAConnectionStatus();
-        fetchActualAnalyticsData().catch(() => {
-          console.log('No real analytics data available - showing no data state');
+        // First check if we have any authentication before trying to fetch data
+        const accessToken = localStorage.getItem('ga_access_token');
+        const authCode = localStorage.getItem('ga_auth_code');
+        
+        if (accessToken || authCode) {
+          // We have some form of authentication, try to fetch data
+          fetchActualAnalyticsData().catch(() => {
+            console.log('No real analytics data available - showing no data state');
+            showNoDataState();
+            addRealDataIndicator(); // Show NO DATA indicator
+          });
+        } else {
+          // No authentication at all, just show no data state
           showNoDataState();
-          addRealDataIndicator(); // Show NO DATA indicator
-        });
+          addRealDataIndicator();
+        }
+        
+        updateGAConnectionStatus();
       }, 100);
     }
     
@@ -1389,10 +1401,14 @@
       // Initialize analytics if showing overview
       if (section === 'overview') {
         setTimeout(() => {
-          updateGAConnectionStatus();
-          if (!realAnalyticsData || !realAnalyticsData.authenticated) {
+          // Only update connection status, don't force data fetch
+          if (realAnalyticsData && realAnalyticsData.authenticated) {
+            updateGAConnectionStatus();
+            addRealDataIndicator();
+          } else {
             showNoDataState();
             addRealDataIndicator();
+            updateGAConnectionStatus();
           }
         }, 100);
       }
@@ -2226,7 +2242,7 @@ ${new Date().toISOString()},Revenue,45670`;
         if (accessToken && tokenExpiry && Date.now() < parseInt(tokenExpiry)) {
           // Token is valid, fetch data directly
           showNotification('Loading real analytics data...', 'info');
-          await fetchRealAnalyticsData();
+          await fetchActualAnalyticsData();
           analyticsInitialized = true;
         } else {
           // Check if we have an auth code to exchange
@@ -2331,31 +2347,25 @@ ${new Date().toISOString()},Revenue,45670`;
       
       // If no access token, return null (need to re-authenticate)
       if (!accessToken) {
+        console.log('No access token found in localStorage');
         return null;
       }
       
       // If token is still valid (with 5 minute buffer), return it
       if (tokenExpiry && Date.now() < parseInt(tokenExpiry) - 300000) { // 5 minutes buffer
+        console.log('Access token is still valid');
         return accessToken;
       }
       
-      // If we have a refresh token, try to refresh
-      if (refreshToken) {
-        try {
-          console.log('Access token expired, refreshing...');
-          const newTokens = await refreshAccessToken(refreshToken);
-          return newTokens.access_token;
-        } catch (error) {
-          console.error('Token refresh failed:', error);
-          // Clear invalid tokens
-          localStorage.removeItem('ga_access_token');
-          localStorage.removeItem('ga_refresh_token');
-          localStorage.removeItem('ga_token_expiry');
-          return null;
-        }
-      }
+      // Token is expired - for now, just return null since refresh requires server-side implementation
+      console.log('Access token expired, re-authentication required');
+      showNotification('🔐 Access token expired. Please reconnect to Google Analytics', 'warning');
       
-      // No refresh token or refresh failed - need to re-authenticate
+      // Clear expired tokens
+      localStorage.removeItem('ga_access_token');
+      localStorage.removeItem('ga_refresh_token');
+      localStorage.removeItem('ga_token_expiry');
+      
       return null;
     }
 
@@ -2559,17 +2569,18 @@ ${new Date().toISOString()},Revenue,45670`;
 
     // Fetch ACTUAL Google Analytics data (no fake data)
     async function fetchActualAnalyticsData() {
-      const accessToken = localStorage.getItem('ga_access_token');
-      if (!accessToken) {
-        showNoDataState();
-        return;
-      }
-
       try {
+        const validToken = await ensureValidToken();
+        if (!validToken) {
+          console.log('No valid access token available');
+          showNoDataState();
+          return;
+        }
+
         showNotification('🔍 Fetching real data from Google Analytics...', 'info');
         
         // First, get available GA4 properties
-        const properties = await fetchGAProperties(accessToken);
+        const properties = await fetchGAProperties(validToken);
         if (!properties || properties.length === 0) {
           throw new Error('No Google Analytics properties found');
         }
@@ -2799,10 +2810,10 @@ ${new Date().toISOString()},Revenue,45670`;
         statusElement.textContent = 'Connected';
         statusElement.style.color = 'var(--brand-2)';
         
-        // Show property selection and populate it
-        if (propertySelection) {
+        // Show property selection and populate it if we have valid data
+        if (propertySelection && realAnalyticsData?.properties) {
           propertySelection.style.display = 'block';
-          populateGAProperties();
+          populateGAPropertiesFromCache();
         }
       } else {
         statusElement.textContent = 'Not Connected';
@@ -2813,6 +2824,34 @@ ${new Date().toISOString()},Revenue,45670`;
           propertySelection.style.display = 'none';
         }
       }
+    }
+
+    // Populate properties from cached data (safe to call without API)
+    function populateGAPropertiesFromCache() {
+      const selectElement = document.getElementById('gaPropertySelect');
+      if (!selectElement || !realAnalyticsData?.properties) return;
+      
+      const properties = realAnalyticsData.properties;
+      selectElement.innerHTML = '';
+      
+      if (properties.length === 0) {
+        selectElement.innerHTML = '<option value="">No properties found</option>';
+        return;
+      }
+      
+      const selectedProperty = localStorage.getItem('ga_selected_property');
+      
+      properties.forEach(property => {
+        const option = document.createElement('option');
+        option.value = property.name;
+        option.textContent = `${property.displayName} (${property.name})`;
+        
+        if (selectedProperty === property.name) {
+          option.selected = true;
+        }
+        
+        selectElement.appendChild(option);
+      });
     }
 
     // Populate GA properties dropdown
@@ -2892,9 +2931,9 @@ ${new Date().toISOString()},Revenue,45670`;
       
       realAnalyticsData = { authenticated: false, noData: true };
       
-      updateGAConnectionStatus();
       showNoDataState();
       addRealDataIndicator();
+      updateGAConnectionStatus();
       
       showNotification('🔌 Google Analytics disconnected', 'success');
     }
@@ -3176,16 +3215,20 @@ ${new Date().toISOString()},Revenue,45670`;
           if (isAuthenticated) {
             connectBtn.style.cssText = 'background: linear-gradient(135deg, #22c55e, #10b981); color: white; display: flex; align-items: center; gap: 8px;';
             connectBtn.innerHTML = '✅ Analytics Connected - Refresh Data';
-            connectBtn.onclick = () => {
+            connectBtn.onclick = async () => {
               showNotification('🔄 Refreshing analytics data from Google...', 'info');
               
               // Force refresh all data
-              simulateRealData();
+              await fetchActualAnalyticsData();
               
               // Update all sections
               setTimeout(() => {
-                updateDashboardWithRealData();
-                updateAnalyticsSection();
+                if (realAnalyticsData?.data) {
+                  updateDashboardWithRealData(realAnalyticsData.data);
+                  updateAnalyticsSection(realAnalyticsData.data);
+                } else {
+                  showNoDataState();
+                }
                 updateSystemMetrics();
                 addRealDataIndicator();
                 
