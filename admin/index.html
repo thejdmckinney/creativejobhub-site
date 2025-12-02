@@ -472,6 +472,12 @@
         gap: 16px;
       }
     }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -1172,6 +1178,9 @@
                   <button class="btn btn-small" onclick="initializeRealAnalytics()" style="background: var(--brand); color: white;">Connect</button>
                   <button class="btn btn-small" onclick="disconnectGoogleAnalytics()" style="background: var(--danger); color: white;">Disconnect</button>
                 </div>
+                <div style="margin-top: 8px; font-size: 12px; color: var(--muted);">
+                  ⚠️ Only real Google Analytics data will be shown. No fake or demo data.
+                </div>
               </div>
             </div>
           </div>
@@ -1334,6 +1343,16 @@
     function showDashboard() {
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('dashboard').classList.add('active');
+      
+      // Initialize analytics data
+      setTimeout(() => {
+        updateGAConnectionStatus();
+        fetchActualAnalyticsData().catch(() => {
+          console.log('No real analytics data available - showing no data state');
+          showNoDataState();
+          addRealDataIndicator(); // Show NO DATA indicator
+        });
+      }, 100);
     }
     
     function logout() {
@@ -1354,6 +1373,17 @@
       document.getElementById(section + 'Section').style.display = 'block';
       
       currentSection = section;
+      
+      // Initialize analytics if showing overview
+      if (section === 'overview') {
+        setTimeout(() => {
+          updateGAConnectionStatus();
+          if (!realAnalyticsData || !realAnalyticsData.authenticated) {
+            showNoDataState();
+            addRealDataIndicator();
+          }
+        }, 100);
+      }
     }
     
     // Drag and drop functionality
@@ -2195,8 +2225,8 @@ ${new Date().toISOString()},Revenue,45670`;
         }
       } catch (error) {
         console.error('Analytics initialization error:', error);
-        showNotification('Using demo data - click "Connect Google Analytics" to view real data', 'info');
-        simulateRealData();
+        showNotification('No data shown - real Google Analytics connection required', 'info');
+        showNoDataState();
       }
     }
 
@@ -2266,13 +2296,14 @@ ${new Date().toISOString()},Revenue,45670`;
         showNotification('✅ Successfully authenticated! Loading analytics data...', 'success');
         
         // Now fetch real data
-        await fetchRealAnalyticsData();
+        await fetchActualAnalyticsData();
         analyticsInitialized = true;
         
       } catch (error) {
         console.error('Token exchange error:', error);
-        showNotification('❌ Authentication failed. Using demo data.', 'error');
-        simulateRealData();
+        showNotification('❌ Authentication failed. No data will be shown.', 'error');
+        showNoDataState();
+        addRealDataIndicator(); // Show NO DATA indicator
       }
     }
 
@@ -2303,45 +2334,46 @@ ${new Date().toISOString()},Revenue,45670`;
       }
     }
 
-    function simulateRealData() {
-      // Generate OBVIOUSLY different "real" analytics data with unique patterns
-      const currentMonth = new Date().toLocaleString('default', { month: 'long' });
-      
+    // Fetch ACTUAL Google Analytics data (no fake data)
+    async function fetchActualAnalyticsData() {
+      if (!accessToken) {
+        showNoDataState();
+        return;
+      }
+
+      try {
+        showNotification('Fetching real data from Google Analytics...', 'info');
+        
+        // This is where you'd make actual Google Analytics API calls
+        // For now, we'll show "No Data" until real API is implemented
+        showNotification('⚠️ Real Google Analytics API integration needed. No fake data shown.', 'error');
+        showNoDataState();
+        
+      } catch (error) {
+        console.error('Failed to fetch real analytics:', error);
+        showNotification('Failed to fetch analytics data', 'error');
+        showNoDataState();
+      }
+    }
+
+    function showNoDataState() {
       realAnalyticsData = {
-        visitors: 4247, // Fixed unique number to show it's "real"
-        demos: 89, // Different from demo data
-        conversionRate: "3.7", // Specific real-looking rate
-        sessionDuration: 312, // 5m 12s - different from demo
-        pageViews: 8934,
-        bounceRate: "42.3",
-        todayVisitors: 127, // For overview section
-        topPages: [
-          { page: 'Homepage (' + currentMonth + ')', views: 2145 }, // Add month to show it's real
-          { page: 'Pricing (Live Data)', views: 978 },
-          { page: 'HVAC Software', views: 634 },
-          { page: 'Field Service Management', views: 423 },
-          { page: 'Blog Articles', views: 289 }
-        ],
-        trafficSources: [
-          { source: 'Google Search (Organic)', visitors: 2847, percentage: 0 },
-          { source: 'Direct Traffic', visitors: 892, percentage: 0 },
-          { source: 'LinkedIn Ads', visitors: 334, percentage: 0 },
-          { source: 'Email Newsletter', visitors: 174, percentage: 0 }
-        ],
-        authenticated: true,
-        lastUpdated: new Date().toLocaleTimeString(),
-        dataSource: 'Google Analytics API'
+        visitors: 0,
+        demos: 0,
+        conversionRate: "0.0",
+        sessionDuration: 0,
+        pageViews: 0,
+        bounceRate: "0.0",
+        todayVisitors: 0,
+        topPages: [],
+        trafficSources: [],
+        authenticated: false,
+        noData: true,
+        message: 'No real data available - Google Analytics API integration required'
       };
 
-      // Calculate percentages
-      const totalTraffic = realAnalyticsData.trafficSources.reduce((sum, source) => sum + source.visitors, 0);
-      realAnalyticsData.trafficSources.forEach(source => {
-        source.percentage = ((source.visitors / totalTraffic) * 100).toFixed(0);
-      });
-
-      console.log('Real analytics data generated:', realAnalyticsData);
-      updateDashboardWithRealData();
-      showNotification('🔄 Dashboard updated with real Google Analytics data!', 'success');
+      updateDashboardWithNoData();
+      showNotification('No fake data shown - connect to real Google Analytics API', 'info');
     }
 
     async function initializeGAEmbedAPI() {
@@ -2389,60 +2421,101 @@ ${new Date().toISOString()},Revenue,45670`;
       
       console.log('Updating dashboard with real data...');
 
-      // Update Overview Section Stats with more specific targeting
+      // Update Overview Section Stats with real data only
       const overviewSection = document.getElementById('overviewSection');
       if (overviewSection) {
-        // Update all visitor-related numbers with distinctive values
         const visitorElements = overviewSection.querySelectorAll('div[style*="font-size: 24px"]');
-        console.log('Found visitor elements:', visitorElements.length);
         
-        // First element should be monthly visitors (127 -> real number)
-        if (visitorElements.length >= 1) {
-          visitorElements[0].textContent = realAnalyticsData.todayVisitors || '127';
-          visitorElements[0].style.color = 'var(--brand-2)'; // Make it green to show it's real
-        }
-        
-        // Update the analytics visitor number (2,847 -> real number)
-        const analyticsElements = overviewSection.querySelectorAll('div[style*="font-size: 24px; font-weight: 700; color: var(--text)"]');
-        if (analyticsElements.length >= 1) {
-          analyticsElements[0].textContent = realAnalyticsData.visitors.toLocaleString();
-          analyticsElements[0].style.color = 'var(--brand-2)'; // Make it green
+        if (realAnalyticsData.noData) {
+          // Show "No Data" state
+          if (visitorElements.length >= 1) {
+            visitorElements[0].textContent = '--';
+            visitorElements[0].style.color = 'var(--muted)';
+          }
+        } else {
+          // Show real data
+          if (visitorElements.length >= 1) {
+            visitorElements[0].textContent = realAnalyticsData.todayVisitors || '--';
+            visitorElements[0].style.color = 'var(--brand-2)';
+          }
         }
       }
 
-      // Update Analytics Section with real data
+      // Update Analytics Section
       updateAnalyticsSection();
       
-      // Update system status with real metrics
+      // Update system status
       updateSystemMetrics();
       
-      // Add a visual indicator that this is real data
+      // Add indicator
       addRealDataIndicator();
+    }
+
+    function updateDashboardWithNoData() {
+      // Remove any fake data and show "No Data" states
+      const overviewSection = document.getElementById('overviewSection');
+      if (overviewSection) {
+        // Update all numbers to show no data
+        const numberElements = overviewSection.querySelectorAll('div[style*="font-size: 24px"]');
+        numberElements.forEach(element => {
+          element.textContent = '--';
+          element.style.color = 'var(--muted)';
+        });
+      }
+
+      updateAnalyticsSection();
+      updateSystemMetrics();
+      
+      // Update GA connection status
+      updateGAConnectionStatus();
     }
     
     function addRealDataIndicator() {
-      // Add a "LIVE DATA" indicator to show this is real
       const analyticsSection = document.getElementById('analyticsSection');
-      if (analyticsSection && realAnalyticsData.authenticated) {
-        const header = analyticsSection.querySelector('h2');
-        if (header && !header.querySelector('.live-indicator')) {
-          const liveIndicator = document.createElement('span');
-          liveIndicator.className = 'live-indicator';
-          liveIndicator.style.cssText = 'background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 12px; animation: pulse 2s infinite;';
-          liveIndicator.innerHTML = '🔴 LIVE DATA';
-          header.appendChild(liveIndicator);
-          
-          // Add CSS animation
-          const style = document.createElement('style');
-          style.textContent = `
-            @keyframes pulse {
-              0% { opacity: 1; }
-              50% { opacity: 0.5; }
-              100% { opacity: 1; }
-            }
-          `;
-          document.head.appendChild(style);
-        }
+      if (!analyticsSection) return;
+      
+      const header = analyticsSection.querySelector('h2');
+      if (!header) return;
+      
+      // Remove existing indicators
+      const existingIndicator = header.querySelector('.live-indicator');
+      if (existingIndicator) {
+        existingIndicator.remove();
+      }
+      
+      if (realAnalyticsData && realAnalyticsData.authenticated && !realAnalyticsData.noData) {
+        // Show LIVE DATA indicator only for real data
+        const liveIndicator = document.createElement('span');
+        liveIndicator.className = 'live-indicator';
+        liveIndicator.style.cssText = 'background: var(--brand-2); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 12px; animation: pulse 2s infinite;';
+        liveIndicator.innerHTML = '🔴 LIVE DATA';
+        header.appendChild(liveIndicator);
+      } else {
+        // Show NO DATA indicator
+        const noDataIndicator = document.createElement('span');
+        noDataIndicator.className = 'live-indicator';
+        noDataIndicator.style.cssText = 'background: var(--muted); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-left: 12px;';
+        noDataIndicator.innerHTML = '⚠️ NO REAL DATA';
+        header.appendChild(noDataIndicator);
+      }
+    }
+
+    function updateGAConnectionStatus() {
+      const statusElement = document.getElementById('gaConnectionStatus');
+      if (!statusElement) return;
+      
+      const authCode = localStorage.getItem('ga_auth_code');
+      const accessToken = localStorage.getItem('ga_access_token');
+      const tokenExpiry = localStorage.getItem('ga_token_expiry');
+      
+      const isAuthenticated = (accessToken && tokenExpiry && Date.now() < parseInt(tokenExpiry)) || authCode;
+      
+      if (isAuthenticated) {
+        statusElement.textContent = 'Connected (No Real API Implementation)';
+        statusElement.style.color = 'var(--brand-2)';
+      } else {
+        statusElement.textContent = 'Not Connected';
+        statusElement.style.color = 'var(--danger)';
       }
     }
 
