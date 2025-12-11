@@ -654,170 +654,171 @@ nav .nav-dropdown .dropdown-menu {
 
   /* === MEGA MENU STYLES === */
   .nav-mega-dropdown {
-    position: relative !important;
-    display: inline-block !important;
+    position: relative;
+    display: inline-block;
   }
 
   .mega-toggle {
-    background: transparent !important;
-    border: none !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .nav-mega-dropdown:hover .dropdown-arrow,
   .nav-mega-dropdown.active .dropdown-arrow {
-    transform: rotate(180deg) !important;
-    opacity: 1 !important;
+    transform: rotate(180deg);
+    opacity: 1;
   }
 
   /* Mega Menu Panel */
   .mega-menu {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 50% !important;
-    transform: translateX(-50%) translateY(-10px) scale(0.95) !important;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px) scale(0.95);
     
     /* Modern glass morphism design */
     background: linear-gradient(145deg, 
       rgba(17, 24, 39, 0.97), 
       rgba(30, 41, 59, 0.97)
-    ) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 20px !important;
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     
     box-shadow: 
       0 20px 60px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(255, 255, 255, 0.05) inset,
-      0 1px 0 rgba(255, 255, 255, 0.1) inset !important;
+      0 1px 0 rgba(255, 255, 255, 0.1) inset;
     
-    padding: 24px !important;
-    min-width: 600px !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    z-index: 1000 !important;
-    pointer-events: none !important;
+    padding: 24px;
+    min-width: 600px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    pointer-events: none;
   }
 
   .nav-mega-dropdown:hover .mega-menu,
   .nav-mega-dropdown.active .mega-menu {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateX(-50%) translateY(0) scale(1) !important;
-    pointer-events: all !important;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1);
+    pointer-events: all;
   }
 
   /* Mega Menu Content Grid */
   .mega-menu-content {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-    gap: 32px !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
   }
 
   /* Mega Menu Columns */
   .mega-column {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 8px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .mega-column-title {
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1.2px !important;
-    color: rgba(255, 255, 255, 0.5) !important;
-    margin: 0 0 8px 0 !important;
-    padding: 0 12px !important;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 8px 0;
+    padding: 0 12px;
   }
 
   /* Mega Menu Links */
   .mega-link {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 12px !important;
-    color: #e5e7eb !important;
-    text-decoration: none !important;
-    font-weight: 500 !important;
-    font-size: 14px !important;
-    border-radius: 12px !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    position: relative !important;
-    overflow: hidden !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
 
   .mega-link::before {
-    content: '' !important;
-    position: absolute !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent) !important;
-    transition: left 0.5s ease !important;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+    transition: left 0.5s ease;
   }
 
   .mega-link:hover {
     background: linear-gradient(135deg, 
       rgba(255, 107, 53, 0.15), 
       rgba(255, 107, 53, 0.08)
-    ) !important;
-    color: #ff6b35 !important;
-    transform: translateX(4px) !important;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2) !important;
+    );
+    color: #ff6b35;
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
   }
 
   .mega-link:hover::before {
-    left: 100% !important;
+    left: 100%;
   }
 
   /* Mega Menu Icons */
   .mega-icon {
-    width: 32px !important;
-    height: 32px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 10px !important;
-    font-size: 16px !important;
-    flex-shrink: 0 !important;
-    transition: all 0.2s ease !important;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
   }
 
   .mega-link:hover .mega-icon {
-    background: rgba(255, 107, 53, 0.2) !important;
-    border-color: rgba(255, 107, 53, 0.3) !important;
-    transform: scale(1.1) rotate(5deg) !important;
+    background: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.3);
+    transform: scale(1.1) rotate(5deg);
   }
 
   /* Mega Link with Title and Description */
   .mega-link-title {
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    color: #fff !important;
-    margin-bottom: 2px !important;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 2px;
   }
 
   .mega-link-desc {
-    font-size: 12px !important;
-    color: rgba(255, 255, 255, 0.6) !important;
-    line-height: 1.4 !important;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
   }
 
   .mega-link:hover .mega-link-title {
-    color: #ff6b35 !important;
+    color: #ff6b35;
   }
 
   .mega-link:hover .mega-link-desc {
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
