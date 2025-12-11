@@ -18,7 +18,7 @@
     </div>
     <div class="nav-section">
       <div class="nav-dropdown">
-        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+        <button class="nav-link dropdown-toggle" aria-expanded="false">
           Resources <span class="dropdown-arrow">▼</span>
         </button>
         <div class="dropdown-menu">
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="nav-dropdown">
-        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+        <button class="nav-link dropdown-toggle" aria-expanded="false">
           Industries <span class="dropdown-arrow">▼</span>
         </button>
         <div class="dropdown-menu">
@@ -108,7 +108,7 @@
         </div>
       </div>
       <div class="nav-dropdown">
-        <button class="nav-link dropdown-toggle" aria-expanded="false" onclick="toggleDropdown(event, this)">
+        <button class="nav-link dropdown-toggle" aria-expanded="false">
           Compare <span class="dropdown-arrow">▼</span>
         </button>
         <div class="dropdown-menu">
@@ -147,60 +147,6 @@
       <a class="nav-link" href="/see-it-in-action.html">See It in Action</a>
       <a class="nav-link" href="/about.html">About</a>
     </div>
-    <script>
-      function toggleDropdown(event, button) {
-        event.preventDefault();
-        var parent = button.parentElement;
-        var menu = parent.querySelector('.dropdown-menu');
-        var expanded = button.getAttribute('aria-expanded') === 'true';
-        // Close all other dropdowns
-        document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(function(btn) {
-          if (btn !== button) {
-            btn.setAttribute('aria-expanded', 'false');
-            btn.parentElement.classList.remove('active');
-          }
-        });
-        // Toggle this dropdown
-        button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        parent.classList.toggle('active', !expanded);
-      }
-      // Hide dropdowns by default on mobile
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.innerWidth <= 860) {
-          document.querySelectorAll('.nav-dropdown').forEach(function(drop) {
-            drop.classList.remove('active');
-          });
-        }
-      });
-    </script>
-    <script>
-      function toggleDropdown(event, button) {
-        event.preventDefault();
-        var parent = button.parentElement;
-        var menu = parent.querySelector('.dropdown-menu');
-        var expanded = button.getAttribute('aria-expanded') === 'true';
-        // Close all other dropdowns
-        document.querySelectorAll('.nav-dropdown .dropdown-toggle').forEach(function(btn) {
-          if (btn !== button) {
-            btn.setAttribute('aria-expanded', 'false');
-            if (btn.parentElement.querySelector('.dropdown-menu')) {
-              btn.parentElement.querySelector('.dropdown-menu').style.display = 'none';
-            }
-          }
-        });
-        // Toggle this dropdown
-        button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        menu.style.display = expanded ? 'none' : 'block';
-      }
-      // Hide dropdowns by default on mobile
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.innerWidth <= 860) {
-          document.querySelectorAll('.nav-dropdown .dropdown-menu').forEach(function(menu) {
-            menu.style.display = 'none';
-          });
-        }
-      });
-    </script>
   </nav>
 
   <!-- Right: CTAs -->
