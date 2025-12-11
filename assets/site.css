@@ -512,7 +512,7 @@ nav .nav-dropdown .dropdown-menu {
 .nav-dropdown.active .dropdown-menu {
   display: block;
   opacity: 1;
-  visibility: visible;
+  visibility: hidden;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -520,6 +520,16 @@ nav .nav-dropdown .dropdown-menu {
   max-height: none;
   overflow: visible;
   z-index: 1000;
+}
+
+/* Base mega menu styles - HIDE BY DEFAULT on all screens */
+.mega-menu {
+  display: none !important;
+}
+
+.nav-mega-dropdown:hover .mega-menu,
+.nav-mega-dropdown.active .mega-menu {
+  display: block !important;
 }
 
 /* Professional Dropdown Styles - Desktop Only */
