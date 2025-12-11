@@ -105,10 +105,7 @@
         <!-- Enhanced Contact Form with Lead Tracking -->
         <div class="contact-card">
           <div id="contact-form-container">
-            <form class="contact-form" id="contact-form" name="contact" action="https://formspree.io/f/xkgqepro" method="POST">
-              <!-- Formspree redirect after submission -->
-              <input type="hidden" name="_next" value="https://creativejobhub.com/thanks.html" />
-              
+            <form class="contact-form" id="contact-form" data-action="https://formspree.io/f/xkgqepro">
               <!-- Honeypot for spam protection -->
               <input type="hidden" name="_gotcha" style="display:none" />
               
@@ -290,17 +287,76 @@
       document.getElementById('page_url').value = window.location.href;
       document.getElementById('referrer').value = document.referrer;
       document.getElementById('timestamp').value = new Date().toISOString();
-    });
-
-    // Track form submission with Google Analytics
-    document.getElementById('contact-form').addEventListener('submit', function() {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'form_submit', {
-          event_category: 'contact',
-          event_label: 'contact_form',
-          value: 1
-        });
-      }
+      
+      // Handle form submission with proper tracking
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const submitText = document.getElementById('submit-text');
+      const submitLoading = document.getElementById('submit-loading');
+      
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Disable button and show loading
+        submitBtn.disabled = true;
+        submitText.style.display = 'none';
+        submitLoading.style.display = 'inline';
+        
+        try {
+          // Submit to Formspree
+          const formData = new FormData(form);
+          const response = await fetch(form.dataset.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            // Track SUCCESSFUL submission to Google Analytics
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'form_submit_success', {
+                event_category: 'contact',
+                event_label: 'contact_form_successful',
+                value: 1
+              });
+            }
+            
+            // Redirect to thank you page
+            window.location.href = 'https://creativejobhub.com/thanks.html';
+          } else {
+            // Handle error
+            const data = await response.json();
+            showErrorMessage(data.error || 'Please try again or email us directly at hello@creativejobhub.com');
+            
+            // Track failed submission
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'form_submit_failed', {
+                event_category: 'contact',
+                event_label: 'contact_form_error',
+                value: 0
+              });
+            }
+          }
+        } catch (error) {
+          showErrorMessage('Network error. Please check your connection and try again.');
+          
+          // Track error
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submit_error', {
+              event_category: 'contact',
+              event_label: 'contact_form_network_error',
+              value: 0
+            });
+          }
+        } finally {
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitText.style.display = 'inline';
+          submitLoading.style.display = 'none';
+        }
+      });
     });
 
     function showSuccessMessage() {
