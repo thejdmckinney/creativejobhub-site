@@ -495,34 +495,31 @@ a{color:inherit;text-decoration:none}
   .site-ctas{ display:none !important; }
 }
 
-/* Base dropdown styles - FORCE HIDE by default */
+/* Base dropdown styles - ONLY for old .nav-dropdown (not mega menu) */
 .site-nav .nav-dropdown .dropdown-menu,
-nav .nav-dropdown .dropdown-menu,
-
-/* Hide dropdowns by default, but allow .active to override display */
-.nav-dropdown .dropdown-menu {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  position: absolute !important;
-  top: -9999px !important;
-  left: -9999px !important;
-  max-height: 0 !important;
-  overflow: hidden !important;
-  z-index: -1 !important;
+nav .nav-dropdown .dropdown-menu {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  max-height: 0;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .nav-dropdown.active .dropdown-menu {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: absolute !important;
-  top: 100% !important;
-  left: 50% !important;
-  transform: translateX(-50%) translateY(0) scale(1) !important;
-  max-height: none !important;
-  overflow: visible !important;
-  z-index: 1000 !important;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0) scale(1);
+  max-height: none;
+  overflow: visible;
+  z-index: 1000;
 }
 
 /* Professional Dropdown Styles - Desktop Only */
