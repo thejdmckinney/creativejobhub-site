@@ -2177,7 +2177,7 @@
             <p style="color: #e5e7eb;">Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
             <div class="row">
               <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
-              <a class="btn btn-ghost" href="https://app.creativejobhub.com/auth?mode=signup">Create account</a>
+              <a class="btn" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #ff6b35, #f59e0b); color: #ffffff; border: none; box-shadow: 0 4px 15px rgba(255,107,53,0.4); animation: pulseGlow 2s ease-in-out infinite; font-weight: 600;">Create account</a>
             </div>
 
             <!-- Trust badges under CTAs -->
@@ -2187,6 +2187,19 @@
               <a class="badge" href="#features">QuickBooks-friendly exports</a>
             </div>
           </div>
+          
+          <style>
+            @keyframes pulseGlow {
+              0%, 100% {
+                box-shadow: 0 4px 15px rgba(255,107,53,0.4), 0 0 0 0 rgba(255,107,53,0.7);
+                transform: scale(1);
+              }
+              50% {
+                box-shadow: 0 4px 20px rgba(255,107,53,0.6), 0 0 0 8px rgba(255,107,53,0);
+                transform: scale(1.03);
+              }
+            }
+          </style>
 
           <div class="panel">
             <h3 style="margin:0; color: #ffffff;">Connect with the founder</h3>
