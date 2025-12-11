@@ -1,4 +1,10 @@
-/* Navigation section separation for mobile */
+/* Navigation section separation */
+.nav-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
 @media (max-width: 860px) {
   .nav-section {
     display: flex !important;
@@ -556,7 +562,7 @@ nav .nav-dropdown .dropdown-menu,
   .site-nav .nav-dropdown .dropdown-menu,
   nav .nav-dropdown .dropdown-menu,
   .nav-dropdown .dropdown-menu {
-    display: block !important;
+    display: none !important;
     position: absolute !important;
     top: 100% !important;
     left: 50% !important;
@@ -587,6 +593,7 @@ nav .nav-dropdown .dropdown-menu,
 
   .nav-dropdown:hover .dropdown-menu,
   .nav-dropdown.active .dropdown-menu {
+    display: block !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: translateX(-50%) translateY(0) scale(1) !important;
