@@ -1837,82 +1837,172 @@
     </section>
 
     <!-- FEATURES -->
-    <section id="features" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-        <span class="kicker animate-on-scroll" data-animation="fade-up">Why Creative Job Hub</span>
-        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Everything you need to go from request to paid</h2>
-        
-        <!-- Interactive Feature Showcases -->
-        <div style="display: flex; flex-direction: column; gap: 48px; margin-top: 32px;">
+    <section id="features" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:64px;">
+          <span class="kicker animate-on-scroll" data-animation="fade-up">Complete Platform</span>
+          <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200" style="margin-bottom:16px;">Everything you need to run your field service business</h2>
+          <p style="color:#6b7280; font-size:1.15rem; max-width:700px; margin:0 auto;">From first call to paid invoice—scheduling, estimates, job management, invoicing, payments, client portal, and more.</p>
+        </div>
+
+        <!-- Feature Chapters -->
+        <div style="display:flex; flex-direction:column; gap:80px; margin-bottom:80px;">
           
-          <!-- Scheduling &amp; Dispatch -->
-          <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center;">
-            <div>
-              <h3 style="margin: 0 0 12px; font-size: 24px; color: #2d2d2d;">📅 Scheduling &amp; Dispatch</h3>
-              <p style="color: #4b5563; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Drag-and-drop calendar with smart route planning, real-time job tracking, and automatic ETA updates to keep customers informed.</p>
-              <ul style="color: #1f2937; margin: 0; padding-left: 20px; line-height: 1.6;">
-                <li>Visual drag-and-drop scheduling</li>
-                <li>Automatic route optimization</li>
-                <li>Real-time ETA updates to customers</li>
-                <li>Team workload balancing</li>
-              </ul>
-            </div>
-            <div class="feature-illustration">
-              <img src="/assets/illustrations/drag&drop_schedule.png" alt="Drag and Drop Schedule Screenshot" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: 12px; background: #181f2c; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
-            </div>
+          <!-- Chapter A — Client & Property Management -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Every client and property organized—without spreadsheets</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Centralize client records, multiple service locations, balances, communication history, and property details so your team always has the full context.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Client database with notes, contacts, and billing info</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Multi-property support with GPS coordinates</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Communication log across calls, SMS, and email</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Real-time balance tracking per client</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Portal accounts created automatically</li>
+            </ul>
           </div>
 
-          <!-- Mobile Job Sheets -->
-          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;">
-            <div class="feature-illustration">
-              <img src="/assets/illustrations/mobile_jobs_sheet.png" alt="Mobile Job Sheets Screenshot" style="display: block; margin-left: auto; margin-right: auto; max-width: 220px; height: 400px; object-fit: contain; border-radius: 16px; background: #181f2c; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
-            </div>
-            <div>
-              <h3 style="margin: 0 0 12px; font-size: 24px; color: #2d2d2d;">📱 Mobile Job Sheets</h3>
-              <p style="color: #4b5563; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Capture photos, notes, signatures, and job details on mobile devices. Works offline when signal is poor, syncs automatically.</p>
-              <ul style="color: #1f2937; margin: 0; padding-left: 20px; line-height: 1.6;">
-                <li>Works offline with auto-sync</li>
-                <li>Photo capture with GPS tagging</li>
-                <li>Digital signatures and notes</li>
-                <li>Real-time job status updates</li>
-              </ul>
-            </div>
+          <!-- Chapter B — Scheduling, Dispatch & Routing -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Schedule faster. Route smarter. Keep customers informed.</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Drag-and-drop scheduling with technician assignment, job map views, and optimized routing to cut drive time and reduce "running late" calls.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Calendar views (day/week/month) with team availability</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Job sessions for multi-day projects</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Drag-and-drop rescheduling for real-life changes</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Technician assignment and workload balancing</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Jobs map view + route optimization</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Optional customer ETA updates / notifications</li>
+            </ul>
           </div>
 
-          <!-- Route Optimization -->
-          <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: center;">
-            <div>
-              <h3 style="margin: 0 0 12px; font-size: 24px; color: #2d2d2d;">🗺️ Route Optimization</h3>
-              <p style="color: #4b5563; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">AI-powered route planning that saves time and fuel. Live GPS tracking, traffic-aware routing, and automatic customer notifications.</p>
-              <ul style="color: #1f2937; margin: 0; padding-left: 20px; line-height: 1.6;">
-                <li>Smart route optimization</li>
-                <li>Live GPS tracking</li>
-                <li>Traffic-aware routing</li>
-                <li>Automatic customer ETA updates</li>
-              </ul>
-            </div>
-            <div class="feature-illustration">
-              <img src="/assets/illustrations/all_routes.png" alt="Route Optimization Screenshot" style="width: 100%; max-width: 600px; height: 300px; object-fit: cover; border-radius: 12px; background: #181f2c; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
-            </div>
+          <!-- Chapter C — Estimates & Approvals -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Send professional estimates—and collect deposits before scheduling</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Create branded estimates, track approvals, and convert approved work into scheduled jobs with one click.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Branded PDF estimates with clear line items</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> One-click email delivery with PDF attachment</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Approval tracking: pending / approved / declined</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Deposit collection built into estimates</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Convert estimate → job (details carry over)</li>
+            </ul>
           </div>
 
-          <!-- Invoices &amp; Payments -->
-          <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;">
-            <div class="feature-illustration">
-              <object data="/assets/illustrations/invoicing-payments.svg" type="image/svg+xml" style="width: 100%; height: 300px; border-radius: 12px; background: transparent;"></object>
-            </div>
-            <div>
-              <h3 style="margin: 0 0 12px; font-size: 24px; color: #2d2d2d;">💳 Invoices &amp; Payments</h3>
-              <p style="color: #4b5563; margin: 0 0 16px; font-size: 16px; line-height: 1.5;">Professional invoicing with online payments through Stripe. Automatic QuickBooks sync and payment reminders keep cash flow steady.</p>
-              <ul style="color: #1f2937; margin: 0; padding-left: 20px; line-height: 1.6;">
-                <li>Professional invoice templates</li>
-                <li>Online payments via Stripe</li>
-                <li>Automatic QuickBooks sync</li>
-                <li>Payment reminders and tracking</li>
-              </ul>
-            </div>
+          <!-- Chapter D — Jobs, Work Orders & Field Execution -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Keep jobs clean, documented, and easy to complete in the field</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Everything for the job lives in one record: scope, photos, documents, materials, time, and status—so your team stays aligned.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Notes, line items, photos, and documents per job</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Track job expenses + receipts for job costing</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Time tracking by job (actual vs estimated)</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Status workflow: New → Scheduled → In Progress → Complete → Paid</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Mobile job sheets with photo upload</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Swipe-to-complete triggers billing workflows</li>
+            </ul>
+          </div>
+
+          <!-- Chapter E — Invoicing, Payments & Cash Flow -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Invoice instantly. Get paid online. Stop chasing checks.</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Automatically generate invoices when work is completed, accept online payments, and keep records synced.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Automatic invoice creation on completion</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Branded invoice PDFs with line items</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Stripe payment links for fast online checkout</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Partial payments and deposit tracking</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Automatic payment recording via webhooks</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> QuickBooks sync (invoices + payments)</li>
+            </ul>
+          </div>
+
+          <!-- Chapter F — Client Portal & Retention -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">A client portal that reduces calls and drives repeat work</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Give customers 24/7 access to estimates, invoices, job history, and booking—plus retention tools like loyalty and referrals.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> View estimates, invoices, and service history anytime</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Pay invoices directly from the portal</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Booking requests without phone tag</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Updates/news feed for promotions and before/after work</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Loyalty & rewards + referral program</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Services directory with descriptions and starting prices</li>
+            </ul>
+          </div>
+
+          <!-- Chapter G — Marketing & Communications -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Built-in follow-up that keeps your schedule full</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Segment your clients, schedule campaigns, and run re-engagement without external tools—plus SMS messaging for operational updates.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Email campaigns with templates and personalization variables</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Campaign scheduling and performance tracking</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Re-engagement queue for dormant clients</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> SMS messaging via Twilio</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Tech en-route notifications (automatic)</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Unsubscribe management and opt-out tracking</li>
+            </ul>
+          </div>
+
+          <!-- Chapter H — Time Tracking, Payroll & Team Management -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Know who's working, where time goes, and what jobs cost</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Track labor accurately, approve timesheets, manage PTO, and set role-based permissions as your team grows.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Clock in/out + live "who's working" board</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Job-based time tracking for job costing</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Timesheet approvals and pay period grouping</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> PTO requests and schedule management</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Role-based permissions and technician profiles</li>
+            </ul>
+          </div>
+
+          <!-- Chapter I — Reporting & Analytics -->
+          <div class="animate-on-scroll" data-animation="fade-up">
+            <h3 style="margin:0 0 12px; font-size:1.8rem; color:#2d2d2d;">Clarity across revenue, jobs, leads, and labor</h3>
+            <p style="color:#6b7280; margin:0 0 24px; font-size:1.05rem; max-width:700px;">Measure performance over time, identify what's working, and export when you need deeper analysis.</p>
+            <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;">
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Jobs, revenue, leads, sales, and timesheets reporting</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Customer segmentation (high-value, at-risk, dormant)</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Revenue charts and date range filtering</li>
+              <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Export to Google Sheets</li>
+            </ul>
           </div>
 
         </div>
+
+        <!-- Integrations -->
+        <div style="text-align:center; padding:60px 0; background:linear-gradient(135deg, #f9fafb 0%, #ffffff 100%); border-radius:16px; margin-bottom:80px;">
+          <h3 style="margin:0 0 16px; font-size:1.8rem; color:#2d2d2d;">Integrations that fit your existing workflow</h3>
+          <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:24px; margin:32px 0;">
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Stripe</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">QuickBooks</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Calendar</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Drive</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Twilio</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Resend</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Mapbox</div>
+          </div>
+          <p style="color:#6b7280; font-size:1rem;">Use Creative Job Hub as your system of record, or connect it to tools you already trust.</p>
+        </div>
+
+        <!-- Automation & Intelligence (Reframed) -->
+        <div style="padding:60px 0; border-top:1px solid rgba(148,163,184,0.1);">
+          <div style="text-align:center; margin-bottom:48px;">
+            <h3 style="margin:0 0 16px; font-size:1.8rem; color:#2d2d2d;">Automation and intelligence—when you want it</h3>
+            <p style="color:#6b7280; font-size:1.05rem; max-width:700px; margin:0 auto;">Not "AI for AI's sake." These features help teams move faster and make better decisions—without adding complexity.</p>
+          </div>
+          <ul style="list-style:none; padding:0; margin:0 0 24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px; max-width:1000px; margin-left:auto; margin-right:auto;">
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Historical pricing lookup ("What do we charge for X?")</li>
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Smart estimating assistance</li>
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Photo analysis for quality/safety observations</li>
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Predictive maintenance insights</li>
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Voice assistant (optional)</li>
+            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> In-app help chat</li>
+          </ul>
+          <p style="color:#6b7280; font-size:0.95rem; text-align:center; font-style:italic;">Designed to reduce rework, missed details, and scheduling inefficiencies.</p>
+        </div>
+
       </div>
     </section>
 
