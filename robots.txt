@@ -1,6 +1,42 @@
+# Good Bots - Allow All
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Googlebot-News
+User-agent: Googlebot-Video
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: Baiduspider
+User-agent: YandexBot
+User-agent: facebot
+User-agent: ia_archiver
+Allow: /
+
+# Bad Bots - Block Completely
+User-agent: AhrefsBot
+User-agent: SemrushBot
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: PetalBot
+User-agent: Bytespider
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: CCBot
+User-agent: anthropic-ai
+User-agent: Claude-Web
+User-agent: cohere-ai
+Disallow: /
+
+# Admin Area - Block All Bots
+User-agent: *
+Disallow: /admin/
+Disallow: /demos/
+
+# Default - Allow All Others
 User-agent: *
 Allow: /
-Disallow: 
 
 Sitemap: https://creativejobhub.com/sitemap.xml
 Sitemap: https://creativejobhub.com/video-sitemap.xml
