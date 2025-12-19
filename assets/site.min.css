@@ -293,11 +293,6 @@ a{color:inherit;text-decoration:none}
   backdrop-filter:saturate(120%) blur(6px);
 }
 
-/* Only offset header when banner is present */
-.has-banner .site-header{
-  top:48px;
-}
-
 /* ---- LOGO: hard-protect from global img rules ---- */
 .brand img{
   display:block !important;
