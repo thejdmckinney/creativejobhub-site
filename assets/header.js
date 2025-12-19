@@ -3,49 +3,7 @@
   // guard: ensure we're in a browser environment
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
-  // Inject urgency banner at the top of body
-  function injectBanner() {
-    // Check if banner already exists
-    if (document.querySelector('.urgency-banner')) return;
-    
-    // Add has-banner class to body
-    document.body.classList.add('has-banner');
-    
-    const banner = document.createElement('div');
-    banner.className = 'urgency-banner';
-    banner.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; z-index: 10000; background: linear-gradient(135deg, #dc2626, #f59e0b); padding: 12px 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
-    banner.innerHTML = `
-      <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
-        <span style="font-size: 24px; animation: pulse 1.5s infinite;">🔥</span>
-        <span style="color: #fff; font-weight: 800; font-size: clamp(14px, 3vw, 18px); letter-spacing: 0.5px;">
-          FOUNDER PRICING: Team Plan $49/mo (5 users) - Only <span id="spots-remaining" style="color: #fef3c7; font-size: clamp(16px, 3.5vw, 22px);">460</span> spots left!
-        </span>
-        <span style="color: #fef3c7; font-weight: 600; font-size: clamp(12px, 2.5vw, 15px);">
-          Lock in your rate forever - Price increases to $69/mo after launch 🚀
-        </span>
-      </div>
-    `;
-    
-    // Add pulse animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-      }
-    `;
-    document.head.appendChild(style);
-    
-    // Insert banner at the beginning of body
-    document.body.insertBefore(banner, document.body.firstChild);
-  }
-
-  // Inject banner immediately
-  if (document.body) {
-    injectBanner();
-  } else {
-    document.addEventListener('DOMContentLoaded', injectBanner);
-  }
+  // Banner removed per user request
 
   const mount = document.getElementById('site-header');
   if (!mount) return;
