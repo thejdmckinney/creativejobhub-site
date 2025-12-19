@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Creative Job Hub — Tenant Onboarding Guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Complete Tenant Onboarding Guide for Creative Job Hub — setup, jobs, scheduling, billing, mobile and best practices.">
+<link rel="canonical" href="https://creativejobhub.com/tenant-onboarding/">
+<meta property="og:title" content="Creative Job Hub — Tenant Onboarding Guide">
+<meta property="og:description" content="Complete Tenant Onboarding Guide for Creative Job Hub — setup, jobs, scheduling, billing, mobile and best practices.">
+<meta property="og:url" content="https://creativejobhub.com/tenant-onboarding/">
+<meta property="og:image" content="/assets/illustrations/CJH_Circle_Logo.png">
+<style>
+:root{--brand:#00c7ff;--dark:#0a2f42;--muted:#6b7280;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;}
+body{margin:0;padding:28px;background:#fff;color:#111;line-height:1.45}
+.container{max-width:1100px;margin:0 auto}
+header{display:flex;align-items:center;gap:18px}
+.logo{width:96px;height:96px;border-radius:50%;object-fit:cover}
+h1{font-size:24px;margin:0;color:var(--dark)}
+.lead{color:var(--muted);font-size:13px}
+.toc{background:#f8fbff;border-left:4px solid var(--brand);padding:12px;margin:18px 0}
+h2{font-size:18px;color:var(--dark);margin-top:22px}
+h3{font-size:15px;margin-top:12px}
+ol,ul{margin:8px 0 12px 20px}
+pre{background:#f6f6f8;padding:10px;border-radius:6px;overflow:auto}
+footer{margin:32px 0;color:var(--muted);font-size:13px}
+@media(max-width:720px){header{gap:12px}h1{font-size:18px}.logo{width:76px;height:76px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <img class="logo" src="/assets/illustrations/CJH_Circle_Logo.png" alt="Creative Job Hub logo">
+    <div>
+      <h1>Creative Job Hub — Tenant Onboarding Guide</h1>
+      <div class="lead">Complete user guide for onboarding, setup and daily operations.</div>
+    </div>
+  </header>
+
+  <div class="toc">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#initial-setup">Initial Setup</a></li>
+      <li><a href="#clients">Client Management</a></li>
+      <li><a href="#properties">Property Management</a></li>
+      <li><a href="#leads">Lead Management</a></li>
+      <li><a href="#jobs">Job Management</a></li>
+      <li><a href="#scheduling">Scheduling & Routes</a></li>
+      <li><a href="#estimates">Estimates & Smart Estimator</a></li>
+      <li><a href="#invoices">Invoices & Payments</a></li>
+      <li><a href="#pricebook">Price Book & Service Categories</a></li>
+      <li><a href="#service-plans">Service Plans & Subscriptions</a></li>
+      <li><a href="#messaging">Messaging & Communication</a></li>
+      <li><a href="#time">Time Tracking & Payroll</a></li>
+      <li><a href="#reports">Reports & Analytics</a></li>
+      <li><a href="#marketing">Marketing & Campaigns</a></li>
+      <li><a href="#integrations">Integrations</a></li>
+      <li><a href="#documents">Document Templates</a></li>
+      <li><a href="#mobile">Mobile App</a></li>
+      <li><a href="#portal">Customer Portal & Features</a></li>
+      <li><a href="#advanced">Advanced Features</a></li>
+      <li><a href="#best-practices">Best Practices</a></li>
+      <li><a href="#workflows">Common Workflows</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ol>
+  </div>
+
+  <!-- INITIAL SETUP -->
+  <section id="initial-setup">
+    <h2>Initial Setup</h2>
+    <h3>Organization Settings</h3>
+    <p><strong>Location:</strong> Settings → Organization</p>
+    <ol>
+      <li>Enter organization name, timezone, and contact details.</li>
+      <li>Upload company logo (PNG/JPG, ~200×200px). Add address, phone and email (used on PDFs).</li>
+      <li>Customize PDF terms and save.</li>
+    </ol>
+
+    <h3>Team Setup</h3>
+    <p><strong>Location:</strong> Settings → Team</p>
+    <ol>
+      <li>Invite team members; assign roles (Owner, Manager, Technician, Admin).</li>
+      <li>Set hourly rates, departments, and employee details; send invitation.</li>
+    </ol>
+
+    <h3>Billing Setup</h3>
+    <p><strong>Location:</strong> Settings → Billing</p>
+    <ol>
+      <li>Select plan (Starter / Professional / Enterprise). Add subscription payment method.</li>
+      <li>Configure Stripe in Settings → Stripe to accept customer payments. New accounts typically have a 14-day free trial.</li>
+    </ol>
+  </section>
+
+  <!-- CLIENT MANAGEMENT -->
+  <section id="clients">
+    <h2>Client Management</h2>
+    <h3>Adding Clients</h3>
+    <p><strong>Location:</strong> Clients → Add Client</p>
+    <ol>
+      <li>Fill required fields: name, email (for portal), phone (for SMS), address, notes. Save.</li>
+      <li>Best practice: always include an email for portal access and a phone for notifications.</li>
+    </ol>
+
+    <h3>Import via CSV</h3>
+    <p><strong>Location:</strong> Settings → Import</p>
+    <ol>
+      <li>Download CSV template, populate records, upload and validate, then import valid rows.</li>
+    </ol>
+    <pre>name,email,phone,address1,city,state,zip,notes
+John Smith,john@example.com,(555)123-4567,123 Main St,Austin,TX,78701,Gate code:1234
+</pre>
+
+    <h3>Client Details</h3>
+    <ul>
+      <li>View full profile, properties, job history, estimates, invoices and event log.</li>
+      <li>Actions: send email/SMS, create estimate/job, record payments, view portal link.</li>
+    </ul>
+  </section>
+
+  <!-- PROPERTIES -->
+  <section id="properties">
+    <h2>Property Management</h2>
+    <h3>Creating Properties</h3>
+    <p><strong>Location:</strong> Properties → Add Property</p>
+    <ol>
+      <li>Select client, enter full address, add notes or access instructions, save.</li>
+      <li>Properties enable mapping, routing and maintenance history per location.</li>
+      <li>Upload property photos and documents for easy reference.</li>
+    </ol>
+
+    <h3>Recurring Maintenance</h3>
+    <p><strong>Location:</strong> Property Details → Add Recurring Maintenance</p>
+    <ol>
+      <li>Set frequency, start date, service type and default technician. System generates jobs automatically (typically 7 days before due date).</li>
+      <li>Configure notifications to alert both your team and customers.</li>
+      <li>View upcoming maintenance schedule on dashboard.</li>
+    </ol>
+
+    <h3>Property Features</h3>
+    <ul>
+      <li>Track full service history per property</li>
+      <li>View property location on map</li>
+      <li>Store access codes and special instructions</li>
+      <li>Link multiple properties to one client</li>
+    </ul>
+  </section>
+
+  <!-- LEAD MANAGEMENT -->
+  <section id="leads">
+    <h2>Lead Management</h2>
+    <h3>Lead Statuses</h3>
+    <ul>
+      <li>New, Contacted, Qualified, Won, Lost</li>
+    </ul>
+    <h3>Lead Sources & Tracking</h3>
+    <ul>
+      <li>Track lead source (Website, Referral, Phone, etc.)</li>
+      <li>Map view with heatmap visualization</li>
+      <li>Service area verification with geolocation</li>
+      <li>Automatic lead capture via AI receptionist</li>
+    </ul>
+    <h3>Workflow</h3>
+    <ol>
+      <li>Contact leads within 24 hours, qualify, create estimates, follow up, convert to client when won.</li>
+      <li>Use lead nurturing sequences for automated follow-ups (see Service Plans section).</li>
+      <li>View lead analytics and conversion rates in Reports.</li>
+    </ol>
+  </section>
+
+  <!-- JOB MANAGEMENT -->
+  <section id="jobs">
+    <h2>Job Management</h2>
+    <h3>Creating Jobs</h3>
+    <p><strong>Location:</strong> Jobs → New Job</p>
+    <ol>
+      <li>Create from an approved estimate or standalone; fill title, description, priority, status, assign technicians, schedule, add line items and save.</li>
+    </ol>
+
+    <h3>Status Flow</h3>
+    <ol>
+      <li>Pending → Scheduled → In Progress → Completed → Cancelled</li>
+    </ol>
+
+    <h3>Advanced Job Features</h3>
+    <ul>
+      <li><strong>Line Items:</strong> Add from price book or manually</li>
+      <li><strong>Expenses:</strong> Track materials, receipts and costs</li>
+      <li><strong>Photos:</strong> Upload with GPS timestamps and AI analysis</li>
+      <li><strong>Documents:</strong> Generate warranties and scopes of work</li>
+      <li><strong>Time Tracking:</strong> Clock in/out directly on jobs</li>
+      <li><strong>Tasks & Checklists:</strong> Break jobs into subtasks</li>
+      <li><strong>Live GPS Tracking:</strong> Monitor technician locations in real-time</li>
+      <li><strong>Job Sessions:</strong> Track multiple work sessions per job</li>
+      <li><strong>Email & SMS:</strong> Communicate directly from job page</li>
+    </ul>
+
+    <h3>Jobs Map View</h3>
+    <p><strong>Location:</strong> Jobs → Map View</p>
+    <ul>
+      <li>Interactive map with job markers and clustering</li>
+      <li>Filter by status, date range, and technician</li>
+      <li>View real-time technician locations</li>
+      <li>Route planning and optimization tools</li>
+      <li>Click markers for quick actions</li>
+    </ul>
+  </section>
+
+  <!-- SCHEDULING -->
+  <section id="scheduling">
+    <h2>Scheduling & Routes</h2>
+    <h3>Schedule View</h3>
+    <p><strong>Location:</strong> Schedule</p>
+    <ul>
+      <li>Calendar by day/week/month views</li>
+      <li>Drag-and-drop reschedule jobs</li>
+      <li>Filter by technician or job status</li>
+      <li>Automatic conflict detection</li>
+      <li>Color-coded by status or technician</li>
+    </ul>
+
+    <h3>Plan My Day (AI Route Optimization)</h3>
+    <p><strong>Location:</strong> Schedule → Plan My Day</p>
+    <ol>
+      <li>Select technician and date</li>
+      <li>AI analyzes job locations, duration, and real-time traffic</li>
+      <li>Generates optimized route with turn-by-turn directions</li>
+      <li>Saves travel time and fuel costs</li>
+      <li>One-click to assign optimized schedule</li>
+    </ol>
+
+    <h3>Dynamic Route Monitoring</h3>
+    <ul>
+      <li>Real-time ETA updates based on traffic</li>
+      <li>Automatic rerouting for delays</li>
+      <li>Live technician location tracking</li>
+      <li>Customer notification of arrival time</li>
+      <li>Historical route data and performance</li>
+    </ul>
+
+    <h3>Route Manager</h3>
+    <p><strong>Location:</strong> Schedule → Routes</p>
+    <ul>
+      <li>View all routes for selected date</li>
+      <li>Compare multiple technician routes</li>
+      <li>Optimize entire team's daily routes</li>
+      <li>Export routes to mobile devices</li>
+    </ul>
+  </section>
+
+  <!-- ESTIMATES -->
+  <section id="estimates">
+    <h2>Estimates & Smart Estimator</h2>
+    <h3>Creating & Sending Estimates</h3>
+    <p><strong>Location:</strong> Estimates → New Estimate</p>
+    <ol>
+      <li>Create estimate, add line items (from price book), set deposit if required, save and send.</li>
+      <li>Track views: see when client opens estimate</li>
+      <li>Convert accepted estimates to jobs with one click</li>
+      <li>Send reminders for pending estimates</li>
+    </ol>
+
+    <h3>Smart Estimator (AI-Powered)</h3>
+    <p><strong>Location:</strong> Estimates → Smart Estimator</p>
+    <ol>
+      <li><strong>Input job details:</strong> Service type, property info, specific requirements</li>
+      <li><strong>AI Analysis:</strong> System reviews your pricing history, market data, and job complexity</li>
+      <li><strong>Three-Tier Pricing:</strong> Receive Good, Better, Best pricing options with detailed breakdowns</li>
+      <li><strong>Each tier includes:</strong>
+        <ul>
+          <li>Total price with labor, materials, travel, overhead breakdown</li>
+          <li>Detailed line items with quantities and unit prices</li>
+          <li>When-to-use recommendations</li>
+          <li>Market insights and competitive analysis</li>
+        </ul>
+      </li>
+      <li><strong>One-click convert:</strong> Select tier and create full estimate instantly</li>
+    </ol>
+
+    <h3>Estimate Workflow</h3>
+    <ul>
+      <li><strong>Draft:</strong> Being prepared</li>
+      <li><strong>Sent:</strong> Delivered to client (tracks opens)</li>
+      <li><strong>Viewed:</strong> Client has opened estimate</li>
+      <li><strong>Accepted:</strong> Client approved (convert to job)</li>
+      <li><strong>Declined:</strong> Client rejected</li>
+    </ul>
+  </section>
+
+  <!-- INVOICES -->
+  <section id="invoices">
+    <h2>Invoices & Payments</h2>
+    <h3>Creating Invoices</h3>
+    <ol>
+      <li>From a completed job (recommended) or manually from Invoices page. Set due date and payment terms.</li>
+    </ol>
+    <h3>Sending & Recording Payments</h3>
+    <ol>
+      <li>Send by email or PDF; use Stripe payment links for online payment; record payments manually when needed.</li>
+    </ol>
+    <h3>Stripe</h3>
+    <ul>
+      <li>Connect in Settings → Stripe. Typical fees apply (e.g., 2.9% + $0.30).</li>
+    </ul>
+  </section>
+
+  <!-- PRICE BOOK -->
+  <section id="pricebook">
+    <h2>Price Book & Service Categories</h2>
+    <h3>Managing Services</h3>
+    <p><strong>Location:</strong> Price Book</p>
+    <ol>
+      <li>Add services with name, description, price, unit and category. Mark active/inactive and save.</li>
+      <li>Set labor hours, material costs, and trip fees per service</li>
+      <li>Add SKU codes for inventory tracking</li>
+      <li>Upload service images for visual reference</li>
+    </ol>
+
+    <h3>Service Categories</h3>
+    <p><strong>Location:</strong> Settings → Service Categories</p>
+    <ol>
+      <li>Create custom categories (HVAC, Plumbing, Electrical, etc.)</li>
+      <li>Upload category icons/images for visual organization</li>
+      <li>Add category descriptions for customer portal</li>
+      <li>Enable/disable categories as needed</li>
+      <li>Organize price book items by category</li>
+    </ol>
+
+    <h3>Advanced Price Book Features</h3>
+    <ul>
+      <li><strong>Voice Activation:</strong> Set short titles for voice AI ordering</li>
+      <li><strong>Upsell Items:</strong> Link related services for recommendations</li>
+      <li><strong>Tags:</strong> Add searchable tags for quick finding</li>
+      <li><strong>Import/Export:</strong> Bulk upload via CSV</li>
+      <li><strong>Price History:</strong> Track price changes over time</li>
+    </ul>
+
+    <h3>Using Price Book</h3>
+    <ul>
+      <li>Pull items into estimates and jobs to ensure consistent pricing and faster creation.</li>
+      <li>Search by name, category, or tags</li>
+      <li>Filter by active/inactive status</li>
+      <li>One-click add to estimate or job</li>
+    </ul>
+  </section>
+
+  <!-- SERVICE PLANS -->
+  <section id="service-plans">
+    <h2>Service Plans & Subscriptions</h2>
+    <h3>Creating Service Plans</h3>
+    <p><strong>Location:</strong> Service Plans</p>
+    <ol>
+      <li>Create subscription plans (monthly/quarterly/annual)</li>
+      <li>Set pricing and included services</li>
+      <li>Define number of visits or service hours</li>
+      <li>Add plan benefits and features</li>
+      <li>Generate public booking page URL</li>
+    </ol>
+
+    <h3>Public Service Plans Portal</h3>
+    <p>Each organization gets a branded public page: <code>creativejobhub.com/s/[org-id]/plans</code></p>
+    <ul>
+      <li>Customers can view and compare plans</li>
+      <li>Self-service plan selection and signup</li>
+      <li>Automatic lead capture for interested customers</li>
+      <li>SEO-optimized for local search</li>
+    </ul>
+
+    <h3>Lead Nurturing Sequences</h3>
+    <p><strong>Location:</strong> Service Plans → Lead Nurturing</p>
+    <ol>
+      <li><strong>Create sequences:</strong> Automated email series for leads</li>
+      <li><strong>Set triggers:</strong> New lead, plan interest, follow-up timing</li>
+      <li><strong>Configure emails:</strong> Day 1, Day 3, Day 7, etc.</li>
+      <li><strong>Personalize:</strong> Use variables for customer name, plan details</li>
+      <li><strong>Track performance:</strong> Open rates, click rates, conversions</li>
+    </ol>
+
+    <h3>Subscription Management</h3>
+    <ul>
+      <li>View active subscriptions per client</li>
+      <li>Auto-generate jobs based on plan schedule</li>
+      <li>Track subscription revenue</li>
+      <li>Handle upgrades/downgrades</li>
+      <li>Cancellation handling</li>
+    </ul>
+  </section>
+  <section id="messaging">
+    <h2>Messaging & Communication</h2>
+    <h3>SMS Messaging</h3>
+    <p><strong>Setup:</strong> Configure Twilio in Settings → Messaging. Send/receive SMS; log messages under contact events.</p>
+    <h3>Email</h3>
+    <p>Send emails from client, job, estimate or invoice pages. Configure templates in Settings → Email and use variables for personalization.</p>
+    <h3>AI Receptionist</h3>
+    <p>Configure in Settings → AI; connect to Twilio to enable automated call handling, lead creation and booking.</p>
+  </section>
+
+  <!-- TIME & PAYROLL -->
+  <section id="time">
+    <h2>Time Tracking & Payroll</h2>
+    <h3>Employee Time Tracking</h3>
+    <p><strong>Location:</strong> Time → Time Clock</p>
+    <ul>
+      <li>Clock in/out on web or mobile</li>
+      <li>GPS location capture with each punch</li>
+      <li>Offline support with automatic sync</li>
+      <li>Break tracking</li>
+      <li>Job-specific time tracking</li>
+    </ul>
+
+    <h3>Time Administration</h3>
+    <p><strong>Location:</strong> Time → Time Admin</p>
+    <ul>
+      <li><strong>Timecard Dashboard:</strong> Overview of all employee hours</li>
+      <li><strong>Review Timecards:</strong> Approve or edit employee time</li>
+      <li><strong>Exceptions:</strong> Missing punches, long shifts, overtime alerts</li>
+      <li><strong>PTO Management:</strong> Request and approve time off</li>
+      <li><strong>Payroll Export:</strong> CSV export for payroll processing</li>
+    </ul>
+
+    <h3>Time Policies</h3>
+    <p><strong>Location:</strong> Time → Policies</p>
+    <ol>
+      <li>Set overtime rules (daily, weekly)</li>
+      <li>Configure break requirements</li>
+      <li>Define pay periods</li>
+      <li>Set wage rates by employee or role</li>
+      <li>Meal period compliance</li>
+    </ol>
+
+    <h3>Employee Scheduling</h3>
+    <p>Plan shifts and availability separate from job assignments</p>
+    <ul>
+      <li>Create weekly schedules</li>
+      <li>Manage availability</li>
+      <li>Shift swapping</li>
+      <li>Schedule notifications</li>
+    </ul>
+  </section>
+
+  <!-- REPORTS -->
+  <section id="reports">
+    <h2>Reports & Analytics</h2>
+    <h3>Dashboard</h3>
+    <p><strong>Location:</strong> Dashboard</p>
+    <ul>
+      <li>Revenue snapshot (daily/weekly/monthly/yearly)</li>
+      <li>Open and completed jobs</li>
+      <li>Outstanding invoices</li>
+      <li>Who's on the clock (live)</li>
+      <li>Upcoming maintenance jobs</li>
+      <li>Re-engagement queue (inactive clients)</li>
+      <li>Recent activity feed</li>
+      <li>Hours by technician widget</li>
+    </ul>
+
+    <h3>Standard Reports</h3>
+    <p><strong>Location:</strong> Reports</p>
+    <ul>
+      <li><strong>Revenue Report:</strong> Income by period, client, service type</li>
+      <li><strong>Jobs Report:</strong> Job volume, completion rates, status breakdown</li>
+      <li><strong>Payments Report:</strong> Payment history, methods, outstanding</li>
+      <li><strong>Time Report:</strong> Employee hours, labor costs, overtime</li>
+      <li><strong>All reports:</strong> Filter by date range, export CSV/PDF</li>
+    </ul>
+
+    <h3>Advanced Analytics</h3>
+    <p><strong>Location:</strong> Analytics</p>
+    <ul>
+      <li><strong>Predictive Insights:</strong> AI identifies upcoming service needs</li>
+      <li><strong>Customer Segmentation:</strong> High-value, at-risk, loyal customers</li>
+      <li><strong>Service Trends:</strong> Popular services, seasonal patterns</li>
+      <li><strong>Technician Performance:</strong> Jobs completed, customer ratings, efficiency</li>
+      <li><strong>Route Efficiency:</strong> Travel time, fuel costs, optimization gains</li>
+      <li><strong>Anomaly Detection:</strong> Unusual patterns requiring attention</li>
+    </ul>
+
+    <h3>Client Re-engagement System</h3>
+    <p>Automatically identifies and tracks inactive clients</p>
+    <ul>
+      <li>Dashboard widget shows clients needing follow-up</li>
+      <li>Tracks last contact date and service date</li>
+      <li>One-click email/SMS outreach</li>
+      <li>Monitor re-engagement success rates</li>
+    </ul>
+  </section>
+
+  <!-- MARKETING -->
+  <section id="marketing">
+    <h2>Marketing & Campaigns</h2>
+    <h3>Email Campaigns</h3>
+    <p><strong>Location:</strong> Marketing</p>
+    <ol>
+      <li><strong>Campaign Builder:</strong> Create multi-step email campaigns</li>
+      <li><strong>Audience Segmentation:</strong> Target by service history, location, value</li>
+      <li><strong>Email Templates:</strong> Professional templates with drag-and-drop editor</li>
+      <li><strong>Personalization:</strong> Dynamic fields (name, last service, etc.)</li>
+      <li><strong>Scheduling:</strong> Send immediately or schedule for optimal timing</li>
+    </ol>
+
+    <h3>Campaign Performance</h3>
+    <ul>
+      <li><strong>Open Rates:</strong> Track email opens by campaign</li>
+      <li><strong>Click Rates:</strong> Monitor link clicks and engagement</li>
+      <li><strong>Conversions:</strong> Estimate requests from campaigns</li>
+      <li><strong>ROI Tracking:</strong> Revenue generated per campaign</li>
+      <li><strong>A/B Testing:</strong> Test subject lines and content</li>
+    </ul>
+
+    <h3>Marketing Assets</h3>
+    <p><strong>Location:</strong> Marketing → Assets</p>
+    <ul>
+      <li>Upload and manage marketing images</li>
+      <li>Store reusable email graphics</li>
+      <li>Organize by campaign or type</li>
+      <li>Insert directly into email templates</li>
+    </ul>
+
+    <h3>Audience Segments</h3>
+    <p>Create targeted customer groups:</p>
+    <ul>
+      <li><strong>By Service:</strong> HVAC customers, Plumbing customers, etc.</li>
+      <li><strong>By Value:</strong> High-value, medium, entry-level</li>
+      <li><strong>By Activity:</strong> Active, dormant, at-risk</li>
+      <li><strong>By Location:</strong> Geographic targeting</li>
+      <li><strong>Custom Rules:</strong> Combine multiple criteria</li>
+    </ul>
+
+    <h3>Advanced Analytics</h3>
+    <ul>
+      <li>Campaign performance dashboard</li>
+      <li>Lifetime value by segment</li>
+      <li>Customer journey tracking</li>
+      <li>Predictive next-best action</li>
+    </ul>
+  </section>
+  <section id="integrations">
+    <h2>Integrations</h2>
+    <h3>Stripe (Payment Processing)</h3>
+    <p><strong>Location:</strong> Integrations → Stripe or Settings → Stripe</p>
+    <ol>
+      <li>Click "Connect Stripe Account"</li>
+      <li>Complete Stripe OAuth authorization</li>
+      <li>Stripe automatically processes invoice payments</li>
+      <li>Standard fees apply (2.9% + $0.30 per transaction)</li>
+      <li>View payment dashboard in Stripe Express</li>
+    </ol>
+
+    <h3>Twilio (SMS & Voice)</h3>
+    <p><strong>Location:</strong> Settings → Messaging</p>
+    <ol>
+      <li>Get Twilio Account SID, Auth Token from <a href="https://twilio.com" target="_blank">twilio.com</a></li>
+      <li>Purchase Twilio phone number</li>
+      <li>Enter credentials in Creative Job Hub</li>
+      <li>Enable SMS messaging and voice calls</li>
+      <li>Configure AI receptionist (optional)</li>
+    </ol>
+
+    <h3>QuickBooks Online</h3>
+    <p><strong>Location:</strong> Integrations → QuickBooks</p>
+    <ol>
+      <li>Click "Connect to QuickBooks"</li>
+      <li>Authorize access to your QBO account</li>
+      <li><strong>Two-way sync:</strong>
+        <ul>
+          <li>Customers sync both directions</li>
+          <li>Invoices created in CJH sync to QBO</li>
+          <li>Payments recorded sync automatically</li>
+        </ul>
+      </li>
+      <li>View sync logs for troubleshooting</li>
+      <li>Manual sync available anytime</li>
+    </ol>
+
+    <h3>Google Drive</h3>
+    <p><strong>Location:</strong> Settings → Documents</p>
+    <ol>
+      <li>Click "Connect Google Drive"</li>
+      <li>Authorize access to Drive</li>
+      <li>Choose sync folder</li>
+      <li>Job documents auto-sync to Drive</li>
+      <li>Access files from anywhere</li>
+    </ol>
+
+    <h3>ElevenLabs (AI Voice Assistant)</h3>
+    <p><strong>Location:</strong> Integrations → ElevenLabs</p>
+    <ol>
+      <li>Sign up at <a href="https://elevenlabs.io" target="_blank">elevenlabs.io</a></li>
+      <li>Create conversational AI agent</li>
+      <li>Get Agent ID from ElevenLabs dashboard</li>
+      <li>Enter in Creative Job Hub integration settings</li>
+      <li>Connect to Twilio for phone integration</li>
+      <li>AI answers calls, books appointments, captures leads 24/7</li>
+    </ol>
+
+    <h3>Mapbox (Maps & Routing)</h3>
+    <p><strong>Location:</strong> Integrations → Mapbox</p>
+    <ul>
+      <li>Pre-configured by default</li>
+      <li>Powers all map features and route optimization</li>
+      <li>Optional: Add custom token for higher usage limits</li>
+      <li>Sign up at <a href="https://mapbox.com" target="_blank">mapbox.com</a> for custom token</li>
+    </ul>
+
+    <h3>Resend (Email Service)</h3>
+    <p>Email delivery is handled automatically. Emails sent from your custom domain for professional delivery.</p>
+  </section>
+
+  <!-- DOCUMENT TEMPLATES -->
+  <section id="documents">
+    <h2>Document Templates</h2>
+    <h3>Creating Templates</h3>
+    <p><strong>Location:</strong> Settings → Document Templates</p>
+    <ol>
+      <li>Create custom PDF templates for warranties and scopes of work</li>
+      <li>Use HTML/CSS for styling</li>
+      <li>Add dynamic fields with Handlebars syntax: <code>{{`{{client_name}}`}}</code>, <code>{{`{{job_no}}`}}</code>, etc.</li>
+      <li>Customize header, content, and footer sections</li>
+      <li>Preview before saving</li>
+    </ol>
+
+    <h3>Available Variables</h3>
+    <ul>
+      <li><code>{{`{{client_name}}`}}</code>, <code>{{`{{client_email}}`}}</code>, <code>{{`{{client_phone}}`}}</code></li>
+      <li><code>{{`{{property_address}}`}}</code>, <code>{{`{{property_city}}`}}</code></li>
+      <li><code>{{`{{job_no}}`}}</code>, <code>{{`{{estimate_no}}`}}</code>, <code>{{`{{invoice_no}}`}}</code></li>
+      <li><code>{{`{{total}}`}}</code>, <code>{{`{{subtotal}}`}}</code>, <code>{{`{{tax}}`}}</code></li>
+      <li><code>{{`{{org_name}}`}}</code>, <code>{{`{{org_phone}}`}}</code>, <code>{{`{{org_email}}`}}</code></li>
+      <li><code>{{`{{line_items}}`}}</code> - Auto-formats line items table</li>
+    </ul>
+
+    <h3>Using Templates</h3>
+    <ol>
+      <li>Go to job details page</li>
+      <li>Click Documents tab</li>
+      <li>Click "Create Document"</li>
+      <li>Select template (Warranty or Scope of Work)</li>
+      <li>Document generates with job data auto-filled</li>
+      <li>Download PDF or share with client</li>
+    </ol>
+
+    <h3>Document Management</h3>
+    <ul>
+      <li>Version control for templates</li>
+      <li>Upload existing PDF documents</li>
+      <li>Share documents via email</li>
+      <li>E-signature support (coming soon)</li>
+    </ul>
+  </section>
+
+  <!-- MOBILE APP -->
+  <section id="mobile">
+    <h2>Mobile App</h2>
+    <h3>Progressive Web App (PWA)</h3>
+    <p>Creative Job Hub works as a full mobile app without app store downloads.</p>
+
+    <h3>Installation</h3>
+    <p><strong>iOS (Safari):</strong></p>
+    <ol>
+      <li>Visit creativejobhub.com in Safari</li>
+      <li>Tap the Share button</li>
+      <li>Select "Add to Home Screen"</li>
+      <li>Tap "Add"</li>
+    </ol>
+
+    <p><strong>Android (Chrome):</strong></p>
+    <ol>
+      <li>Visit creativejobhub.com in Chrome</li>
+      <li>Tap the menu (three dots)</li>
+      <li>Select "Install App" or "Add to Home Screen"</li>
+      <li>Tap "Install"</li>
+    </ol>
+
+    <p><strong>Desktop:</strong> Look for install icon in browser address bar or header.</p>
+
+    <h3>Mobile Features</h3>
+    <ul>
+      <li><strong>Time Clock:</strong> Clock in/out with GPS location</li>
+      <li><strong>Job Management:</strong> View assigned jobs, update status</li>
+      <li><strong>Navigation:</strong> Get directions to job sites</li>
+      <li><strong>Photos:</strong> Take photos with automatic GPS and timestamp</li>
+      <li><strong>Checklists:</strong> Complete job tasks and checklists</li>
+      <li><strong>Messaging:</strong> SMS and team communication</li>
+      <li><strong>Offline Mode:</strong> Works without internet, syncs when online</li>
+      <li><strong>Push Notifications:</strong> Job updates, schedule changes</li>
+    </ul>
+
+    <h3>Offline Functionality</h3>
+    <ul>
+      <li>View jobs, clients, and schedules offline</li>
+      <li>Clock in/out saves to device until online</li>
+      <li>Photos queue for upload</li>
+      <li>Automatic sync when connection restored</li>
+      <li>Offline indicator shows sync status</li>
+    </ul>
+
+    <h3>Native Mobile Apps</h3>
+    <p>iOS and Android native apps available via Capacitor. Contact support for enterprise deployment.</p>
+  </section>
+
+  <!-- PORTAL -->
+  <section id="portal">
+    <h2>Customer Portal & Features</h2>
+    <h3>Portal Access</h3>
+    <p><strong>Location:</strong> Client Details → Send Portal Invite</p>
+    <ol>
+      <li>Click "Send Portal Invite" on client page</li>
+      <li>Client receives email with setup link</li>
+      <li>Client creates secure password</li>
+      <li>Portal accessible 24/7 from any device</li>
+    </ol>
+
+    <h3>Portal Customization</h3>
+    <p><strong>Location:</strong> Settings → Portal Settings</p>
+    <ul>
+      <li>Customize portal colors to match your brand</li>
+      <li>Add welcome message and instructions</li>
+      <li>Enable/disable specific features</li>
+      <li>Upload custom logo</li>
+      <li>Set default tab view</li>
+    </ul>
+
+    <h3>Core Portal Features</h3>
+    <ul>
+      <li><strong>Properties:</strong> View all properties with service history</li>
+      <li><strong>Jobs:</strong> Track active and completed jobs</li>
+      <li><strong>Estimates:</strong> Review and accept/decline estimates online</li>
+      <li><strong>Invoices:</strong> View invoices and make online payments</li>
+      <li><strong>Booking:</strong> Request new service appointments</li>
+      <li><strong>Messaging:</strong> Direct communication with your team</li>
+      <li><strong>Documents:</strong> Access warranties and service records</li>
+    </ul>
+
+    <h3>Advanced Portal Features</h3>
+    <h4>Loyalty & Rewards Program</h4>
+    <p><strong>Setup:</strong> Settings → Loyalty Rewards</p>
+    <ul>
+      <li>Define points per dollar spent</li>
+      <li>Set redemption value and rewards</li>
+      <li>Customers earn and track points in portal</li>
+      <li>Redeem rewards for discounts or services</li>
+    </ul>
+
+    <h4>Referral Program</h4>
+    <ul>
+      <li>Customers get unique referral codes</li>
+      <li>Share via email or social media</li>
+      <li>Track referred customers</li>
+      <li>Automatic reward assignment</li>
+    </ul>
+
+    <h4>Seasonal Advice</h4>
+    <p><strong>Setup:</strong> Settings → Seasonal Advice</p>
+    <ul>
+      <li>Create seasonal maintenance tips (Spring, Summer, Fall, Winter)</li>
+      <li>Display relevant advice in portal by season</li>
+      <li>Link to service plans or bookings</li>
+      <li>Automated reminders for seasonal services</li>
+    </ul>
+
+    <h4>Service Directory</h4>
+    <ul>
+      <li>Browse available services with images and descriptions</li>
+      <li>One-click booking from service listings</li>
+      <li>Service categories for easy navigation</li>
+    </ul>
+
+    <h4>Self-Service Features</h4>
+    <ul>
+      <li>Update contact information</li>
+      <li>Add or edit property details</li>
+      <li>Upload photos or documents</li>
+      <li>Manage notification preferences</li>
+    </ul>
+
+    <h3>Public Booking Page</h3>
+    <p><strong>Location:</strong> Settings → Booking Settings</p>
+    <ul>
+      <li>Enable public booking without portal login</li>
+      <li>Get shareable URL: <code>creativejobhub.com/book/[your-org-id]</code></li>
+      <li>Add to website, social media, or marketing materials</li>
+      <li>Customers book appointments directly</li>
+      <li>Automatic lead creation and follow-up</li>
+    </ul>
+
+    <h3>Portal Preview</h3>
+    <p>View your portal as customers see it: Client Details → Preview Portal</p>
+  </section>
+
+  <!-- ADVANCED FEATURES -->
+  <section id="advanced">
+    <h2>Advanced Features</h2>
+
+    <h3>Predictive Maintenance AI</h3>
+    <p><strong>Location:</strong> Analytics → Insights</p>
+    <ul>
+      <li>AI analyzes service history and patterns</li>
+      <li>Predicts when clients will need service</li>
+      <li>Proactive outreach recommendations</li>
+      <li>Seasonal service predictions</li>
+      <li>Equipment lifespan estimates</li>
+    </ul>
+
+    <h3>Smart Photo Analysis</h3>
+    <ul>
+      <li>Upload job photos with AI analysis</li>
+      <li>AI identifies equipment, problems, and recommendations</li>
+      <li>Automatic tagging and categorization</li>
+      <li>Before/after comparisons</li>
+      <li>Equipment condition assessment</li>
+    </ul>
+
+    <h3>Customer Segmentation</h3>
+    <p><strong>Location:</strong> Analytics → Customer Insights</p>
+    <ul>
+      <li><strong>High-Value Customers:</strong> Frequent or high-spend clients</li>
+      <li><strong>At-Risk Customers:</strong> Declining engagement or spending</li>
+      <li><strong>Loyal Customers:</strong> Long tenure, consistent usage</li>
+      <li><strong>New Customers:</strong> Recent additions, onboarding opportunity</li>
+      <li>Targeted campaigns per segment</li>
+    </ul>
+
+    <h3>Team Coordination</h3>
+    <ul>
+      <li><strong>Real-time Location:</strong> See all technicians on map</li>
+      <li><strong>Job Assignment:</strong> Dispatch based on location and availability</li>
+      <li><strong>Team Messaging:</strong> Built-in communication</li>
+      <li><strong>Performance Tracking:</strong> Jobs completed, ratings, efficiency</li>
+      <li><strong>Workload Balancing:</strong> Fair distribution across team</li>
+    </ul>
+
+    <h3>Role-Based Permissions</h3>
+    <p><strong>Location:</strong> Settings → Team Management</p>
+    <ul>
+      <li><strong>Owner:</strong> Full access to everything</li>
+      <li><strong>Dispatcher:</strong> Operations, scheduling, customer management</li>
+      <li><strong>Accountant:</strong> Financial reports, invoices, payments</li>
+      <li><strong>Technician:</strong> Assigned jobs, time clock, mobile features</li>
+      <li>Customize permissions per role</li>
+    </ul>
+
+    <h3>Service Area Management</h3>
+    <p><strong>Location:</strong> Settings → Service Area</p>
+    <ul>
+      <li>Define service radius from your location</li>
+      <li>Draw custom service area on map</li>
+      <li>Automatic lead qualification by location</li>
+      <li>Travel time estimates</li>
+      <li>Service area pricing adjustments</li>
+    </ul>
+
+    <h3>Multi-Currency & Multi-Language</h3>
+    <ul>
+      <li>Set default currency in organization settings</li>
+      <li>Support for international clients</li>
+      <li>Multi-language customer portal (coming soon)</li>
+    </ul>
+  </section>
+
+  <!-- BEST PRACTICES -->
+  <section id="best-practices">
+    <h2>Best Practices & Tips</h2>
+    <h3>Daily Workflow for Owners/Managers</h3>
+    <ol>
+      <li><strong>Morning:</strong>
+        <ul>
+          <li>Review dashboard for overnight activity</li>
+          <li>Check who's clocked in</li>
+          <li>Use "Plan My Day" for route optimization</li>
+          <li>Confirm today's schedule with technicians</li>
+        </ul>
+      </li>
+      <li><strong>Throughout Day:</strong>
+        <ul>
+          <li>Monitor real-time job progress on map</li>
+          <li>Respond to customer messages promptly</li>
+          <li>Follow up on estimates sent</li>
+          <li>Review and approve time exceptions</li>
+        </ul>
+      </li>
+      <li><strong>End of Day:</strong>
+        <ul>
+          <li>Convert completed jobs to invoices</li>
+          <li>Send invoices to customers</li>
+          <li>Review tomorrow's schedule</li>
+          <li>Check re-engagement queue</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h3>Data Entry Best Practices</h3>
+    <ul>
+      <li><strong>Consistency:</strong> Use same format for names, addresses, phone numbers</li>
+      <li><strong>Completeness:</strong> Fill all fields; more data = better insights</li>
+      <li><strong>Photos:</strong> Take before/after photos on every job</li>
+      <li><strong>Notes:</strong> Document access codes, customer preferences, special instructions</li>
+      <li><strong>Tags:</strong> Use service tags consistently for better reporting</li>
+    </ul>
+
+    <h3>Maximizing Efficiency</h3>
+    <ul>
+      <li><strong>Price Book:</strong> Keep comprehensive and up-to-date</li>
+      <li><strong>Templates:</strong> Create email and document templates for common scenarios</li>
+      <li><strong>Automation:</strong> Set up recurring maintenance, lead nurturing, reminders</li>
+      <li><strong>Mobile First:</strong> Train technicians to use mobile app exclusively</li>
+      <li><strong>Customer Portal:</strong> Encourage portal use to reduce admin calls</li>
+    </ul>
+
+    <h3>Team Training</h3>
+    <p><strong>For Technicians:</strong></p>
+    <ul>
+      <li>Install mobile app first day</li>
+      <li>Practice clock in/out procedures</li>
+      <li>Show how to update job status</li>
+      <li>Demonstrate photo upload and notes</li>
+      <li>Explain importance of GPS tracking</li>
+      <li>Review time tracking accuracy</li>
+    </ul>
+
+    <p><strong>For Office Staff:</strong></p>
+    <ul>
+      <li>Walk through full job lifecycle</li>
+      <li>Practice estimate to job to invoice flow</li>
+      <li>Learn customer communication tools</li>
+      <li>Review scheduling and routing features</li>
+      <li>Understand reporting and analytics</li>
+    </ul>
+
+    <h3>Customer Communication Tips</h3>
+    <ul>
+      <li><strong>Response Time:</strong> Aim for under 1 hour for inquiries</li>
+      <li><strong>Proactive Updates:</strong> Send job status updates automatically</li>
+      <li><strong>Professional Tone:</strong> Use templates for consistency</li>
+      <li><strong>Follow-up:</strong> Check satisfaction after job completion</li>
+      <li><strong>Portal Promotion:</strong> Highlight self-service benefits</li>
+    </ul>
+
+    <h3>Growth Strategies</h3>
+    <ul>
+      <li><strong>Service Plans:</strong> Convert one-time customers to subscriptions</li>
+      <li><strong>Referral Program:</strong> Incentivize customer referrals</li>
+      <li><strong>Seasonal Campaigns:</strong> Market services before peak seasons</li>
+      <li><strong>Re-engagement:</strong> Follow up with inactive customers monthly</li>
+      <li><strong>Reviews:</strong> Request reviews from satisfied customers</li>
+      <li><strong>Upselling:</strong> Use Smart Estimator's recommendations</li>
+    </ul>
+  </section>
+
+  <!-- WORKFLOWS -->
+  <section id="workflows">
+    <h2>Common Workflows</h2>
+    <h3>Complete Job Lifecycle</h3>
+    <ol>
+      <li><strong>Lead Capture:</strong> Website form, phone call, or AI receptionist</li>
+      <li><strong>Lead Qualification:</strong> Contact within 24 hours, assess needs</li>
+      <li><strong>Estimate:</strong> Use Smart Estimator for quick 3-tier pricing</li>
+      <li><strong>Send Estimate:</strong> Email with tracking, follow up after 48 hours</li>
+      <li><strong>Approval:</strong> Client accepts in portal or via email</li>
+      <li><strong>Convert to Job:</strong> One-click conversion with all details</li>
+      <li><strong>Schedule:</strong> Assign technician, optimize route</li>
+      <li><strong>Job Completion:</strong> Tech updates status, uploads photos, adds notes</li>
+      <li><strong>Quality Check:</strong> Manager reviews job details</li>
+      <li><strong>Invoice:</strong> Convert job to invoice automatically</li>
+      <li><strong>Payment:</strong> Send invoice, receive Stripe payment</li>
+      <li><strong>Follow-up:</strong> Request review, offer service plan</li>
+    </ol>
+
+    <h3>Recurring Maintenance Setup</h3>
+    <ol>
+      <li>Go to Property Details</li>
+      <li>Click "Add Recurring Maintenance"</li>
+      <li>Select service type from price book</li>
+      <li>Set frequency (weekly, monthly, quarterly, annual)</li>
+      <li>Choose start date</li>
+      <li>Assign default technician</li>
+      <li>System auto-creates jobs 7 days before due</li>
+      <li>Notifications sent to customer and tech</li>
+    </ol>
+
+    <h3>Emergency/Same-Day Dispatch</h3>
+    <ol>
+      <li>Customer calls or texts with urgent issue</li>
+      <li>Create high-priority job immediately</li>
+      <li>Check Jobs Map for nearest available technician</li>
+      <li>Assign and send push notification</li>
+      <li>Use "Plan My Day" to optimize technician's remaining schedule</li>
+      <li>Send customer ETA via SMS</li>
+      <li>Tech gets turn-by-turn navigation</li>
+      <li>Live GPS tracking for customer</li>
+    </ol>
+
+    <h3>Service Plan Enrollment</h3>
+    <ol>
+      <li>Create service plan in Service Plans section</li>
+      <li>Share public plans URL with customer</li>
+      <li>Customer selects plan and submits interest</li>
+      <li>Lead created automatically</li>
+      <li>Contact customer to finalize</li>
+      <li>Link plan to client profile</li>
+      <li>System generates recurring jobs per plan</li>
+      <li>Lead nurturing sequence sends follow-ups</li>
+    </ol>
+
+    <h3>Marketing Campaign Launch</h3>
+    <ol>
+      <li><strong>Create Segment:</strong> Define target audience (e.g., "HVAC customers, no service in 6 months")</li>
+      <li><strong>Design Campaign:</strong> Create email template with seasonal offer</li>
+      <li><strong>Set Up Sequence:</strong> Day 1: Intro, Day 3: Benefits, Day 7: Limited time offer</li>
+      <li><strong>Add Assets:</strong> Upload images and graphics</li>
+      <li><strong>Schedule:</strong> Set send dates/times</li>
+      <li><strong>Launch:</strong> Activate campaign</li>
+      <li><strong>Monitor:</strong> Track opens, clicks, bookings</li>
+      <li><strong>Optimize:</strong> Adjust based on performance data</li>
+    </ol>
+
+    <h3>New Employee Onboarding</h3>
+    <ol>
+      <li>Settings → Team Management → Invite Employee</li>
+      <li>Enter email, name, role, hourly rate</li>
+      <li>Send invitation</li>
+      <li>Employee receives email, creates account</li>
+      <li>Assign role permissions (Owner, Dispatcher, Accountant, Tech)</li>
+      <li>Add to technician group for job assignment</li>
+      <li>Provide mobile app training</li>
+      <li>Set up time tracking (clock in/out practice)</li>
+      <li>Review schedule and communication tools</li>
+    </ol>
+
+    <h3>QuickBooks Sync Setup</h3>
+    <ol>
+      <li>Have QuickBooks Online account ready</li>
+      <li>Go to Integrations → QuickBooks</li>
+      <li>Click "Connect to QuickBooks"</li>
+      <li>Log in to QBO and authorize</li>
+      <li>Initial sync imports existing customers</li>
+      <li>Going forward:
+        <ul>
+          <li>New clients sync automatically</li>
+          <li>Invoices created sync to QBO</li>
+          <li>Payments recorded sync immediately</li>
+        </ul>
+      </li>
+      <li>Check sync logs for any errors</li>
+      <li>Manual sync available anytime</li>
+    </ol>
+
+    <h3>Customer Portal Promotion</h3>
+    <ol>
+      <li>Customize portal in Settings → Portal Settings</li>
+      <li>Enable desired features (loyalty, referrals, seasonal advice)</li>
+      <li>Send portal invites to all existing clients</li>
+      <li>Include portal benefits in email signature</li>
+      <li>Mention during service calls</li>
+      <li>Add portal link to invoices</li>
+      <li>Promote in marketing campaigns</li>
+      <li>Monitor adoption rate in analytics</li>
+    </ol>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section id="troubleshooting">
+    <h2>Troubleshooting</h2>
+    
+    <h3>Login & Account Issues</h3>
+    <ul>
+      <li><strong>Forgot Password:</strong> Use "Forgot Password" link, check email (including spam)</li>
+      <li><strong>Can't Login:</strong> Try incognito/private mode, clear browser cache</li>
+      <li><strong>Email Not Received:</strong> Check spam folder, verify email address, try resend</li>
+      <li><strong>Two-Factor Issues:</strong> Contact support to reset if locked out</li>
+    </ul>
+
+    <h3>Mobile App Issues</h3>
+    <ul>
+      <li><strong>App Won't Install:</strong> Try different browser (Safari on iOS, Chrome on Android)</li>
+      <li><strong>Offline Mode Not Working:</strong> Check browser permissions, ensure enough storage space</li>
+      <li><strong>GPS Not Working:</strong> Enable location services in device settings</li>
+      <li><strong>Photos Won't Upload:</strong> Check camera permissions, verify internet connection</li>
+      <li><strong>Clock In/Out Missing:</strong> Refresh app, check if you're in correct location</li>
+      <li><strong>Push Notifications:</strong> Enable notifications in browser/device settings</li>
+    </ul>
+
+    <h3>Communication Issues</h3>
+    <ul>
+      <li><strong>Emails Not Sending:</strong> Verify Resend integration, check spam reputation</li>
+      <li><strong>SMS Not Sending:</strong> Verify Twilio credentials, check phone number format</li>
+      <li><strong>Customer Not Receiving:</strong> Confirm correct email/phone, check their spam</li>
+      <li><strong>Email Opens Not Tracking:</strong> Some email clients block tracking pixels</li>
+    </ul>
+
+    <h3>Payment & Billing Issues</h3>
+    <ul>
+      <li><strong>Stripe Not Connected:</strong> Re-authorize in Integrations → Stripe</li>
+      <li><strong>Payment Failed:</strong> Check Stripe dashboard for error details</li>
+      <li><strong>Invoice Not Paid:</strong> Verify payment link works, check Stripe status</li>
+      <li><strong>Subscription Issues:</strong> Go to Settings → Billing, update payment method</li>
+    </ul>
+
+    <h3>Integration Issues</h3>
+    <ul>
+      <li><strong>QuickBooks Not Syncing:</strong>
+        <ul>
+          <li>Check connection status in Integrations</li>
+          <li>Reconnect if token expired (happens every 6 months)</li>
+          <li>Review sync logs for specific errors</li>
+          <li>Verify matching customer names</li>
+        </ul>
+      </li>
+      <li><strong>Twilio Errors:</strong>
+        <ul>
+          <li>Verify Account SID and Auth Token</li>
+          <li>Check Twilio balance</li>
+          <li>Confirm phone number active</li>
+          <li>Review Twilio error logs</li>
+        </ul>
+      </li>
+      <li><strong>Google Drive Not Syncing:</strong>
+        <ul>
+          <li>Reconnect Google account</li>
+          <li>Check folder permissions</li>
+          <li>Verify storage space available</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Scheduling & Routing Issues</h3>
+    <ul>
+      <li><strong>Plan My Day Not Working:</strong> Ensure jobs have valid addresses, check internet connection</li>
+      <li><strong>GPS Tracking Inaccurate:</strong> Enable high-accuracy mode on mobile device</li>
+      <li><strong>Route Not Optimizing:</strong> Verify Mapbox integration, check job locations</li>
+    </ul>
+
+    <h3>Time Tracking Issues</h3>
+    <ul>
+      <li><strong>Missing Punches:</strong> Edit timecard in Time Admin to add missing entries</li>
+      <li><strong>Wrong Location Recorded:</strong> GPS can be off by 10-50 feet; review in context</li>
+      <li><strong>Overlapping Shifts:</strong> Check for duplicate clock-ins, resolve in Time Admin</li>
+      <li><strong>Payroll Export Errors:</strong> Verify pay period dates, check for exceptions</li>
+    </ul>
+
+    <h3>Data & Reports Issues</h3>
+    <ul>
+      <li><strong>Reports Not Loading:</strong> Try smaller date range, check internet connection</li>
+      <li><strong>Missing Data:</strong> Verify data was entered, check filters applied</li>
+      <li><strong>Export Failed:</strong> Reduce dataset size, try different format (CSV vs PDF)</li>
+      <li><strong>Dashboard Empty:</strong> Requires at least some job/client data to display</li>
+    </ul>
+
+    <h3>Performance Issues</h3>
+    <ul>
+      <li><strong>Slow Loading:</strong>
+        <ul>
+          <li>Clear browser cache and cookies</li>
+          <li>Close unused browser tabs</li>
+          <li>Check internet speed</li>
+          <li>Try different browser</li>
+        </ul>
+      </li>
+      <li><strong>App Crashes:</strong> Update to latest browser version, check device storage</li>
+      <li><strong>Maps Not Loading:</strong> Verify Mapbox integration, check browser console for errors</li>
+    </ul>
+
+    <h3>Getting Help</h3>
+    <ul>
+      <li><strong>In-App Chat:</strong> Click support icon in bottom right (fastest response)</li>
+      <li><strong>Email Support:</strong> <a href="mailto:support@creativejobhub.com">support@creativejobhub.com</a></li>
+      <li><strong>Enterprise Support:</strong> Schedule phone support calls (Enterprise plan only)</li>
+      <li><strong>Documentation:</strong> This guide and in-app "How To" in Settings</li>
+      <li><strong>Video Tutorials:</strong> Coming soon to help center</li>
+    </ul>
+
+    <h3>Emergency Support</h3>
+    <p>For critical issues affecting your business operations (payment processing down, complete system outage), mark your support ticket as "Critical" for priority escalation.</p>
+
+    <h3>Feature Requests</h3>
+    <p>Have ideas for improvements? We'd love to hear them! Submit via in-app chat or email with "Feature Request" in the subject line.</p>
+  </section>
+
+  <footer>
+    <p>Need help? Use the in-app chat or email <a href="mailto:support@creativejobhub.com">support@creativejobhub.com</a>.</p>
+    <p style="font-size:13px;color:var(--muted)">© Creative Job Hub</p>
+  </footer>
+</div>
+
+<!-- Optional: paste your tawk.to script here if you want chat on this page:
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default'; s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);})();
+</script>
+-->
+
+</body>
+</html>
