@@ -16,6 +16,27 @@ export default async function handler(req) {
   }
 
   try {
+    // Get environment variables from Vercel Edge Runtime
+    const supabaseUrl = Deno.env.get('SUPABASE_URL');
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+
+    console.log('Environment check (Edge Runtime):', { 
+      hasUrl: !!supabaseUrl, 
+      hasKey: !!supabaseKey,
+      urlPrefix: supabaseUrl?.substring(0, 20)
+    });
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Supabase credentials missing from environment');
+      return new Response(
+        JSON.stringify({ 
+          error: 'Server configuration error - missing credentials',
+          debug: 'Environment variables not found in Edge Runtime'
+        }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Parse form data
     console.log('Parsing request body...');
     const formData = await req.json();
@@ -39,24 +60,6 @@ export default async function handler(req) {
       return new Response(
         JSON.stringify({ error: 'Invalid email address' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
-      );
-    }
-
-    // Initialize Supabase client with environment variables
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    console.log('Environment check:', { 
-      hasUrl: !!supabaseUrl, 
-      hasKey: !!supabaseKey,
-      urlPrefix: supabaseUrl?.substring(0, 20)
-    });
-
-    if (!supabaseUrl || !supabaseKey) {
-      console.error('Supabase credentials missing');
-      return new Response(
-        JSON.stringify({ error: 'Server configuration error - missing credentials' }),
-        { status: 500, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
