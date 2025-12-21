@@ -42,12 +42,12 @@ module.exports = async function handler(req, res) {
     const formData = req.body;
     console.log('Form data received:', { email: formData.email, hasName: !!formData.name });
     
-    const { name, email, phone, company, message, page_url, referrer, timestamp, ...otherFields } = formData;
+    const { name, email, phone, company, business_type, message, page_url, referrer, timestamp, ...otherFields } = formData;
 
     // Validate required fields
-    if (!name || !email || !message) {
-      console.log('Validation failed:', { hasName: !!name, hasEmail: !!email, hasMessage: !!message });
-      return res.status(400).json({ error: 'Name, email, and message are required' });
+    if (!name || !email || !message || !business_type) {
+      console.log('Validation failed:', { hasName: !!name, hasEmail: !!email, hasMessage: !!message, hasBizType: !!business_type });
+      return res.status(400).json({ error: 'Name, email, message, and industry are required' });
     }
 
     // Email validation
@@ -71,17 +71,19 @@ module.exports = async function handler(req, res) {
     console.log('Creating Supabase client...');
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Prepare the data object - store ALL form fields in metadata
+    // Prepare the data object
+    // - business_type: industry from dropdown (HVAC, Plumbing, etc.)
+    // - company_name: stored in metadata as the actual company name
     const leadData = {
-      name: name.trim(), // Now stored as top-level field
+      name: name.trim(), // Top-level field for easy querying
       email: email.trim().toLowerCase(),
-      business_type: company?.trim() || null,
-      source: websiteDomain, // Store actual website domain
+      business_type: business_type.trim(), // Industry from dropdown
+      source: websiteDomain, // Actual website domain (creativejobhub.com, metroplexpros.com, etc.)
       action: 'contact_form_submitted',
       metadata: {
-        // Store all form-specific fields
+        // Store company name and all other form-specific fields
+        company_name: company?.trim() || null,
         phone: phone?.trim() || null,
-        company: company?.trim() || null,
         message: message.trim(),
         ...otherFields, // Captures team_size, service_needed, project_budget, etc.
         // Tracking data
