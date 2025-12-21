@@ -166,7 +166,7 @@ module.exports = async function handler(req, res) {
                 🎯 New Contact Form Submission
               </h1>
               <p style="margin: 8px 0 0; color: #e0e7ff; font-size: 16px; text-align: center;">
-                From ${websiteDomain}
+                From <span style="color: #ffffff; font-weight: 600;">${websiteDomain}</span>
               </p>
             </td>
           </tr>
