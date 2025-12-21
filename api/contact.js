@@ -42,7 +42,7 @@ module.exports = async function handler(req, res) {
     const formData = req.body;
     console.log('Form data received:', { email: formData.email, hasName: !!formData.name });
     
-    const { name, email, phone, company, message, page_url, referrer, timestamp } = formData;
+    const { name, email, phone, company, message, page_url, referrer, timestamp, ...otherFields } = formData;
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -57,30 +57,48 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
+    // Extract website domain from page_url for source tracking
+    let websiteDomain = 'creativejobhub.com'; // default
+    if (page_url) {
+      try {
+        const url = new URL(page_url);
+        websiteDomain = url.hostname.replace('www.', '');
+      } catch (e) {
+        console.log('Could not parse page_url:', page_url);
+      }
+    }
+
     console.log('Creating Supabase client...');
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Prepare the data object
+    // Prepare the data object - store ALL form fields in metadata
     const leadData = {
+      name: name.trim(), // Now stored as top-level field
       email: email.trim().toLowerCase(),
       business_type: company?.trim() || null,
-      source: 'website_contact_form',
+      source: websiteDomain, // Store actual website domain
       action: 'contact_form_submitted',
       metadata: {
-        name: name.trim(),
+        // Store all form-specific fields
         phone: phone?.trim() || null,
         company: company?.trim() || null,
-        team_size: formData.team_size || null,
         message: message.trim(),
+        ...otherFields, // Captures team_size, service_needed, project_budget, etc.
+        // Tracking data
         page_url: page_url || null,
         referrer: referrer || null,
         submitted_at: timestamp || new Date().toISOString(),
         user_agent: req.headers['user-agent'] || null,
-        ip_address: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.socket.remoteAddress || null
+        ip_address: req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.socket.remoteAddress || null,
+        form_type: 'contact_form'
       }
     };
 
-    console.log('Inserting into Supabase leads table...', { email: leadData.email, source: leadData.source });
+    console.log('Inserting into Supabase lead_tracking table...', { 
+      name: leadData.name,
+      email: leadData.email, 
+      source: leadData.source 
+    });
 
     // Try inserting without specifying schema (public is default)
     const { data, error } = await supabase
