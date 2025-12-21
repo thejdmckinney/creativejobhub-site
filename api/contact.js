@@ -40,14 +40,19 @@ module.exports = async function handler(req, res) {
     // Parse form data
     console.log('Parsing request body...');
     const formData = req.body;
-    console.log('Form data received:', { email: formData.email, hasName: !!formData.name });
+    console.log('Form data received:', { 
+      email: formData.email, 
+      hasName: !!formData.name,
+      business_type: formData.business_type,
+      hasBizType: !!formData.business_type 
+    });
     
     const { name, email, phone, company, business_type, message, page_url, referrer, timestamp, ...otherFields } = formData;
 
     // Validate required fields
-    if (!name || !email || !message || !business_type) {
+    if (!name || !email || !message) {
       console.log('Validation failed:', { hasName: !!name, hasEmail: !!email, hasMessage: !!message, hasBizType: !!business_type });
-      return res.status(400).json({ error: 'Name, email, message, and industry are required' });
+      return res.status(400).json({ error: 'Name, email, and message are required' });
     }
 
     // Email validation
@@ -77,7 +82,7 @@ module.exports = async function handler(req, res) {
     const leadData = {
       name: name.trim(), // Top-level field for easy querying
       email: email.trim().toLowerCase(),
-      business_type: business_type.trim(), // Industry from dropdown
+      business_type: business_type?.trim() || null, // Industry from dropdown (optional for now)
       source: websiteDomain, // Actual website domain (creativejobhub.com, metroplexpros.com, etc.)
       action: 'contact_form_submitted',
       metadata: {

@@ -347,6 +347,8 @@
             timestamp: form.querySelector('#timestamp').value
           };
 
+          console.log('Submitting form data:', formData);
+
           // Submit to Supabase via Vercel serverless function
           const response = await fetch('/api/contact', {
             method: 'POST',
