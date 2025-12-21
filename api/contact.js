@@ -1,7 +1,7 @@
 // Vercel Serverless Function to handle contact form submissions with Supabase
-import { createClient } from '@supabase/supabase-js';
+const { createClient } = require('@supabase/supabase-js');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -119,4 +119,4 @@ export default async function handler(req, res) {
       details: error.message 
     });
   }
-}
+};
