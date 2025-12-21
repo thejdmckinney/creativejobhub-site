@@ -78,16 +78,16 @@ module.exports = async function handler(req, res) {
 
     // Prepare the data object
     // - business_type: industry from dropdown (HVAC, Plumbing, etc.)
-    // - company_name: stored in metadata as the actual company name
+    // - company_name: stored as top-level field
     const leadData = {
       name: name.trim(), // Top-level field for easy querying
       email: email.trim().toLowerCase(),
-      business_type: business_type?.trim() || null, // Industry from dropdown (optional for now)
+      company_name: company?.trim() || null, // Company name as top-level field
+      business_type: business_type?.trim() || null, // Industry from dropdown
       source: websiteDomain, // Actual website domain (creativejobhub.com, metroplexpros.com, etc.)
       action: 'contact_form_submitted',
       metadata: {
-        // Store company name and all other form-specific fields
-        company_name: company?.trim() || null,
+        // Store all other form-specific fields
         phone: phone?.trim() || null,
         message: message.trim(),
         ...otherFields, // Captures team_size, service_needed, project_budget, etc.
