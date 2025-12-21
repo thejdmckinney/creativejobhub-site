@@ -70,6 +70,7 @@ module.exports = async function handler(req, res) {
         name: name.trim(),
         phone: phone?.trim() || null,
         company: company?.trim() || null,
+        team_size: formData.team_size || null,
         message: message.trim(),
         page_url: page_url || null,
         referrer: referrer || null,
@@ -79,12 +80,12 @@ module.exports = async function handler(req, res) {
       }
     };
 
-    console.log('Inserting into Supabase...', { email: leadData.email, source: leadData.source });
+    console.log('Inserting into Supabase leads table...', { email: leadData.email, source: leadData.source });
 
-    // Insert contact form submission into Supabase (matching existing schema)
+    // Try inserting without specifying schema (public is default)
     const { data, error } = await supabase
-      .from('leads')
-      .insert([leadData])
+      .from('lead_tracking')
+      .insert(leadData)
       .select();
 
     if (error) {
@@ -94,6 +95,15 @@ module.exports = async function handler(req, res) {
         hint: error.hint,
         code: error.code
       });
+      
+      // More helpful error message
+      if (error.message.includes('schema cache')) {
+        return res.status(500).json({ 
+          error: 'Database table not found. Please verify the "lead_tracking" table exists in your Supabase database.',
+          details: error.message 
+        });
+      }
+      
       return res.status(500).json({ 
         error: 'Failed to submit form. Please try again.',
         details: error.message 
