@@ -295,8 +295,8 @@ module.exports = async function handler(req, res) {
         `;
 
         await resend.emails.send({
-          from: 'Creative Job Hub <noreply@creativejobhub.com>',
-          to: 'hello@creativejobhub.com',
+          from: 'Creative Job Hub <info@creativejobhub.com>',
+          to: ['jeremy@creativejobhub.com', 'ashley@creativejobhub.com'],
           subject: `🎯 New ${business_type || 'Contact'} Lead from ${websiteDomain}`,
           html: emailHtml
         });
