@@ -45,8 +45,25 @@
     </script>
     
     <style>
+        :root{
+            --bg:#0a0e14;
+            --bg-secondary:#0f1419;
+            --panel:#1a1f26;
+            --muted:#8b92a0;
+            --text:#e4e7eb;
+            --brand:#3b82f6;
+            --brand-2:#0ea5e9;
+            --accent:#3b82f6;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         .hero {
-            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             padding: 120px 20px 80px;
             text-align: center;
             color: white;
@@ -148,12 +165,12 @@
         }
         
         .btn-secondary {
-            background: #0f1419;
+            background: var(--panel);
             color: var(--brand);
         }
         
         .btn-secondary:hover {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             transform: translateY(-2px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
@@ -163,7 +180,7 @@
         }
         
         .section-dark {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
         }
         
         .container {
@@ -185,13 +202,13 @@
         
         .section-header p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             max-width: 800px;
             margin: 0 auto;
         }
         
         .auto-generation {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -245,7 +262,7 @@
         .auto-step .step-number {
             width: 48px;
             height: 48px;
-            background: #0f1419;
+            background: var(--panel);
             color: #764ba2;
             border-radius: 50%;
             display: flex;
@@ -277,10 +294,10 @@
         }
         
         .feature-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
@@ -293,7 +310,7 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -311,7 +328,7 @@
         }
         
         .feature-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.7;
             margin-bottom: 16px;
         }
@@ -324,7 +341,7 @@
         
         .feature-list li {
             padding: 8px 0;
-            color: #666;
+            color: var(--muted);
             display: flex;
             align-items: start;
             gap: 8px;
@@ -338,7 +355,7 @@
         }
         
         .stripe-integration {
-            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -445,10 +462,10 @@
         }
         
         .comparison-box {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 16px;
             padding: 48px;
-            color: #333;
+            color: var(--text);
             margin: 64px 0;
         }
         
@@ -467,7 +484,7 @@
         }
         
         .comparison-side {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -522,11 +539,11 @@
         }
         
         .benefit-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
             text-align: center;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
@@ -539,7 +556,7 @@
         .benefit-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -564,12 +581,12 @@
         }
         
         .benefit-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.6;
         }
         
         .results-section {
-            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -615,7 +632,7 @@
         }
         
         .final-cta {
-            background: #0f1419;
+            background: var(--panel);
             padding: 64px 20px;
             text-align: center;
         }
@@ -629,7 +646,7 @@
         
         .final-cta p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             margin-bottom: 32px;
             max-width: 800px;
             margin-left: auto;

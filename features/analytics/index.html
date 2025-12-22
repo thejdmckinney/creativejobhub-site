@@ -38,6 +38,23 @@
     </script>
     
     <style>
+        :root{
+            --bg:#0a0e14;
+            --bg-secondary:#0f1419;
+            --panel:#1a1f26;
+            --muted:#8b92a0;
+            --text:#e4e7eb;
+            --brand:#3b82f6;
+            --brand-2:#0ea5e9;
+            --accent:#3b82f6;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -47,12 +64,12 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 120px 20px 80px;
             text-align: center;
@@ -128,7 +145,7 @@
 
         /* AI Insights Highlight Box */
         .ai-insights-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 50px;
             border-radius: 20px;
@@ -193,7 +210,7 @@
         }
 
         .feature-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 35px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -221,7 +238,7 @@
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.8;
         }
 
@@ -285,7 +302,7 @@
 
         /* Predictive Analytics Box */
         .predictive-box {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 50px;
             border-radius: 20px;
@@ -343,7 +360,7 @@
 
         /* Charts Box */
         .charts-box {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 50px;
             border-radius: 20px;
@@ -401,7 +418,7 @@
 
         /* Comparison Box */
         .comparison-box {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             padding: 50px;
             border-radius: 20px;
             margin: 60px 0;
@@ -422,7 +439,7 @@
         }
 
         .comparison-column {
-            background: #0f1419;
+            background: var(--panel);
             padding: 35px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -443,7 +460,7 @@
             padding: 12px 0;
             padding-left: 30px;
             position: relative;
-            color: #555;
+            color: var(--muted);
             line-height: 1.6;
         }
 
@@ -465,7 +482,7 @@
         }
 
         .benefit-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 35px;
             border-radius: 15px;
@@ -497,7 +514,7 @@
 
         /* Results Section */
         .results-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 80px 20px;
             margin-top: 80px;
@@ -545,7 +562,7 @@
 
         /* CTA Section */
         .cta-section {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
             padding: 80px 20px;
             text-align: center;
         }
@@ -567,7 +584,7 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             color: white;
             padding: 18px 50px;
             border-radius: 50px;

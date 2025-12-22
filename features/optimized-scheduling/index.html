@@ -45,8 +45,25 @@
     </script>
     
     <style>
+        :root{
+            --bg:#0a0e14;
+            --bg-secondary:#0f1419;
+            --panel:#1a1f26;
+            --muted:#8b92a0;
+            --text:#e4e7eb;
+            --brand:#3b82f6;
+            --brand-2:#0ea5e9;
+            --accent:#3b82f6;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         .hero {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             padding: 120px 20px 80px;
             text-align: center;
             color: white;
@@ -148,14 +165,15 @@
         }
         
         .btn-secondary {
-            background: #0f1419;
-            color: var(--brand);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
         .btn-secondary:hover {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         
         .section {
@@ -163,7 +181,7 @@
         }
         
         .section-dark {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
         }
         
         .container {
@@ -185,14 +203,14 @@
         
         .section-header p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             max-width: 800px;
             margin: 0 auto;
         }
         
         .ai-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             color: white;
             padding: 8px 20px;
             border-radius: 20px;
@@ -204,7 +222,7 @@
         }
         
         .plan-my-day {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -282,10 +300,10 @@
         }
         
         .feature-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
@@ -297,7 +315,7 @@
         
         .feature-card.ai-special {
             border: 3px solid #f093fb;
-            background: linear-gradient(135deg, #fff 0%, #fef5ff 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             position: relative;
         }
         
@@ -310,7 +328,7 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -321,7 +339,7 @@
         }
         
         .ai-special .feature-icon {
-            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
         }
         
         .feature-card h3 {
@@ -332,8 +350,9 @@
         }
         
         .feature-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.7;
+            font-size: 15px;
             margin-bottom: 16px;
         }
         
@@ -345,10 +364,11 @@
         
         .feature-list li {
             padding: 8px 0;
-            color: #666;
+            color: var(--muted);
             display: flex;
             align-items: start;
             gap: 8px;
+            font-size: 14px;
         }
         
         .feature-list li::before {
@@ -359,7 +379,7 @@
         }
         
         .route-optimization {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -428,11 +448,11 @@
         }
         
         .benefit-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
             text-align: center;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
@@ -445,7 +465,7 @@
         .benefit-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -470,12 +490,12 @@
         }
         
         .benefit-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.6;
         }
         
         .comparison-box {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             border: 3px solid #f39c12;
             border-radius: 16px;
             padding: 32px;
@@ -514,12 +534,12 @@
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 16px;
-            color: #333;
+            color: var(--text);
         }
         
         .comparison-side p {
             font-size: 16px;
-            color: #555;
+            color: var(--muted);
             line-height: 1.6;
         }
         
@@ -530,7 +550,7 @@
         }
         
         .results-section {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; border-bottom: 1px solid rgba(148,163,184,0.1);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -576,7 +596,7 @@
         }
         
         .final-cta {
-            background: #0f1419;
+            background: var(--panel);
             padding: 64px 20px;
             text-align: center;
         }
@@ -590,7 +610,7 @@
         
         .final-cta p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             margin-bottom: 32px;
             max-width: 800px;
             margin-left: auto;

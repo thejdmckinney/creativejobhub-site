@@ -45,13 +45,34 @@
     </script>
     
     <style>
+        :root{
+            --bg:#0a0e14;
+            --bg-secondary:#0f1419;
+            --panel:#1a1f26;
+            --muted:#8b92a0;
+            --text:#e4e7eb;
+            --brand:#3b82f6;
+            --brand-2:#0ea5e9;
+            --accent:#3b82f6;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
         .hero {
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%), 
+                        url('/assets/illustrations/cjh_resized.jpg');
+            background-size: cover;
+            background-position: center;
             padding: 120px 20px 80px;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid rgba(148,163,184,0.1);
         }
         
         .hero::before {
@@ -61,8 +82,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
         
@@ -148,14 +169,15 @@
         }
         
         .btn-secondary {
-            background: #0f1419;
-            color: var(--brand);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         
         .btn-secondary:hover {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.2);
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         
         .section {
@@ -163,7 +185,7 @@
         }
         
         .section-dark {
-            background: #f8f9fa;
+            background: var(--bg-secondary);
         }
         
         .container {
@@ -185,7 +207,7 @@
         
         .section-header p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             max-width: 800px;
             margin: 0 auto;
         }
@@ -204,7 +226,7 @@
         }
         
         .photo-highlight {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -282,22 +304,22 @@
         }
         
         .feature-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
         .feature-card:hover {
-            border-color: #f39c12;
+            border-color: var(--brand);
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(243, 156, 18, 0.15);
+            box-shadow: 0 12px 24px rgba(59,130,246,0.2);
         }
         
         .feature-card.ai-special {
-            border: 3px solid #f093fb;
-            background: linear-gradient(135deg, #fff 0%, #fef5ff 100%);
+            border: 3px solid rgba(8,145,178,0.5);
+            background: var(--panel);
             position: relative;
         }
         
@@ -310,7 +332,7 @@
         .feature-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -332,9 +354,11 @@
         }
         
         .feature-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.7;
+            font-size: 15px;
             margin-bottom: 16px;
+            font-size: 15px;
         }
         
         .feature-list {
@@ -345,21 +369,23 @@
         
         .feature-list li {
             padding: 8px 0;
-            color: #666;
+            color: var(--muted);
             display: flex;
             align-items: start;
             gap: 8px;
+            font-size: 14px;
+            font-size: 14px;
         }
         
         .feature-list li::before {
             content: '✓';
-            color: #f39c12;
+            color: var(--brand);
             font-weight: 700;
             flex-shrink: 0;
         }
         
         .status-tracking {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
             border-radius: 16px;
             padding: 48px;
             color: white;
@@ -476,24 +502,24 @@
         }
         
         .benefit-card {
-            background: #0f1419;
+            background: var(--panel);
             padding: 32px;
             border-radius: 12px;
             text-align: center;
-            border: 2px solid #e9ecef;
+            border: 2px solid rgba(148,163,184,0.1);
             transition: all 0.3s ease;
         }
         
         .benefit-card:hover {
-            border-color: #f39c12;
+            border-color: var(--brand);
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(243, 156, 18, 0.15);
+            box-shadow: 0 12px 24px rgba(59,130,246,0.2);
         }
         
         .benefit-icon {
             width: 72px;
             height: 72px;
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -513,17 +539,18 @@
         .benefit-metric {
             font-size: 36px;
             font-weight: 800;
-            color: #f39c12;
+            color: var(--brand);
             margin-bottom: 8px;
         }
         
         .benefit-card p {
-            color: #666;
+            color: var(--muted);
             line-height: 1.6;
+            font-size: 15px;
         }
         
         .results-section {
-            background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+            background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -569,7 +596,7 @@
         }
         
         .final-cta {
-            background: #0f1419;
+            background: var(--bg-secondary);
             padding: 64px 20px;
             text-align: center;
         }
@@ -583,7 +610,7 @@
         
         .final-cta p {
             font-size: 20px;
-            color: #666;
+            color: var(--muted);
             margin-bottom: 32px;
             max-width: 800px;
             margin-left: auto;
