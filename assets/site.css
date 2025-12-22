@@ -223,7 +223,8 @@ a{color:inherit;text-decoration:none}
   box-shadow:0 8px 24px rgba(14,165,233,.25);
 }
 .btn-primary:hover{transform:translateY(-1px)}
-.btn-ghost{background:transparent; border-color:#d1d5db; color:#1f2937}
+.btn-ghost{background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.3); color:#ffffff}
+.btn-ghost:hover{background:rgba(255,255,255,0.2); border-color:rgba(255,255,255,0.4)}
 
 /* LinkedIn Follow Button */
 .libutton {
