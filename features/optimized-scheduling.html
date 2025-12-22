@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimized Scheduling & Dispatch - Visual Calendar & Route Planning | Creative Job Hub</title>
+    <meta name="description" content="Visual drag-and-drop scheduling with AI-powered auto-assignment and route optimization. Save 5-8 hours/week, reduce drive time 25-35%, schedule 2-4 more jobs per day.">
+    <link rel="canonical" href="https://creativejobhub.com/features/optimized-scheduling.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Optimized Scheduling & Dispatch - Visual Calendar & Route Planning | Creative Job Hub">
+    <meta property="og:description" content="Drag-and-drop calendar, AI auto-assignment, route optimization. Save 5-8 hours/week, reduce drive time 25-35%.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://creativejobhub.com/features/optimized-scheduling.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/site.css?v=18">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #0f1419;
+            color: var(--brand);
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-dark {
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        .plan-my-day {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin-bottom: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-my-day::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .plan-my-day h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .plan-my-day p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .ai-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ai-factor {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .ai-factor i {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .ai-factor h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .ai-factor p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #4facfe;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(79, 172, 254, 0.15);
+        }
+        
+        .feature-card.ai-special {
+            border: 3px solid #f093fb;
+            background: linear-gradient(135deg, #fff 0%, #fef5ff 100%);
+            position: relative;
+        }
+        
+        .ai-special .ai-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .ai-special .feature-icon {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: #4facfe;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .route-optimization {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .route-optimization h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .route-optimization p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .route-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        
+        .route-feature {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .route-feature i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .route-feature h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .route-feature p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .benefit-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: #4facfe;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(79, 172, 254, 0.15);
+        }
+        
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-metric {
+            font-size: 36px;
+            font-weight: 800;
+            color: #4facfe;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .comparison-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border: 3px solid #f39c12;
+            border-radius: 16px;
+            padding: 32px;
+            margin: 48px 0;
+            position: relative;
+        }
+        
+        .comparison-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f39c12;
+            color: white;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .comparison-content {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 32px;
+            align-items: center;
+            margin-top: 16px;
+        }
+        
+        .comparison-side {
+            text-align: center;
+        }
+        
+        .comparison-side h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #333;
+        }
+        
+        .comparison-side p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .comparison-divider {
+            width: 2px;
+            height: 120px;
+            background: #f39c12;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .results-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .results-section .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 48px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+        
+        .result-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .final-cta {
+            background: #0f1419;
+            padding: 64px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 24px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .plan-my-day {
+                padding: 32px 24px;
+            }
+            
+            .comparison-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .comparison-divider {
+                display: none;
+            }
+            
+            .results-section h2 {
+                font-size: 32px;
+            }
+            
+            .final-cta h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h1>Visual Scheduling & Smart Dispatch</h1>
+            <p>Drag-and-drop calendar interface with AI-powered auto-assignment and route optimization. Save 5-8 hours per week on scheduling, reduce drive time 25-35%, and schedule 2-4 more jobs per technician per day.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5-8 hrs</div>
+                    <div class="hero-stat-label">Saved Per Week</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">25-35%</div>
+                    <div class="hero-stat-label">Drive Time Reduction</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">2-4</div>
+                    <div class="hero-stat-label">More Jobs Per Day</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">99.9%</div>
+                    <div class="hero-stat-label">No Double-Booking</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Plan My Day Feature -->
+    <section class="section">
+        <div class="container">
+            <div class="plan-my-day">
+                <span class="ai-badge"><i class="fas fa-sparkles"></i> AI Powered</span>
+                <h3><i class="fas fa-magic"></i> "Plan My Day" Auto-Assignment</h3>
+                <p>Click one button and AI automatically assigns all unscheduled jobs to the right technicians. Considers skills, workload, location, and dozens of other factors to create the perfect schedule.</p>
+                
+                <div class="ai-factors">
+                    <div class="ai-factor">
+                        <i class="fas fa-tools"></i>
+                        <h4>Skills Matching</h4>
+                        <p>HVAC jobs to HVAC techs, plumbing to plumbers</p>
+                    </div>
+                    <div class="ai-factor">
+                        <i class="fas fa-balance-scale"></i>
+                        <h4>Workload Balancing</h4>
+                        <p>Distributes jobs evenly across team</p>
+                    </div>
+                    <div class="ai-factor">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Geographic Clustering</h4>
+                        <p>Groups nearby jobs for same technician</p>
+                    </div>
+                    <div class="ai-factor">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h4>Priority Handling</h4>
+                        <p>Urgent/emergency jobs assigned first</p>
+                    </div>
+                    <div class="ai-factor">
+                        <i class="fas fa-clock"></i>
+                        <h4>Capacity Management</h4>
+                        <p>Respects max jobs per technician per day</p>
+                    </div>
+                    <div class="ai-factor">
+                        <i class="fas fa-user-check"></i>
+                        <h4>Availability</h4>
+                        <p>Only assigns to available technicians</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Visual Scheduling Interface</h2>
+                <p>Intuitive drag-and-drop calendar makes scheduling effortless</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <h3>Multiple Calendar Views</h3>
+                    <p>Switch between views with one click:</p>
+                    <ul class="feature-list">
+                        <li>Day view with hourly breakdown</li>
+                        <li>Week view for entire team</li>
+                        <li>Month view for long-term planning</li>
+                        <li>Color-coded by job status</li>
+                        <li>Multiple technicians displayed</li>
+                        <li>Real-time updates across devices</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <h3>Drag-and-Drop Scheduling</h3>
+                    <p>Reschedule jobs instantly:</p>
+                    <ul class="feature-list">
+                        <li>Click and drag to new time slot</li>
+                        <li>Automatic availability validation</li>
+                        <li>Prevents double-booking conflicts</li>
+                        <li>Accounts for travel and buffer time</li>
+                        <li>Visual feedback during dragging</li>
+                        <li>One-click undo if needed</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Conflict Detection</h3>
+                    <p>Prevents scheduling mistakes:</p>
+                    <ul class="feature-list">
+                        <li>Alerts if technician already booked</li>
+                        <li>Shows conflicting appointments</li>
+                        <li>Suggests alternative times</li>
+                        <li>Validates business hours</li>
+                        <li>99.9% prevents double-booking</li>
+                        <li>Real-time validation across users</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Color-Coded Status</h3>
+                    <p>See job status at a glance:</p>
+                    <ul class="feature-list">
+                        <li>Blue: Scheduled jobs</li>
+                        <li>Orange: In progress</li>
+                        <li>Green: Completed</li>
+                        <li>Red: Emergency/urgent</li>
+                        <li>Technician names on each job</li>
+                        <li>Quick-view tooltips with details</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile-Optimized</h3>
+                    <p>Perfect schedule management on phone:</p>
+                    <ul class="feature-list">
+                        <li>Optimized list view with job cards</li>
+                        <li>Swipe gestures for quick actions</li>
+                        <li>Morning/Afternoon/Evening grouping</li>
+                        <li>Drive time between jobs shown</li>
+                        <li>One-tap navigation to job site</li>
+                        <li>Real-time synchronization</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Technician Filtering</h3>
+                    <p>Focus on specific schedules:</p>
+                    <ul class="feature-list">
+                        <li>View all technicians or individual</li>
+                        <li>Team/department grouping</li>
+                        <li>Quick dropdown selection</li>
+                        <li>Remembers filter preference</li>
+                        <li>Identify workload imbalances</li>
+                        <li>Plan vacation coverage</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card ai-special">
+                    <span class="ai-badge"><i class="fas fa-sparkles"></i> AI Powered</span>
+                    <div class="feature-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Intelligent Assignment</h3>
+                    <p>Multiple assignment strategies:</p>
+                    <ul class="feature-list">
+                        <li>AI auto-assignment (skill + location)</li>
+                        <li>Manual selection for specific jobs</li>
+                        <li>Round-robin for fair distribution</li>
+                        <li>Skill-based matching</li>
+                        <li>Geographic proximity assignment</li>
+                        <li>Multi-technician team assignments</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Real-Time Updates</h3>
+                    <p>Always in sync across devices:</p>
+                    <ul class="feature-list">
+                        <li>Schedule refreshes every 30 seconds</li>
+                        <li>Office changes appear on tech phones</li>
+                        <li>Tech updates visible in office instantly</li>
+                        <li>Multi-user coordination</li>
+                        <li>Automatic conflict resolution</li>
+                        <li>Activity logging tracks changes</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>Google Calendar Sync</h3>
+                    <p>Two-way calendar integration:</p>
+                    <ul class="feature-list">
+                        <li>Jobs appear on personal calendar</li>
+                        <li>Real-time synchronization</li>
+                        <li>Set reminders for appointments</li>
+                        <li>Share calendars with team</li>
+                        <li>Block personal time off</li>
+                        <li>Combined work + personal view</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Route Optimization -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="route-optimization">
+                <h3><i class="fas fa-route"></i> Intelligent Route Optimization</h3>
+                <p>AI-powered route planning minimizes drive time, reduces fuel costs, and maximizes jobs per day. Considers real-time traffic, sequences stops by proximity, and provides turn-by-turn directions.</p>
+                
+                <div class="route-features">
+                    <div class="route-feature">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Optimal Routes</h4>
+                        <p>AI generates most efficient drive routes for each technician</p>
+                    </div>
+                    <div class="route-feature">
+                        <i class="fas fa-traffic-light"></i>
+                        <h4>Real-Time Traffic</h4>
+                        <p>Integrates traffic data for accurate ETAs and rerouting</p>
+                    </div>
+                    <div class="route-feature">
+                        <i class="fas fa-layer-group"></i>
+                        <h4>Geographic Clustering</h4>
+                        <p>Groups nearby jobs on same day to minimize backtracking</p>
+                    </div>
+                    <div class="route-feature">
+                        <i class="fas fa-gas-pump"></i>
+                        <h4>Fuel Savings</h4>
+                        <p>Reduce drive time 25-35% = significant fuel cost savings</p>
+                    </div>
+                    <div class="route-feature">
+                        <i class="fas fa-list-ol"></i>
+                        <h4>Optimized Stop Order</h4>
+                        <p>Reorders stops for maximum efficiency (1, 2, 3...)</p>
+                    </div>
+                    <div class="route-feature">
+                        <i class="fas fa-location-arrow"></i>
+                        <h4>Turn-by-Turn Nav</h4>
+                        <p>One-click navigation to each job site from mobile app</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Advanced Scheduling Features</h2>
+                <p>Everything you need to manage complex scheduling scenarios</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multi-Technician Jobs</h3>
+                    <p>Handle complex assignments:</p>
+                    <ul class="feature-list">
+                        <li>Assign multiple techs to one job</li>
+                        <li>Team-based assignments (2+ person crew)</li>
+                        <li>Lead tech and assistant roles</li>
+                        <li>Backup technician designation</li>
+                        <li>Coordinated arrival times</li>
+                        <li>Team capacity tracking</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Technician Profiles</h3>
+                    <p>Complete skill and capacity management:</p>
+                    <ul class="feature-list">
+                        <li>Skill level ratings (1-5 scale)</li>
+                        <li>Specializations (HVAC, plumbing, etc.)</li>
+                        <li>Max daily jobs capacity (configurable)</li>
+                        <li>Working hours and availability</li>
+                        <li>Current workload tracking</li>
+                        <li>Location for proximity assignment</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>Scheduled Estimates</h3>
+                    <p>On-site estimate appointments:</p>
+                    <ul class="feature-list">
+                        <li>Schedule site visit for walkthrough</li>
+                        <li>Assign technician for estimate</li>
+                        <li>Customer receives confirmation</li>
+                        <li>Appears on tech's schedule</li>
+                        <li>Add line items after site visit</li>
+                        <li>Convert to job when approved</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <h3>Buffer Time Management</h3>
+                    <p>Prevent rushed jobs:</p>
+                    <ul class="feature-list">
+                        <li>Add buffer between appointments</li>
+                        <li>Account for drive time automatically</li>
+                        <li>Prevent back-to-back overbooking</li>
+                        <li>Lunch break blocking</li>
+                        <li>Realistic capacity planning</li>
+                        <li>Reduces technician stress</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Automatic Notifications</h3>
+                    <p>Keep everyone informed:</p>
+                    <ul class="feature-list">
+                        <li>Technician notified of new assignments</li>
+                        <li>Customer receives schedule confirmation</li>
+                        <li>Reminder before appointment</li>
+                        <li>Rescheduling notifications</li>
+                        <li>Technician en route alerts</li>
+                        <li>Completion confirmations</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Capacity Analytics</h3>
+                    <p>Understand your scheduling performance:</p>
+                    <ul class="feature-list">
+                        <li>Jobs per technician per day</li>
+                        <li>Utilization rates by tech</li>
+                        <li>Average drive time analysis</li>
+                        <li>Overbooking/underbooking alerts</li>
+                        <li>Schedule efficiency scores</li>
+                        <li>Identify improvement opportunities</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison: Manual vs Smart Scheduling -->
+    <section class="section">
+        <div class="container">
+            <div class="comparison-box">
+                <div class="comparison-badge">See The Difference</div>
+                <div class="comparison-content">
+                    <div class="comparison-side">
+                        <h4><i class="fas fa-times-circle" style="color: #e74c3c;"></i> Manual Scheduling</h4>
+                        <p><strong>2-3 hours per day</strong><br>
+                        Whiteboard or spreadsheet chaos<br>
+                        Frequent double-booking errors<br>
+                        Technicians driving zig-zag routes<br>
+                        Phone calls to confirm availability<br>
+                        Rescheduling takes 15-20 minutes</p>
+                    </div>
+                    <div class="comparison-divider"></div>
+                    <div class="comparison-side">
+                        <h4><i class="fas fa-check-circle" style="color: #0ea5e9;"></i> Creative Job Hub</h4>
+                        <p><strong>30-45 minutes per day</strong><br>
+                        Visual drag-and-drop calendar<br>
+                        99.9% no double-booking (AI validation)<br>
+                        Optimized routes save 25-35% drive time<br>
+                        Real-time sync across all devices<br>
+                        Drag-and-drop rescheduling (5 seconds)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Business Benefits</h2>
+                <p>Real improvements to efficiency, capacity, and customer satisfaction</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Savings</h3>
+                    <div class="benefit-metric">5-8 hrs</div>
+                    <p>Per week saved on scheduling tasks. Drag-and-drop and auto-assignment make scheduling almost instant vs hours of phone calls and whiteboard shuffling.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Drive Time Reduction</h3>
+                    <div class="benefit-metric">25-35%</div>
+                    <p>Less time on the road. Route optimization and geographic clustering save fuel costs and allow more jobs per day without longer hours.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>More Jobs Per Day</h3>
+                    <div class="benefit-metric">2-4</div>
+                    <p>Additional jobs per technician per day. Better routing and scheduling means more billable work without working longer hours.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <h3>No Double-Booking</h3>
+                    <div class="benefit-metric">99.9%</div>
+                    <p>Accuracy with conflict detection. Automatic validation prevents scheduling mistakes that frustrate customers and waste time.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Workload Balance</h3>
+                    <div class="benefit-metric">100%</div>
+                    <p>Fair distribution across team. AI auto-assignment prevents overworking some techs while others sit idle. Reduces burnout.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Customer Satisfaction</h3>
+                    <div class="benefit-metric">30-40%</div>
+                    <p>Increase from accurate arrival times and reliable scheduling. No more missed appointments or long wait windows frustrating customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2>Real Results from Smart Scheduling</h2>
+            <p class="subtitle">Typical business scheduling 150-300 jobs per month</p>
+            
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-number">150-300</div>
+                    <div class="result-label">Jobs Scheduled Per Month</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">25-35%</div>
+                    <div class="result-label">Drive Time Reduction</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">30-45 min</div>
+                    <div class="result-label">Saved Daily on Scheduling</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">2-4</div>
+                    <div class="result-label">More Jobs Per Tech Per Day</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">5-8 hrs</div>
+                    <div class="result-label">Saved Per Week</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">$25K-$45K</div>
+                    <div class="result-label">Annual Savings (Fuel + Capacity)</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> Watch Demo Video
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> See Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Stop Wasting Hours on Manual Scheduling</h2>
+            <p>Join field service businesses who save 5-8 hours per week with visual drag-and-drop scheduling and AI-powered route optimization. Schedule 2-4 more jobs per technician per day, reduce drive time 25-35%, and save $25,000-$45,000 annually. All included in your $89/month plan—no per-user fees, no scheduling limits, no extra costs.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Get Started Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--brand); color: white; padding: 60px 20px 30px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">Creative Job Hub</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">All-in-one field service management software designed for small businesses. Everything you need at one flat price.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/#features" style="color: white; text-decoration: none; opacity: 0.9;">Features</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/pricing.html" style="color: white; text-decoration: none; opacity: 0.9;">Pricing</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/see-it-in-action.html" style="color: white; text-decoration: none; opacity: 0.9;">See It In Action</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/about.html" style="color: white; text-decoration: none; opacity: 0.9;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/contact.html" style="color: white; text-decoration: none; opacity: 0.9;">Contact</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/blog/" style="color: white; text-decoration: none; opacity: 0.9;">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/privacy.html" style="color: white; text-decoration: none; opacity: 0.9;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/terms.html" style="color: white; text-decoration: none; opacity: 0.9;">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; text-align: center; opacity: 0.9;">
+                <p>&copy; 2024 Creative Job Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js?v=3"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Creative Job Hub - Optimized Scheduling & Dispatch",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "89",
+        "priceCurrency": "USD"
+      },
+      "description": "Visual drag-and-drop scheduling with AI-powered auto-assignment and route optimization. Save 5-8 hours/week, reduce drive time 25-35%.",
+      "featureList": [
+        "Visual drag-and-drop calendar interface",
+        "AI-powered 'Plan My Day' auto-assignment",
+        "Route optimization with real-time traffic",
+        "Multiple calendar views (day, week, month)",
+        "Conflict detection prevents double-booking",
+        "Color-coded job status visualization",
+        "Mobile-optimized schedule management",
+        "Technician skill and workload balancing",
+        "Geographic clustering for efficiency",
+        "Google Calendar two-way sync",
+        "Real-time updates across all devices",
+        "25-35% drive time reduction"
+      ]
+    }
+    </script>
+</body>
+</html>

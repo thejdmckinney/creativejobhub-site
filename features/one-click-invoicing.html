@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Click Invoicing - Automatic Invoice Generation & Online Payments | Creative Job Hub</title>
+    <meta name="description" content="Automatic invoice generation from completed jobs with PDF creation, email delivery, Stripe online payments, and payment tracking. Get paid 40% faster with 95% fewer billing errors.">
+    <link rel="canonical" href="https://creativejobhub.com/features/one-click-invoicing.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="One Click Invoicing - Automatic Invoice Generation & Online Payments | Creative Job Hub">
+    <meta property="og:description" content="Automatic invoice generation from jobs, PDF creation, email delivery, and Stripe online payments. Get paid 40% faster with zero manual work.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://creativejobhub.com/features/one-click-invoicing.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/site.css?v=18">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #0f1419;
+            color: var(--brand);
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-dark {
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .auto-generation {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin-bottom: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auto-generation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .auto-generation h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .auto-generation p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .auto-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .auto-step {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .auto-step .step-number {
+            width: 48px;
+            height: 48px;
+            background: #0f1419;
+            color: #764ba2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-weight: 800;
+            font-size: 24px;
+        }
+        
+        .auto-step h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .auto-step p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #2ecc71;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(46, 204, 113, 0.15);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: #2ecc71;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .stripe-integration {
+            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .stripe-integration h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .stripe-integration p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .payment-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .payment-step {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .payment-step i {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .payment-step h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .payment-step p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .invoice-statuses {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .invoice-statuses h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .status-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .status-card i {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .status-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .status-card p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .comparison-box {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: #333;
+            margin: 64px 0;
+        }
+        
+        .comparison-box h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+            color: #3b82f6;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .comparison-side {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-side h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .comparison-side ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .comparison-side li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        
+        .comparison-side li:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-side li i {
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        
+        .comparison-side.manual li i {
+            color: #e74c3c;
+        }
+        
+        .comparison-side.automated li i {
+            color: #0ea5e9;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .benefit-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: #2ecc71;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(46, 204, 113, 0.15);
+        }
+        
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-metric {
+            font-size: 36px;
+            font-weight: 800;
+            color: #2ecc71;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #2ecc71 0%, #0ea5e9 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .results-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .results-section .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 48px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+        
+        .result-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .final-cta {
+            background: #0f1419;
+            padding: 64px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 24px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .auto-generation, .stripe-integration, .invoice-statuses, .comparison-box {
+                padding: 32px 24px;
+            }
+            
+            .results-section h2 {
+                font-size: 32px;
+            }
+            
+            .final-cta h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </div>
+            <h1>One Click Invoicing</h1>
+            <p>Automatic invoice generation from completed jobs with PDF creation, email delivery, Stripe online payments, and complete payment tracking. Get paid 40% faster with 95% fewer billing errors and zero manual work.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">40%</div>
+                    <div class="hero-stat-label">Faster Payment</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">95%</div>
+                    <div class="hero-stat-label">Fewer Billing Errors</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">10-15 hrs</div>
+                    <div class="hero-stat-label">Saved Per Month</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">60-75%</div>
+                    <div class="hero-stat-label">Pay Online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automatic Generation -->
+    <section class="section">
+        <div class="container">
+            <div class="auto-generation">
+                <h3><i class="fas fa-magic"></i> Automatic Invoice Generation</h3>
+                <p>Job marked complete → Invoice automatically created, calculated, and emailed with payment link. Zero manual work required.</p>
+                
+                <div class="auto-steps">
+                    <div class="auto-step">
+                        <div class="step-number">1</div>
+                        <h4>Job Complete</h4>
+                        <p>Technician marks job as "Complete" in system</p>
+                    </div>
+                    <div class="auto-step">
+                        <div class="step-number">2</div>
+                        <h4>Invoice Created</h4>
+                        <p>System creates invoice from all job line items and expenses</p>
+                    </div>
+                    <div class="auto-step">
+                        <div class="step-number">3</div>
+                        <h4>Totals Calculated</h4>
+                        <p>Subtotal, discount, tax, and total calculated automatically</p>
+                    </div>
+                    <div class="auto-step">
+                        <div class="step-number">4</div>
+                        <h4>Email Sent</h4>
+                        <p>Professional invoice email with PDF and payment link sent instantly</p>
+                    </div>
+                    <div class="auto-step">
+                        <div class="step-number">5</div>
+                        <h4>Customer Pays</h4>
+                        <p>Customer clicks payment link and pays with credit card in 2 clicks</p>
+                    </div>
+                    <div class="auto-step">
+                        <div class="step-number">6</div>
+                        <h4>Auto-Updated</h4>
+                        <p>Invoice marked paid, receipt sent, balance updated automatically</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Invoice Management</h2>
+                <p>Complete invoice lifecycle from creation to payment</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Invoice Information</h3>
+                    <p>Complete invoice details captured:</p>
+                    <ul class="feature-list">
+                        <li>Auto-generated invoice number (INV-00001)</li>
+                        <li>Client and property linked</li>
+                        <li>Job and estimate linked (if applicable)</li>
+                        <li>Created date and due date</li>
+                        <li>Status tracking (Draft, Sent, Paid, Overdue)</li>
+                        <li>Internal or customer-facing notes</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Financial Details</h3>
+                    <p>Automatic calculation of all amounts:</p>
+                    <ul class="feature-list">
+                        <li>Subtotal (sum of all line items)</li>
+                        <li>Discount (dollar amount or percentage)</li>
+                        <li>Tax (sales tax percentage)</li>
+                        <li>Total (subtotal - discount + tax)</li>
+                        <li>Deposit applied (upfront deposits)</li>
+                        <li>Amount paid and balance due</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <h3>Line Items</h3>
+                    <p>Flexible line item management:</p>
+                    <ul class="feature-list">
+                        <li>Add from price book or create custom</li>
+                        <li>Quantity and unit price per item</li>
+                        <li>Drag-and-drop reordering</li>
+                        <li>Edit quantities and prices anytime</li>
+                        <li>Delete items if needed</li>
+                        <li>Automatic subtotal recalculation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Professional PDFs</h3>
+                    <p>Branded PDF invoices automatically:</p>
+                    <ul class="feature-list">
+                        <li>Professional branded design</li>
+                        <li>Company logo and contact info</li>
+                        <li>Itemized line items table</li>
+                        <li>Subtotal, discount, tax, total</li>
+                        <li>Payment terms and due date</li>
+                        <li>Download or email instantly</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Delivery</h3>
+                    <p>Automated professional invoice emails:</p>
+                    <ul class="feature-list">
+                        <li>Branded email template with your logo</li>
+                        <li>Customizable subject and body</li>
+                        <li>Merge fields ({{client_name}}, {{total}})</li>
+                        <li>PDF automatically attached</li>
+                        <li>Payment link included</li>
+                        <li>CC additional recipients</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Automatic Recalculation</h3>
+                    <p>Always accurate totals:</p>
+                    <ul class="feature-list">
+                        <li>Recalculates when line items change</li>
+                        <li>Updates when payments received</li>
+                        <li>Adjusts for discount or tax changes</li>
+                        <li>Balance due always current</li>
+                        <li>Status auto-updates when paid</li>
+                        <li>Manual recalculate button available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stripe Integration -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="stripe-integration">
+                <h3><i class="fab fa-stripe"></i> Stripe Online Payments</h3>
+                <p>One-click payment links powered by Stripe. Customer enters card details on secure checkout page, pays instantly, and invoice automatically updated. 60-75% of customers prefer to pay online.</p>
+                
+                <div class="payment-process">
+                    <div class="payment-step">
+                        <i class="fas fa-link"></i>
+                        <h4>Create Payment Link</h4>
+                        <p>Click button to generate secure Stripe payment link</p>
+                    </div>
+                    <div class="payment-step">
+                        <i class="fas fa-paper-plane"></i>
+                        <h4>Send to Customer</h4>
+                        <p>Email, SMS, or copy-paste link to customer</p>
+                    </div>
+                    <div class="payment-step">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Secure Checkout</h4>
+                        <p>Customer enters card on Stripe-hosted page</p>
+                    </div>
+                    <div class="payment-step">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Payment Processed</h4>
+                        <p>Stripe processes payment securely</p>
+                    </div>
+                    <div class="payment-step">
+                        <i class="fas fa-bell"></i>
+                        <h4>Webhook Notification</h4>
+                        <p>System receives instant payment confirmation</p>
+                    </div>
+                    <div class="payment-step">
+                        <i class="fas fa-file-invoice"></i>
+                        <h4>Invoice Updated</h4>
+                        <p>Invoice marked paid, receipt emailed automatically</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Payment Management</h2>
+                <p>Multiple payment methods and complete tracking</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <h3>Payment Methods</h3>
+                    <p>Accept all payment types:</p>
+                    <ul class="feature-list">
+                        <li>Stripe: Credit/debit card via payment link</li>
+                        <li>Cash: Manual entry by office</li>
+                        <li>Check: Manual entry with check number</li>
+                        <li>Zelle/Venmo/ACH: Manual entry</li>
+                        <li>Deposits: Applied when job converts</li>
+                        <li>Partial payments: Multiple payments tracked</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Payment Information</h3>
+                    <p>Complete payment details recorded:</p>
+                    <ul class="feature-list">
+                        <li>Amount paid</li>
+                        <li>Discount applied (if any)</li>
+                        <li>Payment method</li>
+                        <li>Date received</li>
+                        <li>Notes (check number, transaction ID)</li>
+                        <li>Receipt sent automatically</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Automatic Updates</h3>
+                    <p>System handles everything automatically:</p>
+                    <ul class="feature-list">
+                        <li>Invoice amount_paid updated</li>
+                        <li>Invoice balance_due recalculated</li>
+                        <li>Invoice status updated (paid if $0 balance)</li>
+                        <li>Payment receipt emailed to customer</li>
+                        <li>Contact event logged in history</li>
+                        <li>Customer balance updated in system</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Deposits & Partial Payments</h3>
+                    <p>Handle complex payment scenarios:</p>
+                    <ul class="feature-list">
+                        <li>Mark payment as "Deposit" upfront</li>
+                        <li>Applied to invoice when job converts</li>
+                        <li>Reduces balance due automatically</li>
+                        <li>Tracked separately (deposit_applied field)</li>
+                        <li>Multiple partial payments supported</li>
+                        <li>All payments linked to invoice</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Payment Tracking</h3>
+                    <p>Complete payment history:</p>
+                    <ul class="feature-list">
+                        <li>All payments linked to invoice</li>
+                        <li>View payment history on invoice page</li>
+                        <li>Payment method and date for each</li>
+                        <li>Total paid amount displayed</li>
+                        <li>Remaining balance always current</li>
+                        <li>Export for accounting</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Customer Portal</h3>
+                    <p>Self-service invoice access:</p>
+                    <ul class="feature-list">
+                        <li>Customer views all their invoices</li>
+                        <li>Click to see full invoice details</li>
+                        <li>Download PDF anytime</li>
+                        <li>Pay online with one click</li>
+                        <li>See payment history</li>
+                        <li>Outstanding balance always visible</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Invoice Statuses -->
+    <section class="section">
+        <div class="container">
+            <div class="invoice-statuses">
+                <h3><i class="fas fa-tasks"></i> Invoice Status Workflow</h3>
+                
+                <div class="status-grid">
+                    <div class="status-card">
+                        <i class="fas fa-file"></i>
+                        <h4>Draft</h4>
+                        <p>Invoice created but not sent. Can be edited freely. Not visible to customer.</p>
+                    </div>
+                    <div class="status-card">
+                        <i class="fas fa-paper-plane"></i>
+                        <h4>Sent</h4>
+                        <p>Invoice emailed to customer with PDF and payment link. Counted in Outstanding.</p>
+                    </div>
+                    <div class="status-card">
+                        <i class="fas fa-hourglass-half"></i>
+                        <h4>Partial</h4>
+                        <p>Some payment received. Balance still due. Shows amount paid and remaining.</p>
+                    </div>
+                    <div class="status-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h4>Paid</h4>
+                        <p>Full payment received. Balance due = $0. Marked complete and archived.</p>
+                    </div>
+                    <div class="status-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>Overdue</h4>
+                        <p>Past due date with balance outstanding. Automatic status change triggers alerts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Invoice Reporting</h2>
+                <p>Real-time visibility into your receivables</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dashboard"></i>
+                    </div>
+                    <h3>Invoice Dashboard</h3>
+                    <p>Key metrics at a glance:</p>
+                    <ul class="feature-list">
+                        <li>Total Invoices: Count of all invoices</li>
+                        <li>Outstanding: Sum of all unpaid balances</li>
+                        <li>Paid This Month: Sum of payments received</li>
+                        <li>Overdue: Count and total of past-due invoices</li>
+                        <li>Visual cards with large dollar amounts</li>
+                        <li>Click to drill down for details</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3>Invoice Filters</h3>
+                    <p>Find invoices quickly:</p>
+                    <ul class="feature-list">
+                        <li>Status: Draft, Sent, Paid, Overdue, Partial</li>
+                        <li>Client: Search by client name</li>
+                        <li>Date Range: From date to end date</li>
+                        <li>Job Number: Filter by linked job</li>
+                        <li>Amount Range: Min to max total</li>
+                        <li>Instant filtering as you type</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Search & Sort</h3>
+                    <p>Powerful search capabilities:</p>
+                    <ul class="feature-list">
+                        <li>Search by invoice number</li>
+                        <li>Search by client name</li>
+                        <li>Sort by date, amount, status</li>
+                        <li>Sort ascending or descending</li>
+                        <li>Instant filtering as you type</li>
+                        <li>Export filtered results</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Financial Analytics</h3>
+                    <p>Business insights from invoice data:</p>
+                    <ul class="feature-list">
+                        <li>Average invoice value</li>
+                        <li>Average days to payment</li>
+                        <li>Payment method breakdown</li>
+                        <li>Monthly revenue trends</li>
+                        <li>Outstanding balance aging</li>
+                        <li>Customer payment patterns</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Export & Integration</h3>
+                    <p>Export to accounting systems:</p>
+                    <ul class="feature-list">
+                        <li>Export to CSV</li>
+                        <li>Export to Excel</li>
+                        <li>QuickBooks export</li>
+                        <li>Xero export (coming soon)</li>
+                        <li>Custom export formats</li>
+                        <li>Scheduled automatic exports</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Automatic Alerts</h3>
+                    <p>Stay on top of receivables:</p>
+                    <ul class="feature-list">
+                        <li>Overdue invoice notifications</li>
+                        <li>Large invoice alerts</li>
+                        <li>Payment received notifications</li>
+                        <li>Outstanding balance reminders</li>
+                        <li>Email or in-app notifications</li>
+                        <li>Configurable alert rules</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Box -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="comparison-box">
+                <h3><i class="fas fa-balance-scale"></i> Manual Invoicing vs Automated Invoicing</h3>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-side manual">
+                        <h4><i class="fas fa-times-circle"></i> Manual Invoicing</h4>
+                        <ul>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>10-15 hours per month creating invoices manually</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Handwritten or typed invoices prone to errors</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Math errors on 10-15% of invoices</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Print, stamp, mail invoices (5-7 days delivery)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Customer receives invoice 1 week later</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Customer mails check (another week)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Average 25 days to get paid</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>No online payment option</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-side automated">
+                        <h4><i class="fas fa-check-circle"></i> Creative Job Hub</h4>
+                        <ul>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Zero hours - invoices generated automatically</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Professional branded PDF invoices</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>95% fewer errors (automatic calculations)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Email delivery in seconds (instant)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Customer receives invoice immediately</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Customer pays online in 2 clicks</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Average 15 days to get paid (40% faster)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>60-75% of customers pay online via Stripe</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Business Benefits</h2>
+                <p>Real improvements from automated invoicing</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Faster Payment</h3>
+                    <div class="benefit-metric">40%</div>
+                    <p>Faster payment collection. Average 15 days vs 25 days with manual invoicing. Instant delivery and online payment drive speed.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Fewer Errors</h3>
+                    <div class="benefit-metric">95%</div>
+                    <p>Reduction in billing errors. Automatic calculations eliminate math mistakes, wrong totals, and duplicate charges.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Savings</h3>
+                    <div class="benefit-metric">10-15 hrs</div>
+                    <p>Per month saved on invoicing tasks. No manual invoice creation, data entry, printing, mailing, or check deposits.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Online Payments</h3>
+                    <div class="benefit-metric">60-75%</div>
+                    <p>Of customers prefer to pay online. Stripe integration makes payment easy with credit/debit cards and digital wallets.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Cash Flow Improvement</h3>
+                    <div class="benefit-metric">$25-50K</div>
+                    <p>Annual improvement from faster payment collection. 40% faster payment = more money in the bank sooner.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Customer Satisfaction</h3>
+                    <div class="benefit-metric">25-35%</div>
+                    <p>Increase in customer satisfaction. Professional invoices, instant delivery, and easy online payment impress customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2>Real Results from Automated Invoicing</h2>
+            <p class="subtitle">Typical business using one-click invoicing</p>
+            
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-number">150-300</div>
+                    <div class="result-label">Invoices Generated Per Month</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">40%</div>
+                    <div class="result-label">Faster Payment Collection</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">10-15 hrs</div>
+                    <div class="result-label">Saved Per Month</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">95%</div>
+                    <div class="result-label">Fewer Billing Errors</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">60-75%</div>
+                    <div class="result-label">Pay Online via Stripe</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">$25-50K</div>
+                    <div class="result-label">Annual Cash Flow Improvement</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> Watch Demo Video
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> See Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Get Paid 40% Faster with Zero Work</h2>
+            <p>Join field service businesses who get paid 40% faster, save 10-15 hours per month, and reduce billing errors 95% with automated invoicing. Automatic generation from completed jobs, professional PDF creation, instant email delivery, Stripe online payments, and complete payment tracking. All included in your $89/month plan—no transaction fees, no invoice limits, no extra costs.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Get Started Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--brand); color: white; padding: 60px 20px 30px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">Creative Job Hub</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">All-in-one field service management software designed for small businesses. Everything you need at one flat price.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/#features" style="color: white; text-decoration: none; opacity: 0.9;">Features</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/pricing.html" style="color: white; text-decoration: none; opacity: 0.9;">Pricing</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/see-it-in-action.html" style="color: white; text-decoration: none; opacity: 0.9;">See It In Action</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/about.html" style="color: white; text-decoration: none; opacity: 0.9;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/contact.html" style="color: white; text-decoration: none; opacity: 0.9;">Contact</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/blog/" style="color: white; text-decoration: none; opacity: 0.9;">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/privacy.html" style="color: white; text-decoration: none; opacity: 0.9;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/terms.html" style="color: white; text-decoration: none; opacity: 0.9;">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; text-align: center; opacity: 0.9;">
+                <p>&copy; 2024 Creative Job Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js?v=3"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Creative Job Hub - One Click Invoicing",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "89",
+        "priceCurrency": "USD"
+      },
+      "description": "Automatic invoice generation from completed jobs with PDF creation, email delivery, Stripe online payments, and payment tracking. Get paid 40% faster with zero manual work.",
+      "featureList": [
+        "Automatic invoice generation from completed jobs",
+        "Professional branded PDF invoices",
+        "Instant email delivery with payment links",
+        "Stripe online payments integration",
+        "Multiple payment methods (card, cash, check, ACH)",
+        "Automatic payment tracking and reconciliation",
+        "Invoice status workflow (Draft, Sent, Paid, Overdue)",
+        "Customer self-service portal",
+        "Deposits and partial payment tracking",
+        "Invoice dashboard and reporting",
+        "QuickBooks export integration",
+        "40% faster payment collection",
+        "95% fewer billing errors",
+        "10-15 hours saved per month"
+      ]
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Paid - Stripe Online Payments & Automatic Reconciliation | Creative Job Hub</title>
+    <meta name="description" content="Stripe integration for secure online payments with credit cards, Apple Pay, and Google Pay. Automatic reconciliation, 40% faster payment, and 60-75% of customers pay online.">
+    <link rel="canonical" href="https://creativejobhub.com/features/get-paid.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Get Paid - Stripe Online Payments & Automatic Reconciliation | Creative Job Hub">
+    <meta property="og:description" content="Stripe online payments with automatic reconciliation. Get paid 40% faster with 95%+ collection rate. 60-75% of customers prefer to pay online.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://creativejobhub.com/features/get-paid.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/site.css?v=18">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #0f1419;
+            color: #6772e5;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-dark {
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .payment-flow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin-bottom: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .payment-flow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .payment-flow h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .payment-flow p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flow-step {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .flow-step .step-number {
+            width: 40px;
+            height: 40px;
+            background: #0f1419;
+            color: #764ba2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .flow-step h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .flow-step p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #6772e5;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(103, 114, 229, 0.15);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: #6772e5;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .payment-methods {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .payment-methods h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .payment-methods p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        
+        .method-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .method-card i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .method-card h4 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .method-card p {
+            font-size: 15px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .reconciliation-highlight {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .reconciliation-highlight h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .reconciliation-highlight p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .reconciliation-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        
+        .recon-feature {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .recon-feature i {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .recon-feature h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .recon-feature p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .comparison-box {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: #333;
+            margin: 64px 0;
+        }
+        
+        .comparison-box h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+            color: #3b82f6;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .comparison-side {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-side h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .comparison-side ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .comparison-side li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: start;
+            gap: 12px;
+        }
+        
+        .comparison-side li:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-side li i {
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        
+        .comparison-side.traditional li i {
+            color: #e74c3c;
+        }
+        
+        .comparison-side.stripe li i {
+            color: #0ea5e9;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .benefit-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: #6772e5;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(103, 114, 229, 0.15);
+        }
+        
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-metric {
+            font-size: 36px;
+            font-weight: 800;
+            color: #6772e5;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #6772e5 0%, #5469d4 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .results-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .results-section .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            margin-bottom: 48px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+        
+        .result-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .final-cta {
+            background: #0f1419;
+            padding: 64px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 24px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .payment-flow, .payment-methods, .reconciliation-highlight, .comparison-box {
+                padding: 32px 24px;
+            }
+            
+            .results-section h2 {
+                font-size: 32px;
+            }
+            
+            .final-cta h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fab fa-stripe-s"></i>
+            </div>
+            <h1>Get Paid with Stripe</h1>
+            <p>Secure online payments with credit cards, Apple Pay, and Google Pay. Automatic reconciliation updates invoices instantly. Get paid 40% faster with 95%+ collection rate—60-75% of customers prefer to pay online.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">40%</div>
+                    <div class="hero-stat-label">Faster Payment</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">60-75%</div>
+                    <div class="hero-stat-label">Pay Online</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">95%+</div>
+                    <div class="hero-stat-label">Collection Rate</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">100%</div>
+                    <div class="hero-stat-label">Auto-Reconciled</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Flow -->
+    <section class="section">
+        <div class="container">
+            <div class="payment-flow">
+                <h3><i class="fas fa-bolt"></i> Complete Payment Flow</h3>
+                <p>From invoice creation to automatic reconciliation—everything happens seamlessly with zero manual work</p>
+                
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="step-number">1</div>
+                        <h4>Invoice Created</h4>
+                        <p>Invoice with balance due automatically generated</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">2</div>
+                        <h4>Payment Link</h4>
+                        <p>Stripe Checkout session created with unique URL</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">3</div>
+                        <h4>Customer Clicks</h4>
+                        <p>Customer clicks payment link from email or SMS</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">4</div>
+                        <h4>Stripe Checkout</h4>
+                        <p>Secure payment page opens (hosted by Stripe)</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">5</div>
+                        <h4>Payment Details</h4>
+                        <p>Customer enters card or taps Apple/Google Pay</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">6</div>
+                        <h4>Stripe Processes</h4>
+                        <p>Payment processed securely (PCI Level 1)</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">7</div>
+                        <h4>Webhook Sent</h4>
+                        <p>Real-time notification sent to your system</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">8</div>
+                        <h4>Auto-Updated</h4>
+                        <p>Invoice marked paid, balance updated instantly</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">9</div>
+                        <h4>Receipt Emailed</h4>
+                        <p>Payment receipt sent to customer automatically</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="step-number">10</div>
+                        <h4>Reconciled</h4>
+                        <p>Payment linked to invoice, balance accurate</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Stripe Integration Features</h2>
+                <p>Complete payment processing with automatic reconciliation</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Stripe Checkout</h3>
+                    <p>Secure hosted payment page:</p>
+                    <ul class="feature-list">
+                        <li>Professional Stripe branding with your logo</li>
+                        <li>Invoice details displayed prominently</li>
+                        <li>Credit/debit card form with real-time validation</li>
+                        <li>Apple Pay and Google Pay one-tap buttons</li>
+                        <li>Security badges (PCI Level 1 certified)</li>
+                        <li>Instant payment confirmation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Payment Links</h3>
+                    <p>Shareable payment URLs:</p>
+                    <ul class="feature-list">
+                        <li>Unique URL for each invoice payment</li>
+                        <li>Expires after 24 hours if not used</li>
+                        <li>Metadata includes invoice ID for tracking</li>
+                        <li>Send via email, SMS, or copy-paste</li>
+                        <li>Success/cancel redirect URLs configured</li>
+                        <li>Mobile-optimized checkout experience</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Payment Security</h3>
+                    <p>Bank-level security standards:</p>
+                    <ul class="feature-list">
+                        <li>PCI Level 1 certified (highest standard)</li>
+                        <li>Your system never sees card numbers</li>
+                        <li>Encrypted transmission (TLS 1.2+)</li>
+                        <li>3D Secure authentication when required</li>
+                        <li>Fraud detection by Stripe Radar</li>
+                        <li>Customer never sees your payment processing</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3>Stripe Webhooks</h3>
+                    <p>Real-time payment notifications:</p>
+                    <ul class="feature-list">
+                        <li>Instant notification when payment succeeds</li>
+                        <li>Payment intent events tracked</li>
+                        <li>Checkout session completion monitored</li>
+                        <li>Refund notifications received</li>
+                        <li>Signature verification for security</li>
+                        <li>Reliable delivery (Stripe retries if failed)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Customer Management</h3>
+                    <p>Stripe customer objects:</p>
+                    <ul class="feature-list">
+                        <li>Automatic Stripe customer creation</li>
+                        <li>Customer ID linked to client record</li>
+                        <li>Saved payment methods (one-click checkout)</li>
+                        <li>Payment history visible in Stripe dashboard</li>
+                        <li>Customer portal for managing cards</li>
+                        <li>Used for subscription billing (optional)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <h3>Payment Receipts</h3>
+                    <p>Automatic receipt generation:</p>
+                    <ul class="feature-list">
+                        <li>Emailed immediately after payment</li>
+                        <li>Receipt number (unique identifier)</li>
+                        <li>Payment amount and method shown</li>
+                        <li>Card last 4 digits displayed</li>
+                        <li>Invoice number and remaining balance</li>
+                        <li>Customizable branded templates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="payment-methods">
+                <h3><i class="fas fa-credit-card"></i> Supported Payment Methods</h3>
+                <p>Accept all major payment types for maximum customer convenience</p>
+                
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <i class="fas fa-credit-card"></i>
+                        <h4>Credit Cards</h4>
+                        <p>Visa, Mastercard, American Express, Discover—all major cards accepted</p>
+                    </div>
+                    <div class="method-card">
+                        <i class="fas fa-money-check"></i>
+                        <h4>Debit Cards</h4>
+                        <p>All major debit cards with instant processing and confirmation</p>
+                    </div>
+                    <div class="method-card">
+                        <i class="fab fa-apple"></i>
+                        <h4>Apple Pay</h4>
+                        <p>One-tap payment on iPhone, iPad, Mac, and Safari browser</p>
+                    </div>
+                    <div class="method-card">
+                        <i class="fab fa-google"></i>
+                        <h4>Google Pay</h4>
+                        <p>One-tap payment on Android devices and Chrome browser</p>
+                    </div>
+                    <div class="method-card">
+                        <i class="fas fa-university"></i>
+                        <h4>ACH Bank Transfer</h4>
+                        <p>Lower fees (0.8% capped at $5) for bank-to-bank transfers</p>
+                    </div>
+                    <div class="method-card">
+                        <i class="fas fa-globe"></i>
+                        <h4>International Cards</h4>
+                        <p>Accept payments from customers worldwide with currency conversion</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Payment Tracking & Management</h2>
+                <p>Complete payment history and reconciliation</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Payment Records</h3>
+                    <p>Complete payment information stored:</p>
+                    <ul class="feature-list">
+                        <li>Amount paid and any discounts applied</li>
+                        <li>Payment method (Stripe, cash, check, etc.)</li>
+                        <li>Date received and time stamp</li>
+                        <li>Linked invoice, job, and client records</li>
+                        <li>Stripe Payment Intent ID (for online)</li>
+                        <li>Notes (check numbers, transaction IDs)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Payment History</h3>
+                    <p>View payments across all records:</p>
+                    <ul class="feature-list">
+                        <li>Payments page: All payments across customers</li>
+                        <li>Client detail: All payments for specific customer</li>
+                        <li>Invoice detail: All payments for specific invoice</li>
+                        <li>Job detail: All payments for specific job</li>
+                        <li>Sort by date, amount, method</li>
+                        <li>Filter by date range and payment method</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-alt"></i>
+                    </div>
+                    <h3>Manual Payment Entry</h3>
+                    <p>Record offline payments:</p>
+                    <ul class="feature-list">
+                        <li>Cash payments at time of service</li>
+                        <li>Checks mailed or delivered</li>
+                        <li>Zelle, Venmo, or ACH transfers</li>
+                        <li>Enter amount, method, date, notes</li>
+                        <li>Optional receipt email to customer</li>
+                        <li>Automatic invoice reconciliation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Deposits & Partial Payments</h3>
+                    <p>Handle complex payment scenarios:</p>
+                    <ul class="feature-list">
+                        <li>Mark payments as deposits (before job)</li>
+                        <li>Deposits applied when job converts to invoice</li>
+                        <li>Multiple partial payments tracked separately</li>
+                        <li>All payments linked to invoice for audit trail</li>
+                        <li>Balance due always accurate and current</li>
+                        <li>Payment progress visible on invoice</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h3>Refunds & Disputes</h3>
+                    <p>Handle payment reversals:</p>
+                    <ul class="feature-list">
+                        <li>Process refunds in Stripe dashboard</li>
+                        <li>Full or partial refund support</li>
+                        <li>Webhook updates invoice automatically</li>
+                        <li>Balance increases by refund amount</li>
+                        <li>Status changes back to Partial or Sent</li>
+                        <li>Complete audit trail of all reversals</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Export & Reporting</h3>
+                    <p>Payment data for accounting:</p>
+                    <ul class="feature-list">
+                        <li>Export payments to CSV or Excel</li>
+                        <li>QuickBooks export integration</li>
+                        <li>Filter by date range for reports</li>
+                        <li>Payment method breakdown analysis</li>
+                        <li>Monthly revenue summaries</li>
+                        <li>Stripe fees calculation and tracking</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Automatic Reconciliation -->
+    <section class="section">
+        <div class="container">
+            <div class="reconciliation-highlight">
+                <h3><i class="fas fa-sync"></i> 100% Automatic Reconciliation</h3>
+                <p>Every Stripe payment includes invoice metadata. Webhook automatically links payment to invoice, updates balance, creates payment record, logs contact event—all within seconds. Zero manual reconciliation needed.</p>
+                
+                <div class="reconciliation-features">
+                    <div class="recon-feature">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Real-Time</h4>
+                        <p>Invoice updated within seconds of payment</p>
+                    </div>
+                    <div class="recon-feature">
+                        <i class="fas fa-check-double"></i>
+                        <h4>100% Accurate</h4>
+                        <p>Automated process eliminates human error</p>
+                    </div>
+                    <div class="recon-feature">
+                        <i class="fas fa-link"></i>
+                        <h4>Auto-Linked</h4>
+                        <p>Payment record linked to invoice automatically</p>
+                    </div>
+                    <div class="recon-feature">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Balance Updated</h4>
+                        <p>Amount paid and balance due recalculated instantly</p>
+                    </div>
+                    <div class="recon-feature">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Receipt Sent</h4>
+                        <p>Customer receives payment receipt automatically</p>
+                    </div>
+                    <div class="recon-feature">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Audit Trail</h4>
+                        <p>Complete history of all transactions and changes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Stripe Fees & Economics</h2>
+                <p>Transparent pricing with no platform transaction fees</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Stripe Processing Fees</h3>
+                    <p>Standard Stripe rates (not Creative Job Hub):</p>
+                    <ul class="feature-list">
+                        <li>Credit/Debit Cards: 2.9% + $0.30 per transaction</li>
+                        <li>Apple Pay / Google Pay: 2.9% + $0.30</li>
+                        <li>ACH Bank Transfer: 0.8% (capped at $5.00)</li>
+                        <li>International Cards: +1.5% additional</li>
+                        <li>Chargeback fee: $15 (if dispute lost)</li>
+                        <li>No monthly fees, setup fees, or minimums</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Fee Example</h3>
+                    <p>$500 invoice paid with credit card:</p>
+                    <ul class="feature-list">
+                        <li>Invoice total: $500.00</li>
+                        <li>Stripe percentage: $14.50 (2.9%)</li>
+                        <li>Stripe fixed fee: $0.30</li>
+                        <li>Total Stripe fee: $14.80</li>
+                        <li>You receive: $485.20</li>
+                        <li>Deposited to your bank in 2 business days</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Who Pays Fees?</h3>
+                    <p>Three options for handling fees:</p>
+                    <ul class="feature-list">
+                        <li>You absorb fees (most common approach)</li>
+                        <li>Pass fees to customer (add surcharge)</li>
+                        <li>Build fees into your pricing structure</li>
+                        <li>Consider fees as cost of faster payment</li>
+                        <li>40% faster payment offsets fee cost</li>
+                        <li>Improved cash flow worth the investment</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Your Stripe Account</h3>
+                    <p>You own your payment processing:</p>
+                    <ul class="feature-list">
+                        <li>You create your own Stripe account</li>
+                        <li>You connect it to Creative Job Hub</li>
+                        <li>Payments go directly to your bank account</li>
+                        <li>You see all transactions in Stripe dashboard</li>
+                        <li>You keep 100% (minus Stripe fees)</li>
+                        <li>Creative Job Hub takes no transaction fees</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>ROI Analysis</h3>
+                    <p>Fees pay for themselves quickly:</p>
+                    <ul class="feature-list">
+                        <li>40% faster payment = better cash flow</li>
+                        <li>2-4 hours saved weekly (no bank trips)</li>
+                        <li>95%+ collection rate vs 80-85% traditional</li>
+                        <li>Fewer overdue invoices (30-40% reduction)</li>
+                        <li>Customer satisfaction increase (40-50%)</li>
+                        <li>Annual value: $25K-$50K for $500K revenue</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Platform Economics</h3>
+                    <p>No hidden fees from Creative Job Hub:</p>
+                    <ul class="feature-list">
+                        <li>$89/month flat subscription fee</li>
+                        <li>No per-transaction fees from us</li>
+                        <li>No percentage of revenue taken</li>
+                        <li>Unlimited invoice payments included</li>
+                        <li>All payment features included</li>
+                        <li>Only Stripe charges payment processing fees</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Box -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="comparison-box">
+                <h3><i class="fas fa-balance-scale"></i> Traditional Payment Collection vs Stripe Online Payments</h3>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-side traditional">
+                        <h4><i class="fas fa-times-circle"></i> Traditional Collection</h4>
+                        <ul>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Mail invoice (5-7 days for delivery)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Customer writes check and mails back (7-10 days)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Average 25 days to get paid</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Drive to bank to deposit checks (2-4 hrs/week)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Manual entry of payments (10-15 hrs/month)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>80-85% collection rate (some never pay)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>No payment tracking or audit trail</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Bounced checks and NSF fees</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-side stripe">
+                        <h4><i class="fas fa-check-circle"></i> Stripe Online Payments</h4>
+                        <ul>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Email invoice with payment link (instant delivery)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Customer pays online in 60 seconds (2 clicks)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Average 15 days to get paid (40% faster)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>No bank trips (direct deposit to account)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Automatic payment reconciliation (zero manual entry)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>95%+ collection rate (easy to pay = more pay)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Complete payment history and audit trail</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>No bounced checks or insufficient funds</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Business Benefits</h2>
+                <p>Real improvements from Stripe online payments</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Faster Payment</h3>
+                    <div class="benefit-metric">40%</div>
+                    <p>Faster payment collection. Average 15 days vs 25 days with check payments. Instant delivery and easy online payment drive speed.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Adoption</h3>
+                    <div class="benefit-metric">60-75%</div>
+                    <p>Of customers prefer to pay online. Convenient payment option increases payment completion rate dramatically.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Collection Rate</h3>
+                    <div class="benefit-metric">95%+</div>
+                    <p>Payment collection rate vs 80-85% traditional. Easy payment means more customers actually pay their invoices.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Savings</h3>
+                    <div class="benefit-metric">2-4 hrs</div>
+                    <p>Per week saved on bank trips and check deposits. Automatic reconciliation eliminates manual payment entry completely.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Cash Flow Improvement</h3>
+                    <div class="benefit-metric">$25-50K</div>
+                    <p>Annual improvement for $500K revenue business. 40% faster payment means significantly more money in the bank sooner.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Customer Satisfaction</h3>
+                    <div class="benefit-metric">40-50%</div>
+                    <p>Increase in customer satisfaction. Convenient payment option and instant receipts create positive experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2>Real Results from Stripe Payments</h2>
+            <p class="subtitle">Typical business using online payment processing</p>
+            
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-number">$40-100K</div>
+                    <div class="result-label">Processed via Stripe Monthly</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">60-75%</div>
+                    <div class="result-label">Customers Pay Online</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">40%</div>
+                    <div class="result-label">Faster Payment (15 vs 25 days)</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">95%+</div>
+                    <div class="result-label">Collection Rate</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">2-4 hrs</div>
+                    <div class="result-label">Saved Weekly (No Bank Trips)</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">$25-50K</div>
+                    <div class="result-label">Annual Cash Flow Improvement</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> Watch Demo Video
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> See Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Get Paid 40% Faster with Stripe</h2>
+            <p>Join field service businesses who get paid 40% faster, achieve 95%+ collection rates, and save 2-4 hours per week with Stripe online payments. Secure credit card processing, Apple Pay, Google Pay, automatic reconciliation, and instant receipts. All included in your $89/month plan—no transaction fees from Creative Job Hub, only standard Stripe processing fees (2.9% + $0.30).</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Get Started Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--brand); color: white; padding: 60px 20px 30px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">Creative Job Hub</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">All-in-one field service management software designed for small businesses. Everything you need at one flat price.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/#features" style="color: white; text-decoration: none; opacity: 0.9;">Features</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/pricing.html" style="color: white; text-decoration: none; opacity: 0.9;">Pricing</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/see-it-in-action.html" style="color: white; text-decoration: none; opacity: 0.9;">See It In Action</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/about.html" style="color: white; text-decoration: none; opacity: 0.9;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/contact.html" style="color: white; text-decoration: none; opacity: 0.9;">Contact</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/blog/" style="color: white; text-decoration: none; opacity: 0.9;">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/privacy.html" style="color: white; text-decoration: none; opacity: 0.9;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/terms.html" style="color: white; text-decoration: none; opacity: 0.9;">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; text-align: center; opacity: 0.9;">
+                <p>&copy; 2024 Creative Job Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js?v=3"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Creative Job Hub - Get Paid",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "89",
+        "priceCurrency": "USD"
+      },
+      "description": "Stripe integration for secure online payments with credit cards, Apple Pay, and Google Pay. Automatic reconciliation, 40% faster payment, and 95%+ collection rate.",
+      "featureList": [
+        "Stripe Checkout integration",
+        "Credit/debit card payments",
+        "Apple Pay and Google Pay",
+        "Payment links (unique per invoice)",
+        "Real-time webhook notifications",
+        "100% automatic reconciliation",
+        "Payment receipts emailed automatically",
+        "PCI Level 1 security",
+        "Customer management in Stripe",
+        "Saved payment methods",
+        "Deposits and partial payments",
+        "Refund and dispute handling",
+        "Manual payment entry (cash, check)",
+        "Complete payment history",
+        "40% faster payment collection",
+        "95%+ collection rate"
+      ]
+    }
+    </script>
+</body>
+</html>

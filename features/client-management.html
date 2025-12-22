@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+  <!-- End Google Tag Manager -->
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XKCW07R8CM');
+  </script>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Client Management (CRM) - Complete Customer History | Creative Job Hub</title>
+  <meta name="description" content="Built-in CRM for field service. Track every interaction, predict churn, automate re-engagement. 20-30% retention increase, save 8-12 hours/week. All included at $89/mo." />
+  <link rel="canonical" href="https://creativejobhub.com/features/client-management" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Client Management CRM - Never Lose a Customer | Creative Job Hub" />
+  <meta property="og:description" content="360° customer view • Contact history • Churn prediction • Auto re-engagement • 20-30% better retention • All included—no CRM fees" />
+  <meta property="og:url" content="https://creativejobhub.com/features/client-management" />
+  <meta property="og:image" content="https://creativejobhub.com/assets/og-dark.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Client Management - Built-In CRM for Field Service" />
+  <meta name="twitter:description" content="Complete customer history • Automated tracking • Predictive insights • Win-back campaigns" />
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/CJH_circle_logo.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/CJH_circle_logo.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.css?v=18" />
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --bg-secondary:#f9fafb;
+      --panel:#3b82f6;
+      --muted:#6b7280;
+      --text:#2d2d2d;
+      --brand:#3b82f6;
+      --brand-2:#0ea5e9;
+      --accent:#3b82f6;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .feature-hero {
+      background: linear-gradient(135deg, rgba(16,185,129,0.95) 0%, rgba(5,150,105,0.9) 100%), 
+                  url('/assets/illustrations/cjh_resized.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 120px 0 80px;
+      color: white;
+      text-align: center;
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+    }
+
+    .feature-hero .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(139,92,246,0.3);
+    }
+
+    .feature-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin: 0 0 20px;
+      line-height: 1.1;
+      color: white;
+    }
+
+    .feature-hero .lead {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: rgba(255,255,255,0.95);
+      margin: 0 0 32px;
+      line-height: 1.6;
+    }
+
+    .feature-hero .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    /* Content Sections */
+    .content-section {
+      padding: 80px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-section.bg-light {
+      background: var(--bg-secondary);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--brand);
+      margin: 0 0 16px;
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Stats Highlight */
+    .stats-highlight {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+      margin: 80px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #fef3c7;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.95);
+      font-weight: 500;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      padding: 0 20px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: #0f1419;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(16,185,129,0.15);
+    }
+
+    .feature-card-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      color: var(--brand);
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* View Tabs */
+    .view-showcase {
+      background: #0f1419;
+      border-radius: 20px;
+      padding: 48px;
+      margin: 0 20px 48px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border-left: 6px solid #3b82f6;
+    }
+
+    .view-showcase h3 {
+      font-size: 1.8rem;
+      color: var(--brand);
+      margin: 0 0 24px;
+      font-weight: 700;
+    }
+
+    .tab-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .tab-item {
+      background: #1a1f26;
+      padding: 20px 24px;
+      border-radius: 12px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .tab-item h4 {
+      font-size: 1.3rem;
+      color: var(--brand);
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+
+    .tab-item p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    /* AI Features */
+    .ai-feature-card {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 3px solid #3b82f6;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .ai-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .ai-feature-card h4 {
+      font-size: 1.5rem;
+      color: #78350f;
+      margin: 0 0 12px;
+      font-weight: 800;
+    }
+
+    .ai-feature-card p {
+      color: #92400e;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* Benefits Section */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 48px auto 0;
+    }
+
+    .benefit-card {
+      background: #0f1419;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .benefit-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .benefit-card h4 {
+      font-size: 1.4rem;
+      color: var(--brand);
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    .benefit-stat {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #3b82f6;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .benefit-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #3b82f6, #ff8c5a);
+      padding: 80px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin: 0 0 20px;
+      color: white;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.95);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 8px 24px rgba(59,130,246,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #ff8c5a;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(255,107,53,0.5);
+    }
+
+    .btn-secondary {
+      background: #0f1419;
+      color: var(--brand);
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.9);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .feature-hero {
+        padding: 80px 0 60px;
+      }
+
+      .content-section {
+        padding: 60px 0;
+      }
+
+      .view-showcase {
+        padding: 32px 24px;
+      }
+
+      .features-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        gap: 32px;
+      }
+
+      .feature-hero .cta-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Creative Job Hub - Client Management CRM",
+    "applicationCategory": "BusinessApplication",
+    "description": "Complete CRM system built for field service businesses. Track customers, predict churn, automate re-engagement, and increase retention—all included.",
+    "offers": {
+      "@type": "Offer",
+      "price": "89",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "360-degree customer view",
+      "Complete contact history",
+      "Churn prediction",
+      "Automated re-engagement",
+      "Customer segmentation",
+      "Communication tracking",
+      "Financial history",
+      "Bulk import/export"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="site-header"></div>
+
+  <!-- Hero Section -->
+  <section class="feature-hero">
+    <div class="container">
+      <div class="feature-icon">👥</div>
+      <h1>Never Let a Customer Fall Through the Cracks</h1>
+      <p class="lead">
+        Built-in CRM tracks every interaction, predicts churn, and automates win-back campaigns. Increase retention 20-30% and save 8-12 hours per week—all included at $89/mo.
+      </p>
+      <div class="cta-group">
+        <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
+          Start Free Trial
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/pricing/" class="btn btn-ghost">View Pricing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Highlight -->
+  <section class="stats-highlight">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2 style="font-size: 2rem; font-weight: 800; margin: 0 0 16px; color: white;">Real CRM Results for Field Service</h2>
+      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.95); margin: 0 0 48px; max-width: 700px; margin-left: auto; margin-right: auto;">Businesses using our CRM see measurable improvements in retention and revenue</p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">20-30%</span>
+          <span class="stat-label">Retention Increase</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">25-40%</span>
+          <span class="stat-label">More Revenue Per Customer</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8-12 hrs</span>
+          <span class="stat-label">Saved Per Week</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">$30-75K</span>
+          <span class="stat-label">Additional Annual Revenue</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 360° Customer View -->
+  <section class="content-section">
+    <div class="section-header">
+      <h2>Complete 360° Customer View</h2>
+      <p>Everything you need to know about every customer in one place</p>
+    </div>
+
+    <div class="view-showcase">
+      <h3>📋 Six Powerful Tabs for Complete Context</h3>
+      <p style="color: #8b92a0; margin-bottom: 24px; line-height: 1.8;">
+        Every client detail page gives you instant access to their complete history across all areas of your business. Know everything before you even pick up the phone.
+      </p>
+
+      <div class="tab-list">
+        <div class="tab-item">
+          <h4>Overview Tab</h4>
+          <p>Contact info, last job date, last contact, re-engagement status. Recent activity timeline shows last 10 interactions (jobs, estimates, invoices, payments, communications). Quick action buttons for SMS, email, portal link, and creating new records.</p>
+        </div>
+
+        <div class="tab-item">
+          <h4>Properties Tab</h4>
+          <p>All service locations for this customer. View addresses, property types, inspection status. Quick actions to schedule jobs or create estimates for any property.</p>
+        </div>
+
+        <div class="tab-item">
+          <h4>Jobs Tab</h4>
+          <p>Complete job history across all properties. Filter by status, sort by date or amount. See service types, assigned technicians, and job totals. Click any job for full details.</p>
+        </div>
+
+        <div class="tab-item">
+          <h4>Estimates Tab</h4>
+          <p>All quotes created for this customer. Track status (draft, sent, approved, declined, converted). See expiration dates and amounts. Quick actions to view, edit, send, or convert to jobs.</p>
+        </div>
+
+        <div class="tab-item">
+          <h4>Invoices & Payments</h4>
+          <p>Complete financial history with all invoices and payment records. Outstanding balance calculation, payment method history. Filter by status, export for accounting. Know their payment patterns instantly.</p>
+        </div>
+
+        <div class="tab-item">
+          <h4>Contact Events Log</h4>
+          <p>Every interaction automatically recorded with timestamps. Emails sent/received, SMS history, phone calls, estimates sent, jobs scheduled/completed, payments received, manual notes. Filter by type for quick scanning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features -->
+  <section class="content-section bg-light">
+    <div class="section-header">
+      <h2>Powerful CRM Features Built for Field Service</h2>
+      <p>Everything you need to manage customer relationships effectively</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card-icon">📊</div>
+        <h3>Complete Contact History</h3>
+        <p>Every interaction automatically logged with timestamps. Emails, SMS, calls, jobs, payments—nothing falls through the cracks.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">💰</div>
+        <h3>Financial Summary</h3>
+        <p>Lifetime revenue, outstanding balance, payment history, average job value. Know customer value at a glance.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">🔍</div>
+        <h3>Smart Search & Filter</h3>
+        <p>Real-time search by name, email, or phone. Instant results as you type. Find any customer in seconds.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">💬</div>
+        <h3>Built-In Messaging</h3>
+        <p>Send SMS and emails directly from client page. Pre-populated contact info, message history stored automatically. Templates for common messages.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">🔗</div>
+        <h3>Portal Invitations</h3>
+        <p>One-click copy of portal invitation link. Send via SMS or email. Track portal activation. Resend invitations easily.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">📱</div>
+        <h3>Mobile-Optimized</h3>
+        <p>Stacked card layout for mobile devices. One-tap call or email. Full customer context on the go. Fully responsive design.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">📥</div>
+        <h3>Bulk Import/Export</h3>
+        <p>Import customers from CSV with validation and error checking. Export to Excel or Google Sheets. Migrate from other systems easily.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">🎯</div>
+        <h3>Automatic Segmentation</h3>
+        <p>High-value, at-risk, new, loyal, and dormant customers automatically identified. Target campaigns to right segments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Features -->
+  <section class="content-section" style="background: #0f1419;">
+    <div class="section-header">
+      <h2>AI-Powered Customer Intelligence</h2>
+      <p>Predictive insights that help you retain more customers and grow revenue</p>
+    </div>
+
+    <div style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
+      <div class="ai-feature-card">
+        <span class="ai-badge">🤖 AI POWERED</span>
+        <h4>Churn Risk Prediction</h4>
+        <p style="margin-bottom: 16px;">
+          Analyzes service frequency and patterns to identify customers likely to leave. Risk scores (low, medium, high) with recommended actions to re-engage before it's too late.
+        </p>
+        <div style="background: #0f1419; padding: 16px; border-radius: 8px; margin-top: 16px;">
+          <strong style="color: #78350f;">Impact:</strong> <span style="color: #92400e;">Catch at-risk customers early and save 15-25% who would otherwise churn</span>
+        </div>
+      </div>
+
+      <div class="ai-feature-card">
+        <span class="ai-badge">🤖 AI POWERED</span>
+        <h4>Next-Best Service Recommendations</h4>
+        <p style="margin-bottom: 16px;">
+          Suggests services customers likely need next based on property type, service history, and seasonal patterns. Perfect for upselling and cross-selling at the right time.
+        </p>
+        <div style="background: #0f1419; padding: 16px; border-radius: 8px; margin-top: 16px;">
+          <strong style="color: #78350f;">Impact:</strong> <span style="color: #92400e;">Increase revenue per customer by 20-35% with timely service recommendations</span>
+        </div>
+      </div>
+
+      <div class="ai-feature-card">
+        <span class="ai-badge">🤖 AI POWERED</span>
+        <h4>Optimal Contact Timing</h4>
+        <p style="margin-bottom: 16px;">
+          Learns best times to reach each customer based on response history. Recommends preferred communication channel (email, SMS, phone) with engagement statistics.
+        </p>
+        <div style="background: #0f1419; padding: 16px; border-radius: 8px; margin-top: 16px;">
+          <strong style="color: #78350f;">Impact:</strong> <span style="color: #92400e;">Improve response rates by 40-60% by contacting customers when they're most receptive</span>
+        </div>
+      </div>
+
+      <div class="ai-feature-card">
+        <span class="ai-badge">🤖 AI POWERED</span>
+        <h4>Lifetime Value Projection</h4>
+        <p style="margin-bottom: 16px;">
+          Estimates future revenue from each customer based on service patterns and property type. Helps prioritize retention efforts and calculate ROI for marketing spend.
+        </p>
+        <div style="background: #0f1419; padding: 16px; border-radius: 8px; margin-top: 16px;">
+          <strong style="color: #78350f;">Impact:</strong> <span style="color: #92400e;">Focus resources on highest-value customers for maximum return</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Segments -->
+  <section class="content-section bg-light">
+    <div class="section-header">
+      <h2>Automatic Customer Segmentation</h2>
+      <p>Target the right customers with the right messages at the right time</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card-icon">⭐</div>
+        <h3>High-Value Customers</h3>
+        <p>Lifetime revenue above threshold, multiple properties, frequent service. Target for premium services and VIP treatment. Your most profitable segment.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">⚠️</div>
+        <h3>At-Risk Customers</h3>
+        <p>No contact in 90+ days, used to book regularly but stopped. Perfect for win-back campaigns with special offers before they choose competitors.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">🌱</div>
+        <h3>New Customers</h3>
+        <p>First job within last 30 days. Great for onboarding series and building relationships early. Ask for reviews after first positive experience.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">💎</div>
+        <h3>Loyal Customers</h3>
+        <p>Multiple jobs completed (3+ per year), regular maintenance, high satisfaction. Best candidates for referral requests and loyalty rewards.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-card-icon">😴</div>
+        <h3>Dormant Customers</h3>
+        <p>No activity in 180+ days, one-time service. Re-engagement opportunity with targeted campaigns. Bring them back before they forget you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Re-Engagement -->
+  <section class="content-section" style="background: #0f1419;">
+    <div class="section-header">
+      <h2>Automated Re-Engagement System</h2>
+      <p>Win back customers before they churn—automatically</p>
+    </div>
+
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+      <div style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); border: 3px solid #3b82f6; border-radius: 20px; padding: 48px;">
+        <h3 style="font-size: 2rem; color: #60a5fa; margin: 0 0 24px; text-align: center; font-weight: 800;">How It Works</h3>
+        
+        <div style="display: grid; gap: 20px;">
+          <div style="background: #0f1419; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="font-size: 2rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">1</div>
+            <h4 style="font-size: 1.3rem; color: var(--brand); margin: 0 0 8px; font-weight: 700;">System Monitors Activity</h4>
+            <p style="color: #8b92a0; margin: 0; line-height: 1.7;">Automatically tracks last contact date for all customers. Flags those inactive for 90+ days based on your criteria.</p>
+          </div>
+
+          <div style="background: #0f1419; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="font-size: 2rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">2</div>
+            <h4 style="font-size: 1.3rem; color: var(--brand); margin: 0 0 8px; font-weight: 700;">Triggers Win-Back Campaign</h4>
+            <p style="color: #8b92a0; margin: 0; line-height: 1.7;">Automated email campaigns launch with personalized messages and special offers. Encourages customers to book again.</p>
+          </div>
+
+          <div style="background: #0f1419; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="font-size: 2rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">3</div>
+            <h4 style="font-size: 1.3rem; color: var(--brand); margin: 0 0 8px; font-weight: 700;">Tracks Engagement</h4>
+            <p style="color: #8b92a0; margin: 0; line-height: 1.7;">Monitors campaign responses, click-through rates, and bookings. Shows which customers re-engaged and which need follow-up.</p>
+          </div>
+
+          <div style="background: #0f1419; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="font-size: 2rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">4</div>
+            <h4 style="font-size: 1.3rem; color: var(--brand); margin: 0 0 8px; font-weight: 700;">Respects Preferences</h4>
+            <p style="color: #8b92a0; margin: 0; line-height: 1.7;">Customers can opt out anytime. System respects preferences automatically. CAN-SPAM compliant with manual override for important notices.</p>
+          </div>
+        </div>
+
+        <div style="background: #dcfce7; padding: 24px; border-radius: 12px; margin-top: 32px; text-align: center;">
+          <p style="font-size: 1.3rem; color: #065f46; font-weight: 700; margin: 0;">
+            Save 15-25% of customers who would otherwise churn
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="content-section bg-light">
+    <div class="section-header">
+      <h2>Measurable Business Benefits</h2>
+      <p>Real improvements you can track in your bottom line</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">🔒</span>
+        <h4>Never Lose a Customer</h4>
+        <span class="benefit-stat">20-30%</span>
+        <p>Retention increase from complete history tracking, automated re-engagement, and proactive churn prevention. Keep customers coming back.</p>
+      </div>
+
+      <div class="benefit-card">
+        <span class="benefit-icon">🎯</span>
+        <h4>Personalized Service</h4>
+        <span class="benefit-stat">35-50%</span>
+        <p>Customer satisfaction improvement. Know customers before you call. Service history informs every conversation. Property details readily available.</p>
+      </div>
+
+      <div class="benefit-card">
+        <span class="benefit-icon">💰</span>
+        <h4>More Revenue Per Customer</h4>
+        <span class="benefit-stat">25-40%</span>
+        <p>Increase from surfaced upsell opportunities, automated service reminders, and strategic referral requests to loyal customers.</p>
+      </div>
+
+      <div class="benefit-card">
+        <span class="benefit-icon">⏱️</span>
+        <h4>Time Savings</h4>
+        <span class="benefit-stat">8-12 hrs</span>
+        <p>Saved per week. No more spreadsheets or paper files. One-click access to everything. Automated communications handle repetitive tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real Results -->
+  <section class="content-section" style="background: linear-gradient(135deg, #3b82f6, #2c5282); color: white;">
+    <div style="max-width: 900px; margin: 0 auto; padding: 0 20px; text-align: center;">
+      <h2 style="font-size: 2.5rem; font-weight: 800; margin: 0 0 24px; color: white;">Typical Business Results</h2>
+      <p style="font-size: 1.2rem; margin: 0 0 48px; color: rgba(255,255,255,0.95);">
+        Real outcomes from businesses using Creative Job Hub's CRM features
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 48px;">
+        <div style="background: rgba(255,255,255,0.1); padding: 32px; border-radius: 16px; backdrop-filter: blur(10px);">
+          <div style="font-size: 2.5rem; font-weight: 900; color: #fbbf24; margin-bottom: 8px;">500-2K</div>
+          <div style="font-size: 1.1rem; color: rgba(255,255,255,0.95);">Clients in Database</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 32px; border-radius: 16px; backdrop-filter: blur(10px);">
+          <div style="font-size: 2.5rem; font-weight: 900; color: #fbbf24; margin-bottom: 8px;">20-30%</div>
+          <div style="font-size: 1.1rem; color: rgba(255,255,255,0.95);">Repeat Business Increase</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 32px; border-radius: 16px; backdrop-filter: blur(10px);">
+          <div style="font-size: 2.5rem; font-weight: 900; color: #fbbf24; margin-bottom: 8px;">15-20%</div>
+          <div style="font-size: 1.1rem; color: rgba(255,255,255,0.95);">Churn Reduction</div>
+        </div>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.15); padding: 32px; border-radius: 16px; backdrop-filter: blur(10px);">
+        <h3 style="font-size: 1.8rem; font-weight: 800; margin: 0 0 16px; color: white;">Revenue Impact</h3>
+        <div style="font-size: 3rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">$30,000 - $75,000</div>
+        <p style="font-size: 1.2rem; color: rgba(255,255,255,0.95); margin: 0;">
+          Additional annual revenue from improved customer retention and increased customer lifetime value
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Start Tracking Customers Like a Pro</h2>
+      <p>
+        Complete CRM built specifically for field service businesses. All included at $89/mo with no hidden fees or long-term commitment.
+      </p>
+      <div class="cta-group">
+        <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-secondary">
+          Start Free Trial
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/pricing/" class="btn btn-ghost">View All Plans</a>
+      </div>
+      <p style="margin-top: 24px; font-size: 14px; opacity: 0.9;">
+        ✓ No credit card required  ✓ Setup in 5 minutes  ✓ 20-30% retention increase
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="padding: 60px 20px; background: #3b82f6; color: #e5e7eb; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="margin-bottom: 32px;">
+        <img src="/assets/illustrations/CJH_Circle_Logo.png" alt="Creative Job Hub" style="height: 60px; margin-bottom: 16px;">
+        <p style="color: #94a3b8; max-width: 600px; margin: 0 auto;">
+          All-in-one field service management software for contractors. Schedule, dispatch, invoice, and get paid—all in one place.
+        </p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px; text-align: left;">
+        <div>
+          <h4 style="color: white; margin: 0 0 16px;">Features</h4>
+          <a href="/features/boost-reviews" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Boost Reviews</a>
+          <a href="/features/earn-referrals" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Earn Referrals</a>
+          <a href="/features/marketing-campaigns" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Marketing Campaigns</a>
+          <a href="/features/requests-and-bookings" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Online Booking</a>
+          <a href="/features/client-management" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Client Management</a>
+        </div>
+        
+        <div>
+          <h4 style="color: white; margin: 0 0 16px;">Company</h4>
+          <a href="/about.html" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">About</a>
+          <a href="/pricing/" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Pricing</a>
+          <a href="/blog/" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Blog</a>
+          <a href="/contact.html" style="color: #94a3b8; display: block; margin-bottom: 8px; text-decoration: none;">Contact</a>
+        </div>
+      </div>
+      
+      <div style="border-top: 1px solid rgba(148,163,184,0.2); padding-top: 32px;">
+        <p style="color: #94a3b8; margin: 0; font-size: 14px;">
+          &copy; 2025 Creative Job Hub. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/header.js?v=3"></script>
+  <script src="/assets/conversion-tracking.js"></script>
+</body>
+</html>

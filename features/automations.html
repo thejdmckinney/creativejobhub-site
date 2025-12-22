@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automations - Email, SMS & Workflow Automation | Creative Job Hub</title>
+    <meta name="description" content="Powerful automation handles repetitive tasks 24/7. Email sequences, SMS notifications, invoice generation, re-engagement campaigns, and workflow automations save 15-25 hours per week.">
+    <link rel="canonical" href="https://creativejobhub.com/features/automations.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Automations - Email, SMS & Workflow Automation | Creative Job Hub">
+    <meta property="og:description" content="Automated email sequences, SMS notifications, invoice generation, and workflow automations save 15-25 hours per week while increasing revenue.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://creativejobhub.com/features/automations.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/site.css?v=18">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <style>
+        .hero {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            color: #3b82f6;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        
+        .hero-stat {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #3b82f6;
+        }
+        
+        .hero-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 107, 53, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--brand);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #2c4f72;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(30, 58, 95, 0.3);
+        }
+        
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-dark {
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .email-automations {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin-bottom: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .email-automations::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .email-automations h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .email-automations p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .email-triggers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .email-trigger {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .email-trigger h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .email-trigger h4 i {
+            font-size: 24px;
+        }
+        
+        .email-trigger p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 8px 0;
+            text-align: left;
+        }
+        
+        .email-trigger strong {
+            display: block;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .feature-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #a8edea;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(168, 237, 234, 0.3);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #3b82f6;
+            font-size: 24px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: #a8edea;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .sms-automations {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .sms-automations h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .sms-automations p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .sms-triggers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        
+        .sms-trigger {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .sms-trigger i {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        
+        .sms-trigger h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .sms-trigger p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .reengagement-highlight {
+            background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: white;
+            margin: 64px 0;
+        }
+        
+        .reengagement-highlight h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .reengagement-highlight p {
+            font-size: 18px;
+            opacity: 0.95;
+            text-align: center;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .reengagement-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .reengagement-step {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .reengagement-step .step-number {
+            width: 40px;
+            height: 40px;
+            background: #0f1419;
+            color: #f5576c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .reengagement-step h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .reengagement-step p {
+            font-size: 13px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .revenue-callout {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+        
+        .revenue-callout .revenue-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .revenue-callout p {
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        .workflow-automations {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 16px;
+            padding: 48px;
+            color: #3b82f6;
+            margin: 64px 0;
+        }
+        
+        .workflow-automations h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .workflow-item {
+            background: #0f1419;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .workflow-item h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .workflow-item h4 i {
+            color: #fcb69f;
+        }
+        
+        .workflow-item ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .workflow-item li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            align-items: start;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .workflow-item li:last-child {
+            border-bottom: none;
+        }
+        
+        .workflow-item li i {
+            color: #0ea5e9;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+        
+        .benefit-card {
+            background: #0f1419;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: #a8edea;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(168, 237, 234, 0.3);
+        }
+        
+        .benefit-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #3b82f6;
+            font-size: 32px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-metric {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .results-section {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: #3b82f6;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .results-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .results-section .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 48px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+        }
+        
+        .result-box {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .result-number {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .final-cta {
+            background: #0f1419;
+            padding: 64px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--brand);
+            margin-bottom: 24px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 32px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 32px;
+            }
+            
+            .email-automations, .sms-automations, .reengagement-highlight, .workflow-automations {
+                padding: 32px 24px;
+            }
+            
+            .results-section h2 {
+                font-size: 32px;
+            }
+            
+            .final-cta h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div id="site-header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-magic"></i>
+            </div>
+            <h1>Powerful Automations</h1>
+            <p>Let automation handle repetitive tasks 24/7. Email sequences, SMS notifications, invoice generation, re-engagement campaigns, and workflow automations save 15-25 hours per week while increasing revenue.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> View Pricing
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">15-25 hrs</div>
+                    <div class="hero-stat-label">Saved Per Week</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">$15-30K</div>
+                    <div class="hero-stat-label">Additional Annual Revenue</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">24/7</div>
+                    <div class="hero-stat-label">Automated Operations</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">95%</div>
+                    <div class="hero-stat-label">Fewer Manual Errors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Automations -->
+    <section class="section">
+        <div class="container">
+            <div class="email-automations">
+                <h3><i class="fas fa-envelope"></i> Email Automations</h3>
+                <p>Triggered email sequences that send the right message at the right time—automatically</p>
+                
+                <div class="email-triggers">
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-file-alt"></i> Estimate Sent</h4>
+                        <p><strong>When:</strong> Estimate marked as "sent"</p>
+                        <p><strong>What:</strong> Branded email with estimate PDF attached, approval link, and company info</p>
+                        <strong>Opens and clicks tracked automatically</strong>
+                    </div>
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-file-invoice-dollar"></i> Invoice Sent</h4>
+                        <p><strong>When:</strong> Invoice generated</p>
+                        <p><strong>What:</strong> Professional invoice email with payment link and PDF attachment</p>
+                        <strong>Customer receives instant invoice notification</strong>
+                    </div>
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-check-circle"></i> Job Completion</h4>
+                        <p><strong>When:</strong> Job status changed to "Complete"</p>
+                        <p><strong>What:</strong> Automatic invoice generation from line items, then invoice email sent</p>
+                        <strong>Invoice delivered within seconds of completion</strong>
+                    </div>
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-heart"></i> Thank You Email</h4>
+                        <p><strong>When:</strong> 24 hours after job completion</p>
+                        <p><strong>What:</strong> Personalized thank you email with review request and portal link</p>
+                        <strong>Builds loyalty and drives Google reviews</strong>
+                    </div>
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-dollar-sign"></i> Payment Received</h4>
+                        <p><strong>When:</strong> Payment confirmed (Stripe, check, cash)</p>
+                        <p><strong>What:</strong> Payment receipt email with amount, method, and balance</p>
+                        <strong>Instant confirmation builds trust</strong>
+                    </div>
+                    <div class="email-trigger">
+                        <h4><i class="fas fa-calendar-check"></i> Estimate Appointment</h4>
+                        <p><strong>When:</strong> On-site estimate scheduled</p>
+                        <p><strong>What:</strong> Appointment confirmation with date, time, technician name</p>
+                        <strong>Reduces no-shows for estimates</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Campaign Automations</h2>
+                <p>Scheduled and recurring email campaigns that run on autopilot</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h3>Scheduled Campaigns</h3>
+                    <p>Set it and forget it email marketing:</p>
+                    <ul class="feature-list">
+                        <li>One-time campaigns (send on specific date/time)</li>
+                        <li>Recurring campaigns (weekly or monthly)</li>
+                        <li>Segmented targeting (specific customer groups)</li>
+                        <li>Personalized merge fields ({{client_name}})</li>
+                        <li>Performance metrics tracked automatically</li>
+                        <li>Real-time campaign analytics</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Campaign Types</h3>
+                    <p>Perfect for every marketing need:</p>
+                    <ul class="feature-list">
+                        <li>Seasonal promotions ("Fall furnace tune-up")</li>
+                        <li>Maintenance reminders ("Annual inspection due")</li>
+                        <li>Loyalty rewards ("Thank you for 5 years")</li>
+                        <li>Service updates ("New services available")</li>
+                        <li>Educational content ("5 signs you need repair")</li>
+                        <li>Special offers and discounts</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Smart Segmentation</h3>
+                    <p>Target the right customers:</p>
+                    <ul class="feature-list">
+                        <li>All clients (broadcast to everyone)</li>
+                        <li>Custom segments (filter by criteria)</li>
+                        <li>Service history based (HVAC customers only)</li>
+                        <li>Location based (specific service areas)</li>
+                        <li>Purchase history (high-value customers)</li>
+                        <li>Custom lists (CSV import)</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Merge Fields</h3>
+                    <p>Personalize every email automatically:</p>
+                    <ul class="feature-list">
+                        <li>{{client_name}} - Personalized greeting</li>
+                        <li>{{company_name}} - Your business name</li>
+                        <li>{{last_job_date}} - Last service date</li>
+                        <li>{{booking_link}} - Direct booking link</li>
+                        <li>{{portal_link}} - Customer portal access</li>
+                        <li>{{unsubscribe_link}} - Compliance link</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Campaign Analytics</h3>
+                    <p>Track performance in real-time:</p>
+                    <ul class="feature-list">
+                        <li>Total emails sent</li>
+                        <li>Open rates percentage</li>
+                        <li>Click-through rates</li>
+                        <li>Conversion tracking (bookings)</li>
+                        <li>Revenue generated per campaign</li>
+                        <li>Unsubscribe rates</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Campaign Automation Process</h3>
+                    <p>Simple 7-step workflow:</p>
+                    <ul class="feature-list">
+                        <li>1. Create campaign in Marketing page</li>
+                        <li>2. Choose audience (segment or all)</li>
+                        <li>3. Write email content with merge fields</li>
+                        <li>4. Schedule date/time or recurring</li>
+                        <li>5. System sends automatically</li>
+                        <li>6. Performance tracked in real-time</li>
+                        <li>7. Results visible in Marketing Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMS Automations -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="sms-automations">
+                <h3><i class="fas fa-sms"></i> SMS Automations</h3>
+                <p>Automatic text message notifications that keep customers informed in real-time</p>
+                
+                <div class="sms-triggers">
+                    <div class="sms-trigger">
+                        <i class="fas fa-route"></i>
+                        <h4>Tech En Route</h4>
+                        <p>When technician clicks "En Route," customer receives text with ETA and tracking link</p>
+                    </div>
+                    <div class="sms-trigger">
+                        <i class="fas fa-traffic-light"></i>
+                        <h4>Traffic Delay</h4>
+                        <p>When route delay >10 minutes detected, customer receives updated ETA automatically</p>
+                    </div>
+                    <div class="sms-trigger">
+                        <i class="fas fa-check-double"></i>
+                        <h4>Job Complete</h4>
+                        <p>When job marked complete, customer receives text with portal link to view invoice</p>
+                    </div>
+                    <div class="sms-trigger">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Payment Received</h4>
+                        <p>When payment processed, customer receives instant "Payment received. Thank you!" text</p>
+                    </div>
+                    <div class="sms-trigger">
+                        <i class="fas fa-file-contract"></i>
+                        <h4>Estimate Ready</h4>
+                        <p>When estimate sent to customer, they receive "Your estimate is ready" text with link</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Re-Engagement Automation</h2>
+                <p>Automatically win back dormant customers</p>
+            </div>
+
+            <div class="reengagement-highlight">
+                <h3><i class="fas fa-sync-alt"></i> Automatic Customer Re-Engagement</h3>
+                <p>System monitors all clients and automatically sends re-engagement campaigns to customers with 30+ days no contact. Win back 15-20% of dormant customers for $15,000-$30,000 additional annual revenue.</p>
+                
+                <div class="reengagement-steps">
+                    <div class="reengagement-step">
+                        <div class="step-number">1</div>
+                        <h4>Detection</h4>
+                        <p>System monitors last contact date for all clients</p>
+                    </div>
+                    <div class="reengagement-step">
+                        <div class="step-number">2</div>
+                        <h4>Trigger</h4>
+                        <p>Clients with 30+ days no contact flagged automatically</p>
+                    </div>
+                    <div class="reengagement-step">
+                        <div class="step-number">3</div>
+                        <h4>Filter</h4>
+                        <p>Excludes clients who opted out of marketing</p>
+                    </div>
+                    <div class="reengagement-step">
+                        <div class="step-number">4</div>
+                        <h4>Personalize</h4>
+                        <p>Email includes client name, last service date, special offer</p>
+                    </div>
+                    <div class="reengagement-step">
+                        <div class="step-number">5</div>
+                        <h4>Send</h4>
+                        <p>Email sent automatically with booking link</p>
+                    </div>
+                    <div class="reengagement-step">
+                        <div class="step-number">6</div>
+                        <h4>Track</h4>
+                        <p>Opens, clicks, and bookings tracked in real-time</p>
+                    </div>
+                </div>
+                
+                <div class="revenue-callout">
+                    <div class="revenue-number">$15K-$30K</div>
+                    <p>Additional annual revenue from re-engagement automation</p>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-funnel-dollar"></i>
+                    </div>
+                    <h3>Lead Nurturing</h3>
+                    <p>Automated email sequences for leads:</p>
+                    <ul class="feature-list">
+                        <li>Visitor views service plan on portal</li>
+                        <li>Clicks "Request More Info" and submits contact</li>
+                        <li>Lead captured with plan details</li>
+                        <li>Automated email sequence triggered</li>
+                        <li>Emails sent based on delays (Day 1, 3, 7)</li>
+                        <li>Tracking: opens, clicks, conversions monitored</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Nurture Sequence Example</h3>
+                    <p>Multi-step automated follow-up:</p>
+                    <ul class="feature-list">
+                        <li>Day 1: "Thanks for your interest in [Plan Name]!"</li>
+                        <li>Day 3: "Questions? Here's what's included"</li>
+                        <li>Day 7: "Last chance: Special offer on [Plan Name]"</li>
+                        <li>Personalized with {visitor_name}</li>
+                        <li>Includes {plan_name} and {plan_price}</li>
+                        <li>Booking link included for easy signup</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Booking Request Automation</h3>
+                    <p>Online bookings processed automatically:</p>
+                    <ul class="feature-list">
+                        <li>Customer submits booking request</li>
+                        <li>System validates availability and business hours</li>
+                        <li>Lead or job created automatically</li>
+                        <li>Confirmation email sent to customer</li>
+                        <li>Office notification sent (email/SMS)</li>
+                        <li>Job appears on schedule if auto-created</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-square"></i>
+                    </div>
+                    <h3>Estimate Approval Workflow</h3>
+                    <p>Automatic approval processing:</p>
+                    <ul class="feature-list">
+                        <li>Customer opens portal link from email</li>
+                        <li>Customer clicks "Approve" button</li>
+                        <li>Status changed to "Approved" automatically</li>
+                        <li>Contact event logged (approval)</li>
+                        <li>Notification sent to office (email)</li>
+                        <li>Ready to convert to job with one click</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <h3>Invoice Automation</h3>
+                    <p>Automatic invoice generation and delivery:</p>
+                    <ul class="feature-list">
+                        <li>Job marked "Complete" triggers invoice</li>
+                        <li>All line items and expenses included</li>
+                        <li>Invoice linked to job and client</li>
+                        <li>Invoice emailed to customer instantly</li>
+                        <li>Invoice visible in customer portal</li>
+                        <li>Payment link included automatically</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Team Notifications</h3>
+                    <p>Automatic alerts for your team:</p>
+                    <ul class="feature-list">
+                        <li>New lead → Office notified instantly</li>
+                        <li>Estimate approved → Office notified</li>
+                        <li>Payment received → Office notified</li>
+                        <li>Job overdue → Manager notified</li>
+                        <li>Timecard submitted → Manager notified</li>
+                        <li>Exception detected → Manager notified</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Automations -->
+    <section class="section">
+        <div class="container">
+            <div class="workflow-automations">
+                <h3><i class="fas fa-project-diagram"></i> Workflow Automations</h3>
+                
+                <div class="workflow-grid">
+                    <div class="workflow-item">
+                        <h4><i class="fas fa-check-circle"></i> Job → "Complete"</h4>
+                        <ul>
+                            <li><i class="fas fa-arrow-right"></i> Generate invoice automatically</li>
+                            <li><i class="fas fa-arrow-right"></i> Send invoice email to customer</li>
+                            <li><i class="fas fa-arrow-right"></i> Log completion in activity log</li>
+                            <li><i class="fas fa-arrow-right"></i> Schedule thank you email (24 hours)</li>
+                            <li><i class="fas fa-arrow-right"></i> Update customer portal</li>
+                            <li><i class="fas fa-arrow-right"></i> Calculate job profitability</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="workflow-item">
+                        <h4><i class="fas fa-thumbs-up"></i> Estimate → "Approved"</h4>
+                        <ul>
+                            <li><i class="fas fa-arrow-right"></i> Send notification to office</li>
+                            <li><i class="fas fa-arrow-right"></i> Log approval in contact events</li>
+                            <li><i class="fas fa-arrow-right"></i> Update estimate status</li>
+                            <li><i class="fas fa-arrow-right"></i> Enable "Convert to Job" button</li>
+                            <li><i class="fas fa-arrow-right"></i> (Optional) Auto-convert to job</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="workflow-item">
+                        <h4><i class="fas fa-money-check-alt"></i> Invoice → "Paid"</h4>
+                        <ul>
+                            <li><i class="fas fa-arrow-right"></i> Send payment receipt email</li>
+                            <li><i class="fas fa-arrow-right"></i> Log payment in contact events</li>
+                            <li><i class="fas fa-arrow-right"></i> Update customer balance</li>
+                            <li><i class="fas fa-arrow-right"></i> Mark invoice as paid</li>
+                            <li><i class="fas fa-arrow-right"></i> Update financial reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h2>Business Benefits</h2>
+                <p>Real improvements from powerful automations</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Time Savings</h3>
+                    <div class="benefit-metric">15-25 hrs</div>
+                    <p>Per week saved on manual tasks. Automation handles repetitive work while you focus on growing your business.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Additional Revenue</h3>
+                    <div class="benefit-metric">$15-30K</div>
+                    <p>Additional annual revenue from re-engagement campaigns. Win back 15-20% of dormant customers automatically.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Faster Payments</h3>
+                    <div class="benefit-metric">40%</div>
+                    <p>Faster payment collection. Automated invoice delivery and payment links get you paid significantly faster.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Customer Satisfaction</h3>
+                    <div class="benefit-metric">40-50%</div>
+                    <p>Increase in customer satisfaction. Instant confirmations, proactive updates, and professional communications impress customers.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Error Reduction</h3>
+                    <div class="benefit-metric">95%</div>
+                    <p>Fewer manual entry mistakes. Automation eliminates human error in data entry, calculations, and follow-ups.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-times"></i>
+                    </div>
+                    <h3>Fewer No-Shows</h3>
+                    <div class="benefit-metric">30-40%</div>
+                    <p>Reduction in no-shows with automated reminders. SMS and email reminders keep appointments top-of-mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <h2>Real Results from Automations</h2>
+            <p class="subtitle">Typical business using automation features</p>
+            
+            <div class="results-grid">
+                <div class="result-box">
+                    <div class="result-number">1,200-2,500</div>
+                    <div class="result-label">Automated Emails Per Month</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">800-1,500</div>
+                    <div class="result-label">Automated SMS Per Month</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">150-300</div>
+                    <div class="result-label">Auto-Generated Invoices</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">15-25 hrs</div>
+                    <div class="result-label">Saved Per Week</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">40%</div>
+                    <div class="result-label">Faster Payment Collection</div>
+                </div>
+                <div class="result-box">
+                    <div class="result-number">$35-60K</div>
+                    <div class="result-label">Annual Savings + Revenue</div>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> Watch Demo Video
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-tag"></i> See Pricing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Let Automation Work for You 24/7</h2>
+            <p>Join field service businesses who save 15-25 hours per week and generate $15,000-$30,000 additional annual revenue with powerful automations. Email sequences, SMS notifications, invoice generation, re-engagement campaigns, workflow automations, and more—all working around the clock. All included in your $89/month plan—no message limits, no automation fees, no extra costs.</p>
+            
+            <div class="cta-buttons">
+                <a href="/see-it-in-action.html" class="btn-primary">
+                    <i class="fas fa-video"></i> See It In Action
+                </a>
+                <a href="/pricing.html" class="btn-secondary">
+                    <i class="fas fa-arrow-right"></i> Get Started Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--brand); color: white; padding: 60px 20px 30px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">Creative Job Hub</h3>
+                    <p style="opacity: 0.9; line-height: 1.6;">All-in-one field service management software designed for small businesses. Everything you need at one flat price.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Product</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/#features" style="color: white; text-decoration: none; opacity: 0.9;">Features</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/pricing.html" style="color: white; text-decoration: none; opacity: 0.9;">Pricing</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/see-it-in-action.html" style="color: white; text-decoration: none; opacity: 0.9;">See It In Action</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/about.html" style="color: white; text-decoration: none; opacity: 0.9;">About</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/contact.html" style="color: white; text-decoration: none; opacity: 0.9;">Contact</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/blog/" style="color: white; text-decoration: none; opacity: 0.9;">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 20px; font-size: 16px;">Legal</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/privacy.html" style="color: white; text-decoration: none; opacity: 0.9;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/terms.html" style="color: white; text-decoration: none; opacity: 0.9;">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 30px; text-align: center; opacity: 0.9;">
+                <p>&copy; 2024 Creative Job Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/header.js?v=3"></script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Creative Job Hub - Automations",
+      "applicationCategory": "BusinessApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "89",
+        "priceCurrency": "USD"
+      },
+      "description": "Powerful automation handles email sequences, SMS notifications, invoice generation, re-engagement campaigns, and workflow automations. Save 15-25 hours per week.",
+      "featureList": [
+        "Triggered email sequences (estimate sent, invoice sent, job completion, thank you, payment received)",
+        "Scheduled and recurring email campaigns",
+        "Automated SMS notifications (tech en route, traffic delay, job complete, payment received)",
+        "Re-engagement automation ($15K-$30K additional revenue)",
+        "Lead nurturing sequences",
+        "Booking request automation",
+        "Estimate approval workflow",
+        "Automatic invoice generation and delivery",
+        "Status change automations",
+        "Team notification automation",
+        "Stripe payment automation",
+        "Contact event logging automation",
+        "15-25 hours saved per week",
+        "40% faster payment collection"
+      ]
+    }
+    </script>
+</body>
+</html>

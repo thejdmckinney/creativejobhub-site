@@ -45,7 +45,7 @@
 
   <!-- Robots / theme -->
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-  <meta name="theme-color" content="#1e3a5f" />
+  <meta name="theme-color" content="#3b82f6" />
   <meta name="google-site-verification" content="9w1N5XoeF8vgngVQNqeZKGhpZIO9BPlufhNa5j4UEWg" />
 
   <!-- Additional SEO meta tags -->
@@ -72,8 +72,10 @@
 
   <style>
     :root{
-      --bg:#ffffff; --bg-secondary:#f5f5f5; --panel:#1e3a5f; --muted:#6b7280; --text:#2d2d2d;
-      --brand:#1e3a5f; --brand-2:#27ae60; --accent:#ff6b35;
+      --bg:#0f1419; --bg-secondary:#1a1f26; --panel:#1e2530; --muted:#8b92a0; --text:#e4e7eb;
+      --brand:#3b82f6; --brand-2:#0ea5e9; --accent:#3b82f6;
+      --command-dark:#0a0e14; --command-panel:#141821; --command-border:rgba(59,130,246,0.2);
+      --command-accent:#3b82f6; --command-text:#e4e7eb; --command-muted:#6b7280;
     }
     
     /* ========== ENHANCED VISUAL EFFECTS ========== */
@@ -91,8 +93,8 @@
     }
     
     @keyframes borderGlow {
-      0%, 100% { box-shadow: 0 0 5px rgba(14,165,233,0.3), inset 0 1px 0 rgba(255,255,255,0.1); }
-      50% { box-shadow: 0 0 20px rgba(14,165,233,0.6), 0 0 40px rgba(34,197,94,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
+      0%, 100% { box-shadow: 0 0 5px rgba(59,130,246,0.3), inset 0 1px 0 rgba(59,130,246,0.1); }
+      50% { box-shadow: 0 0 20px rgba(59,130,246,0.6), 0 0 40px rgba(14,165,233,0.4), inset 0 1px 0 rgba(59,130,246,0.2); }
     }
     
     @keyframes shimmer {
@@ -110,25 +112,27 @@
       pointer-events: none;
       z-index: 1;
       overflow: hidden;
+      opacity: 0.3;
     }
     
     .particle {
       position: absolute;
-      background: rgba(14,165,233,0.6);
+      background: rgba(59,130,246,0.4);
       border-radius: 50%;
       animation: float 6s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(59,130,246,0.3);
     }
     
     .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; animation-duration: 8s; }
-    .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; animation-duration: 10s; background: rgba(34,197,94,0.6); }
+    .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; animation-duration: 10s; background: rgba(14,165,233,0.4); box-shadow: 0 0 10px rgba(14,165,233,0.3); }
     .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; animation-duration: 7s; }
-    .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; animation-duration: 9s; background: rgba(168,85,247,0.6); }
+    .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; animation-duration: 9s; background: rgba(59,130,246,0.5); box-shadow: 0 0 12px rgba(59,130,246,0.4); }
     .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; animation-duration: 11s; }
-    .particle:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-delay: 5s; animation-duration: 8s; background: rgba(34,197,94,0.6); }
+    .particle:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-delay: 5s; animation-duration: 8s; background: rgba(14,165,233,0.4); box-shadow: 0 0 10px rgba(14,165,233,0.3); }
     .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 6s; animation-duration: 10s; }
-    .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 7s; animation-duration: 9s; background: rgba(168,85,247,0.6); }
+    .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 7s; animation-duration: 9s; background: rgba(59,130,246,0.4); box-shadow: 0 0 10px rgba(59,130,246,0.3); }
     .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 8s; animation-duration: 7s; }
-    .particle:nth-child(10) { width: 6px; height: 6px; left: 95%; animation-delay: 9s; animation-duration: 12s; background: rgba(34,197,94,0.6); }
+    .particle:nth-child(10) { width: 6px; height: 6px; left: 95%; animation-delay: 9s; animation-duration: 12s; background: rgba(14,165,233,0.4); box-shadow: 0 0 10px rgba(14,165,233,0.3); }
     
     /* Glassmorphism Effects */
     .glass {
@@ -303,7 +307,7 @@
       display:flex; align-items:center; justify-content:space-between;
       height:110px;
       padding:10px 16px; 
-      background: #f5f5f5;
+      background: #1a1f26;
       backdrop-filter: blur(20px) saturate(120%);
       -webkit-backdrop-filter: blur(20px) saturate(120%);
       border-bottom:1px solid rgba(148,163,184,.2);
@@ -336,9 +340,9 @@
       background:linear-gradient(135deg, var(--brand), #0284c7, var(--brand-2)); 
       background-size: 200% 200%;
       animation: gradientShift 4s ease infinite;
-      color:#2d2d2d; 
+      color:#e4e7eb; 
       box-shadow:0 8px 25px rgba(14,165,233,.4);
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(59,130,246,0.2);
     }
     .nav .cta:hover{
       transform: translateY(-3px);
@@ -347,7 +351,7 @@
     }
     .nav-toggle{
       display:none; position:relative; width:40px; height:40px;
-      border:1px solid #d1d5db; border-radius:10px; background:#ffffff; cursor:pointer
+      border:1px solid rgba(59,130,246,0.2); border-radius:10px; background:#0f1419; cursor:pointer
     }
     .nav-toggle span{
       position:absolute; left:9px; right:9px; height:2px; background:#e5e7eb;
@@ -361,7 +365,7 @@
       .nav{
         position:absolute; top:72px; left:0; right:0;
         display:grid; gap:6px; padding:12px 16px;
-        background:#ffffff; border-bottom:1px solid rgba(148,163,184,.15);
+        background:#0f1419; border-bottom:1px solid rgba(148,163,184,.15);
         transform:translateY(-12px); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
       }
       .nav a{ padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(148,163,184,.15) }
@@ -388,9 +392,9 @@
       background:linear-gradient(135deg, var(--brand), #0284c7, var(--brand-2)); 
       background-size: 200% 200%;
       animation: gradientShift 4s ease infinite;
-      color:#2d2d2d; 
+      color:#e4e7eb; 
       box-shadow:0 8px 25px rgba(14,165,233,.4);
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(59,130,246,0.2);
     }
     .btn-primary::before {
       content: '';
@@ -417,7 +421,7 @@
     }
     .btn-ghost{
       border-color:rgba(148,163,184,.3);
-      color:#1f2937;
+      color:#e4e7eb;
       background:rgba(255,255,255,0.05);
       backdrop-filter: blur(10px);
     }
@@ -430,7 +434,7 @@
 
     /* Sections */
     .hero{padding:80px 0 60px}
-    .eyebrow{display:inline-block; padding:8px 14px; border:1px solid #d1d5db; border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px; margin-bottom: 16px;}
+    .eyebrow{display:inline-block; padding:8px 14px; border:1px solid rgba(59,130,246,0.2); border-radius:999px; color:#a5b4fc; font-weight:600; letter-spacing:.3px; margin-bottom: 16px;}
     h1{font-size: clamp(32px, 6vw, 56px); line-height:1.1; margin:20px 0; font-weight: 700;}
     .lead{font-size: clamp(18px, 3vw, 22px); color:var(--muted); margin:24px 0 28px; line-height: 1.5;}
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border:1px solid rgba(148,163,184,.18); border-radius:18px; padding:18px; box-shadow:0 10px 30px rgba(0,0,0,.35); height: fit-content}
@@ -503,10 +507,10 @@
     .cta .panel{background:var(--panel); border:1px solid rgba(148,163,184,.18); border-radius:16px; padding:22px; margin:0; height:100%; display:flex; flex-direction:column; gap:12px; justify-content:space-between}
 
     form{display:flex; gap:10px; flex-wrap:wrap; margin:0}
-    input, textarea{background:#ffffff; border:1px solid #d1d5db; color:#2d2d2d; padding:12px 14px; border-radius:12px; width:100%; box-sizing:border-box}
+    input, textarea{background:#0f1419; border:1px solid rgba(59,130,246,0.2); color:#e4e7eb; padding:12px 14px; border-radius:12px; width:100%; box-sizing:border-box}
     input[type=email]{flex:1}
 
-    footer{padding:36px 0 60px; color:#6b7280; border-top:1px solid rgba(148,163,184,.15)}
+    footer{padding:36px 0 60px; color:#8b92a0; border-top:1px solid rgba(148,163,184,.15)}
     .logo-row{display:flex; gap:24px; align-items:center; flex-wrap:wrap; opacity:.9}
     .logo-row svg{height:26px; width:auto; opacity:.9}
 
@@ -568,7 +572,7 @@
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        background: #ff6b35;
+        background: #3b82f6;
         cursor: pointer;
         border: 2px solid white;
         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -578,7 +582,7 @@
         height: 20px;
         width: 20px;
         border-radius: 50%;
-        background: #ff6b35;
+        background: #3b82f6;
         cursor: pointer;
         border: 2px solid white;
         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -613,7 +617,7 @@
     .stat-item {
       padding: 24px 16px;
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(59,130,246,0.2);
       border-radius: 16px;
       position: relative;
       overflow: hidden;
@@ -622,7 +626,7 @@
 
     .stat-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(255,107,53,0.2);
+      box-shadow: 0 12px 40px rgba(59,130,246,0.15);
     }
 
     .stat-item::before {
@@ -1154,7 +1158,7 @@
   }
   </script>
 </head>
-  <body>
+  <body style="background: #0a0e14; color: #e4e7eb;">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -1179,9 +1183,9 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" style="width:100vw; max-width:100%; background: linear-gradient(135deg, rgba(30,58,95,0.92) 0%, rgba(30,58,95,0.88) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding:80px 0 60px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section class="hero" style="width:100vw; max-width:100%; background: linear-gradient(135deg, rgba(15,20,25,0.95) 0%, rgba(26,31,38,0.92) 100%), url('/assets/illustrations/cjh_resized.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; padding:80px 0 60px 0; border-bottom: 1px solid rgba(59,130,246,0.2); box-shadow: inset 0 1px 0 rgba(59,130,246,0.1);">
       <div style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 0 20px;">
-          <span class="eyebrow" style="background: rgba(255,107,53,0.2); color: #ffd4c4; border: 1px solid rgba(255,107,53,0.4); padding: 8px 16px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px;">💰 Save $3,252/year vs Jobber, Workiz & Housecall Pro</span>
+          <span class="eyebrow" style="background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); padding: 8px 16px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(59,130,246,0.2);">💰 Save $3,252/year vs Jobber, Workiz & Housecall Pro</span>
           
           <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin: 0 0 16px; line-height: 1.1; color: #ffffff;">
             Get All Features for $49/mo (5 Users) — Competitors Charge $300+/mo
@@ -1193,11 +1197,11 @@
 
           <!-- CTA Buttons -->
           <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
-            <a class="btn btn-primary btn-enhanced" href="https://app.creativejobhub.com/auth?mode=signup" style="background: #ff6b35; color: #ffffff; font-size: 18px; padding: 16px 32px; border-radius: 12px; box-shadow: 0 8px 24px rgba(255,107,53,0.4); font-weight: 700; border: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
+            <a class="btn btn-primary btn-enhanced" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: #ffffff; font-size: 18px; padding: 16px 32px; border-radius: 8px; box-shadow: 0 4px 16px rgba(59,130,246,0.4), inset 0 1px 0 rgba(255,255,255,0.2); font-weight: 700; border: 1px solid rgba(59,130,246,0.5); display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
               Start Free Trial
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a class="btn btn-ghost" href="/pricing/" style="color: #ffffff; border: 2px solid rgba(255,255,255,0.5); padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 16px; transition: all 0.2s ease;">View Pricing</a>
+            <a class="btn btn-ghost" href="/pricing/" style="color: #e4e7eb; border: 2px solid rgba(59,130,246,0.3); padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 16px; transition: all 0.2s ease; background: rgba(30,37,48,0.6);">View Pricing</a>
           </div>
           
           <p style="color: #e5e7eb; font-weight: 600; font-size: 16px; margin: 0 0 32px;">
@@ -1207,60 +1211,60 @@
     </section>
 
     <!-- POPULAR INDUSTRY SOLUTIONS -->
-    <section style="width:100vw; max-width:100%; background: #f9fafb; padding:60px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section style="width:100vw; max-width:100%; background: #1a1f26; padding:60px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
       <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         <div style="text-align:center; margin-bottom:48px;">
-          <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin: 0 0 16px; color: #1e3a5f !important;">Industry-Specific Solutions</h2>
-          <p style="font-size: 1.2rem; color: #6b7280; max-width: 700px; margin: 0 auto;">Specialized workflows built for your trade — not generic templates</p>
+          <h2 style="font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; margin: 0 0 16px; color: #e4e7eb;">Industry-Specific Solutions</h2>
+          <p style="font-size: 1.2rem; color: #8b92a0; max-width: 700px; margin: 0 auto;">Specialized workflows built for your trade — not generic templates</p>
         </div>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
           <!-- Pool Service -->
-          <a href="/pool-service-field-service-software/" style="text-decoration: none; display: block; background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 2px solid transparent;" onmouseover="this.style.borderColor='#1e3a5f'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(30,58,95,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'">
+          <a href="/pool-service-field-service-software/" style="text-decoration: none; display: block; background: #1e2530; border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease; border: 1px solid rgba(59,130,246,0.2);" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(59,130,246,0.2)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'">
             <div style="font-size: 48px; margin-bottom: 16px;">🏊</div>
-            <h3 style="color: #1e3a5f; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Pool Service Software</h3>
-            <p style="color: #6b7280; margin: 0 0 16px; line-height: 1.6;">Save 15 Hours/Week with automated route optimization and chemical tracking</p>
-            <div style="display: flex; align-items: center; gap: 8px; color: #1e3a5f; font-weight: 600; font-size: 0.95rem;">
+            <h3 style="color: #60a5fa; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Pool Service Software</h3>
+            <p style="color: #8b92a0; margin: 0 0 16px; line-height: 1.6;">Save 15 Hours/Week with automated route optimization and chemical tracking</p>
+            <div style="display: flex; align-items: center; gap: 8px; color: #3b82f6; font-weight: 600; font-size: 0.95rem;">
               <span>Learn More</span>
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-              <span style="background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">Trusted by 1,200+ pool pros</span>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(59,130,246,0.15);">
+              <span style="background: rgba(59,130,246,0.15); color: #60a5fa; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">Trusted by 1,200+ pool pros</span>
             </div>
           </a>
           
           <!-- Chimney Service -->
-          <a href="/chimney-service-field-service-software/" style="text-decoration: none; display: block; background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 2px solid transparent;" onmouseover="this.style.borderColor='#1e3a5f'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(30,58,95,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'">
+          <a href="/chimney-service-field-service-software/" style="text-decoration: none; display: block; background: #1e2530; border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease; border: 1px solid rgba(59,130,246,0.2);" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(59,130,246,0.2)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'">
             <div style="font-size: 48px; margin-bottom: 16px;">🏠</div>
-            <h3 style="color: #1e3a5f; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Chimney Sweep Software</h3>
-            <p style="color: #6b7280; margin: 0 0 16px; line-height: 1.6;">CSIA-compliant digital inspections save 12 hours/week and reduce liability</p>
-            <div style="display: flex; align-items: center; gap: 8px; color: #1e3a5f; font-weight: 600; font-size: 0.95rem;">
+            <h3 style="color: #60a5fa; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Chimney Sweep Software</h3>
+            <p style="color: #8b92a0; margin: 0 0 16px; line-height: 1.6;">CSIA-compliant digital inspections save 12 hours/week and reduce liability</p>
+            <div style="display: flex; align-items: center; gap: 8px; color: #3b82f6; font-weight: 600; font-size: 0.95rem;">
               <span>Learn More</span>
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-              <span style="background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">200+ certified sweeps</span>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(59,130,246,0.15);">
+              <span style="background: rgba(59,130,246,0.15); color: #60a5fa; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">200+ certified sweeps</span>
             </div>
           </a>
           
           <!-- Handyman -->
-          <a href="/handyman-field-service-software/" style="text-decoration: none; display: block; background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; border: 2px solid transparent;" onmouseover="this.style.borderColor='#1e3a5f'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(30,58,95,0.15)'" onmouseout="this.style.borderColor='transparent'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)'">
+          <a href="/handyman-field-service-software/" style="text-decoration: none; display: block; background: #1e2530; border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease; border: 1px solid rgba(59,130,246,0.2);" onmouseover="this.style.borderColor='rgba(59,130,246,0.5)'; this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(59,130,246,0.2)'" onmouseout="this.style.borderColor='rgba(59,130,246,0.2)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'">
             <div style="font-size: 48px; margin-bottom: 16px;">🔧</div>
-            <h3 style="color: #1e3a5f; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Handyman Software</h3>
-            <p style="color: #6b7280; margin: 0 0 16px; line-height: 1.6;">Track 10+ trade types in one app — never lose a job detail again</p>
-            <div style="display: flex; align-items: center; gap: 8px; color: #1e3a5f; font-weight: 600; font-size: 0.95rem;">
+            <h3 style="color: #60a5fa; font-size: 1.5rem; margin: 0 0 12px; font-weight: 700;">Handyman Software</h3>
+            <p style="color: #8b92a0; margin: 0 0 16px; line-height: 1.6;">Track 10+ trade types in one app — never lose a job detail again</p>
+            <div style="display: flex; align-items: center; gap: 8px; color: #3b82f6; font-weight: 600; font-size: 0.95rem;">
               <span>Learn More</span>
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb;">
-              <span style="background: #dbeafe; color: #1e40af; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">500+ handymen • 4.9★ rated</span>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(59,130,246,0.15);">
+              <span style="background: rgba(59,130,246,0.15); color: #60a5fa; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">500+ handymen • 4.9★ rated</span>
             </div>
           </a>
         </div>
         
         <div style="text-align: center; margin-top: 40px;">
-          <p style="color: #6b7280; font-size: 1rem; margin-bottom: 16px;">We also specialize in HVAC, Plumbing, Electrical, Landscaping, and 10+ other trades</p>
-          <a href="/field-service-management/" style="color: #1e3a5f; font-weight: 600; text-decoration: none; border-bottom: 2px solid #1e3a5f; padding-bottom: 2px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">View All Industries →</a>
+          <p style="color: #8b92a0; font-size: 1rem; margin-bottom: 16px;">We also specialize in HVAC, Plumbing, Electrical, Landscaping, and 10+ other trades</p>
+          <a href="/field-service-management/" style="color: #3b82f6; font-weight: 600; text-decoration: none; border-bottom: 2px solid #3b82f6; padding-bottom: 2px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">View All Industries →</a>
         </div>
       </div>
     </section>
@@ -1268,114 +1272,114 @@
     <!-- COMPARISON BLURBS -->
 
     <!-- FEATURES -->
-    <section id="features" style="width:100vw; max-width:100%; background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%); padding:80px 0 0;">
+    <section id="features" style="width:100vw; max-width:100%; background: linear-gradient(180deg, #0f1419 0%, #1a1f26 100%); padding:80px 0 0;">
       <div class="container">
         <div style="text-align:center; margin-bottom:64px;">
           <span class="kicker animate-on-scroll" data-animation="fade-up">Complete Platform</span>
           <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200" style="margin-bottom:16px;">Everything you need to run your field service business</h2>
-          <p style="color:#6b7280; font-size:1.15rem; max-width:700px; margin:0 auto;">From first call to paid invoice—scheduling, estimates, job management, invoicing, payments, client portal, and more.</p>
+          <p style="color:#8b92a0; font-size:1.15rem; max-width:700px; margin:0 auto;">From first call to paid invoice—scheduling, estimates, job management, invoicing, payments, client portal, and more.</p>
         </div>
 
         <!-- Feature Chapters -->
         <div style="display:flex; flex-direction:column; gap:0; margin-bottom:80px;">
           
           <!-- Chapter A — Client & Property Management -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#ffffff; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#0f1419; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <div style="padding:0 48px;">
-              <div style="width:80px; height:80px; background:linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <div style="width:80px; height:80px; background:linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Every client and property organized—without spreadsheets</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Centralize client records, multiple service locations, balances, communication history, and property details so your team always has the full context.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Every client and property organized—without spreadsheets</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Centralize client records, multiple service locations, balances, communication history, and property details so your team always has the full context.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Client database with notes, contacts, and billing info</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Multi-property support with GPS coordinates</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Communication log across calls, SMS, and email</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Real-time balance tracking per client</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Portal accounts created automatically</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Client database with notes, contacts, and billing info</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Multi-property support with GPS coordinates</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Communication log across calls, SMS, and email</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Real-time balance tracking per client</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Portal accounts created automatically</li>
               </ul>
             </div>
-            <div style="padding:24px; background:linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
+            <div style="padding:24px; background:linear-gradient(135deg, #1e2530 0%, #2a3441 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
               <img src="/assets/illustrations/client-details.jpeg" alt="Client Management Interface" style="width:100%; max-width:900px; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
             </div>
           </div>
 
           <!-- Chapter B — Scheduling, Dispatch & Routing -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-            <div style="padding:24px; background:#ffffff; border-radius:12px; height:100%; display:flex; flex-direction:column; gap:16px;">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #1e2530 0%, #2a3441 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="padding:24px; background:#0f1419; border-radius:12px; height:100%; display:flex; flex-direction:column; gap:16px;">
               <img src="/assets/illustrations/schedule.jpeg" alt="Scheduling Interface" style="width:100%; height:auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1);">
               <img src="/assets/illustrations/routing-optimizer.jpeg" alt="Route Optimization" style="width:100%; height:auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1);">
             </div>
             <div style="padding:0 48px;">
-              <div style="width:80px; height:80px; background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <div style="width:80px; height:80px; background:linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Schedule faster. Route smarter. Keep customers informed.</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Drag-and-drop scheduling with technician assignment, job map views, and optimized routing to cut drive time and reduce "running late" calls.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Schedule faster. Route smarter. Keep customers informed.</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Drag-and-drop scheduling with technician assignment, job map views, and optimized routing to cut drive time and reduce "running late" calls.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Calendar views (day/week/month) with team availability</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Job sessions for multi-day projects</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Drag-and-drop rescheduling for real-life changes</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Technician assignment and workload balancing</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Jobs map view + route optimization</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Calendar views (day/week/month) with team availability</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Job sessions for multi-day projects</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Drag-and-drop rescheduling for real-life changes</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Technician assignment and workload balancing</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Jobs map view + route optimization</li>
               </ul>
             </div>
           </div>
 
           <!-- Chapter C — Estimates & Approvals -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#ffffff; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#0f1419; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <div style="padding:0 48px;">
-              <div style="width:80px; height:80px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <div style="width:80px; height:80px; background:linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Send professional estimates—and collect deposits before scheduling</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Create branded estimates, track approvals, and convert approved work into scheduled jobs with one click.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Send professional estimates—and collect deposits before scheduling</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Create branded estimates, track approvals, and convert approved work into scheduled jobs with one click.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Branded PDF estimates with clear line items</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> One-click email delivery with PDF attachment</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Approval tracking: pending / approved / declined</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Deposit collection built into estimates</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Convert estimate → job (details carry over)</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Branded PDF estimates with clear line items</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> One-click email delivery with PDF attachment</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Approval tracking: pending / approved / declined</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Deposit collection built into estimates</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Convert estimate → job (details carry over)</li>
               </ul>
             </div>
-            <div style="padding:24px; background:linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
+            <div style="padding:24px; background:linear-gradient(135deg, #1e2530 0%, #2a3441 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
               <img src="/assets/illustrations/estimate.jpeg" alt="Estimates Interface" style="width:100%; max-width:900px; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
             </div>
           </div>
 
           <!-- Chapter D — Jobs, Work Orders & Field Execution -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-            <div style="padding:24px; background:#ffffff; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #1e2530 0%, #2a3441 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="padding:24px; background:#0f1419; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
               <img src="/assets/illustrations/job-details.jpeg" alt="Job Details Interface" style="width:100%; max-width:900px; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
             </div>
             <div style="padding:0 48px;">
-              <div style="width:80px; height:80px; background:linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <div style="width:80px; height:80px; background:linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Keep jobs clean, documented, and easy to complete in the field</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Everything for the job lives in one record: scope, photos, documents, materials, time, and status—so your team stays aligned.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Keep jobs clean, documented, and easy to complete in the field</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Everything for the job lives in one record: scope, photos, documents, materials, time, and status—so your team stays aligned.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Notes, line items, photos, and documents per job</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Time tracking by job (actual vs estimated)</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Mobile job sheets with photo upload</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Swipe-to-complete triggers billing workflows</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Notes, line items, photos, and documents per job</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Time tracking by job (actual vs estimated)</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Mobile job sheets with photo upload</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Swipe-to-complete triggers billing workflows</li>
               </ul>
             </div>
           </div>
 
           <!-- Chapter E — Invoicing, Payments & Cash Flow -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#ffffff; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#0f1419; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <div style="padding:0 48px;">
               <div style="width:80px; height:80px; background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Invoice instantly. Get paid online. Stop chasing checks.</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Automatically generate invoices when work is completed, accept online payments, and keep records synced.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Invoice instantly. Get paid online. Stop chasing checks.</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Automatically generate invoices when work is completed, accept online payments, and keep records synced.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Automatic invoice creation on completion</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Stripe payment links for fast online checkout</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Partial payments and deposit tracking</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> QuickBooks sync (invoices + payments)</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Automatic invoice creation on completion</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Stripe payment links for fast online checkout</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Partial payments and deposit tracking</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> QuickBooks sync (invoices + payments)</li>
               </ul>
             </div>
             <div style="padding:24px; background:linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
@@ -1384,38 +1388,38 @@
           </div>
 
           <!-- Chapter F — Client Portal & Retention -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-            <div style="padding:24px; background:#ffffff; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="padding:24px; background:#0f1419; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
               <img src="/assets/illustrations/portal.jpeg" alt="Customer Portal" style="width:100%; max-width:900px; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
             </div>
             <div style="padding:0 48px;">
               <div style="width:80px; height:80px; background:linear-gradient(135deg, #ec4899 0%, #db2777 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">A client portal that reduces calls and drives repeat work</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Give customers 24/7 access to estimates, invoices, job history, and booking—plus retention tools like loyalty and referrals.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">A client portal that reduces calls and drives repeat work</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Give customers 24/7 access to estimates, invoices, job history, and booking—plus retention tools like loyalty and referrals.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> View estimates, invoices, and service history anytime</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Pay invoices directly from the portal</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Booking requests without phone tag</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Loyalty & rewards + referral program</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> View estimates, invoices, and service history anytime</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Pay invoices directly from the portal</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Booking requests without phone tag</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Loyalty & rewards + referral program</li>
               </ul>
             </div>
           </div>
 
           <!-- Chapter G — Marketing & Communications -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#ffffff; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#0f1419; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <div style="padding:0 48px;">
               <div style="width:80px; height:80px; background:linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Built-in follow-up that keeps your schedule full</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Segment your clients, schedule campaigns, and run re-engagement without external tools—plus SMS messaging for operational updates.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Built-in follow-up that keeps your schedule full</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Segment your clients, schedule campaigns, and run re-engagement without external tools—plus SMS messaging for operational updates.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Email campaigns with templates and personalization</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Re-engagement queue for dormant clients</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> SMS messaging via Twilio</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Tech en-route notifications (automatic)</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Email campaigns with templates and personalization</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Re-engagement queue for dormant clients</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> SMS messaging via Twilio</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Tech en-route notifications (automatic)</li>
               </ul>
             </div>
             <div style="padding:24px; background:linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-radius:12px; height:100%; display:flex; flex-direction:column; gap:16px;">
@@ -1425,37 +1429,37 @@
           </div>
 
           <!-- Chapter H — Time Tracking, Payroll & Team Management -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-            <div style="padding:24px; background:#ffffff; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center; padding:80px 0; background:linear-gradient(135deg, #1e2530 0%, #2a3441 100%); border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <div style="padding:24px; background:#0f1419; border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
               <img src="/assets/illustrations/time-management-console.jpeg" alt="Time Management Console" style="width:100%; max-width:900px; height:auto; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.12);">
             </div>
             <div style="padding:0 48px;">
-              <div style="width:80px; height:80px; background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
+              <div style="width:80px; height:80px; background:linear-gradient(135deg, #1e293b 0%, #334155 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Know who's working, where time goes, and what jobs cost</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Track labor accurately, approve timesheets, manage PTO, and set role-based permissions as your team grows.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Know who's working, where time goes, and what jobs cost</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Track labor accurately, approve timesheets, manage PTO, and set role-based permissions as your team grows.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Clock in/out + live "who's working" board</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Job-based time tracking for job costing</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Role-based permissions and technician profiles</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Clock in/out + live "who's working" board</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Job-based time tracking for job costing</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Role-based permissions and technician profiles</li>
               </ul>
             </div>
           </div>
 
           <!-- Chapter I — Reporting & Analytics -->
-          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#ffffff; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <div class="animate-on-scroll" data-animation="fade-up" style="display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:center; padding:80px 0; background:#0f1419; border-radius:16px; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
             <div style="padding:0 48px;">
               <div style="width:80px; height:80px; background:linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); border-radius:20px; display:flex; align-items:center; justify-content:center; margin-bottom:24px;">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
               </div>
-              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#2d2d2d; line-height:1.2;">Clarity across revenue, jobs, leads, and labor</h3>
-              <p style="color:#6b7280; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Measure performance over time, identify what's working, and export when you need deeper analysis.</p>
+              <h3 style="margin:0 0 16px; font-size:1.9rem; color:#e4e7eb; line-height:1.2;">Clarity across revenue, jobs, leads, and labor</h3>
+              <p style="color:#8b92a0; margin:0 0 32px; font-size:1.05rem; line-height:1.6;">Measure performance over time, identify what's working, and export when you need deeper analysis.</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px;">
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Jobs, revenue, leads, sales, and timesheets reporting</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Customer segmentation (high-value, at-risk, dormant)</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Revenue charts and date range filtering</li>
-                <li style="padding-left:32px; position:relative; color:#374151; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#10b981; font-weight:700; font-size:1.3rem;">✓</span> Export to Google Sheets</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Jobs, revenue, leads, sales, and timesheets reporting</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Customer segmentation (high-value, at-risk, dormant)</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Revenue charts and date range filtering</li>
+                <li style="padding-left:32px; position:relative; color:#d1d5db; line-height:1.7; font-size:1.05rem;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700; font-size:1.3rem;">✓</span> Export to Google Sheets</li>
               </ul>
             </div>
             <div style="padding:24px; background:linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%); border-radius:12px; height:100%; display:flex; align-items:center; justify-content:center;">
@@ -1466,43 +1470,43 @@
         </div>
 
         <!-- Integrations -->
-        <div style="text-align:center; padding:60px 0; background:linear-gradient(135deg, #f9fafb 0%, #ffffff 100%); border-radius:16px; margin-bottom:80px;">
-          <h3 style="margin:0 0 16px; font-size:1.8rem; color:#2d2d2d;">Integrations that fit your existing workflow</h3>
+        <div style="text-align:center; padding:60px 0; background:linear-gradient(135deg, #1a1f26 0%, #0f1419 100%); border-radius:16px; margin-bottom:80px;">
+          <h3 style="margin:0 0 16px; font-size:1.8rem; color:#e4e7eb;">Integrations that fit your existing workflow</h3>
           <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:24px; margin:32px 0;">
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Stripe</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">QuickBooks</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Calendar</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Drive</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Twilio</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Resend</div>
-            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#6b7280; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Mapbox</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Stripe</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">QuickBooks</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Calendar</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Google Drive</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Twilio</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Resend</div>
+            <div style="background:#fff; padding:16px 24px; border-radius:8px; font-weight:600; color:#8b92a0; border:1px solid rgba(148,163,184,0.15); box-shadow:0 2px 4px rgba(0,0,0,0.04);">Mapbox</div>
           </div>
-          <p style="color:#6b7280; font-size:1rem;">Use Creative Job Hub as your system of record, or connect it to tools you already trust.</p>
+          <p style="color:#8b92a0; font-size:1rem;">Use Creative Job Hub as your system of record, or connect it to tools you already trust.</p>
         </div>
 
         <!-- Automation & Intelligence (Reframed) -->
         <div style="padding:60px 0; border-top:1px solid rgba(148,163,184,0.1);">
           <div style="text-align:center; margin-bottom:48px;">
-            <h3 style="margin:0 0 16px; font-size:1.8rem; color:#2d2d2d;">Automation and intelligence—when you want it</h3>
-            <p style="color:#6b7280; font-size:1.05rem; max-width:700px; margin:0 auto;">Not "AI for AI's sake." These features help teams move faster and make better decisions—without adding complexity.</p>
+            <h3 style="margin:0 0 16px; font-size:1.8rem; color:#e4e7eb;">Automation and intelligence—when you want it</h3>
+            <p style="color:#8b92a0; font-size:1.05rem; max-width:700px; margin:0 auto;">Not "AI for AI's sake." These features help teams move faster and make better decisions—without adding complexity.</p>
           </div>
           <ul style="list-style:none; padding:0; margin:0 0 24px; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px; max-width:1000px; margin-left:auto; margin-right:auto;">
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Historical pricing lookup ("What do we charge for X?")</li>
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Smart estimating assistance</li>
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Photo analysis for quality/safety observations</li>
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Predictive maintenance insights</li>
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> Voice assistant (optional)</li>
-            <li style="padding-left:28px; position:relative; color:#4b5563; line-height:1.7;"><span style="position:absolute; left:0; color:#10b981; font-weight:700;">✓</span> In-app help chat</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> Historical pricing lookup ("What do we charge for X?")</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> Smart estimating assistance</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> Photo analysis for quality/safety observations</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> Predictive maintenance insights</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> Voice assistant (optional)</li>
+            <li style="padding-left:28px; position:relative; color:#8b92a0; line-height:1.7;"><span style="position:absolute; left:0; color:#3b82f6; font-weight:700;">✓</span> In-app help chat</li>
           </ul>
-          <p style="color:#6b7280; font-size:0.95rem; text-align:center; font-style:italic;">Designed to reduce rework, missed details, and scheduling inefficiencies.</p>
+          <p style="color:#8b92a0; font-size:0.95rem; text-align:center; font-style:italic;">Designed to reduce rework, missed details, and scheduling inefficiencies.</p>
         </div>
 
       </div>
     </section>
 
     <!-- DEMO LINK ONLY -->
-    <section id="demo-link" style="width:100vw; max-width:100%; background: #ffffff; padding:40px 0; border-bottom: 1px solid rgba(148,163,184,0.1); text-align:center;">
-      <a href="/videos/demo.html" style="display: inline-block; background: linear-gradient(135deg, #ff6b35, #3b82f6); color: white; padding: 1rem 2rem; border-radius: 10px; font-weight: 700; font-size: 1.2rem; text-decoration: none; box-shadow: 0 2px 12px rgba(30,41,59,0.10); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)';">
+    <section id="demo-link" style="width:100vw; max-width:100%; background: #0f1419; padding:40px 0; border-bottom: 1px solid rgba(148,163,184,0.1); text-align:center;">
+      <a href="/videos/demo.html" style="display: inline-block; background: linear-gradient(135deg, #3b82f6, #3b82f6); color: white; padding: 1rem 2rem; border-radius: 10px; font-weight: 700; font-size: 1.2rem; text-decoration: none; box-shadow: 0 2px 12px rgba(30,41,59,0.10); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)';">
         🎥 See it in action
       </a>
     </section>
@@ -1510,20 +1514,20 @@
     <!-- COMPARISON BLURBS -->
 
     <!-- MEET DANIELLE AI ASSISTANT -->
-    <section style="width:100vw; max-width:100%; background: #f5f5f5; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section style="width:100vw; max-width:100%; background: #1a1f26; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
       <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         <div style="text-align: center; margin-bottom: 48px;">
-          <span style="background: rgba(255,107,53,0.1); color: #ff6b35; border: 1px solid rgba(255,107,53,0.3); padding: 8px 20px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px;">
+          <span style="background: rgba(255,107,53,0.1); color: #3b82f6; border: 1px solid rgba(255,107,53,0.3); padding: 8px 20px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle; margin-right: 6px; margin-top: -2px;"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
             NEW: AI-Powered Assistant
           </span>
-          <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; margin: 0 0 20px; color: #1e3a5f !important; line-height: 1.1;">
+          <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; margin: 0 0 20px; color: #3b82f6 !important; line-height: 1.1;">
             Meet Danielle
           </h2>
-          <p style="font-size: clamp(1.2rem, 3vw, 1.6rem); color: #6b7280; max-width: 800px; margin: 0 auto 16px; font-weight: 600;">
+          <p style="font-size: clamp(1.2rem, 3vw, 1.6rem); color: #8b92a0; max-width: 800px; margin: 0 auto 16px; font-weight: 600;">
             Your Personal Jobsite Assistant
           </p>
-          <p style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: #4b5563; max-width: 700px; margin: 0 auto;">
+          <p style="font-size: clamp(1rem, 2.5vw, 1.2rem); color: #8b92a0; max-width: 700px; margin: 0 auto;">
             Ask questions, get instant answers, and automate tasks — all powered by AI. Danielle knows electrical codes, calculates materials, manages your jobs, and more.
           </p>
         </div>
@@ -1532,56 +1536,56 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 48px;">
           
           <!-- Demo Card 1: Material Calculations -->
-          <div style="background: #f9fafb; border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(14,165,233,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
+          <div style="background: #1a1f26; border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(14,165,233,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
             <div style="font-size: 48px; margin-bottom: 16px; text-align: center;">🧮</div>
-            <h3 style="color: #2d2d2d; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Material Calculations</h3>
+            <h3 style="color: #e4e7eb; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Material Calculations</h3>
             
             <!-- Chat Bubbles -->
-            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #6b7280; font-size: 15px; line-height: 1.5;">
+            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #8b92a0; font-size: 15px; line-height: 1.5;">
               "How many bags of concrete do I need for a 10x10 slab?"
             </div>
-            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #2d2d2d; font-size: 15px; line-height: 1.5;">
-              <strong style="display: block; margin-bottom: 8px; color: #ff6b35;">Danielle says:</strong>
-              For a 10'x10' slab at 4" thick, you'll need approximately <strong style="color: #2d2d2d;">41-42 bags of 80lb concrete</strong>. That's 100 sq ft × 0.33 ft (4") = 33.3 cubic feet ÷ 0.6 cubic ft per bag.
-              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(148,163,184,0.2); font-size: 13px; color: #6b7280;">
+            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #e4e7eb; font-size: 15px; line-height: 1.5;">
+              <strong style="display: block; margin-bottom: 8px; color: #3b82f6;">Danielle says:</strong>
+              For a 10'x10' slab at 4" thick, you'll need approximately <strong style="color: #e4e7eb;">41-42 bags of 80lb concrete</strong>. That's 100 sq ft × 0.33 ft (4") = 33.3 cubic feet ÷ 0.6 cubic ft per bag.
+              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(148,163,184,0.2); font-size: 13px; color: #8b92a0;">
                 💡 Pro tip: Always order 10% extra for waste and spillage (45-46 bags total).
               </div>
             </div>
           </div>
 
           <!-- Demo Card 2: Code References -->
-          <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(255,107,53,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
+          <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(59,130,246,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
             <div style="font-size: 48px; margin-bottom: 16px; text-align: center;">📚</div>
-            <h3 style="color: #2d2d2d; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Code & Compliance</h3>
+            <h3 style="color: #e4e7eb; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Code & Compliance</h3>
             
-            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #6b7280; font-size: 15px; line-height: 1.5;">
+            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #8b92a0; font-size: 15px; line-height: 1.5;">
               "What's the NEC code for outlet spacing in kitchens?"
             </div>
-            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #2d2d2d; font-size: 15px; line-height: 1.5;">
-              <strong style="display: block; margin-bottom: 8px; color: #ff6b35;">Danielle says:</strong>
-              Per NEC 210.52(C), kitchen countertop receptacles must be installed so that no point along the wall line is more than <strong style="color: #2d2d2d;">24 inches (2 feet)</strong> from a receptacle outlet.
-              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(148,163,184,0.2); font-size: 13px; color: #6b7280;">
+            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #e4e7eb; font-size: 15px; line-height: 1.5;">
+              <strong style="display: block; margin-bottom: 8px; color: #3b82f6;">Danielle says:</strong>
+              Per NEC 210.52(C), kitchen countertop receptacles must be installed so that no point along the wall line is more than <strong style="color: #e4e7eb;">24 inches (2 feet)</strong> from a receptacle outlet.
+              <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(148,163,184,0.2); font-size: 13px; color: #8b92a0;">
                 📖 Reference: NEC 2020, Article 210.52(C)(1)
               </div>
             </div>
           </div>
 
           <!-- Demo Card 3: Task Automation -->
-          <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(255,107,53,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
+          <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 32px; transition: transform 0.3s ease, border-color 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(59,130,246,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(148,163,184,0.15)';">
             <div style="font-size: 48px; margin-bottom: 16px; text-align: center;">⚡</div>
-            <h3 style="color: #2d2d2d; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Smart Task Management</h3>
+            <h3 style="color: #e4e7eb; font-size: 1.5rem; margin: 0 0 16px; font-weight: 700;">Smart Task Management</h3>
             
-            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #6b7280; font-size: 15px; line-height: 1.5;">
+            <div style="background: rgba(255,255,255,0.9); border: 1px solid rgba(148,163,184,0.15); border-radius: 16px 16px 16px 4px; padding: 16px; margin-bottom: 12px; color: #8b92a0; font-size: 15px; line-height: 1.5;">
               "Add labor and materials to the Johnson job and mark it complete"
             </div>
-            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #2d2d2d; font-size: 15px; line-height: 1.5;">
-              <strong style="display: block; margin-bottom: 8px; color: #ff6b35;">Danielle says:</strong>
+            <div style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); border-radius: 16px 16px 4px 16px; padding: 16px; color: #e4e7eb; font-size: 15px; line-height: 1.5;">
+              <strong style="display: block; margin-bottom: 8px; color: #3b82f6;">Danielle says:</strong>
               ✅ Added line items to Johnson job<br>
               ✅ Updated status to "Complete"<br>
               ✅ Stopped job timer (3.5 hours)<br>
               ✅ Invoice ready to send
               <div style="margin-top: 12px;">
-                <button style="background: rgba(255,107,53,0.2); color: #ff6b35; border: 1px solid rgba(255,107,53,0.4); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">
+                <button style="background: rgba(59,130,246,0.15); color: #3b82f6; border: 1px solid rgba(59,130,246,0.3); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">
                   View Invoice →
                 </button>
               </div>
@@ -1590,49 +1594,49 @@
         </div>
 
         <!-- Feature List -->
-        <div style="background: #f9fafb; border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 40px; text-align: center;">
-          <h3 style="color: #2d2d2d; font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 32px; font-weight: 700;">What Danielle Can Do For You</h3>
+        <div style="background: #1a1f26; border: 1px solid rgba(148,163,184,0.15); border-radius: 20px; padding: 40px; text-align: center;">
+          <h3 style="color: #e4e7eb; font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 32px; font-weight: 700;">What Danielle Can Do For You</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; text-align: left;">
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Material Calculations</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">Concrete, lumber, electrical wire, plumbing fixtures — get instant accurate estimates</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Material Calculations</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Concrete, lumber, electrical wire, plumbing fixtures — get instant accurate estimates</p>
               </div>
             </div>
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Code References</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">NEC electrical codes, IPC plumbing codes, building codes — instant lookup with citations</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Code References</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">NEC electrical codes, IPC plumbing codes, building codes — instant lookup with citations</p>
               </div>
             </div>
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Job Management</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">Add line items, update statuses, create invoices — all by voice or text command</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Job Management</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Add line items, update statuses, create invoices — all by voice or text command</p>
               </div>
             </div>
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Technical Support</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">Troubleshooting tips, best practices, installation guides — like having a master tradesman on call</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Technical Support</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Troubleshooting tips, best practices, installation guides — like having a master tradesman on call</p>
               </div>
             </div>
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Quick Conversions</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">Units, measurements, load calculations — convert anything instantly</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Quick Conversions</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Units, measurements, load calculations — convert anything instantly</p>
               </div>
             </div>
             <div style="display: flex; align-items: start; gap: 12px;">
-              <span style="font-size: 24px; flex-shrink: 0; color: #ff6b35;">✓</span>
+              <span style="font-size: 24px; flex-shrink: 0; color: #3b82f6;">✓</span>
               <div>
-                <strong style="color: #2d2d2d; display: block; margin-bottom: 4px; font-size: 16px;">Available 24/7</strong>
-                <p style="color: #4b5563; margin: 0; font-size: 14px;">In the truck, on the jobsite, at the supplier — Danielle is always ready to help</p>
+                <strong style="color: #e4e7eb; display: block; margin-bottom: 4px; font-size: 16px;">Available 24/7</strong>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">In the truck, on the jobsite, at the supplier — Danielle is always ready to help</p>
               </div>
             </div>
           </div>
@@ -1640,10 +1644,10 @@
 
         <!-- CTA -->
         <div style="text-align: center; margin-top: 48px;">
-          <p style="color: #2d2d2d; font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin: 0 0 24px; font-weight: 600;">
+          <p style="color: #e4e7eb; font-size: clamp(1.1rem, 2.5vw, 1.3rem); margin: 0 0 24px; font-weight: 600;">
             Danielle is included FREE with every plan
           </p>
-          <a href="https://app.creativejobhub.com/auth?mode=signup" style="display: inline-block; background: #ff6b35; color: #2d2d2d; font-size: 18px; font-weight: 700; padding: 18px 40px; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 24px rgba(255,107,53,0.4); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255,107,53,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(255,107,53,0.4)';">
+          <a href="https://app.creativejobhub.com/auth?mode=signup" style="display: inline-block; background: #3b82f6; color: #e4e7eb; font-size: 18px; font-weight: 700; padding: 18px 40px; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 24px rgba(59,130,246,0.3); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255,107,53,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(59,130,246,0.3)';">
             Try Danielle Free — Start Trial
           </a>
         </div>
@@ -1652,11 +1656,11 @@
 
     <!-- HERO CONTINUED -->
     <!-- HONEST COMPETITOR COMPARISON -->
-    <section class="hero" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section class="hero" style="width:100vw; max-width:100%; background: #0f1419; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
       <div style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 0 20px;">
           <!-- HONEST COMPETITOR COMPARISON TABLE -->
-          <div style="background: #f3f4f6; backdrop-filter: blur(10px); border: 1px solid #d1d5db; border-radius: 16px; padding: 32px 24px; margin: 40px auto; max-width: 900px;">
-            <h3 style="color: #2d2d2d; font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 24px; text-align: center;">
+          <div style="background: #1e2530; backdrop-filter: blur(10px); border: 1px solid rgba(59,130,246,0.2); border-radius: 16px; padding: 32px 24px; margin: 40px auto; max-width: 900px;">
+            <h3 style="color: #e4e7eb; font-size: clamp(1.5rem, 4vw, 2rem); margin: 0 0 24px; text-align: center;">
               Why Competitors Cost 3-4x More (The Truth They Don't Advertise)
             </h3>
             
@@ -1664,65 +1668,65 @@
               <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
                 <thead>
                   <tr style="border-bottom: 2px solid #d1d5db;">
-                    <th style="padding: 16px 12px; color: #4b5563; font-weight: 700; font-size: 14px;">Feature</th>
+                    <th style="padding: 16px 12px; color: #8b92a0; font-weight: 700; font-size: 14px;">Feature</th>
                     <th style="padding: 16px 12px; color: #fca5a5; font-weight: 700; font-size: 14px; text-align: center;">Jobber</th>
                     <th style="padding: 16px 12px; color: #fca5a5; font-weight: 700; font-size: 14px; text-align: center;">Workiz</th>
                     <th style="padding: 16px 12px; color: #fca5a5; font-weight: 700; font-size: 14px; text-align: center;">Housecall Pro</th>
-                    <th style="padding: 16px 12px; color: #ff6b35; font-weight: 700; font-size: 14px; text-align: center; -webkit-font-smoothing: antialiased;">Creative Job Hub</th>
+                    <th style="padding: 16px 12px; color: #3b82f6; font-weight: 700; font-size: 14px; text-align: center; -webkit-font-smoothing: antialiased;">Creative Job Hub</th>
                   </tr>
                 </thead>
-                <tbody style="color: #2d2d2d; font-size: 14px;">
-                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                <tbody style="color: #e4e7eb; font-size: 14px;">
+                  <tr style="border-bottom: 1px solid rgba(59,130,246,0.15);">
                     <td style="padding: 14px 12px; font-weight: 600;">Base Plan (1 user)</td>
                     <td style="padding: 14px 12px; text-align: center;">$129/mo</td>
                     <td style="padding: 14px 12px; text-align: center;">$99/mo</td>
                     <td style="padding: 14px 12px; text-align: center;">$119/mo</td>
-                    <td style="padding: 14px 12px; text-align: center; color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">$29/mo ✓</td>
+                    <td style="padding: 14px 12px; text-align: center; color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">$29/mo ✓</td>
                   </tr>
-                  <tr style="border-bottom: 1px solid #e5e7eb; background: #fafafa;">
+                  <tr style="border-bottom: 1px solid rgba(59,130,246,0.15); background: #fafafa;">
                     <td style="padding: 14px 12px; font-weight: 600;">Online Booking</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$40/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$59/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$50/mo</td>
-                    <td style="padding: 14px 12px; text-align: center; color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
+                    <td style="padding: 14px 12px; text-align: center; color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
                   </tr>
-                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                  <tr style="border-bottom: 1px solid rgba(59,130,246,0.15);">
                     <td style="padding: 14px 12px; font-weight: 600;">QuickBooks Sync</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$30/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$39/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$40/mo</td>
-                    <td style="padding: 14px 12px; text-align: center; color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
+                    <td style="padding: 14px 12px; text-align: center; color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
                   </tr>
-                  <tr style="border-bottom: 1px solid #e5e7eb; background: #fafafa;">
+                  <tr style="border-bottom: 1px solid rgba(59,130,246,0.15); background: #fafafa;">
                     <td style="padding: 14px 12px; font-weight: 600;">Advanced Reporting</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$50/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$49/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$60/mo</td>
-                    <td style="padding: 14px 12px; text-align: center; color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
+                    <td style="padding: 14px 12px; text-align: center; color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
                   </tr>
-                  <tr style="border-bottom: 1px solid #e5e7eb;">
+                  <tr style="border-bottom: 1px solid rgba(59,130,246,0.15);">
                     <td style="padding: 14px 12px; font-weight: 600;">Marketing Tools</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$80/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$69/mo</td>
                     <td style="padding: 14px 12px; text-align: center; color: #fca5a5;">+$70/mo</td>
-                    <td style="padding: 14px 12px; text-align: center; color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
+                    <td style="padding: 14px 12px; text-align: center; color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">Included ✓</td>
                   </tr>
                   <tr style="border-bottom: 2px solid #d1d5db; background: #fafafa; font-weight: 700;">
                     <td style="padding: 16px 12px; font-size: 16px;">TOTAL MONTHLY COST</td>
                     <td style="padding: 16px 12px; text-align: center; color: #fca5a5; font-size: 18px;">$329/mo</td>
                     <td style="padding: 16px 12px; text-align: center; color: #fca5a5; font-size: 18px;">$315/mo</td>
                     <td style="padding: 16px 12px; text-align: center; color: #fca5a5; font-size: 18px;">$339/mo</td>
-                    <td style="padding: 16px 12px; text-align: center; color: #ff6b35; font-size: 20px; -webkit-font-smoothing: antialiased;">$29/mo ✓</td>
+                    <td style="padding: 16px 12px; text-align: center; color: #3b82f6; font-size: 20px; -webkit-font-smoothing: antialiased;">$29/mo ✓</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             
             <div style="margin-top: 24px; padding: 20px; background: rgba(14,165,233,0.05); border: 2px solid rgba(14,165,233,0.3); border-radius: 12px; text-align: center;">
-              <p style="color: #2d2d2d; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; margin: 0 0 8px;">
+              <p style="color: #e4e7eb; font-size: clamp(1.2rem, 3vw, 1.5rem); font-weight: 800; margin: 0 0 8px;">
                 💰 Save $3,600+ per year with Creative Job Hub
               </p>
-              <p style="color: #4b5563; font-size: 14px; margin: 0;">
+              <p style="color: #8b92a0; font-size: 14px; margin: 0;">
                 That's enough to hire another tech, buy new equipment, or finally take that vacation.
               </p>
             </div>
@@ -1731,11 +1735,11 @@
             <div id="labor-rate-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(255,255,255,0.95); z-index:9999; justify-content:center; align-items:center;">
               <div style="background:#fff; color:#222; border-radius:16px; max-width:400px; width:90vw; padding:32px; box-shadow:0 8px 32px rgba(0,0,0,0.25); position:relative; text-align:center;">
                 <button id="close-labor-rate-popup" style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; color:#64748b; cursor:pointer;">&times;</button>
-                <h3 style="margin-bottom:12px; color:#ff6b35;">Get Our Free Labor Rate Calculator</h3>
+                <h3 style="margin-bottom:12px; color:#3b82f6;">Get Our Free Labor Rate Calculator</h3>
                 <p style="margin-bottom:18px; font-size:16px; color:#334155;">Enter your email to unlock the calculator and start optimizing your business instantly.</p>
                 <form action="https://formspree.io/f/xwkzjvqd" method="POST" style="display:flex; flex-direction:column; gap:12px;">
                   <input type="email" name="email" required placeholder="Your email" style="padding:12px; border-radius:8px; border:1px solid #cbd5e1; font-size:16px;">
-                  <button type="submit" style="background:#ff6b35; color:#2d2d2d; font-weight:700; border:none; border-radius:8px; padding:12px; font-size:16px; cursor:pointer;">Unlock Calculator</button>
+                  <button type="submit" style="background:#3b82f6; color:#e4e7eb; font-weight:700; border:none; border-radius:8px; padding:12px; font-size:16px; cursor:pointer;">Unlock Calculator</button>
                 </form>
               </div>
             </div>
@@ -1764,10 +1768,10 @@
           
           <!-- Value badges -->
           <div class="badges" style="margin-top:14px; justify-content: center;">
-            <div class="badge" style="background: #64748b; color: #2d2d2d; border: 1px solid #d1d5db;">✅ 7-Day Free Trial</div>
-            <div class="badge" style="background: #64748b; color: #2d2d2d; border: 1px solid #d1d5db;">✅ No Setup Fees</div>
-            <div class="badge" style="background: #64748b; color: #2d2d2d; border: 1px solid #d1d5db;">✅ Cancel Anytime</div>
-            <div class="badge" style="background: #64748b; color: #2d2d2d; border: 1px solid #d1d5db;">✅ Enterprise Features</div>
+            <div class="badge" style="background: #64748b; color: #e4e7eb; border: 1px solid rgba(59,130,246,0.2);">✅ 7-Day Free Trial</div>
+            <div class="badge" style="background: #64748b; color: #e4e7eb; border: 1px solid rgba(59,130,246,0.2);">✅ No Setup Fees</div>
+            <div class="badge" style="background: #64748b; color: #e4e7eb; border: 1px solid rgba(59,130,246,0.2);">✅ Cancel Anytime</div>
+            <div class="badge" style="background: #64748b; color: #e4e7eb; border: 1px solid rgba(59,130,246,0.2);">✅ Enterprise Features</div>
           </div>
         </div>
       </div>
@@ -1795,16 +1799,16 @@
     </div>
 
     <!-- SWIPE TO WORK: INTERACTIVE MOBILE DEMO -->
-    <section style="width:100vw; max-width:100%; background: #ffffff; padding: 80px 0; position: relative;">
+    <section style="width:100vw; max-width:100%; background: #0f1419; padding: 80px 0; position: relative;">
       <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
         <div style="text-align: center; margin-bottom: 56px;">
           <span style="background: rgba(34,197,94,0.15); color: #22c55e; padding: 8px 20px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px; backdrop-filter: blur(10px);">
             📱 NEW: Gesture Controls
           </span>
-          <h2 style="font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; margin: 0 0 20px; color: #2d2d2d; line-height: 1.1;">
+          <h2 style="font-size: clamp(2.5rem, 6vw, 3.5rem); font-weight: 900; margin: 0 0 20px; color: #e4e7eb; line-height: 1.1;">
             Swipe To Work
           </h2>
-          <p style="font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #4b5563; max-width: 700px; margin: 0 auto;">
+          <p style="font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #8b92a0; max-width: 700px; margin: 0 auto;">
             Your technicians can manage their entire day with simple swipe gestures. No hunting through menus. No complicated buttons. Just swipe and work.
           </p>
         </div>
@@ -1814,7 +1818,7 @@
           
           <!-- Live Demo Embed -->
           <div style="text-align: center;">
-            <div style="background: #f3f4f6; backdrop-filter: blur(10px); border: 3px solid rgba(34,197,94,0.3); border-radius: 40px; padding: 16px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
+            <div style="background: #1e2530; backdrop-filter: blur(10px); border: 3px solid rgba(34,197,94,0.3); border-radius: 40px; padding: 16px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.4);">
               <!-- Phone Frame -->
               <div style="background: #0f172a; border-radius: 32px; overflow: hidden; position: relative; height: 700px;">
                 <!-- Actual Working Demo -->
@@ -1822,10 +1826,10 @@
               </div>
             </div>
             
-            <div style="margin-top: 24px; padding: 20px; background: #f3f4f6; backdrop-filter: blur(10px); border: 1px solid #d1d5db; border-radius: 16px; text-align: left;">
+            <div style="margin-top: 24px; padding: 20px; background: #1e2530; backdrop-filter: blur(10px); border: 1px solid rgba(59,130,246,0.2); border-radius: 16px; text-align: left;">
               <h3 style="color: #22c55e; font-size: 1.3rem; margin: 0 0 12px; font-weight: 700;">👆 Try It Now!</h3>
-              <p style="color: #2d2d2d; margin: 0 0 12px; font-size: 15px;">This is the actual app interface. Swipe the job cards:</p>
-              <ul style="list-style: none; padding: 0; margin: 0; color: #4b5563; font-size: 14px; line-height: 1.8;">
+              <p style="color: #e4e7eb; margin: 0 0 12px; font-size: 15px;">This is the actual app interface. Swipe the job cards:</p>
+              <ul style="list-style: none; padding: 0; margin: 0; color: #8b92a0; font-size: 14px; line-height: 1.8;">
                 <li style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                   <span style="color: #22c55e; font-size: 20px;">→</span>
                   <span><strong>Swipe right</strong> to start job (starts timer, notifies customer)</span>
@@ -1841,30 +1845,30 @@
 
         <!-- Bottom Feature Highlights -->
         <div style="margin-top: 64px; text-align: center;">
-          <div style="background: #f3f4f6; backdrop-filter: blur(10px); border: 1px solid #d1d5db; border-radius: 20px; padding: 48px 32px;">
-            <h3 style="color: #2d2d2d; font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 32px; font-weight: 700;">Why Techs Love Swipe Controls</h3>
+          <div style="background: #1e2530; backdrop-filter: blur(10px); border: 1px solid rgba(59,130,246,0.2); border-radius: 20px; padding: 48px 32px;">
+            <h3 style="color: #e4e7eb; font-size: clamp(1.5rem, 3vw, 2rem); margin: 0 0 32px; font-weight: 700;">Why Techs Love Swipe Controls</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px;">
               <div>
                 <div style="font-size: 48px; margin-bottom: 12px;">⚡</div>
                 <h4 style="color: #22c55e; margin: 0 0 8px; font-size: 18px; font-weight: 700;">Lightning Fast</h4>
-                <p style="color: #6b7280; margin: 0; font-size: 14px;">Start/complete jobs in under 1 second. No menus, no tapping</p>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Start/complete jobs in under 1 second. No menus, no tapping</p>
               </div>
               <div>
                 <div style="font-size: 48px; margin-bottom: 12px;">🧤</div>
                 <h4 style="color: #22c55e; margin: 0 0 8px; font-size: 18px; font-weight: 700;">Works With Gloves</h4>
-                <p style="color: #6b7280; margin: 0; font-size: 14px;">Large swipe gestures easy to use with work gloves on</p>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Large swipe gestures easy to use with work gloves on</p>
               </div>
               <div>
                 <div style="font-size: 48px; margin-bottom: 12px;">📱</div>
                 <h4 style="color: #22c55e; margin: 0 0 8px; font-size: 18px; font-weight: 700;">One-Handed</h4>
-                <p style="color: #6b7280; margin: 0; font-size: 14px;">Update jobs while carrying tools or materials</p>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Update jobs while carrying tools or materials</p>
               </div>
               <div>
                 <div style="font-size: 48px; margin-bottom: 12px;">
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg>
                 </div>
                 <h4 style="color: #22c55e; margin: 0 0 8px; font-size: 18px; font-weight: 700;">Smart Automation</h4>
-                <p style="color: #6b7280; margin: 0; font-size: 14px;">Handles timers, notifications, invoicing automatically</p>
+                <p style="color: #8b92a0; margin: 0; font-size: 14px;">Handles timers, notifications, invoicing automatically</p>
               </div>
             </div>
           </div>
@@ -1893,66 +1897,66 @@
     </section>
 
     <!-- SOCIAL PROOF - AUTHENTIC MESSAGING -->
-    <section id="social-proof" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1); opacity: 1 !important; transform: none !important;">
+    <section id="social-proof" style="width:100vw; max-width:100%; background: #0f1419; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1); opacity: 1 !important; transform: none !important;">
       <div class="container" style="max-width: 1000px; text-align: center;">
         <span class="kicker animate-on-scroll" data-animation="fade-up" style="background: rgba(251,191,36,0.2); color: #ea580c !important; padding: 8px 16px; border-radius: 999px; display: inline-block; font-weight: 700; font-size: 14px; margin-bottom: 16px; -webkit-font-smoothing: antialiased; border: 1px solid rgba(251,191,36,0.3);">
           🚀 Early Adopter Program
         </span>
-        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200" style="color: #2d2d2d; font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 16px;">
+        <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200" style="color: #e4e7eb; font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 16px;">
           Join Our First Customers & Lock in Founder Pricing
         </h2>
-        <p style="color: #4b5563; font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 0 auto 40px;">
-          We're building Creative Job Hub specifically for contractors who are tired of overpaying. Be among the first 500 to sign up and <strong style="color: #ff6b35; -webkit-font-smoothing: antialiased;">lock in founder pricing forever</strong> — Starter $29/mo (1 user), Team $49/mo (5 users), Pro $89/mo (unlimited). Prices never increase for early customers.
+        <p style="color: #8b92a0; font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 0 auto 40px;">
+          We're building Creative Job Hub specifically for contractors who are tired of overpaying. Be among the first 500 to sign up and <strong style="color: #3b82f6; -webkit-font-smoothing: antialiased;">lock in founder pricing forever</strong> — Starter $29/mo (1 user), Team $49/mo (5 users), Pro $89/mo (unlimited). Prices never increase for early customers.
         </p>
         
         <div style="background: rgba(14,165,233,0.05); border: 1px solid #fbbf24; border-radius: 12px; padding: 20px; margin: 0 auto 40px; max-width: 700px; text-align: left;">
-          <h4 style="color: #ff6b35; margin: 0 0 12px; font-size: 18px; text-align: center;">Choose Your Founder Pricing:</h4>
+          <h4 style="color: #3b82f6; margin: 0 0 12px; font-size: 18px; text-align: center;">Choose Your Founder Pricing:</h4>
           <div style="display: grid; gap: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f3f4f6; border-radius: 8px;">
-              <span style="color: #4b5563; font-weight: 600;">Starter (1 user)</span>
-              <span style="color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">$29/mo forever</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #1e2530; border-radius: 8px;">
+              <span style="color: #8b92a0; font-weight: 600;">Starter (1 user)</span>
+              <span style="color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">$29/mo forever</span>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(251,191,36,0.15); border: 2px solid rgba(14,165,233,0.3); border-radius: 8px;">
-              <span style="color: #2d2d2d; font-weight: 700;">⭐ Team (5 users) - Most Popular</span>
-              <span style="color: #ff6b35; font-weight: 700; font-size: 18px; -webkit-font-smoothing: antialiased;">$49/mo forever</span>
+              <span style="color: #e4e7eb; font-weight: 700;">⭐ Team (5 users) - Most Popular</span>
+              <span style="color: #3b82f6; font-weight: 700; font-size: 18px; -webkit-font-smoothing: antialiased;">$49/mo forever</span>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f3f4f6; border-radius: 8px;">
-              <span style="color: #4b5563; font-weight: 600;">Pro (unlimited users)</span>
-              <span style="color: #ff6b35; font-weight: 700; -webkit-font-smoothing: antialiased;">$89/mo forever</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #1e2530; border-radius: 8px;">
+              <span style="color: #8b92a0; font-weight: 600;">Pro (unlimited users)</span>
+              <span style="color: #3b82f6; font-weight: 700; -webkit-font-smoothing: antialiased;">$89/mo forever</span>
             </div>
           </div>
-          <p style="color: #6b7280; font-size: 13px; margin: 12px 0 0; text-align: center;">After 500 signups: Starter $39, Team $69, Pro $109</p>
+          <p style="color: #8b92a0; font-size: 13px; margin: 12px 0 0; text-align: center;">After 500 signups: Starter $39, Team $69, Pro $109</p>
         </div>
         
-        <div style="background: #f3f4f6; backdrop-filter: blur(10px); border: 2px solid rgba(14,165,233,0.3); border-radius: 16px; padding: 32px 24px; margin: 0 auto; max-width: 800px;">
+        <div style="background: #1e2530; backdrop-filter: blur(10px); border: 2px solid rgba(14,165,233,0.3); border-radius: 16px; padding: 32px 24px; margin: 0 auto; max-width: 800px;">
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 24px;">
             <div style="text-align: center;">
-              <div style="font-size: 3rem; font-weight: 900; color: #ff6b35; margin-bottom: 8px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.5);">40</div>
-              <div style="color: #4b5563; font-weight: 600;">Happy Customers</div>
-              <div style="color: #6b7280; font-size: 14px;">(and counting!)</div>
+              <div style="font-size: 3rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.5);">40</div>
+              <div style="color: #8b92a0; font-weight: 600;">Happy Customers</div>
+              <div style="color: #8b92a0; font-size: 14px;">(and counting!)</div>
             </div>
             <div style="text-align: center;">
-              <div style="font-size: 3rem; font-weight: 900; color: #ff6b35; margin-bottom: 8px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.5);">460</div>
-              <div style="color: #4b5563; font-weight: 600;">Spots Remaining</div>
-              <div style="color: #6b7280; font-size: 14px;">at founder pricing</div>
+              <div style="font-size: 3rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.5);">460</div>
+              <div style="color: #8b92a0; font-weight: 600;">Spots Remaining</div>
+              <div style="color: #8b92a0; font-size: 14px;">at founder pricing</div>
             </div>
             <div style="text-align: center;">
-              <div style="font-size: 3rem; font-weight: 900; color: #ff6b35; margin-bottom: 8px;">$3,252</div>
-              <div style="color: #4b5563; font-weight: 600;">Avg. Yearly Savings</div>
-              <div style="color: #6b7280; font-size: 14px;">vs competitors</div>
+              <div style="font-size: 3rem; font-weight: 900; color: #3b82f6; margin-bottom: 8px;">$3,252</div>
+              <div style="color: #8b92a0; font-weight: 600;">Avg. Yearly Savings</div>
+              <div style="color: #8b92a0; font-size: 14px;">vs competitors</div>
             </div>
           </div>
           
-          <div style="border-top: 1px solid #e5e7eb; padding-top: 24px;">
-            <div style="font-style: italic; margin-bottom: 16px; font-size: 18px; line-height: 1.4; color: #2d2d2d;">
+          <div style="border-top: 1px solid rgba(59,130,246,0.15); padding-top: 24px;">
+            <div style="font-style: italic; margin-bottom: 16px; font-size: 18px; line-height: 1.4; color: #e4e7eb;">
               "Started my business back in 2023. I tried Housecall Pro, Jobber and Workiz and noticed all did what they were supposed to do but starting out I didn't have a ton of money to pay for extras they offer like marketing, service plans and routing. I gave Creative Job Hub a shot and now I have everything I need for one low price of $29/month. No more 'add ons' that don't come standard with the big guys."
             </div>
             <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center;">
               <img src="/assets/illustrations/cropped_logo_optimized.png" alt="Creative Constructors Logo" style="height: 48px; width: auto; object-fit: contain;" loading="lazy">
-              <div style="color: #ff6b35; font-weight: 700; font-size: 16px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.3); text-align: left;">
+              <div style="color: #3b82f6; font-weight: 700; font-size: 16px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.3); text-align: left;">
                 — Jeremy McKinney, Founder<br>
-                <span style="color: #4b5563; font-weight: 600; font-size: 15px;">Creative Constructors Handyman Service</span><br>
-                <span style="color: #6b7280; font-size: 14px;">Dallas, TX</span>
+                <span style="color: #8b92a0; font-weight: 600; font-size: 15px;">Creative Constructors Handyman Service</span><br>
+                <span style="color: #8b92a0; font-size: 14px;">Dallas, TX</span>
               </div>
             </div>
           </div>
@@ -1960,13 +1964,13 @@
         
         <!-- Why Join Early -->
         <div style="margin-top: 48px; text-align: left; max-width: 700px; margin-left: auto; margin-right: auto;">
-          <h3 style="color: #2d2d2d; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">Why Join as an Early Customer?</h3>
+          <h3 style="color: #e4e7eb; font-size: 1.5rem; margin-bottom: 20px; text-align: center;">Why Join as an Early Customer?</h3>
           <ul style="list-style: none; padding: 0; display: grid; gap: 16px;">
             <li style="display: flex; align-items: start; gap: 12px;">
               <span style="font-size: 24px; flex-shrink: 0;">🔒</span>
               <div>
-                <strong style="color: #2d2d2d; font-size: 18px;">Lock in founder pricing forever</strong>
-                <p style="color: #4b5563; margin: 4px 0 0; font-size: 15px;">
+                <strong style="color: #e4e7eb; font-size: 18px;">Lock in founder pricing forever</strong>
+                <p style="color: #8b92a0; margin: 4px 0 0; font-size: 15px;">
                   Your rate never increases — $29/mo (solo), $49/mo (team), or $89/mo (pro). After launch, prices jump to $39/$69/$109
                 </p>
               </div>
@@ -1974,8 +1978,8 @@
             <li style="display: flex; align-items: start; gap: 12px;">
               <span style="font-size: 24px; flex-shrink: 0;">🎤</span>
               <div>
-                <strong style="color: #2d2d2d; font-size: 18px;">Shape the product with us</strong>
-                <p style="color: #4b5563; margin: 4px 0 0; font-size: 15px;">
+                <strong style="color: #e4e7eb; font-size: 18px;">Shape the product with us</strong>
+                <p style="color: #8b92a0; margin: 4px 0 0; font-size: 15px;">
                   Direct access to our founders. Request features, get priority support, and help us build exactly what contractors need
                 </p>
               </div>
@@ -1983,8 +1987,8 @@
             <li style="display: flex; align-items: start; gap: 12px;">
               <span style="font-size: 24px; flex-shrink: 0;">⚡</span>
               <div>
-                <strong style="color: #2d2d2d; font-size: 18px;">Start saving immediately</strong>
-                <p style="color: #4b5563; margin: 4px 0 0; font-size: 15px;">
+                <strong style="color: #e4e7eb; font-size: 18px;">Start saving immediately</strong>
+                <p style="color: #8b92a0; margin: 4px 0 0; font-size: 15px;">
                   Switch from Jobber/Workiz/Housecall Pro today and save $250-300+/mo. That's $3,000-3,600+/year you can reinvest in your business
                 </p>
               </div>
@@ -1992,8 +1996,8 @@
             <li style="display: flex; align-items: start; gap: 12px;">
               <span style="font-size: 24px; flex-shrink: 0;">🤝</span>
               <div>
-                <strong style="color: #2d2d2d; font-size: 18px;">Support a small business</strong>
-                <p style="color: #4b5563; margin: 4px 0 0; font-size: 15px;">
+                <strong style="color: #e4e7eb; font-size: 18px;">Support a small business</strong>
+                <p style="color: #8b92a0; margin: 4px 0 0; font-size: 15px;">
                   We're contractors building for contractors. No VC pressure to jack up prices or nickel-and-dime you with add-ons
                 </p>
               </div>
@@ -2002,11 +2006,11 @@
         </div>
         
         <div style="margin-top: 40px;">
-          <a class="btn btn-primary btn-enhanced" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #2d2d2d; font-size: 20px; padding: 18px 36px; border-radius: 12px; box-shadow: 0 8px 24px rgba(251,191,36,0.4); font-weight: 800; border: none; display: inline-flex; align-items: center; gap: 8px;">
+          <a class="btn btn-primary btn-enhanced" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #fbbf24, #3b82f6); color: #e4e7eb; font-size: 20px; padding: 18px 36px; border-radius: 12px; box-shadow: 0 8px 24px rgba(251,191,36,0.4); font-weight: 800; border: none; display: inline-flex; align-items: center; gap: 8px;">
             Claim Your Founder Pricing Now
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
           </a>
-          <p style="color: #ff6b35; font-weight: 700; font-size: 14px; margin-top: 12px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.3);">
+          <p style="color: #3b82f6; font-weight: 700; font-size: 14px; margin-top: 12px; -webkit-font-smoothing: antialiased; text-shadow: 0 0 1px rgba(251,191,36,0.3);">
             ⏰ Only 460 spots left at this price
           </p>
         </div>
@@ -2014,7 +2018,7 @@
     </section>
 
     <!-- ANIMATED STATS -->
-    <section id="stats" class="stats-section" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section id="stats" class="stats-section" style="width:100vw; max-width:100%; background: #0f1419; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
         <div class="stats-grid animate-on-scroll" data-animation="fade-up">
           <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="0">
             <div class="stat-icon" style="font-size: 2.2rem; color: var(--brand); margin-bottom: 8px;">👥</div>
@@ -2029,7 +2033,7 @@
             <div class="stat-label">Custom service plans included in every plan</div>
           </div>
           <div class="stat-item animate-on-scroll" data-animation="slide-up" data-delay="600">
-            <div class="stat-icon" style="font-size: 2.2rem; color: #f59e0b; margin-bottom: 8px;">📄</div>
+            <div class="stat-icon" style="font-size: 2.2rem; color: #3b82f6; margin-bottom: 8px;">📄</div>
             <div class="stat-label">Branded docs included in every plan</div>
           </div>
         </div>
@@ -2037,7 +2041,7 @@
     </section>
 
     <!-- COMPARISON BLURBS -->
-    <section id="compare" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
+    <section id="compare" style="width:100vw; max-width:100%; background: #0f1419; padding:80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
         <span class="kicker animate-on-scroll" data-animation="fade-up">Why choose Creative Job Hub</span>
         <h2 class="animate-on-scroll" data-animation="fade-up" data-delay="200">Built for small field-service teams—not bloated enterprise software</h2>
         <div class="grid-3">
@@ -2072,7 +2076,7 @@
     </section>
 
     <!-- AI-POWERED OPERATIONS -->
-    <section id="ai-features" style="width:100vw; max-width:100%; background: #ffffff; padding:80px 0; border-top: 1px solid rgba(148,163,184,0.1); position: relative; overflow: hidden;">
+    <section id="ai-features" style="width:100vw; max-width:100%; background: #0f1419; padding:80px 0; border-top: 1px solid rgba(148,163,184,0.1); position: relative; overflow: hidden;">
       <!-- Animated background elements -->
       <div style="position: absolute; top: 10%; left: 10%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(14,165,233,0.1), transparent); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
       <div style="position: absolute; top: 60%; right: 15%; width: 80px; height: 80px; background: radial-gradient(circle, rgba(168,85,247,0.1), transparent); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
@@ -2095,9 +2099,9 @@
             <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #0ea5e9, #0284c7); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Smart Photo Analysis</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Smart Photo Analysis</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">AI instantly identifies equipment, detects issues, and recommends repairs from job site photos. Technicians get expert-level insights without years of training.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Automatic equipment identification</li>
               <li>Issue detection & classification</li>
               <li>Repair recommendation engine</li>
@@ -2110,9 +2114,9 @@
             <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #22c55e, #16a34a); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><circle cx="12" cy="12" r="8"/><path d="M8 16c1.333-2 6.667-2 8 0"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Predictive Maintenance System</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Predictive Maintenance System</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Machine learning algorithms predict equipment failures before they happen, automatically scheduling preventive maintenance and reducing emergency calls by 45%.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Failure prediction algorithms</li>
               <li>Automatic maintenance scheduling</li>
               <li>Equipment lifespan forecasting</li>
@@ -2125,9 +2129,9 @@
             <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #7c3aed, #5b21b6); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><path d="M12 2a7 7 0 0 1 7 7c0 2.5-2 4.5-4.5 4.5H9A4.5 4.5 0 0 1 4.5 9c0-3.866 3.134-7 7-7z"/><path d="M12 22v-4"/><path d="M8 22v-4"/><path d="M16 22v-4"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Dynamic AI Routing</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Dynamic AI Routing</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Intelligent routing engine that continuously adapts to traffic, weather, technician skills, and job priorities. Saves 3+ hours per day per technician.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Real-time traffic adaptation</li>
               <li>Weather-aware scheduling</li>
               <li>Skill-based job matching</li>
@@ -2137,12 +2141,12 @@
 
           <!-- Traffic Intelligence Engine -->
           <div class="glass enhanced-card animate-on-scroll" data-animation="slide-up" data-delay="400" style="padding: 32px; text-align: center; position: relative;">
-            <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Traffic Intelligence Engine</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Traffic Intelligence Engine</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Advanced traffic pattern analysis predicts delays and automatically adjusts schedules. Customers get accurate ETAs and fewer "running late" calls.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Predictive delay forecasting</li>
               <li>Automatic schedule adjustments</li>
               <li>Real-time ETA updates</li>
@@ -2155,9 +2159,9 @@
             <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 21v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/><path d="M14 21v-2a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v2"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Multi-Technician Coordination</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Multi-Technician Coordination</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">AI coordinates complex jobs requiring multiple technicians, automatically scheduling arrivals, managing handoffs, and optimizing team efficiency.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Automated team scheduling</li>
               <li>Skill complement matching</li>
               <li>Handoff coordination</li>
@@ -2170,9 +2174,9 @@
             <div style="width: 80px; height: 80px; margin: 0 auto 24px; background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 20px; display: flex; align-items: center; justify-content: center;">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block; margin:auto;"><polygon points="12 2 2 22 22 22 12 2"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="20" x2="12" y2="20"/></svg>
             </div>
-            <h3 style="margin: 0 0 16px; color: #2d2d2d; font-size: 20px;">Emergency Insertion System</h3>
+            <h3 style="margin: 0 0 16px; color: #e4e7eb; font-size: 20px;">Emergency Insertion System</h3>
             <p style="color: var(--muted); margin-bottom: 20px; line-height: 1.6;">Intelligent emergency job insertion that automatically finds the optimal technician and time slot for urgent repairs without disrupting existing schedules.</p>
-            <ul style="color: #1f2937; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
+            <ul style="color: #e4e7eb; text-align: left; margin: 0; padding-left: 20px; line-height: 1.7;">
               <li>Rapid response optimization</li>
               <li>Minimal schedule disruption</li>
               <li>Priority-based insertion</li>
@@ -2184,7 +2188,7 @@
 
         <!-- AI Benefits Summary -->
         <div class="glass pulse-glow animate-on-scroll" data-animation="fade-up" data-delay="700" style="padding: 48px; text-align: center; background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(168,85,247,0.1)); border: 2px solid rgba(14,165,233,0.3); margin-top: 32px;">
-          <h3 style="margin: 0 0 24px; color: #2d2d2d; font-size: 24px;">🎯 The AI Advantage</h3>
+          <h3 style="margin: 0 0 24px; color: #e4e7eb; font-size: 24px;">🎯 The AI Advantage</h3>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-top: 32px;">
             <div>
               <div style="font-size: 32px; font-weight: 700; color: var(--brand); margin-bottom: 8px;">60%</div>
@@ -2199,7 +2203,7 @@
               <div style="color: var(--muted);">Saved per technician daily</div>
             </div>
             <div>
-              <div style="font-size: 32px; font-weight: 700; color: #f59e0b; margin-bottom: 8px;">95%</div>
+              <div style="font-size: 32px; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">95%</div>
               <div style="color: var(--muted);">ETA accuracy improvement</div>
             </div>
           </div>
@@ -2306,7 +2310,7 @@
             <p style="color: #e5e7eb;">Log in to schedule jobs, dispatch techs, and invoice in minutes.</p>
             <div class="row">
               <a class="btn btn-primary" href="https://app.creativejobhub.com/auth">Log in</a>
-              <a class="btn" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #ff6b35, #f59e0b); color: #ffffff; border: none; box-shadow: 0 4px 15px rgba(255,107,53,0.4); animation: pulseGlow 2s ease-in-out infinite; font-weight: 600;">Create account</a>
+              <a class="btn" href="https://app.creativejobhub.com/auth?mode=signup" style="background: linear-gradient(135deg, #3b82f6, #3b82f6); color: #ffffff; border: none; box-shadow: 0 4px 15px rgba(59,130,246,0.3); animation: pulseGlow 2s ease-in-out infinite; font-weight: 600;">Create account</a>
             </div>
 
             <!-- Trust badges under CTAs -->
@@ -2320,7 +2324,7 @@
           <style>
             @keyframes pulseGlow {
               0%, 100% {
-                box-shadow: 0 4px 15px rgba(255,107,53,0.4), 0 0 0 0 rgba(255,107,53,0.7);
+                box-shadow: 0 4px 15px rgba(59,130,246,0.3), 0 0 0 0 rgba(255,107,53,0.7);
                 transform: scale(1);
               }
               50% {
@@ -2348,12 +2352,12 @@
               </div>
             </div>
             <!-- Email signup form enabled -->
-            <div style="padding: 24px; background: rgba(17,24,39,0.95); border-radius: 16px; text-align: center; border: 1px solid #d1d5db; box-shadow: 0 8px 32px rgba(14,165,233,0.10); margin-top: 16px; max-width: 420px; margin-left: auto; margin-right: auto;">
+            <div style="padding: 24px; background: rgba(17,24,39,0.95); border-radius: 16px; text-align: center; border: 1px solid rgba(59,130,246,0.2); box-shadow: 0 8px 32px rgba(14,165,233,0.10); margin-top: 16px; max-width: 420px; margin-left: auto; margin-right: auto;">
               <form action="https://creativeconstructorsllc.us16.list-manage.com/subscribe/post?u=3ecfc8dc697752f5ba4091e3f&amp;id=bd375245a4&amp;f_id=001a01e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="display: flex; flex-direction: column; gap: 12px; align-items: stretch;">
                 <div style="font-size: 20px; color: #ffffff; font-weight: 700; margin-bottom: 8px;">Sign up for updates</div>
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email address" style="padding: 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #f5f5f5; color: #2d2d2d; font-size: 15px; margin-bottom: 4px;">
-                <input type="text" name="FNAME" id="mce-FNAME" placeholder="First name (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #f5f5f5; color: #2d2d2d; font-size: 15px;">
-                <input type="text" name="COMPANY" id="mce-COMPANY" placeholder="Company (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid #d1d5db; background: #f5f5f5; color: #2d2d2d; font-size: 15px;">
+                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email address" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px; margin-bottom: 4px;">
+                <input type="text" name="FNAME" id="mce-FNAME" placeholder="First name (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
+                <input type="text" name="COMPANY" id="mce-COMPANY" placeholder="Company (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
                 <div style="display:none;" aria-hidden="true"><input type="text" name="b_3ecfc8dc697752f5ba4091e3f_bd375245a4" tabindex="-1" value=""></div>
                 <button type="submit" name="subscribe" id="mc-embedded-subscribe" style="padding: 12px; border-radius: 8px; background: linear-gradient(90deg, var(--brand), #ff8c5a); color: #ffffff; font-weight: 700; font-size: 16px; border: none; cursor: pointer; margin-top: 8px;">Subscribe</button>
                 <div id="mce-responses" style="margin-top: 8px;">
@@ -2412,7 +2416,7 @@
     <!-- BENEFITS -->
     <section id="benefits" style="background:var(--panel); padding:80px 0">
       <div class="container">
-        <span class="kicker" style="color: #ff6b35;">Why field service teams choose us</span>
+        <span class="kicker" style="color: #3b82f6;">Why field service teams choose us</span>
         <h2 style="color: #ffffff;">Stop juggling multiple apps and spreadsheets</h2>
         <div class="grid-3">
           <div class="card">
@@ -2443,14 +2447,14 @@
     </section>
   </main>
 
-  <footer style="background:#f5f5f5; color:#1f2937; border-top:1px solid var(--ring); padding:48px 0 32px;">
+  <footer style="background:#1a1f26; color:#e4e7eb; border-top:1px solid var(--ring); padding:48px 0 32px;">
     <div class="container" style="display:flex; flex-wrap:wrap; gap:40px 32px; justify-content:space-between; align-items:flex-start;">
       <!-- Company Info -->
       <div style="min-width:220px; flex:1; margin-bottom:24px;">
   <img src="/assets/illustrations/CJH_Logo_Primary_New.png" alt="Creative Job Hub logo" style="height:128px; margin-bottom:12px;">
-        <div style="font-size:16px; font-weight:600; color:#2d2d2d; margin-bottom:8px;">Creative Job Hub</div>
-  <div style="font-size:14px; color:#1f2937; margin-bottom:8px;">Modern software for field service pros nationwide.</div>
-        <div style="font-size:13px; color:#6b7280; margin-bottom:16px;">Built in DFW, serving contractors everywhere.</div>
+        <div style="font-size:16px; font-weight:600; color:#e4e7eb; margin-bottom:8px;">Creative Job Hub</div>
+  <div style="font-size:14px; color:#e4e7eb; margin-bottom:8px;">Modern software for field service pros nationwide.</div>
+        <div style="font-size:13px; color:#8b92a0; margin-bottom:16px;">Built in DFW, serving contractors everywhere.</div>
         <div style="display:flex; gap:12px; margin-top:8px;">
           <a href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=jeremy-mckinney-4872aba1" target="_blank" title="Follow on LinkedIn" style="display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:#0a66c2; color:#ffffff;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2466,7 +2470,7 @@
       </div>
       <!-- Navigation Links -->
       <div style="min-width:160px; flex:1; margin-bottom:24px;">
-        <div style="font-weight:600; color:#2d2d2d; margin-bottom:10px;">Navigation</div>
+        <div style="font-weight:600; color:#e4e7eb; margin-bottom:10px;">Navigation</div>
         <nav style="display:flex; flex-direction:column; gap:8px;">
           <a class="btn btn-ghost" href="/pricing/">Pricing</a>
           <a class="btn btn-ghost" href="/compare/">Compare</a>
@@ -2476,7 +2480,7 @@
       </div>
       <!-- Industries Links -->
       <div style="min-width:180px; flex:1; margin-bottom:24px;">
-        <div style="font-weight:600; color:#2d2d2d; margin-bottom:10px;">Industries</div>
+        <div style="font-weight:600; color:#e4e7eb; margin-bottom:10px;">Industries</div>
         <nav style="display:flex; flex-direction:column; gap:8px;">
           <a class="btn btn-ghost" href="/field-service-management/">Field Service</a>
           <a class="btn btn-ghost" href="/hvac-field-service-software/">HVAC</a>
@@ -2488,14 +2492,14 @@
       </div>
       <!-- Legal Links -->
       <div style="min-width:120px; flex:1; margin-bottom:24px;">
-        <div style="font-weight:600; color:#2d2d2d; margin-bottom:10px;">Legal</div>
+        <div style="font-weight:600; color:#e4e7eb; margin-bottom:10px;">Legal</div>
         <nav style="display:flex; flex-direction:column; gap:8px;">
           <a class="btn btn-ghost" href="/privacy.html">Privacy</a>
           <a class="btn btn-ghost" href="/terms.html">Terms</a>
         </nav>
       </div>
     </div>
-    <div class="container" style="border-top:1px solid rgba(148,163,184,0.15); margin-top:32px; padding-top:16px; text-align:center; font-size:14px; color:#6b7280;">
+    <div class="container" style="border-top:1px solid rgba(148,163,184,0.15); margin-top:32px; padding-top:16px; text-align:center; font-size:14px; color:#8b92a0;">
       © <span id="y"></span> Creative Job Hub. All rights reserved.
     </div>
   </footer>
@@ -2838,13 +2842,13 @@
       background: none;
       border: none;
       font-size: 28px;
-      color: #6b7280;
+      color: #8b92a0;
       cursor: pointer;
       transition: color 0.2s;
     }
     
     .exit-popup-close:hover {
-      color: #2d2d2d;
+      color: #e4e7eb;
     }
     
     .exit-popup-content {
@@ -2857,7 +2861,7 @@
     }
     
     .exit-popup-headline {
-      color: #2d2d2d;
+      color: #e4e7eb;
       font-size: 28px;
       font-weight: 800;
       line-height: 1.2;
@@ -2865,7 +2869,7 @@
     }
     
     .exit-popup-description {
-      color: #6b7280;
+      color: #8b92a0;
       font-size: 18px;
       line-height: 1.5;
       margin: 0 0 32px;
@@ -2879,10 +2883,10 @@
     }
     
     .exit-popup-fields input {
-      background: #ffffff;
-      border: 1px solid #d1d5db;
+      background: #0f1419;
+      border: 1px solid rgba(59,130,246,0.2);
       border-radius: 12px;
-      color: #2d2d2d;
+      color: #e4e7eb;
       font-size: 16px;
       padding: 16px 20px;
       width: 100%;
@@ -2891,7 +2895,7 @@
     
     .exit-popup-fields input:focus {
       outline: none;
-      border-color: #ff6b35;
+      border-color: #3b82f6;
       box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
     }
     
