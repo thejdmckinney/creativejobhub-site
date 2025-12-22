@@ -1745,7 +1745,7 @@
                 <h3 style="margin-bottom:12px; color:#3b82f6;">Get Our Free Labor Rate Calculator</h3>
                 <p style="margin-bottom:18px; font-size:16px; color:#334155;">Enter your email to unlock the calculator and start optimizing your business instantly.</p>
                 <form action="https://formspree.io/f/xwkzjvqd" method="POST" style="display:flex; flex-direction:column; gap:12px;">
-                  <input type="email" name="email" required placeholder="Your email" style="padding:12px; border-radius:8px; border:1px solid #cbd5e1; font-size:16px;">
+                  <input type="email" name="email" id="calculator-email" autocomplete="email" required placeholder="Your email" style="padding:12px; border-radius:8px; border:1px solid #cbd5e1; font-size:16px;">
                   <button type="submit" style="background:#3b82f6; color:#e4e7eb; font-weight:700; border:none; border-radius:8px; padding:12px; font-size:16px; cursor:pointer;">Unlock Calculator</button>
                 </form>
               </div>
@@ -2239,7 +2239,7 @@
           <div class="calculator-inputs" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 40px;">
             <div class="input-group">
               <label for="team-size" style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">Team Size</label>
-              <input type="range" id="team-size" min="1" max="50" value="5" 
+              <input type="range" id="team-size" name="team-size" min="1" max="50" value="5" 
                      style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: #e5e7eb;">
                 <span>1 person</span>
@@ -2250,7 +2250,7 @@
             
             <div class="input-group">
               <label for="hourly-rate" style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">Average Hourly Rate</label>
-              <input type="range" id="hourly-rate" min="25" max="150" value="75" 
+              <input type="range" id="hourly-rate" name="hourly-rate" min="25" max="150" value="75" 
                      style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: #e5e7eb;">
                 <span>$25/hr</span>
@@ -2261,7 +2261,7 @@
             
             <div class="input-group">
               <label for="jobs-per-week" style="display: block; margin-bottom: 8px; font-weight: 600; color: #ffffff;">Jobs Per Week</label>
-              <input type="range" id="jobs-per-week" min="5" max="200" value="25" 
+              <input type="range" id="jobs-per-week" name="jobs-per-week" min="5" max="200" value="25" 
                      style="width: 100%; margin-bottom: 8px; accent-color: var(--brand); cursor: pointer;">
               <div style="display: flex; justify-content: space-between; font-size: 14px; color: #e5e7eb;">
                 <span>5 jobs</span>
@@ -2364,10 +2364,10 @@
             <div style="padding: 24px; background: rgba(17,24,39,0.95); border-radius: 16px; text-align: center; border: 1px solid rgba(59,130,246,0.2); box-shadow: 0 8px 32px rgba(14,165,233,0.10); margin-top: 16px; max-width: 420px; margin-left: auto; margin-right: auto;">
               <form action="https://creativeconstructorsllc.us16.list-manage.com/subscribe/post?u=3ecfc8dc697752f5ba4091e3f&amp;id=bd375245a4&amp;f_id=001a01e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="display: flex; flex-direction: column; gap: 12px; align-items: stretch;">
                 <div style="font-size: 20px; color: #ffffff; font-weight: 700; margin-bottom: 8px;">Sign up for updates</div>
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required placeholder="Email address" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px; margin-bottom: 4px;">
-                <input type="text" name="FNAME" id="mce-FNAME" placeholder="First name (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
-                <input type="text" name="COMPANY" id="mce-COMPANY" placeholder="Company (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
-                <div style="display:none;" aria-hidden="true"><input type="text" name="b_3ecfc8dc697752f5ba4091e3f_bd375245a4" tabindex="-1" value=""></div>
+                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" autocomplete="email" required placeholder="Email address" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px; margin-bottom: 4px;">
+                <input type="text" name="FNAME" id="mce-FNAME" autocomplete="given-name" placeholder="First name (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
+                <input type="text" name="COMPANY" id="mce-COMPANY" autocomplete="organization" placeholder="Company (optional)" style="padding: 12px; border-radius: 8px; border: 1px solid rgba(59,130,246,0.2); background: #1a1f26; color: #e4e7eb; font-size: 15px;">
+                <div style="display:none;" aria-hidden="true"><input type="text" name="b_3ecfc8dc697752f5ba4091e3f_bd375245a4" tabindex="-1" value="" autocomplete="off"></div>
                 <button type="submit" name="subscribe" id="mc-embedded-subscribe" style="padding: 12px; border-radius: 8px; background: linear-gradient(90deg, var(--brand), #ff8c5a); color: #ffffff; font-weight: 700; font-size: 16px; border: none; cursor: pointer; margin-top: 8px;">Subscribe</button>
                 <div id="mce-responses" style="margin-top: 8px;">
                   <div class="response" id="mce-error-response" style="display:none; color:#dc2626; font-size:13px;"></div>
