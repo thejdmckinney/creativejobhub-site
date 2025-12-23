@@ -174,7 +174,7 @@ class VisualEditor {
   }
 
   initSanityClient() {
-  const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@2.29.7/dist/sanityClient.min.js';
+  const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@2.29.6/dist/sanityClient.min.js';
   let attempts = 0;
   const maxAttempts = 30; // ~15 seconds at 500ms interval
   const tryInit = () => {
