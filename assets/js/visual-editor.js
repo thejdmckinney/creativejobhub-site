@@ -181,9 +181,9 @@ class VisualEditor {
     
     try {
       // Use ES module from CDN with dynamic import
-      const { default: sanityClient } = await import('https://esm.sh/@sanity/client@6.22.7');
+      const { createClient } = await import('https://esm.sh/@sanity/client@7.13.2');
       
-      this.client = sanityClient({
+      this.client = createClient({
         projectId: SANITY_PROJECT_ID,
         dataset: SANITY_DATASET,
         useCdn: false,
