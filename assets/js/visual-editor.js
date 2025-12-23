@@ -174,8 +174,18 @@ class VisualEditor {
   }
 
   initSanityClient() {
-    // Initialize Sanity client (using CDN version)
-    if (window.sanityClient) {
+    // Wait for Sanity client to be loaded from CDN
+    const initClient = () => {
+      // Check multiple possible locations where sanityClient might be exposed
+      const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client)
+      
+      if (!SanityClient) {
+        console.error('❌ Sanity client not found. Retrying in 500ms...')
+        // Retry after a short delay in case script is still loading
+        setTimeout(initClient, 500)
+        return
+      }
+      
       // Try sanity_token first (what we told user to set), then fall back to sanityToken
       const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken')
       
@@ -183,18 +193,36 @@ class VisualEditor {
         console.warn('⚠️ No Sanity token found. Please set it in console: localStorage.setItem("sanity_token", "your-token")')
       }
       
-      this.client = window.sanityClient.createClient({
-        projectId: SANITY_PROJECT_ID,
-        dataset: SANITY_DATASET,
-        useCdn: false, // Don't use CDN for fresh data
-        apiVersion: SANITY_API_VERSION,
-        token: token, // API token for writes
-      })
-      
-      console.log('✅ Sanity client initialized', token ? 'with token' : 'without token')
-    } else {
-      console.error('❌ window.sanityClient not found. CDN script may not be loaded.')
+      try {
+        // Try different initialization methods
+        if (typeof SanityClient === 'function') {
+          // If it's a function, call it directly
+          this.client = SanityClient({
+            projectId: SANITY_PROJECT_ID,
+            dataset: SANITY_DATASET,
+            useCdn: false,
+            apiVersion: SANITY_API_VERSION,
+            token: token,
+          })
+        } else if (SanityClient.createClient) {
+          // If it has createClient method
+          this.client = SanityClient.createClient({
+            projectId: SANITY_PROJECT_ID,
+            dataset: SANITY_DATASET,
+            useCdn: false,
+            apiVersion: SANITY_API_VERSION,
+            token: token,
+          })
+        }
+        
+        console.log('✅ Sanity client initialized', token ? 'with token' : 'without token')
+      } catch (error) {
+        console.error('❌ Error initializing Sanity client:', error)
+      }
     }
+    
+    // Start initialization
+    initClient()
   }
 
   async loadPageContent() {
@@ -926,8 +954,10 @@ class VisualEditor {
     try {
       // Initialize Sanity client if not already done
       if (!this.client) {
-        if (!window.sanityClient) {
-          throw new Error('Sanity client library not loaded')
+        const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client)
+        
+        if (!SanityClient) {
+          throw new Error('Sanity client library not loaded. Please refresh the page.')
         }
         
         const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken')
@@ -936,13 +966,24 @@ class VisualEditor {
           throw new Error('No API token found. Please set it: localStorage.setItem("sanity_token", "your-token")')
         }
         
-        this.client = window.sanityClient.createClient({
-          projectId: SANITY_PROJECT_ID,
-          dataset: SANITY_DATASET,
-          apiVersion: SANITY_API_VERSION,
-          useCdn: false,
-          token: token,
-        })
+        // Try different initialization methods
+        if (typeof SanityClient === 'function') {
+          this.client = SanityClient({
+            projectId: SANITY_PROJECT_ID,
+            dataset: SANITY_DATASET,
+            apiVersion: SANITY_API_VERSION,
+            useCdn: false,
+            token: token,
+          })
+        } else if (SanityClient.createClient) {
+          this.client = SanityClient.createClient({
+            projectId: SANITY_PROJECT_ID,
+            dataset: SANITY_DATASET,
+            apiVersion: SANITY_API_VERSION,
+            useCdn: false,
+            token: token,
+          })
+        }
       }
       
       // Collect all edited elements on the page
