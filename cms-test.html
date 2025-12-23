@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CMS Test Page - Creative Job Hub</title>
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Additional styles for CMS-rendered content */
+      .hero {
+        padding: 80px 0;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        color: #fff;
+        text-align: center;
+      }
+
+      .hero-tall {
+        padding: 120px 0;
+      }
+
+      .hero-fullscreen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-heading {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero-subheading {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .features-section,
+      .testimonials-section,
+      .cta-section,
+      .text-section,
+      .pricing-section,
+      .faq-section,
+      .image-section {
+        padding: 60px 0;
+      }
+
+      .bg-light {
+        background: #f1f5f9;
+      }
+
+      .bg-dark {
+        background: var(--bg-secondary);
+        color: var(--text);
+      }
+
+      .bg-brand {
+        background: var(--brand);
+        color: #fff;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .section-description {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+      }
+
+      .features-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .features-grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+
+      .features-grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .features-grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .feature-card {
+        background: var(--panel);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(139, 146, 160, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 1rem;
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+
+      .feature-description {
+        color: var(--muted);
+        margin-bottom: 1rem;
+      }
+
+      .feature-link {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .testimonial-card {
+        background: var(--panel);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid rgba(139, 146, 160, 0.2);
+      }
+
+      .testimonial-quote {
+        font-size: 1.1rem;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .testimonial-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+
+      .testimonial-name {
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .testimonial-company {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .cta-section {
+        text-align: center;
+        color: #fff;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .cta-heading {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .text-content {
+        line-height: 1.8;
+      }
+
+      .max-width-narrow {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .max-width-standard {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .max-width-wide {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .pricing-card {
+        background: var(--panel);
+        padding: 2.5rem;
+        border-radius: 12px;
+        border: 1px solid rgba(139, 146, 160, 0.2);
+        text-align: center;
+        position: relative;
+      }
+
+      .pricing-card.highlighted {
+        border-color: var(--accent);
+        box-shadow: 0 8px 24px rgba(8, 145, 178, 0.2);
+      }
+
+      .pricing-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
+        color: #fff;
+        padding: 0.25rem 1rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .pricing-name {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+      }
+
+      .pricing-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 1.5rem 0;
+        color: var(--accent);
+      }
+
+      .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+        text-align: left;
+      }
+
+      .pricing-features li {
+        padding: 0.5rem 0;
+        color: var(--muted);
+      }
+
+      .pricing-features li:before {
+        content: "✓ ";
+        color: var(--accent);
+        font-weight: 700;
+        margin-right: 0.5rem;
+      }
+
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--panel);
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        border: 1px solid rgba(139, 146, 160, 0.2);
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        padding: 1.5rem;
+        background: transparent;
+        border: none;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .faq-icon {
+        transition: transform 0.3s ease;
+        color: var(--accent);
+      }
+
+      .faq-item.active .faq-icon {
+        transform: rotate(180deg);
+      }
+
+      .faq-answer {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        color: var(--muted);
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 0 1.5rem 1.5rem;
+        max-height: 500px;
+      }
+
+      .image-section {
+        text-align: center;
+      }
+
+      .section-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .image-small .section-image {
+        max-width: 400px;
+      }
+
+      .image-medium .section-image {
+        max-width: 600px;
+      }
+
+      .image-large .section-image {
+        max-width: 900px;
+      }
+
+      .image-caption {
+        margin-top: 1rem;
+        font-style: italic;
+        color: var(--muted);
+      }
+
+      .align-left {
+        text-align: left;
+      }
+
+      .align-center {
+        text-align: center;
+      }
+
+      .align-right {
+        text-align: right;
+      }
+
+      .error {
+        padding: 3rem;
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--muted);
+      }
+
+      .loading {
+        padding: 3rem;
+        text-align: center;
+      }
+
+      .loading:after {
+        content: " .";
+        animation: dots 1.5s steps(3, end) infinite;
+      }
+
+      @keyframes dots {
+        0%,
+        20% {
+          content: " .";
+        }
+        40% {
+          content: " ..";
+        }
+        60%,
+        100% {
+          content: " ...";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header (using existing nav) -->
+    <header class="site-header">
+      <div class="container">
+        <nav class="main-nav">
+          <a href="/" class="logo-link">
+            <img src="/assets/images/cjh-logo.svg" alt="Creative Job Hub" class="logo" />
+          </a>
+          <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/cms-test.html" class="active">CMS Test</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+          <div class="nav-actions">
+            <a href="/demos/trial-signup.html" class="btn btn-primary">Start Free Trial</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main content area - will be populated by Sanity -->
+    <main id="page-content">
+      <div class="loading">Loading page content from Sanity CMS</div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2025 Creative Job Hub. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Load Sanity client from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@sanity/client@6.22.7/dist/index.browser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@sanity/image-url@1.1.0/dist/index.umd.js"></script>
+    
+    <script>
+      // Initialize Sanity client
+      const client = window.sanityClient.createClient({
+        projectId: '53m7wbm0',
+        dataset: 'production',
+        useCdn: true,
+        apiVersion: '2024-01-01',
+      })
+
+      const imageBuilder = window.imageUrlBuilder(client)
+      
+      function urlFor(source) {
+        return imageBuilder.image(source)
+      }
+
+      // Fetch and render page
+      async function renderPage(slug) {
+        const container = document.getElementById('page-content')
+        
+        try {
+          const page = await client.fetch(
+            `*[_type == "page" && slug.current == $slug && published == true][0]{
+              title,
+              sections[]{
+                _type,
+                _key,
+                heading,
+                subheading,
+                ctaButtons[]{text, url, style},
+                backgroundImage{asset->{url}, alt},
+                sectionTitle,
+                sectionDescription,
+                features[]{icon, title, description},
+                layout,
+                backgroundColor
+              }
+            }`,
+            { slug }
+          )
+
+          if (!page) {
+            container.innerHTML = '<div class="error">Page not found. Make sure you created a page with slug "' + slug + '" in Sanity Studio and published it.</div>'
+            return
+          }
+
+          // Render sections
+          let html = ''
+          page.sections?.forEach(section => {
+            if (section._type === 'heroSection') {
+              const buttons = section.ctaButtons?.map(btn => 
+                `<a href="${btn.url}" class="btn btn-${btn.style || 'primary'}">${btn.text}</a>`
+              ).join('') || ''
+              
+              html += `
+                <section class="hero" style="background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);">
+                  <div class="container">
+                    <div class="hero-content">
+                      <h1 class="hero-heading">${section.heading}</h1>
+                      ${section.subheading ? `<p class="hero-subheading">${section.subheading}</p>` : ''}
+                      ${buttons ? `<div class="hero-buttons">${buttons}</div>` : ''}
+                    </div>
+                  </div>
+                </section>
+              `
+            }
+            else if (section._type === 'featuresSection') {
+              const features = section.features?.map(f => `
+                <div class="feature-card">
+                  ${f.icon ? `<i class="feature-icon fas ${f.icon}"></i>` : ''}
+                  <h3 class="feature-title">${f.title}</h3>
+                  <p class="feature-description">${f.description}</p>
+                </div>
+              `).join('') || ''
+              
+              html += `
+                <section class="features-section ${section.backgroundColor === 'dark' ? 'bg-dark' : 'bg-light'}">
+                  <div class="container">
+                    ${section.sectionTitle ? `<h2 class="section-title">${section.sectionTitle}</h2>` : ''}
+                    ${section.sectionDescription ? `<p class="section-description">${section.sectionDescription}</p>` : ''}
+                    <div class="features-grid features-${section.layout || 'grid-3'}">
+                      ${features}
+                    </div>
+                  </div>
+                </section>
+              `
+            }
+          })
+
+          container.innerHTML = html || '<div class="error">No content sections found</div>'
+          
+        } catch (error) {
+          console.error('Error rendering page:', error)
+          container.innerHTML = '<div class="error">Error loading page: ' + error.message + '</div>'
+        }
+      }
+
+      // Get slug from URL and render
+      const urlParams = new URLSearchParams(window.location.search)
+      const slug = urlParams.get('page') || 'test-page'
+      renderPage(slug)
+    </script>
+  </body>
+</html>
