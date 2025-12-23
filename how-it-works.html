@@ -20,13 +20,13 @@
   </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>How It Works: From Quote to Payment in 3 Simple Steps | Creative Job Hub</title>
-  <meta name="description" content="See how Creative Job Hub streamlines your workflow: 1) Schedule & dispatch jobs 2) Techs complete work on mobile 3) Get paid instantly. Free 14-day trial, no credit card needed." />
+  <title>Getting Started Guide: Your Path to Success with Creative Job Hub</title>
+  <meta name="description" content="From setup to success in 4 weeks. Learn how to get the most out of Creative Job Hub: import data, schedule jobs, go mobile, automate marketing, and scale your field service business." />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="How Creative Job Hub Works: From Request to Paid in 3 Simple Steps" />
-  <meta property="og:description" content="Schedule & dispatch → Do the work → Invoice & get paid. See how Creative Job Hub streamlines your entire field service workflow." />
+  <meta property="og:title" content="Getting Started Guide: Your First 4 Weeks with Creative Job Hub" />
+  <meta property="og:description" content="Set up your account → Schedule & dispatch → Go mobile → Automate & grow. Your step-by-step guide to success with Creative Job Hub." />
   <meta property="og:url" content="https://creativejobhub.com/how-it-works.html" />
   <meta property="og:image" content="https://creativejobhub.com/assets/og-how-it-works.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -34,8 +34,8 @@
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="How Creative Job Hub Works: From Request to Paid in 3 Simple Steps" />
-  <meta name="twitter:description" content="Schedule & dispatch → Do the work → Invoice & get paid. Streamlined field service workflow." />
+  <meta name="twitter:title" content="Getting Started Guide: Your First 4 Weeks with Creative Job Hub" />
+  <meta name="twitter:description" content="Set up → Schedule → Go mobile → Automate. Your complete guide to launching your field service business on Creative Job Hub." />
   <meta name="twitter:image" content="https://creativejobhub.com/assets/og-how-it-works.jpg" />
   
   <link rel="canonical" href="https://creativejobhub.com/how-it-works.html" />
@@ -45,10 +45,255 @@
   <link rel="stylesheet" href="/assets/site.min.css?v=20" />
 
   <style>
-    .wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-    .step{border-left:3px solid var(--brand);background:#0f172a;border:1px solid rgba(148,163,184,.15);border-radius:12px;padding:14px}
-    @media(max-width:860px){.steps{grid-template-columns:1fr}}
+    :root {
+      --bg: #0a0e14;
+      --bg-secondary: #0f1419;
+      --panel: #1a1f26;
+      --muted: #8b92a0;
+      --text: #e4e7eb;
+      --brand: #3b82f6;
+      --brand-2: #0ea5e9;
+      --accent: #0891b2;
+    }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    
+    .hero-section {
+      text-align: center;
+      margin-bottom: 60px;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(30,58,95,0.95) 0%, rgba(30,58,95,0.9) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.15);
+    }
+    
+    .hero-section h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--brand-2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-section p {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .timeline {
+      position: relative;
+      margin: 60px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--brand-2) 100%);
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .timeline-marker {
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--brand-2) 100%);
+      border: 4px solid var(--bg);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      z-index: 2;
+    }
+    
+    .timeline-content {
+      background: var(--panel);
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content:first-child {
+      grid-column: 2;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content:last-child {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    
+    .week-label {
+      display: inline-block;
+      background: rgba(8,145,178,0.2);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .timeline-content h2 {
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    
+    .timeline-content p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    
+    .task-list li {
+      padding: 8px 0;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .task-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .feature-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    
+    .feature-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: all 0.2s;
+    }
+    
+    .feature-link:hover {
+      background: rgba(8,145,178,0.15);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    .feature-link::after {
+      content: '→';
+    }
+    
+    .cta-section {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: var(--panel);
+      border: 1px solid rgba(148,163,184,0.15);
+      border-radius: 12px;
+    }
+    
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+    
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    @media (max-width: 960px) {
+      .timeline::before {
+        left: 20px;
+      }
+      
+      .timeline-item {
+        grid-template-columns: 1fr;
+        padding-left: 60px;
+      }
+      
+      .timeline-marker {
+        left: 20px;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-content:first-child {
+        grid-column: 1;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-content:last-child {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 40px 16px;
+      }
+      
+      .timeline-content {
+        padding: 20px;
+      }
+      
+      .btn-group {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
   <body>
@@ -61,39 +306,132 @@
   <script src="/assets/header.js?v=2" defer></script>
 
   <main class="wrap">
-    <h1>How it works</h1>
-    <p style="color:#8b92a0;margin-top:-6px">Three simple steps to go from request to paid.</p>
+    <div class="hero-section">
+      <h1>Getting Started Guide</h1>
+      <p>Your step-by-step path from signup to success. Follow this 4-week roadmap to transform your field service operations.</p>
+    </div>
 
-    <section class="steps">
-      <article class="step">
-        <h3>1) Schedule &amp; dispatch</h3>
-        <p>Add the job, assign a tech, and send confirmations to your customer.</p>
-      </article>
-      <article class="step">
-        <h3>2) Do the work</h3>
-        <p>Techs see the job on mobile, track time &amp; materials, take photos, and collect a signature.</p>
-      </article>
-      <article class="step">
-        <h3>3) Invoice &amp; get paid</h3>
-        <p>Convert the job to an invoice in one click and accept online payment.</p>
-      </article>
-    </section>
+    <div class="timeline">
+      <!-- Week 1 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">1</div>
+        <div class="timeline-content">
+          <span class="week-label">Week 1</span>
+          <h2>Set Up Your Foundation</h2>
+          <p>Get your account configured and import your essential business data. This sets you up for smooth operations from day one.</p>
+          
+          <ul class="task-list">
+            <li>Import customer contacts and property details</li>
+            <li>Add your team members and set permissions</li>
+            <li>Connect QuickBooks for seamless accounting</li>
+            <li>Customize your service catalog and pricing</li>
+            <li>Set up your business profile and branding</li>
+          </ul>
+          
+          <div class="feature-links">
+            <a href="/features/client-management/" class="feature-link">Client Management</a>
+            <a href="/features/property-management/" class="feature-link">Property Tracking</a>
+            <a href="/tenant-onboarding/" class="feature-link">Full Setup Guide</a>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <img src="/assets/illustrations/cjh_resized.jpg" alt="Setup illustration" style="width:100%; border-radius:8px; opacity:0.9;">
+        </div>
+      </div>
 
-    <section style="margin-top:28px">
-      <h2>What’s included</h2>
-      <ul style="line-height:1.9;color:#8b92a0;margin-top:8px">
-        <li>Calendar scheduling &amp; route planning</li>
-        <li>Mobile job sheets with photos &amp; notes</li>
-        <li>Estimates &amp; invoices with online pay</li>
-        <li>Customer notifications via email &amp; SMS</li>
-        <li>Analytics with AI insights</li>
-        <li>QuickBooks-friendly exports</li>
-      </ul>
-    </section>
+      <!-- Week 2 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">2</div>
+        <div class="timeline-content">
+          <span class="week-label">Week 2</span>
+          <h2>Start Scheduling & Dispatching</h2>
+          <p>Book your first jobs, assign them to techs, and see how automated notifications keep everyone informed.</p>
+          
+          <ul class="task-list">
+            <li>Create your first jobs on the calendar</li>
+            <li>Assign technicians and optimize routes</li>
+            <li>Send automatic booking confirmations to customers</li>
+            <li>Set up job templates for common services</li>
+            <li>Enable customer self-service booking</li>
+          </ul>
+          
+          <div class="feature-links">
+            <a href="/features/optimized-scheduling/" class="feature-link">Smart Scheduling</a>
+            <a href="/features/requests-and-bookings/" class="feature-link">Online Booking</a>
+            <a href="/features/simplified-communications/" class="feature-link">Notifications</a>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <img src="/assets/illustrations/cjh_resized.jpg" alt="Scheduling illustration" style="width:100%; border-radius:8px; opacity:0.9;">
+        </div>
+      </div>
 
-    <div style="margin-top:28px">
-      <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start for free</a>
-      <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+      <!-- Week 3 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">3</div>
+        <div class="timeline-content">
+          <span class="week-label">Week 3</span>
+          <h2>Go Mobile with Your Team</h2>
+          <p>Get your technicians using the mobile app to complete jobs, capture photos, and collect signatures in the field.</p>
+          
+          <ul class="task-list">
+            <li>Download the mobile app on tech devices</li>
+            <li>Complete jobs with time tracking and notes</li>
+            <li>Capture before/after photos for documentation</li>
+            <li>Collect customer signatures digitally</li>
+            <li>Convert completed jobs to invoices instantly</li>
+          </ul>
+          
+          <div class="feature-links">
+            <a href="/features/keep-techs-organized/" class="feature-link">Mobile Field App</a>
+            <a href="/features/job-detail-tracking/" class="feature-link">Job Documentation</a>
+            <a href="/features/one-click-invoicing/" class="feature-link">Quick Invoicing</a>
+            <a href="/features/get-paid/" class="feature-link">Get Paid Faster</a>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <img src="/assets/illustrations/cjh_resized.jpg" alt="Mobile app illustration" style="width:100%; border-radius:8px; opacity:0.9;">
+        </div>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="timeline-item">
+        <div class="timeline-marker">4</div>
+        <div class="timeline-content">
+          <span class="week-label">Week 4</span>
+          <h2>Automate & Grow</h2>
+          <p>Activate marketing automations, launch review campaigns, and use analytics to identify growth opportunities.</p>
+          
+          <ul class="task-list">
+            <li>Turn on automated review request campaigns</li>
+            <li>Launch email marketing for seasonal services</li>
+            <li>Set up the AI Receptionist to capture after-hours leads</li>
+            <li>Review analytics dashboard for insights</li>
+            <li>Create referral incentives to fuel word-of-mouth</li>
+          </ul>
+          
+          <div class="feature-links">
+            <a href="/features/boost-reviews/" class="feature-link">Review Automation</a>
+            <a href="/features/marketing-campaigns/" class="feature-link">Email Marketing</a>
+            <a href="/features/ai-receptionist/" class="feature-link">AI Receptionist</a>
+            <a href="/features/analytics/" class="feature-link">Business Analytics</a>
+            <a href="/features/earn-referrals/" class="feature-link">Referral Program</a>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <img src="/assets/illustrations/cjh_resized.jpg" alt="Growth illustration" style="width:100%; border-radius:8px; opacity:0.9;">
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to Get Started?</h2>
+      <p>Join hundreds of field service businesses already growing with Creative Job Hub. No credit card required.</p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="https://app.creativejobhub.com/auth?mode=signup">Start Free Trial</a>
+        <a class="btn btn-ghost" href="/pricing/">See Pricing</a>
+        <a class="btn btn-ghost" href="/contact.html">Talk to Us</a>
+      </div>
     </div>
   </main>
 
