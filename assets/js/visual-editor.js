@@ -175,55 +175,71 @@ class VisualEditor {
 
   initSanityClient() {
   const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@2.29.7/dist/sanityClient.min.js';
-    const tryInit = () => {
-      const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client);
-      if (!SanityClient) {
+  let attempts = 0;
+  const maxAttempts = 30; // ~15 seconds at 500ms interval
+  const tryInit = () => {
+    attempts++;
+    const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client);
+    if (!SanityClient) {
+      if (attempts === 1) {
         // If script tag not present, inject it
         if (!document.querySelector('script[src*="sanityClient.min.js"]')) {
           const script = document.createElement('script');
           script.src = cdnUrl;
           script.async = false;
           script.onload = () => {
-            setTimeout(tryInit, 100); // Wait a moment for global to be set
+            console.log('🔄 Sanity CDN script loaded. Checking globals...');
+            setTimeout(tryInit, 200);
           };
           document.head.appendChild(script);
           console.log('🔄 Injected Sanity CDN script');
         } else {
           // Script is present but not loaded yet
-          setTimeout(tryInit, 250);
+          setTimeout(tryInit, 500);
         }
-        return;
-      }
-      // Try sanity_token first (what we told user to set), then fall back to sanityToken
-      const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken');
-      if (!token) {
-        console.warn('⚠️ No Sanity token found. Please set it in console: localStorage.setItem("sanity_token", "your-token")');
-      }
-      try {
-        if (typeof SanityClient === 'function') {
-          this.client = SanityClient({
-            projectId: SANITY_PROJECT_ID,
-            dataset: SANITY_DATASET,
-            useCdn: false,
-            apiVersion: SANITY_API_VERSION,
-            token: token,
-          });
-        } else if (SanityClient.createClient) {
-          this.client = SanityClient.createClient({
-            projectId: SANITY_PROJECT_ID,
-            dataset: SANITY_DATASET,
-            useCdn: false,
-            apiVersion: SANITY_API_VERSION,
-            token: token,
-          });
+      } else {
+        // Wait for global to be set
+        if (attempts < maxAttempts) {
+          if (attempts % 3 === 0) {
+            console.log(`[Sanity Init] Attempt ${attempts}: window.SanityClient=`, window.SanityClient, 'window.sanityClient=', window.sanityClient);
+          }
+          setTimeout(tryInit, 500);
+        } else {
+          console.error('❌ Sanity client failed to initialize after multiple attempts.');
         }
-        console.log('✅ Sanity client initialized', token ? 'with token' : 'without token');
-      } catch (error) {
-        console.error('❌ Error initializing Sanity client:', error);
       }
-    };
-    tryInit();
-  }
+      return;
+    }
+    // Try sanity_token first (what we told user to set), then fall back to sanityToken
+    const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken');
+    if (!token) {
+      console.warn('⚠️ No Sanity token found. Please set it in console: localStorage.setItem("sanity_token", "your-token")');
+    }
+    try {
+      if (typeof SanityClient === 'function') {
+        this.client = SanityClient({
+          projectId: SANITY_PROJECT_ID,
+          dataset: SANITY_DATASET,
+          useCdn: false,
+          apiVersion: SANITY_API_VERSION,
+          token: token,
+        });
+      } else if (SanityClient.createClient) {
+        this.client = SanityClient.createClient({
+          projectId: SANITY_PROJECT_ID,
+          dataset: SANITY_DATASET,
+          useCdn: false,
+          apiVersion: SANITY_API_VERSION,
+          token: token,
+        });
+      }
+      console.log('✅ Sanity client initialized', token ? 'with token' : 'without token');
+    } catch (error) {
+      console.error('❌ Error initializing Sanity client:', error);
+    }
+  };
+  tryInit();
+}
 
   async loadPageContent() {
     if (!this.client) {
