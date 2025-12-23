@@ -176,13 +176,24 @@ class VisualEditor {
   initSanityClient() {
     // Initialize Sanity client (using CDN version)
     if (window.sanityClient) {
+      // Try sanity_token first (what we told user to set), then fall back to sanityToken
+      const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken')
+      
+      if (!token) {
+        console.warn('⚠️ No Sanity token found. Please set it in console: localStorage.setItem("sanity_token", "your-token")')
+      }
+      
       this.client = window.sanityClient.createClient({
         projectId: SANITY_PROJECT_ID,
         dataset: SANITY_DATASET,
         useCdn: false, // Don't use CDN for fresh data
         apiVersion: SANITY_API_VERSION,
-        token: localStorage.getItem('sanityToken'), // API token for writes
+        token: token, // API token for writes
       })
+      
+      console.log('✅ Sanity client initialized', token ? 'with token' : 'without token')
+    } else {
+      console.error('❌ window.sanityClient not found. CDN script may not be loaded.')
     }
   }
 
@@ -915,12 +926,22 @@ class VisualEditor {
     try {
       // Initialize Sanity client if not already done
       if (!this.client) {
-        this.client = new sanityClient({
+        if (!window.sanityClient) {
+          throw new Error('Sanity client library not loaded')
+        }
+        
+        const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken')
+        
+        if (!token) {
+          throw new Error('No API token found. Please set it: localStorage.setItem("sanity_token", "your-token")')
+        }
+        
+        this.client = window.sanityClient.createClient({
           projectId: SANITY_PROJECT_ID,
           dataset: SANITY_DATASET,
           apiVersion: SANITY_API_VERSION,
           useCdn: false,
-          token: localStorage.getItem('sanityToken'), // You'll need to set this
+          token: token,
         })
       }
       
