@@ -209,34 +209,60 @@ footer{
 <!-- Override site.css to maintain dark theme -->
 <style>
 body { 
-  background: var(--bg) !important; 
-  color: var(--text) !important; 
+  background: #0a0e14 !important; 
+  color: #e4e7eb !important; 
 }
 .container, main, section:not(.hero) { 
   background: transparent !important; 
 }
 h1, h2, h3, h4, h5, h6 { 
-  color: var(--text) !important; 
+  color: #e4e7eb !important; 
+}
+h3 {
+  color: #0ea5e9 !important;
 }
 p, li, td, th, .lead { 
-  color: var(--muted) !important; 
+  color: #8b92a0 !important; 
 }
 a:not(.btn) { 
-  color: var(--accent) !important; 
+  color: #0891b2 !important; 
+}
+a:not(.btn):hover { 
+  color: #0ea5e9 !important; 
 }
 section {
-  background: var(--panel) !important;
+  background: #1a1f26 !important;
   border: 1px solid rgba(148,163,184,0.1) !important;
+  border-radius: 16px !important;
+  padding: 32px !important;
 }
 .toc {
-  background: var(--panel) !important;
+  background: #1a1f26 !important;
+  border-left: 4px solid #0891b2 !important;
+}
+.toc strong {
+  color: #e4e7eb !important;
+}
+.toc a {
+  color: #0891b2 !important;
+}
+.toc a:hover {
+  color: #0ea5e9 !important;
 }
 pre {
-  background: var(--bg-secondary) !important;
-  color: var(--text) !important;
+  background: #0f1419 !important;
+  color: #e4e7eb !important;
+  border: 1px solid rgba(148,163,184,0.2) !important;
 }
 strong {
-  color: var(--text) !important;
+  color: #e4e7eb !important;
+}
+.page-header {
+  border-bottom: 2px solid rgba(14,165,233,0.3) !important;
+}
+footer {
+  border-top: 1px solid rgba(148,163,184,0.2) !important;
+  color: #8b92a0 !important;
 }
 </style>
 
