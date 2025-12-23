@@ -174,12 +174,12 @@ class VisualEditor {
   }
 
   initSanityClient() {
-  const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@7.13.2/dist/index.browser.js';
+  const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@2.29.7/dist/sanityClient.min.js';
     const tryInit = () => {
       const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client);
       if (!SanityClient) {
         // If script tag not present, inject it
-  if (!document.querySelector('script[src*="index.browser.js"]')) {
+        if (!document.querySelector('script[src*="sanityClient.min.js"]')) {
           const script = document.createElement('script');
           script.src = cdnUrl;
           script.async = false;
