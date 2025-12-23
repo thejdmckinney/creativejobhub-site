@@ -160,11 +160,11 @@ class VisualEditor {
     const loginBtn = document.getElementById('visual-editor-login')
     if (loginBtn) loginBtn.remove()
     
-    // Initialize Sanity client
-    this.initSanityClient()
-    
-    // Load page content
-    this.loadPageContent()
+    // Initialize Sanity client (async now)
+    this.initSanityClient().then(() => {
+      // Load page content after client is ready
+      this.loadPageContent()
+    })
     
     // Add editor toolbar
     this.createToolbar()
@@ -173,73 +173,30 @@ class VisualEditor {
     this.addEditorStyles()
   }
 
-  initSanityClient() {
-  const cdnUrl = 'https://cdn.jsdelivr.net/npm/@sanity/client@2.29.6/dist/sanityClient.min.js';
-  let attempts = 0;
-  const maxAttempts = 30; // ~15 seconds at 500ms interval
-  const tryInit = () => {
-    attempts++;
-    const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client);
-    if (!SanityClient) {
-      if (attempts === 1) {
-        // If script tag not present, inject it
-        if (!document.querySelector('script[src*="sanityClient.min.js"]')) {
-          const script = document.createElement('script');
-          script.src = cdnUrl;
-          script.async = false;
-          script.onload = () => {
-            console.log('🔄 Sanity CDN script loaded. Checking globals...');
-            setTimeout(tryInit, 200);
-          };
-          document.head.appendChild(script);
-          console.log('🔄 Injected Sanity CDN script');
-        } else {
-          // Script is present but not loaded yet
-          setTimeout(tryInit, 500);
-        }
-      } else {
-        // Wait for global to be set
-        if (attempts < maxAttempts) {
-          if (attempts % 3 === 0) {
-            console.log(`[Sanity Init] Attempt ${attempts}: window.SanityClient=`, window.SanityClient, 'window.sanityClient=', window.sanityClient);
-          }
-          setTimeout(tryInit, 500);
-        } else {
-          console.error('❌ Sanity client failed to initialize after multiple attempts.');
-        }
-      }
-      return;
-    }
-    // Try sanity_token first (what we told user to set), then fall back to sanityToken
+  async initSanityClient() {
     const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken');
     if (!token) {
       console.warn('⚠️ No Sanity token found. Please set it in console: localStorage.setItem("sanity_token", "your-token")');
     }
+    
     try {
-      if (typeof SanityClient === 'function') {
-        this.client = SanityClient({
-          projectId: SANITY_PROJECT_ID,
-          dataset: SANITY_DATASET,
-          useCdn: false,
-          apiVersion: SANITY_API_VERSION,
-          token: token,
-        });
-      } else if (SanityClient.createClient) {
-        this.client = SanityClient.createClient({
-          projectId: SANITY_PROJECT_ID,
-          dataset: SANITY_DATASET,
-          useCdn: false,
-          apiVersion: SANITY_API_VERSION,
-          token: token,
-        });
-      }
+      // Use ES module from CDN with dynamic import
+      const { default: sanityClient } = await import('https://esm.sh/@sanity/client@6.22.7');
+      
+      this.client = sanityClient({
+        projectId: SANITY_PROJECT_ID,
+        dataset: SANITY_DATASET,
+        useCdn: false,
+        apiVersion: SANITY_API_VERSION,
+        token: token,
+      });
+      
       console.log('✅ Sanity client initialized', token ? 'with token' : 'without token');
     } catch (error) {
       console.error('❌ Error initializing Sanity client:', error);
+      console.error('Make sure your browser supports ES modules.');
     }
-  };
-  tryInit();
-}
+  }
 
   async loadPageContent() {
     if (!this.client) {
