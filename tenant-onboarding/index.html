@@ -82,7 +82,7 @@ body{
   line-height:1.6;
 }
 .container{max-width:1100px;margin:0 auto}
-header{
+.page-header{
   display:flex;
   align-items:center;
   gap:18px;
@@ -194,7 +194,7 @@ footer{
 }
 @media(max-width:720px){
   body{padding:16px}
-  header{gap:12px;padding:24px 0}
+  .page-header{gap:12px;padding:24px 0}
   h1{font-size:24px}
   .logo{width:76px;height:76px}
   section{padding:20px}
@@ -202,6 +202,10 @@ footer{
   h3{font-size:18px}
 }
 </style>
+
+<!-- Shared site CSS for header -->
+<link rel="stylesheet" href="/assets/site.css?v=18">
+
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -209,8 +213,12 @@ footer{
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- Site Navigation Header -->
+<div id="site-header"></div>
+<script src="/assets/header.js?v=2" defer></script>
+
 <div class="container">
-  <header>
+  <header class="page-header">
     <img class="logo" src="/assets/illustrations/CJH_Circle_Logo.png" alt="Creative Job Hub logo">
     <div>
       <h1>Creative Job Hub — Tenant Onboarding Guide</h1>
