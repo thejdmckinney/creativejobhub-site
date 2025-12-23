@@ -66,7 +66,7 @@ Best Handyman Software 2025 | Job Management from $29/mo | 4.9★ Rated
 
 **NEW META DESCRIPTION:**
 ```html
-Top-rated handyman software for multi-trade contractors. Manage estimates, scheduling, invoicing & payments from one app. 4.9/5 stars from 500+ handymen. Try free for 14 days.
+Top-rated handyman software for multi-trade contractors. Manage estimates, scheduling, invoicing & payments from one app. 4.9/5 stars from 500+ handymen. Try free for 7 days.
 ```
 *(159 chars - includes ratings, user count, free trial)*
 
@@ -98,7 +98,7 @@ Best Plumbing Software 2025 | Emergency Dispatch & Invoicing | Try Free
 
 **NEW META DESCRIPTION:**
 ```html
-#1 rated plumbing software: emergency dispatch, digital invoices, parts tracking. Used by 800+ plumbers. $29/mo vs ServiceTitan $600+. Start your free 14-day trial today.
+#1 rated plumbing software: emergency dispatch, digital invoices, parts tracking. Used by 800+ plumbers. $29/mo vs ServiceTitan $600+. Start your free 7-day trial today.
 ```
 *(158 chars - includes user count, price shock, CTA)*
 
@@ -130,7 +130,7 @@ Chimney Sweep Software 2025 | Inspection Tracking $29/mo | Free Trial
 
 **NEW META DESCRIPTION:**
 ```html
-Complete chimney sweep software: digital inspections, creosote tracking, CSIA compliance, automated scheduling. Trusted by 200+ chimney pros. Try free for 14 days—no credit card.
+Complete chimney sweep software: digital inspections, creosote tracking, CSIA compliance, automated scheduling. Trusted by 200+ chimney pros. Try free for 7 days—no credit card.
 ```
 *(159 chars - includes certifications, social proof, friction removal)*
 
@@ -389,7 +389,7 @@ All service page hero images need:
 - [ ] Day 5: Add review schema to all pages
 
 **Expected Impact:**
-- Move from position 30-40 to position 20-30 within 14 days
+- Move from position 30-40 to position 20-30 within 7 days
 - Increase CTR from 1-2% to 3-5%
 
 ---

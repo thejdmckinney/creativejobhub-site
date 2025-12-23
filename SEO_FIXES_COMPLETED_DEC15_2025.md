@@ -65,14 +65,14 @@ Description: Handyman software for $29/mo (vs Jobber $200+)...
 **After:**
 ```
 Title: Best Handyman Software 2025 | Job Management from $29/mo | 4.9★ Rated
-Description: Top-rated handyman software for multi-trade contractors. Manage estimates, scheduling, invoicing & payments from one app. 4.9/5 stars from 500+ handymen. Try free for 14 days.
+Description: Top-rated handyman software for multi-trade contractors. Manage estimates, scheduling, invoicing & payments from one app. 4.9/5 stars from 500+ handymen. Try free for 7 days.
 ```
 
 **Key Improvements:**
 - ✅ Added "Best" + "2025"
 - ✅ Added star rating (4.9★) for trust
 - ✅ Added social proof (500+ handymen)
-- ✅ Specific trial duration (14 days)
+- ✅ Specific trial duration (7 days)
 - ✅ "Top-rated" authority signal
 
 ---
@@ -87,7 +87,7 @@ Description: Plumbing software for $29/mo (vs Jobber $200+)...
 **After:**
 ```
 Title: Best Plumbing Software 2025 | Emergency Dispatch & Invoicing | Try Free
-Description: #1 rated plumbing software: emergency dispatch, digital invoices, parts tracking. Used by 800+ plumbers. $29/mo vs ServiceTitan $600+. Start your free 14-day trial today.
+Description: #1 rated plumbing software: emergency dispatch, digital invoices, parts tracking. Used by 800+ plumbers. $29/mo vs ServiceTitan $600+. Start your free 7-day trial today.
 ```
 
 **Key Improvements:**
@@ -109,7 +109,7 @@ Description: Streamline your chimney service business...
 **After:**
 ```
 Title: Chimney Sweep Software 2025 | Inspection Tracking $29/mo | Free Trial
-Description: Complete chimney sweep software: digital inspections, creosote tracking, CSIA compliance, automated scheduling. Trusted by 200+ chimney pros. Try free for 14 days—no credit card.
+Description: Complete chimney sweep software: digital inspections, creosote tracking, CSIA compliance, automated scheduling. Trusted by 200+ chimney pros. Try free for 7 days—no credit card.
 ```
 
 **Key Improvements:**
