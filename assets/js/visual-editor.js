@@ -260,7 +260,7 @@ class VisualEditor {
           <button onclick="visualEditor.toggleEditMode()" id="edit-mode-toggle" class="toolbar-btn toolbar-btn-primary">
             🖊️ Enable Edit Mode
           </button>
-          <button onclick="visualEditor.saveChanges()" id="save-btn" class="toolbar-btn toolbar-btn-success" style="display:none;">
+          <button onclick="visualEditor.saveChanges()" id="save-btn" class="toolbar-btn toolbar-btn-success" style="display:none;" disabled>
             💾 Save Changes
           </button>
           <button onclick="visualEditor.logout()" class="toolbar-btn">
@@ -269,11 +269,24 @@ class VisualEditor {
         </div>
       </div>
     `
-    
     document.body.appendChild(toolbar)
-    
-    // Add body padding for toolbar
     document.body.style.paddingTop = '70px'
+    // If client is ready, enable save button
+    setTimeout(() => this.updateSaveButtonState(), 500)
+  }
+
+  updateSaveButtonState() {
+    const saveBtn = document.getElementById('save-btn')
+    if (!saveBtn) return
+    if (this.client) {
+      saveBtn.disabled = false
+      saveBtn.title = ''
+    } else {
+      saveBtn.disabled = true
+      saveBtn.title = 'Sanity client not loaded yet. Please wait...'
+      // Try again in 500ms
+      setTimeout(() => this.updateSaveButtonState(), 500)
+    }
   }
 
   toggleEditMode() {
@@ -949,51 +962,19 @@ class VisualEditor {
   }
 
   async saveChanges() {
+    if (!this.client) {
+      this.showNotification('❌ Sanity client not loaded yet. Please wait a few seconds and try again.', 'error')
+      this.updateSaveButtonState()
+      return
+    }
     this.showNotification('💾 Saving changes to Sanity...', 'info')
-    
     try {
-      // Initialize Sanity client if not already done
-      if (!this.client) {
-        const SanityClient = window.sanityClient || window.SanityClient || (window.sanity && window.sanity.client)
-        
-        if (!SanityClient) {
-          throw new Error('Sanity client library not loaded. Please refresh the page.')
-        }
-        
-        const token = localStorage.getItem('sanity_token') || localStorage.getItem('sanityToken')
-        
-        if (!token) {
-          throw new Error('No API token found. Please set it: localStorage.setItem("sanity_token", "your-token")')
-        }
-        
-        // Try different initialization methods
-        if (typeof SanityClient === 'function') {
-          this.client = SanityClient({
-            projectId: SANITY_PROJECT_ID,
-            dataset: SANITY_DATASET,
-            apiVersion: SANITY_API_VERSION,
-            useCdn: false,
-            token: token,
-          })
-        } else if (SanityClient.createClient) {
-          this.client = SanityClient.createClient({
-            projectId: SANITY_PROJECT_ID,
-            dataset: SANITY_DATASET,
-            apiVersion: SANITY_API_VERSION,
-            useCdn: false,
-            token: token,
-          })
-        }
-      }
-      
       // Collect all edited elements on the page
       const editedElements = []
       const allEditableElements = document.querySelectorAll('.editor-edited')
-      
       allEditableElements.forEach((element, index) => {
         const computedStyle = window.getComputedStyle(element)
         const tagName = element.tagName.toLowerCase()
-        
         const elementData = {
           _key: `element-${Date.now()}-${index}`,
           elementId: element.id || `${tagName}-${index}`,
@@ -1013,17 +994,14 @@ class VisualEditor {
             transition: computedStyle.transition,
           }
         }
-        
         // Add image-specific properties
         if (tagName === 'img') {
           elementData.imageSrc = element.src
           elementData.imageAlt = element.alt
           elementData.imageWidth = element.style.width || element.getAttribute('width') || undefined
         }
-        
         editedElements.push(elementData)
       })
-      
       // Create or update the pageContent document
       const pageContentDoc = {
         _type: 'pageContent',
@@ -1032,11 +1010,9 @@ class VisualEditor {
         elements: editedElements,
         updatedAt: new Date().toISOString(),
       }
-      
       // Query for existing document
       const query = `*[_type == "pageContent" && pageUrl == $pageUrl][0]`
       const existingDoc = await this.client.fetch(query, { pageUrl: this.pageUrl })
-      
       if (existingDoc) {
         // Update existing document
         await this.client.patch(existingDoc._id).set(pageContentDoc).commit()
@@ -1044,9 +1020,7 @@ class VisualEditor {
         // Create new document
         await this.client.create(pageContentDoc)
       }
-      
       this.showNotification('✅ Changes saved to Sanity!', 'success')
-      
     } catch (error) {
       console.error('Save failed:', error)
       this.showNotification(`❌ Save failed: ${error.message}`, 'error')
