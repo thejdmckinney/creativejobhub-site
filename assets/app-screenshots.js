@@ -43,7 +43,7 @@ const screenshotCategories = [
             {
                 title: "Mobile Job Sheets",
                 description: "Digital job sheets that technicians can access and update in the field. Capture photos, signatures, notes, and completion status instantly.",
-                image: "/assets/illustrations/mobile_job_sheets.png",
+                image: "/assets/illustrations/Job-start-stop-timer.png",
                 type: "mobile",
                 features: ["Digital Forms", "Photo Capture", "E-Signatures", "Offline Mode"]
             },
@@ -99,7 +99,7 @@ const screenshotCategories = [
             {
                 title: "Map Controls Mobile",
                 description: "Interactive map controls optimized for mobile touch. View technician locations, job sites, and optimize routes on the go.",
-                image: "/assets/illustrations/map-controls-mobile.png",
+                image: "/assets/illustrations/New-map-view.png",
                 type: "mobile",
                 features: ["Touch Controls", "Live Tracking", "Route Preview", "Traffic Updates"]
             },
