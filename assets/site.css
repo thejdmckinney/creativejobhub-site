@@ -534,22 +534,68 @@ a{color:inherit;text-decoration:none}
     background:#22c55e !important; 
   }
   
-  /* Hide CTA buttons on mobile menu - moved to separate section */
+  /* Mobile CTA buttons - show in menu at bottom */
   .site-ctas{ 
     display:flex !important;
     flex-direction:column !important;
-    gap:12px !important;
+    gap:0 !important;
     margin-top:auto !important;
     padding-top:20px !important;
     border-top:2px solid rgba(59,130,246,0.2) !important;
+    align-items:stretch !important;
   }
   
   .site-ctas .btn{
     width:100% !important;
     padding:16px 20px !important;
-    font-size:16px !important;
+    font-size:17px !important;
+    font-weight:700 !important;
     text-align:center !important;
     justify-content:center !important;
+    margin-bottom:12px !important;
+    border-radius:12px !important;
+  }
+  
+  .site-ctas .btn-ghost{
+    background:rgba(59,130,246,0.1) !important;
+    border:1px solid rgba(59,130,246,0.3) !important;
+    color:#ffffff !important;
+  }
+  
+  .site-ctas .btn-primary{
+    background:linear-gradient(135deg, #3b82f6, #0ea5e9) !important;
+    color:#ffffff !important;
+    box-shadow:0 4px 16px rgba(59,130,246,0.4) !important;
+  }
+  
+  /* Social icons in mobile menu */
+  .site-ctas > span{
+    display:flex !important;
+    justify-content:center !important;
+    gap:16px !important;
+    margin:12px 0 0 0 !important;
+    padding-top:16px !important;
+    border-top:1px solid rgba(59,130,246,0.15) !important;
+  }
+  
+  .site-ctas > span a{
+    width:44px !important;
+    height:44px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:50% !important;
+    transition:transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+  
+  .site-ctas > span a:hover{
+    transform:scale(1.1) !important;
+    box-shadow:0 4px 12px rgba(0,0,0,0.4) !important;
+  }
+  
+  .site-ctas > span a svg{
+    width:24px !important;
+    height:24px !important;
   }
   
   /* Mobile nav sections */

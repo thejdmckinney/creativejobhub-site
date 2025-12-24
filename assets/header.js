@@ -167,6 +167,28 @@
     const header = document.querySelector('.site-header');
     const navToggle = header.querySelector('.nav-toggle');
     const nav = header.querySelector('.site-nav');
+    const siteCtas = header.querySelector('.site-ctas');
+
+    // Move CTAs into mobile menu on small screens
+    function handleMobileCtas() {
+      if (!siteCtas || !nav) return;
+      
+      if (window.innerWidth <= 860) {
+        // Mobile: append CTAs to bottom of nav if not already there
+        if (!nav.contains(siteCtas)) {
+          nav.appendChild(siteCtas);
+        }
+      } else {
+        // Desktop: move CTAs back to header if not already there
+        if (!header.contains(siteCtas) || nav.contains(siteCtas)) {
+          header.appendChild(siteCtas);
+        }
+      }
+    }
+
+    // Initial setup
+    handleMobileCtas();
+    window.addEventListener('resize', handleMobileCtas);
 
     if (navToggle && nav) {
       function toggleNav() {
