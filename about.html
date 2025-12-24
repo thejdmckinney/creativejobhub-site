@@ -1,6 +1,16 @@
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Prevent auto-expansion on mobile - keep as minimized bubble
+    Tawk_API.onLoad = function(){
+        Tawk_API.hideWidget(); // Hide initially
+        setTimeout(function() {
+            Tawk_API.showWidget(); // Show as minimized bubble after brief delay
+            Tawk_API.minimize(); // Ensure it stays minimized
+        }, 1000);
+    };
+    
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
     s1.async=true;
