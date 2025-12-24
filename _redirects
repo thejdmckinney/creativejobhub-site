@@ -1,6 +1,9 @@
 # Netlify-style redirects (for future hosting compatibility)
 # Redirect common incorrect URLs to correct paths
 
+# How It Works page redirect
+/how-it-works.html /how-it-works/ 301
+
 # Pricing page redirect
 /pricing.html /pricing/ 301
 

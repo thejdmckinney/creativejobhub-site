@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':n  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],n  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=n  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+  <!-- End Google Tag Manager -->
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Screenshots - Creative Job Hub Field Service Management</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="See Creative Job Hub in action with detailed screenshots of our field service management software. View scheduling, invoicing, mobile job sheets, and more features.">
+    <meta name="keywords" content="field service software screenshots, app interface, scheduling software demo, mobile job management, invoicing interface">
+    <link rel="canonical" href="https://creativejobhub.com/app-screenshots.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="App Screenshots - Creative Job Hub Field Service Management">
+    <meta property="og:description" content="See Creative Job Hub in action with detailed screenshots of our field service management software.">
+    <meta property="og:image" content="https://creativejobhub.com/assets/og-app-screenshots.jpg">
+    <meta property="og:url" content="https://creativejobhub.com/app-screenshots.html">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKCW07R8CM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XKCW07R8CM');
+    </script>
+    
+    <!-- Shared site CSS -->
+    <link rel="stylesheet" href="/assets/site.min.css?v=20" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            min-height: 100vh;
+            color: #e4e7eb;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #8b92a0;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #ff8c5a);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(148, 163, 184, 0.2);
+            color: #e4e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #f1f5f9;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #8b92a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .screenshot-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: #3b82f6;
+        }
+
+        .screenshot-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            background: rgba(30, 41, 59, 0.5);
+            transition: opacity 0.3s ease;
+        }
+        
+        .screenshot-image:not([src*="data:image/"]):not([src*="/assets/screenshots/"]) {
+            opacity: 0.8;
+        }
+
+        /* Mobile Screenshot Phone Frame */
+        .phone-frame {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            padding: 20px 12px;
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+        }
+
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 20px;
+            background: #0f172a;
+            border-radius: 0 0 20px 20px;
+            z-index: 2;
+        }
+
+        .phone-frame-inner {
+            position: relative;
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .phone-frame .screenshot-image {
+            height: 500px;
+            border-radius: 0;
+            object-fit: cover;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            background: rgba(148, 163, 184, 0.1);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            border-radius: 8px;
+            color: #8b92a0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover {
+            background: rgba(148, 163, 184, 0.2);
+            color: #e4e7eb;
+        }
+
+        .filter-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        /* Category Headers */
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: #f1f5f9;
+            margin: 0;
+        }
+
+        .category-count {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .screenshot-info {
+            padding: 25px;
+        }
+
+        .screenshot-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+
+        .screenshot-description {
+            color: #8b92a0;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .screenshot-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feature-tag {
+            background: rgba(14, 165, 233, 0.2);
+            color: #3b82f6;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            flex-shrink: 0;
+        }
+
+        .modal-info {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            flex-shrink: 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-close:hover {
+            background: rgba(239, 68, 68, 0.9);
+            border-color: rgba(239, 68, 68, 0.6);
+            transform: scale(1.05);
+        }
+        
+        .modal-back-button {
+            background: rgba(148, 163, 184, 0.2);
+            color: #e4e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-right: 12px;
+        }
+        
+        .modal-back-button:hover {
+            background: rgba(148, 163, 184, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px 40px;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            color: #8b92a0;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .hero {
+                padding: 40px 25px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .screenshot-card {
+                margin: 0 auto;
+                max-width: 400px;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .modal {
+                padding: 10px;
+            }
+
+            .modal-content {
+                max-width: 95vw;
+                max-height: 95vh;
+            }
+
+            .modal-image {
+                max-height: 50vh;
+            }
+
+            .modal-info {
+                padding: 20px;
+                margin-top: 15px;
+            }
+
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+    </style>
+  <!-- Visual Editor Scripts -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"n  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
+    <!-- Include standard header -->
+    <div id="site-header"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>See Creative Job Hub in Action</h1>
+            <p>Explore detailed screenshots of our field service management software and discover how it can streamline your business operations.</p>
+            <div class="hero-cta">
+                <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
+                    🚀 Start Free Trial
+                </a>
+                <a href="/videos/" class="btn btn-secondary">
+                    🎥 Watch Demo Videos
+                </a>
+            </div>
+        </div>
+
+        <!-- Screenshots Section -->
+        <div class="section-header">
+            <h2 class="section-title">App Interface Screenshots</h2>
+            <p class="section-subtitle">Get a detailed look at Creative Job Hub's intuitive interface and powerful features</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">🌟 All Screenshots</button>
+            <button class="filter-btn" data-filter="mobile">📱 Mobile App</button>
+            <button class="filter-btn" data-filter="web">💻 Web Platform</button>
+        </div>
+
+        <div id="screenshotsContainer">
+            <!-- Screenshots will be populated here by category -->
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Transform Your Business?</h2>
+            <p class="cta-description">Join thousands of field service professionals who trust Creative Job Hub to manage their operations efficiently.</p>
+            <div class="cta-buttons">
+                <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
+                    🎯 Get Started Free
+                </a>
+                <a href="/contact.html" class="btn btn-secondary">
+                    💬 Contact Sales
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <img class="modal-image" id="modalImage" alt="App screenshot">
+            <div class="modal-info" id="modalInfo">
+                <!-- Screenshot details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // App screenshots data
+        // Create placeholder SVG generator
+        function createScreenshotPlaceholder(icon, title, color) {
+            return `data:image/svg+xml,${encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+                    <defs>
+                        <linearGradient id="grad${icon}" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:${color};stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:${color};stop-opacity:0.05" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="400" height="250" fill="url(#grad${icon})" stroke="${color}" stroke-width="2" rx="12"/>
+                    <text x="200" y="100" text-anchor="middle" font-size="48" fill="${color}">${icon}</text>
+                    <text x="200" y="140" text-anchor="middle" font-size="18" fill="${color}" font-family="system-ui">${title}</text>
+                    <text x="200" y="165" text-anchor="middle" font-size="12" fill="${color}" opacity="0.7" font-family="system-ui">Creative Job Hub Interface</text>
+                </svg>
+            `)}`;
+        }
+
+        // Screenshot data with built-in fallbacks
+        const appScreenshots = [
+            {
+                id: 1,
+                title: "Leads Tracker Dashboard",
+                description: "Comprehensive lead tracking and management system to monitor prospects, track conversion rates, and manage your sales pipeline effectively.",
+                image: "/assets/screenshots/leads-tracker.jpg",
+                fallback: createScreenshotPlaceholder('🎯', 'Leads Tracker', '#3b82f6'),
+                features: ["Lead Management", "Conversion Tracking", "Pipeline View", "Contact Details"]
+            },
+            {
+                id: 2,
+                title: "Leads Heatmap Analytics",
+                description: "Visual heatmap showing lead distribution and activity patterns across your service area to identify high-opportunity regions and optimize marketing efforts.",
+                image: "/assets/screenshots/leads-heatmap.jpg",
+                fallback: createScreenshotPlaceholder('�️', 'Leads Heatmap', '#22c55e'),
+                features: ["Geographic Analysis", "Activity Patterns", "Opportunity Mapping", "Market Intelligence"]
+            },
+            {
+                id: 3,
+                title: "Properties Map View",
+                description: "Interactive map interface showing all customer properties, job locations, and service areas with detailed property information and job history.",
+                image: "/assets/screenshots/properties-map.jpg",
+                fallback: createScreenshotPlaceholder('🏘️', 'Properties Map', '#8b5cf6'),
+                features: ["Property Locations", "Service Areas", "Job History", "Interactive Mapping"]
+            },
+            {
+                id: 4,
+                title: "Revenue Dashboard & Analytics",
+                description: "Financial dashboard displaying past due invoices, revenue metrics, and customizable reporting with monthly, quarterly, and annual filtering options.",
+                image: "/assets/screenshots/revenue-dashboard.jpg",
+                fallback: createScreenshotPlaceholder('�', 'Revenue Dashboard', '#3b82f6'),
+                features: ["Revenue Tracking", "Past Due Alerts", "Custom Periods", "Financial Reports"]
+            },
+            {
+                id: 5,
+                title: "AI-Powered Analytics",
+                description: "Advanced artificial intelligence analytics providing predictive insights, trend analysis, and automated recommendations to optimize your business performance.",
+                image: "/assets/screenshots/ai-analytics.jpg",
+                fallback: createScreenshotPlaceholder('🤖', 'AI Analytics', '#ef4444'),
+                features: ["Predictive Insights", "Trend Analysis", "Smart Recommendations", "Performance Optimization"]
+            },
+            {
+                id: 6,
+                title: "Interactive Job Map",
+                description: "Real-time job mapping interface showing active jobs, technician locations, route optimization, and job status updates across your entire service territory.",
+                image: "/assets/screenshots/job-map.jpg",
+                fallback: createScreenshotPlaceholder('�️', 'Job Map', '#06b6d4'),
+                features: ["Real-time Tracking", "Route Optimization", "Job Status", "Territory Overview"]
+            }
+        ];
+
+        // Load screenshots from localStorage or use defaults
+        function loadMediaLibraryScreenshots() {
+            try {
+                // Try both possible localStorage keys
+                let mediaLibrary = JSON.parse(localStorage.getItem('mediaLibrary') || '[]');
+                if (mediaLibrary.length === 0) {
+                    mediaLibrary = JSON.parse(localStorage.getItem('creativejobhub_media') || '[]');
+                }
+                
+                // Filter for valid images with data URLs (base64)
+                const validImages = mediaLibrary.filter(item => 
+                    item.url && 
+                    typeof item.url === 'string' && 
+                    item.url.startsWith('data:image/')
+                );
+                
+                console.log(`Found ${validImages.length} valid images in localStorage for app screenshots`);
+                
+                if (validImages.length > 0) {
+                    // Replace default screenshots with uploaded ones (keep original titles & descriptions)
+                    validImages.forEach((item, index) => {
+                        if (index < appScreenshots.length) {
+                            appScreenshots[index].image = item.url;
+                            // Keep original title and description - don't overwrite with filename
+                            // appScreenshots[index].title stays the same
+                            // appScreenshots[index].description stays the same
+                        }
+                    });
+                }
+            } catch (error) {
+                console.warn('Error loading media library screenshots:', error);
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadMediaLibraryScreenshots(); // Load from localStorage first
+            renderScreenshots();
+            setupEventListeners();
+        });
+
+        // Render screenshots with proper fallback handling
+        function renderScreenshots() {
+            const grid = document.getElementById('screenshotGrid');
+            
+            grid.innerHTML = appScreenshots.map(screenshot => {
+                // Use fallback immediately if the original image doesn't start with data:
+                const imageUrl = (screenshot.image.startsWith('data:image/') || screenshot.image.startsWith('/assets/screenshots/')) 
+                    ? screenshot.image 
+                    : screenshot.fallback;
+                
+                return `
+                    <div class="screenshot-card" onclick="openModal(${screenshot.id})">
+                        <img class="screenshot-image" 
+                             src="${imageUrl}" 
+                             alt="${screenshot.title}" 
+                             loading="lazy" 
+                             onerror="this.src='${screenshot.fallback}'; this.onerror=null;">
+                        <div class="screenshot-info">
+                            <h3 class="screenshot-title">${screenshot.title}</h3>
+                            <p class="screenshot-description">${screenshot.description}</p>
+                            <div class="screenshot-features">
+                                ${screenshot.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Modal close on background click
+            document.getElementById('modal').addEventListener('click', (e) => {
+                if (e.target.id === 'modal') closeModal();
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+        }
+
+        // Open modal
+        function openModal(screenshotId) {
+            const screenshot = appScreenshots.find(s => s.id === screenshotId);
+            if (!screenshot) return;
+
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalInfo = document.getElementById('modalInfo');
+
+            // Use fallback immediately if the original image doesn't start with data:
+            const imageUrl = (screenshot.image.startsWith('data:image/') || screenshot.image.startsWith('/assets/screenshots/')) 
+                ? screenshot.image 
+                : screenshot.fallback;
+                
+            modalImage.src = imageUrl;
+            modalImage.alt = screenshot.title;
+            modalImage.onerror = function() {
+                this.src = screenshot.fallback;
+                this.onerror = null;
+            };
+
+            modalInfo.innerHTML = `
+                <h3 style="color: #3b82f6; margin-bottom: 15px; font-size: 1.5rem;">${screenshot.title}</h3>
+                <p style="color: #8b92a0; line-height: 1.6; margin-bottom: 20px;">${screenshot.description}</p>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="color: #f1f5f9; margin-bottom: 10px;">Key Features:</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        ${screenshot.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                    </div>
+                </div>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <button class="modal-back-button" onclick="closeModal()">
+                        ← Back to Screenshots
+                    </button>
+                    <a href="https://app.creativejobhub.com/auth?mode=signup" class="btn btn-primary">
+                        🚀 Try This Feature
+                    </a>
+                    <a href="/videos/" class="btn btn-secondary">
+                        🎥 Watch Demo
+                    </a>
+                </div>
+            `;
+
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            // Track view in Google Analytics
+            gtag('event', 'screenshot_view', {
+                'content_type': 'screenshot',
+                'item_id': screenshotId,
+                'screenshot_title': screenshot.title
+            });
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+
+    <!-- Standard Navigation System -->
+    <script src="/assets/header.js?v=2"></script>
+</body>
+</html>
