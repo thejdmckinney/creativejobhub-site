@@ -43,7 +43,7 @@ const screenshotCategories = [
             {
                 title: "Mobile Job Sheets",
                 description: "Digital job sheets that technicians can access and update in the field. Capture photos, signatures, notes, and completion status instantly.",
-                image: "/assets/illustrations/Job-start-stop-timer.png",
+                image: "/assets/illustrations/job-start-stop-timer.png",
                 type: "mobile",
                 features: ["Digital Forms", "Photo Capture", "E-Signatures", "Offline Mode"]
             },
