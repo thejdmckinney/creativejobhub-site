@@ -42,7 +42,7 @@
   <link rel="icon" type="image/png" href="/assets/logo.png">
 
   <!-- Global site CSS -->
-  <link rel="stylesheet" href="/assets/site.min.css?v=20" />
+  <link rel="stylesheet" href="/assets/site.min.css?v=21" />
 
   <!-- Page styles + header/hamburger -->
   <style>
@@ -92,7 +92,42 @@
     .site-header{
       background:#0a0e14 !important;
       border-bottom:1px solid rgba(148,163,184,.15) !important;
+      z-index: 1000 !important;
     }
+    
+    /* CRITICAL: Mobile menu must appear above everything */
+    @media (max-width: 860px) {
+      .site-nav, .nav {
+        z-index: 99999 !important;
+        position: absolute !important;
+        background: #0a0e14 !important;
+      }
+      
+      .site-header.nav-open .site-nav,
+      .site-header.nav-open .nav {
+        display: flex !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+      }
+      
+      /* Ensure dropdown menus are visible in mobile */
+      .site-header.nav-open .nav-dropdown .dropdown-menu {
+        display: block !important;
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 1 !important;
+        max-height: none !important;
+        background: transparent !important;
+      }
+      
+      .site-header.nav-open .dropdown-link {
+        color: #e4e7eb !important;
+        display: block !important;
+      }
+    }
+    
     footer{
       background:#0a0e14 !important;
       color:#8b92a0 !important;
