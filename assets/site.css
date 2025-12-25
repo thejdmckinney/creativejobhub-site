@@ -465,26 +465,44 @@ a{color:inherit;text-decoration:none}
     min-height:50px !important;
   }
   
-  /* Mobile menu dropdown - PROPERLY POSITIONED */
-  .nav, .site-nav{
-    position:fixed !important;
-    top:70px !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:0 !important;
-    display:flex !important;
-    flex-direction:column !important;
-    gap:0 !important;
-    padding:20px !important;
-    background:#0f172a !important;
-    overflow-y:auto !important;
-    -webkit-overflow-scrolling:touch !important;
-    transform:translateX(100%) !important;
-    opacity:0 !important;
-    pointer-events:none !important;
-    transition:transform .3s ease, opacity .3s ease !important;
-    z-index:100000 !important;
-    will-change:transform, opacity !important;
+  /* Mobile menu dropdown - PROPERLY POSITIONED WITH MAXIMUM SPECIFICITY */
+  @media (max-width: 860px) {
+    .site-header .nav,
+    .site-header .site-nav,
+    .site-header #site-nav,
+    header.site-header nav.site-nav {
+      position:fixed !important;
+      top:70px !important;
+      left:0 !important;
+      right:0 !important;
+      bottom:0 !important;
+      display:flex !important;
+      flex-direction:column !important;
+      gap:0 !important;
+      padding:20px !important;
+      background:#0f172a !important;
+      overflow-y:auto !important;
+      -webkit-overflow-scrolling:touch !important;
+      transform:translateX(100%) !important;
+      opacity:0 !important;
+      visibility:hidden !important;
+      pointer-events:none !important;
+      transition:transform .3s ease, opacity .3s ease, visibility .3s ease !important;
+      z-index:100000 !important;
+      will-change:transform, opacity !important;
+      isolation:isolate !important;
+    }
+    
+    /* Force menu to show when nav-open is active */
+    .site-header.nav-open .nav,
+    .site-header.nav-open .site-nav,
+    .site-header.nav-open #site-nav,
+    header.site-header.nav-open nav.site-nav {
+      opacity:1 !important;
+      visibility:visible !important;
+      pointer-events:auto !important;
+      transform:translateX(0) !important;
+    }
   }
   
   /* Add backdrop overlay when menu is open */
@@ -521,14 +539,6 @@ a{color:inherit;text-decoration:none}
     color:#ffffff !important;
     transform:translateX(4px) !important;
     box-shadow:0 4px 12px rgba(59,130,246,0.3) !important;
-  }
-
-  /* Show menu when nav-open class is added */
-  .site-header.nav-open .nav,
-  .site-header.nav-open .site-nav{
-    opacity:1 !important;
-    pointer-events:auto !important;
-    transform:translateX(0) !important;
   }
   
   /* Hamburger animation when menu is open - transform to X */
