@@ -88,7 +88,23 @@
     .btn-ghost{background:transparent;border-color:#334155;color:#e4e7eb}
     .btn-ghost:hover{background:rgba(255,255,255,0.05)}
 
-    footer{padding:36px 0 60px; color:#8b92a0; border-top:1px solid var(--ring)}
+    /* Override global header/footer styles for dark theme */
+    .site-header{
+      background:#0a0e14 !important;
+      border-bottom:1px solid rgba(148,163,184,.15) !important;
+    }
+    footer{
+      background:#0a0e14 !important;
+      color:#8b92a0 !important;
+      border-top:1px solid rgba(148,163,184,.15) !important;
+    }
+    footer .btn-ghost{
+      color:#e4e7eb !important;
+      border-color:#334155 !important;
+    }
+    footer .btn-ghost:hover{
+      background:rgba(255,255,255,0.05) !important;
+    }
 
     @media (max-width: 920px){
       .contact-grid{grid-template-columns:1fr}
