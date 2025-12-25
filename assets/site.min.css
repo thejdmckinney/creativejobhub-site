@@ -454,6 +454,9 @@ a{color:inherit;text-decoration:none}
     transform:translateY(-12px); opacity:0; pointer-events:none;
     transition:opacity .2s ease, transform .2s ease;
     z-index:9999;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   .nav a, .site-nav .nav-link:not(.dropdown-toggle), .site-nav .dropdown-toggle{
@@ -497,6 +500,48 @@ a{color:inherit;text-decoration:none}
   
   /* Hide site-ctas on mobile to save space */
   .site-ctas{ display:none !important; }
+  
+  /* CRITICAL FIX: Override dropdown hiding for mobile menu items */
+  .site-header.nav-open .site-nav .nav-dropdown .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 1 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-top: 8px !important;
+  }
+  
+  /* Mobile dropdown items styling */
+  .site-header.nav-open .site-nav .dropdown-link {
+    display: block !important;
+    padding: 12px 14px !important;
+    margin: 4px 0 !important;
+    background: rgba(255,255,255,.03) !important;
+    border: 1px solid rgba(148,163,184,.15) !important;
+    border-radius: 8px !important;
+    color: #e4e7eb !important;
+    font-size: 15px !important;
+  }
+  
+  /* Make mega menus stack vertically on mobile */
+  .site-header.nav-open .mega-menu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  .site-header.nav-open .mega-menu-category-title {
+    color: #3b82f6 !important;
+    font-size: 14px !important;
+    margin: 8px 0 6px !important;
+  }
 }
 
 /* Base dropdown styles - FORCE HIDE by default */
