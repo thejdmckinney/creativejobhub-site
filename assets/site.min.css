@@ -422,7 +422,7 @@ a{color:inherit;text-decoration:none}
   font-weight:600 !important;
   padding:10px 16px !important; /* Restored original padding */
   border-radius:8px !important;
-  color:#0891b2 !important; /* cyan color matching logo */
+  color:#17c3f7 !important; /* cyan color matching button gradient */
   text-decoration:none !important;
   font-size:15px !important; /* Restored original size */
   transition:all 0.2s ease !important;
@@ -430,15 +430,15 @@ a{color:inherit;text-decoration:none}
 }
 
 .nav-link:hover{
-  background:rgba(14,165,233,0.1) !important;
-  color:#06b6d4 !important; /* brighter cyan on hover */
+  background:rgba(23,195,247,0.1) !important;
+  color:#ffffff !important; /* bright white on hover */
   transform:translateY(-1px) !important;
 }
 
 .nav-link.active{
-  background:linear-gradient(135deg, rgba(8,145,178,0.15), rgba(8,145,178,0.05)) !important;
-  color:#06b6d4 !important; /* brighter cyan for active state */
-  border:1px solid rgba(8,145,178,0.2) !important;
+  background:linear-gradient(135deg, rgba(23,195,247,0.15), rgba(23,195,247,0.05)) !important;
+  color:#ffffff !important; /* bright white for active state */
+  border:1px solid rgba(23,195,247,0.2) !important;
 }
 
 .site-ctas{
