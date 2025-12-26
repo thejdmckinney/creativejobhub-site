@@ -150,8 +150,8 @@
     .comparison-table-wrapper {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      margin: 0 -24px;
-      padding: 0 24px;
+      margin: 0;
+      padding: 0;
     }
     
     .comparison-table {
@@ -163,16 +163,35 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      display: table !important;
+    }
+    
+    .comparison-table thead,
+    .comparison-table tbody,
+    .comparison-table tr {
+      display: table-row-group !important;
+    }
+    
+    .comparison-table thead {
+      display: table-header-group !important;
+    }
+    
+    .comparison-table tbody {
+      display: table-row-group !important;
+    }
+    
+    .comparison-table tr {
+      display: table-row !important;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      display: table-cell !important;
     }
     
     @media (max-width: 768px) {
       .comparison-table {
         min-width: 1000px;
-      }
-      
-      .comparison-table-wrapper {
-        margin: 0 -16px;
-        padding: 0 16px;
       }
     }
   </style>
