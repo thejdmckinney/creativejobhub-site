@@ -38,6 +38,6 @@ Disallow: /demos/
 User-agent: *
 Allow: /
 
-Sitemap: https://creativejobhub.com/sitemap.xml
-Sitemap: https://creativejobhub.com/video-sitemap.xml
-Sitemap: https://creativejobhub.com/sitemap-index.xml
+Sitemap: https://www.creativejobhub.com/sitemap.xml
+Sitemap: https://www.creativejobhub.com/video-sitemap.xml
+Sitemap: https://www.creativejobhub.com/sitemap-index.xml
