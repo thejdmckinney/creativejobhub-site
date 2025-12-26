@@ -20,3 +20,20 @@
 /price /pricing/ 301
 /plans /pricing/ 301
 /cost /pricing/ 301
+
+# Industry page reorganization - redirect old URLs to new /industries/ structure
+/hvac-field-service-software/ /industries/hvac/ 301
+/plumbing-field-service-software/ /industries/plumbing/ 301
+/electrical-field-service-software/ /industries/electrical/ 301
+/landscaping-field-service-software/ /industries/landscaping/ 301
+/handyman-field-service-software/ /industries/handyman/ 301
+/appliance-repair-field-service-software/ /industries/appliance-repair/ 301
+/carpet-cleaning-field-service-software/ /industries/carpet-cleaning/ 301
+/chimney-service-field-service-software/ /industries/chimney-service/ 301
+/home-cleaning-field-service-software/ /industries/home-cleaning/ 301
+/window-cleaning-field-service-software/ /industries/window-cleaning/ 301
+/garage-door-field-service-software/ /industries/garage-door/ 301
+/pool-service-field-service-software/ /industries/pool-service/ 301
+/pressure-washing-field-service-software/ /industries/pressure-washing/ 301
+/pest-control-field-service-software/ /industries/pest-control/ 301
+/general-contractor-field-service-software/ /industries/general-contractor/ 301
