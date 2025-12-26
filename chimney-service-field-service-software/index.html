@@ -145,6 +145,76 @@
       padding-bottom: 4px;
       display: inline-block;
     }
+    
+    /* Mobile-optimized comparison table */
+    .comparison-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #0f1419;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    /* Mobile: Stack competitors as cards below the feature list */
+    @media (max-width: 768px) {
+      .comparison-table thead {
+        display: none;
+      }
+      
+      .comparison-table,
+      .comparison-table tbody,
+      .comparison-table tr,
+      .comparison-table td {
+        display: block;
+        width: 100%;
+      }
+      
+      .comparison-table tr {
+        margin-bottom: 24px;
+        background: #0f1419 !important;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(148,163,184,0.2);
+      }
+      
+      .comparison-table td {
+        position: relative;
+        padding: 16px !important;
+        text-align: left !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(148,163,184,0.1) !important;
+      }
+      
+      .comparison-table td:last-child {
+        border-bottom: none !important;
+      }
+      
+      /* Show feature name before each value */
+      .comparison-table td:first-child {
+        background: rgba(59,130,246,0.15) !important;
+        font-weight: 800 !important;
+        font-size: 1.1rem !important;
+        color: #3b82f6 !important;
+        border-bottom: 2px solid rgba(59,130,246,0.3) !important;
+      }
+      
+      /* For each data cell, show which competitor it belongs to */
+      .comparison-table td:not(:first-child):before {
+        content: attr(data-label);
+        display: inline-block;
+        font-weight: 700;
+        color: #e4e7eb;
+        min-width: 140px;
+        margin-right: 12px;
+      }
+    }
   </style>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
@@ -273,8 +343,8 @@
           <p style="color:#8b92a0; font-size:1.15rem; max-width:800px; margin:0 auto;">See why Creative Job Hub is the only software actually built for chimney sweeps</p>
         </div>
 
-        <div style="overflow-x:auto;">
-          <table style="width:100%; border-collapse:separate; border-spacing:0; background:#0f1419; border-radius:16px; overflow:hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
             <thead>
               <tr style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
                 <th style="padding:24px; text-align:left; color:#ffffff; font-size:1.1rem; font-weight:700; border-right:1px solid rgba(148,163,184,0.2); min-width:200px;">Feature</th>
@@ -304,101 +374,101 @@
             <tbody>
               <tr style="background:#0a0e14; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Monthly Price</td>
-                <td style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">$89</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$300-500</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$129-249</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$99-199</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:600;">$150</td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">$89</td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$300-500</td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$129-249</td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; color:#ef4444; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">$99-199</td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center; color:#ef4444; font-weight:600;">$150</td>
               </tr>
               
               <tr style="background:#0f1419; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">NFPA 211 Inspection Checklists (Level 1, 2, 3)</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Built-in</div></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#fbbf24; font-size:1.8rem;">~</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Limited</div></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Built-in</div></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#fbbf24; font-size:1.8rem;">~</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Limited</div></td>
               </tr>
 
               <tr style="background:#0a0e14; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Creosote Stage Tracking (1, 2, 3)</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">w/ History</div></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">w/ History</div></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
               </tr>
 
               <tr style="background:#0f1419; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Chimney Construction Tracking</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Full Specs</div></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Full Specs</div></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
               </tr>
 
               <tr style="background:#0a0e14; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Warranty/Equipment Tracking</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Caps, Liners, Dampers</div></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Caps, Liners, Dampers</div></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#fbbf24; font-size:1.8rem;">~</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
               </tr>
 
               <tr style="background:#0f1419; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Mobile-First Design</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
               </tr>
 
               <tr style="background:#0a0e14; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Photo Documentation & Storage</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Unlimited</div></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span><div style="color:#8b92a0; font-size:0.8rem; margin-top:4px;">Unlimited</div></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
               </tr>
 
               <tr style="background:#0f1419; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Customer Portal</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
               </tr>
 
               <tr style="background:#0a0e14; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">QuickBooks Integration</td>
-                <td style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
-                <td style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; background:rgba(59,130,246,0.1);"><span style="color:#22c55e; font-size:1.8rem; font-weight:700;">✓</span></td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; border-right:1px solid rgba(148,163,184,0.1);"><span style="color:#22c55e; font-size:1.8rem;">✓</span></td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center;"><span style="color:#ef4444; font-size:1.8rem;">✗</span></td>
               </tr>
 
               <tr style="background:#0f1419; border-bottom:1px solid rgba(148,163,184,0.1);">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Setup Fee</td>
-                <td style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">$0</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$999+</td>
-                <td style="padding:20px; text-align:center; color:#22c55e; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$0</td>
-                <td style="padding:20px; text-align:center; color:#22c55e; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$0</td>
-                <td style="padding:20px; text-align:center; color:#22c55e; font-weight:700;">$0</td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">$0</td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; color:#ef4444; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$999+</td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; color:#22c55e; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$0</td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; color:#22c55e; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">$0</td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center; color:#22c55e; font-weight:700;">$0</td>
               </tr>
 
               <tr style="background:#0a0e14;">
                 <td style="padding:20px; color:#e4e7eb; font-weight:600; border-right:1px solid rgba(148,163,184,0.1);">Free Trial</td>
-                <td style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">14 Days</td>
-                <td style="padding:20px; text-align:center; color:#ef4444; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">None</td>
-                <td style="padding:20px; text-align:center; color:#8b92a0; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">14 Days</td>
-                <td style="padding:20px; text-align:center; color:#8b92a0; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">14 Days</td>
-                <td style="padding:20px; text-align:center; color:#8b92a0; font-weight:700;">7 Days</td>
+                <td data-label="Creative Job Hub:" style="padding:20px; text-align:center; font-weight:800; font-size:1.2rem; color:#22c55e; background:rgba(59,130,246,0.1);">14 Days</td>
+                <td data-label="Service Titan:" style="padding:20px; text-align:center; color:#ef4444; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">None</td>
+                <td data-label="Jobber:" style="padding:20px; text-align:center; color:#8b92a0; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">14 Days</td>
+                <td data-label="FieldServicely:" style="padding:20px; text-align:center; color:#8b92a0; font-weight:700; border-right:1px solid rgba(148,163,184,0.1);">14 Days</td>
+                <td data-label="ChimSpect:" style="padding:20px; text-align:center; color:#8b92a0; font-weight:700;">7 Days</td>
               </tr>
             </tbody>
           </table>
