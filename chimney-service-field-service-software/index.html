@@ -109,6 +109,18 @@
     a:not(.btn) { color: #0891b2 !important; }
     .card { background: #1a1f26 !important; border-color: rgba(148,163,184,0.2) !important; }
     
+    /* Responsive container padding */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px !important;
+      }
+      
+      section {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+    }
+    
     /* Electric cyan with animated underline for competitive advantage text */
     @keyframes shimmerUnderline {
       0% {
@@ -282,7 +294,7 @@
 
     <!-- Why Most Software Fails -->
     <section style="width:100%; max-width:100%; background: #0f1419; padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <h2 style="color:#e4e7eb; font-size:2.5rem; margin-bottom:16px; text-align:center;">Why Most Software Fails Chimney Sweeps</h2>
         <p style="color:#8b92a0; font-size:1.2rem; text-align:center; margin-bottom:48px; max-width:800px; margin-left:auto; margin-right:auto;">You've probably tried this before:</p>
         
@@ -315,7 +327,7 @@
 
     <!-- Comparison Table -->
     <section id="comparison" style="width:100%; max-width:100%; background: linear-gradient(135deg, #1a1f26 0%, #0f1419 100%); padding: 80px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:1400px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:1400px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <div style="text-align:center; margin-bottom:48px;">
           <span class="kicker" style="color:#3b82f6; font-size:1rem; font-weight:700;">📊 THE TRUTH ABOUT CHIMNEY SOFTWARE</span>
           <h2 style="color:#e4e7eb; font-size:2.8rem; margin-top:12px; margin-bottom:16px;">How We Compare to the Competition</h2>
@@ -499,14 +511,14 @@
 
     <!-- What Creative Job Hub Actually Does -->
     <section id="features" style="width:100%; max-width:100%; background: #0f1419; padding: 100px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:1300px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:1300px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <div style="text-align:center; margin-bottom:64px;">
           <h2 style="color:#e4e7eb; font-size:3rem; margin-bottom:20px; font-weight:900;">What Creative Job Hub Actually Does for Chimney Sweeps</h2>
           <p style="color:#8b92a0; font-size:1.2rem; max-width:800px; margin:0 auto;">Not just another field service app. Purpose-built tools for CSIA-certified professionals.</p>
         </div>
 
         <!-- Feature 1: Track Every Chimney -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
           <div>
             <div style="display:inline-block; background:rgba(59,130,246,0.1); padding:8px 16px; border-radius:20px; margin-bottom:16px;">
               <span style="color:#3b82f6; font-weight:700; font-size:0.9rem;">FEATURE #1</span>
@@ -547,7 +559,7 @@
         </div>
 
         <!-- Feature 2: NFPA 211 Inspections -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
           <div style="order:2;">
             <div style="display:inline-block; background:rgba(59,130,246,0.1); padding:8px 16px; border-radius:20px; margin-bottom:16px;">
               <span style="color:#3b82f6; font-weight:700; font-size:0.9rem;">FEATURE #2</span>
@@ -608,7 +620,7 @@
         </div>
 
         <!-- Feature 3: Creosote Tracking -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; margin-bottom:80px; align-items:center;">
           <div>
             <div style="display:inline-block; background:rgba(239,68,68,0.1); padding:8px 16px; border-radius:20px; margin-bottom:16px;">
               <span style="color:#ef4444; font-weight:700; font-size:0.9rem;">FEATURE #3 - LIABILITY PROTECTION</span>
@@ -643,7 +655,7 @@
         </div>
 
         <!-- Feature 4: Equipment & Warranty Tracking -->
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); gap:48px; margin-bottom:60px; align-items:center;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:48px; margin-bottom:60px; align-items:center;">
           <div style="order:2;">
             <div style="display:inline-block; background:rgba(59,130,246,0.1); padding:8px 16px; border-radius:20px; margin-bottom:16px;">
               <span style="color:#3b82f6; font-weight:700; font-size:0.9rem;">FEATURE #4</span>
@@ -737,7 +749,7 @@
 
     <!-- Testimonials Section -->
     <section style="width:100%; max-width:100%; background: linear-gradient(135deg, #1a1f26 0%, #0a0e14 100%); padding: 100px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <div style="text-align:center; margin-bottom:64px;">
           <h2 style="color:#e4e7eb; font-size:3rem; margin-bottom:20px; font-weight:900;">What Chimney Sweeps Are Saying</h2>
           <p style="color:#8b92a0; font-size:1.2rem;">Real feedback from CSIA-certified professionals</p>
@@ -791,7 +803,7 @@
 
     <!-- Real Workflow Section -->
     <section style="width:100%; max-width:100%; background: #0f1419; padding: 100px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:1200px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <div style="text-align:center; margin-bottom:64px;">
           <h2 style="color:#e4e7eb; font-size:3rem; margin-bottom:20px; font-weight:900;">Real Chimney Sweep Workflow</h2>
           <p style="color:#8b92a0; font-size:1.2rem;">See how it works in real life - from scheduling to completion</p>
@@ -995,7 +1007,7 @@
 
     <!-- FAQ Section -->
     <section style="width:100%; max-width:100%; background: #0f1419; padding: 100px 0; border-bottom: 1px solid rgba(148,163,184,0.1);">
-      <div class="container" style="max-width:900px; margin:0 auto; padding:0 24px;">
+      <div class="container" style="max-width:900px; margin:0 auto; padding:0 24px; overflow-x: hidden;">
         <div style="text-align:center; margin-bottom:64px;">
           <h2 style="color:#e4e7eb; font-size:3rem; margin-bottom:20px; font-weight:900;">Common Questions from Chimney Sweeps</h2>
         </div>
