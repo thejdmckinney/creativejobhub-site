@@ -7,6 +7,10 @@
 # Pricing page redirect
 /pricing.html /pricing/ 301
 
+# Jobber alternative page redirect (moved from /compare/ to root)
+/compare/jobber-alternative.html /jobber-alternative/ 301
+/compare/jobber-alternative /jobber-alternative/ 301
+
 # Other potential redirects for common URL variations
 /pricing/pricing.html /pricing/ 301
 /pricing.htm /pricing/ 301
