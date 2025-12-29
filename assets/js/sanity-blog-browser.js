@@ -153,20 +153,22 @@
         
         return `
           <article class="blog-card">
-            <img src="${imageUrl}" 
-                 alt="${imageAlt}"
-                 onerror="this.style.display='none'">
-            <div class="blog-card-content">
-              <h3><a href="/blog/post.html?slug=${post.slug}">${post.title}</a></h3>
-              <p>${post.excerpt || ''}</p>
-              <div class="blog-meta">
-                ${post.categories && post.categories.length > 0 
-                  ? `<span class="blog-tag">${post.categories[0]}</span>`
-                  : ''
-                }
-                <time datetime="${post.publishedAt}">${publishDate}</time>
+            <a href="/blog/post.html?slug=${post.slug}" class="blog-card-link">
+              <img src="${imageUrl}" 
+                   alt="${imageAlt}"
+                   onerror="this.style.display='none'">
+              <div class="blog-card-content">
+                <h3>${post.title}</h3>
+                <p>${post.excerpt || ''}</p>
+                <div class="blog-meta">
+                  ${post.categories && post.categories.length > 0 
+                    ? `<span class="blog-tag">${post.categories[0]}</span>`
+                    : ''
+                  }
+                  <time datetime="${post.publishedAt}">${publishDate}</time>
+                </div>
               </div>
-            </div>
+            </a>
           </article>
         `;
       }).join('');
