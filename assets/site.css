@@ -939,12 +939,13 @@ nav .nav-dropdown .dropdown-menu,
 
   /* ========== MEGA MENU STYLES ========== */
   .mega-menu-dropdown .dropdown-menu.mega-menu {
-    min-width: 1400px !important;
-    max-width: 1500px !important;
-    width: 1450px !important;
-    padding: 20px !important;
+    min-width: 1600px !important;
+    max-width: 1800px !important;
+    width: 1700px !important;
+    padding: 24px !important;
     left: 50% !important;
     transform: translateX(-50%) translateY(-10px) scale(0.95) !important;
+    overflow: visible !important;
   }
 
   .mega-menu-dropdown:hover .dropdown-menu.mega-menu,
@@ -956,8 +957,8 @@ nav .nav-dropdown .dropdown-menu,
   .mega-menu .mega-menu-grid,
   .mega-menu-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr !important;
-    gap: 24px !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.3fr !important;
+    gap: 32px !important;
     flex-direction: row !important;
   }
 
