@@ -23,7 +23,7 @@
       .catch(() => null);
   }
 
-  safeFetchText('/assets/header.html').then(html => {
+  safeFetchText('/assets/header.html?v=25').then(html => {
     if (!html) {
       // fallback: do nothing (avoid replacing mount with invalid content)
       return;
