@@ -228,15 +228,28 @@
         const newToggle = toggle.cloneNode(true);
         toggle.parentNode.replaceChild(newToggle, toggle);
 
-        // Desktop: hover behavior
+        // Desktop: hover behavior with fixed mega menu support
         if (window.innerWidth > 860) {
-          dropdown.addEventListener('mouseenter', () => {
+          let hideTimeout;
+          
+          const showDropdown = () => {
+            clearTimeout(hideTimeout);
             dropdown.classList.add('active');
-          });
-
-          dropdown.addEventListener('mouseleave', () => {
-            dropdown.classList.remove('active');
-          });
+          };
+          
+          const hideDropdown = () => {
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+              dropdown.classList.remove('active');
+            }, 150); // Small delay to allow mouse to move to menu
+          };
+          
+          dropdown.addEventListener('mouseenter', showDropdown);
+          dropdown.addEventListener('mouseleave', hideDropdown);
+          
+          // Keep menu open when hovering over the menu itself (for fixed positioned menus)
+          menu.addEventListener('mouseenter', showDropdown);
+          menu.addEventListener('mouseleave', hideDropdown);
         }
         
         // Click behavior for all screen sizes
@@ -306,14 +319,28 @@
           // Remove previous event listeners by cloning
           const newToggle = toggle.cloneNode(true);
           toggle.parentNode.replaceChild(newToggle, toggle);
-          // Desktop: hover behavior
+          // Desktop: hover behavior with fixed mega menu support
           if (window.innerWidth > 860) {
-            dropdown.addEventListener('mouseenter', () => {
+            let hideTimeout;
+            
+            const showDropdown = () => {
+              clearTimeout(hideTimeout);
               dropdown.classList.add('active');
-            });
-            dropdown.addEventListener('mouseleave', () => {
-              dropdown.classList.remove('active');
-            });
+            };
+            
+            const hideDropdown = () => {
+              clearTimeout(hideTimeout);
+              hideTimeout = setTimeout(() => {
+                dropdown.classList.remove('active');
+              }, 150); // Small delay to allow mouse to move to menu
+            };
+            
+            dropdown.addEventListener('mouseenter', showDropdown);
+            dropdown.addEventListener('mouseleave', hideDropdown);
+            
+            // Keep menu open when hovering over the menu itself (for fixed positioned menus)
+            menu.addEventListener('mouseenter', showDropdown);
+            menu.addEventListener('mouseleave', hideDropdown);
           }
           // Click behavior for all screen sizes
           newToggle.addEventListener('click', (e) => {
