@@ -1106,8 +1106,9 @@ nav .nav-dropdown .dropdown-menu,
   }
   
   .nav-dropdown.active .dropdown-menu {
-    max-height: 800px !important;
+    max-height: 2000px !important;
     padding: 8px 0 !important;
+    overflow-y: auto !important;
   }
   
   .dropdown-link {

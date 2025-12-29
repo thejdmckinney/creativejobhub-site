@@ -15,11 +15,11 @@ def update_css_version(file_path):
         
         original = content
         
-        # Replace site.css?v=XX with v=29 (for any version number)
-        content = re.sub(r'site\.css\?v=\d+', 'site.css?v=29', content)
+        # Replace site.css?v=XX with v=30 (for any version number)
+        content = re.sub(r'site\.css\?v=\d+', 'site.css?v=30', content)
         
-        # Replace site.min.css?v=XX with v=29 (for any version number)
-        content = re.sub(r'site\.min\.css\?v=\d+', 'site.min.css?v=29', content)
+        # Replace site.min.css?v=XX with v=30 (for any version number)
+        content = re.sub(r'site\.min\.css\?v=\d+', 'site.min.css?v=30', content)
         
         # Only write if changed
         if content != original:
@@ -54,7 +54,7 @@ def main():
             print(f"✓ Updated: {html_file}")
             updated_count += 1
     
-    print(f"\n✅ Updated {updated_count} files to site.css/site.min.css?v=29")
+    print(f"\n✅ Updated {updated_count} files to site.css/site.min.css?v=30")
 
 if __name__ == '__main__':
     main()
