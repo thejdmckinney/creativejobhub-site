@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 Update all HTML files to use the latest site.css version (v=29)
+Handles both site.css and site.min.css
 """
 import os
 import re
 from pathlib import Path
 
 def update_css_version(file_path):
-    """Update site.css version to v=29"""
+    """Update site.css and site.min.css version to v=29"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -16,6 +17,9 @@ def update_css_version(file_path):
         
         # Replace site.css?v=XX with v=29 (for any version number)
         content = re.sub(r'site\.css\?v=\d+', 'site.css?v=29', content)
+        
+        # Replace site.min.css?v=XX with v=29 (for any version number)
+        content = re.sub(r'site\.min\.css\?v=\d+', 'site.min.css?v=29', content)
         
         # Only write if changed
         if content != original:
@@ -50,7 +54,7 @@ def main():
             print(f"✓ Updated: {html_file}")
             updated_count += 1
     
-    print(f"\n✅ Updated {updated_count} files to site.css?v=29")
+    print(f"\n✅ Updated {updated_count} files to site.css/site.min.css?v=29")
 
 if __name__ == '__main__':
     main()
