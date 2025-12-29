@@ -53,8 +53,8 @@
   <!-- Shared site CSS -->
   <link rel="stylesheet" href="/assets/site.min.css?v=31" />
   
-  <!-- Blog system for markdown processing -->
-  <script src="/assets/blog-system.js" defer></script>
+  <!-- Sanity Blog System (uses direct API calls) -->
+  <script src="/assets/js/sanity-blog-browser.js" defer></script>
 
   <style>
     :root{
@@ -120,7 +120,8 @@
     .blog-card img { 
       width:100%; 
       height:200px; 
-      object-fit:cover; 
+      object-fit:contain;
+      background: var(--bg-secondary);
     }
     
     .blog-card-content { 
@@ -229,51 +230,8 @@
 
     <!-- Blog posts -->
     <div class="blog-grid" id="blog-posts">
-      <!-- Dynamic markdown posts will be inserted here by blog-system.js -->
-      
-      <!-- Existing hardcoded posts (will be merged with markdown posts) -->
-      <article class="blog-card">
-     <img src="/assets/images/blog/field-notes-cover-2-1200.png"
-       alt="Field Notes Issue 2 Cover"
-       onerror="this.style.display='none'">
-        <div class="blog-card-content">
-          <h3><a href="/blog/posts/field-notes-issue-2/">Field Notes – Issue #2: The Follow-Up System That Tripled My Recurring Revenue</a></h3>
-          <p>How a simple follow-up system turned one-time jobs into recurring revenue. Real contractor story and actionable steps for building recurring income.</p>
-          <div class="blog-meta">
-            <span class="blog-tag">Field Notes</span>
-            <time datetime="2025-11-18">Nov 18, 2025</time>
-          </div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="/assets/images/blog/choose-field-service-software-1200.svg" 
-             alt="Field service software selection guide showing comparison cards and evaluation checklist"
-             onerror="this.style.display='none'">
-        <div class="blog-card-content">
-          <h3><a href="/blog/posts/choose-field-service-software/">How to Choose Field Service Software for a 1–10 Person Team</a></h3>
-          <p>A practical checklist and scoring system for small field-service teams to choose the right field service management software.</p>
-          <div class="blog-meta">
-            <span class="blog-tag">Guide</span>
-            <time datetime="2025-11-02">Nov 2, 2025</time>
-          </div>
-        </div>
-      </article>
-
-      <article class="blog-card">
-        <img src="/assets/images/blog/getting-started-1200.svg" 
-             alt="Getting started roadmap with 4 steps: setup, clients, scheduling, and success"
-             onerror="this.style.display='none'">
-        <div class="blog-card-content">
-          <h3><a href="/blog/posts/getting-started-field-service-management/">Getting Started with Field Service Management</a></h3>
-          <p>Essential tips and best practices for implementing field service management in your growing business.</p>
-          <div class="blog-meta">
-            <span class="blog-tag">Getting Started</span>
-            <time datetime="2025-11-01">Nov 1, 2025</time>
-          </div>
-        </div>
-      </article>
-
+      <!-- Blog posts will be loaded from Sanity CMS -->
+      <div class="loading" style="text-align: center; padding: 40px;">Loading posts from Sanity...</div>
     </div>
   </main>
 

@@ -115,51 +115,41 @@ class BlogSystem {
     if (this.postsLoaded) return this.posts;
     
     try {
-      const posts = [];
-      
-      // Method 1: Try to discover posts via GitHub API (if available)
-      const discoveredSlugs = await this.discoverPostSlugs();
-      
-      // Method 2: Always check known posts + common patterns
-      const knownSlugs = [
-        'field-service-productivity-tips',
-        'best-scheduling-software-for-contractors-i-tested-7-so-you-don-t-have-to',
-        'why-i-ditched-jobber-and-found-a-better-alternative-for-89-month',
-      ];
-      
-      // Combine discovered and known slugs, removing duplicates
-      const allSlugs = [...new Set([...discoveredSlugs, ...knownSlugs])];
-      
-      console.log('Blog System: Checking for posts:', allSlugs);
-      
-      for (const slug of allSlugs) {
-        try {
-          const response = await fetch(`/blog/posts/${slug}/index.md`);
-          if (response.ok) {
-            const content = await response.text();
-            const { frontmatter, content: markdownContent } = this.parseFrontmatter(content);
-            
-            posts.push({
-              slug,
-              ...frontmatter,
-              content: markdownContent,
-              html: this.markdownToHtml(markdownContent),
-              url: `/blog/posts/${slug}/`,
-              excerpt: frontmatter.excerpt || this.generateExcerpt(markdownContent)
-            });
-            
-            console.log(`Blog System: Successfully loaded post: ${slug}`);
-          }
-        } catch (error) {
-          console.log(`Blog System: Post not found or error loading ${slug}:`, error.message);
+      // Static configuration for existing HTML blog posts
+      const posts = [
+        {
+          slug: 'choose-field-service-software',
+          title: 'How to Choose Field Service Software for a 1–10 Person Team',
+          date: '2025-11-02',
+          excerpt: 'A practical checklist and scoring system for small field-service teams to choose the right field service management software.',
+          url: '/blog/posts/choose-field-service-software/',
+          status: 'published',
+          tags: ['field service', 'software selection', 'small business']
+        },
+        {
+          slug: 'field-notes-issue-2',
+          title: 'Field Notes - Issue 2',
+          date: '2025-11-01',
+          excerpt: 'Latest updates and insights from Creative Job Hub.',
+          url: '/blog/posts/field-notes-issue-2/',
+          status: 'published',
+          tags: ['newsletter', 'updates']
+        },
+        {
+          slug: 'getting-started-field-service-management',
+          title: 'Getting Started with Field Service Management',
+          date: '2025-10-28',
+          excerpt: 'Essential guide for field service businesses starting their digital transformation journey.',
+          url: '/blog/posts/getting-started-field-service-management/',
+          status: 'published',
+          tags: ['getting started', 'field service', 'guide']
         }
-      }
+      ];
       
       // Sort by date (newest first)
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
       
-      // Filter published posts only (for public display) - default to published if no status
-      this.posts = posts.filter(post => (post.status || 'published') === 'published');
+      this.posts = posts;
       this.postsLoaded = true;
       
       console.log(`Blog System: Loaded ${this.posts.length} published posts`);
@@ -171,92 +161,20 @@ class BlogSystem {
   }
 
   /**
-   * Discover post slugs automatically
+   * Discover post slugs automatically (deprecated - now using static config)
    */
   async discoverPostSlugs() {
-    const discoveredSlugs = [];
-    
-    try {
-      // Try GitHub Contents API for automatic discovery
-      const response = await fetch('https://api.github.com/repos/thejdmckinney/creativejobhub-site/contents/blog/posts');
-      
-      if (response.ok) {
-        const contents = await response.json();
-        const directories = contents.filter(item => item.type === 'dir');
-        
-        for (const dir of directories) {
-          // Check if directory contains index.md (markdown post)
-          try {
-            const postCheck = await fetch(`/blog/posts/${dir.name}/index.md`, { method: 'HEAD' });
-            if (postCheck.ok) {
-              discoveredSlugs.push(dir.name);
-            }
-          } catch (e) {
-            // Silent fail for post check
-          }
-        }
-        
-        console.log('Blog System: Auto-discovered posts via GitHub API:', discoveredSlugs);
-      }
-    } catch (error) {
-      console.log('Blog System: GitHub API discovery failed, using fallback methods');
-    }
-    
-    // Fallback: Try common post patterns based on current date and known patterns
-    const fallbackSlugs = await this.tryCommonPatterns();
-    
-    return [...new Set([...discoveredSlugs, ...fallbackSlugs])];
+    // This method is deprecated. Posts are now statically configured in loadPosts()
+    console.log('Blog System: Using static post configuration');
+    return [];
   }
 
   /**
-   * Try to find posts using common naming patterns
+   * Try to find posts using common naming patterns (deprecated - now using static config)
    */
   async tryCommonPatterns() {
-    const patterns = [];
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = String(today.getMonth() + 1).padStart(2, '0');
-    
-    // Common contractor/field service topics that might be auto-generated
-    const commonTopics = [
-      'contractor-scheduling-software',
-      'field-service-management-tips',
-      'best-contractor-software',
-      'scheduling-software-comparison',
-      'field-service-productivity',
-      'contractor-management-app',
-      'small-business-field-service',
-      'hvac-scheduling-software',
-      'plumbing-software-review',
-      'electrical-contractor-app'
-    ];
-    
-    // Try common patterns with current date
-    for (const topic of commonTopics) {
-      patterns.push(`${topic}-${currentYear}`);
-      patterns.push(`${topic}-${currentYear}-${currentMonth}`);
-      patterns.push(topic);
-    }
-    
-    // Try patterns with dates
-    patterns.push(`blog-post-${currentYear}-${currentMonth}-01`);
-    patterns.push(`new-post-${currentYear}-${currentMonth}`);
-    
-    const foundSlugs = [];
-    
-    // Test each pattern quickly
-    for (const pattern of patterns.slice(0, 10)) { // Limit to avoid too many requests
-      try {
-        const response = await fetch(`/blog/posts/${pattern}/index.md`, { method: 'HEAD' });
-        if (response.ok) {
-          foundSlugs.push(pattern);
-        }
-      } catch (e) {
-        // Silent fail
-      }
-    }
-    
-    return foundSlugs;
+    // This method is deprecated. Posts are now statically configured in loadPosts()
+    return [];
   }
 
   /**

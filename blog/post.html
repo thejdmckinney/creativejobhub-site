@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Post - Creative Job Hub</title>
+  <meta name="description" content="Field service insights and tips" />
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PHMP7P59');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+
+  <!-- Shared site CSS -->
+  <link rel="stylesheet" href="/assets/site.min.css?v=31" />
+  
+  <style>
+    .blog-post {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .blog-post__header {
+      margin-bottom: 40px;
+    }
+    
+    .blog-post__category {
+      color: #3b82f6;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+    
+    .blog-post__title {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: var(--text, #e4e7eb);
+    }
+    
+    .blog-post__meta {
+      display: flex;
+      gap: 20px;
+      color: var(--muted, #8b92a0);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .blog-post__excerpt {
+      font-size: 20px;
+      color: var(--muted, #8b92a0);
+      line-height: 1.6;
+    }
+    
+    .blog-post__image {
+      margin: 40px 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    
+    .blog-post__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .blog-post__content {
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text, #e4e7eb);
+    }
+    
+    .blog-post__content h2 {
+      font-size: 32px;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      color: var(--text, #e4e7eb);
+    }
+    
+    .blog-post__content h3 {
+      font-size: 24px;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      color: var(--text, #e4e7eb);
+    }
+    
+    .blog-post__content p {
+      margin-bottom: 20px;
+    }
+    
+    .blog-post__content blockquote {
+      border-left: 4px solid #3b82f6;
+      padding-left: 24px;
+      margin: 32px 0;
+      font-style: italic;
+      color: var(--muted, #8b92a0);
+    }
+    
+    .blog-post__content code {
+      background: var(--panel, #1a1f26);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    
+    .blog-post__footer {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .blog-post__categories {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 100px 20px;
+      color: var(--muted, #8b92a0);
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHMP7P59"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="site-header"></div>
+  <script src="/assets/header.js?v=4" defer></script>
+
+  <main class="wrap">
+    <a href="/blog/" class="back-link">← Back to Blog</a>
+    <div id="blog-post-content">
+      <div class="loading">Loading blog post...</div>
+    </div>
+  </main>
+
+  <footer style="padding:40px 0; background:#1a1f26; border-top:1px solid rgba(255,255,255,0.1); margin-top:80px;">
+    <div class="wrap" style="text-align:center; color:#8b92a0; font-size:14px;">
+      <p>&copy; <span id="y"></span> Creative Job Hub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Sanity Blog Post Loader -->
+  <script>
+    (function() {
+      'use strict';
+
+      const SANITY_PROJECT_ID = '53m7wbm0';
+      const SANITY_DATASET = 'production';
+      const SANITY_API_VERSION = '2024-01-01';
+
+      // Get slug from URL
+      function getSlugFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('slug');
+      }
+
+      // Fetch data from Sanity
+      async function sanityFetch(query) {
+        const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${encodeURIComponent(query)}`;
+        
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Sanity API error: ${response.status}`);
+          }
+          const data = await response.json();
+          return data.result;
+        } catch (error) {
+          console.error('Error fetching from Sanity:', error);
+          throw error;
+        }
+      }
+
+      // Generate Sanity image URL
+      function urlFor(imageRef, width = 1200) {
+        if (!imageRef) return null;
+        const assetId = imageRef.replace('image-', '').replace(/-(\w+)$/, '.$1');
+        return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${assetId}?w=${width}&auto=format`;
+      }
+
+      // Convert Sanity block content to HTML
+      function blockContentToHtml(blocks) {
+        if (!blocks || !Array.isArray(blocks)) return '';
+        
+        return blocks.map(block => {
+          if (block._type !== 'block') return '';
+          
+          const children = block.children || [];
+          const style = block.style || 'normal';
+          
+          const text = children.map(child => {
+            let content = child.text || '';
+            
+            if (child.marks && child.marks.length > 0) {
+              child.marks.forEach(mark => {
+                if (mark === 'strong') content = `<strong>${content}</strong>`;
+                if (mark === 'em') content = `<em>${content}</em>`;
+                if (mark === 'code') content = `<code>${content}</code>`;
+              });
+            }
+            
+            return content;
+          }).join('');
+          
+          switch (style) {
+            case 'h1': return `<h1>${text}</h1>`;
+            case 'h2': return `<h2>${text}</h2>`;
+            case 'h3': return `<h3>${text}</h3>`;
+            case 'h4': return `<h4>${text}</h4>`;
+            case 'blockquote': return `<blockquote>${text}</blockquote>`;
+            default: return `<p>${text}</p>`;
+          }
+        }).join('\n');
+      }
+
+      // Render the blog post
+      async function renderBlogPost() {
+        const slug = getSlugFromUrl();
+        const container = document.getElementById('blog-post-content');
+        
+        if (!slug) {
+          container.innerHTML = '<p>Blog post not found.</p>';
+          return;
+        }
+
+        try {
+          const query = `*[_type == "blogPost" && slug.current == "${slug}"][0] {
+            _id,
+            title,
+            "slug": slug.current,
+            author,
+            publishedAt,
+            excerpt,
+            "mainImageRef": mainImage.asset._ref,
+            "mainImageAlt": mainImage.alt,
+            "categories": categories[]->title,
+            body,
+            metaTitle,
+            metaDescription
+          }`;
+
+          console.log('Fetching post:', slug);
+          const post = await sanityFetch(query);
+
+          if (!post) {
+            container.innerHTML = '<p>Blog post not found.</p>';
+            return;
+          }
+
+          const imageUrl = post.mainImageRef ? urlFor(post.mainImageRef, 1200) : null;
+          const publishDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+          
+          const content = blockContentToHtml(post.body);
+
+          container.innerHTML = `
+            <article class="blog-post">
+              <header class="blog-post__header">
+                <p class="blog-post__category">Blog</p>
+                <h1 class="blog-post__title">${post.title}</h1>
+                <div class="blog-post__meta">
+                  <span class="blog-post__author">${post.author || 'Creative Job Hub'}</span>
+                  <span class="blog-post__date">${publishDate}</span>
+                </div>
+                ${post.excerpt ? `<p class="blog-post__excerpt">${post.excerpt}</p>` : ''}
+              </header>
+              
+              ${imageUrl ? `
+                <figure class="blog-post__image">
+                  <img 
+                    src="${imageUrl}" 
+                    alt="${post.mainImageAlt || post.title}"
+                    loading="lazy"
+                  />
+                </figure>
+              ` : ''}
+              
+              <div class="blog-post__content">
+                ${content}
+              </div>
+              
+              ${post.categories && post.categories.length > 0 ? `
+                <footer class="blog-post__footer">
+                  <div class="blog-post__categories">
+                    <strong>Categories:</strong>
+                    ${post.categories.map(cat => `<span class="tag">${cat}</span>`).join(' ')}
+                  </div>
+                </footer>
+              ` : ''}
+            </article>
+          `;
+
+          // Update meta tags
+          if (post.metaTitle || post.title) {
+            document.title = post.metaTitle || post.title;
+          }
+          
+          if (post.metaDescription || post.excerpt) {
+            let metaDesc = document.querySelector('meta[name="description"]');
+            if (!metaDesc) {
+              metaDesc = document.createElement('meta');
+              metaDesc.name = 'description';
+              document.head.appendChild(metaDesc);
+            }
+            metaDesc.content = post.metaDescription || post.excerpt;
+          }
+
+          console.log('Blog post rendered:', post.title);
+        } catch (error) {
+          console.error('Error rendering blog post:', error);
+          container.innerHTML = '<p>Error loading blog post. Please try again later.</p>';
+        }
+      }
+
+      // Auto-initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderBlogPost);
+      } else {
+        renderBlogPost();
+      }
+    })();
+  </script>
+
+  <!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/244310039.js"></script>
+  <!-- End of HubSpot Embed Code -->
+</body>
+</html>
