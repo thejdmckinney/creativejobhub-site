@@ -939,8 +939,8 @@ nav .nav-dropdown .dropdown-menu,
 
   /* ========== MEGA MENU STYLES ========== */
   .mega-menu-dropdown .dropdown-menu.mega-menu {
-    min-width: 1100px !important;
-    max-width: 1400px !important;
+    min-width: 1300px !important;
+    max-width: 1600px !important;
     width: max-content !important;
     padding: 24px !important;
     left: 50% !important;
