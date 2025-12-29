@@ -55,6 +55,24 @@
       ]
     },
     {
+      "source": "/assets/header.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/assets/header.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         {
