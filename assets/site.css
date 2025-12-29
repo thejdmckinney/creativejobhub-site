@@ -939,8 +939,8 @@ nav .nav-dropdown .dropdown-menu,
 
   /* ========== MEGA MENU STYLES ========== */
   .mega-menu-dropdown .dropdown-menu.mega-menu {
-    min-width: 920px !important;
-    max-width: 1100px !important;
+    min-width: 1100px !important;
+    max-width: 1400px !important;
     width: max-content !important;
     padding: 24px !important;
     left: 50% !important;
@@ -956,7 +956,7 @@ nav .nav-dropdown .dropdown-menu,
   .mega-menu .mega-menu-grid,
   .mega-menu-grid {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(5, 1fr) !important;
     gap: 32px !important;
     flex-direction: row !important;
   }
